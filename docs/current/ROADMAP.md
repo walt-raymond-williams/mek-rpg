@@ -9,8 +9,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Core resolution, personal combat, and equipment have draft paraphrased summaries with live router coverage and validation reports where applicable.
 - Character creation, campaign systems, vehicles/MechWarrior bridge, and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
-- Helper scripts now cover creating campaign saves from `campaigns/_template/` and rolling simple live-play dice expressions.
-- Campaign-state lifecycle automation is now the first automation priority; issue `#19` tracks the first validator for active campaign selection, template structure, and campaign save completeness.
+- Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
+- Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Coverage Status
@@ -37,14 +37,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-### Build campaign-state validator
-
-- Status: Open
-- Issue: `#19`
-- Handoff: `docs/handoffs/active/build-campaign-state-validator.md`
-- Mode: Project development
-- Expected output: PowerShell validator for `campaign-state/active-campaign.md`, `campaigns/_template/`, and selected or explicit `campaigns/<campaign-id>/` save folders; documentation in scripts and known commands; no rules-logic automation.
-
 ### Summarize character creation foundation
 
 - Status: Candidate; not yet opened
@@ -70,6 +62,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expected output: scenario lookup tests for core, personal combat, equipment, campaign-save routing, and helper-script usage, with router/index fixes where gaps are found.
 
 ## Done
+
+### Build campaign-state validator
+
+- Status: Done
+- Issue: `#19`
+- Handoff: `docs/handoffs/archive/build-campaign-state-validator.md`
+- Script: `scripts/validate-campaign-state.ps1`
+- Mode: Project development
+- Goal: Add deterministic validation for `campaign-state/active-campaign.md`, `campaigns/_template/`, and selected or explicit `campaigns/<campaign-id>/` save folders.
+- Acceptance: validator reports active pointer state, checks standard template and campaign save files, rejects invalid campaign ids and legacy flat `campaign-state/` active paths where deterministic, supports `-StrictActive`, documents usage, and does not edit campaign state.
 
 ### Perform full stale-reference and consistency review
 

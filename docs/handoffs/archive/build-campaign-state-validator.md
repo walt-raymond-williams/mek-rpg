@@ -13,6 +13,17 @@ Build a deterministic campaign-state validator that can be run before play, afte
 
 The validator should reduce token use and setup drift by checking saved files directly. It should not invent campaign facts, rewrite narrative state, or encode A Time of War rules logic.
 
+## Completion
+
+- Status: Completed.
+- Script: `scripts/validate-campaign-state.ps1`.
+- Documentation updated: `scripts/README.md`, `docs/current/KNOWN_COMMANDS.md`, `docs/current/TASKS.md`, and `docs/current/ROADMAP.md`.
+- Verification run:
+  - `./scripts/validate-campaign-state.ps1`
+  - `./scripts/validate-campaign-state.ps1 -CampaignId playtest-galatea-dropship`
+  - `./scripts/validate-campaign-state.ps1 -StrictActive` produced the expected nonzero failure because `campaign-state/active-campaign.md` currently says `None selected`.
+- Source-boundary check: no source processing was performed; protected source ignore checks are part of close-out.
+
 ## Required Context
 
 Read these first:

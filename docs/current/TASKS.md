@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#19`: build campaign-state validator for active campaign pointer, template structure, and campaign save completeness; handoff at `docs/handoffs/active/build-campaign-state-validator.md`.
 - Next actionable issue candidate: summarize character creation foundation after explicit source-processing scope is chosen, covering lifepaths, attributes, traits, skills, and XP/advancement routing.
 - Next validation candidate: validate the new helper scripts during live play after the first real campaign save is created.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
@@ -29,6 +28,7 @@
 
 ## Done
 
+- Issue `#19` implemented: added `scripts/validate-campaign-state.ps1` to validate the active campaign pointer, campaign template files, and active or explicitly supplied campaign save folders; documented usage and verified default, explicit campaign, and strict active-selection behavior.
 - Issue `#18` implemented: ran repository stale-reference searches, fixed active stale planning and legacy-campaign guidance, distinguished historical flat campaign-state references from live campaign-save guidance, and verified no protected raw source is staged.
 - Issue `#17` implemented: refreshed the roadmap and task board around completed draft coverage, remaining placeholder subsystems, validation needs, future source-processing waves, and current issue candidates.
 - Issue `#16` implemented: added `scripts/roll-dice.ps1` for simple `NdM`, `NdM+K`, and `NdM-K` live-play rolls with individual dice, modifier, total, labels, documentation, and manual verification.

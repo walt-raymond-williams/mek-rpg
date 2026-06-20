@@ -25,11 +25,14 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 
 ```powershell
 ./scripts/new-campaign-save.ps1 my-campaign
+./scripts/validate-campaign-state.ps1
+./scripts/validate-campaign-state.ps1 -CampaignId playtest-galatea-dropship
+./scripts/validate-campaign-state.ps1 -StrictActive
 ./scripts/roll-dice.ps1 2d6
 ./scripts/roll-dice.ps1 2d6+2 "Technician check"
 ```
 
-`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes.
+`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes.
 
 ## Verify Protected Source Is Not Staged
 
