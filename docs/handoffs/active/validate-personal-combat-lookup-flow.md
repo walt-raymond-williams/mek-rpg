@@ -6,7 +6,7 @@
 - Roadmap entry: Validate personal combat lookup flow by hand
 - Mode: Project development / manual validation
 - Priority: High
-- Status: Blocked until issue `#7` completes
+- Status: Ready
 
 ## Goal
 
@@ -96,6 +96,27 @@ git check-ignore source/atow-pdf/example.pdf source/atow-text/page-0001.txt
 - Roadmap/task state updated and handoff archived.
 - Changes committed, pushed, and issue updated/closed.
 
+## Recommended Fresh-Agent Hand Test
+
+Use a fresh agent in Play mode / Rules lookup mode and ask it to run the prompts below using only committed repository summaries and indexes. It should start every rules lookup at `indexes/task-router.md`.
+
+Test prompts:
+
+1. "A fight starts in a warehouse corridor. Two PCs and three guards are surprised but not yet shooting. Walk me through how you determine who acts first."
+2. "My character ducks behind a cargo loader and fires a pistol at a guard across the corridor. What rules do you check, and what do you need from me before the roll?"
+3. "A guard rushes me and I try to punch him, then I want to grapple him if I can. How do you resolve that?"
+4. "The guard hits my character with a rifle shot. Walk through damage, stun, consciousness, bleeding, and what gets tracked."
+5. "After the fight, our medic tries to stabilize and treat the wounded scout before the next mission. What rules do you use?"
+6. "The fight spills outside and turns into a vehicle and BattleMech engagement where facing, heat, armor locations, and exact weapon ranges matter. What should you do?"
+
+Record for each test:
+
+- starting prompt
+- router row selected
+- summary files followed
+- whether the answer was usable without model memory
+- gaps, ambiguous routing, or missing follow-up issue candidates
+
 ## Open Questions
 
-- Final report location should be chosen after issue `#7` establishes the exact personal-combat summary layout.
+- Final report location recommendation: `docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md`, matching the existing core validation report pattern.

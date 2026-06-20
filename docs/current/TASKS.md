@@ -2,11 +2,10 @@
 
 ## Now
 
-- No active project-development task is currently in progress.
+- Issue `#8`: validate personal combat lookup flow by hand.
 
 ## Next
 
-- Run issue `#8`: validate personal combat lookup flow by hand.
 - Issue `#9`: add equipment minimum summaries.
 - Issue `#10`: create the BattleTech campaign setting seed.
 - Issue `#11`: build first playable GM mode.
