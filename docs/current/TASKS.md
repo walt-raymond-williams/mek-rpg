@@ -6,6 +6,7 @@
 
 ## Next
 
+- Issue `#19`: build campaign-state validator for active campaign pointer, template structure, and campaign save completeness; handoff at `docs/handoffs/active/build-campaign-state-validator.md`.
 - Next actionable issue candidate: summarize character creation foundation after explicit source-processing scope is chosen, covering lifepaths, attributes, traits, skills, and XP/advancement routing.
 - Next validation candidate: validate the new helper scripts during live play after the first real campaign save is created.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
