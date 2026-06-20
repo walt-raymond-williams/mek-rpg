@@ -13,6 +13,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
+- GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
 
 ## Coverage Status
 
@@ -50,7 +51,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issues `#25`-`#29` are the active staged exploration path.
+- None currently unissued. Open MekHQ bridge issues `#25`-`#29` and GM context architecture issues `#30`-`#34` are the active staged exploration paths.
 
 ## Open Issues
 
@@ -86,6 +87,29 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Automatic purchases, contract acceptance, repair changes, or personnel changes in MekHQ.
 - Broad MekHQ source changes.
 - Dedicated validators for MekHQ-linked campaign folders; add them only after issue `#28` establishes stable generated file conventions.
+
+### GM context architecture epic
+
+- Status: Open
+- Epic issue: `#30`
+- Mode: Project development / play workflow design
+- Research input: AI Dungeon and Latitude public memory/model-development notes suggest that long-running AI RPG play benefits from explicit context layers, distinct summary and memory roles, semantic checkpoints, portable model assumptions, and regression-style evaluation.
+- Goal: define a repeatable GM context packet workflow that assembles the active campaign, current scene, structured campaign files, rules routes, recent event history, older summaries, relevant hooks or memories, and optional MekHQ bridge facts without blurring ownership boundaries.
+- Ownership boundary: rules summaries and indexes should guide procedures; campaign save files should own persistent RPG state; narrative summaries should compress continuity but not override structured sheets; MekHQ should remain authoritative for hard logistics where the bridge applies; the LLM should frame scenes and make judgment calls from the assembled context.
+- Initial child issues:
+  - Issue `#31`: define GM context packet design.
+  - Issue `#32`: define campaign memory strata and semantic checkpoints.
+  - Issue `#33`: prototype GM context packet helper after issue `#31` defines the packet shape.
+  - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
+- Deferred until the design proves useful: vector-memory experiments, model-specific prompt tuning, automatic narrative summary rewrites, and any direct MekHQ writeback behavior.
+
+### GM Context Dependency Order
+
+1. Issue `#31` defines the packet layers, authority order, source files, and mode differences.
+2. Issue `#32` defines checkpoint triggers and how campaign-local files divide recent log, compressed summary, structured state, hooks, rules gaps, and corrected facts.
+3. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
+4. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
+5. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
 
