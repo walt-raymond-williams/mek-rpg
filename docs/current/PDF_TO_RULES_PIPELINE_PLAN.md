@@ -143,7 +143,7 @@ Every new or materially changed summary must update the routing layer in the sam
 
 `indexes/manifest.yaml`:
 
-- Give every summary a stable ID such as `core.task-checks`, `combat.damage`, or `vehicles.classic-conversion`.
+- Give every summary a stable ID such as `core.action-checks`, `combat.damage`, or `vehicles.classic-conversion`.
 - Record title, subsystem, summary path, source page array or range, related IDs, and status.
 - Keep IDs stable after creation; rename display titles instead of changing IDs unless there is a migration note.
 - Ensure related IDs match existing manifest entries.

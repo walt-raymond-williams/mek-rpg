@@ -15,7 +15,7 @@ Let skill choice reveal approach. A different skill may be valid if the fictiona
 - Edge case: MechWarrior skills may route to vehicle and BattleMech files.
 - Edge case: Untrained use needs source review.
 ## Related Files
-- rules/core-resolution/task-checks.md
+- `rules/core/skill-checks.md`
 - rules/vehicles-and-mechs/mechwarrior-skills.md
 ## Source References
 - A Time of War, pp. TBD

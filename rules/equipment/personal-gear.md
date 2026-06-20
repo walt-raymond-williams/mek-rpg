@@ -16,7 +16,7 @@ Reward preparation by reducing rolls, opening options, or softening consequences
 - Edge case: Availability and legality may matter more than mechanics.
 ## Related Files
 - rules/equipment/overview.md
-- rules/core-resolution/modifiers.md
+- `rules/core/basic-action-resolution.md`
 ## Source References
 - A Time of War, pp. TBD
 ## Status

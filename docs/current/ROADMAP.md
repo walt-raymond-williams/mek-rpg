@@ -6,10 +6,19 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
-- Issue `#5` is the next ready source-processing/project-development task: summarize core resolution rules from the mapped Basic Gameplay ranges.
-- Issue `#6` remains blocked until issue `#5` creates core summaries and routing entries.
+- Issue `#5` summarized core resolution rules from the mapped Basic Gameplay ranges.
+- Issue `#6` is the next ready project-development task: validate the core lookup flow against scenario prompts.
 
 ## Done
+
+### Summarize core resolution rules
+
+- Status: Done
+- Issue: `#5`
+- Handoff: `docs/handoffs/archive/summarize-core-resolution-rules.md`
+- Summaries: `rules/core/action-checks.md`, `rules/core/attribute-checks.md`, `rules/core/skill-checks.md`, `rules/core/opposed-actions.md`, `rules/core/basic-action-resolution.md`, and `rules/core/edge.md`
+- Goal: Create GM-ready, paraphrased core resolution summaries from the mapped Basic Gameplay source ranges.
+- Acceptance: summaries follow the standard schema, preserve source page references, route live lookup through indexes, and avoid committed raw source text or copied tables.
 
 ### Build initial chapter and section map
 
@@ -47,17 +56,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue
 
-### Summarize core resolution rules
-
-- Status: Issue created; ready after issue `#4`
-- Issue: `#5`
-- Handoff: `docs/handoffs/active/summarize-core-resolution-rules.md`
-- Mode: Source processing / project development
-- Expected output: paraphrased summaries for task checks, opposed checks, modifiers, margin of success, and Edge with page references from `source/atow-chapter-section-map.md`
-
 ### Validate core lookup flow
 
-- Status: Issue created; blocked on issue `#5`
+- Status: Issue created; ready after issue `#5`
 - Issue: `#6`
 - Handoff: `docs/handoffs/active/validate-core-lookup-flow.md`
 - Mode: Project development

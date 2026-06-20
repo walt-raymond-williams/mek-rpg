@@ -2,13 +2,13 @@
 
 ## Now
 
-- GitHub issue `#5` is open: summarize core resolution rules.
-- Active handoff: `docs/handoffs/active/summarize-core-resolution-rules.md`.
-- Scope for issue `#5`: write focused paraphrased summaries for core resolution using `source/atow-chapter-section-map.md`, then update live lookup indexes as relevant.
+- GitHub issue `#6` is ready next: validate core lookup flow.
+- Active handoff: `docs/handoffs/active/validate-core-lookup-flow.md`.
+- Scope for issue `#6`: run scenario-based lookup from `indexes/task-router.md` into the new core summaries and make narrow routing fixes if needed.
 
 ## Next
 
-- After issue `#5` completes, start issue `#6`: validate core lookup flow.
+- Start issue `#6`: validate core lookup flow.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -22,7 +22,6 @@
 
 ## Blocked
 
-- Issue `#6` is blocked until issue `#5` creates core summaries and routing entries.
 - Broader source summarization, routing updates, and validation are blocked until the core pipeline proves out.
 - Follow-up issues for mapping, summarization, validation, routing, and first playable GM mode should be created gradually from `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`.
 
@@ -38,4 +37,5 @@
 - Issue `#4` created to build the initial chapter and section map.
 - Issue `#4` implemented: `source/atow-chapter-section-map.md` maps major chapters and candidate section ranges, records the numbered-page offset as `PDF page = printed page + 2`, and avoids live rules summaries or lookup-index updates.
 - Issue `#5` created to summarize core resolution rules after mapping is complete.
+- Issue `#5` implemented: core summaries under `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge; live indexes and manifest route to the new summaries.
 - Issue `#6` created to validate the core lookup flow after core summaries exist.

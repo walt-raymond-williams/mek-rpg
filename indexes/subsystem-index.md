@@ -1,6 +1,6 @@
 # Subsystem Index
 
-- Core resolution: `rules/core-resolution/`
+- Core resolution: `rules/core/`
 - Character creation: `rules/character-creation/`
 - Personal combat: `rules/personal-combat/`
 - Vehicles and BattleMechs: `rules/vehicles-and-mechs/`

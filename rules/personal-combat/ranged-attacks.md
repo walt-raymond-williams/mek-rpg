@@ -15,7 +15,7 @@ Call out cover, movement, ammo concerns, and bystanders before the roll.
 - Edge case: Vehicle or BattleMech weapons may need another subsystem.
 - Edge case: Autofire or special weapon rules need source review.
 ## Related Files
-- rules/core-resolution/modifiers.md
+- `rules/core/basic-action-resolution.md`
 - rules/personal-combat/damage.md
 - rules/equipment/weapons.md
 ## Source References

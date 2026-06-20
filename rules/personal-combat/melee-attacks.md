@@ -16,7 +16,7 @@ Use melee to create movement, disarms, grapples, and immediate danger, not only 
 - Edge case: Mech-scale physical attacks belong in tactical BattleTech.
 ## Related Files
 - rules/personal-combat/damage.md
-- rules/core-resolution/opposed-checks.md
+- `rules/core/opposed-actions.md`
 ## Source References
 - A Time of War, pp. TBD
 ## Status

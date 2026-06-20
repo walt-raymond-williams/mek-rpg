@@ -1,21 +1,79 @@
 rules:
-  - id: core.task-checks
-    title: Task Checks
+  - id: core.action-checks
+    title: Action Checks
     subsystem: core-resolution
-    summary: rules/core-resolution/task-checks.md
-    source_pages: []
+    summary: rules/core/action-checks.md
+    source_pages:
+      pdf: [40]
+      printed: [38]
     related:
-      - core.modifiers
-      - core.opposed-checks
-    status: placeholder
-  - id: core.opposed-checks
-    title: Opposed Checks
+      - core.attribute-checks
+      - core.skill-checks
+      - core.opposed-actions
+      - core.basic-action-resolution
+      - core.edge
+    status: draft
+  - id: core.attribute-checks
+    title: Attribute Checks
     subsystem: core-resolution
-    summary: rules/core-resolution/opposed-checks.md
-    source_pages: []
+    summary: rules/core/attribute-checks.md
+    source_pages:
+      pdf: [40, 41]
+      printed: [38, 39]
     related:
-      - core.task-checks
-    status: placeholder
+      - core.action-checks
+      - core.skill-checks
+      - core.basic-action-resolution
+    status: draft
+  - id: core.skill-checks
+    title: Skill Checks
+    subsystem: core-resolution
+    summary: rules/core/skill-checks.md
+    source_pages:
+      pdf: [41]
+      printed: [39]
+    related:
+      - core.action-checks
+      - core.attribute-checks
+      - core.basic-action-resolution
+    status: draft
+  - id: core.opposed-actions
+    title: Opposed Actions
+    subsystem: core-resolution
+    summary: rules/core/opposed-actions.md
+    source_pages:
+      pdf: [41, 42]
+      printed: [39, 40]
+    related:
+      - core.action-checks
+      - core.basic-action-resolution
+      - core.edge
+    status: draft
+  - id: core.basic-action-resolution
+    title: Basic Action Resolution
+    subsystem: core-resolution
+    summary: rules/core/basic-action-resolution.md
+    source_pages:
+      pdf: [42, 43, 44]
+      printed: [40, 41, 42]
+    related:
+      - core.action-checks
+      - core.attribute-checks
+      - core.skill-checks
+      - core.opposed-actions
+      - core.edge
+    status: draft
+  - id: core.edge
+    title: Edge
+    subsystem: core-resolution
+    summary: rules/core/edge.md
+    source_pages:
+      pdf: [44, 45]
+      printed: [42, 43]
+    related:
+      - core.action-checks
+      - core.basic-action-resolution
+    status: draft
   - id: character.lifepaths
     title: Lifepaths
     subsystem: character-creation
@@ -25,6 +83,28 @@ rules:
       - character.attributes
       - character.skills
     status: placeholder
+  - id: character.attributes
+    title: Attributes
+    subsystem: character-creation
+    summary: rules/character-creation/attributes.md
+    source_pages: []
+    related: []
+    status: placeholder
+  - id: character.skills
+    title: Character Skills
+    subsystem: character-creation
+    summary: rules/character-creation/skills.md
+    source_pages: []
+    related:
+      - core.skill-checks
+    status: placeholder
+  - id: combat.damage
+    title: Damage
+    subsystem: personal-combat
+    summary: rules/personal-combat/damage.md
+    source_pages: []
+    related: []
+    status: placeholder
   - id: combat.ranged-attacks
     title: Ranged Attacks
     subsystem: personal-combat
@@ -32,7 +112,7 @@ rules:
     source_pages: []
     related:
       - combat.damage
-      - core.modifiers
+      - core.basic-action-resolution
     status: placeholder
   - id: vehicles.classic-conversion
     title: Converting to Classic BattleTech
@@ -41,6 +121,13 @@ rules:
     source_pages: []
     related:
       - vehicles.mechwarrior-skills
+    status: placeholder
+  - id: vehicles.mechwarrior-skills
+    title: MechWarrior Skills
+    subsystem: vehicles-and-mechs
+    summary: rules/vehicles-and-mechs/mechwarrior-skills.md
+    source_pages: []
+    related: []
     status: placeholder
 gm:
   - id: gm.scene-loop

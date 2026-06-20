@@ -16,7 +16,7 @@ Use attributes to describe broad capability, not every small moment of play.
 - Edge case: Derived values need source review.
 ## Related Files
 - rules/character-creation/skills.md
-- rules/core-resolution/task-checks.md
+- `rules/core/attribute-checks.md`
 ## Source References
 - A Time of War, pp. TBD
 ## Status

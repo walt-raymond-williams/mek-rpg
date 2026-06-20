@@ -6,7 +6,7 @@
 - Roadmap entry: Summarize core resolution rules
 - Mode: Source processing / project development
 - Priority: High
-- Status: Blocked until issue `#4` maps core resolution source ranges
+- Status: Completed and archived after issue `#5`
 
 ## Goal
 
@@ -30,9 +30,24 @@ Read these first:
 - GitHub issue `#4` output and committed map
 - GitHub issue `#5` body
 
-## Blocker
+## Completion Notes
 
-Do not start summary authoring until issue `#4` is complete and has produced a chapter/section map with core resolution page ranges and candidate summary targets.
+- Issue `#4` map was complete before summary authoring began.
+- Source pages consulted from ignored `source/atow-text/`: PDF pages 40-45.
+- Summaries created under `rules/core/`:
+  - `action-checks.md`
+  - `attribute-checks.md`
+  - `skill-checks.md`
+  - `opposed-actions.md`
+  - `basic-action-resolution.md`
+  - `edge.md`
+- Live lookup files updated:
+  - `indexes/task-router.md`
+  - `indexes/page-reference-index.md`
+  - `indexes/rules-map.md`
+  - `indexes/subsystem-index.md`
+  - `indexes/manifest.yaml`
+- Roadmap and task board updated to make issue `#6` the next ready task.
 
 ## Expected Output
 

@@ -1,7 +1,7 @@
 # Rules Map
 
 ## Core Resolution
-Task checks, opposed checks, modifiers, and margin of success determine uncertain actions.
+Core action summaries in `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge. These summaries determine when to roll, what kind of roll to use, how modifiers and margins work, and when a player can spend Edge.
 
 ## Character Creation
 Character creation covers concept, lifepaths, attributes, traits, skills, and advancement choices.
