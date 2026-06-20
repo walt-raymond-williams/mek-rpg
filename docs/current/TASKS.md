@@ -2,10 +2,11 @@
 
 ## Now
 
-- No active task.
+- No active local implementation task. GitHub issue `#2` is ready for an agent to plan the PDF-to-rules pipeline.
 
 ## Next
 
+- Have an agent complete GitHub issue `#2`: plan the PDF-to-rules pipeline without processing the PDF.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Prepare source-processing issue only after the user explicitly asks to process the legally owned PDF.
 

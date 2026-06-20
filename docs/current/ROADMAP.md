@@ -4,7 +4,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Current Focus
 
-- No active roadmap item is in progress after issue `#1` close-out.
+- Issue `#2` is ready for an agent to plan the PDF-to-rules pipeline. No PDF processing should happen as part of that planning issue.
 
 ## Done
 
@@ -17,6 +17,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Acceptance: `AGENTS.md` routes play, rules lookup, project development, and source processing; current docs and templates exist; no PDF is processed; changes are committed and pushed.
 
 ## Ready For Issue
+
+### Plan PDF-to-rules pipeline for playable A Time of War GM mode
+
+- Status: Issue created
+- Issue: `#2`
+- Handoff: `docs/handoffs/active/plan-pdf-to-rules-pipeline.md`
+- Mode: Project development
+- Expected output: a durable pipeline plan for converting a legally owned PDF into private extracted text, paraphrased rule summaries, routing indexes, validation steps, and GM-mode usable procedures
+- Notes: This is a planning task only. Do not extract, parse, or summarize the PDF during this issue.
 
 ### Extract A Time of War PDF into ignored page text
 
