@@ -36,9 +36,21 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 
+## Active Work
+
+### Define MekHQ bridge data model and campaign-folder mapping
+
+- Status: Open / Now
+- Issue: `#26`
+- Handoff: `docs/handoffs/active/define-mekhq-bridge-data-model.md`
+- Mode: Project development / design
+- Goal: define how MekHQ-owned hard campaign facts map into MEK-RPG campaign folders, how MekHQ IDs are preserved, and how RPG-only narrative memory stays separate.
+- Dependencies: none requiring a live MekHQ save; use the sister workspace collaboration brief and integration assessment as context.
+- Blocks: issue `#27` read-only summary field priorities, issue `#28` campaign bootstrap shape, and issue `#29` play/writeback boundaries.
+
 ## Ready For Issue Candidates
 
-- None currently promoted. Open MekHQ bridge issues `#25`-`#29` are ready to pull into `Now` when the user wants to explore that integration path.
+- None currently unissued. Open MekHQ bridge issues `#25`-`#29` are the active staged exploration path.
 
 ## Open Issues
 
@@ -54,10 +66,26 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Ownership boundary: MekHQ should own campaign date, funds, unit rosters, personnel ledger fields, repairs, contracts, markets, tactical consequences, and scenario outcomes. MEK-RPG should own A Time of War PCs, RPG scenes, NPC motives, relationship memory, promises, secrets, hooks, safety/tone, and narrative uncertainty.
 - Initial child issues:
   - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
-  - Issue `#27`: prototype read-only MekHQ save summary helper.
-  - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder.
-  - Issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries.
+  - Issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
+  - Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
+  - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
+
+### Dependency Order
+
+1. Issue `#26` defines the ownership model, campaign-folder mapping, ID preservation, and uncertainty policy.
+2. Issue `#29` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
+3. Issue `#27` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves already exist under `C:\Users\waltr\Documents\megamek-workspace\`; no purchased A Time of War source is involved.
+4. Issue `#28` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
+5. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
+
+### Not Yet Promoted
+
+- Direct `.cpnx` / `.cpnx.gz` writeback.
+- Headless MekHQ day advancement.
+- Automatic purchases, contract acceptance, repair changes, or personnel changes in MekHQ.
+- Broad MekHQ source changes.
+- Dedicated validators for MekHQ-linked campaign folders; add them only after issue `#28` establishes stable generated file conventions.
 
 ## Done
 
@@ -350,5 +378,5 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Open Questions
 
-- Should future broad work use feature branches, or is direct-to-`master` acceptable for this private repo until the project grows?
+- Branching posture: direct-to-`master` remains acceptable for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
 - Should `issues/initial-issues.md` remain as a historical seed list after this roadmap exists?
