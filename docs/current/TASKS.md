@@ -6,17 +6,16 @@
 
 ## Next
 
-- Next actionable issue candidate: summarize character creation foundation after explicit source-processing scope is chosen, covering lifepaths, attributes, traits, skills, and XP/advancement routing.
-- Next validation candidate: validate the new helper scripts during live play after the first real campaign save is created.
+- Issue `#20`: validate existing draft coverage and helper workflow; handoff at `docs/handoffs/active/validate-existing-draft-coverage.md`.
+- Issue `#21`: summarize character creation foundation after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/summarize-character-creation-foundation.md`.
+- Issue `#22`: summarize campaign consequence systems after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/summarize-campaign-consequence-systems.md`.
+- Issue `#23`: build vehicles and MechWarrior bridge after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/build-vehicles-mechwarrior-bridge.md`.
+- Issue `#24`: create the first real campaign save with user play/setup and live helper validation; handoff at `docs/handoffs/active/create-first-real-campaign-save-live-validation.md`.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
-- Create first real campaign save folder after the user selects a campaign frame.
-- Summarize campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
-- Summarize vehicles and MechWarrior bridge: piloting, gunnery, MechWarrior skills, RPG-to-Classic conversion, and tactical handoff notes for Classic BattleTech, MegaMek, and MekHQ.
-- Validate and tighten existing draft summaries for core resolution, personal combat, and equipment.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added.
 - Add campaign-local session archive helper after more play if `previous-sessions.md` becomes cumbersome.
 - Add richer DropShip and unit asset sheets after transport ownership rules are summarized.

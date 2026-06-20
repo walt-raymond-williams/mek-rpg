@@ -39,27 +39,43 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Summarize character creation foundation
 
-- Status: Candidate; not yet opened
+- Status: Open
+- Issue: `#21`
+- Handoff: `docs/handoffs/active/summarize-character-creation-foundation.md`
 - Mode: Source processing / project development
 - Expected output: source-reviewed summaries for character creation overview, lifepaths, attributes, traits, skills, and XP/advancement routing; update task router, page index, manifest, and validation notes.
 
 ### Summarize campaign consequence systems
 
-- Status: Candidate; not yet opened
+- Status: Open
+- Issue: `#22`
+- Handoff: `docs/handoffs/active/summarize-campaign-consequence-systems.md`
 - Mode: Source processing / project development
 - Expected output: source-reviewed summaries for contracts, contacts, reputation, advancement, injury consequences, downtime, mission readiness, and campaign-save update guidance.
 
 ### Build vehicles and MechWarrior bridge
 
-- Status: Candidate; not yet opened
+- Status: Open
+- Issue: `#23`
+- Handoff: `docs/handoffs/active/build-vehicles-mechwarrior-bridge.md`
 - Mode: Source processing / project development
 - Expected output: source-reviewed pilot/gunnery/MechWarrior summaries plus stronger Classic BattleTech, MegaMek, and MekHQ handoff notes.
 
 ### Validate existing draft coverage
 
-- Status: Candidate; not yet opened
+- Status: Open
+- Issue: `#20`
+- Handoff: `docs/handoffs/active/validate-existing-draft-coverage.md`
 - Mode: Project development / review
 - Expected output: scenario lookup tests for core, personal combat, equipment, campaign-save routing, and helper-script usage, with router/index fixes where gaps are found.
+
+### Create first real campaign save and live helper validation
+
+- Status: Open
+- Issue: `#24`
+- Handoff: `docs/handoffs/active/create-first-real-campaign-save-live-validation.md`
+- Mode: Play mode / Project development close-out
+- Expected output: user-confirmed table-canon campaign save created from `campaigns/_template/`, active campaign pointer selected only with confirmation, short setup/play scene, state-save checklist use, helper-script validation, and follow-up issues for discovered gaps.
 
 ## Done
 
@@ -283,14 +299,10 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Backlog
 
-- Summarize character creation: lifepaths, attributes, traits, skills, and advancement.
 - Summarize skills and traits: expand routing and source references.
-- Summarize campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
-- Summarize BattleTech integration: vehicle operation, MechWarrior skills, pilot conversion, and tactical conversion.
 - Expand personal combat, equipment, damage, and recovery beyond the current draft minimum only where play or validation finds missing detail.
 - Expand `indexes/task-router.md` after verified summaries exist.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.
-- Create first test campaign setup with PCs, NPCs, mission, and hooks.
 - Validate all summaries against source pages.
 - Add MekHQ / MegaMek integration notes for encounter handoff, unit setup, and campaign updates.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
