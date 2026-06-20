@@ -2,11 +2,12 @@
 
 Use this file before play to decide which campaign save folder to load.
 
-Active campaign: None selected
+Active campaign: campaigns/isekai-atlas-field/
 
 Default template: `campaigns/_template/`
 
 Recent playtest save: `campaigns/playtest-galatea-dropship/`
+Current table-canon save: `campaigns/isekai-atlas-field/`
 
 ## Selection Rules
 
@@ -18,4 +19,4 @@ Recent playtest save: `campaigns/playtest-galatea-dropship/`
 ## Status Notes
 
 - `campaigns/playtest-galatea-dropship/` contains the issue `#12` Galatea DropShip purchase playtest. It is inactive and playtest-only.
-- The future main campaign has not been created yet.
+- `campaigns/isekai-atlas-field/` is the first table-canon campaign save. The opening premise is an isekai-style arrival in the BattleTech universe: Walter and his son appear in a field near an unattended Atlas with its cockpit open.

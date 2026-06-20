@@ -33,19 +33,23 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - Existing draft summaries should be validated against scenario prompts after each major routing change.
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
-- The campaign save helper and dice roller should be rechecked during the first real campaign setup and live-play session.
+- The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 
 ## Ready For Issue Candidates
 
-### Create first real campaign save and live helper validation
-
-- Status: Open
-- Issue: `#24`
-- Handoff: `docs/handoffs/active/create-first-real-campaign-save-live-validation.md`
-- Mode: Play mode / Project development close-out
-- Expected output: user-confirmed table-canon campaign save created from `campaigns/_template/`, active campaign pointer selected only with confirmation, short setup/play scene, state-save checklist use, helper-script validation, and follow-up issues for discovered gaps.
+- None currently promoted. Use the backlog and open questions below for the next candidate.
 
 ## Done
+
+### Create first real campaign save and live helper validation
+
+- Status: Done
+- Issue: `#24`
+- Handoff: `docs/handoffs/archive/create-first-real-campaign-save-live-validation.md`
+- Save folder: `campaigns/isekai-atlas-field/`
+- Mode: Play mode / project development close-out
+- Goal: Create the first table-canon campaign save from a user-confirmed premise and validate campaign helper scripts in a live workflow.
+- Acceptance: user confirmed the isekai Atlas-field campaign frame and active campaign selection; `new-campaign-save.ps1` created the save folder without moving the active pointer; `validate-campaign-state.ps1 -CampaignId isekai-atlas-field` and `-StrictActive` passed; a short live-play scene exercised the save loop; `gm/state-save-checklist.md` guided persistent updates; validator maintenance was considered and deferred because no required save-file structure changed; follow-up validator and tactical-handoff needs were recorded as task notes.
 
 ### Build vehicles and MechWarrior bridge
 

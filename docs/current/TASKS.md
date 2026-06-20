@@ -6,12 +6,13 @@
 
 ## Next
 
-- Issue `#24`: create the first real campaign save with user play/setup and live helper validation; handoff at `docs/handoffs/active/create-first-real-campaign-save-live-validation.md`.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
+- After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
+- If the `Atlas Field` campaign reaches actual BattleMech movement or combat, build a lightweight handoff checklist for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added.
 - Add campaign-local session archive helper after more play if `previous-sessions.md` becomes cumbersome.
 - Add richer DropShip and unit asset sheets after transport ownership rules are summarized.
@@ -23,6 +24,7 @@
 
 ## Done
 
+- Issue `#24` implemented: created the first table-canon campaign save `campaigns/isekai-atlas-field/`, selected it as active after user confirmation, ran a short isekai Atlas-field opening scene, validated campaign save helpers in the live workflow, used the state-save checklist, recorded open rules and workflow gaps, and deferred deeper companion validators until real structured sheets exist.
 - Issue `#23` implemented: added source-reviewed draft vehicle and MechWarrior bridge summaries for overview, piloting, gunnery, MechWarrior skills, and RPG-to-Classic BattleTech conversion; strengthened tactical handoff and encounter templates; updated router, rules map, subsystem index, page-reference index, manifest, campaign save guidance, and state-save routing; recorded scenario validation and deferred vehicle/asset companion validation until real vehicle records exist.
 - Issue `#22` implemented: added source-reviewed draft campaign consequence summaries for overview, advancement, contracts, contacts, reputation, injuries/recovery, and downtime/mission readiness; updated router, rules map, subsystem index, page-reference index, manifest, GM save guidance, and campaign save docs; recorded scenario validation and deferred a campaign-consequence companion validator until real campaign records exist.
 - Issue `#21` implemented: added source-reviewed draft character-creation summaries for overview, lifepaths, attributes, traits, skills, and XP advancement; updated router, rules map, subsystem index, page-reference index, and manifest; recorded scenario validation and deferred character-output validation until real PC sections exist.
