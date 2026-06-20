@@ -4,9 +4,19 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Current Focus
 
-- Issue `#2` is ready for an agent to plan the PDF-to-rules pipeline. No PDF processing should happen as part of that planning issue.
+- Source processing remains blocked until the user explicitly requests it and the legally owned PDF is present locally under `source/atow-pdf/`.
+- Next recommended issue: extract the legally owned A Time of War PDF into ignored page text only after that blocker is cleared.
 
 ## Done
+
+### Plan PDF-to-rules pipeline for playable A Time of War GM mode
+
+- Status: Done
+- Issue: `#2`
+- Handoff: `docs/handoffs/archive/plan-pdf-to-rules-pipeline.md`
+- Plan: `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`
+- Goal: Define a staged pipeline from private ignored PDF extraction through chapter mapping, paraphrased summaries, routing indexes, validation, and GM-mode integration.
+- Acceptance: plan distinguishes ignored source from committed outputs; defines summary schema and routing cues; covers `indexes/task-router.md`, `rules-map.md`, `subsystem-index.md`, `page-reference-index.md`, and `manifest.yaml`; keeps source processing blocked until explicit user request and local PDF presence.
 
 ### Harden AI workflow using MegaMek workspace patterns
 
@@ -18,21 +28,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue
 
-### Plan PDF-to-rules pipeline for playable A Time of War GM mode
-
-- Status: Issue created
-- Issue: `#2`
-- Handoff: `docs/handoffs/active/plan-pdf-to-rules-pipeline.md`
-- Mode: Project development
-- Expected output: a durable pipeline plan for converting a legally owned PDF into private extracted text, paraphrased rule summaries, routing indexes, validation steps, and GM-mode usable procedures
-- Notes: This is a planning task only. Do not extract, parse, or summarize the PDF during this issue.
-
 ### Extract A Time of War PDF into ignored page text
 
-- Status: Blocked on explicit user request and local PDF placement
+- Status: Next recommended issue after explicit user request and local PDF placement
 - Mode: Source processing
 - Expected output: page-level text in ignored `source/atow-text/`, extraction notes, no committed raw source
-- Notes: Do not start this from another issue as incidental setup.
+- Notes: Do not create or start this as incidental setup. The user must explicitly ask for source processing and the legally owned PDF must exist under `source/atow-pdf/`.
 
 ### Build initial chapter and section map
 
