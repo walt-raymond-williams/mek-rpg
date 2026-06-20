@@ -6,7 +6,7 @@
 - Roadmap entry: Build first playable GM mode
 - Mode: Project development
 - Priority: High
-- Status: Ready after Issue `#10`
+- Status: Completed and archived after issue `#11`
 
 ## Goal
 
@@ -94,4 +94,11 @@ git status --short --branch
 
 ## Open Questions
 
-- Whether to use pregenerated placeholder PCs for the first test or ask the user for character concepts before the playtest.
+- Issue `#12` should decide whether to use the placeholder Scout, Tech, and Medic from `campaign-state/player-characters.md`, or ask the user for character concepts before starting.
+
+## Completion Notes
+
+- Refined `gm/session-procedure.md` into a before/during/after play loop that explicitly links `gm/scene-loop.md`, `gm/roll-policy.md`, `indexes/task-router.md`, setting seed, rules summaries, campaign-state updates, rules-gap capture, bug capture, and tactical handoff.
+- Added the `Checkpoint Ghosts` first test mission scaffold in `campaign-state/current-mission.md`.
+- Expanded campaign-state support files for current campaign, PCs, NPCs, factions, unresolved hooks, previous sessions, session logging, rules gaps, and playtest bugs.
+- Updated `docs/current/ROADMAP.md`, `docs/current/TASKS.md`, and the issue `#12` handoff so the manual playtest is the next ready task.

@@ -30,3 +30,6 @@ What changes if the mission goes poorly.
 
 ## Tactical Handoff
 When to switch to Classic BattleTech, MegaMek, or MekHQ.
+
+## Playtest Notes
+Rules routes, state fields, or GM procedure points this mission should exercise.

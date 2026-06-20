@@ -6,7 +6,7 @@
 - Roadmap entry: Run first manual playtest and file follow-up bugs
 - Mode: Play mode / project development close-out
 - Priority: High
-- Status: Blocked until issue `#11` completes
+- Status: Ready after issue `#11`
 
 ## Goal
 
@@ -30,7 +30,13 @@ Read these first:
 - current campaign-state files
 - GitHub issue `#12`
 
-Also read outputs from issue `#11`.
+Also read outputs from issue `#11`:
+
+- `gm/session-procedure.md`
+- `campaign-state/current-mission.md`
+- `campaign-state/session-log.md`
+- `campaign-state/rules-gaps.md`
+- `campaign-state/playtest-bugs.md`
 
 ## Expected Output
 
@@ -100,4 +106,4 @@ gh issue list --state open --limit 20
 
 ## Open Questions
 
-- The exact test scene should be chosen after issue `#11` creates the first playable mission scaffold.
+- Whether to use the placeholder Scout, Tech, and Medic from `campaign-state/player-characters.md`, or ask the user for character concepts before starting.

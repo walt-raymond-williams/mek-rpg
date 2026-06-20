@@ -17,3 +17,8 @@ Current date:
 Home base:
 
 Active themes:
+
+- First playable mode is ready for a small table test using `campaign-state/current-mission.md`.
+- Until the user chooses a full campaign frame, use placeholder PCs and local improvisable details for playtests.
+
+Current mission: `Checkpoint Ghosts` in `campaign-state/current-mission.md`

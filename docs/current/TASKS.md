@@ -6,8 +6,7 @@
 
 ## Next
 
-- Issue `#11`: build first playable GM mode.
-- Issue `#12`: run first manual playtest and file follow-up bugs.
+- Issue `#12`: run first manual playtest and file follow-up bugs using `campaign-state/current-mission.md`.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -22,7 +21,7 @@
 
 ## Blocked
 
-- Issue `#12` is blocked until issue `#11` creates first playable GM mode.
+- None.
 
 ## Done
 
@@ -44,3 +43,4 @@
 - Issue `#8` implemented: `docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md` records manual lookup tests for initiative, ranged attacks, melee/grappling, damage/wounds, treatment/recovery, and tactical BattleTech handoff; no router bug was found, and caveats are recorded for equipment, campaign recovery, and table-heavy details.
 - Issue `#9` implemented: equipment summaries under `rules/equipment/` cover acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear; live indexes and manifest route to the new summaries while exact item stats and table-heavy details remain source-cited.
 - Issue `#10` implemented: `campaign-state/setting-basics.md` creates a table-facing BattleTech setting seed with canon policy, open user choices, faction seed, starter premises, and first-session hooks; GM and campaign-state docs link to the seed.
+- Issue `#11` implemented: `gm/session-procedure.md` now defines the first playable GM loop, `campaign-state/current-mission.md` contains the `Checkpoint Ghosts` manual playtest scaffold, campaign-state files cover PCs, NPCs, factions, hooks, session log, rules gaps, and playtest bugs, and issue `#12` is ready for the first manual playtest.

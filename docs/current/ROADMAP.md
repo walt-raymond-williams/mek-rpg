@@ -13,10 +13,22 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#8` validated the personal combat lookup flow by hand.
 - Issue `#9` added the minimum equipment lookup layer.
 - Issue `#10` created the campaign setting seed and canon policy.
-- The next execution task is issue `#11`: build first playable GM mode.
+- Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
+- The next execution task is issue `#12`: run the first manual playtest and file follow-up bugs.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Build first playable GM mode
+
+- Status: Done
+- Issue: `#11`
+- Handoff: `docs/handoffs/archive/build-first-playable-gm-mode.md`
+- Session procedure: `gm/session-procedure.md`
+- Mission scaffold: `campaign-state/current-mission.md`
+- State files: `campaign-state/session-log.md`, `campaign-state/rules-gaps.md`, and `campaign-state/playtest-bugs.md`
+- Goal: Turn the rules summaries, router, campaign-state files, and GM procedures into a first playable tabletop loop that can run a short mission scene.
+- Acceptance: campaign-state structure covers current mission, PCs, NPCs, factions, session log, unresolved hooks, rules gaps, and playtest bugs; session procedure links scene loop, roll policy, task router, setting seed, and tactical handoff; `Checkpoint Ghosts` exists as the first manual playtest scaffold; issue `#12` is ready as the next task.
 
 ### Create BattleTech campaign setting seed
 
@@ -126,15 +138,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Build first playable GM mode
 
-- Status: Issue created; ready after issue `#10`
+- Status: Done; see Done section
 - Issue: `#11`
-- Handoff: `docs/handoffs/active/build-first-playable-gm-mode.md`
+- Handoff: `docs/handoffs/archive/build-first-playable-gm-mode.md`
 - Mode: Project development
-- Expected output: usable campaign-state structure, session procedure, first test mission/scaffold, and bug/gap reporting path.
+- Output: `gm/session-procedure.md`, `campaign-state/current-mission.md`, `campaign-state/session-log.md`, `campaign-state/rules-gaps.md`, and `campaign-state/playtest-bugs.md`.
 
 ### Run first manual playtest and file follow-up bugs
 
-- Status: Issue created; blocked until issue `#11`
+- Status: Issue created; ready after issue `#11`
 - Issue: `#12`
 - Handoff: `docs/handoffs/active/run-first-manual-playtest-and-file-follow-up-bugs.md`
 - Mode: Play mode / project development close-out
