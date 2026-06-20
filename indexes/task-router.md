@@ -5,10 +5,14 @@ Use this file first. Match the user's request to the most relevant files, then r
 | User question or task | Read first | Also read |
 | --- | --- | --- |
 | resolving an uncertain action | `rules/core/action-checks.md` | `rules/core/basic-action-resolution.md`, `rules/core/edge.md` |
+| bypassing a lock, disabling a device, or handling a technical task under pressure | `rules/core/skill-checks.md` | `rules/core/action-checks.md`, `rules/core/basic-action-resolution.md` |
 | raw attribute check or untrained skill attempt | `rules/core/attribute-checks.md` | `rules/core/action-checks.md`, `rules/core/basic-action-resolution.md` |
 | trained skill check | `rules/core/skill-checks.md` | `rules/core/action-checks.md`, `rules/core/basic-action-resolution.md` |
 | opposed checks or direct contests | `rules/core/opposed-actions.md` | `rules/core/basic-action-resolution.md`, `rules/core/edge.md` |
+| two characters racing, grabbing, resisting, sneaking past, or spotting each other | `rules/core/opposed-actions.md` | `rules/core/basic-action-resolution.md`, `rules/core/edge.md` |
+| difficult circumstances, time pressure, injury, fatigue, visibility, or environmental pressure on a roll | `rules/core/basic-action-resolution.md` | `rules/core/action-checks.md`, `rules/core/skill-checks.md` |
 | modifiers, fumbles, high rolls, or margin of success | `rules/core/basic-action-resolution.md` | `rules/core/action-checks.md`, `rules/core/opposed-actions.md` |
+| interpreting how well or poorly a roll succeeded or failed | `rules/core/basic-action-resolution.md` | `rules/core/action-checks.md`, `rules/core/opposed-actions.md` |
 | spending or recovering Edge | `rules/core/edge.md` | `rules/core/basic-action-resolution.md`, `rules/campaign/advancement.md` |
 | character creation | `rules/character-creation/overview.md` | `rules/character-creation/lifepaths.md`, `rules/character-creation/attributes.md`, `rules/character-creation/traits.md`, `rules/character-creation/skills.md` |
 | lifepaths | `rules/character-creation/lifepaths.md` | `rules/character-creation/overview.md` |

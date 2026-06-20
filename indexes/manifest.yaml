@@ -134,6 +134,10 @@ gm:
     title: Scene Loop
     file: gm/scene-loop.md
     status: draft
+  - id: gm.roll-policy
+    title: Roll Policy
+    file: gm/roll-policy.md
+    status: draft
   - id: gm.switch-to-classic-battletech
     title: Switch to Classic BattleTech
     file: gm/switch-to-classic-battletech.md

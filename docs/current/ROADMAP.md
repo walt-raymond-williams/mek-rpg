@@ -7,9 +7,19 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
 - Issue `#5` summarized core resolution rules from the mapped Basic Gameplay ranges.
-- Issue `#6` is the next ready project-development task: validate the core lookup flow against scenario prompts.
+- Issue `#6` validated the core lookup flow against scenario prompts.
+- The next recommended work is to create the personal combat and recovery minimum issue from `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`.
 
 ## Done
+
+### Validate core lookup flow
+
+- Status: Done
+- Issue: `#6`
+- Handoff: `docs/handoffs/archive/validate-core-lookup-flow.md`
+- Report: `docs/current/CORE_LOOKUP_VALIDATION.md`
+- Goal: Confirm that common core-resolution scenarios can start at `indexes/task-router.md` and reach usable committed summaries without model memory or raw source text.
+- Acceptance: scenario lookup tests pass or record clear gaps; narrow routing and GM bridge gaps are fixed; protected source files remain ignored and unstaged.
 
 ### Summarize core resolution rules
 
@@ -44,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Handoff: `docs/handoffs/archive/plan-pdf-to-rules-pipeline.md`
 - Plan: `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`
 - Goal: Define a staged pipeline from private ignored PDF extraction through chapter mapping, paraphrased summaries, routing indexes, validation, and GM-mode integration.
-- Acceptance: plan distinguishes ignored source from committed outputs; defines summary schema and routing cues; covers `indexes/task-router.md`, `rules-map.md`, `subsystem-index.md`, `page-reference-index.md`, and `manifest.yaml`; keeps source processing blocked until explicit user request and local PDF presence.
+- Acceptance: plan distinguishes ignored source from committed outputs; defines summary schema and routing cues; covers `indexes/task-router.md`, `indexes/rules-map.md`, `indexes/subsystem-index.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml`; keeps source processing blocked until explicit user request and local PDF presence.
 
 ### Harden AI workflow using MegaMek workspace patterns
 
@@ -56,19 +66,18 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue
 
-### Validate core lookup flow
-
-- Status: Issue created; ready after issue `#5`
-- Issue: `#6`
-- Handoff: `docs/handoffs/active/validate-core-lookup-flow.md`
-- Mode: Project development
-- Expected output: scenario lookup report and narrow fixes for core routing gaps
-
 ### Create first playable GM mode
 
 - Status: Candidate
 - Mode: Project development
 - Expected output: usable campaign-state structure, session log procedure, initial scene flow, and player-facing safety posture
+
+### Summarize personal combat and recovery minimum
+
+- Status: Candidate
+- Mode: Source processing / project development
+- Expected output: paraphrased summaries and routing for personal combat initiative, attacks, damage, wounds, treatment, and recovery.
+- Blocker: use mapped source ranges from `source/atow-chapter-section-map.md` and preserve protected-source boundaries.
 
 ## Backlog
 

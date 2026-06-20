@@ -2,13 +2,11 @@
 
 ## Now
 
-- GitHub issue `#6` is ready next: validate core lookup flow.
-- Active handoff: `docs/handoffs/active/validate-core-lookup-flow.md`.
-- Scope for issue `#6`: run scenario-based lookup from `indexes/task-router.md` into the new core summaries and make narrow routing fixes if needed.
+- No active project-development task is currently in progress.
 
 ## Next
 
-- Start issue `#6`: validate core lookup flow.
+- Create the next issue from the pipeline plan: summarize the personal combat and recovery minimum.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -39,3 +37,4 @@
 - Issue `#5` created to summarize core resolution rules after mapping is complete.
 - Issue `#5` implemented: core summaries under `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge; live indexes and manifest route to the new summaries.
 - Issue `#6` created to validate the core lookup flow after core summaries exist.
+- Issue `#6` implemented: `docs/current/CORE_LOOKUP_VALIDATION.md` records scenario lookup tests for core resolution; narrow router and GM bridge fixes make live lookup start from `indexes/task-router.md`.

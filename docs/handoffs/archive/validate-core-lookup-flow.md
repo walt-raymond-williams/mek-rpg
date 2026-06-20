@@ -6,7 +6,7 @@
 - Roadmap entry: Validate core lookup flow
 - Mode: Project development
 - Priority: High
-- Status: Blocked until issue `#5` creates core summaries and routing entries
+- Status: Complete; archived after issue `#6` close-out
 
 ## Goal
 
@@ -101,4 +101,11 @@ git status --short
 
 ## Open Questions
 
-- Final report location should be chosen after issue `#5` establishes the summary and index layout.
+- Final report location chosen: `docs/current/CORE_LOOKUP_VALIDATION.md`.
+
+## Completion Notes
+
+- Scenario lookup tests passed for lock bypass under pressure, direct contests, difficult/modifier-heavy tasks, margin interpretation, and Edge use.
+- Narrow fixes were made in `indexes/task-router.md`, `gm/scene-loop.md`, and `gm/roll-policy.md`.
+- Remaining gaps are recorded in `docs/current/CORE_LOOKUP_VALIDATION.md`.
+- No raw source text or PDF files were inspected for validation.
