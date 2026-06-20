@@ -1,0 +1,13 @@
+source/atow-pdf/*
+!source/atow-pdf/.gitkeep
+source/atow-text/*
+!source/atow-text/.gitkeep
+*.pdf
+*.epub
+.DS_Store
+.env
+.env.*
+node_modules/
+dist/
+build/
+tmp/

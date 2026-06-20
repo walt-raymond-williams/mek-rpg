@@ -1,0 +1,53 @@
+rules:
+  - id: core.task-checks
+    title: Task Checks
+    subsystem: core-resolution
+    summary: rules/core-resolution/task-checks.md
+    source_pages: []
+    related:
+      - core.modifiers
+      - core.opposed-checks
+    status: placeholder
+  - id: core.opposed-checks
+    title: Opposed Checks
+    subsystem: core-resolution
+    summary: rules/core-resolution/opposed-checks.md
+    source_pages: []
+    related:
+      - core.task-checks
+    status: placeholder
+  - id: character.lifepaths
+    title: Lifepaths
+    subsystem: character-creation
+    summary: rules/character-creation/lifepaths.md
+    source_pages: []
+    related:
+      - character.attributes
+      - character.skills
+    status: placeholder
+  - id: combat.ranged-attacks
+    title: Ranged Attacks
+    subsystem: personal-combat
+    summary: rules/personal-combat/ranged-attacks.md
+    source_pages: []
+    related:
+      - combat.damage
+      - core.modifiers
+    status: placeholder
+  - id: vehicles.classic-conversion
+    title: Converting to Classic BattleTech
+    subsystem: vehicles-and-mechs
+    summary: rules/vehicles-and-mechs/converting-to-classic-battletech.md
+    source_pages: []
+    related:
+      - vehicles.mechwarrior-skills
+    status: placeholder
+gm:
+  - id: gm.scene-loop
+    title: Scene Loop
+    file: gm/scene-loop.md
+    status: draft
+  - id: gm.switch-to-classic-battletech
+    title: Switch to Classic BattleTech
+    file: gm/switch-to-classic-battletech.md
+    status: draft
