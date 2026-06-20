@@ -2,7 +2,7 @@
 
 ## Issue
 
-- GitHub issue: TBD
+- GitHub issue: https://github.com/walt-raymond-williams/mek-rpg/issues/1
 - Priority: High
 - Type: Agent task
 
