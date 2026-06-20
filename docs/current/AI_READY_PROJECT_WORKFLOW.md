@@ -68,6 +68,34 @@ Use `docs/current/ROADMAP.md` for durable planning and issue candidates. Use Git
 
 Before starting project development work, move or note the task in `Now`. When it completes, move it to `Done` and record issue, commit, and verification details when available.
 
+## Automation Strategy
+
+Use scripts for deterministic repository, routing, validation, and arithmetic work. Keep the LLM responsible for judgment-heavy work: GM narration, player-facing scene flow, rules interpretation from summaries, provisional rulings, source paraphrase, and deciding what matters in context.
+
+Automation is useful now, even before full rules coverage, if it is treated as workflow infrastructure rather than encoded game authority. Early scripts should reduce token use, prevent repeated file-scanning, and make future summaries easier to maintain. Avoid scripts that hard-code incomplete A Time of War procedures before the relevant summaries are source-reviewed.
+
+Preferred early automation targets:
+
+- `Rules route helper`: take a natural-language rules or play prompt and return the matching `indexes/task-router.md` row, files to read, manifest status, and source-reference warnings.
+- `Rules index validator`: check that manifest entries, router links, page-reference entries, related IDs, and summary files agree.
+- `Source-boundary checker`: verify ignored PDF and extracted-text paths remain ignored and unstaged before commits.
+- `Active campaign context loader`: resolve `campaign-state/active-campaign.md`, identify the selected `campaigns/<campaign-id>/` folder, list standard campaign files, and flag missing files.
+- `Campaign save validator`: check that a campaign save has the expected files and does not mix active campaign state with legacy flat `campaign-state/` files.
+- `Rules coverage reporter`: summarize draft, placeholder, needs-source-review, and verified coverage by subsystem.
+- `Roll/check arithmetic helper`: perform deterministic dice and margin math after the GM or rules summary has chosen the applicable procedure.
+- `Issue and handoff scaffolder`: create standard issue or handoff shapes when a task is ready, without forcing exploratory planning ideas into GitHub Issues too early.
+
+PowerShell is the default scripting choice for this Windows-first workspace because existing helpers use it, it works naturally with the local shell, and it is enough for file checks, git checks, routing reports, and simple arithmetic. Use Python only when the task needs stronger parsing, YAML handling, PDF/text tooling, or data transformation that would be awkward in PowerShell. Whichever language is used, scripts should accept explicit inputs, produce plain text or JSON output, and avoid silently editing campaign or rules files unless the command name and documentation make that behavior obvious.
+
+Introduce automation in layers:
+
+1. First automate safety and navigation: source-boundary checks, index validation, route lookup, and active-campaign loading.
+2. Then automate reporting: coverage status, missing metadata, stale references, and campaign-save completeness.
+3. Then automate controlled calculations: dice totals, modifiers, margins, and other math already described by committed summaries.
+4. Defer rules-authoritative automation until the relevant summaries are source-reviewed, routed, and validated.
+
+Do not maintain duplicate truth where a generated file can replace a manual one. If a script generates or validates an index, document which file is the source of truth and which output is derived. When automation changes expected workflow behavior, update `docs/current/KNOWN_COMMANDS.md`, `scripts/README.md`, and this section.
+
 ## Handoffs
 
 Use one handoff document per agent-executed GitHub issue when the issue needs context beyond the issue body.
