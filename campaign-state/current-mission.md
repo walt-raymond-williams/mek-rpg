@@ -73,3 +73,9 @@ Start by asking whether the player inspects the crates, questions the courier, c
 ## Tactical Handoff
 
 Stay in RPG mode for questioning, investigation, a brief chase, a standoff, or a small character-scale fight. Switch to Classic BattleTech, MegaMek, or MekHQ if the scene escalates to BattleMechs, combat vehicles, meaningful terrain and facing, exact weapon range brackets, or unit-level consequences.
+
+## Issue #12 Playtest Divergence
+
+Confirmed by user: the actual issue `#12` manual playtest did not use `Checkpoint Ghosts`. It used a Galatea DropShip purchase scene with Walter and Sharpe, and that scene is playtest only rather than table canon. See `campaign-state/session-log.md` for the concise playtest record.
+
+Issue `#13` should decide how future playtests and campaigns store active missions separately so a playtest scene does not have to overwrite an unrelated mission scaffold.

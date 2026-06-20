@@ -6,8 +6,7 @@
 
 ## Next
 
-- Issue `#12`: run first manual playtest and file follow-up bugs using `campaign-state/current-mission.md`.
-- Issue `#13`: design durable campaign memory tracking after the Glacier DropShip playtest exposed continuity needs.
+- Issue `#13`: design durable campaign memory tracking after the Galatea DropShip playtest exposed continuity needs.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -27,6 +26,7 @@
 
 ## Done
 
+- Issue `#12` implemented: ran the first manual playtest using a Galatea DropShip purchase scene with Walter and Sharpe, recorded playtest-only campaign memory, captured rules gaps and workflow bugs, and fed campaign-specific save-folder requirements into issue `#13`.
 - Initial repository scaffold exists.
 - GitHub issue `#1` created for workflow hardening.
 - Issue `#1` implemented: current docs, templates, issue template, mode router, README pointer, legacy workflow pointers, archived handoff, and no PDF processing.

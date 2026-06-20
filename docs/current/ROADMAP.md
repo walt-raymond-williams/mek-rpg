@@ -14,11 +14,21 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#9` added the minimum equipment lookup layer.
 - Issue `#10` created the campaign setting seed and canon policy.
 - Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
-- The next execution task is issue `#12`: run the first manual playtest and file follow-up bugs.
-- Issue `#13` was created from the first manual playtest observation that durable campaign memory needs a stronger strategy than chat context.
+- Issue `#12` ran the first manual playtest and captured follow-up gaps from a Galatea DropShip purchase scene.
+- The next execution task is issue `#13`: design durable campaign memory tracking around campaign-specific save folders/state roots.
+- Issue `#13` was created from the first manual playtest observation that durable campaign memory needs a stronger strategy than chat context or Git history.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Run first manual playtest and file follow-up bugs
+
+- Status: Done
+- Issue: `#12`
+- Handoff: `docs/handoffs/archive/run-first-manual-playtest-and-file-follow-up-bugs.md`
+- Playtest record: `campaign-state/session-log.md`
+- Goal: Run a short manual playtest of the first playable GM mode and turn rough edges into concrete follow-up notes.
+- Acceptance: Galatea DropShip purchase scene was played with Walter and Sharpe; rules lookup used the router before a technical inspection roll; playtest-only PCs, NPCs, factions, hooks, rules gaps, and workflow bugs were recorded; issue `#13` handoff now includes the campaign-specific save-folder requirement.
 
 ### Build first playable GM mode
 
@@ -147,11 +157,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Run first manual playtest and file follow-up bugs
 
-- Status: Issue created; ready after issue `#11`
+- Status: Done; see Done section
 - Issue: `#12`
-- Handoff: `docs/handoffs/active/run-first-manual-playtest-and-file-follow-up-bugs.md`
+- Handoff: `docs/handoffs/archive/run-first-manual-playtest-and-file-follow-up-bugs.md`
 - Mode: Play mode / project development close-out
-- Expected output: short manual playtest, campaign/playtest state updates, and follow-up bug or missing-rule issues.
+- Output: playtest record, campaign-state updates, rules gaps, workflow bugs, and issue `#13` memory-design input.
 
 ### Design durable campaign memory tracking
 

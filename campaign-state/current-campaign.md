@@ -22,3 +22,11 @@ Active themes:
 - Until the user chooses a full campaign frame, use placeholder PCs and local improvisable details for playtests.
 
 Current mission: `Checkpoint Ghosts` in `campaign-state/current-mission.md`
+
+## Issue #12 Playtest Note
+
+- Confirmed by user: the Galatea DropShip purchase scene was playtest only and is not table canon.
+- Fiction date used for the playtest: January 1, 3025.
+- Location used for the playtest: Galatea, the Mercenary's Star.
+- PCs used for the playtest: Walter and Sharpe.
+- Memory-design lesson: campaign play should use campaign-specific save folders/state files so separate campaigns and playtests do not bleed together. Git history is not the play-state mechanism; repo files should hold the active campaign's saved state.

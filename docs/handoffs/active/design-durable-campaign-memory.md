@@ -38,7 +38,7 @@ Read these first:
 
 Also consider issue `#12` observation:
 
-- The manual playtest used a Glacier DropShip-purchase scene with the user's son instead of the original `Checkpoint Ghosts` scaffold.
+- The manual playtest used a Galatea DropShip-purchase scene with the user's son instead of the original `Checkpoint Ghosts` scaffold.
 - The playtest went well, but exposed the need for a reliable campaign memory/save strategy.
 
 ## Expected Output
@@ -98,11 +98,44 @@ gh issue view 13 --json number,title,state,body,url
 - Durable memory requirements are documented.
 - Recommended file structure or template updates are implemented or clearly specified.
 - GM close-out procedure includes a clear state-save checklist.
-- Glacier DropShip playtest implications are considered as an example continuity case.
+- Galatea DropShip playtest implications are considered as an example continuity case.
 - Roadmap/tasks updated and handoff archived after completion.
 - Changes committed, pushed, and issue updated/closed.
 
 ## Open Questions
 
-- Should the Glacier DropShip scene become committed table canon now, or should issue `#13` first define the memory schema and then record it?
+- Should the Galatea DropShip playtest remain only in issue `#12` records, or should a later campaign intentionally promote any of its elements to table canon?
 - Should campaign memory stay as Markdown only, or should some rosters use structured YAML front matter later?
+
+## Issue #13 Memory-Design Input From Issue #12
+
+Confirmed by user after the playtest:
+
+- The actual issue `#12` playtest was the Galatea DropShip purchase scene with Walter and Sharpe, not `Checkpoint Ghosts`.
+- The Galatea DropShip scene is playtest only, not table canon.
+- The playtest stopped when Captain Selene Arano offered a one-hour inspection of the Union-class DropShip `The Second Dawn`.
+- The location is Galatea, the Mercenary's Star.
+- Sharpe is the son's placeholder Tech PC for the playtest.
+
+Durable campaign-memory requirement:
+
+- Play mode should not rely on Git history as the play-state mechanism.
+- Campaign state should behave like a save game folder: one campaign has its own PCs, NPCs, session logs, locations, assets, relationships, missions, hooks, and current-state files.
+- Separate campaigns need separate folders or equivalent state roots so facts do not bleed between campaigns.
+- Play mode should be able to lock onto one active campaign state tree and read/write only that campaign during play.
+- Future linking between campaigns can be supported later, but the default should isolate campaigns.
+
+Coverage gaps exposed by the playtest:
+
+- The current flat `campaign-state/` structure can store notes, but it cannot cleanly isolate multiple campaigns or playtests.
+- There is no dedicated owner for locations such as Galatea docks, broker kiosks, Dock C-19, hangars, or ship interiors.
+- There is no dedicated owner for assets such as DropShips, C-bill funds, cooperative stakes, liens, permits, debts, repairs, or pending offers.
+- NPC whereabouts, crew affiliation, and relationship state are scattered across rosters, hooks, and session logs.
+- `current-mission.md` can drift from the actual playtest scene when the user improvises a different scenario.
+
+Recommended design direction:
+
+- Add a lightweight campaign-root structure, for example `campaigns/<campaign-id>/`, with per-campaign files for overview/current state, PCs, NPCs, factions, locations, assets, relationships, missions, hooks, session logs, rules gaps, and playtest/workflow notes.
+- Keep shared GM procedures, rule summaries, and indexes outside campaign roots.
+- Add an active-campaign pointer or clear selection step so Play mode knows which campaign save folder to load before scene play.
+- Add an end-of-session save checklist that updates the active campaign's files before the assistant closes a play session.

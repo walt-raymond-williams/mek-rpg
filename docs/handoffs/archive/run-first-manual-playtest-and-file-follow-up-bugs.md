@@ -6,7 +6,7 @@
 - Roadmap entry: Run first manual playtest and file follow-up bugs
 - Mode: Play mode / project development close-out
 - Priority: High
-- Status: Ready after issue `#11`
+- Status: Completed in issue `#12`
 
 ## Goal
 
@@ -106,4 +106,12 @@ gh issue list --state open --limit 20
 
 ## Open Questions
 
-- Whether to use the placeholder Scout, Tech, and Medic from `campaign-state/player-characters.md`, or ask the user for character concepts before starting.
+- Resolved during playtest: Walter was used as the dad/player character, and Sharpe used the placeholder Tech concept with a provisional `+2`.
+
+## Completion Notes
+
+- Actual playtest scene: Galatea DropShip purchase, not `Checkpoint Ghosts`.
+- Canon status: confirmed by user as playtest only.
+- Playtest stopped when Captain Selene Arano offered a one-hour inspection of `The Second Dawn`.
+- Campaign-state files were updated with playtest-only PCs, NPCs, factions, hooks, session events, rules gaps, and workflow bugs.
+- Issue `#13` handoff was updated with the campaign-specific save-folder requirement and other memory-design inputs.
