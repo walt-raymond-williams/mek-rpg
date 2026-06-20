@@ -5,7 +5,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Current Focus
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
-- Next recommended issue: build the initial chapter and section map. Do not summarize rules or update rules indexes until mapping work is explicitly requested.
+- Issue `#4` is open to build the initial chapter and section map. Do not summarize rules or update rules indexes as part of issue `#4`.
 
 ## Done
 
@@ -38,7 +38,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Build initial chapter and section map
 
-- Status: Ready for issue
+- Status: Issue created
+- Issue: `#4`
+- Handoff: `docs/handoffs/active/build-atow-chapter-section-map.md`
 - Mode: Source processing
 - Expected output: chapter/section map with page references and uncertainty markers
 

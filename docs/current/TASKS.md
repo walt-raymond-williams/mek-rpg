@@ -2,11 +2,13 @@
 
 ## Now
 
-- Next recommended work: create/start the chapter and section mapping issue.
-- Scope for the next source-processing step: build an initial chapter and section map only; do not write rule summaries until mapping exists.
+- GitHub issue `#4` is open: build the initial A Time of War chapter and section map.
+- Active handoff: `docs/handoffs/active/build-atow-chapter-section-map.md`.
+- Scope for issue `#4`: mapping only; do not write rule summaries, paraphrase procedures, or update live rules-routing indexes.
 
 ## Next
 
+- After issue `#4` completes, create/start the core resolution summary issue.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -33,3 +35,4 @@
 - Issue `#2` planned the PDF-to-rules pipeline in `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`; no PDF processing was performed.
 - Issue `#3` created to track extraction of the legally owned PDF into ignored page text.
 - Issue `#3` extracted 410 PDF pages into ignored `source/atow-text/page-####.txt` files and recorded safe extraction metadata in `source/extraction-notes.md`; no rule summaries, chapter maps, or rules indexes were created.
+- Issue `#4` created to build the initial chapter and section map.
