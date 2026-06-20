@@ -10,10 +10,20 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#6` validated the core lookup flow against scenario prompts.
 - Issues `#7` through `#12` define the next playable-GM runway: personal combat, combat lookup validation, equipment minimum, campaign setting seed, first playable GM mode, and a manual playtest/bug pass.
 - Issue `#7` summarized the personal combat and recovery minimum.
-- The next execution task is issue `#8`: validate the personal combat lookup flow by hand.
+- Issue `#8` validated the personal combat lookup flow by hand.
+- The next execution task is issue `#9`: add equipment minimum summaries.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Validate personal combat lookup flow by hand
+
+- Status: Done
+- Issue: `#8`
+- Handoff: `docs/handoffs/archive/validate-personal-combat-lookup-flow.md`
+- Report: `docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md`
+- Goal: Confirm that common personal-combat scenarios can start at `indexes/task-router.md` and reach usable committed summaries without model memory or raw source text.
+- Acceptance: scenario lookup tests cover initiative, ranged attacks, melee/grappling, damage/wounds, treatment/recovery, and tactical handoff; router paths pass with caveats recorded for equipment, campaign recovery, and table-heavy details.
 
 ### Summarize personal combat and recovery minimum
 
@@ -80,11 +90,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Validate personal combat lookup flow by hand
 
-- Status: Issue created
+- Status: Done; see Done section
 - Issue: `#8`
-- Handoff: `docs/handoffs/active/validate-personal-combat-lookup-flow.md`
+- Handoff: `docs/handoffs/archive/validate-personal-combat-lookup-flow.md`
 - Mode: Project development / manual validation
-- Expected output: scenario lookup report, narrow routing fixes, and follow-up issues for personal-combat lookup bugs.
+- Output: `docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md`
 
 ### Add equipment minimum summaries
 
