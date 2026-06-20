@@ -2,6 +2,8 @@
 
 Use this file first. Match the user's request to the most relevant files, then read those files before answering.
 
+Coverage note: core resolution, personal combat, and equipment entries route to draft paraphrased summaries with source page references. Character creation, campaign systems, and vehicles/Mechs entries currently route to placeholder summaries unless a row states otherwise; use those placeholder files to identify the gap and cite `Needs source review`, not as rules authority.
+
 | User question or task | Read first | Also read |
 | --- | --- | --- |
 | resolving an uncertain action | `rules/core/action-checks.md` | `rules/core/basic-action-resolution.md`, `rules/core/edge.md` |

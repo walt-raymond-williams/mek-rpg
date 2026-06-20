@@ -61,14 +61,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Mode: Source processing / project development
 - Expected output: source-reviewed pilot/gunnery/MechWarrior summaries plus stronger Classic BattleTech, MegaMek, and MekHQ handoff notes.
 
-### Validate existing draft coverage
-
-- Status: Open
-- Issue: `#20`
-- Handoff: `docs/handoffs/active/validate-existing-draft-coverage.md`
-- Mode: Project development / review
-- Expected output: scenario lookup tests for core, personal combat, equipment, campaign-save routing, and helper-script usage, with router/index fixes where gaps are found.
-
 ### Create first real campaign save and live helper validation
 
 - Status: Open
@@ -78,6 +70,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expected output: user-confirmed table-canon campaign save created from `campaigns/_template/`, active campaign pointer selected only with confirmation, short setup/play scene, state-save checklist use, helper-script validation, and follow-up issues for discovered gaps.
 
 ## Done
+
+### Validate existing draft coverage
+
+- Status: Done
+- Issue: `#20`
+- Handoff: `docs/handoffs/archive/validate-existing-draft-coverage.md`
+- Report: `docs/current/DRAFT_COVERAGE_AND_HELPER_VALIDATION.md`
+- Mode: Project development / review
+- Goal: Validate existing draft coverage and helper workflow before adding more rules layers.
+- Acceptance: scenario lookup tests covered core, personal combat, equipment, tactical handoff, campaign-save routing, and placeholder boundaries; helper scripts were checked with valid and invalid inputs; protected source paths remain ignored; follow-up work remains in issues `#21`, `#22`, `#23`, and `#24`.
 
 ### Build campaign-state validator
 

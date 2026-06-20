@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#20`: validate existing draft coverage and helper workflow; handoff at `docs/handoffs/active/validate-existing-draft-coverage.md`.
 - Issue `#21`: summarize character creation foundation after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/summarize-character-creation-foundation.md`.
 - Issue `#22`: summarize campaign consequence systems after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/summarize-campaign-consequence-systems.md`.
 - Issue `#23`: build vehicles and MechWarrior bridge after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/build-vehicles-mechwarrior-bridge.md`.
@@ -27,6 +26,7 @@
 
 ## Done
 
+- Issue `#20` implemented: added `docs/current/DRAFT_COVERAGE_AND_HELPER_VALIDATION.md`, validated draft core/personal-combat/equipment/tactical-handoff/campaign-save routing, manually checked helper scripts with valid and invalid inputs, added a task-router coverage warning for placeholder rows, and recorded follow-ups for issues `#21`-`#24`.
 - Issue `#19` implemented: added `scripts/validate-campaign-state.ps1` to validate the active campaign pointer, campaign template files, and active or explicitly supplied campaign save folders; documented usage and verified default, explicit campaign, and strict active-selection behavior.
 - Issue `#18` implemented: ran repository stale-reference searches, fixed active stale planning and legacy-campaign guidance, distinguished historical flat campaign-state references from live campaign-save guidance, and verified no protected raw source is staged.
 - Issue `#17` implemented: refreshed the roadmap and task board around completed draft coverage, remaining placeholder subsystems, validation needs, future source-processing waves, and current issue candidates.
