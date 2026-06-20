@@ -12,6 +12,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
+- MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 
 ## Coverage Status
 
@@ -37,7 +38,26 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently promoted. Use the backlog and open questions below for the next candidate.
+- None currently promoted. Open MekHQ bridge issues `#25`-`#29` are ready to pull into `Now` when the user wants to explore that integration path.
+
+## Open Issues
+
+### MekHQ-to-MEK-RPG campaign bridge epic
+
+- Status: Open
+- Epic issue: `#25`
+- Mode: Project development / play workflow design
+- Source context:
+  - `C:\Users\waltr\Documents\megamek-workspace\docs\current\MEK_RPG_MEKHQ_COLLABORATION_BRIEF.md`
+  - `C:\Users\waltr\Documents\megamek-workspace\docs\current\MEK_RPG_MEKHQ_INTEGRATION_ASSESSMENT.md`
+- Goal: explore whether MEK-RPG can import or summarize a MekHQ `.cpnx` / `.cpnx.gz` campaign save, generate a playable `campaigns/<campaign-id>/` folder, support one-day RPG play from a selected character viewpoint, and preserve RPG-only memory while keeping MekHQ authoritative for hard logistics.
+- Ownership boundary: MekHQ should own campaign date, funds, unit rosters, personnel ledger fields, repairs, contracts, markets, tactical consequences, and scenario outcomes. MEK-RPG should own A Time of War PCs, RPG scenes, NPC motives, relationship memory, promises, secrets, hooks, safety/tone, and narrative uncertainty.
+- Initial child issues:
+  - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
+  - Issue `#27`: prototype read-only MekHQ save summary helper.
+  - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder.
+  - Issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries.
+- Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
 ## Done
 
@@ -318,7 +338,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expand `indexes/task-router.md` after verified summaries exist.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.
 - Validate all summaries against source pages.
-- Add MekHQ / MegaMek integration notes for encounter handoff, unit setup, and campaign updates.
+- Add deeper MekHQ / MegaMek integration notes for encounter handoff, unit setup, campaign updates, and save-backed campaign bootstrapping after issues `#26`-`#29` produce findings.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
 
 ## Existing Foundation

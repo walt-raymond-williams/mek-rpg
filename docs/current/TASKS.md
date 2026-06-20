@@ -6,11 +6,16 @@
 
 ## Next
 
+- Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
+- Issue `#27`: prototype read-only MekHQ save summary helper after bridge mapping has enough field confidence.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
+- Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
+- Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after issues `#26` and `#27` clarify the import shape.
+- Issue `#29`: define the MekHQ-linked one-day play loop and writeback boundaries before attempting any write automation.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, build a lightweight handoff checklist for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added.
