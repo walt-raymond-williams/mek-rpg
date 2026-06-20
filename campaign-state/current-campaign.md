@@ -23,6 +23,12 @@ Active themes:
 
 Current mission: `Checkpoint Ghosts` in `campaign-state/current-mission.md`
 
+## Durable Save Model
+
+- Issue `#13` adds campaign-specific save folders under `campaigns/`.
+- Use `campaign-state/active-campaign.md` before play to choose which campaign folder to load.
+- Treat this flat file as legacy/prototype state until a future main campaign is created from `campaigns/_template/`.
+
 ## Issue #12 Playtest Note
 
 - Confirmed by user: the Galatea DropShip purchase scene was playtest only and is not table canon.

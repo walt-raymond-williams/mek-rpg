@@ -4,4 +4,4 @@ These files define how the assistant runs scenes, handles rolls, keeps a kid-fri
 
 For campaign assumptions, start with `campaign-state/setting-basics.md` before improvising faction or canon details.
 
-For the first playable loop, use `gm/session-procedure.md` with `campaign-state/current-mission.md`, `campaign-state/session-log.md`, `campaign-state/rules-gaps.md`, and `campaign-state/playtest-bugs.md`.
+For resumable play, start with `gm/session-procedure.md` and `campaign-state/active-campaign.md`. Load one campaign save folder under `campaigns/`, then use `gm/state-save-checklist.md` after meaningful play.

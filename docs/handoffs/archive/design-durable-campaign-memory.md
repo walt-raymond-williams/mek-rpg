@@ -6,7 +6,7 @@
 - Roadmap entry: Design durable campaign memory tracking
 - Mode: Project development
 - Priority: High
-- Status: Ready after issue `#12` playtest observation
+- Status: Complete
 
 ## Goal
 
@@ -49,6 +49,16 @@ Also consider issue `#12` observation:
 - Add an end-of-session/state-save checklist to the GM procedure if missing.
 - Include guidance for child/co-player sessions where tone, agency, and safety constraints should be remembered.
 - Identify follow-up issues needed for automation, templates, or richer campaign state.
+
+## Completion Notes
+
+- Durable strategy documented in `docs/current/CAMPAIGN_MEMORY_STRATEGY.md`.
+- Active-campaign pointer added at `campaign-state/active-campaign.md`.
+- Campaign save folders added under `campaigns/`.
+- New campaign template added at `campaigns/_template/`.
+- Issue `#12` Galatea DropShip playtest isolated at `campaigns/playtest-galatea-dropship/` as inactive, playtest-only, not table canon.
+- GM load/save flow updated in `gm/session-procedure.md`.
+- State-save checklist added at `gm/state-save-checklist.md`.
 
 ## Files And Areas
 

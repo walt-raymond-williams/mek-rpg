@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#13`: design durable campaign memory tracking after the Galatea DropShip playtest exposed continuity needs.
+- Create helper script to start a new campaign save folder from `campaigns/_template/`.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -14,7 +14,8 @@
 
 - Create first playable campaign-state structure.
 - Expand GM session logging procedure.
-- Build durable campaign memory coverage for PCs, NPCs, factions, locations, assets, missions, hooks, relationships, and session close-out.
+- Add campaign-local session archive helper or checklist after more play.
+- Add richer DropShip and unit asset sheets after transport ownership rules are summarized.
 - Create verified paraphrased rule summaries.
 - Expand rules routing indexes as summaries become available.
 - Add tactical handoff notes for Classic BattleTech, MegaMek, and MekHQ.
@@ -26,6 +27,7 @@
 
 ## Done
 
+- Issue `#13` implemented: audited flat campaign-state coverage, documented durable campaign memory strategy, added active-campaign pointer, created `campaigns/_template/`, isolated the Galatea DropShip playtest in `campaigns/playtest-galatea-dropship/`, and added the GM state-save checklist.
 - Issue `#12` implemented: ran the first manual playtest using a Galatea DropShip purchase scene with Walter and Sharpe, recorded playtest-only campaign memory, captured rules gaps and workflow bugs, and fed campaign-specific save-folder requirements into issue `#13`.
 - Initial repository scaffold exists.
 - GitHub issue `#1` created for workflow hardening.

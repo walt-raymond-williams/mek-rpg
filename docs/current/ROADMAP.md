@@ -15,11 +15,21 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#10` created the campaign setting seed and canon policy.
 - Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
 - Issue `#12` ran the first manual playtest and captured follow-up gaps from a Galatea DropShip purchase scene.
-- The next execution task is issue `#13`: design durable campaign memory tracking around campaign-specific save folders/state roots.
-- Issue `#13` was created from the first manual playtest observation that durable campaign memory needs a stronger strategy than chat context or Git history.
+- Issue `#13` designed durable campaign memory tracking around campaign-specific save folders/state roots.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Design durable campaign memory tracking
+
+- Status: Done
+- Issue: `#13`
+- Handoff: `docs/handoffs/archive/design-durable-campaign-memory.md`
+- Strategy: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md`
+- Save folders: `campaigns/README.md`, `campaigns/_template/`, and `campaigns/playtest-galatea-dropship/`
+- GM procedure: `gm/session-procedure.md` and `gm/state-save-checklist.md`
+- Goal: Make campaign continuity durable without relying on chat context or Git history as the play-state mechanism.
+- Acceptance: current flat campaign-state coverage was audited; campaign-local files now cover PCs, NPCs, factions, locations, assets, relationships, missions, hooks, session logs, rules gaps, playtest notes, and safety/tone; the Galatea DropShip playtest is isolated as a non-canon playtest save; GM play now has an active-campaign load step and state-save checklist.
 
 ### Run first manual playtest and file follow-up bugs
 
@@ -165,11 +175,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Design durable campaign memory tracking
 
-- Status: Issue created; ready after issue `#12` playtest observation
+- Status: Done; see Done section
 - Issue: `#13`
-- Handoff: `docs/handoffs/active/design-durable-campaign-memory.md`
+- Handoff: `docs/handoffs/archive/design-durable-campaign-memory.md`
 - Mode: Project development
-- Expected output: campaign-memory audit, durable tracking requirements, state-save checklist, and lightweight file/template updates for PCs, NPCs, factions, locations, assets, missions, relationships, and unresolved hooks.
+- Output: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md`, `campaign-state/active-campaign.md`, `campaigns/`, and `gm/state-save-checklist.md`.
 
 ## Backlog
 
@@ -181,7 +191,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expand `indexes/task-router.md` after verified summaries exist.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.
 - Create first test campaign setup with PCs, NPCs, mission, and hooks.
-- Design durable campaign memory tracking for reliable resume across sessions.
+- Create helper script to start a new campaign save folder from `campaigns/_template/`.
 - Validate all summaries against source pages.
 - Add MekHQ / MegaMek integration notes for encounter handoff, pilot conversion, unit setup, and campaign updates.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
