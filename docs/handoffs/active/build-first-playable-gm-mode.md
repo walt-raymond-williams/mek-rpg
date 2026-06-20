@@ -6,7 +6,7 @@
 - Roadmap entry: Build first playable GM mode
 - Mode: Project development
 - Priority: High
-- Status: Blocked until enough play summaries and setting seed exist
+- Status: Ready after Issue `#10`
 
 ## Goal
 
@@ -36,6 +36,7 @@ Also read outputs from:
 - Issue `#7` personal combat/recovery minimum
 - Issue `#8` personal combat lookup validation
 - Issue `#10` campaign setting seed
+  - Seed file: `campaign-state/setting-basics.md`
 
 ## Expected Output
 

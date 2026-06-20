@@ -12,10 +12,20 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#7` summarized the personal combat and recovery minimum.
 - Issue `#8` validated the personal combat lookup flow by hand.
 - Issue `#9` added the minimum equipment lookup layer.
-- The next execution task is issue `#10`: create the BattleTech campaign setting seed.
+- Issue `#10` created the campaign setting seed and canon policy.
+- The next execution task is issue `#11`: build first playable GM mode.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Create BattleTech campaign setting seed
+
+- Status: Done
+- Issue: `#10`
+- Handoff: `docs/handoffs/archive/create-battletech-campaign-setting-seed.md`
+- Seed: `campaign-state/setting-basics.md`
+- Goal: Create durable campaign setting assumptions and open-choice prompts for era, faction focus, canon strictness, tone, starting region, and initial scenario hooks.
+- Acceptance: setting seed records table canon versus lookup-needed canon versus improvisable color, marks user choices as `Needs user decision` or `TBD`, provides starter hooks, links from campaign-state and GM docs, and avoids copied copyrighted lore text.
 
 ### Add equipment minimum summaries
 
@@ -108,15 +118,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Create BattleTech campaign setting seed
 
-- Status: Issue created
+- Status: Done; see Done section
 - Issue: `#10`
-- Handoff: `docs/handoffs/active/create-battletech-campaign-setting-seed.md`
+- Handoff: `docs/handoffs/archive/create-battletech-campaign-setting-seed.md`
 - Mode: Project development
-- Expected output: durable campaign setting assumptions for era, faction focus, canon strictness, tone, starting region, and initial scenario hooks.
+- Output: `campaign-state/setting-basics.md`
 
 ### Build first playable GM mode
 
-- Status: Issue created; blocked until enough play summaries and setting seed exist
+- Status: Issue created; ready after issue `#10`
 - Issue: `#11`
 - Handoff: `docs/handoffs/active/build-first-playable-gm-mode.md`
 - Mode: Project development
