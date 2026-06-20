@@ -47,6 +47,38 @@ The first-pass comparison found:
 
 The next agent should do its own quick analysis and adjust the plan if the repository state has changed.
 
+## Important Design Question: Dual-Use Workspace
+
+This repository has to do double duty:
+
+1. Run the actual RPG campaign with Codex as a GM/rules assistant.
+2. Develop and improve the rules-assistant project itself.
+
+This can work, but only if the workflow explicitly routes agent behavior by mode. The next agent should design this as a first-class part of the workflow instead of treating it as an incidental detail.
+
+Recommended mode split:
+
+- `Play mode`: run scenes, answer in-character/out-of-character table needs, update only campaign state or session logs when appropriate, and avoid project-development work unless the user asks.
+- `Rules lookup mode`: answer rules questions from `indexes/task-router.md` and verified/paraphrased summaries first; if incomplete, cite page references or mark a summary gap.
+- `Project development mode`: work GitHub issues, edit docs/scripts/indexes/rule summaries, use handoffs, commit and push completed changes.
+- `Source processing mode`: extract/map/summarize the legally owned PDF under strict copyright boundaries; this mode should only start on explicit user request.
+
+The next agent should encode this split in `AGENTS.md` and the new `docs/current/MEK_RPG_PROJECT_PROFILE.md`. A future Codex session should be able to infer the right mode from the user request. If ambiguous, it should ask a short clarifying question before editing project files.
+
+Suggested routing language:
+
+- If the user asks to play, run a scene, continue the campaign, talk to an NPC, make a mission choice, or resolve an in-world situation, use Play mode.
+- If the user asks "how does this rule work" or asks for a ruling, use Rules lookup mode.
+- If the user asks to scaffold, refactor, create issues, improve docs, write scripts, summarize rules, or change repository files, use Project development mode.
+- If the user asks to extract, parse, map, or summarize the PDF/source text, use Source processing mode.
+
+Suggested write policy:
+
+- Play mode may update `campaign-state/` and session logs when the user wants persistent campaign tracking, but should not create GitHub issues or edit workflow docs unless asked.
+- Rules lookup mode should usually not edit files during play; it may suggest a follow-up issue if a rule gap is discovered.
+- Project development mode should use issues/handoffs and commit/push completed repository changes.
+- Source processing mode may write ignored extracted text and committed paraphrased summaries/indexes, but must never commit raw PDF/text.
+
 ## Recommended Changes
 
 Add or adapt this structure:
@@ -74,7 +106,7 @@ docs/
 
 Update existing docs so the project has one clear workflow:
 
-- `AGENTS.md`: point agents to `docs/current/` docs, strengthen commit/push close-out policy, keep copyright and rules-answering constraints prominent.
+- `AGENTS.md`: point agents to `docs/current/` docs, define the mode router, strengthen commit/push close-out policy for development work, keep copyright and rules-answering constraints prominent.
 - `README.md`: add a concise orientation to the new workflow docs.
 - `docs/github-issues.md`: either migrate into `docs/current/GITHUB_ISSUE_WORKFLOW.md` or leave a short pointer to the new current doc.
 - `issues/initial-issues.md`: keep as initial backlog if useful, but make `docs/current/ROADMAP.md` the durable planning source.
@@ -111,7 +143,9 @@ Preserve these `mek-rpg` constraints:
 - `docs/current/KNOWN_COMMANDS.md` includes repeatable local commands.
 - `docs/templates/AGENT_HANDOFF.md` exists.
 - `.github/ISSUE_TEMPLATE/agent-task.md` exists.
-- `AGENTS.md` tells agents to read the new current docs before work and to commit/push completed repo changes unless told otherwise.
+- `AGENTS.md` tells agents how to route requests into Play mode, Rules lookup mode, Project development mode, or Source processing mode.
+- `AGENTS.md` tells agents to read the new current docs before project development work and to commit/push completed repo changes unless told otherwise.
+- Play mode has a lighter close-out path than development mode: update campaign state/session logs when useful, but do not create development commits unless files were intentionally changed.
 - `git status --short --branch` is clean after commit and push.
 
 ## Open Questions
