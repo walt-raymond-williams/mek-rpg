@@ -4,8 +4,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Current Focus
 
-- Source processing remains blocked until the user explicitly requests it and the legally owned PDF is present locally under `source/atow-pdf/`.
-- Next recommended issue: extract the legally owned A Time of War PDF into ignored page text only after that blocker is cleared.
+- Issue `#3` is open to extract the legally owned A Time of War PDF into ignored page-level text.
+- Source processing is currently limited to extraction only. Do not summarize, map chapters, or update rules indexes as part of issue `#3`.
 
 ## Done
 
@@ -30,10 +30,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Extract A Time of War PDF into ignored page text
 
-- Status: Next recommended issue after explicit user request and local PDF placement
+- Status: Issue created
+- Issue: `#3`
+- Handoff: `docs/handoffs/active/extract-atow-pdf-page-text.md`
 - Mode: Source processing
 - Expected output: page-level text in ignored `source/atow-text/`, extraction notes, no committed raw source
-- Notes: Do not create or start this as incidental setup. The user must explicitly ask for source processing and the legally owned PDF must exist under `source/atow-pdf/`.
+- Notes: User explicitly requested source processing and the PDF is present locally. Scope remains extraction only.
 
 ### Build initial chapter and section map
 

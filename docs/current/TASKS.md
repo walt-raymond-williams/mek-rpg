@@ -2,11 +2,13 @@
 
 ## Now
 
-- No active local implementation task. Source processing is blocked until the user explicitly requests it and the legally owned PDF is present locally.
+- GitHub issue `#3` is open: extract the legally owned A Time of War PDF into ignored page text.
+- Active handoff: `docs/handoffs/active/extract-atow-pdf-page-text.md`.
+- Scope for issue `#3`: extraction only; do not summarize rules, map chapters, or update rules indexes.
 
 ## Next
 
-- After explicit user request and local PDF placement, create/start the extraction issue: extract the legally owned A Time of War PDF into ignored page text.
+- After issue `#3` completes, create/start the chapter and section mapping issue.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -21,7 +23,7 @@
 
 ## Blocked
 
-- PDF extraction and source summarization are blocked until the user explicitly requests source processing and the legally owned PDF is present under `source/atow-pdf/`.
+- Chapter mapping, source summarization, routing updates, and validation are blocked until issue `#3` produces ignored page-level text and extraction notes.
 - Follow-up issues for mapping, summarization, validation, routing, and first playable GM mode should be created gradually from `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as blockers clear.
 
 ## Done
@@ -31,3 +33,4 @@
 - Issue `#1` implemented: current docs, templates, issue template, mode router, README pointer, legacy workflow pointers, archived handoff, and no PDF processing.
 - GitHub label `user-task` created for user-only work.
 - Issue `#2` planned the PDF-to-rules pipeline in `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`; no PDF processing was performed.
+- Issue `#3` created to track extraction of the legally owned PDF into ignored page text.
