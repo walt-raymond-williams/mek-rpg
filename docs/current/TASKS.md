@@ -7,7 +7,6 @@
 ## Next
 
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
-- Decide whether to create a `user-task` label for user-only work.
 - Prepare source-processing issue only after the user explicitly asks to process the legally owned PDF.
 
 ## Backlog
@@ -28,3 +27,4 @@
 - Initial repository scaffold exists.
 - GitHub issue `#1` created for workflow hardening.
 - Issue `#1` implemented: current docs, templates, issue template, mode router, README pointer, legacy workflow pointers, archived handoff, and no PDF processing.
+- GitHub label `user-task` created for user-only work.

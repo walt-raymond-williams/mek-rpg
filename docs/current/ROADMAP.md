@@ -61,9 +61,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Initial project scaffolding exists with `gm/`, `indexes/`, `rules/`, `source/`, scripts, and starter docs.
 - PDF extraction script exists, but no PDF processing has been performed as part of issue `#1`.
 - Issue `#1` implementation adds the `docs/current/` workflow layer, handoff template, GitHub issue template, mode router, and updated entry-point docs.
+- GitHub labels `agent-task` and `user-task` exist for agent-executed work and user-only work.
 
 ## Open Questions
 
 - Should future broad work use feature branches, or is direct-to-`master` acceptable for this private repo until the project grows?
 - Should `issues/initial-issues.md` remain as a historical seed list after this roadmap exists?
-- Should a `user-task` label be created for work only the user can do, such as placing the PDF locally?

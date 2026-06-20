@@ -51,7 +51,7 @@ After creating an issue:
 3. Move immediate work into `TASKS.md`.
 4. Commit and push the tracking changes.
 
-Use a `user-task` label if the task can only be completed by the user, such as placing a legally owned PDF locally or approving a campaign-sensitive decision.
+Use the `user-task` label if the task can only be completed by the user, such as placing a legally owned PDF locally or approving a campaign-sensitive decision.
 
 ## Handoff Lifecycle
 
@@ -82,5 +82,6 @@ Do not close an issue based only on an unpushed local commit.
 
 - `Confirmed locally`: `origin` points to this repository on GitHub.
 - `Confirmed locally`: `master` tracks `origin/master`.
-- `Confirmed locally`: GitHub issue `#1` tracks hardening this workflow from MegaMek workspace patterns.
-- `Confirmed locally`: The project should not process PDFs while completing issue `#1`.
+- `Confirmed locally`: GitHub labels `agent-task` and `user-task` exist.
+- `Confirmed locally`: GitHub issue `#1` completed the workflow-hardening pass from MegaMek workspace patterns.
+- `Confirmed locally`: No PDF processing was performed during issue `#1`.
