@@ -5,7 +5,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Current Focus
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
-- Issue `#4` is open to build the initial chapter and section map. Do not summarize rules or update rules indexes as part of issue `#4`.
+- Issue `#4` is open to build the initial chapter and section map. Mapping abstracts and topic labels are allowed, but do not write GM-ready procedural rule summaries or update live rules indexes as part of issue `#4`.
+- Issues `#5` and `#6` are open as blocked follow-ups for core resolution summaries and core lookup validation.
 
 ## Done
 
@@ -46,9 +47,19 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Summarize core resolution rules
 
-- Status: Waiting on section map and source review
+- Status: Issue created; blocked on issue `#4`
+- Issue: `#5`
+- Handoff: `docs/handoffs/active/summarize-core-resolution-rules.md`
 - Mode: Source processing / project development
 - Expected output: paraphrased summaries for task checks, opposed checks, modifiers, and margin of success with page references
+
+### Validate core lookup flow
+
+- Status: Issue created; blocked on issue `#5`
+- Issue: `#6`
+- Handoff: `docs/handoffs/active/validate-core-lookup-flow.md`
+- Mode: Project development
+- Expected output: scenario lookup report and narrow fixes for core routing gaps
 
 ### Create first playable GM mode
 

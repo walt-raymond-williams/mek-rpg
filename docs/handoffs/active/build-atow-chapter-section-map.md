@@ -11,7 +11,7 @@
 
 Build an initial chapter and section map from the ignored A Time of War page-level text so later agents can summarize one focused rules area at a time without scanning the whole source.
 
-This issue is mapping only. Do not write rule summaries, paraphrase rule procedures, quote rulebook text, copy tables, or update live rules-routing indexes as part of this issue.
+This issue is mapping only. Mapping abstracts, topic labels, and candidate summary descriptions are allowed. Do not write GM-ready procedural rule summaries, quote rulebook text, copy tables, or update live rules-routing indexes as part of this issue.
 
 ## Required Context
 
@@ -88,7 +88,8 @@ git status --short
 
 - Do not commit protected raw source files.
 - Do not copy or quote source text into committed files or chat.
-- Do not summarize rules or paraphrase procedures.
+- Do not write GM-ready procedural rule summaries or paraphrase rule procedures.
+- Mapping abstracts, topic labels, and candidate summary descriptions are allowed when they help future summary authors.
 - Do not create verified rule summaries.
 - Do not update live rules lookup indexes unless a narrow map-oriented placeholder is explicitly needed for future work.
 - Preserve uncertainty with `Unknown`, `Needs source review`, or `blocked`.
