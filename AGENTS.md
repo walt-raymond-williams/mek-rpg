@@ -37,13 +37,14 @@ Good uses:
 - Independent review of substantial edits before commit.
 - Parallel exploration of separate files, subsystems, issues, or rules areas.
 - Splitting implementation across disjoint file sets.
-- Source-processing checks where one agent maps or edits and another checks copyright boundaries, page ranges, and acceptance criteria.
+- Source-processing checks where a second agent can independently verify page ranges, routing, acceptance criteria, or lookup usability.
 - Play support where one agent checks rules or campaign state while the main agent keeps GM flow moving.
 
 Default review expectation:
 
-- For substantial project-development or source-processing changes, use at least one sub-agent review before commit when the tool is available.
-- Use two independent reviewers for broad workflow changes, substantial rules summaries, source-processing outputs, or changes with high continuity or copyright risk.
+- For substantial project-development or source-processing changes, use one sub-agent review before commit when it materially improves quality and the tool is available.
+- Do not use a dedicated copyright reviewer by default. The main agent is responsible for the source-boundary checklist: paraphrase summaries, cite pages, and confirm raw source files are ignored and unstaged.
+- Use two independent reviewers only for broad workflow changes, complex implementation, large continuity-sensitive edits, or cases where the user explicitly requests extra review.
 - For small, obvious edits, a main-agent self-review is enough.
 
 Coordination rules:

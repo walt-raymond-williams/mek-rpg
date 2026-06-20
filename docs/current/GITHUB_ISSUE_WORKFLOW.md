@@ -70,7 +70,7 @@ For project development issues:
 
 1. Update changed docs, indexes, task state, and handoff status.
 2. Run relevant verification or record a blocker.
-3. Use sub-agent review before commit for substantial or high-risk work when the tool is available; use two reviewers for broad workflow changes, substantial rules summaries, source-processing outputs, or high continuity/copyright risk. Do not let unavailable sub-agent tooling block close-out.
+3. Use sub-agent review before commit only when it materially improves substantial or high-risk work. Do not use a dedicated copyright reviewer by default; the main agent handles the source-boundary checklist by confirming summaries are paraphrased, page-referenced, and free of staged raw source files. Use two reviewers only for broad workflow changes, complex implementation, large continuity-sensitive edits, or explicit user requests. Do not let unavailable sub-agent tooling block close-out.
 4. Confirm no protected raw source is staged.
 5. Commit a coherent change, referencing the issue when practical.
 6. Push to the tracked branch.
