@@ -10,6 +10,12 @@ Use this file to map summary files and topics to A Time of War page references a
 | Opposed actions | `rules/core/opposed-actions.md` | A Time of War PDF pages 41-42 / printed pages 39-40 | Draft |
 | Basic action resolution, modifiers, fumbles, high rolls, and margin | `rules/core/basic-action-resolution.md` | A Time of War PDF pages 42-44 / printed pages 40-42 | Draft |
 | Edge | `rules/core/edge.md` | A Time of War PDF pages 44-45 / printed pages 42-43 | Draft |
+| Character creation overview, methods, final touches, and character record completion | `rules/character-creation/overview.md` | A Time of War PDF pages 50-53 and 93-103 / printed pages 48-51 and 91-101 | Draft |
+| Lifepaths, Life Modules, affiliations, education, real-life modules, and skill fields | `rules/character-creation/lifepaths.md` | A Time of War PDF pages 50-87 / printed pages 48-85 | Draft |
+| Character creation attributes, prerequisites, optimization, and attribute advancement | `rules/character-creation/attributes.md` | A Time of War PDF pages 50-53, 87-92, and 332-336 / printed pages 48-51, 85-90, and 330-334 | Draft |
+| Character traits, trait points, categories, catalog routing, negative-trait XP, and trait advancement | `rules/character-creation/traits.md` | A Time of War PDF pages 87-92, 108-137, and 332-336 / printed pages 85-90, 106-135, and 330-334 | Draft |
+| Character skills, skill fields, linked attributes, target numbers, complexity, subskills, specialties, tiered skills, and training | `rules/character-creation/skills.md` | A Time of War PDF pages 84-92, 142-161, and 335-336 / printed pages 82-90, 140-159, and 333-334 | Draft |
+| XP awards, post-creation advancement, training, downtime, age, salary, rank, and power routing | `rules/character-creation/xp-advancement.md` | A Time of War PDF pages 50-53, 87-92, and 332-338 / printed pages 48-51, 85-90, and 330-336 | Draft |
 | Personal combat overview and turn flow | `rules/personal-combat/overview.md` | A Time of War PDF pages 166-167 / printed pages 164-165 | Draft |
 | Personal combat initiative | `rules/personal-combat/initiative.md` | A Time of War PDF pages 166-168 / printed pages 164-166 | Draft |
 | Personal combat action and movement | `rules/personal-combat/action-and-movement.md` | A Time of War PDF pages 168-172 / printed pages 166-170 | Draft |

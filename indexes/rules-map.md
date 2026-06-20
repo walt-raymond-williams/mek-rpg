@@ -4,10 +4,10 @@
 Core action summaries in `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge. These summaries determine when to roll, what kind of roll to use, how modifiers and margins work, and when a player can spend Edge.
 
 ## Character Creation
-Character creation covers concept, lifepaths, attributes, traits, skills, and advancement choices.
+Character creation in `rules/character-creation/` covers campaign fit, creation method selection, Life Modules, attributes, traits, skills, XP cleanup, final sheet review, starting equipment routing, and post-creation XP advancement. These summaries are procedural guides; exact module entries, trait catalogs, skill lists, XP tables, and sample sheets remain private source lookups.
 
 ## Skills and Traits
-Skills define trained capabilities. Traits modify a character's capabilities, resources, or complications.
+Skills define trained capabilities, subskills, specialties, training needs, and role coverage. Traits modify a character's capabilities, resources, social position, liabilities, vehicle access, and recurring campaign hooks.
 
 ## Personal Combat
 Personal combat in `rules/personal-combat/` handles RPG-scale fights using five-second turns: initiative, action and movement choices, ranged attacks, melee attacks, damage, wound effects, end-phase cleanup, and healing/recovery. It depends on core resolution for Action Checks and Opposed Actions. It should hand off to Classic BattleTech, MegaMek, or MekHQ when exact tactical unit combat matters.

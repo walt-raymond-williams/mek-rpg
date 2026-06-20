@@ -74,30 +74,95 @@ rules:
       - core.action-checks
       - core.basic-action-resolution
     status: draft
+  - id: character.overview
+    title: Character Creation Overview
+    subsystem: character-creation
+    summary: rules/character-creation/overview.md
+    source_pages:
+      pdf: [50, 51, 52, 53, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103]
+      printed: [48, 49, 50, 51, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101]
+    related:
+      - character.lifepaths
+      - character.attributes
+      - character.traits
+      - character.skills
+      - character.xp-advancement
+      - equipment.acquire-use
+    status: draft
   - id: character.lifepaths
-    title: Lifepaths
+    title: Lifepaths And Life Modules
     subsystem: character-creation
     summary: rules/character-creation/lifepaths.md
-    source_pages: []
+    source_pages:
+      pdf: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87]
+      printed: [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]
     related:
+      - character.overview
       - character.attributes
+      - character.traits
       - character.skills
-    status: placeholder
+    status: draft
   - id: character.attributes
     title: Attributes
     subsystem: character-creation
     summary: rules/character-creation/attributes.md
-    source_pages: []
-    related: []
-    status: placeholder
+    source_pages:
+      pdf: [50, 51, 52, 53, 87, 88, 89, 90, 91, 92, 332, 333, 334, 335, 336]
+      printed: [48, 49, 50, 51, 85, 86, 87, 88, 89, 90, 330, 331, 332, 333, 334]
+    related:
+      - character.overview
+      - character.lifepaths
+      - character.traits
+      - character.skills
+      - character.xp-advancement
+      - core.attribute-checks
+      - core.edge
+    status: draft
+  - id: character.traits
+    title: Traits
+    subsystem: character-creation
+    summary: rules/character-creation/traits.md
+    source_pages:
+      pdf: [87, 88, 89, 90, 91, 92, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 332, 333, 334, 335, 336]
+      printed: [85, 86, 87, 88, 89, 90, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 330, 331, 332, 333, 334]
+    related:
+      - character.overview
+      - character.lifepaths
+      - character.attributes
+      - character.skills
+      - character.xp-advancement
+      - equipment.acquire-use
+    status: draft
   - id: character.skills
     title: Character Skills
     subsystem: character-creation
     summary: rules/character-creation/skills.md
-    source_pages: []
+    source_pages:
+      pdf: [84, 85, 86, 87, 88, 89, 90, 91, 92, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 335, 336]
+      printed: [82, 83, 84, 85, 86, 87, 88, 89, 90, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 333, 334]
     related:
+      - character.overview
+      - character.lifepaths
+      - character.attributes
+      - character.traits
+      - character.xp-advancement
       - core.skill-checks
-    status: placeholder
+      - vehicles.mechwarrior-skills
+    status: draft
+  - id: character.xp-advancement
+    title: XP Advancement
+    subsystem: character-creation
+    summary: rules/character-creation/xp-advancement.md
+    source_pages:
+      pdf: [50, 51, 52, 53, 87, 88, 89, 90, 91, 92, 332, 333, 334, 335, 336, 337, 338]
+      printed: [48, 49, 50, 51, 85, 86, 87, 88, 89, 90, 330, 331, 332, 333, 334, 335, 336]
+    related:
+      - character.overview
+      - character.attributes
+      - character.traits
+      - character.skills
+      - core.edge
+    status: draft
   - id: combat.personal-overview
     title: Personal Combat Overview
     subsystem: personal-combat

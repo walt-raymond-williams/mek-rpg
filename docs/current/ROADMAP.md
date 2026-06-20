@@ -6,8 +6,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
-- Core resolution, personal combat, and equipment have draft paraphrased summaries with live router coverage and validation reports where applicable.
-- Character creation, campaign systems, vehicles/MechWarrior bridge, and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
+- Core resolution, character creation, personal combat, and equipment have draft paraphrased summaries with live router coverage and validation reports where applicable.
+- Campaign systems, vehicles/MechWarrior bridge, and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
@@ -18,13 +18,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ### Drafted And Routed
 
 - Core resolution: Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge.
+- Character creation: overview, lifepaths/Life Modules, attributes, traits, skills, and XP advancement.
 - Personal combat: overview/turn flow, initiative, action and movement, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
 - Equipment: acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear.
 - GM flow: scene loop, roll policy, session procedure, state-save checklist, and tactical handoff procedure.
 
 ### Placeholder-Level
 
-- Character creation: lifepaths, attributes, traits, skills, XP, and advancement choices.
 - Campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
 - Vehicles and MechWarrior bridge: piloting, gunnery, MechWarrior skills, RPG-to-Classic conversion, and vehicle/BattleMech operating procedures.
 - Glossary and deeper index metadata: stable term definitions, expanded page references, and manifest coverage for placeholder subsystems.
@@ -36,14 +36,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The campaign save helper and dice roller should be rechecked during the first real campaign setup and live-play session.
 
 ## Ready For Issue Candidates
-
-### Summarize character creation foundation
-
-- Status: Open
-- Issue: `#21`
-- Handoff: `docs/handoffs/active/summarize-character-creation-foundation.md`
-- Mode: Source processing / project development
-- Expected output: source-reviewed summaries for character creation overview, lifepaths, attributes, traits, skills, and XP/advancement routing; update task router, page index, manifest, and validation notes.
 
 ### Summarize campaign consequence systems
 
@@ -70,6 +62,17 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expected output: user-confirmed table-canon campaign save created from `campaigns/_template/`, active campaign pointer selected only with confirmation, short setup/play scene, state-save checklist use, helper-script validation, and follow-up issues for discovered gaps.
 
 ## Done
+
+### Summarize character creation foundation
+
+- Status: Done
+- Issue: `#21`
+- Handoff: `docs/handoffs/archive/summarize-character-creation-foundation.md`
+- Report: `docs/current/CHARACTER_CREATION_LOOKUP_VALIDATION.md`
+- Summaries: `rules/character-creation/overview.md`, `rules/character-creation/lifepaths.md`, `rules/character-creation/attributes.md`, `rules/character-creation/traits.md`, `rules/character-creation/skills.md`, and `rules/character-creation/xp-advancement.md`
+- Mode: Source processing / project development
+- Goal: Create source-reviewed, paraphrased character creation foundation summaries for future campaign setup and sheet review.
+- Acceptance: summaries follow the standard schema, preserve source page references, route through indexes and manifest, avoid copied catalogs/tables/sample sheets, record scenario validation, and defer deterministic character-output validation until real PC sections exist.
 
 ### Validate existing draft coverage
 
@@ -301,7 +304,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Backlog
 
-- Summarize skills and traits: expand routing and source references.
 - Expand personal combat, equipment, damage, and recovery beyond the current draft minimum only where play or validation finds missing detail.
 - Expand `indexes/task-router.md` after verified summaries exist.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.

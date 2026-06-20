@@ -2,7 +2,7 @@
 
 Use this file first. Match the user's request to the most relevant files, then read those files before answering.
 
-Coverage note: core resolution, personal combat, and equipment entries route to draft paraphrased summaries with source page references. Character creation, campaign systems, and vehicles/Mechs entries currently route to placeholder summaries unless a row states otherwise; use those placeholder files to identify the gap and cite `Needs source review`, not as rules authority.
+Coverage note: core resolution, character creation, personal combat, and equipment entries route to draft paraphrased summaries with source page references. Campaign systems and vehicles/Mechs entries currently route to placeholder summaries unless a row states otherwise; use those placeholder files to identify the gap and cite `Needs source review`, not as rules authority.
 
 | User question or task | Read first | Also read |
 | --- | --- | --- |
@@ -16,9 +16,12 @@ Coverage note: core resolution, personal combat, and equipment entries route to 
 | modifiers, fumbles, high rolls, or margin of success | `rules/core/basic-action-resolution.md` | `rules/core/action-checks.md`, `rules/core/opposed-actions.md` |
 | interpreting how well or poorly a roll succeeded or failed | `rules/core/basic-action-resolution.md` | `rules/core/action-checks.md`, `rules/core/opposed-actions.md` |
 | spending or recovering Edge | `rules/core/edge.md` | `rules/core/basic-action-resolution.md`, `rules/campaign/advancement.md` |
-| character creation | `rules/character-creation/overview.md` | `rules/character-creation/lifepaths.md`, `rules/character-creation/attributes.md`, `rules/character-creation/traits.md`, `rules/character-creation/skills.md` |
-| lifepaths | `rules/character-creation/lifepaths.md` | `rules/character-creation/overview.md` |
-| skills | `rules/character-creation/skills.md` | `rules/character-creation/attributes.md`, `rules/vehicles-and-mechs/mechwarrior-skills.md` |
+| character creation, starting a PC, building a unique NPC, or reviewing a character sheet | `rules/character-creation/overview.md` | `rules/character-creation/lifepaths.md`, `rules/character-creation/attributes.md`, `rules/character-creation/traits.md`, `rules/character-creation/skills.md`, `rules/character-creation/xp-advancement.md` |
+| lifepaths, life modules, affiliation, childhood, education, skill fields, or pre-play career history | `rules/character-creation/lifepaths.md` | `rules/character-creation/overview.md`, `rules/character-creation/skills.md`, `rules/character-creation/traits.md` |
+| assigning or improving character attributes during creation or advancement | `rules/character-creation/attributes.md` | `rules/character-creation/overview.md`, `rules/core/attribute-checks.md`, `rules/core/edge.md` |
+| choosing, buying, recording, improving, or interpreting character traits | `rules/character-creation/traits.md` | `rules/character-creation/overview.md`, `rules/equipment/overview.md`, `rules/campaign/contacts.md`, `rules/campaign/reputation.md` |
+| choosing, buying, recording, training, or improving skills | `rules/character-creation/skills.md` | `rules/core/skill-checks.md`, `rules/character-creation/attributes.md`, `rules/vehicles-and-mechs/mechwarrior-skills.md` |
+| XP awards, spending XP, training, downtime learning, aging effects, salary, rank, or post-creation advancement | `rules/character-creation/xp-advancement.md` | `rules/campaign/advancement.md`, `campaign-state/active-campaign.md`, active `campaigns/<campaign-id>/pcs.md` |
 | personal combat, firefight, brawl, ambush, or character-scale fight | `rules/personal-combat/overview.md` | `rules/personal-combat/initiative.md`, `rules/personal-combat/action-and-movement.md`, `rules/personal-combat/damage.md` |
 | initiative, held action, squad initiative, or who acts first in personal combat | `rules/personal-combat/initiative.md` | `rules/personal-combat/overview.md`, `rules/personal-combat/action-and-movement.md` |
 | moving, sprinting, crawling, climbing, swimming, taking cover, or using actions during personal combat | `rules/personal-combat/action-and-movement.md` | `rules/personal-combat/overview.md`, `rules/core/basic-action-resolution.md` |
@@ -37,7 +40,7 @@ Coverage note: core resolution, personal combat, and equipment entries route to 
 | MechWarrior skills | `rules/vehicles-and-mechs/mechwarrior-skills.md` | `rules/vehicles-and-mechs/piloting.md`, `rules/vehicles-and-mechs/gunnery.md` |
 | converting RPG characters to Classic BattleTech pilots | `rules/vehicles-and-mechs/converting-to-classic-battletech.md` | `gm/switch-to-classic-battletech.md` |
 | switching from RPG mode to BattleTech tactical combat | `gm/switch-to-classic-battletech.md` | `rules/vehicles-and-mechs/overview.md` |
-| campaign advancement | `rules/campaign/advancement.md` | `rules/character-creation/xp-advancement.md` |
+| campaign advancement beyond character XP, including campaign rewards, obligations, rank consequences, or long-term advancement systems | `rules/campaign/advancement.md` | `rules/character-creation/xp-advancement.md` |
 | NPCs and contacts | `rules/campaign/contacts.md` | `campaign-state/active-campaign.md`, active `campaigns/<campaign-id>/npcs.md`, active `campaigns/<campaign-id>/factions.md`, active `campaigns/<campaign-id>/relationships.md` |
 | running a scene | `gm/scene-loop.md` | `gm/roll-policy.md`, `campaign-state/active-campaign.md`, active `campaigns/<campaign-id>/current-state.md`, active `campaigns/<campaign-id>/missions.md`, active `campaigns/<campaign-id>/hooks.md` |
 | running a kid-friendly session | `gm/kid-friendly-mode.md` | `gm/scene-loop.md`, `gm/roll-policy.md` |
