@@ -6,15 +6,18 @@
 
 ## Next
 
-- Create helper script to start a new campaign save folder from `campaigns/_template/`.
+- Issue `#15`: create helper script to start a new campaign save folder from `campaigns/_template/`.
+- Issue `#16`: add a simple dice roller script for common live-play rolls.
+- Issue `#17`: refresh the roadmap for full A Time of War coverage.
+- Issue `#18`: perform a full stale-reference and consistency review.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
 ## Backlog
 
-- Create first playable campaign-state structure.
-- Expand GM session logging procedure.
-- Add campaign-local session archive helper or checklist after more play.
+- Create first real campaign save folder after the user selects a campaign frame.
+- Expand GM session logging procedure after more play exposes concrete gaps.
+- Add campaign-local session archive helper after more play if `previous-sessions.md` becomes cumbersome.
 - Add richer DropShip and unit asset sheets after transport ownership rules are summarized.
 - Create verified paraphrased rule summaries.
 - Expand rules routing indexes as summaries become available.
