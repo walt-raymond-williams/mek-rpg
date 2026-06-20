@@ -16,7 +16,18 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
 - Issue `#12` ran the first manual playtest and captured follow-up gaps from a Galatea DropShip purchase scene.
 - Issue `#13` designed durable campaign memory tracking around campaign-specific save folders/state roots.
+- Issue `#14` tracks the follow-up review fix to align stale docs/router references with the new campaign save-folder model.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
+
+## Ready For Issue
+
+### Align campaign-memory references after issue `#13` review
+
+- Status: Issue created; ready
+- Issue: `#14`
+- Handoff: `docs/handoffs/active/align-campaign-memory-references.md`
+- Mode: Project development
+- Expected output: update stale router, setting, profile, README, and GM references so persistent play state consistently uses `campaign-state/active-campaign.md` and the selected `campaigns/<campaign-id>/` save folder; add a lightweight session-history convention.
 
 ## Done
 
@@ -139,7 +150,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Goal: Add durable current docs, templates, mode routing, and close-out discipline adapted to a private A Time of War rules and GM workspace.
 - Acceptance: `AGENTS.md` routes play, rules lookup, project development, and source processing; current docs and templates exist; no PDF is processed; changes are committed and pushed.
 
-## Ready For Issue
+## Historical Ready Issues
 
 ### Validate personal combat lookup flow by hand
 

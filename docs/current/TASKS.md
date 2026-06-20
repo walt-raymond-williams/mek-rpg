@@ -2,7 +2,7 @@
 
 ## Now
 
-- None.
+- Issue `#14`: align stale campaign-memory references after the issue `#13` review.
 
 ## Next
 
