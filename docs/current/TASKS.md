@@ -6,7 +6,12 @@
 
 ## Next
 
-- Create the next issue from the pipeline plan: summarize the personal combat and recovery minimum.
+- Start issue `#7`: summarize the personal combat and recovery minimum.
+- Then run issue `#8`: validate personal combat lookup flow by hand.
+- Issue `#9`: add equipment minimum summaries.
+- Issue `#10`: create the BattleTech campaign setting seed.
+- Issue `#11`: build first playable GM mode.
+- Issue `#12`: run first manual playtest and file follow-up bugs.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
 
@@ -17,11 +22,13 @@
 - Create verified paraphrased rule summaries.
 - Expand rules routing indexes as summaries become available.
 - Add tactical handoff notes for Classic BattleTech, MegaMek, and MekHQ.
+- Repeat manual validation/playtest checkpoints after adding major playable layers.
 
 ## Blocked
 
-- Broader source summarization, routing updates, and validation are blocked until the core pipeline proves out.
-- Follow-up issues for mapping, summarization, validation, routing, and first playable GM mode should be created gradually from `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`.
+- Issue `#8` is blocked until issue `#7` creates personal-combat summaries and routing.
+- Issue `#11` is blocked until enough play summaries and the setting seed exist.
+- Issue `#12` is blocked until issue `#11` creates first playable GM mode.
 
 ## Done
 
@@ -38,3 +45,4 @@
 - Issue `#5` implemented: core summaries under `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge; live indexes and manifest route to the new summaries.
 - Issue `#6` created to validate the core lookup flow after core summaries exist.
 - Issue `#6` implemented: `docs/current/CORE_LOOKUP_VALIDATION.md` records scenario lookup tests for core resolution; narrow router and GM bridge fixes make live lookup start from `indexes/task-router.md`.
+- Issues `#7` through `#12` created with active handoffs for personal combat, personal-combat validation, equipment minimum, campaign setting seed, first playable GM mode, and first manual playtest/bug capture.

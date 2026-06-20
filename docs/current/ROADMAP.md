@@ -8,7 +8,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
 - Issue `#5` summarized core resolution rules from the mapped Basic Gameplay ranges.
 - Issue `#6` validated the core lookup flow against scenario prompts.
-- The next recommended work is to create the personal combat and recovery minimum issue from `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`.
+- Issues `#7` through `#12` define the next playable-GM runway: personal combat, combat lookup validation, equipment minimum, campaign setting seed, first playable GM mode, and a manual playtest/bug pass.
+- The next execution task is issue `#7`: summarize the personal combat and recovery minimum.
+- Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
 
@@ -66,18 +68,54 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue
 
-### Create first playable GM mode
-
-- Status: Candidate
-- Mode: Project development
-- Expected output: usable campaign-state structure, session log procedure, initial scene flow, and player-facing safety posture
-
 ### Summarize personal combat and recovery minimum
 
-- Status: Candidate
+- Status: Issue created
+- Issue: `#7`
+- Handoff: `docs/handoffs/active/summarize-personal-combat-recovery-minimum.md`
 - Mode: Source processing / project development
-- Expected output: paraphrased summaries and routing for personal combat initiative, attacks, damage, wounds, treatment, and recovery.
+- Expected output: paraphrased summaries and routing for personal combat initiative, turn flow, action/movement basics, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
 - Blocker: use mapped source ranges from `source/atow-chapter-section-map.md` and preserve protected-source boundaries.
+
+### Validate personal combat lookup flow by hand
+
+- Status: Issue created; blocked until issue `#7`
+- Issue: `#8`
+- Handoff: `docs/handoffs/active/validate-personal-combat-lookup-flow.md`
+- Mode: Project development / manual validation
+- Expected output: scenario lookup report, narrow routing fixes, and follow-up issues for personal-combat lookup bugs.
+
+### Add equipment minimum summaries
+
+- Status: Issue created; recommended after issue `#7`
+- Issue: `#9`
+- Handoff: `docs/handoffs/active/add-equipment-minimum-summaries.md`
+- Mode: Source processing / project development
+- Expected output: paraphrased gear, weapons, armor/protection, electronics, and medical/personal gear lookup summaries with page references and no copied tables.
+
+### Create BattleTech campaign setting seed
+
+- Status: Issue created
+- Issue: `#10`
+- Handoff: `docs/handoffs/active/create-battletech-campaign-setting-seed.md`
+- Mode: Project development
+- Expected output: durable campaign setting assumptions for era, faction focus, canon strictness, tone, starting region, and initial scenario hooks.
+
+### Build first playable GM mode
+
+- Status: Issue created; blocked until enough play summaries and setting seed exist
+- Issue: `#11`
+- Handoff: `docs/handoffs/active/build-first-playable-gm-mode.md`
+- Mode: Project development
+- Expected output: usable campaign-state structure, session procedure, first test mission/scaffold, and bug/gap reporting path.
+
+### Run first manual playtest and file follow-up bugs
+
+- Status: Issue created; blocked until issue `#11`
+- Issue: `#12`
+- Handoff: `docs/handoffs/active/run-first-manual-playtest-and-file-follow-up-bugs.md`
+- Mode: Play mode / project development close-out
+- Expected output: short manual playtest, campaign/playtest state updates, and follow-up bug or missing-rule issues.
 
 ## Backlog
 
@@ -91,6 +129,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Create first test campaign setup with PCs, NPCs, mission, and hooks.
 - Validate all summaries against source pages.
 - Add MekHQ / MegaMek integration notes for encounter handoff, pilot conversion, unit setup, and campaign updates.
+- Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
 
 ## Existing Foundation
 
