@@ -70,17 +70,22 @@ Before starting project development work, move or note the task in `Now`. When i
 
 ## Automation Strategy
 
-Use scripts for deterministic repository, routing, validation, and arithmetic work. Keep the LLM responsible for judgment-heavy work: GM narration, player-facing scene flow, rules interpretation from summaries, provisional rulings, source paraphrase, and deciding what matters in context.
+Use scripts for deterministic campaign-state lifecycle, repository validation, routing support, and arithmetic work. Keep the LLM responsible for judgment-heavy work: GM narration, player-facing scene flow, rules interpretation from summaries, provisional rulings, source paraphrase, and deciding what matters in context.
 
-Automation is useful now, even before full rules coverage, if it is treated as workflow infrastructure rather than encoded game authority. Early scripts should reduce token use, prevent repeated file-scanning, and make future summaries easier to maintain. Avoid scripts that hard-code incomplete A Time of War procedures before the relevant summaries are source-reviewed.
+Automation is useful now, even before full rules coverage, if it is treated as workflow infrastructure rather than encoded game authority. Early scripts should reduce token use, prevent repeated file-scanning, and make campaign state safer to create, load, save, and validate. Avoid scripts that hard-code incomplete A Time of War procedures before the relevant summaries are source-reviewed.
+
+Campaign-state automation is the first priority. These helpers should make sure the workspace can reliably create a campaign save, load the correct save, validate required files, guide character and campaign setup outputs, and flag missing state before play continues. They should not invent campaign facts or rewrite narrative state without explicit input.
 
 Preferred early automation targets:
 
-- `Rules route helper`: take a natural-language rules or play prompt and return the matching `indexes/task-router.md` row, files to read, manifest status, and source-reference warnings.
-- `Rules index validator`: check that manifest entries, router links, page-reference entries, related IDs, and summary files agree.
-- `Source-boundary checker`: verify ignored PDF and extracted-text paths remain ignored and unstaged before commits.
+- `Campaign save validator`: check that a campaign save has the expected files, required headings, and no misplaced active campaign state.
 - `Active campaign context loader`: resolve `campaign-state/active-campaign.md`, identify the selected `campaigns/<campaign-id>/` folder, list standard campaign files, and flag missing files.
-- `Campaign save validator`: check that a campaign save has the expected files and does not mix active campaign state with legacy flat `campaign-state/` files.
+- `Campaign setup checker`: after a campaign starts, verify that setting files, PCs, NPCs, factions, locations, assets, missions, hooks, safety/tone notes, and session logs exist in the selected save folder.
+- `Character-output validator`: once character creation support exists, check that character files or sheet sections include the required fields, marked gaps, source-review status, and campaign links.
+- `Session save/checkpoint helper`: produce a deterministic save checklist or context packet for the LLM after meaningful play, based on `gm/state-save-checklist.md`.
+- `Source-boundary checker`: verify ignored PDF and extracted-text paths remain ignored and unstaged before commits.
+- `Rules route helper`: optionally take a natural-language rules or play prompt and return the matching `indexes/task-router.md` row, files to read, manifest status, and source-reference warnings.
+- `Rules index validator`: check that manifest entries, router links, page-reference entries, related IDs, and summary files agree.
 - `Rules coverage reporter`: summarize draft, placeholder, needs-source-review, and verified coverage by subsystem.
 - `Roll/check arithmetic helper`: perform deterministic dice and margin math after the GM or rules summary has chosen the applicable procedure.
 - `Issue and handoff scaffolder`: create standard issue or handoff shapes when a task is ready, without forcing exploratory planning ideas into GitHub Issues too early.
@@ -89,10 +94,11 @@ PowerShell is the default scripting choice for this Windows-first workspace beca
 
 Introduce automation in layers:
 
-1. First automate safety and navigation: source-boundary checks, index validation, route lookup, and active-campaign loading.
-2. Then automate reporting: coverage status, missing metadata, stale references, and campaign-save completeness.
+1. First automate campaign-state safety and navigation: active-campaign loading, campaign-save validation, setup checks, and source-boundary checks.
+2. Then automate reporting: campaign-save completeness, missing metadata, stale references, and rules coverage status.
 3. Then automate controlled calculations: dice totals, modifiers, margins, and other math already described by committed summaries.
-4. Defer rules-authoritative automation until the relevant summaries are source-reviewed, routed, and validated.
+4. Add rules-routing helpers only where the inputs and outputs are clear enough to beat or support LLM judgment.
+5. Defer rules-authoritative automation until the relevant summaries are source-reviewed, routed, and validated.
 
 Do not maintain duplicate truth where a generated file can replace a manual one. If a script generates or validates an index, document which file is the source of truth and which output is derived. When automation changes expected workflow behavior, update `docs/current/KNOWN_COMMANDS.md`, `scripts/README.md`, and this section.
 
