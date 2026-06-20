@@ -98,22 +98,148 @@ rules:
     related:
       - core.skill-checks
     status: placeholder
-  - id: combat.damage
-    title: Damage
+  - id: combat.personal-overview
+    title: Personal Combat Overview
     subsystem: personal-combat
-    summary: rules/personal-combat/damage.md
-    source_pages: []
-    related: []
-    status: placeholder
+    summary: rules/personal-combat/overview.md
+    source_pages:
+      pdf: [166, 167]
+      printed: [164, 165]
+    related:
+      - combat.initiative
+      - combat.action-movement
+      - combat.ranged
+      - combat.melee
+      - combat.damage-resolution
+      - combat.damage-effects
+      - combat.end-phase
+      - combat.healing-recovery
+      - gm.switch-to-classic-battletech
+    status: draft
+  - id: combat.initiative
+    title: Personal Combat Initiative
+    subsystem: personal-combat
+    summary: rules/personal-combat/initiative.md
+    source_pages:
+      pdf: [166, 167, 168]
+      printed: [164, 165, 166]
+    related:
+      - combat.personal-overview
+      - combat.action-movement
+    status: draft
+  - id: combat.action-movement
+    title: Action And Movement
+    subsystem: personal-combat
+    summary: rules/personal-combat/action-and-movement.md
+    source_pages:
+      pdf: [168, 169, 170, 171, 172]
+      printed: [166, 167, 168, 169, 170]
+    related:
+      - combat.personal-overview
+      - combat.initiative
+      - combat.ranged
+      - combat.melee
+      - combat.end-phase
+      - core.basic-action-resolution
+    status: draft
   - id: combat.ranged-attacks
     title: Ranged Attacks
     subsystem: personal-combat
     summary: rules/personal-combat/ranged-attacks.md
-    source_pages: []
+    source_pages:
+      pdf: [173, 174, 175, 176, 180]
+      printed: [171, 172, 173, 174, 178]
     related:
-      - combat.damage
+      - combat.action-movement
+      - combat.damage-resolution
+      - combat.damage-effects
       - core.basic-action-resolution
-    status: placeholder
+      - core.skill-checks
+    status: draft
+  - id: combat.ranged
+    title: Ranged Combat
+    subsystem: personal-combat
+    summary: rules/personal-combat/ranged-attacks.md
+    source_pages:
+      pdf: [173, 174, 175, 176, 180]
+      printed: [171, 172, 173, 174, 178]
+    related:
+      - combat.ranged-attacks
+      - combat.damage-resolution
+    status: draft
+  - id: combat.melee
+    title: Melee Combat
+    subsystem: personal-combat
+    summary: rules/personal-combat/melee-attacks.md
+    source_pages:
+      pdf: [177, 178, 179, 180]
+      printed: [175, 176, 177, 178]
+    related:
+      - combat.action-movement
+      - combat.damage-resolution
+      - combat.damage-effects
+      - core.opposed-actions
+    status: draft
+  - id: combat.damage
+    title: Damage
+    subsystem: personal-combat
+    summary: rules/personal-combat/damage.md
+    source_pages:
+      pdf: [179, 180, 181, 182, 183, 184, 185, 186, 187]
+      printed: [177, 178, 179, 180, 181, 182, 183, 184, 185]
+    related:
+      - combat.damage-resolution
+      - combat.damage-effects
+      - combat.end-phase
+    status: draft
+  - id: combat.damage-resolution
+    title: Damage Resolution
+    subsystem: personal-combat
+    summary: rules/personal-combat/damage.md
+    source_pages:
+      pdf: [179, 180, 181, 182, 183, 184]
+      printed: [177, 178, 179, 180, 181, 182]
+    related:
+      - combat.ranged
+      - combat.melee
+      - combat.damage-effects
+      - combat.end-phase
+    status: draft
+  - id: combat.damage-effects
+    title: Damage Effects
+    subsystem: personal-combat
+    summary: rules/personal-combat/wounds.md
+    source_pages:
+      pdf: [184, 185, 186, 187]
+      printed: [182, 183, 184, 185]
+    related:
+      - combat.damage-resolution
+      - combat.end-phase
+      - combat.healing-recovery
+    status: draft
+  - id: combat.end-phase
+    title: End Phase
+    subsystem: personal-combat
+    summary: rules/personal-combat/end-phase.md
+    source_pages:
+      pdf: [191]
+      printed: [189]
+    related:
+      - combat.damage-resolution
+      - combat.damage-effects
+      - combat.healing-recovery
+    status: draft
+  - id: combat.healing-recovery
+    title: Healing And Recovery
+    subsystem: personal-combat
+    summary: rules/personal-combat/recovery.md
+    source_pages:
+      pdf: [194, 195, 196, 197]
+      printed: [192, 193, 194, 195]
+    related:
+      - combat.damage-effects
+      - combat.end-phase
+    status: draft
   - id: vehicles.classic-conversion
     title: Converting to Classic BattleTech
     subsystem: vehicles-and-mechs

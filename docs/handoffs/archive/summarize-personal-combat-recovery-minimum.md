@@ -6,7 +6,7 @@
 - Roadmap entry: Summarize personal combat and recovery minimum
 - Mode: Source processing / project development
 - Priority: High
-- Status: Ready
+- Status: Complete
 
 ## Goal
 
@@ -114,4 +114,13 @@ git diff --cached --name-only | Select-String -Pattern '^(source/atow-pdf/|sourc
 
 ## Open Questions
 
-- Should the issue use `rules/personal-combat/` paths already present in the repo, or migrate mapped `rules/combat/` candidate paths into the existing directory? Prefer the existing live directory unless source review shows a better reason to change.
+- Resolved: used the existing live `rules/personal-combat/` directory rather than creating a parallel `rules/combat/` tree.
+
+## Completion Notes
+
+- Added draft, paraphrased summaries for personal combat overview, initiative, action and movement, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
+- Updated live lookup files: `indexes/task-router.md`, `indexes/page-reference-index.md`, `indexes/rules-map.md`, `indexes/subsystem-index.md`, and `indexes/manifest.yaml`.
+- Kept tactical BattleTech handoff explicit in summaries and routing.
+- Two sub-agent reviews completed before commit:
+  - Copernicus: routing/completeness review, no blocking findings.
+  - Socrates: source-boundary/copyright review, no blocking findings.

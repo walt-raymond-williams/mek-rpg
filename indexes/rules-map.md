@@ -10,10 +10,10 @@ Character creation covers concept, lifepaths, attributes, traits, skills, and ad
 Skills define trained capabilities. Traits modify a character's capabilities, resources, or complications.
 
 ## Personal Combat
-Personal combat handles initiative, ranged attacks, melee attacks, damage, wounds, and recovery outside full BattleTech tactical combat.
+Personal combat in `rules/personal-combat/` handles RPG-scale fights using five-second turns: initiative, action and movement choices, ranged attacks, melee attacks, damage, wound effects, end-phase cleanup, and healing/recovery. It depends on core resolution for Action Checks and Opposed Actions. It should hand off to Classic BattleTech, MegaMek, or MekHQ when exact tactical unit combat matters.
 
 ## Damage and Recovery
-Damage and recovery cover immediate harm, wound effects, treatment, downtime, and lasting consequences.
+Damage and recovery cover immediate harm, standard damage, fatigue, stun, consciousness, bleeding, treatment, downtime, and lasting consequences. Personal-combat summaries own the immediate rules; campaign files should own long-term state and story consequences.
 
 ## Equipment
 Equipment covers weapons, armor, and personal gear used in RPG-scale scenes.

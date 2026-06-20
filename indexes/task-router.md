@@ -17,11 +17,15 @@ Use this file first. Match the user's request to the most relevant files, then r
 | character creation | `rules/character-creation/overview.md` | `rules/character-creation/lifepaths.md`, `rules/character-creation/attributes.md`, `rules/character-creation/traits.md`, `rules/character-creation/skills.md` |
 | lifepaths | `rules/character-creation/lifepaths.md` | `rules/character-creation/overview.md` |
 | skills | `rules/character-creation/skills.md` | `rules/character-creation/attributes.md`, `rules/vehicles-and-mechs/mechwarrior-skills.md` |
-| personal combat | `rules/personal-combat/overview.md` | `rules/personal-combat/initiative.md`, `rules/personal-combat/damage.md` |
-| ranged attacks | `rules/personal-combat/ranged-attacks.md` | `rules/core/basic-action-resolution.md`, `rules/personal-combat/damage.md` |
-| melee attacks | `rules/personal-combat/melee-attacks.md` | `rules/personal-combat/damage.md` |
-| damage and wounds | `rules/personal-combat/damage.md` | `rules/personal-combat/wounds.md`, `rules/campaign/injuries-recovery.md` |
-| recovery | `rules/personal-combat/recovery.md` | `rules/campaign/injuries-recovery.md` |
+| personal combat, firefight, brawl, ambush, or character-scale fight | `rules/personal-combat/overview.md` | `rules/personal-combat/initiative.md`, `rules/personal-combat/action-and-movement.md`, `rules/personal-combat/damage.md` |
+| initiative, held action, squad initiative, or who acts first in personal combat | `rules/personal-combat/initiative.md` | `rules/personal-combat/overview.md`, `rules/personal-combat/action-and-movement.md` |
+| moving, sprinting, crawling, climbing, swimming, taking cover, or using actions during personal combat | `rules/personal-combat/action-and-movement.md` | `rules/personal-combat/overview.md`, `rules/core/basic-action-resolution.md` |
+| ranged attacks, shooting, thrown weapons, grenades, cover, line of sight, burst fire, suppression fire, blind fire, or indirect fire | `rules/personal-combat/ranged-attacks.md` | `rules/core/skill-checks.md`, `rules/core/basic-action-resolution.md`, `rules/personal-combat/damage.md` |
+| melee attacks, brawling, knives, martial arts, grappling, or close combat | `rules/personal-combat/melee-attacks.md` | `rules/core/opposed-actions.md`, `rules/personal-combat/damage.md`, `rules/personal-combat/wounds.md` |
+| damage from an attack, fall, fire, poison, suffocation, bleeding source, armor interaction, or fatigue damage | `rules/personal-combat/damage.md` | `rules/personal-combat/wounds.md`, `rules/personal-combat/end-phase.md`, `rules/equipment/armor.md` |
+| injury penalties, stun, unconsciousness, bleeding, death, tactical kill, or wound effects | `rules/personal-combat/wounds.md` | `rules/personal-combat/damage.md`, `rules/personal-combat/end-phase.md`, `rules/personal-combat/recovery.md` |
+| end of combat turn, continuous damage, fatigue accumulation, recovering fatigue in combat, or extended action progress | `rules/personal-combat/end-phase.md` | `rules/personal-combat/damage.md`, `rules/personal-combat/wounds.md` |
+| recovery, stabilization, medical care, surgery, healing, downtime after injury, or recovering fatigue after combat | `rules/personal-combat/recovery.md` | `rules/personal-combat/wounds.md`, `rules/personal-combat/end-phase.md`, `rules/campaign/injuries-recovery.md` |
 | equipment | `rules/equipment/overview.md` | `rules/equipment/weapons.md`, `rules/equipment/armor.md`, `rules/equipment/personal-gear.md` |
 | MechWarrior skills | `rules/vehicles-and-mechs/mechwarrior-skills.md` | `rules/vehicles-and-mechs/piloting.md`, `rules/vehicles-and-mechs/gunnery.md` |
 | converting RPG characters to Classic BattleTech pilots | `rules/vehicles-and-mechs/converting-to-classic-battletech.md` | `gm/switch-to-classic-battletech.md` |

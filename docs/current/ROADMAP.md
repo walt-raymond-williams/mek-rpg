@@ -9,10 +9,20 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#5` summarized core resolution rules from the mapped Basic Gameplay ranges.
 - Issue `#6` validated the core lookup flow against scenario prompts.
 - Issues `#7` through `#12` define the next playable-GM runway: personal combat, combat lookup validation, equipment minimum, campaign setting seed, first playable GM mode, and a manual playtest/bug pass.
-- The next execution task is issue `#7`: summarize the personal combat and recovery minimum.
+- Issue `#7` summarized the personal combat and recovery minimum.
+- The next execution task is issue `#8`: validate the personal combat lookup flow by hand.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Summarize personal combat and recovery minimum
+
+- Status: Done
+- Issue: `#7`
+- Handoff: `docs/handoffs/archive/summarize-personal-combat-recovery-minimum.md`
+- Summaries: `rules/personal-combat/overview.md`, `rules/personal-combat/initiative.md`, `rules/personal-combat/action-and-movement.md`, `rules/personal-combat/ranged-attacks.md`, `rules/personal-combat/melee-attacks.md`, `rules/personal-combat/damage.md`, `rules/personal-combat/wounds.md`, `rules/personal-combat/end-phase.md`, and `rules/personal-combat/recovery.md`
+- Goal: Create the first playable personal-combat rules layer for initiative, turn flow, movement/action basics, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
+- Acceptance: summaries follow the standard schema, preserve mapped source page references, route live lookup through indexes and manifest, keep tactical BattleTech handoff explicit, and avoid committed raw source text or copied tables.
 
 ### Validate core lookup flow
 
@@ -68,18 +78,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue
 
-### Summarize personal combat and recovery minimum
-
-- Status: Issue created
-- Issue: `#7`
-- Handoff: `docs/handoffs/active/summarize-personal-combat-recovery-minimum.md`
-- Mode: Source processing / project development
-- Expected output: paraphrased summaries and routing for personal combat initiative, turn flow, action/movement basics, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
-- Blocker: use mapped source ranges from `source/atow-chapter-section-map.md` and preserve protected-source boundaries.
-
 ### Validate personal combat lookup flow by hand
 
-- Status: Issue created; blocked until issue `#7`
+- Status: Issue created
 - Issue: `#8`
 - Handoff: `docs/handoffs/active/validate-personal-combat-lookup-flow.md`
 - Mode: Project development / manual validation
