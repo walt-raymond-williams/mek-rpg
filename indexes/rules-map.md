@@ -16,7 +16,7 @@ Personal combat in `rules/personal-combat/` handles RPG-scale fights using five-
 Damage and recovery cover immediate harm, standard damage, fatigue, stun, consciousness, bleeding, treatment, downtime, and lasting consequences. Personal-combat summaries own the immediate rules; campaign files should own long-term state and story consequences.
 
 ## Equipment
-Equipment covers weapons, armor, and personal gear used in RPG-scale scenes.
+Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: personal weapons, ammunition, explosives, armor and protective gear, electronics, medical gear, power supplies, repair tools, survival gear, and espionage/security gear. These summaries are lookup guides, not reproduced catalogs; exact item stats, table values, kit contents, and device notes remain in the private source pages.
 
 ## Vehicles and BattleMechs
 Vehicle and BattleMech rules connect RPG characters to piloting, gunnery, MechWarrior capabilities, and tactical conversions.

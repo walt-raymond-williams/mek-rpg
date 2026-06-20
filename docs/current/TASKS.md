@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#9`: add equipment minimum summaries.
 - Issue `#10`: create the BattleTech campaign setting seed.
 - Issue `#11`: build first playable GM mode.
 - Issue `#12`: run first manual playtest and file follow-up bugs.
@@ -45,3 +44,4 @@
 - Issues `#7` through `#12` created with active handoffs for personal combat, personal-combat validation, equipment minimum, campaign setting seed, first playable GM mode, and first manual playtest/bug capture.
 - Issue `#7` implemented: personal combat and recovery summaries under `rules/personal-combat/` cover overview/turn flow, initiative, action and movement, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery; live indexes and manifest route to the new summaries.
 - Issue `#8` implemented: `docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md` records manual lookup tests for initiative, ranged attacks, melee/grappling, damage/wounds, treatment/recovery, and tactical BattleTech handoff; no router bug was found, and caveats are recorded for equipment, campaign recovery, and table-heavy details.
+- Issue `#9` implemented: equipment summaries under `rules/equipment/` cover acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear; live indexes and manifest route to the new summaries while exact item stats and table-heavy details remain source-cited.

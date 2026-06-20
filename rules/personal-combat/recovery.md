@@ -52,6 +52,7 @@ When the injury is severe, tell the table what is known and what needs source in
 - `rules/personal-combat/wounds.md`
 - `rules/personal-combat/end-phase.md`
 - `rules/campaign/injuries-recovery.md`
+- `rules/equipment/medical-gear.md`
 - `rules/equipment/personal-gear.md`
 - `rules/equipment/overview.md`
 - `gm/scene-loop.md`

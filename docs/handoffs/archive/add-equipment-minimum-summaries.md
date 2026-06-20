@@ -6,7 +6,7 @@
 - Roadmap entry: Add equipment minimum summaries
 - Mode: Source processing / project development
 - Priority: Medium
-- Status: Ready after personal combat minimum, or earlier if gear lookup blocks play
+- Status: Complete
 
 ## Goal
 
@@ -100,4 +100,11 @@ git check-ignore source/atow-pdf/example.pdf source/atow-text/page-0001.txt
 
 ## Open Questions
 
-- Whether medical gear should be summarized here or deferred until recovery/campaign consequences expose the exact live-play need.
+- Answered during implementation: medical gear is summarized here because it closes the personal-combat recovery equipment caveat from issue `#8` and is included in the mapped equipment health-care range.
+
+## Completion Notes
+
+- Added equipment summaries for acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear.
+- Updated router, page-reference index, rules map, subsystem index, and manifest entries.
+- Linked recovery lookup to medical gear.
+- Preserved table-heavy item details as private source page references.

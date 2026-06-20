@@ -11,10 +11,20 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issues `#7` through `#12` define the next playable-GM runway: personal combat, combat lookup validation, equipment minimum, campaign setting seed, first playable GM mode, and a manual playtest/bug pass.
 - Issue `#7` summarized the personal combat and recovery minimum.
 - Issue `#8` validated the personal combat lookup flow by hand.
-- The next execution task is issue `#9`: add equipment minimum summaries.
+- Issue `#9` added the minimum equipment lookup layer.
+- The next execution task is issue `#10`: create the BattleTech campaign setting seed.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
+
+### Add equipment minimum summaries
+
+- Status: Done
+- Issue: `#9`
+- Handoff: `docs/handoffs/archive/add-equipment-minimum-summaries.md`
+- Summaries: `rules/equipment/overview.md`, `rules/equipment/weapons.md`, `rules/equipment/armor.md`, `rules/equipment/electronics.md`, `rules/equipment/medical-gear.md`, and `rules/equipment/personal-gear.md`
+- Goal: Create the minimum equipment lookup layer for acquiring and using gear, weapons, armor/protection, electronics, medical gear, and common personal mission gear.
+- Acceptance: summaries follow the standard schema, preserve mapped source page references, route live lookup through indexes and manifest, keep table-heavy item details page-referenced, and avoid committed raw source text, copied tables, item lists, or stat blocks.
 
 ### Validate personal combat lookup flow by hand
 
@@ -95,14 +105,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Handoff: `docs/handoffs/archive/validate-personal-combat-lookup-flow.md`
 - Mode: Project development / manual validation
 - Output: `docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md`
-
-### Add equipment minimum summaries
-
-- Status: Issue created; recommended after issue `#7`
-- Issue: `#9`
-- Handoff: `docs/handoffs/active/add-equipment-minimum-summaries.md`
-- Mode: Source processing / project development
-- Expected output: paraphrased gear, weapons, armor/protection, electronics, and medical/personal gear lookup summaries with page references and no copied tables.
 
 ### Create BattleTech campaign setting seed
 

@@ -19,3 +19,9 @@ Use this file to map summary files and topics to A Time of War page references a
 | Wounds and damage effects | `rules/personal-combat/wounds.md` | A Time of War PDF pages 184-187 / printed pages 182-185 | Draft |
 | Personal combat end phase | `rules/personal-combat/end-phase.md` | A Time of War PDF page 191 / printed page 189 | Draft |
 | Healing and recovery | `rules/personal-combat/recovery.md` | A Time of War PDF pages 194-197 / printed pages 192-195 | Draft |
+| Equipment acquisition, availability, legality, use, and repair basics | `rules/equipment/overview.md` | A Time of War PDF pages 256-261 / printed pages 254-259 | Draft |
+| Personal weapons, ammunition, accessories, explosives, ordnance, and support weapons | `rules/equipment/weapons.md` | A Time of War PDF pages 262-288 / printed pages 260-286 | Draft |
+| Personal armor, protective gear, hostile-environment gear, stealth gear, and battle armor boundary | `rules/equipment/armor.md` | A Time of War PDF pages 289-300 / printed pages 287-298 | Draft |
+| Communications, computers, diagnostics, surveillance, optics, and remote sensors | `rules/equipment/electronics.md` | A Time of War PDF pages 302-307 / printed pages 300-305 | Draft |
+| Power packs, chargers, repair tools, security gear, survival gear, and general personal gear | `rules/equipment/personal-gear.md` | A Time of War PDF pages 308-315 / printed pages 306-313 | Draft |
+| Medical kits, field surgery gear, patches, stimulants, preservation gear, and life-support equipment | `rules/equipment/medical-gear.md` | A Time of War PDF pages 311-315 / printed pages 309-313 | Draft |

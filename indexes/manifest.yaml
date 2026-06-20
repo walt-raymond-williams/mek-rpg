@@ -240,6 +240,91 @@ rules:
       - combat.damage-effects
       - combat.end-phase
     status: draft
+  - id: equipment.acquire-use
+    title: Equipment Acquisition And Use
+    subsystem: equipment
+    summary: rules/equipment/overview.md
+    source_pages:
+      pdf: [256, 257, 258, 259, 260, 261]
+      printed: [254, 255, 256, 257, 258, 259]
+    related:
+      - equipment.weapons-map
+      - equipment.personal-protection
+      - equipment.electronics
+      - equipment.power-misc-health
+      - core.skill-checks
+      - core.basic-action-resolution
+    status: draft
+  - id: equipment.weapons-map
+    title: Weapons, Ammunition, And Explosives
+    subsystem: equipment
+    summary: rules/equipment/weapons.md
+    source_pages:
+      pdf: [262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288]
+      printed: [260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286]
+    related:
+      - equipment.acquire-use
+      - equipment.personal-protection
+      - combat.ranged-attacks
+      - combat.melee
+      - combat.damage-resolution
+      - gm.switch-to-classic-battletech
+    status: draft
+  - id: equipment.personal-protection
+    title: Armor And Protection
+    subsystem: equipment
+    summary: rules/equipment/armor.md
+    source_pages:
+      pdf: [289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300]
+      printed: [287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298]
+    related:
+      - equipment.acquire-use
+      - equipment.weapons-map
+      - combat.damage-resolution
+      - combat.damage-effects
+      - gm.switch-to-classic-battletech
+    status: draft
+  - id: equipment.electronics
+    title: Electronics
+    subsystem: equipment
+    summary: rules/equipment/electronics.md
+    source_pages:
+      pdf: [302, 303, 304, 305, 306, 307]
+      printed: [300, 301, 302, 303, 304, 305]
+    related:
+      - equipment.acquire-use
+      - equipment.power-misc-health
+      - core.skill-checks
+      - core.opposed-actions
+      - combat.initiative
+    status: draft
+  - id: equipment.power-misc-health
+    title: Power, Tools, Survival, And Personal Gear
+    subsystem: equipment
+    summary: rules/equipment/personal-gear.md
+    source_pages:
+      pdf: [308, 309, 310, 311, 312, 313, 314, 315]
+      printed: [306, 307, 308, 309, 310, 311, 312, 313]
+    related:
+      - equipment.acquire-use
+      - equipment.electronics
+      - equipment.medical-gear
+      - core.skill-checks
+      - core.basic-action-resolution
+    status: draft
+  - id: equipment.medical-gear
+    title: Medical Gear
+    subsystem: equipment
+    summary: rules/equipment/medical-gear.md
+    source_pages:
+      pdf: [311, 312, 313, 314, 315]
+      printed: [309, 310, 311, 312, 313]
+    related:
+      - equipment.power-misc-health
+      - combat.healing-recovery
+      - combat.damage-effects
+      - core.skill-checks
+    status: draft
   - id: vehicles.classic-conversion
     title: Converting to Classic BattleTech
     subsystem: vehicles-and-mechs
