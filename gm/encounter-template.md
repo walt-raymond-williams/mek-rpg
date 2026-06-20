@@ -12,6 +12,9 @@ Terrain, visibility, weather, deployment zones, and notable hazards.
 ## Player Forces
 Units, pilots, starting positions, damage, ammunition, and objectives.
 
+## RPG Skill Bridge
+Relevant A Time of War Piloting, Driving, Gunnery, Artillery, Sensor Operations, Tactics, Leadership, Technician, or Navigation notes. Record converted tactical ratings and assumptions from `rules/vehicles-and-mechs/converting-to-classic-battletech.md`.
+
 ## Opposing Forces
 Units, pilots, starting positions, morale, and objectives.
 

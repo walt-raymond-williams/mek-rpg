@@ -19,7 +19,7 @@ Damage and recovery cover immediate harm, standard damage, fatigue, stun, consci
 Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: personal weapons, ammunition, explosives, armor and protective gear, electronics, medical gear, power supplies, repair tools, survival gear, and espionage/security gear. These summaries are lookup guides, not reproduced catalogs; exact item stats, table values, kit contents, and device notes remain in the private source pages.
 
 ## Vehicles and BattleMechs
-Vehicle and BattleMech rules connect RPG characters to piloting, gunnery, MechWarrior capabilities, and tactical conversions.
+Vehicle and BattleMech rules in `rules/vehicles-and-mechs/` connect RPG characters to Driving, Piloting, Gunnery, MechWarrior crew roles, vehicle assets, Special Pilot Ability routing, and RPG-to-Classic BattleTech conversion notes. These summaries identify scene scale and handoff points; they do not reproduce full tactical BattleTech rules, unit records, vehicle tables, fuel tables, or tactical modifiers.
 
 ## Campaign Advancement
 Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, and campaign save files for durable state.
@@ -28,4 +28,4 @@ Campaign systems in `rules/campaign/` cover persistent consequences after play: 
 GM files describe scene flow, roll policy, session procedure, kid-friendly constraints, and templates.
 
 ## Classic BattleTech Integration
-When tactical movement, facing, heat, armor locations, weapon range brackets, or full lance-scale combat matter, generate a Classic BattleTech, MegaMek, or MekHQ encounter setup.
+When tactical movement, facing, heat, armor locations, weapon range brackets, ammunition, exact unit turns, or full lance-scale combat matter, generate a Classic BattleTech, MegaMek, or MekHQ encounter setup. Bring back campaign consequences afterward through `rules/campaign/`, active campaign assets, and the GM state-save checklist.

@@ -6,8 +6,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
-- Core resolution, character creation, personal combat, equipment, and campaign consequences have draft paraphrased summaries with live router coverage and validation reports where applicable.
-- Vehicles/MechWarrior bridge and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
+- Core resolution, character creation, personal combat, equipment, campaign consequences, and vehicles/MechWarrior bridge have draft paraphrased summaries with live router coverage and validation reports where applicable.
+- Glossary and deeper metadata remain placeholder-level and need source review before they can support serious rules lookup.
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
@@ -22,11 +22,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Personal combat: overview/turn flow, initiative, action and movement, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
 - Equipment: acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear.
 - Campaign systems: consequence overview, advancement, contracts, contacts, reputation, injury recovery, downtime, and mission readiness.
+- Vehicles and MechWarrior bridge: vehicle/BattleMech overview, Piloting, Gunnery, MechWarrior skills, RPG-to-Classic BattleTech conversion, and tactical handoff routing.
 - GM flow: scene loop, roll policy, session procedure, state-save checklist, and tactical handoff procedure.
 
 ### Placeholder-Level
 
-- Vehicles and MechWarrior bridge: piloting, gunnery, MechWarrior skills, RPG-to-Classic conversion, and vehicle/BattleMech operating procedures.
 - Glossary and deeper index metadata: stable term definitions, expanded page references, and manifest coverage for placeholder subsystems.
 
 ### Validation Needs
@@ -37,14 +37,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-### Build vehicles and MechWarrior bridge
-
-- Status: Open
-- Issue: `#23`
-- Handoff: `docs/handoffs/active/build-vehicles-mechwarrior-bridge.md`
-- Mode: Source processing / project development
-- Expected output: source-reviewed pilot/gunnery/MechWarrior summaries plus stronger Classic BattleTech, MegaMek, and MekHQ handoff notes.
-
 ### Create first real campaign save and live helper validation
 
 - Status: Open
@@ -54,6 +46,17 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expected output: user-confirmed table-canon campaign save created from `campaigns/_template/`, active campaign pointer selected only with confirmation, short setup/play scene, state-save checklist use, helper-script validation, and follow-up issues for discovered gaps.
 
 ## Done
+
+### Build vehicles and MechWarrior bridge
+
+- Status: Done
+- Issue: `#23`
+- Handoff: `docs/handoffs/archive/build-vehicles-mechwarrior-bridge.md`
+- Report: `docs/current/VEHICLE_MECHWARRIOR_BRIDGE_VALIDATION.md`
+- Summaries: `rules/vehicles-and-mechs/overview.md`, `rules/vehicles-and-mechs/piloting.md`, `rules/vehicles-and-mechs/gunnery.md`, `rules/vehicles-and-mechs/mechwarrior-skills.md`, and `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
+- Mode: Source processing / project development
+- Goal: Build the first reliable bridge between RPG-scale vehicle or MechWarrior rules and tactical BattleTech handoff.
+- Acceptance: summaries follow the standard schema, preserve source page references, route through indexes and manifest, keep Classic BattleTech/MegaMek/MekHQ as the route for full tactical play, strengthen GM handoff docs, record scenario validation, and defer vehicle/asset companion validation until real vehicle records exist.
 
 ### Summarize campaign consequence systems
 

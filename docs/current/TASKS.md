@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#23`: build vehicles and MechWarrior bridge after explicit source-processing scope is confirmed; handoff at `docs/handoffs/active/build-vehicles-mechwarrior-bridge.md`.
 - Issue `#24`: create the first real campaign save with user play/setup and live helper validation; handoff at `docs/handoffs/active/create-first-real-campaign-save-live-validation.md`.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
@@ -24,6 +23,7 @@
 
 ## Done
 
+- Issue `#23` implemented: added source-reviewed draft vehicle and MechWarrior bridge summaries for overview, piloting, gunnery, MechWarrior skills, and RPG-to-Classic BattleTech conversion; strengthened tactical handoff and encounter templates; updated router, rules map, subsystem index, page-reference index, manifest, campaign save guidance, and state-save routing; recorded scenario validation and deferred vehicle/asset companion validation until real vehicle records exist.
 - Issue `#22` implemented: added source-reviewed draft campaign consequence summaries for overview, advancement, contracts, contacts, reputation, injuries/recovery, and downtime/mission readiness; updated router, rules map, subsystem index, page-reference index, manifest, GM save guidance, and campaign save docs; recorded scenario validation and deferred a campaign-consequence companion validator until real campaign records exist.
 - Issue `#21` implemented: added source-reviewed draft character-creation summaries for overview, lifepaths, attributes, traits, skills, and XP advancement; updated router, rules map, subsystem index, page-reference index, and manifest; recorded scenario validation and deferred character-output validation until real PC sections exist.
 - Issue `#20` implemented: added `docs/current/DRAFT_COVERAGE_AND_HELPER_VALIDATION.md`, validated draft core/personal-combat/equipment/tactical-handoff/campaign-save routing, manually checked helper scripts with valid and invalid inputs, added a task-router coverage warning for placeholder rows, and recorded follow-ups for issues `#21`-`#24`.

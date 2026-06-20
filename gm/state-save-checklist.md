@@ -25,6 +25,7 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 - Reputation, public standing, faction opinion, scandals, rank/title reactions, and trust changes: read `rules/campaign/reputation.md`; update `factions.md`, `relationships.md`, `missions.md`, and `hooks.md`.
 - Injury recovery, medical care, surgery, lasting wounds, and mission availability: read `rules/campaign/injuries-recovery.md`; update `pcs.md`, `assets.md`, `missions.md`, and `current-state.md`.
 - Downtime, repair/acquisition prep, training time, travel, and mission readiness: read `rules/campaign/downtime-and-readiness.md`; update `current-state.md`, `pcs.md`, `assets.md`, `missions.md`, and `hooks.md`.
+- Vehicles, BattleMechs, battle armor, aerospace assets, pilot/gunnery notes, crew roles, fuel, damage, and tactical handoff assumptions: read `rules/vehicles-and-mechs/overview.md`; update `assets.md`, `pcs.md`, `missions.md`, and `hooks.md`.
 
 ## Close-Out Questions
 
