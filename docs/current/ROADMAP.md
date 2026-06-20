@@ -5,10 +5,20 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Current Focus
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
-- Issue `#4` is open to build the initial chapter and section map. Mapping abstracts and topic labels are allowed, but do not write GM-ready procedural rule summaries or update live rules indexes as part of issue `#4`.
-- Issues `#5` and `#6` are open as blocked follow-ups for core resolution summaries and core lookup validation.
+- Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
+- Issue `#5` is the next ready source-processing/project-development task: summarize core resolution rules from the mapped Basic Gameplay ranges.
+- Issue `#6` remains blocked until issue `#5` creates core summaries and routing entries.
 
 ## Done
+
+### Build initial chapter and section map
+
+- Status: Done
+- Issue: `#4`
+- Handoff: `docs/handoffs/archive/build-atow-chapter-section-map.md`
+- Map: `source/atow-chapter-section-map.md`
+- Goal: Build an initial chapter and section map from ignored A Time of War page text without writing GM-ready summaries or updating live lookup indexes.
+- Acceptance: mapped major chapters and candidate section boundaries with stable IDs, PDF and printed page ranges, extraction-quality notes, candidate summary paths, candidate manifest IDs, and status labels. Recorded the numbered-page offset as `PDF page = printed page + 2`.
 
 ### Extract A Time of War PDF into ignored page text
 
@@ -37,21 +47,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue
 
-### Build initial chapter and section map
-
-- Status: Issue created
-- Issue: `#4`
-- Handoff: `docs/handoffs/active/build-atow-chapter-section-map.md`
-- Mode: Source processing
-- Expected output: chapter/section map with page references and uncertainty markers
-
 ### Summarize core resolution rules
 
-- Status: Issue created; blocked on issue `#4`
+- Status: Issue created; ready after issue `#4`
 - Issue: `#5`
 - Handoff: `docs/handoffs/active/summarize-core-resolution-rules.md`
 - Mode: Source processing / project development
-- Expected output: paraphrased summaries for task checks, opposed checks, modifiers, and margin of success with page references
+- Expected output: paraphrased summaries for task checks, opposed checks, modifiers, margin of success, and Edge with page references from `source/atow-chapter-section-map.md`
 
 ### Validate core lookup flow
 

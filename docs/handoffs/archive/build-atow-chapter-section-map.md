@@ -6,6 +6,14 @@
 - Roadmap entry: Build initial chapter and section map
 - Mode: Source processing
 - Priority: High
+- Status: Completed 2026-06-20
+
+## Completion Notes
+
+- Map created: `source/atow-chapter-section-map.md`
+- Page offset recorded: numbered interior pages use `PDF page = printed page + 2`.
+- Follow-up: issue `#5` can use the mapped Basic Gameplay ranges to summarize core resolution rules.
+- No GM-ready rule summaries or live rules lookup indexes were created as part of this issue.
 
 ## Goal
 

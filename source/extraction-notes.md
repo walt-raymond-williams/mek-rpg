@@ -30,4 +30,8 @@ for ($i = 1; $i -le $pageCount; $i++) {
   - No zero-byte page text files were observed.
   - Some pages produced very small text files; page-level quality still needs review during the chapter and section mapping issue.
   - No rule content was reviewed, summarized, quoted, or copied into committed files during this extraction.
-- Page-number offset notes: Unknown. Determine PDF-to-printed-page offset during the chapter and section mapping issue.
+- Page-number offset notes:
+  - Numbered interior pages use a consistent offset: `PDF page = printed page + 2`.
+  - Spot checks: PDF page 18 corresponds to printed page 16; PDF page 40 corresponds to printed page 38; PDF page 388 corresponds to printed page 386.
+  - Front matter before printed page 1 and advertising/back-cover matter after the main book should be cited by PDF page unless later source review identifies a better convention.
+  - Detailed chapter and section ranges are recorded in `source/atow-chapter-section-map.md`.
