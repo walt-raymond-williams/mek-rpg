@@ -84,11 +84,12 @@ For project development mode:
 
 1. Run relevant verification or record the blocker.
 2. Update durable docs, indexes, task state, and handoffs.
-3. Check `git status --short`.
-4. Stage only files belonging to the completed work.
-5. Commit a coherent change that references the issue when practical.
-6. Push to the tracked branch unless the user explicitly says not to push.
-7. Confirm `git status --short --branch` does not show the branch ahead of upstream.
-8. Comment on or close the GitHub issue when appropriate.
+3. Use sub-agent review before commit for substantial or high-risk work when the tool is available; use two reviewers for broad workflow changes, substantial rules summaries, source-processing outputs, or high continuity/copyright risk. Do not let unavailable sub-agent tooling block close-out.
+4. Check `git status --short`.
+5. Stage only files belonging to the completed work.
+6. Commit a coherent change that references the issue when practical.
+7. Push to the tracked branch unless the user explicitly says not to push.
+8. Confirm `git status --short --branch` does not show the branch ahead of upstream.
+9. Comment on or close the GitHub issue when appropriate.
 
 For play mode, the close-out path is lighter: update campaign state or session logs when useful, but do not create development issues or commits unless the user intentionally asked for repository changes.

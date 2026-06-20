@@ -28,6 +28,32 @@ Route every request into one primary mode before acting:
 
 If the mode is ambiguous and file edits could result, ask a short clarifying question before editing.
 
+## Sub-Agent Use
+
+Use sub-agents when they materially improve speed, review quality, or parallel investigation.
+
+Good uses:
+
+- Independent review of substantial edits before commit.
+- Parallel exploration of separate files, subsystems, issues, or rules areas.
+- Splitting implementation across disjoint file sets.
+- Source-processing checks where one agent maps or edits and another checks copyright boundaries, page ranges, and acceptance criteria.
+- Play support where one agent checks rules or campaign state while the main agent keeps GM flow moving.
+
+Default review expectation:
+
+- For substantial project-development or source-processing changes, use at least one sub-agent review before commit when the tool is available.
+- Use two independent reviewers for broad workflow changes, substantial rules summaries, source-processing outputs, or changes with high continuity or copyright risk.
+- For small, obvious edits, a main-agent self-review is enough.
+
+Coordination rules:
+
+- Give each sub-agent a narrow task and clear file scope.
+- Do not assign overlapping write scopes unless necessary.
+- Sub-agents may advise, or edit only when the current mode permits edits, within their assigned scope.
+- The main agent remains responsible for final integration, verification, staging, commit, push, and issue close-out.
+- Do not let sub-agent use block progress when the tool is unavailable.
+
 ## Copyright Boundaries
 
 - Do not redistribute copyrighted rulebook text.

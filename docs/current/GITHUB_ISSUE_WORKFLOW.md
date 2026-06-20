@@ -70,11 +70,12 @@ For project development issues:
 
 1. Update changed docs, indexes, task state, and handoff status.
 2. Run relevant verification or record a blocker.
-3. Confirm no protected raw source is staged.
-4. Commit a coherent change, referencing the issue when practical.
-5. Push to the tracked branch.
-6. Confirm the branch is not ahead of upstream.
-7. Comment on or close the GitHub issue with the commit hash and verification result.
+3. Use sub-agent review before commit for substantial or high-risk work when the tool is available; use two reviewers for broad workflow changes, substantial rules summaries, source-processing outputs, or high continuity/copyright risk. Do not let unavailable sub-agent tooling block close-out.
+4. Confirm no protected raw source is staged.
+5. Commit a coherent change, referencing the issue when practical.
+6. Push to the tracked branch.
+7. Confirm the branch is not ahead of upstream.
+8. Comment on or close the GitHub issue with the commit hash and verification result.
 
 Do not close an issue based only on an unpushed local commit.
 
