@@ -15,6 +15,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#10` created the campaign setting seed and canon policy.
 - Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
 - The next execution task is issue `#12`: run the first manual playtest and file follow-up bugs.
+- Issue `#13` was created from the first manual playtest observation that durable campaign memory needs a stronger strategy than chat context.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Done
@@ -152,6 +153,14 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Mode: Play mode / project development close-out
 - Expected output: short manual playtest, campaign/playtest state updates, and follow-up bug or missing-rule issues.
 
+### Design durable campaign memory tracking
+
+- Status: Issue created; ready after issue `#12` playtest observation
+- Issue: `#13`
+- Handoff: `docs/handoffs/active/design-durable-campaign-memory.md`
+- Mode: Project development
+- Expected output: campaign-memory audit, durable tracking requirements, state-save checklist, and lightweight file/template updates for PCs, NPCs, factions, locations, assets, missions, relationships, and unresolved hooks.
+
 ## Backlog
 
 - Summarize character creation: lifepaths, attributes, traits, skills, and advancement.
@@ -162,6 +171,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expand `indexes/task-router.md` after verified summaries exist.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.
 - Create first test campaign setup with PCs, NPCs, mission, and hooks.
+- Design durable campaign memory tracking for reliable resume across sessions.
 - Validate all summaries against source pages.
 - Add MekHQ / MegaMek integration notes for encounter handoff, pilot conversion, unit setup, and campaign updates.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
