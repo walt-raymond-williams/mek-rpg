@@ -25,6 +25,13 @@ Named NPCs, factions, units, or environmental threats.
 ## Rewards
 Payment, salvage, reputation, contacts, favors, or information.
 
+## Consequence Routes
+- Contract terms and payment: `rules/campaign/contracts.md`
+- XP, training, salary, rank, or bonuses: `rules/campaign/advancement.md`
+- Contacts, favors, and borrowed resources: `rules/campaign/contacts.md`
+- Reputation and faction standing: `rules/campaign/reputation.md`
+- Injury downtime and readiness: `rules/campaign/injuries-recovery.md`, `rules/campaign/downtime-and-readiness.md`
+
 ## Failure Consequences
 What changes if the mission goes poorly.
 

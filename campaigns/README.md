@@ -35,3 +35,7 @@ The helper creates the folder only when it does not already exist and does not c
 - `rules-gaps.md`: missing or uncertain rules found during this campaign.
 - `playtest-notes.md`: workflow bugs, procedure gaps, and test observations.
 - `safety-and-tone.md`: player preferences, child/co-player guidance, and table boundaries.
+
+## Campaign Consequences
+
+Use `rules/campaign/overview.md` as the rules route for persistent consequences after play. As a default ownership rule, put character-facing consequences in `pcs.md`, contract and money consequences in `assets.md` and `missions.md`, faction consequences in `factions.md`, personal favors and grudges in `relationships.md`, and future pressure in `hooks.md`.

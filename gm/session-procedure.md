@@ -20,6 +20,7 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
    - Uncertain actions, skills, pressure, opposed rolls, margins, or Edge: `rules/core/`.
    - Character-scale firefights, brawls, injury, bleeding, stun, recovery, or combat turns: `rules/personal-combat/`.
    - Personal weapons, armor, electronics, medical gear, or mission gear: `rules/equipment/`.
+   - Mission aftermath, XP, contracts, contacts, reputation, injury downtime, and readiness: `rules/campaign/`.
    - BattleMechs, vehicles, facing, heat, armor locations, hex movement, or detailed unit state: `gm/switch-to-classic-battletech.md`.
 5. If the committed summaries are insufficient, make a provisional ruling only when needed to keep play moving, then record the gap in the active campaign folder's `rules-gaps.md`.
 6. Track important choices, injuries, equipment losses, faction reactions, relationship changes, location changes, asset changes, promises, rewards, costs, and new table canon.

@@ -17,6 +17,15 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 11. Update `rules-gaps.md` or `playtest-notes.md` for missing rules, provisional rulings, awkward save steps, or workflow bugs.
 12. Update `safety-and-tone.md` when a child/co-player preference, tone boundary, or agency constraint matters for future play.
 
+## Consequence Routes
+
+- XP, training, salary, bonuses, rank, and advancement: read `rules/campaign/advancement.md`; update `pcs.md`, `session-log.md`, and `assets.md` when money changes.
+- Contract terms, payment, salvage expectations, breach, and employer aftermath: read `rules/campaign/contracts.md`; update `missions.md`, `assets.md`, `factions.md`, `relationships.md`, and `hooks.md`.
+- Contacts, favors, patrons, and borrowed resources: read `rules/campaign/contacts.md`; update `npcs.md`, `relationships.md`, `factions.md`, and `hooks.md`.
+- Reputation, public standing, faction opinion, scandals, rank/title reactions, and trust changes: read `rules/campaign/reputation.md`; update `factions.md`, `relationships.md`, `missions.md`, and `hooks.md`.
+- Injury recovery, medical care, surgery, lasting wounds, and mission availability: read `rules/campaign/injuries-recovery.md`; update `pcs.md`, `assets.md`, `missions.md`, and `current-state.md`.
+- Downtime, repair/acquisition prep, training time, travel, and mission readiness: read `rules/campaign/downtime-and-readiness.md`; update `current-state.md`, `pcs.md`, `assets.md`, `missions.md`, and `hooks.md`.
+
 ## Close-Out Questions
 
 Ask only what is needed to save cleanly:

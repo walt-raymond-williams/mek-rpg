@@ -6,8 +6,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
-- Core resolution, character creation, personal combat, and equipment have draft paraphrased summaries with live router coverage and validation reports where applicable.
-- Campaign systems, vehicles/MechWarrior bridge, and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
+- Core resolution, character creation, personal combat, equipment, and campaign consequences have draft paraphrased summaries with live router coverage and validation reports where applicable.
+- Vehicles/MechWarrior bridge and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
@@ -21,11 +21,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Character creation: overview, lifepaths/Life Modules, attributes, traits, skills, and XP advancement.
 - Personal combat: overview/turn flow, initiative, action and movement, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
 - Equipment: acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear.
+- Campaign systems: consequence overview, advancement, contracts, contacts, reputation, injury recovery, downtime, and mission readiness.
 - GM flow: scene loop, roll policy, session procedure, state-save checklist, and tactical handoff procedure.
 
 ### Placeholder-Level
 
-- Campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
 - Vehicles and MechWarrior bridge: piloting, gunnery, MechWarrior skills, RPG-to-Classic conversion, and vehicle/BattleMech operating procedures.
 - Glossary and deeper index metadata: stable term definitions, expanded page references, and manifest coverage for placeholder subsystems.
 
@@ -36,14 +36,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The campaign save helper and dice roller should be rechecked during the first real campaign setup and live-play session.
 
 ## Ready For Issue Candidates
-
-### Summarize campaign consequence systems
-
-- Status: Open
-- Issue: `#22`
-- Handoff: `docs/handoffs/active/summarize-campaign-consequence-systems.md`
-- Mode: Source processing / project development
-- Expected output: source-reviewed summaries for contracts, contacts, reputation, advancement, injury consequences, downtime, mission readiness, and campaign-save update guidance.
 
 ### Build vehicles and MechWarrior bridge
 
@@ -62,6 +54,17 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expected output: user-confirmed table-canon campaign save created from `campaigns/_template/`, active campaign pointer selected only with confirmation, short setup/play scene, state-save checklist use, helper-script validation, and follow-up issues for discovered gaps.
 
 ## Done
+
+### Summarize campaign consequence systems
+
+- Status: Done
+- Issue: `#22`
+- Handoff: `docs/handoffs/archive/summarize-campaign-consequence-systems.md`
+- Report: `docs/current/CAMPAIGN_CONSEQUENCE_LOOKUP_VALIDATION.md`
+- Summaries: `rules/campaign/overview.md`, `rules/campaign/advancement.md`, `rules/campaign/contracts.md`, `rules/campaign/contacts.md`, `rules/campaign/reputation.md`, `rules/campaign/injuries-recovery.md`, and `rules/campaign/downtime-and-readiness.md`
+- Mode: Source processing / project development
+- Goal: Create source-reviewed campaign consequence summaries for ongoing-play aftermath and campaign-save updates.
+- Acceptance: summaries follow the standard schema, preserve source page references, route through indexes and manifest, identify dedicated contract construction as a gap, record scenario validation, and defer a campaign-consequence companion validator until real campaign records exist.
 
 ### Summarize character creation foundation
 

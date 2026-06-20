@@ -22,7 +22,7 @@ Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: perso
 Vehicle and BattleMech rules connect RPG characters to piloting, gunnery, MechWarrior capabilities, and tactical conversions.
 
 ## Campaign Advancement
-Campaign advancement tracks XP, reputation, contacts, injuries, contracts, and long-term consequences.
+Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, and campaign save files for durable state.
 
 ## GM Procedures
 GM files describe scene flow, roll policy, session procedure, kid-friendly constraints, and templates.

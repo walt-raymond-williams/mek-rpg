@@ -390,6 +390,111 @@ rules:
       - combat.damage-effects
       - core.skill-checks
     status: draft
+  - id: campaign.overview
+    title: Campaign Consequences Overview
+    subsystem: campaign
+    summary: rules/campaign/overview.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 194, 195, 196, 197, 332, 333, 334, 335, 336, 337, 338, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 192, 193, 194, 195, 330, 331, 332, 333, 334, 335, 336, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.advancement
+      - campaign.contracts
+      - campaign.contacts
+      - campaign.reputation
+      - campaign.injuries-recovery
+      - campaign.downtime-readiness
+      - combat.healing-recovery
+      - equipment.acquire-use
+    status: draft
+  - id: campaign.advancement
+    title: Campaign Advancement
+    subsystem: campaign
+    summary: rules/campaign/advancement.md
+    source_pages:
+      pdf: [87, 88, 89, 90, 91, 92, 332, 333, 334, 335, 336, 337, 338]
+      printed: [85, 86, 87, 88, 89, 90, 330, 331, 332, 333, 334, 335, 336]
+    related:
+      - campaign.overview
+      - campaign.downtime-readiness
+      - campaign.contacts
+      - campaign.reputation
+      - character.xp-advancement
+      - character.skills
+      - character.traits
+    status: draft
+  - id: campaign.contracts
+    title: Contracts And Mission Aftermath
+    subsystem: campaign
+    summary: rules/campaign/contracts.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 256, 257, 258, 259, 260, 261, 332, 333, 334, 335, 336, 337, 338]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 254, 255, 256, 257, 258, 259, 330, 331, 332, 333, 334, 335, 336]
+    related:
+      - campaign.overview
+      - campaign.advancement
+      - campaign.contacts
+      - campaign.reputation
+      - equipment.acquire-use
+    status: draft
+  - id: campaign.contacts
+    title: Contacts And Favors
+    subsystem: campaign
+    summary: rules/campaign/contacts.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.overview
+      - campaign.contracts
+      - campaign.reputation
+      - character.traits
+      - core.skill-checks
+    status: draft
+  - id: campaign.reputation
+    title: Reputation And Faction Standing
+    subsystem: campaign
+    summary: rules/campaign/reputation.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 332, 333, 334, 335, 336, 337, 338, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 330, 331, 332, 333, 334, 335, 336, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.overview
+      - campaign.contracts
+      - campaign.contacts
+      - campaign.advancement
+      - character.traits
+    status: draft
+  - id: campaign.injuries-recovery
+    title: Injuries And Recovery
+    subsystem: campaign
+    summary: rules/campaign/injuries-recovery.md
+    source_pages:
+      pdf: [194, 195, 196, 197, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 332, 333, 334, 335, 336, 337, 338]
+      printed: [192, 193, 194, 195, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 330, 331, 332, 333, 334, 335, 336]
+    related:
+      - campaign.overview
+      - campaign.downtime-readiness
+      - combat.healing-recovery
+      - combat.damage-effects
+      - equipment.medical-gear
+    status: draft
+  - id: campaign.downtime-readiness
+    title: Downtime And Mission Readiness
+    subsystem: campaign
+    summary: rules/campaign/downtime-and-readiness.md
+    source_pages:
+      pdf: [194, 195, 196, 197, 256, 257, 258, 259, 260, 261, 332, 333, 334, 335, 336, 337, 338, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [192, 193, 194, 195, 254, 255, 256, 257, 258, 259, 330, 331, 332, 333, 334, 335, 336, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.overview
+      - campaign.advancement
+      - campaign.injuries-recovery
+      - campaign.contracts
+      - campaign.contacts
+      - campaign.reputation
+      - equipment.acquire-use
+    status: draft
   - id: vehicles.classic-conversion
     title: Converting to Classic BattleTech
     subsystem: vehicles-and-mechs
