@@ -6,7 +6,7 @@
 - Roadmap entry: Refresh roadmap for full A Time of War coverage
 - Mode: Project development
 - Priority: High
-- Status: Ready
+- Status: Done
 
 ## Goal
 
@@ -81,4 +81,9 @@ git diff --cached --name-only | Select-String -Pattern '^(source/atow-pdf/|sourc
 
 ## Open Questions
 
-- Should source-processing waves resume with character creation first, or should campaign systems come first because they affect ongoing play more directly?
+- Resolved for planning: character creation is the next issue candidate, with campaign systems and vehicles/MechWarrior bridge following as separate candidates.
+
+## Completion Notes
+
+- Refreshed `docs/current/ROADMAP.md` to separate drafted/routed coverage, placeholder-level subsystems, validation needs, and future issue candidates.
+- Updated `docs/current/TASKS.md` to remove completed open-issue queue items and list next candidate work.

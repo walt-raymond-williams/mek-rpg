@@ -21,6 +21,16 @@ Get-ChildItem -Recurse -File docs,indexes,issues,gm,source,scripts | ForEach-Obj
 Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ```
 
+## Campaign And Play Helpers
+
+```powershell
+./scripts/new-campaign-save.ps1 my-campaign
+./scripts/roll-dice.ps1 2d6
+./scripts/roll-dice.ps1 2d6+2 "Technician check"
+```
+
+`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes.
+
 ## Verify Protected Source Is Not Staged
 
 ```powershell

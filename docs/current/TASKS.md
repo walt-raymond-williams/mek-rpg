@@ -6,22 +6,20 @@
 
 ## Next
 
-- Issue `#15`: create helper script to start a new campaign save folder from `campaigns/_template/`.
-- Issue `#16`: add a simple dice roller script for common live-play rolls.
-- Issue `#17`: refresh the roadmap for full A Time of War coverage.
-- Issue `#18`: perform a full stale-reference and consistency review.
+- Next actionable issue candidate: summarize character creation foundation after explicit source-processing scope is chosen, covering lifepaths, attributes, traits, skills, and XP/advancement routing.
+- Next validation candidate: validate the new helper scripts during live play after the first real campaign save is created.
 - Confirm whether future broad work should use direct-to-`master` or feature branches.
-- Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, validation, and first playable GM mode.
+- Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
 - Create first real campaign save folder after the user selects a campaign frame.
-- Expand GM session logging procedure after more play exposes concrete gaps.
+- Summarize campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
+- Summarize vehicles and MechWarrior bridge: piloting, gunnery, MechWarrior skills, RPG-to-Classic conversion, and tactical handoff notes for Classic BattleTech, MegaMek, and MekHQ.
+- Validate and tighten existing draft summaries for core resolution, personal combat, and equipment.
+- Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added.
 - Add campaign-local session archive helper after more play if `previous-sessions.md` becomes cumbersome.
 - Add richer DropShip and unit asset sheets after transport ownership rules are summarized.
-- Create verified paraphrased rule summaries.
-- Expand rules routing indexes as summaries become available.
-- Add tactical handoff notes for Classic BattleTech, MegaMek, and MekHQ.
 - Repeat manual validation/playtest checkpoints after adding major playable layers.
 
 ## Blocked
@@ -30,6 +28,10 @@
 
 ## Done
 
+- Issue `#18` implemented: ran repository stale-reference searches, fixed active stale planning and legacy-campaign guidance, distinguished historical flat campaign-state references from live campaign-save guidance, and verified no protected raw source is staged.
+- Issue `#17` implemented: refreshed the roadmap and task board around completed draft coverage, remaining placeholder subsystems, validation needs, future source-processing waves, and current issue candidates.
+- Issue `#16` implemented: added `scripts/roll-dice.ps1` for simple `NdM`, `NdM+K`, and `NdM-K` live-play rolls with individual dice, modifier, total, labels, documentation, and manual verification.
+- Issue `#15` implemented: added `scripts/new-campaign-save.ps1` to create a campaign save from `campaigns/_template/`, reject unsafe ids, refuse overwrites, document usage, and preserve manual active-campaign selection.
 - Issue `#14` implemented: aligned stale live references with `campaign-state/active-campaign.md` and selected `campaigns/<campaign-id>/` save folders, added campaign-local `previous-sessions.md` archives to the template and Galatea playtest save, and labeled legacy flat files as prototype/history records.
 - Issue `#13` implemented: audited flat campaign-state coverage, documented durable campaign memory strategy, added active-campaign pointer, created `campaigns/_template/`, isolated the Galatea DropShip playtest in `campaigns/playtest-galatea-dropship/`, and added the GM state-save checklist.
 - Issue `#12` implemented: ran the first manual playtest using a Galatea DropShip purchase scene with Walter and Sharpe, recorded playtest-only campaign memory, captured rules gaps and workflow bugs, and fed campaign-specific save-folder requirements into issue `#13`.

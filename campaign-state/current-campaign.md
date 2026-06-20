@@ -1,5 +1,7 @@
 # Current Campaign
 
+Legacy issue `#11` prototype campaign frame. For new resumable play, start with `campaign-state/active-campaign.md` and load exactly one selected `campaigns/<campaign-id>/` save folder.
+
 Campaign name: TBD
 
 Setting seed: `campaign-state/setting-basics.md`
@@ -18,10 +20,10 @@ Home base:
 
 Active themes:
 
-- First playable mode is ready for a small table test using `campaign-state/current-mission.md`.
-- Until the user chooses a full campaign frame, use placeholder PCs and local improvisable details for playtests.
+- Historical prototype note: first playable mode used `campaign-state/current-mission.md` for the issue `#11` / `#12` test path.
+- For current play, create or select a campaign save under `campaigns/` before using placeholder PCs or improvisable details.
 
-Current mission: `Checkpoint Ghosts` in `campaign-state/current-mission.md`
+Historical current mission: `Checkpoint Ghosts` in `campaign-state/current-mission.md`
 
 ## Durable Save Model
 

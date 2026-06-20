@@ -6,55 +6,99 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
-- Issue `#5` summarized core resolution rules from the mapped Basic Gameplay ranges.
-- Issue `#6` validated the core lookup flow against scenario prompts.
-- Issues `#7` through `#12` define the next playable-GM runway: personal combat, combat lookup validation, equipment minimum, campaign setting seed, first playable GM mode, and a manual playtest/bug pass.
-- Issue `#7` summarized the personal combat and recovery minimum.
-- Issue `#8` validated the personal combat lookup flow by hand.
-- Issue `#9` added the minimum equipment lookup layer.
-- Issue `#10` created the campaign setting seed and canon policy.
-- Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
-- Issue `#12` ran the first manual playtest and captured follow-up gaps from a Galatea DropShip purchase scene.
-- Issue `#13` designed durable campaign memory tracking around campaign-specific save folders/state roots.
-- Issue `#14` aligned stale docs/router references with the new campaign save-folder model.
-- Issues `#15` through `#18` are ready as the next actionable queue: campaign save-folder helper, dice roller, full AToW coverage roadmap refresh, and full stale-reference consistency review.
+- Core resolution, personal combat, and equipment have draft paraphrased summaries with live router coverage and validation reports where applicable.
+- Character creation, campaign systems, vehicles/MechWarrior bridge, and the glossary remain placeholder-level and need source review before they can support serious rules lookup.
+- Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
+- Helper scripts now cover creating campaign saves from `campaigns/_template/` and rolling simple live-play dice expressions.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
-## Ready For Issue
+## Coverage Status
 
-### Create campaign save-folder helper script
+### Drafted And Routed
 
-- Status: Issue created; ready
-- Issue: `#15`
-- Handoff: `docs/handoffs/active/create-campaign-save-helper.md`
-- Mode: Project development
-- Expected output: add a small script under `scripts/` that creates `campaigns/<campaign-id>/` from `campaigns/_template/`, refuses overwrites, prevents path traversal, and documents usage.
+- Core resolution: Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge.
+- Personal combat: overview/turn flow, initiative, action and movement, ranged attacks, melee attacks, damage, wounds/effects, end phase, and healing/recovery.
+- Equipment: acquisition/use, weapons, armor/protection, electronics, medical gear, and personal gear.
+- GM flow: scene loop, roll policy, session procedure, state-save checklist, and tactical handoff procedure.
 
-### Add simple dice roller script
+### Placeholder-Level
 
-- Status: Issue created; ready
-- Issue: `#16`
-- Handoff: `docs/handoffs/active/add-simple-dice-roller.md`
-- Mode: Project development
-- Expected output: add a lightweight dice roller for expressions such as `2d6`, `2d6+2`, and `2d6-1`, with clear output for dice, modifier, and total.
+- Character creation: lifepaths, attributes, traits, skills, XP, and advancement choices.
+- Campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
+- Vehicles and MechWarrior bridge: piloting, gunnery, MechWarrior skills, RPG-to-Classic conversion, and vehicle/BattleMech operating procedures.
+- Glossary and deeper index metadata: stable term definitions, expanded page references, and manifest coverage for placeholder subsystems.
 
-### Refresh roadmap for full A Time of War coverage
+### Validation Needs
 
-- Status: Issue created; ready
-- Issue: `#17`
-- Handoff: `docs/handoffs/active/refresh-atow-coverage-roadmap.md`
-- Mode: Project development
-- Expected output: revise roadmap/task planning so remaining A Time of War coverage is separated into current draft coverage, placeholder subsystems, validation/indexing work, and future source-processing waves.
+- Existing draft summaries should be validated against scenario prompts after each major routing change.
+- Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
+- The campaign save helper and dice roller should be rechecked during the first real campaign setup and live-play session.
+
+## Ready For Issue Candidates
+
+### Summarize character creation foundation
+
+- Status: Candidate; not yet opened
+- Mode: Source processing / project development
+- Expected output: source-reviewed summaries for character creation overview, lifepaths, attributes, traits, skills, and XP/advancement routing; update task router, page index, manifest, and validation notes.
+
+### Summarize campaign consequence systems
+
+- Status: Candidate; not yet opened
+- Mode: Source processing / project development
+- Expected output: source-reviewed summaries for contracts, contacts, reputation, advancement, injury consequences, downtime, mission readiness, and campaign-save update guidance.
+
+### Build vehicles and MechWarrior bridge
+
+- Status: Candidate; not yet opened
+- Mode: Source processing / project development
+- Expected output: source-reviewed pilot/gunnery/MechWarrior summaries plus stronger Classic BattleTech, MegaMek, and MekHQ handoff notes.
+
+### Validate existing draft coverage
+
+- Status: Candidate; not yet opened
+- Mode: Project development / review
+- Expected output: scenario lookup tests for core, personal combat, equipment, campaign-save routing, and helper-script usage, with router/index fixes where gaps are found.
+
+## Done
 
 ### Perform full stale-reference and consistency review
 
-- Status: Issue created; ready
+- Status: Done
 - Issue: `#18`
-- Handoff: `docs/handoffs/active/full-stale-reference-review.md`
+- Handoff: `docs/handoffs/archive/full-stale-reference-review.md`
 - Mode: Project development / review
-- Expected output: run repo-wide stale-reference and consistency checks, fix active stale guidance, and distinguish acceptable historical references from current workflow references.
+- Goal: Check active workflow docs, routers, GM docs, campaign docs, scripts docs, README, and planning files for stale references after campaign-save and tooling changes.
+- Acceptance: repository stale-reference searches were run; active stale planning text was fixed; `campaign-state/current-campaign.md` now clearly identifies itself as a legacy prototype; historical archived handoff references were left alone; no protected raw source was staged.
 
-## Done
+### Refresh roadmap for full A Time of War coverage
+
+- Status: Done
+- Issue: `#17`
+- Handoff: `docs/handoffs/archive/refresh-atow-coverage-roadmap.md`
+- Mode: Project development
+- Goal: Make the remaining path toward broad A Time of War support explicit and actionable.
+- Acceptance: roadmap now separates drafted/routed coverage, placeholder-level subsystems, validation needs, and next issue candidates; `TASKS.md` matches the revised priorities.
+
+### Add simple dice roller script
+
+- Status: Done
+- Issue: `#16`
+- Handoff: `docs/handoffs/archive/add-simple-dice-roller.md`
+- Script: `scripts/roll-dice.ps1`
+- Mode: Project development
+- Goal: Add a small live-play dice roller for common roll expressions.
+- Acceptance: script supports `NdM`, `NdM+K`, and `NdM-K`; reports expression, dice, modifier, and total; rejects invalid expressions; usage is documented in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+
+### Create campaign save-folder helper script
+
+- Status: Done
+- Issue: `#15`
+- Handoff: `docs/handoffs/archive/create-campaign-save-helper.md`
+- Script: `scripts/new-campaign-save.ps1`
+- Mode: Project development
+- Goal: Create a repeatable helper for starting a new campaign save folder from `campaigns/_template/`.
+- Acceptance: script creates `campaigns/<campaign-id>/`, refuses existing folders, rejects unsafe ids, stays under `campaigns/`, leaves `campaign-state/active-campaign.md` unchanged, and is documented in `campaigns/README.md`, `scripts/README.md`, and `docs/current/KNOWN_COMMANDS.md`.
 
 ### Align campaign-memory references after issue `#13` review
 
@@ -230,18 +274,14 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - Summarize character creation: lifepaths, attributes, traits, skills, and advancement.
 - Summarize skills and traits: expand routing and source references.
-- Expand personal combat beyond the current draft minimum only where play or validation finds missing detail.
-- Expand damage and recovery beyond the current draft minimum only where play or validation finds missing detail.
-- Summarize BattleTech integration: MechWarrior skills and tactical conversion.
+- Summarize campaign systems: contracts, contacts, reputation, advancement, injury consequences, downtime, and mission readiness.
+- Summarize BattleTech integration: vehicle operation, MechWarrior skills, pilot conversion, and tactical conversion.
+- Expand personal combat, equipment, damage, and recovery beyond the current draft minimum only where play or validation finds missing detail.
 - Expand `indexes/task-router.md` after verified summaries exist.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.
 - Create first test campaign setup with PCs, NPCs, mission, and hooks.
-- Create helper script to start a new campaign save folder from `campaigns/_template/`; see issue `#15`.
-- Add simple dice roller for live play; see issue `#16`.
-- Refresh the full A Time of War coverage roadmap; see issue `#17`.
-- Perform full stale-reference and consistency review; see issue `#18`.
 - Validate all summaries against source pages.
-- Add MekHQ / MegaMek integration notes for encounter handoff, pilot conversion, unit setup, and campaign updates.
+- Add MekHQ / MegaMek integration notes for encounter handoff, unit setup, and campaign updates.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
 
 ## Existing Foundation

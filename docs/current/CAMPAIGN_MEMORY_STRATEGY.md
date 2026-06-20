@@ -65,7 +65,7 @@ Issue `#12` showed why this matters. The Galatea DropShip purchase scene introdu
 
 ## Follow-Up Candidates
 
-- Add scripts to create a new campaign folder from `campaigns/_template/`.
+- Done in issue `#15`: `scripts/new-campaign-save.ps1` creates a new campaign folder from `campaigns/_template/`.
 - Add a short command or checklist to archive a completed session into campaign-local history.
 - Add structured front matter later only if Markdown scanning becomes too slow or ambiguous.
 - Add richer DropShip and unit sheets after transport ownership rules are summarized.

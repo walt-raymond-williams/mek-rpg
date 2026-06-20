@@ -6,7 +6,7 @@
 - Roadmap entry: Create helper script to start a new campaign save folder from `campaigns/_template/`
 - Mode: Project development
 - Priority: High
-- Status: Ready
+- Status: Done
 
 ## Goal
 
@@ -80,4 +80,10 @@ git diff --cached --name-only | Select-String -Pattern '^(source/atow-pdf/|sourc
 
 ## Open Questions
 
-- Should the script optionally update `campaign-state/active-campaign.md`, or should selection remain a manual step?
+- Resolved: selection remains a manual step. The script documents that it does not update `campaign-state/active-campaign.md`.
+
+## Completion Notes
+
+- Added `scripts/new-campaign-save.ps1`.
+- Documented usage in `scripts/README.md`, `campaigns/README.md`, and `docs/current/KNOWN_COMMANDS.md`.
+- Verified create, overwrite refusal, and invalid-id failure paths.

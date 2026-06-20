@@ -2,7 +2,13 @@
 
 Each folder under `campaigns/` is a campaign or playtest save. Treat it like a tabletop GM binder: load one save before play, update it after meaningful state changes, and keep unrelated campaigns separate.
 
-Use `campaigns/_template/` when creating a new campaign.
+Use `campaigns/_template/` when creating a new campaign, or run:
+
+```powershell
+./scripts/new-campaign-save.ps1 my-campaign
+```
+
+The helper creates the folder only when it does not already exist and does not change `campaign-state/active-campaign.md`.
 
 ## Folder Rules
 

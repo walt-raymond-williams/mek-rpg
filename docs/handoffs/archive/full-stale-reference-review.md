@@ -6,7 +6,7 @@
 - Roadmap entry: Full repository stale-reference and consistency review
 - Mode: Project development / review
 - Priority: High
-- Status: Ready
+- Status: Done
 
 ## Goal
 
@@ -88,4 +88,11 @@ git diff --cached --name-only | Select-String -Pattern '^(source/atow-pdf/|sourc
 
 ## Open Questions
 
-- Should this review happen before the dice roller and helper script, or after those two tooling tasks add their docs?
+- Resolved: review ran after the helper and dice roller docs were added, so new tooling references were included.
+
+## Completion Notes
+
+- Ran stale-reference and placeholder searches across active docs, GM files, campaign files, indexes, rules, scripts, and historical handoffs.
+- Fixed active stale planning references in `docs/current/ROADMAP.md` and `docs/current/TASKS.md`.
+- Clarified `campaign-state/current-campaign.md` as legacy prototype guidance.
+- Left clearly historical archived handoff references unchanged.

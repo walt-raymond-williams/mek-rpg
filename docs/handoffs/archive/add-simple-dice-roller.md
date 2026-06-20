@@ -6,7 +6,7 @@
 - Roadmap entry: Add simple dice roller for live play
 - Mode: Project development
 - Priority: Medium
-- Status: Ready
+- Status: Done
 
 ## Goal
 
@@ -77,4 +77,10 @@ git diff --cached --name-only | Select-String -Pattern '^(source/atow-pdf/|sourc
 
 ## Open Questions
 
-- Should the script support repeated rolls in v1, or should that wait until actual play shows a need?
+- Resolved: repeated rolls are deferred until actual play shows a need.
+
+## Completion Notes
+
+- Added `scripts/roll-dice.ps1`.
+- Documented usage in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Verified valid `2d6+2` rolls and invalid-expression failure.
