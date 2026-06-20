@@ -102,6 +102,8 @@ Introduce automation in layers:
 
 Do not maintain duplicate truth where a generated file can replace a manual one. If a script generates or validates an index, document which file is the source of truth and which output is derived. When automation changes expected workflow behavior, update `docs/current/KNOWN_COMMANDS.md`, `scripts/README.md`, and this section.
 
+Campaign-state validation must evolve with the campaign save model. Any project task that adds, renames, or changes required campaign save files, character sheets, asset sheets, mission records, or other persistent campaign-state structures must explicitly decide whether to update `scripts/validate-campaign-state.ps1`, add a narrower companion validator, or document why deterministic validation is not ready yet. Keep `validate-campaign-state.ps1` focused on shared campaign-save structure and active-campaign safety; use companion validators for deeper domain-specific checks such as character sheets, vehicle sheets, or contract records when those checks would make the main validator too broad.
+
 ## Handoffs
 
 Use one handoff document per agent-executed GitHub issue when the issue needs context beyond the issue body.
