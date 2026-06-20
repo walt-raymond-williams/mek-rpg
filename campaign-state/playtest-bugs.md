@@ -1,6 +1,8 @@
 # Playtest Bugs
 
-Record GM-mode workflow, routing, state-tracking, or usability problems found during playtests. Rules content gaps belong in `campaign-state/rules-gaps.md` unless the problem is specifically that routing or procedure failed.
+Legacy issue `#11` / `#12` prototype bug list. For new resumable play, record campaign-local workflow bugs in the active campaign folder's `playtest-notes.md`.
+
+Record GM-mode workflow, routing, state-tracking, or usability problems found during playtests. Rules content gaps belong in the active campaign folder's `rules-gaps.md` unless the problem is specifically that routing or procedure failed.
 
 ## How To Record A Bug
 

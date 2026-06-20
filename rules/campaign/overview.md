@@ -8,7 +8,7 @@ Cases where another subsystem should be used.
 ## Basic Procedure
 1. Track mission outcomes, rewards, injuries, contacts, and reputation.
 2. Apply verified advancement and recovery rules.
-3. Update campaign state after each session.
+3. Update the active campaign save folder after each session.
 ## Practical GM Guidance
 Use campaign systems to make choices persist across missions.
 ## Common Edge Cases
@@ -17,7 +17,8 @@ Use campaign systems to make choices persist across missions.
 ## Related Files
 - rules/campaign/advancement.md
 - rules/campaign/contracts.md
-- campaign-state/current-campaign.md
+- campaign-state/active-campaign.md
+- campaigns/<campaign-id>/current-state.md
 ## Source References
 - A Time of War, pp. TBD
 ## Status

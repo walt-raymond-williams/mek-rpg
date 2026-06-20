@@ -16,20 +16,23 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#11` built the first playable GM mode around a session procedure, campaign-state structure, and `Checkpoint Ghosts` test mission.
 - Issue `#12` ran the first manual playtest and captured follow-up gaps from a Galatea DropShip purchase scene.
 - Issue `#13` designed durable campaign memory tracking around campaign-specific save folders/state roots.
-- Issue `#14` tracks the follow-up review fix to align stale docs/router references with the new campaign save-folder model.
+- Issue `#14` aligned stale docs/router references with the new campaign save-folder model.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 
 ## Ready For Issue
 
-### Align campaign-memory references after issue `#13` review
-
-- Status: Issue created; ready
-- Issue: `#14`
-- Handoff: `docs/handoffs/active/align-campaign-memory-references.md`
-- Mode: Project development
-- Expected output: update stale router, setting, profile, README, and GM references so persistent play state consistently uses `campaign-state/active-campaign.md` and the selected `campaigns/<campaign-id>/` save folder; add a lightweight session-history convention.
+No ready issue is currently selected.
 
 ## Done
+
+### Align campaign-memory references after issue `#13` review
+
+- Status: Done
+- Issue: `#14`
+- Handoff: `docs/handoffs/archive/align-campaign-memory-references.md`
+- Mode: Project development
+- Goal: Make play/rules-routing consistently use `campaign-state/active-campaign.md` and the selected `campaigns/<campaign-id>/` save folder instead of legacy flat `campaign-state/` files.
+- Acceptance: live router, setting seed, profile, README, GM procedure, campaign save docs, and campaign-rule placeholders now route persistent play state through the active campaign save folder; `previous-sessions.md` defines a lightweight campaign-local session archive; legacy flat files are labeled as prototype/history records.
 
 ### Design durable campaign memory tracking
 

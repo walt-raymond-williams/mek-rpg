@@ -9,7 +9,7 @@ For resumable play, load a campaign save folder under `campaigns/` instead of re
 1. Read `campaign-state/active-campaign.md` to identify the active save folder.
 2. If no active campaign is selected, ask the user which campaign to load or whether to start a new one from `campaigns/_template/`.
 3. Read `campaign-state/setting-basics.md` for table-level canon policy and open campaign choices.
-4. Read the active campaign folder's `overview.md`, `current-state.md`, `pcs.md`, `npcs.md`, `factions.md`, `locations.md`, `assets.md`, `relationships.md`, `missions.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, `playtest-notes.md`, and `safety-and-tone.md` as needed.
+4. Read the active campaign folder's `overview.md`, `current-state.md`, `pcs.md`, `npcs.md`, `factions.md`, `locations.md`, `assets.md`, `relationships.md`, `missions.md`, `hooks.md`, `session-log.md`, `previous-sessions.md`, `rules-gaps.md`, `playtest-notes.md`, and `safety-and-tone.md` as needed.
 
 ## Campaign Saves
 

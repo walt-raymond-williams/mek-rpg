@@ -15,7 +15,9 @@ Make reputation specific by faction and recent events.
 - Edge case: Secret actions may not affect public reputation yet.
 - Edge case: Conflicting faction reputations can both be true.
 ## Related Files
-- campaign-state/faction-roster.md
+- campaign-state/active-campaign.md
+- campaigns/<campaign-id>/factions.md
+- campaigns/<campaign-id>/relationships.md
 - rules/campaign/contracts.md
 ## Source References
 - A Time of War, pp. TBD

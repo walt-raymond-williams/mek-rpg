@@ -15,7 +15,9 @@ Give contacts names, limits, and motives so they are playable.
 - Edge case: A contact may become an NPC patron or antagonist.
 - Edge case: Mechanical contact benefits need source review.
 ## Related Files
-- campaign-state/npc-roster.md
+- campaign-state/active-campaign.md
+- campaigns/<campaign-id>/npcs.md
+- campaigns/<campaign-id>/relationships.md
 - rules/campaign/reputation.md
 ## Source References
 - A Time of War, pp. TBD

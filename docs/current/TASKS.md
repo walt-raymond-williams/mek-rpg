@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#14`: align stale campaign-memory references after the issue `#13` review.
+- None.
 
 ## Next
 
@@ -27,6 +27,7 @@
 
 ## Done
 
+- Issue `#14` implemented: aligned stale live references with `campaign-state/active-campaign.md` and selected `campaigns/<campaign-id>/` save folders, added campaign-local `previous-sessions.md` archives to the template and Galatea playtest save, and labeled legacy flat files as prototype/history records.
 - Issue `#13` implemented: audited flat campaign-state coverage, documented durable campaign memory strategy, added active-campaign pointer, created `campaigns/_template/`, isolated the Galatea DropShip playtest in `campaigns/playtest-galatea-dropship/`, and added the GM state-save checklist.
 - Issue `#12` implemented: ran the first manual playtest using a Galatea DropShip purchase scene with Walter and Sharpe, recorded playtest-only campaign memory, captured rules gaps and workflow bugs, and fed campaign-specific save-folder requirements into issue `#13`.
 - Initial repository scaffold exists.

@@ -5,7 +5,7 @@ Purpose: table-facing seed for BattleTech RPG play. Use this file as the first s
 ## Current Status
 
 - Campaign seed status: Draft setting seed; open choices remain for the user.
-- Canon confidence: Local table canon exists only where this file or other `campaign-state/` files state it.
+- Canon confidence: Local table canon exists where this file, the active campaign save folder, or direct user confirmation states it.
 - Source posture: This file uses original campaign framing and broad public setting labels only. It is not a copied lore summary.
 
 ## Table Canon
@@ -37,7 +37,7 @@ These choices need user decisions before they become fixed table canon:
 
 Use this policy during play:
 
-- Table canon: anything recorded in `campaign-state/`, session logs, or confirmed directly by the user. Preserve it even if later improvised color would be flashier.
+- Table canon: anything recorded in this file, the selected `campaigns/<campaign-id>/` save folder, campaign-local session logs, or confirmed directly by the user. Preserve it even if later improvised color would be flashier.
 - Lookup-needed canon: precise dates, named canon personalities, official unit histories, world ownership, major battles, technology availability by era, and faction borders. Ask for or perform lookup only when precision matters to the scene.
 - Improvisable color: local NPCs, minor settlements, small contracts, personal grudges, local company names, cargo manifests, weather, rumors, and non-decisive background flavor.
 - Conflict rule: if improvised color later conflicts with verified canon, keep the table-facing consequence and adjust the explanation unless the user prefers a retcon.
@@ -65,7 +65,7 @@ These are candidate faction roles, not fixed commitments:
 | Local planetary authority | immediate law, permits, favors, and consequences | Improvisable unless tied to canon world ownership |
 | Pirates, raiders, or deniable operators | low-prep opposition for patrol, rescue, investigation, and salvage scenarios | Improvisable unless tied to a named canon group |
 
-When the user names a faction as important, add it to `campaign-state/faction-roster.md` with its table role, current attitude, known assets, and open canon questions.
+When the user names a faction as important, add it to the active campaign folder's `factions.md` with its table role, current attitude, known assets, important NPCs, obligations, and open canon questions.
 
 ## Starting Premise Options
 
@@ -105,10 +105,11 @@ Choose one as the first campaign frame, combine pieces, or replace them:
 Before starting or resuming a campaign session:
 
 1. Read this file.
-2. Read `campaign-state/current-campaign.md`.
-3. Read `campaign-state/current-mission.md`, `campaign-state/faction-roster.md`, and unresolved hooks.
-4. Ask the user for any open choice that is necessary for the next scene.
-5. If a precise canon fact matters, mark it `Needs lookup` until verified.
+2. Read `campaign-state/active-campaign.md`.
+3. If no active campaign is selected, ask which campaign save folder to load or whether to start from `campaigns/_template/`.
+4. Read the active campaign folder's `overview.md`, `current-state.md`, `missions.md`, `factions.md`, and `hooks.md`.
+5. Ask the user for any open choice that is necessary for the next scene.
+6. If a precise canon fact matters, mark it `Needs lookup` until verified.
 
 ## Open Questions
 

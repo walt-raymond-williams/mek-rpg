@@ -6,7 +6,7 @@
 - Roadmap entry: Align campaign-memory references after issue `#13` review
 - Mode: Project development
 - Priority: High
-- Status: Ready
+- Status: Complete; archive after commit and push.
 
 ## Goal
 

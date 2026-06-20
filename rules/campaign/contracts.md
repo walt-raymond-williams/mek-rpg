@@ -16,7 +16,9 @@ Contracts should create choices: money, loyalty, risk, salvage, reputation, or t
 - Edge case: Hidden employer motives can change aftermath.
 ## Related Files
 - gm/mission-template.md
-- campaign-state/current-mission.md
+- campaign-state/active-campaign.md
+- campaigns/<campaign-id>/missions.md
+- campaigns/<campaign-id>/assets.md
 - rules/campaign/reputation.md
 ## Source References
 - A Time of War, pp. TBD

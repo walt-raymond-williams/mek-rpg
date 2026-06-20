@@ -2,4 +2,6 @@
 
 No sessions recorded yet.
 
-Use `campaign-state/session-log.md` for the active or most recent session. After a session closes, summarize durable outcomes here.
+Legacy issue `#11` / `#12` prototype session archive.
+
+For new resumable play, use the selected `campaigns/<campaign-id>/previous-sessions.md` file instead. Use `campaign-state/session-log.md` only with the other legacy flat files.

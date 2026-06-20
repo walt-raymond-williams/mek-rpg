@@ -8,7 +8,7 @@ This project is not a redistribution of copyrighted rulebooks. It should not con
 
 ## Operating Modes
 
-- `Play mode`: run scenes, present choices and consequences, request rolls only when failure matters, and update `campaign-state/` when useful.
+- `Play mode`: run scenes, present choices and consequences, request rolls only when failure matters, start from `campaign-state/active-campaign.md`, and update the selected `campaigns/<campaign-id>/` save folder when persistent state changes.
 - `Rules lookup mode`: start at `indexes/task-router.md`, answer from paraphrased summaries, and cite page references when summaries are incomplete.
 - `Project development mode`: improve the repository using `docs/current/`, GitHub Issues, handoffs, commits, and pushes.
 - `Source processing mode`: explicitly requested PDF extraction, section mapping, and paraphrased summarization under strict copyright boundaries.
@@ -52,7 +52,9 @@ Rule summaries live under `rules/` and follow a standard schema: purpose, when t
 
 ## GM Mode
 
-GM procedures live under `gm/`. The agent should frame scenes concisely, ask for rolls only when failure matters, offer concrete choices, track state, and switch to tactical BattleTech tools when the fight becomes a BattleMech-scale tactical engagement.
+GM procedures live under `gm/`. The agent should frame scenes concisely, ask for rolls only when failure matters, offer concrete choices, track state in the active campaign save folder under `campaigns/`, and switch to tactical BattleTech tools when the fight becomes a BattleMech-scale tactical engagement.
+
+Campaign save folders live under `campaigns/`. Use `campaign-state/active-campaign.md` to select the save before play; `campaign-state/` also keeps the global setting seed and legacy prototype notes from early playtests.
 
 ## GitHub Issues
 

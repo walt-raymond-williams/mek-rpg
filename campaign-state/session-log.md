@@ -1,6 +1,6 @@
 # Session Log
 
-Use this file for the active or most recent session. Move durable summaries to `campaign-state/previous-sessions.md` after close-out.
+Legacy issue `#12` flat playtest log. For new resumable play, use the selected `campaigns/<campaign-id>/session-log.md` and `campaigns/<campaign-id>/previous-sessions.md` files instead.
 
 ## Active Session
 

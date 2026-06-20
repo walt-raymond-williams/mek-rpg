@@ -24,7 +24,8 @@ Use `campaigns/_template/` when creating a new campaign.
 - `relationships.md`: trust, leverage, promises, grudges, loyalty, and obligations.
 - `missions.md`: active, paused, and completed missions.
 - `hooks.md`: unresolved questions, threats, opportunities, and next-session prompts.
-- `session-log.md`: recent play notes and close-out summaries.
+- `session-log.md`: active or most recent session notes and close-out summary.
+- `previous-sessions.md`: completed-session archive used to preserve durable outcomes after `session-log.md` rolls forward.
 - `rules-gaps.md`: missing or uncertain rules found during this campaign.
 - `playtest-notes.md`: workflow bugs, procedure gaps, and test observations.
 - `safety-and-tone.md`: player preferences, child/co-player guidance, and table boundaries.

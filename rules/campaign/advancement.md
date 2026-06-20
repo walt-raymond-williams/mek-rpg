@@ -16,7 +16,8 @@ Pace advancement around mission arcs and visible character goals.
 - Edge case: Training access may depend on contacts or faction support.
 ## Related Files
 - rules/character-creation/xp-advancement.md
-- campaign-state/player-characters.md
+- campaign-state/active-campaign.md
+- campaigns/<campaign-id>/pcs.md
 ## Source References
 - A Time of War, pp. TBD
 ## Status

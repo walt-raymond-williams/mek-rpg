@@ -1,5 +1,7 @@
 # Current Mission
 
+Legacy issue `#11` prototype mission scaffold. For new resumable play, use the selected `campaigns/<campaign-id>/missions.md` file instead.
+
 Mission name: Checkpoint Ghosts
 
 Status: Playtest scaffold for issue `#12`; not fixed table canon until the user accepts it.
@@ -76,6 +78,6 @@ Stay in RPG mode for questioning, investigation, a brief chase, a standoff, or a
 
 ## Issue #12 Playtest Divergence
 
-Confirmed by user: the actual issue `#12` manual playtest did not use `Checkpoint Ghosts`. It used a Galatea DropShip purchase scene with Walter and Sharpe, and that scene is playtest only rather than table canon. See `campaign-state/session-log.md` for the concise playtest record.
+Confirmed by user: the actual issue `#12` manual playtest did not use `Checkpoint Ghosts`. It used a Galatea DropShip purchase scene with Walter and Sharpe, and that scene is playtest only rather than table canon. See `campaigns/playtest-galatea-dropship/session-log.md` for the campaign-save record.
 
 Issue `#13` should decide how future playtests and campaigns store active missions separately so a playtest scene does not have to overwrite an unrelated mission scaffold.

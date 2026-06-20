@@ -36,8 +36,8 @@ Use this file first. Match the user's request to the most relevant files, then r
 | converting RPG characters to Classic BattleTech pilots | `rules/vehicles-and-mechs/converting-to-classic-battletech.md` | `gm/switch-to-classic-battletech.md` |
 | switching from RPG mode to BattleTech tactical combat | `gm/switch-to-classic-battletech.md` | `rules/vehicles-and-mechs/overview.md` |
 | campaign advancement | `rules/campaign/advancement.md` | `rules/character-creation/xp-advancement.md` |
-| NPCs and contacts | `rules/campaign/contacts.md` | `campaign-state/npc-roster.md`, `campaign-state/faction-roster.md` |
-| running a scene | `gm/scene-loop.md` | `gm/roll-policy.md`, `campaign-state/current-mission.md` |
+| NPCs and contacts | `rules/campaign/contacts.md` | `campaign-state/active-campaign.md`, active `campaigns/<campaign-id>/npcs.md`, active `campaigns/<campaign-id>/factions.md`, active `campaigns/<campaign-id>/relationships.md` |
+| running a scene | `gm/scene-loop.md` | `gm/roll-policy.md`, `campaign-state/active-campaign.md`, active `campaigns/<campaign-id>/current-state.md`, active `campaigns/<campaign-id>/missions.md`, active `campaigns/<campaign-id>/hooks.md` |
 | running a kid-friendly session | `gm/kid-friendly-mode.md` | `gm/scene-loop.md`, `gm/roll-policy.md` |
-| creating a mission | `gm/mission-template.md` | `rules/campaign/contracts.md`, `campaign-state/current-mission.md` |
+| creating a mission | `gm/mission-template.md` | `rules/campaign/contracts.md`, `campaign-state/active-campaign.md`, active `campaigns/<campaign-id>/missions.md`, active `campaigns/<campaign-id>/factions.md`, active `campaigns/<campaign-id>/assets.md`, active `campaigns/<campaign-id>/hooks.md` |
 | creating a tactical encounter | `gm/encounter-template.md` | `gm/switch-to-classic-battletech.md` |

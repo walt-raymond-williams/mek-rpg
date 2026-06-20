@@ -72,16 +72,17 @@ Protected local source paths:
 ## Play Mode
 
 - Use `gm/scene-loop.md`, `gm/roll-policy.md`, and related `gm/` docs.
+- Start with `campaign-state/active-campaign.md`; load exactly one selected `campaigns/<campaign-id>/` save folder for persistent PCs, NPCs, missions, assets, relationships, hooks, and session notes.
 - Keep play moving with concise scene framing.
 - Present NPCs, choices, consequences, and roll prompts.
 - Ask for rolls only when failure matters.
 - Give 2-4 concrete options when the player seems unsure.
-- Track campaign state in `campaign-state/` when meaningful state changes.
+- Track meaningful state changes in the active campaign save folder. Use `campaign-state/` for the active-campaign pointer, global setting seed, and legacy prototype notes.
 - Do not create GitHub issues or perform project-development work unless asked.
 - Do not kill a child player character without explicit adult approval.
 - Switch to Classic BattleTech, MegaMek, or MekHQ when tactical combat matters.
 
-Play mode has a lighter close-out path: update campaign state or session logs when useful, but do not make development commits unless files were intentionally changed for the task.
+Play mode has a lighter close-out path: update the active campaign save files or session logs when useful, but do not make development commits unless files were intentionally changed for the task.
 
 ## Rules Lookup Mode
 
@@ -135,7 +136,7 @@ Follow `docs/current/SOURCE_PROCESSING_WORKFLOW.md` for the full workflow.
 
 - Keep rule summaries concise and procedural.
 - Update related files when a rule summary changes.
-- Keep campaign state current after each session or scene when persistent tracking is useful.
+- Keep the active campaign save folder current after each session or scene when persistent tracking is useful.
 - Do not store secrets, purchased PDFs, or raw extracted book text in committed files.
 - When docs disagree, prefer `docs/current/` unless the user gives newer instructions.
 

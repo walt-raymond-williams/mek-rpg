@@ -46,11 +46,13 @@ When mode is ambiguous and edits are possible, ask one short clarifying question
 
 Use `gm/scene-loop.md`, `gm/roll-policy.md`, and related `gm/` docs. Keep play concise and actionable:
 
+- start from `campaign-state/active-campaign.md` and load exactly one selected `campaigns/<campaign-id>/` save folder
 - frame the immediate situation
 - present NPCs, choices, consequences, and roll prompts
 - ask for rolls only when failure matters
 - offer 2-4 concrete options when the player seems unsure
-- update `campaign-state/` or session logs when persistent state changes
+- update the active campaign save folder when persistent PCs, NPCs, missions, assets, relationships, hooks, or session notes change
+- use `campaign-state/` for the active-campaign pointer, global setting seed, and legacy prototype records
 - avoid project-development work unless the user asks
 - do not kill a child player character without explicit adult approval
 - hand off to Classic BattleTech, MegaMek, or MekHQ when tactical BattleMech combat matters

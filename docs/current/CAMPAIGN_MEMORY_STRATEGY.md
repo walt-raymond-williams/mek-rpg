@@ -33,6 +33,7 @@ campaigns/
     missions.md
     hooks.md
     session-log.md
+    previous-sessions.md
     rules-gaps.md
     playtest-notes.md
     safety-and-tone.md
@@ -49,7 +50,7 @@ Keep shared rules, indexes, GM procedures, and broad setting seeds outside campa
 - Assets: money, vehicles, DropShips, contracts, permits, debts, liens, repairs, cargo, rewards, and losses.
 - Relationships: trust, leverage, debts, rivalries, fear, family ties, command relationships, and crew loyalties.
 - Missions and hooks: active objective, next scene prompt, threats, deadlines, choices, unresolved hooks, and tactical handoff triggers.
-- Session outcomes: summary, rolls, rulings, state changes, rewards, costs, rules gaps, playtest bugs, and next-session prompts.
+- Session outcomes: current-session notes in `session-log.md`; completed-session summaries, rolls, rulings, state changes, rewards, costs, and next-session prompts in `previous-sessions.md`.
 - Safety and tone: child/co-player participation, tone boundaries, agency preferences, and harm/violence constraints.
 
 ## Load And Save Rule
