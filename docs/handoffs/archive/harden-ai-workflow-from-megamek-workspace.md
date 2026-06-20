@@ -132,6 +132,15 @@ Preserve these `mek-rpg` constraints:
 - A task/roadmap model that makes the next steps clear before PDF extraction begins.
 - No PDF parsing or source summarization.
 
+## Implementation Status
+
+- Status: Implemented and archived for issue `#1` close-out.
+- Added `docs/current/` workflow docs adapted to MEK RPG's dual-use play/rules/development/source-processing model.
+- Added `docs/templates/AGENT_HANDOFF.md`.
+- Added `.github/ISSUE_TEMPLATE/agent-task.md`.
+- Updated `AGENTS.md`, `README.md`, `docs/workflow.md`, and `docs/github-issues.md` to point at the new current-doc workflow.
+- No PDF processing was performed.
+
 ## Suggested Acceptance Criteria
 
 - `docs/current/MEK_RPG_PROJECT_PROFILE.md` clearly describes the private rules-assistant domain, protected inputs, source-processing boundaries, GM mode, and BattleTech integration posture.

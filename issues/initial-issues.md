@@ -1,5 +1,7 @@
 # Initial Issues
 
+This is the historical seed list. Current durable planning lives in `docs/current/ROADMAP.md`, and executable work should be tracked through GitHub Issues when ready.
+
 1. Create project scaffolding
    - Create the initial directory structure, docs, indexes, agent instructions, and placeholders.
 2. Add PDF extraction script

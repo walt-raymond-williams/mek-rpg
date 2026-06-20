@@ -1,16 +1,63 @@
 # Agent Instructions
 
 ## Project Mission
+
 MEK RPG is a private personal-use rules-assistant and GM-assistant workspace for running a BattleTech RPG campaign using A Time of War style rules. Classic BattleTech, MegaMek, or MekHQ should be used when tactical BattleMech combat needs the full tactical rules.
 
+## Start Here
+
+For project development work, read these docs before editing:
+
+1. `docs/current/AI_READY_PROJECT_WORKFLOW.md`
+2. `docs/current/MEK_RPG_PROJECT_PROFILE.md`
+3. `docs/current/DOCUMENTATION_WORKFLOW.md`
+4. `docs/current/GITHUB_ISSUE_WORKFLOW.md`
+5. `docs/current/TASKS.md`
+6. Any task-specific GitHub issue body or handoff under `docs/handoffs/active/`
+
+For play or rules lookup, start with the mode router below and only read the docs needed for that mode.
+
+## Mode Router
+
+Route every request into one primary mode before acting:
+
+- `Play mode`: the user asks to play, run or continue a scene, talk to an NPC, make a mission choice, resolve an in-world situation, or update campaign events.
+- `Rules lookup mode`: the user asks how a rule works, asks for a ruling, asks what page to check, or needs a procedure from the rules summaries.
+- `Project development mode`: the user asks to scaffold, refactor, create issues, improve docs, write scripts, update indexes, summarize rules, or otherwise change repository files.
+- `Source processing mode`: the user explicitly asks to extract, parse, map, or summarize a PDF or source text.
+
+If the mode is ambiguous and file edits could result, ask a short clarifying question before editing.
+
 ## Copyright Boundaries
+
 - Do not redistribute copyrighted rulebook text.
-- Do not copy large verbatim passages from legally owned source material into summaries.
-- Use paraphrase, procedure summaries, examples, and page references.
+- Do not copy large verbatim passages from legally owned source material into summaries, issues, handoffs, or chat responses.
+- Use paraphrase, procedure summaries, original examples, and page references.
 - Keep raw PDFs and extracted text private under ignored paths.
 - Preserve uncertainty when a summary is incomplete or unverified.
+- Do not commit purchased PDFs, EPUBs, raw extracted text, copied tables, or secrets.
 
-## Rules-Answering Workflow
+Protected local source paths:
+
+- `source/atow-pdf/`
+- `source/atow-text/`
+
+## Play Mode
+
+- Use `gm/scene-loop.md`, `gm/roll-policy.md`, and related `gm/` docs.
+- Keep play moving with concise scene framing.
+- Present NPCs, choices, consequences, and roll prompts.
+- Ask for rolls only when failure matters.
+- Give 2-4 concrete options when the player seems unsure.
+- Track campaign state in `campaign-state/` when meaningful state changes.
+- Do not create GitHub issues or perform project-development work unless asked.
+- Do not kill a child player character without explicit adult approval.
+- Switch to Classic BattleTech, MegaMek, or MekHQ when tactical combat matters.
+
+Play mode has a lighter close-out path: update campaign state or session logs when useful, but do not make development commits unless files were intentionally changed for the task.
+
+## Rules Lookup Mode
+
 1. First read `indexes/task-router.md`.
 2. Read the relevant summary files listed by the router.
 3. Answer from project summaries first.
@@ -18,40 +65,61 @@ MEK RPG is a private personal-use rules-assistant and GM-assistant workspace for
 5. If summaries are insufficient, use `indexes/page-reference-index.md` or source references in summaries to tell the user where to inspect the legally owned source.
 6. Do not invent rules. Say what is known, what is uncertain, and where to verify.
 
-## GM-Mode Workflow
-- Keep play moving with concise scene framing.
-- Present NPCs, choices, consequences, and roll prompts.
-- Ask for rolls only when failure matters.
-- Give 2-4 concrete options when the player seems unsure.
-- Track campaign state in `campaign-state/`.
-- Do not kill a child player character without explicit adult approval.
-- Switch to Classic BattleTech, MegaMek, or MekHQ when tactical combat matters.
+Rules lookup mode should usually not edit files during play. If a gap is found, suggest or create a follow-up issue only when the user asks for project maintenance.
 
-## PDF-Processing Workflow
+## Project Development Mode
+
+- Use GitHub Issues for major work when available.
+- Use handoffs under `docs/handoffs/active/` for agent-executed issues.
+- Keep durable workflow and planning knowledge in `docs/current/`.
+- Keep rule summaries concise, paraphrased, procedural, and page-referenced.
+- Update related files when a rule summary, index, or workflow changes.
+- Use `gh` CLI when available and authenticated.
+- Track major work as GitHub Issues.
+- Keep commits small and logical.
+- Reference issue numbers in commit messages when practical.
+- Do not fail local setup if GitHub is not connected; record the blocker.
+
+Project-development close-out:
+
+1. Run reasonable verification or record the blocker.
+2. Check `git status --short`.
+3. Stage only files that belong to the completed work.
+4. Commit completed repository changes unless the user explicitly says not to commit.
+5. Push to the tracked branch unless the user explicitly says not to push.
+6. Confirm `git status --short --branch` is clean or clearly report why it is not.
+7. Update or close the GitHub issue when appropriate.
+
+## Source Processing Mode
+
+Source processing is explicit-request-only. Do not process any PDF as incidental setup for another task.
+
 1. Place the legally owned PDF in `source/atow-pdf/`.
-2. Extract page-level text into `source/atow-text/`.
+2. Extract page-level text into ignored `source/atow-text/`.
 3. Build a chapter and section map before summarizing.
 4. Create paraphrased Markdown summaries using the standard schema.
 5. Preserve page references.
 6. Update routing indexes and `indexes/manifest.yaml`.
+7. Verify raw source files are not staged before committing.
+
+Follow `docs/current/SOURCE_PROCESSING_WORKFLOW.md` for the full workflow.
 
 ## File Update Policy
+
 - Keep rule summaries concise and procedural.
 - Update related files when a rule summary changes.
-- Keep campaign state current after each session or scene.
+- Keep campaign state current after each session or scene when persistent tracking is useful.
 - Do not store secrets, purchased PDFs, or raw extracted book text in committed files.
+- When docs disagree, prefer `docs/current/` unless the user gives newer instructions.
 
-## Git/GitHub Issue Policy
-- Use `gh` CLI when available and authenticated.
-- Track major work as GitHub issues.
-- Keep commits small and logical.
-- Reference issue numbers in commit messages when practical.
-- Do not fail local setup if GitHub is not connected.
+## Definition Of Done
 
-## Definition of Done
-- New or changed files are committed.
-- Raw source files remain ignored.
+For project development work:
+
+- New or changed files are committed and pushed unless blocked or explicitly disabled by the user.
+- Raw source files remain ignored and unstaged.
 - Relevant indexes point to the right summaries.
 - Summaries include source page references or `TBD`.
-- Unverified rules are marked as placeholders or needing source review.
-- The next concrete task is documented in issues or project notes.
+- Unverified rules are marked as placeholders, `Unknown`, or `Needs source review`.
+- The next concrete task is documented in GitHub Issues, `docs/current/TASKS.md`, or project notes.
+- The final response reports verification, commit hash, push status, and blockers or open questions.

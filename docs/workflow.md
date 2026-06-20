@@ -1,13 +1,16 @@
 # Workflow
 
-## Rules Lookup
-Start with `indexes/task-router.md`, then read the linked summary files. If the summaries do not answer the question, provide the best page references and mark the gap for later validation.
+The current workflow is split by mode and documented in `docs/current/`:
 
-## GM Mode
-Use `gm/scene-loop.md` and `gm/roll-policy.md`. Keep the scene focused on immediate choices and consequences. Update `campaign-state/` after meaningful changes.
+- `docs/current/AI_READY_PROJECT_WORKFLOW.md`
+- `docs/current/MEK_RPG_PROJECT_PROFILE.md`
+- `docs/current/SOURCE_PROCESSING_WORKFLOW.md`
+- `docs/current/GITHUB_ISSUE_WORKFLOW.md`
+- `docs/current/DOCUMENTATION_WORKFLOW.md`
 
-## Source Processing
-Do not process the PDF until explicitly asked. When ready, place the PDF under `source/atow-pdf/`, extract page text with `scripts/extract-pdf-pages.sh`, map sections, summarize into `rules/`, and update indexes.
+For quick routing:
 
-## Tactical Handoff
-Use `gm/switch-to-classic-battletech.md` when a combat scene needs full BattleTech tactical handling.
+- Play mode uses `gm/` and may update `campaign-state/`.
+- Rules lookup mode starts at `indexes/task-router.md`.
+- Project development mode uses issues, handoffs, commits, and pushes.
+- Source processing mode is explicit-request-only and must not commit raw source.

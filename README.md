@@ -3,15 +3,31 @@
 MEK RPG is a private personal-use workspace for running a BattleTech RPG campaign with A Time of War style roleplaying rules. It supports rules lookup, GM assistance, campaign state tracking, and handoff to Classic BattleTech, MegaMek, or MekHQ when tactical BattleMech combat is needed.
 
 ## What It Is Not
-This project is not a redistribution of copyrighted rulebooks. It should not contain purchased PDFs, EPUBs, or large verbatim extracted passages in committed files.
 
-## How to Use This Project
-1. Use `indexes/task-router.md` to decide which summaries answer a question.
-2. Read the relevant files under `rules/` or `gm/`.
-3. If a summary is incomplete, use source page references to inspect your legally owned copy.
-4. Track campaign changes in `campaign-state/`.
+This project is not a redistribution of copyrighted rulebooks. It should not contain purchased PDFs, EPUBs, copied tables, raw extracted text, or large verbatim extracted passages in committed files.
+
+## Operating Modes
+
+- `Play mode`: run scenes, present choices and consequences, request rolls only when failure matters, and update `campaign-state/` when useful.
+- `Rules lookup mode`: start at `indexes/task-router.md`, answer from paraphrased summaries, and cite page references when summaries are incomplete.
+- `Project development mode`: improve the repository using `docs/current/`, GitHub Issues, handoffs, commits, and pushes.
+- `Source processing mode`: explicitly requested PDF extraction, section mapping, and paraphrased summarization under strict copyright boundaries.
+
+The full mode router is in `AGENTS.md` and `docs/current/MEK_RPG_PROJECT_PROFILE.md`.
+
+## Current Workflow Docs
+
+- `docs/current/AI_READY_PROJECT_WORKFLOW.md`: durable AI workflow pattern.
+- `docs/current/MEK_RPG_PROJECT_PROFILE.md`: project profile, protected inputs, modes, and BattleTech posture.
+- `docs/current/ROADMAP.md`: durable planning source.
+- `docs/current/TASKS.md`: current work board.
+- `docs/current/GITHUB_ISSUE_WORKFLOW.md`: issue and handoff lifecycle.
+- `docs/current/DOCUMENTATION_WORKFLOW.md`: where durable knowledge belongs.
+- `docs/current/SOURCE_PROCESSING_WORKFLOW.md`: PDF extraction and summarization workflow.
+- `docs/current/KNOWN_COMMANDS.md`: repeatable local commands.
 
 ## PDF Placement
+
 Put your legally owned PDF in:
 
 ```text
@@ -21,22 +37,23 @@ source/atow-pdf/
 The PDF path is ignored by git. Do not commit the PDF.
 
 ## Extraction Workflow
-Later, run:
+
+Only after an explicit source-processing request, run:
 
 ```sh
 ./scripts/extract-pdf-pages.sh "source/atow-pdf/A Time of War.pdf"
 ```
 
-The script will extract one text file per page into `source/atow-text/` if `pdftotext` is installed. Extracted text is ignored by git.
+The script extracts one text file per page into ignored `source/atow-text/` if `pdftotext` is installed. Extracted text is ignored by git.
 
 ## Summary Structure
+
 Rule summaries live under `rules/` and follow a standard schema: purpose, when to use, when not to use, procedure, GM guidance, edge cases, related files, source references, and status.
 
 ## GM Mode
+
 GM procedures live under `gm/`. The agent should frame scenes concisely, ask for rolls only when failure matters, offer concrete choices, track state, and switch to tactical BattleTech tools when the fight becomes a BattleMech-scale tactical engagement.
 
 ## GitHub Issues
-The issue workflow is documented in `docs/github-issues.md`. Initial issue drafts are listed in `issues/initial-issues.md`.
 
-## Copyright Boundary
-Committed files should contain paraphrased summaries, page references, indexes, campaign notes, and procedures. Purchased source files and raw extracted text stay local and ignored.
+Issue workflow is documented in `docs/current/GITHUB_ISSUE_WORKFLOW.md`. Initial issue drafts remain in `issues/initial-issues.md`; durable planning now lives in `docs/current/ROADMAP.md`.
