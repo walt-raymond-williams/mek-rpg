@@ -2,11 +2,16 @@
 
 ## Now
 
-- None.
+- Issue `#59`: keep the next rules source-review expansion wave visible while child issues `#60`-`#64` are completed.
 
 ## Next
 
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
+- Issue `#60`: source-review character detail gaps, with active handoff `docs/handoffs/active/source-review-character-detail-gaps.md`.
+- Issue `#61`: source-review personal combat detail gaps, with active handoff `docs/handoffs/active/source-review-personal-combat-detail-gaps.md`.
+- Issue `#62`: source-review tactical addendum boundaries, with active handoff `docs/handoffs/active/source-review-tactical-addendum-boundaries.md`.
+- Issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
+- Issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
 
 ## Backlog
 

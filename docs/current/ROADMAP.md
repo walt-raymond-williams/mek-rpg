@@ -48,16 +48,39 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Rules lookup infrastructure now has completed glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
+- The next rules source-review expansion wave is now tracked under epic issue `#59`, with executable child issues `#60`-`#64` and active handoffs. This rules track can proceed independently while user-assisted MekHQ UI validation issue `#37` remains open.
 
 ## Active Work
 
-- None.
+- Issue `#37`: human-in-the-loop MekHQ pending workflow playtest remains open until the user has a disposable or intentionally selected MekHQ save ready.
+- Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. MekHQ manual verification issue `#37` is the remaining user-assisted staged exploration path. MekHQ bridge epic issue `#25`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the next rules wave. MekHQ manual verification issue `#37` remains the user-assisted staged exploration path. Rules source-review expansion is now issued as `#59`-`#64`. MekHQ bridge epic issue `#25`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
+
+### Next rules source-review expansion wave
+
+- Status: Open
+- Epic issue: `#59`
+- Mode: Source processing / project development
+- Goal: turn the highest-value mapped-only and partial-draft A Time of War areas into committed paraphrased summaries, routing aids, or GM procedures without trying to summarize the whole book in one pass.
+- Parallel-track note: issue `#37` may remain open while this rules wave proceeds; the rules wave does not depend on MekHQ UI validation.
+- Child issues:
+  - Open issue `#60`: source-review character detail gaps, with active handoff `docs/handoffs/active/source-review-character-detail-gaps.md`.
+  - Open issue `#61`: source-review personal combat detail gaps, with active handoff `docs/handoffs/active/source-review-personal-combat-detail-gaps.md`.
+  - Open issue `#62`: source-review tactical addendum boundaries, with active handoff `docs/handoffs/active/source-review-tactical-addendum-boundaries.md`.
+  - Open issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
+  - Open issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
+- Dependency order:
+  1. Issue `#60` first: character detail gaps support future PC/NPC sheet review and eventual focused validators.
+  2. Issue `#61` next: personal-combat details are the most likely immediate play gap after the current minimum combat layer.
+  3. Issue `#62` next: tactical addendum work should refine handoff decisions after personal-scale gaps are clearer.
+  4. Issue `#63` next: equipment and hazard work supports missions, injury aftermath, and vehicle/asset scenes, but may split if it grows too large.
+  5. Issue `#64` last in this wave: GM/campaign orientation is useful, but should stay procedure- and routing-focused rather than lore-heavy.
+- Boundary: this wave permits explicit source-processing for scoped page ranges only. Do not commit protected raw source, copied tables, catalog lists, stat blocks, adventure text, or long lore passages. Use paraphrase, page references, route guidance, and uncertainty labels.
 
 ### Rules lookup infrastructure and metadata queue
 
