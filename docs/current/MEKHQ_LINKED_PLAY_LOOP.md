@@ -21,7 +21,7 @@ MEK-RPG is authoritative for:
 - conversations, promises, relationships, secrets, hidden motives, rumors, hooks, session logs, table rulings, rules gaps, and safety/tone
 - narrative uncertainty around MekHQ objects until the table commits the result as a hard ledger fact
 
-MEK-RPG may propose or queue a ledger change. MekHQ applies the committed hard outcome through the UI or a future source-backed path, then MEK-RPG imports or summarizes the saved MekHQ state.
+MEK-RPG may propose or queue a ledger change. MekHQ applies the committed hard outcome through the UI or a future source-backed path, then MEK-RPG imports or summarizes the saved MekHQ state. For day advancement, the current supported path is manual MekHQ UI advancement, save, and re-import; headless day advancement is not low-risk because the MekHQ new-day flow reaches GUI state and can trigger prompts or events.
 
 ## One-Day Loop
 
@@ -150,7 +150,7 @@ After the battle, import or summarize the MekHQ result and then save the RPG con
 | Repairs, parts, maintenance, technician work, acquisition queues | Narrative pressure and hooks are safe in MEK-RPG. | Yes for repair queues, part use, assignments, and completion. | Repair checklist or logistics report. | Later source-backed repair/logistics helper. | Direct XML edits to parts, units, repair tasks, or queues. |
 | Personnel hiring, firing, ranks, assignments, salaries | Interviews, motives, loyalty, and promises are MEK-RPG memory. | Yes for hiring, firing, role, salary, assignment, rank, and availability. | Hiring packet or candidate notes. | Later source-backed personnel command if proven useful. | Direct XML edits to rosters, assignments, or payroll. |
 | Tactical battles, damage, salvage, casualties, prisoners, kill credit | Narrative stakes and aftermath memory are safe in MEK-RPG. | Use MekHQ/MegaMek/tabletop workflows for tactical outcomes. | Battle-record MUL or other MekHQ-supported result artifact where available. | Later source-backed battle-result import/export tooling. | Direct XML edits to unit damage, salvage, kills, prisoners, or scenario result. |
-| Day advancement, travel, market refreshes, deadlines, daily reports | MEK-RPG may track scene time inside the day only. | Yes. User advances the day in MekHQ and saves. | End-of-day checklist for actions to perform before advancing. | Later source-backed noninteractive day-advance command only after GUI/dialog dependencies are resolved. | Direct XML edits to campaign date, travel, deadlines, or daily report state. |
+| Day advancement, travel, market refreshes, deadlines, daily reports | MEK-RPG may track scene time inside the day only. | Yes. User advances the day in MekHQ UI and saves; issue `#37` validated this manual path only. | End-of-day checklist for actions to perform before advancing. | Not a near-term target. `CampaignNewDayManager#newDay()` reaches GUI state and daily processing can trigger prompts/events, so any future command needs MekHQ source work plus explicit prompt policy before MEK-RPG treats it as safe. | Direct XML edits to campaign date, travel, deadlines, or daily report state. |
 
 ## Unsafe Current Behaviors
 
@@ -158,6 +158,7 @@ Do not do these in current MEK-RPG workflows:
 
 - write to MekHQ saves
 - edit `.cpnx`, `.cpnx.gz`, or extracted MekHQ XML as a way to apply purchases, contracts, repairs, personnel changes, battles, or day advancement
+- run or plan headless MekHQ day advancement as a normal bridge primitive before MekHQ source work separates GUI/prompt dependencies and defines a noninteractive policy
 - advance the MEK-RPG campaign date independently after a campaign is linked
 - invent exact MekHQ ledger values when the import is missing or unsupported
 - commit raw MekHQ save payloads, protected A Time of War source text, purchased PDFs, secrets, or copied rulebook passages

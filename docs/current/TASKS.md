@@ -14,7 +14,6 @@
 - Issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
 - Issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
 - Issue `#67`: consume future MekHQ read-only checkpoint export, with active handoff `docs/handoffs/active/consume-mekhq-read-only-checkpoint-export.md`.
-- Issue `#68`: document headless MekHQ day-advance risk, with active handoff `docs/handoffs/active/document-headless-day-advance-risk.md`.
 - Issue `#69`: plan contract-market accept-decline bridge probe, with active handoff `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`.
 
 ## Backlog
@@ -34,6 +33,7 @@
 
 ## Done
 
+- Issue `#68` implemented: documented that headless MekHQ day advancement is not currently low-risk because MekHQ new-day processing reaches GUI state and can trigger prompts/events; preserved manual MekHQ UI advance, save, and re-import as the supported workflow; updated bridge request, play-loop, pending workflow, roadmap, and handoff state.
 - Issue `#37` completed: ran a human-in-the-loop MekHQ pending workflow playtest using `campaigns/mekhq-pending-playtest/`; user advanced MekHQ one day in the UI, saved, read-only re-import confirmed date `3025-07-25`, pending item `mekhq-pending-2026-06-21-001` was resolved, and validation was recorded in `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`.
 - Issue `#25` completed: the MekHQ-to-MEK-RPG bridge exploration now has a documented ownership model, one-day play loop, read-only save summary helper, campaign bootstrap helper, pending-application workflow, automated regression coverage, and completed live MekHQ UI validation from issue `#37`.
 - Issue `#58` implemented: added `scripts/archive-campaign-session.ps1` and disposable fixture coverage to preserve exact `session-log.md` text in campaign-local `previous-sessions.md`, require explicit campaign selection and `-ConfirmArchive` before mutation, support `-WhatIf`, create temp backups, optionally reset the active session log, and document the command in campaign/save tooling docs.

@@ -69,6 +69,8 @@ Manual UI validation is complete for one simple hard-ledger action:
 - Pending item: `mekhq-pending-2026-06-21-001`.
 - Final pending item state: `resolved`.
 
+This validation is evidence for the manual UI apply/save/re-import loop only. It is not evidence that headless day advancement is safe; the follow-up MegaMek source assessment found `CampaignNewDayManager#newDay()` reaches GUI state and can trigger prompt/event flows.
+
 No raw MekHQ save payload, raw XML, purchased A Time of War source text, extracted source text, copied tables, or secrets should be committed.
 
 ## Known Current Parser Limits
@@ -144,7 +146,7 @@ mekhq apply-pending-action --campaign path\to\campaign.cpnx --action pending-act
 
 Initial target actions should be small and source-backed. Good candidates:
 
-- advance one day and save, if GUI/dialog dependencies can be handled safely
+- advance one day and save only after MekHQ source work resolves `CampaignNewDayManager#newDay()` GUI coupling and defines prompt/event policy
 - accept or decline a contract by stable id
 - hire a personnel-market applicant by stable id
 - buy a unit-market offer by stable id or stable offer selector

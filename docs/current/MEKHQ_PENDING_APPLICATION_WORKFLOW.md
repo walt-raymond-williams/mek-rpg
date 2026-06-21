@@ -33,6 +33,8 @@ MekHQ remains authoritative for hard ledger facts until all three conditions are
 2. The user saves the MekHQ campaign.
 3. MEK-RPG imports or summarizes the saved MekHQ state and confirms the result.
 
+For day advancement, use the MekHQ UI as the current safe application path. The source-backed bridge assessment found that MekHQ's new-day processing reaches GUI state and can trigger prompts or events, so headless day advancement must stay blocked until MekHQ source work provides a safe command boundary and prompt policy.
+
 Until then, the pending item is an intent, request, or checklist. It is not final campaign funds, final unit condition, final contract status, final personnel availability, final salvage, final repair state, or final campaign date.
 
 MEK-RPG remains authoritative for RPG memory: scenes, conversations, relationships, promises, secrets, hooks, A Time of War overlays, session logs, table rulings, safety/tone, and narrative uncertainty.
@@ -133,7 +135,7 @@ Personnel: record target person/applicant id, hire/fire/assign/rank/injury/avail
 
 Tactical outcomes: record the tactical tool or table result to apply, scenario id, units/personnel affected, and confirmation needed for damage, casualties, salvage, prisoners, kill credit, and scenario result.
 
-Day advancement: record all prerequisites, actions to complete first, and confirmation needed for MekHQ date, travel, deadlines, market refreshes, repairs, payroll, and daily report effects.
+Day advancement: record all prerequisites, actions to complete first, and confirmation needed for MekHQ date, travel, deadlines, market refreshes, repairs, payroll, and daily report effects. Do not describe the pending action as headless or automatic; the user advances the day in the MekHQ UI unless a later MekHQ-owned command has resolved GUI and prompt dependencies.
 
 ## Context Packet Use
 

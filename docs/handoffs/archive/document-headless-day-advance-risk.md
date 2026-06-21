@@ -69,4 +69,11 @@ git diff --check
 
 ## Open Questions
 
-- Should MEK-RPG ever track a future headless day-advance issue, or should that live entirely in the MegaMek workspace until the GUI dependency is resolved?
+- Resolved for issue `#68`: MEK-RPG should not track a headless day-advance implementation issue now. Any future headless day-advance work should start in the MegaMek workspace after MekHQ source work separates GUI/prompt dependencies and defines safe noninteractive policy.
+
+## Completion Notes
+
+- Documented headless MekHQ day-advance risk in `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`.
+- Added day-advancement-specific warning to `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`.
+- Clarified in `docs/current/MEGAMEK_WORKSPACE_BRIDGE_REQUEST.md` that issue `#37` validates manual UI advancement only, not headless automation.
+- Updated `docs/current/ROADMAP.md` and `docs/current/TASKS.md` to mark issue `#68` complete.

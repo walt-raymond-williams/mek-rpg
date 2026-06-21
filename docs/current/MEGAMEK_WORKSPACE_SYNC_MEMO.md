@@ -39,16 +39,16 @@ MEK-RPG has now tracked that feedback in issues:
 
 - `#66`: Epic: track MekHQ bridge primitives follow-up
 - `#67`: Consume future MekHQ read-only checkpoint export
-- `#68`: Document headless MekHQ day-advance risk
+- `#68`: Document headless MekHQ day-advance risk (done)
 - `#69`: Plan contract-market accept-decline bridge probe
 
 ## MEK-RPG Work Starting Now
 
-MEK-RPG will start with:
+MEK-RPG has started with the documentation-risk item and should continue with read-only-first follow-up work:
 
-1. Issue `#68`: document headless day-advance risk.
-   - Goal: make sure MEK-RPG docs clearly say manual UI day advancement plus saved re-import is the current supported path.
-   - No implementation or automation.
+1. Issue `#68`: documented headless day-advance risk.
+   - Result: MEK-RPG docs now clearly say manual UI day advancement plus saved re-import is the current supported path.
+   - No implementation or automation was added.
 
 2. Issue `#67`: consume future MekHQ read-only checkpoint export.
    - Goal: compare current `scripts/summarize-mekhq-save.py` JSON with the recommended MekHQ-owned checkpoint export.
@@ -134,5 +134,5 @@ After MEK-RPG completes issues `#68` and the planning portion of `#67`, we shoul
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`
 - `docs/handoffs/active/consume-mekhq-read-only-checkpoint-export.md`
-- `docs/handoffs/active/document-headless-day-advance-risk.md`
+- `docs/handoffs/archive/document-headless-day-advance-risk.md`
 - `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`
