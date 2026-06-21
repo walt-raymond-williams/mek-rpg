@@ -45,7 +45,9 @@ Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` and `gm/state-save-checklist.md` 
 
 ## Vehicle And Unit Assets
 
-Vehicle, BattleMech, battle armor, aerospace, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `rules/vehicles-and-mechs/overview.md` to decide what to record: owner/controller, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, tactical handoff notes, and open source/tool lookups.
+Vehicle, BattleMech, battle armor, aerospace, DropShip, property, cargo, contract-right, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `docs/current/ASSET_SHEET_SCHEMA.md`, `rules/campaign/transport-and-large-assets.md`, and `rules/vehicles-and-mechs/overview.md` to decide what to record: stable slug, category, status, evidence labels, owner/controller, ownership evidence, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, MekHQ references, tactical handoff notes, and open source/tool lookups.
+
+Keep confirmed hard facts separate from RPG narrative memory. In MekHQ-linked campaigns, exact unit condition, funds, cargo, markets, repairs, rosters, contracts, and tactical outcomes remain MekHQ-owned until imported from a saved MekHQ campaign.
 
 ## MekHQ-Linked Pending Actions
 
