@@ -39,15 +39,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-### Define MekHQ bridge data model and campaign-folder mapping
-
-- Status: Open / Now
-- Issue: `#26`
-- Handoff: `docs/handoffs/active/define-mekhq-bridge-data-model.md`
-- Mode: Project development / design
-- Goal: define how MekHQ-owned hard campaign facts map into MEK-RPG campaign folders, how MekHQ IDs are preserved, and how RPG-only narrative memory stays separate.
-- Dependencies: none requiring a live MekHQ save; use the sister workspace collaboration brief and integration assessment as context.
-- Blocks: issue `#27` read-only summary field priorities, issue `#28` campaign bootstrap shape, and issue `#29` play/writeback boundaries.
+- None.
 
 ## Ready For Issue Candidates
 
@@ -74,7 +66,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Dependency Order
 
-1. Issue `#26` defines the ownership model, campaign-folder mapping, ID preservation, and uncertainty policy.
+1. Done in issue `#26`: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` defines the ownership model, campaign-folder mapping, ID preservation, and uncertainty policy.
 2. Issue `#29` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
 3. Issue `#27` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves already exist under `C:\Users\waltr\Documents\megamek-workspace\`; no purchased A Time of War source is involved.
 4. Issue `#28` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
@@ -112,6 +104,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 5. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Define MekHQ bridge data model and campaign-folder mapping
+
+- Status: Done
+- Issue: `#26`
+- Handoff: `docs/handoffs/archive/define-mekhq-bridge-data-model.md`
+- Design note: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
+- Mode: Project development / design
+- Goal: Define how MekHQ-owned hard campaign facts map into MEK-RPG campaign folders, how MekHQ IDs are preserved, and how RPG-only narrative memory stays separate.
+- Acceptance: design note covers MekHQ-owned hard facts; MEK-RPG-owned RPG, narrative, and A Time of War facts; campaign-file mapping for date, location, funds, personnel, units, assets, contracts, scenarios, repairs, logistics alerts, and markets; overlay mapping for PCs, NPC memory, relationships, hooks, missions, session logs, rules gaps, and safety/tone; ID and slug strategy; unknown/unsupported handling; read-only import boundary; and explicit non-goals.
 
 ### Create first real campaign save and live helper validation
 

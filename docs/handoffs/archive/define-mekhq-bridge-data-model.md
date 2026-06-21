@@ -80,16 +80,22 @@ Representative disposable MekHQ saves exist under `C:\Users\waltr\Documents\mega
 
 ## Acceptance Criteria
 
-- Correct mode identified.
-- Design note maps campaign date, location, funds, personnel, units, assets, contracts, scenarios, repairs, logistics alerts, and markets.
-- Design note maps MEK-RPG overlays for PCs, NPC memory, relationships, hooks, session logs, rules gaps, and safety/tone.
-- ID preservation strategy is explicit.
-- Unknown and unsupported mappings are marked clearly.
-- Read-only boundary and unsafe/deferred write paths are explicit.
-- Roadmap and task state still match GitHub issue state.
-- Verification run or blocker recorded.
-- No protected raw source committed.
-- Changes committed and pushed.
+- Done: correct mode identified.
+- Done: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` maps campaign date, location, funds, personnel, units, assets, contracts, scenarios, repairs, logistics alerts, and markets.
+- Done: design note maps MEK-RPG overlays for PCs, NPC memory, relationships, hooks, missions, session logs, rules gaps, and safety/tone.
+- Done: ID preservation and MEK-RPG slug strategy are explicit.
+- Done: unknown and unsupported mappings are marked clearly.
+- Done: read-only boundary and unsafe/deferred write paths are explicit non-goals.
+- Done: roadmap and task state updated for issue completion.
+- Done: verification run at close-out.
+- Done: no protected raw source committed.
+- Done: changes committed and pushed.
+
+## Completion
+
+- Design note: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
+- Roadmap update: issue `#26` moved to Done and dependency order now points issues `#27`-`#29` at the design note.
+- Task-board update: issue `#26` moved from Now to Done.
 
 ## Open Questions
 
