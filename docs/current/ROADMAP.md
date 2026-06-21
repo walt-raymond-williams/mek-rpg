@@ -427,6 +427,7 @@ None.
 - Fill `indexes/manifest.yaml` with stable IDs and source page arrays.
 - Validate all summaries against source pages.
 - Add deeper MekHQ / MegaMek integration notes for encounter handoff, unit setup, campaign updates, and save-backed campaign bootstrapping after issues `#26`-`#29` produce findings.
+- Future feature idea: investigate a read-only MEK-RPG web dashboard as a visibility and debugging layer over the active campaign save, GM context packets, session/NPC conversation history, state-audit warnings, and optional MekHQ bridge summaries. Treat this as API-boundary and ownership-boundary design first; keep live movement, Sunnytown-derived game surfaces, and write/control actions out of scope until the dashboard value is proven.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
 
 ## Existing Foundation

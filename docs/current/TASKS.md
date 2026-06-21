@@ -19,6 +19,7 @@
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, build a lightweight handoff checklist for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added.
+- Future feature idea: evaluate a read-only MEK-RPG web dashboard for campaign visibility, NPC/chat-history review, state-audit debugging, GM context inspection, and optional MekHQ summary display; start with API/ownership boundaries before any Sunnytown-derived UI or write controls.
 - Add campaign-local session archive helper after more play if `previous-sessions.md` becomes cumbersome.
 - Add richer DropShip and unit asset sheets after transport ownership rules are summarized.
 - Repeat manual validation/playtest checkpoints after adding major playable layers.
