@@ -119,7 +119,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   3. Done issue `#82`: defined BattleTech source precedence and conflict policy.
   4. Done issue `#74`: added golden route tests for common RPG procedures.
   5. Done issue `#80`: added a deterministic ruling authority gate.
-  6. Open issue `#73`: Audit existing scripts against mechanic contract.
+  6. Done issue `#73`: audited existing scripts against the mechanic contract.
   7. Open issue `#81`: Add page-reference and source-offset integrity checks.
   8. Open issue `#75`: Prototype basic check resolver contract.
   9. Open issue `#76`: Prototype opposed check resolver contract.
@@ -134,7 +134,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   4. Done in issue `#82`: define source precedence before authority behavior and route fixtures.
   5. Done in issue `#74`: added fixture-driven route tests before broad resolver use.
   6. Done in issue `#80`: added the ruling authority gate before broad resolver use.
-  7. Audit existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
+  7. Done in issue `#73`: audited existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
   8. Add page-reference/source-offset checks to reduce stale citation risk.
   9. Prototype the basic check, then opposed check.
   10. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
