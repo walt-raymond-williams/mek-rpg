@@ -54,6 +54,7 @@ Issues `#26`, `#27`, `#28`, and `#29` are complete. Issue `#31` has an active ha
 - Updates to `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`, `campaigns/README.md`, and/or `campaigns/_template/` if the chosen convention changes live campaign file expectations.
 - Update `docs/handoffs/active/define-gm-context-packet-design.md` so issue `#31` knows how to include pending MekHQ actions in the context packet.
 - Update `docs/current/TASKS.md` and `docs/current/ROADMAP.md` for task ordering and completion.
+- If the workflow exposes MekHQ-side requirements, create a clear request/memo ticket for the MegaMek workspace group. That ticket can ask the sister workspace to investigate or implement MekHQ-side support, such as safe APIs, UI-assisted import/export, supported artifact formats, writeback commands, or source-backed advice on what MEK-RPG should not attempt.
 
 ## Files And Areas
 
@@ -70,6 +71,7 @@ Likely files to read or edit:
 - `campaigns/_template/` if a new standard campaign-local file is chosen
 - `scripts/bootstrap-mekhq-campaign.py` only if generated MekHQ-linked campaigns should include the chosen file or section
 - `scripts/validate-campaign-state.ps1` only if a new required campaign template file is added
+- A GitHub issue or memo for the MegaMek workspace group if MekHQ-side work is needed or would materially reduce manual steps
 
 Avoid implementing direct MekHQ writeback. This task is a workflow/checklist design, not MekHQ automation.
 
@@ -118,6 +120,7 @@ python -m py_compile scripts/bootstrap-mekhq-campaign.py
 - Identifies which campaign files or new campaign-local file own pending items.
 - Explains how the GM should review pending items before advancing a MekHQ day.
 - Keeps direct MekHQ save/XML writes out of scope.
+- Decides whether to create a MegaMek workspace request/memo for MekHQ-side support, and creates it when useful.
 - Updates issue `#31` handoff or task ordering so context packet design consumes this workflow.
 - Verification run or blocker recorded.
 - No protected raw source committed.
@@ -129,3 +132,4 @@ python -m py_compile scripts/bootstrap-mekhq-campaign.py
 - Should `pending-mekhq-actions.md` become a required template file for every campaign, or only for MekHQ-linked campaigns?
 - Should the first workflow include examples for purchases, contract decisions, repairs, injuries, personnel changes, tactical outcomes, and day advancement?
 - Should issue `#33` later include pending actions in a deterministic GM context packet helper?
+- Which MekHQ-side questions should be handed to the MegaMek workspace group instead of solved inside MEK-RPG?

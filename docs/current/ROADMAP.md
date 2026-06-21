@@ -59,6 +59,7 @@ Issue `#35`: define a pending MekHQ application checklist workflow before GM con
   - `C:\Users\waltr\Documents\megamek-workspace\docs\current\MEK_RPG_MEKHQ_INTEGRATION_ASSESSMENT.md`
 - Goal: explore whether MEK-RPG can import or summarize a MekHQ `.cpnx` / `.cpnx.gz` campaign save, generate a playable `campaigns/<campaign-id>/` folder, support one-day RPG play from a selected character viewpoint, and preserve RPG-only memory while keeping MekHQ authoritative for hard logistics.
 - Ownership boundary: MekHQ should own campaign date, funds, unit rosters, personnel ledger fields, repairs, contracts, markets, tactical consequences, and scenario outcomes. MEK-RPG should own A Time of War PCs, RPG scenes, NPC motives, relationship memory, promises, secrets, hooks, safety/tone, and narrative uncertainty.
+- Cross-workspace option: when MEK-RPG identifies MekHQ-side needs, create focused request or memo tickets for the MegaMek workspace group. That sister workspace is the right place to investigate safe MekHQ APIs, UI-assisted import/export, artifact formats, source-backed writeback options, or implementation on the MekHQ side.
 - Initial child issues:
   - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
   - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
