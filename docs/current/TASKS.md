@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#29`: define the MekHQ-linked one-day play loop and writeback boundaries; handoff at `docs/handoffs/active/define-mekhq-linked-one-day-play-loop.md`.
+- None.
 
 ## Next
 
@@ -32,6 +32,7 @@
 
 ## Done
 
+- Issue `#29` implemented: added `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` to define the safe one-day MekHQ-linked RPG play loop, day ownership boundary, pre-session checkpoint, in-day scene handling, post-scene and end-of-day save expectations, MEK-RPG memory handling, MekHQ application queues, and writeback boundary matrix; direct MekHQ save/XML edits remain unsafe and out of scope.
 - Issue `#26` implemented: added `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` to define the read-only MekHQ bridge ownership boundary, campaign-folder mapping, overlay strategy, MekHQ ID preservation and MEK-RPG slug policy, unknown/unsupported field handling, non-goals, and follow-on priorities for issues `#27`-`#29`.
 - Issue `#24` implemented: created the first table-canon campaign save `campaigns/isekai-atlas-field/`, selected it as active after user confirmation, ran a short isekai Atlas-field opening scene, validated campaign save helpers in the live workflow, used the state-save checklist, recorded open rules and workflow gaps, and deferred deeper companion validators until real structured sheets exist.
 - Issue `#23` implemented: added source-reviewed draft vehicle and MechWarrior bridge summaries for overview, piloting, gunnery, MechWarrior skills, and RPG-to-Classic BattleTech conversion; strengthened tactical handoff and encounter templates; updated router, rules map, subsystem index, page-reference index, manifest, campaign save guidance, and state-save routing; recorded scenario validation and deferred vehicle/asset companion validation until real vehicle records exist.

@@ -39,19 +39,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-### Define MekHQ-linked one-day play loop and writeback boundaries
-
-- Status: Open / Now
-- Issue: `#29`
-- Handoff: `docs/handoffs/active/define-mekhq-linked-one-day-play-loop.md`
-- Mode: Project development / play workflow design
-- Goal: define the safe one-day RPG play loop for MekHQ-linked campaigns and document what remains MEK-RPG-only memory, what the user applies manually in MekHQ, what can be handed off as artifacts, what needs future source-backed automation, and what is unsafe.
-- Dependencies: issue `#26` completed the ownership and campaign-folder mapping in `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`.
-- Blocks: issue `#28` campaign bootstrap shape and informs issue `#27` helper output priorities.
+None.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issues `#25`-`#29` and GM context architecture issues `#30`-`#34` are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issues `#25`, `#27`, and `#28`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
 
 ## Open Issues
 
@@ -67,7 +59,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Ownership boundary: MekHQ should own campaign date, funds, unit rosters, personnel ledger fields, repairs, contracts, markets, tactical consequences, and scenario outcomes. MEK-RPG should own A Time of War PCs, RPG scenes, NPC motives, relationship memory, promises, secrets, hooks, safety/tone, and narrative uncertainty.
 - Initial child issues:
   - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
-  - Issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
+  - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
   - Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
   - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
@@ -75,7 +67,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ### Dependency Order
 
 1. Done in issue `#26`: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` defines the ownership model, campaign-folder mapping, ID preservation, and uncertainty policy.
-2. Issue `#29` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
+2. Done in issue `#29`: `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
 3. Issue `#27` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves already exist under `C:\Users\waltr\Documents\megamek-workspace\`; no purchased A Time of War source is involved.
 4. Issue `#28` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
 5. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
@@ -112,6 +104,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 5. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Define MekHQ-linked one-day play loop and writeback boundaries
+
+- Status: Done
+- Issue: `#29`
+- Handoff: `docs/handoffs/archive/define-mekhq-linked-one-day-play-loop.md`
+- Design note: `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
+- Mode: Project development / play workflow design
+- Goal: define the safe one-day RPG play loop for MekHQ-linked campaigns and document what remains MEK-RPG-only memory, what the user applies manually in MekHQ, what can be handed off as artifacts, what needs future source-backed automation, and what is unsafe.
+- Acceptance: design note covers MekHQ ownership of day advancement and hard ledger changes; MEK-RPG ownership of scenes, RPG memory, A Time of War overlays, relationships, hooks, session logs, rules gaps, and safety/tone; pre-session import/checkpoint expectations; in-day scene handling; post-scene and end-of-day save/update expectations; conversation, promise, relationship, hidden motive, hook, and session-log storage; purchases, injuries, contract decisions, repairs, personnel changes, and battle outcome queues; and a writeback boundary matrix that keeps direct `.cpnx`, `.cpnx.gz`, and XML edits unsafe and out of scope.
 
 ### Define MekHQ bridge data model and campaign-folder mapping
 
