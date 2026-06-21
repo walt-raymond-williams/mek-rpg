@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "request_id": "fixture-opposed-tie",
+  "mechanic_id": "core.opposed_check",
+  "campaign_id": null,
+  "state_snapshot_ref": {
+    "read_files": [],
+    "unread_state_reason": "Fixture supplies all inputs."
+  },
+  "declared_action": {
+    "label": "Grab the same satchel",
+    "intent": "Win control of the satchel",
+    "stakes": "On no clean result, both sides lose time in the scramble",
+    "scope": "rpg-scale",
+    "requested_resolution": "opposed-check"
+  },
+  "participants": {
+    "actor": {
+      "id": "pc-runner"
+    },
+    "defender": {
+      "id": "npc-rival"
+    }
+  },
+  "mechanic_inputs": {
+    "actor": {
+      "target_number": 7,
+      "modifiers": []
+    },
+    "defender": {
+      "target_number": 7,
+      "modifiers": []
+    }
+  },
+  "rolls": {
+    "actor": {
+      "mode": "fixed",
+      "expression": "2d6",
+      "values": [4, 3]
+    },
+    "defender": {
+      "mode": "fixed",
+      "expression": "2d6",
+      "values": [5, 2]
+    }
+  },
+  "authority": {
+    "status": "provisional",
+    "confidence": "medium",
+    "routed_files": [
+      {
+        "path": "rules/core/opposed-actions.md",
+        "manifest_ids": ["core.opposed-actions"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF pages 41-42 / printed pages 39-40",
+        "page_reference_status": "Draft",
+        "warnings": []
+      }
+    ],
+    "warnings": [],
+    "required_next_action": "Read the routed committed summaries and make a cautious GM ruling."
+  }
+}

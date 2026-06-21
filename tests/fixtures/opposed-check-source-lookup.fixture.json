@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "request_id": "fixture-opposed-source-lookup",
+  "mechanic_id": "core.opposed_check",
+  "campaign_id": null,
+  "state_snapshot_ref": {
+    "read_files": [],
+    "unread_state_reason": "Fixture supplies all inputs.",
+    "forbidden_paths_checked": [
+      "source/atow-pdf/",
+      "source/atow-text/"
+    ]
+  },
+  "declared_action": {
+    "label": "Resolve table-heavy contested electronics behavior",
+    "intent": "Use exact private table data",
+    "stakes": "Avoid invented equipment modifiers",
+    "scope": "rpg-scale",
+    "requested_resolution": "opposed-check"
+  },
+  "participants": {
+    "actor": {
+      "id": "pc-tech"
+    },
+    "defender": {
+      "id": "npc-operator"
+    }
+  },
+  "mechanic_inputs": {
+    "actor": {
+      "target_number": 7,
+      "modifiers": []
+    },
+    "defender": {
+      "target_number": 7,
+      "modifiers": []
+    }
+  },
+  "rolls": {
+    "actor": {
+      "mode": "fixed",
+      "expression": "2d6",
+      "values": [6, 6],
+      "reason": "Should not be resolved due to authority."
+    },
+    "defender": {
+      "mode": "fixed",
+      "expression": "2d6",
+      "values": [1, 1],
+      "reason": "Should not be resolved due to authority."
+    }
+  },
+  "authority": {
+    "status": "source_lookup_required",
+    "confidence": "none",
+    "routed_files": [
+      {
+        "path": "rules/equipment/electronics.md",
+        "manifest_ids": ["equipment.electronics"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF pages 253-260 / printed pages 251-258",
+        "page_reference_status": "Draft",
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      {
+        "code": "source-lookup-required",
+        "severity": "blocker",
+        "message": "Committed metadata points to private source lookup or table-heavy material."
+      }
+    ],
+    "failure_mode": "source_lookup_required",
+    "required_next_action": "Inspect the cited private source pages or supply exact table data."
+  }
+}

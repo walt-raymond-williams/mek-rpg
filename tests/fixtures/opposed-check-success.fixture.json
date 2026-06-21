@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1",
+  "request_id": "fixture-opposed-success",
+  "mechanic_id": "core.opposed_check",
+  "campaign_id": null,
+  "state_snapshot_ref": {
+    "read_files": [],
+    "unread_state_reason": "Fixture supplies all inputs.",
+    "forbidden_paths_checked": [
+      "source/atow-pdf/",
+      "source/atow-text/"
+    ]
+  },
+  "declared_action": {
+    "label": "Slip past the sentry",
+    "intent": "Cross the corridor without being spotted",
+    "stakes": "On failure, the sentry notices and raises pressure",
+    "scope": "rpg-scale",
+    "requested_resolution": "opposed-check"
+  },
+  "participants": {
+    "actor": {
+      "id": "pc-scout",
+      "display_name": "Scout PC",
+      "source": "fixture"
+    },
+    "defender": {
+      "id": "npc-sentry",
+      "display_name": "Sentry",
+      "source": "fixture"
+    }
+  },
+  "mechanic_inputs": {
+    "actor": {
+      "target_number": 7,
+      "check_basis": {
+        "kind": "skill",
+        "name": "Stealth",
+        "source": "fixture"
+      },
+      "modifiers": [
+        {
+          "label": "Dim corridor",
+          "value": 1,
+          "source": "fixture"
+        }
+      ]
+    },
+    "defender": {
+      "target_number": 7,
+      "check_basis": {
+        "kind": "skill",
+        "name": "Perception",
+        "source": "fixture"
+      },
+      "modifiers": []
+    }
+  },
+  "rolls": {
+    "actor": {
+      "mode": "fixed",
+      "expression": "2d6",
+      "values": [4, 4],
+      "reason": "Fixture-controlled actor result"
+    },
+    "defender": {
+      "mode": "fixed",
+      "expression": "2d6",
+      "values": [3, 3],
+      "reason": "Fixture-controlled defender result"
+    }
+  },
+  "authority": {
+    "status": "provisional",
+    "confidence": "medium",
+    "routed_files": [
+      {
+        "path": "rules/core/opposed-actions.md",
+        "manifest_ids": ["core.opposed-actions"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF pages 41-42 / printed pages 39-40",
+        "page_reference_status": "Draft",
+        "warnings": []
+      },
+      {
+        "path": "rules/core/basic-action-resolution.md",
+        "manifest_ids": ["core.basic-action-resolution"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF pages 42-44 / printed pages 40-42",
+        "page_reference_status": "Draft",
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      {
+        "code": "draft-summary",
+        "severity": "caution",
+        "message": "Draft summaries can support source-aware play, but the ruling remains provisional."
+      }
+    ],
+    "required_next_action": "Read the routed committed summaries and make a cautious GM ruling."
+  }
+}
