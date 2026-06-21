@@ -34,6 +34,7 @@ python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format jso
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
+./scripts/test-bootstrap-mekhq-campaign.ps1
 ./scripts/test-mekhq-pending-workflow.ps1
 ./scripts/test-all.ps1
 ```
@@ -42,7 +43,9 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `test-mekhq-pending-workflow.ps1` uses a sanitized fixture and disposable campaign folders to regression-check pending-action ownership, bootstrap output, validator coverage, no-writeback boundaries, and protected-source ignore rules.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1` and should grow as issues `#41` through `#45` add fixture and validator suites.
+`test-bootstrap-mekhq-campaign.ps1` uses the sanitized minimal MekHQ summary fixture and disposable campaign folders to check bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership/no-writeback language, active pointer preservation, and cleanup.
+
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1` and `test-bootstrap-mekhq-campaign.ps1`, and should grow as issues `#42` through `#45` add fixture and validator suites.
 
 ## Verify Protected Source Is Not Staged
 

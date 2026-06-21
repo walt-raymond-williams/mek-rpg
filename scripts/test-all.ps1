@@ -8,6 +8,10 @@ $suites = @(
     @{
         Name = "MekHQ pending workflow regression"
         Path = Join-Path $repoRoot "scripts\test-mekhq-pending-workflow.ps1"
+    },
+    @{
+        Name = "MekHQ bootstrap fixture coverage"
+        Path = Join-Path $repoRoot "scripts\test-bootstrap-mekhq-campaign.ps1"
     }
 )
 

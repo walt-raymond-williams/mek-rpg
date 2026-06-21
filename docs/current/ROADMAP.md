@@ -42,7 +42,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
-- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md` and a top-level deterministic runner in `scripts/test-all.ps1`; epic issue `#38` continues through bootstrap fixture tests, summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
+- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, and bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`; epic issue `#38` continues through summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has a staged path: source-coverage mapping (`#52`), transport/large-asset summary work if supported (`#53`), richer DropShip/unit asset sheet design (`#54`), and tactical encounter handoff checklist support (`#55`).
@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#41`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#42`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
 
 ## Open Issues
 
@@ -121,7 +121,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Child issues:
   - Done in issue `#39`: define MekHQ-linked A Time of War workflow requirements and coverage matrix.
   - Done in issue `#40`: add top-level deterministic test runner.
-  - Issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage.
+  - Done in issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage.
   - Issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage.
   - Issue `#43`: add campaign-state validator automated coverage.
   - Issue `#44`: add pending MekHQ actions validator.
@@ -129,9 +129,10 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Dependency order:
   1. Done in issue `#39`: requirements and coverage matrix define stable `REQ-MEKHQ-ATOW-*` IDs and child issue ownership.
   2. Done in issue `#40`: `scripts/test-all.ps1` runs deterministic suites and initially wraps existing tests.
-  3. Issues `#41`, `#42`, and `#43` expand deterministic helper and validator coverage and add their suites to `scripts/test-all.ps1`.
-  4. Issue `#44` adds pending-action structural validation using the requirement schema and pending workflow states.
-  5. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
+  3. Done in issue `#41`: bootstrap helper fixture coverage is integrated into `scripts/test-all.ps1`.
+  4. Issues `#42` and `#43` expand deterministic helper and validator coverage and add their suites to `scripts/test-all.ps1`.
+  5. Issue `#44` adds pending-action structural validation using the requirement schema and pending workflow states.
+  6. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
 
 ### MekHQ-to-MEK-RPG campaign bridge epic
 
@@ -198,6 +199,17 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Add bootstrap-mekhq-campaign unit-style fixture coverage
+
+- Status: Done
+- Issue: `#41`
+- Handoff: `docs/handoffs/archive/add-bootstrap-mekhq-campaign-unit-fixture-coverage.md`
+- Script: `scripts/test-bootstrap-mekhq-campaign.ps1`
+- Fixture: `tests/fixtures/mekhq-summary-minimal.json`
+- Mode: Project development / testing
+- Goal: Expand automated coverage for `scripts/bootstrap-mekhq-campaign.py` using sanitized summary fixtures and disposable campaign output.
+- Acceptance: fixture test compiles the bootstrap helper, verifies invalid campaign id rejection, valid bootstrap by viewpoint id, exact name, commander fallback, and embedded PC, confirms existing target folder refusal, checks generated headings and ownership/no-writeback language, confirms the active campaign pointer is unchanged, cleans disposable output, and runs from `scripts/test-all.ps1`.
 
 ### Add top-level deterministic test runner
 

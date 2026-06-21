@@ -6,7 +6,7 @@
 - Parent epic: `#38`
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / testing
-- Priority: After issue `#39` requirements, before relying more heavily on generated MekHQ-linked campaigns.
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -28,11 +28,13 @@ Read these first:
 - `scripts/test-mekhq-pending-workflow.ps1`
 - `tests/fixtures/mekhq-summary-minimal.json`
 
-## Expected Output
+## Output
 
-- New or expanded test script for bootstrap helper behavior.
-- Sanitized fixture variants if needed.
-- Documentation updates and test runner integration if `scripts/test-all.ps1` exists.
+- Added `scripts/test-bootstrap-mekhq-campaign.ps1`.
+- Reused `tests/fixtures/mekhq-summary-minimal.json`; no new fixture variants were needed.
+- Integrated the suite into `scripts/test-all.ps1`.
+- Documented the command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Updated roadmap and task state.
 
 ## Files And Areas
 
@@ -75,6 +77,6 @@ git diff --check
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Should these checks remain PowerShell integration-style tests, or should pure Python unit tests be added for individual helper functions?
+- These checks remain PowerShell integration-style tests for now because the acceptance criteria focus on generated campaign output and filesystem cleanup. Later Python unit tests can still be useful if helper internals become complex.
