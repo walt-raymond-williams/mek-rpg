@@ -7,6 +7,7 @@
 ## Next
 
 - Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
+- Issue `#36`: add automated MekHQ pending workflow regression tests, with active handoff `docs/handoffs/active/add-automated-mekhq-pending-workflow-regression-tests.md`.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
@@ -16,6 +17,7 @@
 - Issue `#32`: define campaign memory strata and semantic checkpoints after or alongside issue `#31`.
 - Issue `#33`: prototype GM context packet helper after issue `#31` defines packet shape.
 - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
+- Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, build a lightweight handoff checklist for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.

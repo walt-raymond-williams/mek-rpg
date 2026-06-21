@@ -14,6 +14,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save.
 - MekHQ campaign bootstrap now creates a MEK-RPG campaign folder from read-only summary JSON, adds a campaign-local `mekhq-bridge.md`, and preserves the read-only MekHQ ownership boundary.
 - MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
+- MekHQ pending workflow verification now has two follow-up issues: automated structural regression coverage in issue `#36` and human-in-the-loop MekHQ UI validation in issue `#37`.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
@@ -39,6 +40,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Existing draft summaries should be validated against scenario prompts after each major routing change.
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
+- MekHQ pending application workflow needs automated structural regression coverage from issue `#36`.
+- MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 
 ## Active Work
 
@@ -46,7 +49,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ verification issues `#36` and `#37`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
 
 ## Open Issues
 
@@ -67,6 +70,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done in issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
   - Done in issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
   - Done in issue `#35`: define the pending MekHQ application checklist workflow so RPG-side ledger intents have a concrete manual-application path before context packet work consumes them.
+  - Issue `#36`: add automated MekHQ pending workflow regression tests to guard queue ownership, bootstrap output, validator coverage, and no-writeback boundaries.
+  - Issue `#37`: run a human-in-the-loop MekHQ pending workflow playtest to validate the manual UI apply, save, re-import, and reconciliation loop.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
 ### Dependency Order
@@ -76,7 +81,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 3. Done in issue `#27`: `scripts/summarize-mekhq-save.py` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves under `C:\Users\waltr\Documents\megamek-workspace\` verified plain and gzip parsing; no purchased A Time of War source is involved.
 4. Done in issue `#28`: `scripts/bootstrap-mekhq-campaign.py` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
 5. Done in issue `#35`: `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` defines the pending MekHQ application checklist workflow for manual UI application, re-import confirmation, and unresolved ledger-intent tracking.
-6. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
+6. Issue `#36` adds automated regression checks for the pending workflow's structural and documentation contracts.
+7. Issue `#37` runs a real or disposable MekHQ UI playtest when the user selects a safe save.
+8. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
 
 ### Not Yet Promoted
 
@@ -84,7 +91,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Headless MekHQ day advancement.
 - Automatic purchases, contract acceptance, repair changes, or personnel changes in MekHQ.
 - Broad MekHQ source changes.
-- Dedicated validators for MekHQ-linked campaign folders; add them only after issue `#28` establishes stable generated file conventions.
+- Dedicated validators for MekHQ-linked campaign folders beyond issue `#36`'s pending-workflow checks; add broader validators only after repeated linked-campaign use shows stable generated file conventions.
 
 ### GM context architecture epic
 
