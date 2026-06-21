@@ -11,6 +11,7 @@
 - `test-mekhq-pending-workflow.ps1`: runs disposable regression checks for MekHQ pending-action bootstrap, validation, no-writeback boundaries, and protected-source guards.
 - `test-bootstrap-mekhq-campaign.ps1`: runs fixture coverage for bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership language, and cleanup.
 - `test-summarize-mekhq-save.ps1`: runs sanitized XML and generated gzip fixture coverage for save-summary JSON/Markdown output and read-only behavior.
+- `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification.
 
 ## Campaign Saves
@@ -20,11 +21,14 @@
 ./scripts/validate-campaign-state.ps1
 ./scripts/validate-campaign-state.ps1 -CampaignId playtest-galatea-dropship
 ./scripts/validate-campaign-state.ps1 -StrictActive
+./scripts/test-validate-campaign-state.ps1
 ```
 
 Campaign ids must use lowercase letters, numbers, and hyphens. The script refuses existing folders, rejects path traversal by construction, and does not edit `campaign-state/active-campaign.md`.
 
 The validator reports `OK`, `WARN`, and `FAIL` lines. It checks `campaign-state/active-campaign.md`, required files in `campaigns/_template/`, and either the active campaign folder or the folder supplied with `-CampaignId`. By default, `Active campaign: None selected` is valid and does not fail; if no `-CampaignId` is supplied, the script warns that no save folder was checked. Use `-StrictActive` before play when an unselected active campaign should fail the check.
+
+`test-validate-campaign-state.ps1` uses a disposable temp repository fixture through the validator's `-RepoRoot` test hook. It checks valid explicit campaign validation, missing standard file failure, missing top-level heading warnings, `-StrictActive` with no active campaign, legacy flat `campaign-state/` active pointer rejection, unsafe campaign id rejection, and one live explicit campaign validation.
 
 When required campaign save files or persistent campaign-state structures change, update `validate-campaign-state.ps1` or add a narrower companion validator as part of the same task. Keep this validator focused on shared save-folder structure and active-campaign safety; deeper checks for character sheets, vehicles, contracts, or other specialized records can live in separate scripts when that keeps the boundary clearer.
 
@@ -74,4 +78,4 @@ The bootstrap fixture test uses `tests/fixtures/mekhq-summary-minimal.json` and 
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, and save-summary fixture coverage, and is the extension point for future fixture and validator suites from issues `#43` through `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, and campaign-state validator coverage, and is the extension point for future fixture and validator suites from issues `#44` through `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.

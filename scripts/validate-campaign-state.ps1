@@ -2,7 +2,9 @@ param(
     [Parameter(Position = 0)]
     [string]$CampaignId,
 
-    [switch]$StrictActive
+    [switch]$StrictActive,
+
+    [string]$RepoRoot
 )
 
 $ErrorActionPreference = "Stop"
@@ -188,7 +190,12 @@ function Get-ActiveCampaignSelection {
     }
 }
 
-$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$repoRoot = if ($RepoRoot) {
+    (Resolve-Path $RepoRoot).Path
+}
+else {
+    (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+}
 $campaignsRoot = Join-Path $repoRoot "campaigns"
 $templatePath = Join-Path $campaignsRoot "_template"
 $activePointerPath = Join-Path $repoRoot "campaign-state\active-campaign.md"

@@ -6,7 +6,7 @@
 - Parent epic: `#38`
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / testing
-- Priority: After issue `#39`; useful before deeper campaign validators are added.
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -26,11 +26,13 @@ Read these first:
 - `scripts/validate-campaign-state.ps1`
 - `campaigns/_template/`
 
-## Expected Output
+## Output
 
-- Test script for campaign-state validator behavior.
-- Disposable test setup that does not mutate live campaign state.
-- Documentation updates and test runner integration if `scripts/test-all.ps1` exists.
+- Added `scripts/test-validate-campaign-state.ps1`.
+- Added a `-RepoRoot` test hook to `scripts/validate-campaign-state.ps1`.
+- Integrated the suite into `scripts/test-all.ps1`.
+- Documented the command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Updated roadmap and task state.
 
 ## Files And Areas
 
@@ -73,6 +75,6 @@ git diff --check
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Does the validator need an explicit `-RepoRoot` testability parameter, or can tests use disposable in-repo folders safely?
+- Added `-RepoRoot` so tests can use a disposable temp repository fixture without mutating the live active campaign pointer.
