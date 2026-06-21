@@ -11,7 +11,6 @@
 ## Backlog
 
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
-- Issue `#79`: evaluate core library / CLI / local service migration only after repeated contract use and fixture coverage.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
@@ -26,6 +25,7 @@
 
 ## Done
 
+- Issue `#79` implemented: added `docs/current/CORE_INTERFACE_MIGRATION_EVALUATION.md` comparing continued PowerShell scripts, TypeScript library/CLI, Python library/CLI, Go CLI/service, and local HTTP service; recommended no service migration yet and defined promotion criteria around stable JSON contracts, authority-gate behavior, fixture coverage, real play use, source authority, no hidden mutation, clean integration, shared-logic pressure, and real consumer demand.
 - Issue `#83` implemented: added `docs/current/RULING_REGRESSION_SCENARIOS.md` as manual golden ruling scenarios for simple skill checks, opposed checks, Edge, initiative, ranged attacks, damage, piloting/control, equipment lookup, ambiguous lookup, source conflict, missing routes/page references, campaign persistence, and salvage/repair/cost workflows; each scenario records expected lookup, citation, state proposal, and failure behavior.
 - Issue `#77` implemented: added `scripts/checkpoint-personal-combat.ps1`, `scripts/test-checkpoint-personal-combat.ps1`, and personal-combat checkpoint fixtures to prototype `combat.personal_checkpoint` with RPG-scale turn/phase/checkpoint tracking, tactical handoff refusal, schema-shaped state-change proposals, citations/warnings, and no-hidden-mutation proof.
 - Issue `#78` implemented: added `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md` to define approval-gated proposal objects for MEK-RPG memory, workflow notes, and MekHQ pending intents, including target owner files, evidence labels, authority source, approval/application steps, MekHQ hard-ledger boundaries, no-hidden-mutation proof, and examples for skill checks, opposed checks, injury/damage, equipment loss, and pending MekHQ ledger intents.

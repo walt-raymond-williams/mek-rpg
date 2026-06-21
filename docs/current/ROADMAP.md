@@ -126,7 +126,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   10. Done issue `#78`: added the state-change proposal schema.
   11. Done issue `#83`: added golden ruling regression scenarios.
   12. Done issue `#77`: prototyped the RPG-scale personal-combat checkpoint contract.
-  13. Open issue `#79`: Evaluate core library / CLI / local service migration path.
+  13. Done issue `#79`: evaluated core library / CLI / local service migration path.
 - Dependency order:
   1. Done in issue `#70`: plan the track and confirm the child queue.
   2. Done in issue `#71`: catalog candidate procedures and ownership boundaries.
@@ -141,7 +141,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   11. Done in issue `#78`: defined state-change proposal schema before helpers emit campaign update suggestions.
   12. Done in issue `#83`: added golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
   13. Done in issue `#77`: prototyped RPG-scale personal-combat checkpointing after state proposals and authority behavior became explicit.
-  14. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
+  14. Done in issue `#79`: deferred library/service migration and defined promotion criteria.
 - Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, failure behavior, and uncertainty labels.
 
 ### MekHQ bridge primitives follow-up queue
