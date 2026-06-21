@@ -5,7 +5,7 @@
 - GitHub issue: `#31` Define GM context packet design
 - Roadmap entry: GM context architecture epic
 - Mode: Project development
-- Priority: Next after issue `#35`
+- Priority: Next
 
 ## Goal
 
@@ -38,10 +38,11 @@ Task-specific context:
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
+- `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
 
 Issue `#26`, `#27`, `#28`, and `#29` are complete. MekHQ ownership terms can be treated as established for this design, but direct MekHQ save writes remain out of scope.
 
-Issue `#35` should run first. The context packet design should consume the pending MekHQ application workflow from issue `#35` rather than inventing its own pending-action layer.
+Issue `#35` should run first. The context packet design should consume `campaigns/<campaign-id>/pending-mekhq-actions.md` as the campaign-local pending-action layer rather than inventing its own queue.
 
 ## Expected Output
 
@@ -52,7 +53,7 @@ Issue `#35` should run first. The context packet design should consume the pendi
   - file or index inputs for each layer
   - freshness expectations and stale-context failure modes
   - differences between play mode, rules lookup mode, and MekHQ-linked play
-  - how pending MekHQ application items enter MekHQ-linked play context, after issue `#35`
+  - how unresolved `pending-mekhq-actions.md` items enter MekHQ-linked play context
   - source and copyright boundaries
   - what later issue `#33` should implement in a deterministic helper
 - Update related docs only if the design changes the live play start procedure or issue sequencing.
@@ -69,6 +70,7 @@ Likely files to read or edit:
 - `gm/session-procedure.md` if the play start procedure changes
 - `gm/state-save-checklist.md` if save/checkpoint expectations change
 - `docs/handoffs/active/define-gm-context-packet-design.md`
+- `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
 
 Avoid editing rules summaries unless the task unexpectedly exposes a routing documentation issue. This task is design and workflow architecture, not source processing.
 
@@ -99,6 +101,7 @@ git status --short --branch
 - Preserve the source boundary: rules references should point to committed paraphrased summaries and indexes, not raw A Time of War text.
 - Keep structured campaign files authoritative over narrative summaries when facts conflict.
 - Keep MekHQ-owned hard facts distinct from MEK-RPG narrative memory.
+- Treat unresolved `pending-mekhq-actions.md` entries as manual-action intents, not confirmed hard ledger facts.
 - Do not imply direct MekHQ save writes, headless MekHQ day advancement, or automatic writeback.
 - Keep the design inspectable and implementable by a later deterministic helper; avoid model-specific magic.
 - Commit and push completed project-development changes unless explicitly told not to.

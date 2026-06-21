@@ -23,8 +23,8 @@ The helper consumes only the summary JSON. It does not open, edit, or write a Me
 - Refuses existing campaign folders.
 - Uses the same lowercase-hyphen campaign id rules as `new-campaign-save.ps1`.
 - Does not edit `campaign-state/active-campaign.md`.
-- Generates campaign stubs for overview, current state, PCs, NPCs, assets, missions, relationships, hooks, locations, factions, and session log.
-- Adds `campaigns/<campaign-id>/mekhq-bridge.md` for bridge metadata, cross-references, warnings, unsupported fields, and pending MekHQ application notes.
+- Generates campaign stubs for overview, current state, PCs, NPCs, assets, missions, relationships, hooks, locations, factions, pending MekHQ actions, and session log.
+- Adds `campaigns/<campaign-id>/mekhq-bridge.md` for bridge metadata, cross-references, warnings, unsupported fields, and bridge discrepancies.
 
 ## Viewpoint Selection
 
@@ -47,9 +47,11 @@ The selected viewpoint is a play camera, not a final rules sheet. A Time of War 
 - campaign snapshot fields from the last import
 - counts and cross-reference rows for MekHQ personnel, units, and contracts
 - helper warnings and unsupported or needs-inspection fields
-- pending MekHQ application notes for hard ledger changes proposed during RPG play
+- a pointer to `pending-mekhq-actions.md` for hard ledger changes proposed during RPG play
 
 Keep table-facing campaign premise and scene state in the normal campaign files. Keep technical import metadata, unsupported fields, and ID cross-references in `mekhq-bridge.md`.
+
+`pending-mekhq-actions.md` is the campaign-local manual application queue. Use it for proposed or committed hard ledger changes that must be applied in MekHQ and confirmed by a later import before becoming final facts.
 
 ## Ownership Boundary
 

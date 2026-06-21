@@ -33,8 +33,9 @@ Before running a MekHQ-linked scene:
 2. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
 3. Confirm the last imported MekHQ save metadata: save path, import timestamp, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
 4. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
-5. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
-6. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
+5. Check `pending-mekhq-actions.md` for unresolved manual MekHQ application items before framing new ledger-sensitive scenes.
+6. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
+7. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
 
 The checkpoint should make the ownership visible: "MekHQ date and ledger are current through this saved import; MEK-RPG is about to run scenes inside that day."
 
@@ -58,13 +59,14 @@ Scene results divide into two groups:
 
 After each meaningful scene, update MEK-RPG-owned memory while it is fresh:
 
-- `session-log.md`: scene summary, choices, rolls, rulings, consequences, queued MekHQ actions, and the next prompt.
+- `session-log.md`: scene summary, choices, rolls, rulings, consequences, queued MekHQ action ids, and the next prompt.
 - `npcs.md`: current whereabouts, attitude shifts, secrets revealed or preserved, promises made, favors owed, threats, and last-seen context.
 - `relationships.md`: trust, leverage, loyalty, grudges, debts, command tension, crew morale, and personal stakes.
 - `hooks.md`: unresolved opportunities, threats, rumors, mystery leads, repair delays, market complications, and future scenes.
 - `missions.md`: player-facing objectives, open clauses, employer reactions, tactical handoff triggers, and pending MekHQ contract/scenario actions.
 - `pcs.md`: A Time of War condition, personal gear notes, goals, sheet gaps, XP notes, injury overlays, and roleplaying consequences.
-- `assets.md`: MekHQ-derived ledger summaries plus clearly labeled pending actions or narrative overlays.
+- `assets.md`: MekHQ-derived ledger summaries plus clearly labeled pending action ids or narrative overlays.
+- `pending-mekhq-actions.md`: proposed, queued, user-applied, imported, resolved, blocked, or abandoned hard ledger intents.
 - `rules-gaps.md`: missing A Time of War, conversion, tactical handoff, or MekHQ workflow questions.
 - `safety-and-tone.md`: any new boundary, tone preference, or child/co-player handling note.
 
@@ -74,7 +76,7 @@ Do not overwrite MekHQ-owned values with guessed numbers. If a scene produces a 
 
 At the end of a MekHQ-linked play day:
 
-1. Review all `Pending MekHQ application` items from `session-log.md`, `assets.md`, `missions.md`, `pcs.md`, and `hooks.md`.
+1. Review all unresolved items in `pending-mekhq-actions.md`, plus any linked narrative context from `session-log.md`, `assets.md`, `missions.md`, `pcs.md`, and `hooks.md`.
 2. Split them into manual MekHQ UI actions, artifact handoffs, future automation candidates, and MEK-RPG-only memory.
 3. Ask the user to apply current hard ledger actions in MekHQ when the campaign must advance or the ledger must change.
 4. The user saves the MekHQ campaign after applying those actions or advancing the day.
@@ -119,7 +121,7 @@ If the injury is personal-scale only, save it in `pcs.md` or `npcs.md`. If it af
 
 MEK-RPG may run employer meetings, negotiations, clause interpretation, hidden-principal reveals, moral pressure, and reputation scenes. MekHQ owns accepted contracts, contract terms as ledger objects, scenario generation, deadlines, payments, salvage rights, and completion status when a MekHQ contract is used.
 
-Record uncommitted choices as `Pending MekHQ contract decision`. Once the user accepts, declines, updates, or resolves the contract in MekHQ, import the result and update `missions.md`, `assets.md`, `factions.md`, `relationships.md`, and `hooks.md`.
+Record uncommitted choices as `Pending MekHQ contract decision` entries in `pending-mekhq-actions.md`. Once the user accepts, declines, updates, or resolves the contract in MekHQ, import the result and update `missions.md`, `assets.md`, `factions.md`, `relationships.md`, and `hooks.md`.
 
 ### Repairs, Parts, And Personnel Changes
 
@@ -164,6 +166,6 @@ Do not do these in current MEK-RPG workflows:
 
 Issue `#27` should make the read-only MekHQ summary helper useful for this loop by emitting pre-session checkpoint facts and unsupported-field warnings.
 
-Issue `#28` adds a dedicated `mekhq-bridge.md` file for save path, import metadata, ownership reminder, cross-reference tables, pending MekHQ actions, and discrepancy notes.
+Issue `#28` adds a dedicated `mekhq-bridge.md` file for save path, import metadata, ownership reminder, cross-reference tables, unsupported fields, and discrepancy notes.
 
-A later issue may define a campaign-local pending-action checklist if repeated manual MekHQ updates become cumbersome.
+Issue `#35` adds `pending-mekhq-actions.md` as the campaign-local checklist for proposed, queued, user-applied, imported, resolved, blocked, and abandoned MekHQ application items.

@@ -2,11 +2,11 @@
 
 ## Now
 
-- Issue `#35`: define pending MekHQ application checklist workflow, with active handoff `docs/handoffs/active/define-pending-mekhq-application-checklist.md`.
+- None.
 
 ## Next
 
-- Issue `#31`: define GM context packet design after issue `#35` defines how pending MekHQ application items are represented in campaign context.
+- Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
@@ -31,6 +31,7 @@
 
 ## Done
 
+- Issue `#35` implemented: added `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`, made `pending-mekhq-actions.md` a standard campaign-local file, updated MekHQ linked play/bootstrap guidance and generated MekHQ-linked campaign output, taught the campaign validator about the new file, and updated issue `#31` context-packet handoff to consume unresolved pending items as manual-action intents rather than hard ledger facts.
 - Issue `#28` implemented: added `scripts/bootstrap-mekhq-campaign.py` to create MEK-RPG campaign save folders from read-only MekHQ summary JSON; generated campaign-local `mekhq-bridge.md` metadata and stubs for current state, viewpoint PC, NPCs, assets, missions, relationships, hooks, locations, factions, and session log; documented viewpoint selection, overwrite refusal, and ownership boundaries; verified with disposable `The Learning Ropes` summary output and throwaway campaign folders.
 - Issue `#27` implemented: added `scripts/summarize-mekhq-save.py` to read plain or gzip MekHQ campaign saves without writing to them and emit JSON or Markdown bridge summaries; documented confirmed, inferred, unsupported, and needs-inspection mappings in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`; updated helper command docs; verified against disposable plain and gzip `The Learning Ropes` saves from the sister workspace.
 - Issue `#29` implemented: added `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` to define the safe one-day MekHQ-linked RPG play loop, day ownership boundary, pre-session checkpoint, in-day scene handling, post-scene and end-of-day save expectations, MEK-RPG memory handling, MekHQ application queues, and writeback boundary matrix; direct MekHQ save/XML edits remain unsafe and out of scope.

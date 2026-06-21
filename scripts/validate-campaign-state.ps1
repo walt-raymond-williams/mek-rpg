@@ -19,6 +19,7 @@ $standardCampaignFiles = @(
     "relationships.md",
     "missions.md",
     "hooks.md",
+    "pending-mekhq-actions.md",
     "session-log.md",
     "previous-sessions.md",
     "rules-gaps.md",

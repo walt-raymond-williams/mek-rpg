@@ -5,7 +5,14 @@
 - GitHub issue: `#35` Define pending MekHQ application checklist workflow
 - Roadmap entry: MekHQ-to-MEK-RPG campaign bridge epic / precondition for GM context packet design
 - Mode: Project development
-- Priority: Current
+- Priority: Complete
+
+## Completion
+
+- Completed by issue `#35`.
+- Design note: `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`.
+- Campaign-local owner: `pending-mekhq-actions.md`.
+- No MegaMek workspace ticket was created because the workflow remains manual and the MekHQ-side support request is not yet concrete enough to be actionable.
 
 ## Goal
 

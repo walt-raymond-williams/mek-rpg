@@ -30,6 +30,7 @@ The helper creates the folder only when it does not already exist and does not c
 - `relationships.md`: trust, leverage, promises, grudges, loyalty, and obligations.
 - `missions.md`: active, paused, and completed missions.
 - `hooks.md`: unresolved questions, threats, opportunities, and next-session prompts.
+- `pending-mekhq-actions.md`: campaign-local queue for MekHQ-linked hard ledger intents that must be applied manually in MekHQ and confirmed by a later import.
 - `session-log.md`: active or most recent session notes and close-out summary.
 - `previous-sessions.md`: completed-session archive used to preserve durable outcomes after `session-log.md` rolls forward.
 - `rules-gaps.md`: missing or uncertain rules found during this campaign.
@@ -43,3 +44,7 @@ Use `rules/campaign/overview.md` as the rules route for persistent consequences 
 ## Vehicle And Unit Assets
 
 Vehicle, BattleMech, battle armor, aerospace, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `rules/vehicles-and-mechs/overview.md` to decide what to record: owner/controller, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, tactical handoff notes, and open source/tool lookups.
+
+## MekHQ-Linked Pending Actions
+
+For MekHQ-linked campaigns, record proposed purchases, sales, contract decisions, repairs, personnel changes, tactical outcomes, day advancement, and other hard ledger intents in `pending-mekhq-actions.md`. These items are not final facts until the user applies them in MekHQ, saves the MekHQ campaign, and MEK-RPG imports the saved result. Keep narrative causes and consequences in the normal campaign files and cross-reference the pending item id.

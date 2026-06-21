@@ -159,6 +159,6 @@ Issue `#27` should inspect representative disposable saves and confirm exact ava
 3. Active contracts, scenarios, repairs, logistics alerts, and markets.
 4. Unsupported field reporting.
 
-Issue `#28` chose a dedicated generated `campaigns/<campaign-id>/mekhq-bridge.md` file. Use it for save paths, import timestamps, helper warnings, cross-reference tables, unsupported-field reports, and pending MekHQ application notes. Keep table-facing campaign premise, scene state, and RPG memory in the normal campaign files.
+Issue `#28` chose a dedicated generated `campaigns/<campaign-id>/mekhq-bridge.md` file. Use it for save paths, import timestamps, helper warnings, cross-reference tables, unsupported-field reports, and bridge discrepancies. Issue `#35` adds `campaigns/<campaign-id>/pending-mekhq-actions.md` as the owner for manual MekHQ application items. Keep table-facing campaign premise, scene state, and RPG memory in the normal campaign files.
 
 Issue `#29` should define the play loop around the read-only boundary: MEK-RPG can run scenes inside a MekHQ day, but hard ledger changes are applied in MekHQ first and imported afterward.

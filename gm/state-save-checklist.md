@@ -14,8 +14,9 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 8. Update `assets.md` for money, vehicles, DropShips, equipment, cargo, contracts, permits, debts, liens, and repairs.
 9. Update `relationships.md` for trust, leverage, grudges, loyalty, favors, promises, or family/crew ties.
 10. Update `missions.md` and `hooks.md` for resolved objectives, active threats, opportunities, deadlines, and tactical handoff triggers.
-11. Update `rules-gaps.md` or `playtest-notes.md` for missing rules, provisional rulings, awkward save steps, or workflow bugs.
-12. Update `safety-and-tone.md` when a child/co-player preference, tone boundary, or agency constraint matters for future play.
+11. For MekHQ-linked campaigns, update `pending-mekhq-actions.md` for any hard ledger intent that needs manual MekHQ application and later import confirmation.
+12. Update `rules-gaps.md` or `playtest-notes.md` for missing rules, provisional rulings, awkward save steps, or workflow bugs.
+13. Update `safety-and-tone.md` when a child/co-player preference, tone boundary, or agency constraint matters for future play.
 
 ## Consequence Routes
 
@@ -26,6 +27,7 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 - Injury recovery, medical care, surgery, lasting wounds, and mission availability: read `rules/campaign/injuries-recovery.md`; update `pcs.md`, `assets.md`, `missions.md`, and `current-state.md`.
 - Downtime, repair/acquisition prep, training time, travel, and mission readiness: read `rules/campaign/downtime-and-readiness.md`; update `current-state.md`, `pcs.md`, `assets.md`, `missions.md`, and `hooks.md`.
 - Vehicles, BattleMechs, battle armor, aerospace assets, pilot/gunnery notes, crew roles, fuel, damage, and tactical handoff assumptions: read `rules/vehicles-and-mechs/overview.md`; update `assets.md`, `pcs.md`, `missions.md`, and `hooks.md`.
+- MekHQ-linked purchases, contracts, repairs, personnel changes, tactical outcomes, funds, and day advancement: update `pending-mekhq-actions.md` first; update hard ledger summaries only after a saved MekHQ import confirms them.
 
 ## Close-Out Questions
 

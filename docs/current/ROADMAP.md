@@ -13,6 +13,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save.
 - MekHQ campaign bootstrap now creates a MEK-RPG campaign folder from read-only summary JSON, adds a campaign-local `mekhq-bridge.md`, and preserves the read-only MekHQ ownership boundary.
+- MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
@@ -41,11 +42,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-Issue `#35`: define a pending MekHQ application checklist workflow before GM context packet design consumes MekHQ-linked pending actions.
+- None.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issues `#25` and `#35`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
 
 ## Open Issues
 
@@ -61,11 +62,11 @@ Issue `#35`: define a pending MekHQ application checklist workflow before GM con
 - Ownership boundary: MekHQ should own campaign date, funds, unit rosters, personnel ledger fields, repairs, contracts, markets, tactical consequences, and scenario outcomes. MEK-RPG should own A Time of War PCs, RPG scenes, NPC motives, relationship memory, promises, secrets, hooks, safety/tone, and narrative uncertainty.
 - Cross-workspace option: when MEK-RPG identifies MekHQ-side needs, create focused request or memo tickets for the MegaMek workspace group. That sister workspace is the right place to investigate safe MekHQ APIs, UI-assisted import/export, artifact formats, source-backed writeback options, or implementation on the MekHQ side.
 - Initial child issues:
-  - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
+  - Done in issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
   - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
   - Done in issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
   - Done in issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
-  - Issue `#35`: define the pending MekHQ application checklist workflow so RPG-side ledger intents have a concrete manual-application path before context packet work consumes them.
+  - Done in issue `#35`: define the pending MekHQ application checklist workflow so RPG-side ledger intents have a concrete manual-application path before context packet work consumes them.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
 ### Dependency Order
@@ -74,7 +75,7 @@ Issue `#35`: define a pending MekHQ application checklist workflow before GM con
 2. Done in issue `#29`: `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
 3. Done in issue `#27`: `scripts/summarize-mekhq-save.py` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves under `C:\Users\waltr\Documents\megamek-workspace\` verified plain and gzip parsing; no purchased A Time of War source is involved.
 4. Done in issue `#28`: `scripts/bootstrap-mekhq-campaign.py` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
-5. Issue `#35` defines the pending MekHQ application checklist workflow for manual UI application, re-import confirmation, and unresolved ledger-intent tracking.
+5. Done in issue `#35`: `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` defines the pending MekHQ application checklist workflow for manual UI application, re-import confirmation, and unresolved ledger-intent tracking.
 6. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
 
 ### Not Yet Promoted
@@ -102,7 +103,7 @@ Issue `#35`: define a pending MekHQ application checklist workflow before GM con
 
 ### GM Context Dependency Order
 
-1. Issue `#35` defines pending MekHQ application item handling first, so MekHQ-linked context packets have a concrete pending-action source.
+1. Done in issue `#35`: pending MekHQ application item handling uses `pending-mekhq-actions.md`, so MekHQ-linked context packets have a concrete pending-action source.
 2. Issue `#31` defines the packet layers, authority order, source files, and mode differences.
 3. Issue `#32` defines checkpoint triggers and how campaign-local files divide recent log, compressed summary, structured state, hooks, rules gaps, and corrected facts.
 4. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
@@ -110,6 +111,17 @@ Issue `#35`: define a pending MekHQ application checklist workflow before GM con
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Define pending MekHQ application checklist workflow
+
+- Status: Done
+- Issue: `#35`
+- Handoff: `docs/handoffs/archive/define-pending-mekhq-application-checklist.md`
+- Design note: `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
+- Campaign file: `pending-mekhq-actions.md`
+- Mode: Project development / play workflow design
+- Goal: define how RPG-side hard ledger intents are recorded, manually applied in MekHQ, and confirmed by later saved import before becoming final facts.
+- Acceptance: workflow defines a dedicated campaign-local owner file, item schema, lifecycle states, day-advance review, re-import reconciliation, context-packet use, no direct MekHQ save/XML writeback, no current MegaMek workspace ticket because the needed MekHQ-side support is not yet concrete, and updates live play/bootstrap guidance plus issue `#31` handoff.
 
 ### Prototype MekHQ campaign bootstrap
 

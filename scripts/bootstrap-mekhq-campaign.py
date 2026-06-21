@@ -362,7 +362,7 @@ def render_assets(summary: dict[str, Any]) -> str:
             f"- Parts count: {value(logistics.get('parts_count'))}",
             f"- Unit-linked parts count: {value(logistics.get('unit_linked_parts_count'))}",
             f"- Transport/cargo pressure: {value(logistics.get('transport_cargo_pressure'))}",
-            "- Pending MekHQ application: None yet.",
+            "- Pending MekHQ application: None yet; create item ids in `pending-mekhq-actions.md`.",
         ]
     )
     return "\n".join(lines).rstrip() + "\n"
@@ -411,7 +411,7 @@ def render_missions(summary: dict[str, Any]) -> str:
                     f"- Deadline/system: {value(contract.get('deadline'))} / {value(contract.get('system_id'))}",
                     f"- Terms summary: payment multiplier `{value(terms.get('payment_multiplier'))}`, salvage `{value(terms.get('salvage_pct'))}`, command rights `{value(terms.get('command_rights'))}`",
                     "- MEK-RPG scene notes: Sparse/TBD",
-                    "- Pending MekHQ application: None yet",
+                    "- Pending MekHQ application: None yet; create item ids in `pending-mekhq-actions.md`.",
                     "",
                 ]
             )
@@ -609,6 +609,23 @@ Generated this campaign save from a read-only MekHQ summary import. No RPG scene
 """
 
 
+def render_pending_mekhq_actions() -> str:
+    return """# Pending MekHQ Actions
+
+Use this file for hard ledger intents created during MekHQ-linked RPG play. A pending item is not final until the user applies it in MekHQ, saves the MekHQ campaign, and MEK-RPG imports the saved result.
+
+See `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` for the full schema and lifecycle.
+
+## Open Items
+
+- None.
+
+## Resolved Or Abandoned Items
+
+- None.
+"""
+
+
 def render_mekhq_bridge(campaign_id: str, summary: dict[str, Any], viewpoint: dict[str, Any], summary_path: Path) -> str:
     meta = summary["bridge_metadata"]
     campaign = summary["campaign"]
@@ -687,7 +704,15 @@ def render_mekhq_bridge(campaign_id: str, summary: dict[str, Any], viewpoint: di
             lines.append(f"- {warning}")
     else:
         lines.append("- None reported by the summary helper.")
-    lines.extend(["", "## Pending MekHQ Application", "", "- None yet. Record proposed hard ledger changes here or in the relevant campaign file, then apply them in MekHQ before re-importing."])
+    lines.extend(
+        [
+            "",
+            "## Pending MekHQ Application",
+            "",
+            "- Queue manual application items in `pending-mekhq-actions.md`.",
+            "- Use this bridge file for import metadata, cross-references, warnings, unsupported fields, and discrepancies.",
+        ]
+    )
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -724,6 +749,7 @@ def create_campaign(summary_path: Path, campaign_id: str, viewpoint: dict[str, A
         "locations.md": render_locations(summary),
         "factions.md": render_factions(summary),
         "session-log.md": render_session_log(summary, viewpoint),
+        "pending-mekhq-actions.md": render_pending_mekhq_actions(),
         "mekhq-bridge.md": render_mekhq_bridge(campaign_id, summary, viewpoint, summary_path),
     }
     for filename, content in renderers.items():
