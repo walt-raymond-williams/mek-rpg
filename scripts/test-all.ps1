@@ -26,6 +26,10 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-validate-mekhq-pending-actions.ps1"
     },
     @{
+        Name = "Rules index validator coverage"
+        Path = Join-Path $repoRoot "scripts\test-validate-rules-indexes.ps1"
+    },
+    @{
         Name = "GM context packet helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-gm-context-packet.ps1"
     },

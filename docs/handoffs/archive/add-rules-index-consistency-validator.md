@@ -33,9 +33,10 @@ Task-specific context:
 
 ## Expected Output
 
-- New validator script under `scripts/`.
-- Command documentation.
-- Roadmap and task updates.
+- Completed: added `scripts/validate-rules-indexes.ps1`.
+- Completed: added `scripts/test-validate-rules-indexes.ps1` and wired it into `scripts/test-all.ps1`.
+- Completed: documented commands in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Completed: updated roadmap and task tracking.
 
 ## Files And Areas
 
@@ -73,4 +74,4 @@ git status --short --branch
 
 ## Open Questions
 
-- Should the validator be PowerShell-only, or use Python if YAML parsing becomes awkward?
+- Resolved for now: use PowerShell-only structural parsing so the validator has no extra runtime dependency.

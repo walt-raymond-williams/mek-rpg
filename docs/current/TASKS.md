@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#49`: add rules index consistency validator, with active handoff `docs/handoffs/active/add-rules-index-consistency-validator.md`.
 - Issue `#50`: add rules coverage reporter, with active handoff `docs/handoffs/active/add-rules-coverage-reporter.md`.
 - Issue `#51`: prototype rules route helper, with active handoff `docs/handoffs/active/prototype-rules-route-helper.md`.
 - Issue `#52`: map transport acquisition and large-asset ownership source coverage, with active handoff `docs/handoffs/active/map-transport-acquisition-and-large-asset-ownership-source-coverage.md`.
@@ -37,6 +36,7 @@
 
 ## Done
 
+- Issue `#49` implemented: added `scripts/validate-rules-indexes.ps1` and `scripts/test-validate-rules-indexes.ps1` to check router/rules-map/page-reference paths, manifest IDs, allowed statuses, related IDs, source-page metadata, committed summary/page-reference consistency, and non-authoritative mapped-target warnings; integrated the suite into `scripts/test-all.ps1` and command docs.
 - Issue `#48` implemented: normalized `indexes/manifest.yaml` with manifest purpose/source-boundary metadata, a status legend, a source-reviewed glossary index entry, mapped-only and partial-draft source targets for placeholder subsystems, and a README note that distinguishes committed summaries from non-authoritative mapped targets.
 - Issue `#47` implemented: expanded `indexes/page-reference-index.md` with mapped-only source page pointers for placeholder and partially covered subsystems, including universe orientation, trait and skill catalogs, optional personal combat, tactical addendum, special-case rules, equipment subsections, GM guide sections, and back-matter reference tables; statuses explicitly keep these entries non-authoritative until source review and summary work occur.
 - Issue `#46` implemented: replaced the placeholder term glossary with source-reviewed, paraphrased universe terminology from A Time of War PDF pages 30-32 / printed pages 28-30, added common rules/workspace aliases that route to committed summaries and GM procedures, and added the glossary to the page-reference index without committing protected source text.
