@@ -124,7 +124,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   8. Done issue `#75`: prototyped the basic check resolver contract.
   9. Done issue `#76`: prototyped the opposed check resolver contract.
   10. Done issue `#78`: added the state-change proposal schema.
-  11. Open issue `#83`: Add golden ruling regression scenarios.
+  11. Done issue `#83`: added golden ruling regression scenarios.
   12. Open issue `#77`: Prototype RPG-scale personal-combat checkpoint contract.
   13. Open issue `#79`: Evaluate core library / CLI / local service migration path.
 - Dependency order:
@@ -139,7 +139,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   9. Done in issue `#75`: prototyped the basic check resolver contract.
   10. Done in issue `#76`: prototyped the opposed check resolver contract.
   11. Done in issue `#78`: defined state-change proposal schema before helpers emit campaign update suggestions.
-  12. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
+  12. Done in issue `#83`: added golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
   13. Prototype RPG-scale personal-combat checkpointing only after state proposals and authority behavior are explicit.
   14. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
 - Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, failure behavior, and uncertainty labels.
