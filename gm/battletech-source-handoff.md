@@ -25,11 +25,12 @@ Use this GM procedure when a question belongs in another BattleTech product line
    - unit or equipment record
    - faction, history, or setting canon
    - fiction or inspiration
-2. For RPG-scale rules, start at `indexes/task-router.md`.
-3. For tactical combat, use `gm/switch-to-classic-battletech.md` and `gm/tactical-encounter-handoff-checklist.md`.
-4. For unit records or technical data, route to the appropriate private source, MegaMek, MekHQ, or official record source.
-5. For faction or historical canon, decide whether the active campaign needs exact canon or a table-canon ruling.
-6. For fiction, use it as inspiration unless the table has adopted it as campaign canon.
+2. If multiple authorities could apply, use `indexes/source-precedence.md` to decide which source owns the fact and whether the result is source-bound, provisional, table-canon, or external-authority-required.
+3. For RPG-scale rules, start at `indexes/task-router.md`.
+4. For tactical combat, use `gm/switch-to-classic-battletech.md` and `gm/tactical-encounter-handoff-checklist.md`.
+5. For unit records or technical data, route to the appropriate private source, MegaMek, MekHQ, or official record source.
+6. For faction or historical canon, decide whether the active campaign needs exact canon or a table-canon ruling.
+7. For fiction, use it as inspiration unless the table has adopted it as campaign canon.
 
 ## Practical GM Guidance
 
@@ -40,6 +41,7 @@ Use this GM procedure when a question belongs in another BattleTech product line
 ## Related Files
 
 - `indexes/task-router.md`
+- `indexes/source-precedence.md`
 - `indexes/page-reference-index.md`
 - `gm/rules-adjudication-posture.md`
 - `gm/switch-to-classic-battletech.md`

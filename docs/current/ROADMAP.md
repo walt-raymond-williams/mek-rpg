@@ -116,7 +116,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Child issues:
   1. Done issue `#71`: created the deterministic mechanics catalog.
   2. Done issue `#72`: defined the standard mechanic JSON contract.
-  3. Open issue `#82`: Define BattleTech source precedence and conflict policy.
+  3. Done issue `#82`: defined BattleTech source precedence and conflict policy.
   4. Open issue `#74`: Add golden route tests for common RPG procedures.
   5. Open issue `#80`: Add ruling authority gate.
   6. Open issue `#73`: Audit existing scripts against mechanic contract.
@@ -131,7 +131,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   1. Done in issue `#70`: plan the track and confirm the child queue.
   2. Done in issue `#71`: catalog candidate procedures and ownership boundaries.
   3. Done in issue `#72`: define the standard JSON contract, including an authority envelope, before resolver prototypes.
-  4. Define source precedence and add route fixtures so authority behavior has deterministic coverage.
+  4. Done in issue `#82`: define source precedence before authority behavior and route fixtures.
   5. Add the ruling authority gate before broad resolver use.
   6. Audit existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
   7. Add page-reference/source-offset checks to reduce stale citation risk.
