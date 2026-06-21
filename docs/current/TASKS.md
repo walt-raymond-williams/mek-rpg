@@ -6,6 +6,8 @@
 
 ## Next
 
+- Issue `#70`: plan the deterministic mechanics maturation track, confirming child issue dependency order and boundaries before resolver implementation.
+- Issue `#71`: create the deterministic mechanics catalog after the epic planning pass.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog

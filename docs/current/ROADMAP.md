@@ -53,18 +53,55 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MegaMek workspace bridge-primitives feedback has been consumed under epic issue `#66`, with child issues `#67`-`#69` completing read-only checkpoint export consumption, headless day-advance risk documentation, and gated contract-market accept/decline probe planning.
 - Issue `#67` added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract and gap map for a future MekHQ-owned read-only checkpoint export; the current Python helper remains a read-only prototype/fallback.
 - Issue `#69` added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the gated future-write plan for contract-market accept/decline; no write automation is authorized until stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation exist.
+- Deterministic mechanics maturation is now tracked under epic issue `#70`, with child issues `#71`-`#79` covering the mechanics catalog, JSON contract, existing-script audit, golden route tests, resolver prototypes, state-change proposal schema, and later library/service migration evaluation.
 
 ## Active Work
 
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
 - Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
+- Issue `#70`: deterministic mechanics maturation track is the next open planning epic; child issues `#71`-`#79` are open.
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the next rules wave or bridge-primitives follow-up. Rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued. Deterministic mechanics maturation is issued as `#70`-`#79`; rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
+
+### Deterministic mechanics maturation track
+
+- Status: Open
+- Epic issue: `#70`
+- Mode: Project development / rules-assistant automation planning
+- Goal: identify high-frequency RPG procedures currently adjudicated by the agent and gradually convert stable ones into deterministic, testable mechanic contracts.
+- Purpose and posture:
+  - PowerShell scripts are acceptable as executable prototypes in this Windows-first workspace.
+  - Scripts should evolve toward explicit JSON input/output contracts, including rule/source authority, manifest status, warnings, and proposed state changes.
+  - Stable contracts may later be promoted into a core library, CLI, local service, or dashboard adapter, but only after contracts and fixture tests stabilize.
+  - This track is not a full rules-engine rewrite.
+  - This track does not automate full BattleTech tactical combat, replace Classic BattleTech/MegaMek/MekHQ/tabletop authority, or take over MekHQ hard-ledger ownership.
+  - The agent remains responsible for narration, source lookup, uncertainty handling, edge-case reasoning, and deciding when a source gap or tactical handoff matters.
+  - Deterministic helpers should own repeatable math, check resolution, and state-proposal procedures where the rule shape is stable.
+- Child issue candidates:
+  1. Open issue `#70`: Epic: Plan deterministic mechanics maturation track.
+  2. Open issue `#71`: Create deterministic mechanics catalog.
+  3. Open issue `#72`: Define standard mechanic JSON contract.
+  4. Open issue `#73`: Audit existing scripts against mechanic contract.
+  5. Open issue `#74`: Add golden route tests for common RPG procedures.
+  6. Open issue `#75`: Prototype basic check resolver contract.
+  7. Open issue `#76`: Prototype opposed check resolver contract.
+  8. Open issue `#77`: Prototype RPG-scale personal-combat checkpoint contract.
+  9. Open issue `#78`: Add state-change proposal schema.
+  10. Open issue `#79`: Evaluate core library / CLI / local service migration path.
+- Dependency order:
+  1. Plan the track and confirm the child queue.
+  2. Catalog candidate procedures and ownership boundaries.
+  3. Define the standard JSON contract before resolver prototypes.
+  4. Audit existing scripts and add route fixtures so current infrastructure stays distinct from mechanics helpers.
+  5. Prototype the basic check, then opposed check, then RPG-scale personal-combat checkpoint contracts.
+  6. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
+  7. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
+- Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, and uncertainty labels.
 
 ### MekHQ bridge primitives follow-up queue
 
