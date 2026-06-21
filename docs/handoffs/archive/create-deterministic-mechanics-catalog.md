@@ -75,4 +75,10 @@ git status --short --branch
 
 ## Open Questions
 
-- Whether the catalog should use a Markdown table only or include JSON-like example records for later tooling.
+- Resolved for issue `#71`: use a Markdown catalog table plus classification and dependency notes. JSON examples are deferred to issue `#72`, the standard mechanic JSON contract.
+
+## Completion
+
+- Completed in issue `#71`.
+- Added `docs/current/DETERMINISTIC_MECHANICS_CATALOG.md`.
+- Next executable issue is `#72`, the standard mechanic JSON contract.

@@ -114,7 +114,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Planning checkpoint:
   1. Done issue `#70`: confirmed the deterministic mechanics maturation track, dependency order, and boundaries.
 - Child issues:
-  1. Open issue `#71`: Create deterministic mechanics catalog.
+  1. Done issue `#71`: created the deterministic mechanics catalog.
   2. Open issue `#72`: Define standard mechanic JSON contract.
   3. Open issue `#82`: Define BattleTech source precedence and conflict policy.
   4. Open issue `#74`: Add golden route tests for common RPG procedures.
@@ -129,7 +129,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   13. Open issue `#79`: Evaluate core library / CLI / local service migration path.
 - Dependency order:
   1. Done in issue `#70`: plan the track and confirm the child queue.
-  2. Catalog candidate procedures and ownership boundaries.
+  2. Done in issue `#71`: catalog candidate procedures and ownership boundaries.
   3. Define the standard JSON contract, including an authority envelope, before resolver prototypes.
   4. Define source precedence and add route fixtures so authority behavior has deterministic coverage.
   5. Add the ruling authority gate before broad resolver use.

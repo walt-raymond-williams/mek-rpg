@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#71`: create the deterministic mechanics catalog after the epic planning pass.
 - Issue `#72`: define the standard mechanic JSON contract, including authority metadata and failure behavior.
 - Issue `#82`: define BattleTech source precedence and conflict policy before authority-gate implementation.
 - Issue `#74`: add golden route tests for common RPG procedures before resolver work.
@@ -37,6 +36,7 @@
 
 ## Done
 
+- Issue `#71` implemented: added `docs/current/DETERMINISTIC_MECHANICS_CATALOG.md` to classify core checks, opposed checks, Edge, personal-combat procedures, damage/wounds, healing/recovery, equipment use, campaign consequences, mission readiness, repairs, salvage, contract changes, vehicle/BattleMech handoff, and tactical combat by owner, authority posture, adjudication status, source/routing references, expected helper contract, and next action.
 - Issue `#70` completed: confirmed the ruling safety and deterministic mechanics maturation track as a hybrid of source-aware adjudication safeguards and deterministic helper prototypes; preserved PowerShell as acceptable prototype tooling, deferred library/service migration until contracts stabilize, kept MekHQ/MegaMek/Classic BattleTech/tabletop and copyright/source boundaries explicit, and confirmed the child dependency order through issues `#71`-`#83` with route fixtures and the ruling authority gate required before broad resolver use.
 - Issue `#84` completed: coordinated the MEK-RPG-side checkpoint export adapter experiment queue, created and tracked child issues `#85`-`#89`, documented cross-board coordination guidance, and completed the consumer-side fixture tests, prototype-output tests, consumed-field mapping, warning/unsupported surfacing policy, and edge-case fixture coverage while preserving the read-only MekHQ boundary.
 - Issue `#89` implemented: added a sanitized sparse/warning-heavy checkpoint edge fixture and `scripts/test-mekhq-checkpoint-edge-fixtures.ps1` to cover empty personnel/unit/scenario arrays, shallow contract terms, unknown finance/location values, warning-heavy logistics/report sections, a unit-market offer with no stable selector and no final price, unsupported blocker versus FYI distinctions, and read-only/sanitized fixture behavior; wired the suite into `scripts/test-all.ps1` and command docs.
