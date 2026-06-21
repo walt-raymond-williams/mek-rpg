@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#80`: add the ruling authority gate before basic/opposed check resolver prototypes are treated as usable.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
@@ -33,6 +32,7 @@
 
 ## Done
 
+- Issue `#80` implemented: added `docs/current/RULING_AUTHORITY_GATE.md`, `scripts/check-ruling-authority.ps1`, and `scripts/test-check-ruling-authority.ps1` to classify routed prompts as authoritative, provisional, source-lookup-required, external-authority-required, cannot-adjudicate, or blocked/missing-route; wired the suite into `scripts/test-all.ps1` and linked the gate from rules adjudication and command docs.
 - Issue `#74` implemented: added `tests/fixtures/rules-route-golden-prompts.fixture.json` and expanded `scripts/test-route-rules-prompt.ps1` to assert rules-lookup mode, protected-source boundary text, expected candidate files, manifest statuses, page-reference statuses/source-page text, warnings, missing-route behavior, tactical handoff routing, ambiguous ruling routing, and source-review gap behavior for common RPG procedure prompts.
 - Issue `#82` implemented: added `indexes/source-precedence.md` defining fact-type authority and conflict handling for RPG-scale A Time of War procedures, full tactical BattleTech/MegaMek/MekHQ authority, MekHQ hard-ledger facts, campaign-local state, table canon, equipment stat lookups, sourcebook lore, optional rules, and safety/tone constraints; linked it from the task router, rules map, BattleTech source handoff, and rules adjudication posture.
 - Issue `#72` implemented: added `docs/current/MECHANIC_CONTRACT_SCHEMA.md` defining the shared JSON input/output shape for future deterministic helpers, including `mechanic_id`, campaign and state snapshot references, declared actions, participants, mechanic inputs, rolls, source refs, authority envelopes, output statuses, roll breakdowns, citations, warnings, proposed state changes, unresolved questions, no-hidden-mutation proof, and examples for basic checks, opposed checks, source-lookup-required results, and external-authority/cannot-adjudicate handoff.

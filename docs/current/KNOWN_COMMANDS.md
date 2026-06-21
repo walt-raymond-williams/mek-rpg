@@ -46,6 +46,9 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/route-rules-prompt.ps1 "Can I shoot from cover?"
 ./scripts/route-rules-prompt.ps1 "BattleMech heat and tactical movement" -Format json
 ./scripts/test-route-rules-prompt.ps1
+./scripts/check-ruling-authority.ps1 "Can I shoot from cover?"
+./scripts/check-ruling-authority.ps1 "BattleMech heat and tactical movement" -Format json
+./scripts/test-check-ruling-authority.ps1
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/_template/pending-mekhq-actions.md
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/isekai-atlas-field/pending-mekhq-actions.md -ReportUnresolved
 ./scripts/test-validate-mekhq-pending-actions.ps1
@@ -87,6 +90,8 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 
 `route-rules-prompt.ps1` scores a short rules or play prompt against `indexes/task-router.md` and reports candidate route rows, files to read, manifest status, page references, and warnings. It does not answer the rule; read the routed summaries before ruling. `test-route-rules-prompt.ps1` checks text/JSON output and `tests/fixtures/rules-route-golden-prompts.fixture.json` coverage for common RPG procedures, tactical handoff, ambiguous rulings, missing routes, and source-review gaps.
 
+`check-ruling-authority.ps1` consumes route-helper output and reports whether the primary route is `authoritative`, `provisional`, `source_lookup_required`, `external_authority_required`, `cannot_adjudicate`, or `blocked_missing_route`. It reports routed files, manifest ids/statuses, source-page references, route warnings, external authority details when applicable, and required next action without answering rules or reading protected source. `test-check-ruling-authority.ps1` covers live prompts and disposable status fixtures.
+
 `validate-mekhq-pending-actions.ps1` validates pending item ids, required fields, allowed status/type/priority values, date shapes, duplicate ids, and unresolved pending-intent reporting. `-ReportUnresolved` lists manual-action checklists for day-advance review without treating them as confirmed hard ledger facts.
 
 `test-validate-mekhq-pending-actions.ps1` uses temp fixture files to check empty/default files, all lifecycle statuses, invalid values, missing fields, and unresolved reporting.
@@ -99,7 +104,7 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 
 `test-mekhq-context-packet.ps1` uses a disposable MekHQ-linked campaign fixture to check context packet bridge metadata, unresolved pending actions, manual-intent labeling, stale-memory avoidance, rules/tactical handoff source references, protected-source/no-writeback boundaries, and read-only behavior.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-mekhq-checkpoint-fixture.ps1`, `test-mekhq-checkpoint-prototype-fixture.ps1`, `test-mekhq-checkpoint-edge-fixtures.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`; the route helper suite includes golden fixture coverage for common RPG procedures and route failure paths.
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-mekhq-checkpoint-fixture.ps1`, `test-mekhq-checkpoint-prototype-fixture.ps1`, `test-mekhq-checkpoint-edge-fixtures.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-check-ruling-authority.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`; the route helper suite includes golden fixture coverage for common RPG procedures and route failure paths.
 
 ## Verify Protected Source Is Not Staged
 

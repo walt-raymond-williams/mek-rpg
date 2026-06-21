@@ -20,19 +20,20 @@ Use this procedure when the GM must decide how many rules to apply, whether to m
 
 ## Basic Procedure
 
-1. Identify the authority already loaded:
+1. Run `scripts/check-ruling-authority.ps1` when a prompt might become a rules answer or deterministic helper input.
+2. Identify the authority already loaded:
    - committed summary
    - private source page
    - campaign canon
    - external tactical tool
    - GM judgment
-2. If authorities conflict, use `indexes/source-precedence.md` to decide which one owns the specific fact.
-3. Decide whether the scene needs precision or momentum.
-4. If precision matters, inspect the cited source pages or hand off to the proper tactical tool.
-5. If momentum matters, make a narrow temporary ruling and state what it affects.
-6. Apply optional or advanced rules only when the table has opted into that detail.
-7. Record unresolved or consequential rulings in the active campaign save or a rules-gap note.
-8. After the scene, update routing docs or file an issue only if the gap is recurring or important.
+3. If authorities conflict, use `indexes/source-precedence.md` to decide which one owns the specific fact.
+4. Decide whether the scene needs precision or momentum.
+5. If precision matters, inspect the cited source pages or hand off to the proper tactical tool.
+6. If momentum matters, make a narrow temporary ruling and state what it affects.
+7. Apply optional or advanced rules only when the table has opted into that detail.
+8. Record unresolved or consequential rulings in the active campaign save or a rules-gap note.
+9. After the scene, update routing docs or file an issue only if the gap is recurring or important.
 
 ## Practical GM Guidance
 
@@ -50,6 +51,7 @@ Use this procedure when the GM must decide how many rules to apply, whether to m
 - `gm/switch-to-classic-battletech.md`
 - `gm/state-save-checklist.md`
 - `indexes/task-router.md`
+- `docs/current/RULING_AUTHORITY_GATE.md`
 
 ## Source References
 
