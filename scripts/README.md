@@ -6,6 +6,7 @@
 - `new-campaign-save.ps1`: creates `campaigns/<campaign-id>/` from `campaigns/_template/` without overwriting an existing save.
 - `validate-campaign-state.ps1`: checks the active campaign pointer, campaign template, and selected or explicit campaign save folder for deterministic structure problems.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
+- `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary.
 
 ## Campaign Saves
 
@@ -30,3 +31,12 @@ When required campaign save files or persistent campaign-state structures change
 ```
 
 The roller reports the expression, individual dice, modifier, and total. It does not apply A Time of War outcomes or rule logic.
+
+## MekHQ Save Summaries
+
+```powershell
+python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
+python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
+```
+
+The helper detects gzip compression by magic bytes, parses the save XML with structured XML APIs, and writes JSON or Markdown to stdout. It does not write to the MekHQ save. JSON is the primary output for later bridge automation; Markdown is a quick human checkpoint. Field mappings and unsupported areas are documented in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`.

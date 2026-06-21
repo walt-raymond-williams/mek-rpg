@@ -11,6 +11,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
+- MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
@@ -60,7 +61,7 @@ None.
 - Initial child issues:
   - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
   - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
-  - Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities; handoff at `docs/handoffs/active/prototype-read-only-mekhq-save-summary-helper.md`.
+  - Done in issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
   - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
@@ -68,7 +69,7 @@ None.
 
 1. Done in issue `#26`: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` defines the ownership model, campaign-folder mapping, ID preservation, and uncertainty policy.
 2. Done in issue `#29`: `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
-3. Issue `#27` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves already exist under `C:\Users\waltr\Documents\megamek-workspace\`; no purchased A Time of War source is involved.
+3. Done in issue `#27`: `scripts/summarize-mekhq-save.py` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves under `C:\Users\waltr\Documents\megamek-workspace\` verified plain and gzip parsing; no purchased A Time of War source is involved.
 4. Issue `#28` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
 5. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
 
@@ -104,6 +105,17 @@ None.
 5. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Prototype read-only MekHQ save summary helper
+
+- Status: Done
+- Issue: `#27`
+- Handoff: `docs/handoffs/archive/prototype-read-only-mekhq-save-summary-helper.md`
+- Script: `scripts/summarize-mekhq-save.py`
+- Mapping note: `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`
+- Mode: Project development / prototype helper
+- Goal: Read a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emit MEK-RPG-readable hard campaign facts without modifying the save.
+- Acceptance: helper detects gzip saves by magic bytes, parses XML with structured APIs, emits JSON or Markdown, reports campaign metadata/date/location/funds, personnel, units, contracts, scenarios, repairs/logistics, markets, and unsupported fields; preserves MekHQ IDs where present; documents confirmed and unsupported mappings; verifies against disposable plain and gzip `The Learning Ropes` saves in the sister workspace.
 
 ### Define MekHQ-linked one-day play loop and writeback boundaries
 

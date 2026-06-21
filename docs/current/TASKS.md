@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` establishes field priorities; handoff at `docs/handoffs/active/prototype-read-only-mekhq-save-summary-helper.md`; representative saves exist in `C:\Users\waltr\Documents\megamek-workspace\`.
 - Issue `#31`: define GM context packet design after the current MekHQ ownership mapping pass, so play context can explicitly layer instructions, active campaign state, rules routes, recent events, summaries, retrieved memories, and optional MekHQ facts.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
@@ -32,6 +31,7 @@
 
 ## Done
 
+- Issue `#27` implemented: added `scripts/summarize-mekhq-save.py` to read plain or gzip MekHQ campaign saves without writing to them and emit JSON or Markdown bridge summaries; documented confirmed, inferred, unsupported, and needs-inspection mappings in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`; updated helper command docs; verified against disposable plain and gzip `The Learning Ropes` saves from the sister workspace.
 - Issue `#29` implemented: added `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` to define the safe one-day MekHQ-linked RPG play loop, day ownership boundary, pre-session checkpoint, in-day scene handling, post-scene and end-of-day save expectations, MEK-RPG memory handling, MekHQ application queues, and writeback boundary matrix; direct MekHQ save/XML edits remain unsafe and out of scope.
 - Issue `#26` implemented: added `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` to define the read-only MekHQ bridge ownership boundary, campaign-folder mapping, overlay strategy, MekHQ ID preservation and MEK-RPG slug policy, unknown/unsupported field handling, non-goals, and follow-on priorities for issues `#27`-`#29`.
 - Issue `#24` implemented: created the first table-canon campaign save `campaigns/isekai-atlas-field/`, selected it as active after user confirmation, ran a short isekai Atlas-field opening scene, validated campaign save helpers in the live workflow, used the state-save checklist, recorded open rules and workflow gaps, and deferred deeper companion validators until real structured sheets exist.
