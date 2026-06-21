@@ -14,7 +14,7 @@
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
-- Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; current infrastructure work is tracked in issues `#46`-`#51`.
+- Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; keep the validator, coverage reporter, and route helper from issues `#46`-`#51` synchronized with future summary work.
 - Future read-only MEK-RPG web dashboard implementation should start with a read-only JSON adapter following `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`, before any Sunnytown-derived UI or write controls.
 - Richer DropShip and unit asset sheet work is tracked in issue `#54` after transport ownership/source coverage issues `#52` and `#53`.
 - Repeat manual validation/playtest checkpoints after adding major playable layers.

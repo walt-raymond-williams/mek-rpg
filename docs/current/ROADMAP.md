@@ -15,7 +15,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ campaign bootstrap now creates a MEK-RPG campaign folder from read-only summary JSON, adds a campaign-local `mekhq-bridge.md`, and preserves the read-only MekHQ ownership boundary.
 - MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36`; human-in-the-loop MekHQ UI validation remains in issue `#37`.
-- Regression coverage for the full MekHQ-linked A Time of War workflow is tracked by epic issue `#38`; issue `#39` added `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md` as the requirements and coverage contract for child issues `#40`-`#45`.
+- Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` remains the human-in-the-loop MekHQ UI validation checkpoint.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
@@ -34,7 +34,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Placeholder-Level
 
-- Deterministic index validation, coverage reporting, and route-helper support remain next for rules lookup infrastructure.
+- Placeholder and partially covered subsystems remain non-authoritative until source-reviewed summaries are written.
+- Deterministic index validation, coverage reporting, and route-helper support now exist for rules lookup infrastructure; keep them synchronized as future summaries are added.
 
 ### Validation Needs
 
@@ -44,7 +45,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
 - MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`, campaign-state validator coverage in `scripts/test-validate-campaign-state.ps1`, pending-action validator coverage in `scripts/test-validate-mekhq-pending-actions.ps1`, and MekHQ-linked GM context packet scenarios in `scripts/test-mekhq-context-packet.ps1`.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
-- Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
+- Rules lookup infrastructure now has completed glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
 
@@ -60,7 +61,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Rules lookup infrastructure and metadata queue
 
-- Status: Open
+- Status: Done
 - Mode: Project development / source processing where explicitly noted
 - Goal: make rules lookup safer for autonomous agents by improving terminology, page references, manifest status, deterministic validation, coverage reporting, and route discovery without turning placeholder areas into rules authority.
 - Child issues:
@@ -79,7 +80,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Transport, large-asset, and tactical handoff queue
 
-- Status: Open
+- Status: Done
 - Mode: Source processing / project development
 - Goal: address the DropShip and large-asset gaps discovered during play while preserving the boundary between A Time of War summaries, table rulings, Classic BattleTech/MegaMek/MekHQ tactical handling, and MEK-RPG campaign memory.
 - Child issues:
@@ -96,7 +97,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Read-only dashboard and session tooling queue
 
-- Status: Open
+- Status: Done
 - Mode: Project development / design and automation
 - Goal: test whether read-only visibility tooling is worth building, define a safe data contract before UI implementation, and add a conservative session archive helper when safe.
 - Child issues:
@@ -674,7 +675,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Backlog
 
 - Expand personal combat, equipment, damage, and recovery beyond the current draft minimum only where play or validation finds missing detail.
-- Expand `indexes/task-router.md` after verified summaries exist; current metadata and helper work is tracked in issues `#46`-`#51`.
+- Expand `indexes/task-router.md` after verified summaries exist; the current metadata validator, coverage reporter, and route helper from issues `#46`-`#51` should be kept in sync with future summary work.
 - Keep `indexes/manifest.yaml`, `indexes/task-router.md`, and helper scripts synchronized as future summaries are added.
 - Validate all summaries against source pages.
 - Add deeper MekHQ / MegaMek integration notes for encounter handoff, unit setup, campaign updates, and save-backed campaign bootstrapping as live play proves new gaps; initial tactical handoff checklist work is complete in issue `#55`.

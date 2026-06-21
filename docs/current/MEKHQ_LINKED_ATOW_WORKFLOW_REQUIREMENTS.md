@@ -106,28 +106,28 @@ Hard ledger changes created during play must be recorded as pending MekHQ applic
 
 | Requirement | Current coverage | Status | Follow-up |
 | --- | --- | --- | --- |
-| `REQ-MEKHQ-ATOW-001` | `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`; prototype script behavior | Planned | Issue `#42` should add sanitized XML and gzip fixture coverage. |
-| `REQ-MEKHQ-ATOW-002` | Helper docs describe metadata fields | Planned | Issue `#42` should assert metadata output from fixtures. |
-| `REQ-MEKHQ-ATOW-003` | Helper docs list output shape and mappings | Planned | Issue `#42` should assert representative hard ledger fields. |
-| `REQ-MEKHQ-ATOW-004` | Helper docs and bridge data model require uncertainty labels | Planned | Issues `#42` and `#49` should verify unsupported and inferred field handling. |
-| `REQ-MEKHQ-ATOW-005` | Bootstrap docs; pending workflow regression compiles and runs bootstrap once | Planned | Issue `#41` should add focused fixture coverage for refusal and selector behavior. |
-| `REQ-MEKHQ-ATOW-006` | `scripts/test-mekhq-pending-workflow.ps1` checks generated pending and bridge files | Automated | Issue `#43` should broaden standard campaign-file validator coverage. |
-| `REQ-MEKHQ-ATOW-007` | Bootstrap docs and regression bridge checks | Planned | Issue `#41` should assert ID and metadata preservation in generated files. |
-| `REQ-MEKHQ-ATOW-008` | Bootstrap docs describe selector behavior | Planned | Issue `#41` should cover selector and fallback cases. |
+| `REQ-MEKHQ-ATOW-001` | `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`; `scripts/test-summarize-mekhq-save.ps1` verifies plain XML and gzip fixture reads without mutation | Automated | Keep covered by `scripts/test-all.ps1`. |
+| `REQ-MEKHQ-ATOW-002` | `scripts/test-summarize-mekhq-save.ps1` asserts representative bridge metadata from sanitized fixtures | Automated | Expand only if summary metadata fields change. |
+| `REQ-MEKHQ-ATOW-003` | `scripts/test-summarize-mekhq-save.ps1` asserts representative campaign, finance, personnel, unit, contract, scenario, and market fields | Automated | Add focused assertions as new hard-ledger fields are promoted. |
+| `REQ-MEKHQ-ATOW-004` | Helper docs, bridge data model, save-summary fixture tests, and rules index validation cover unsupported/inferred labeling boundaries | Automated | Continue preserving uncertainty labels when new fields are parsed. |
+| `REQ-MEKHQ-ATOW-005` | `scripts/test-bootstrap-mekhq-campaign.ps1` covers safe ids, overwrite refusal, campaign folder creation, and unchanged active pointer | Automated | Keep covered by `scripts/test-all.ps1`. |
+| `REQ-MEKHQ-ATOW-006` | `scripts/test-mekhq-pending-workflow.ps1`, `scripts/test-bootstrap-mekhq-campaign.ps1`, and `scripts/test-validate-campaign-state.ps1` check standard generated files | Automated | Expand only if the standard campaign file list changes. |
+| `REQ-MEKHQ-ATOW-007` | Bootstrap fixture tests check generated bridge metadata, ownership language, and pending-action references | Automated | Add deeper ID assertions if richer MekHQ summary fixtures are introduced. |
+| `REQ-MEKHQ-ATOW-008` | `scripts/test-bootstrap-mekhq-campaign.ps1` covers viewpoint id, exact display name, commander fallback, and embedded PC fallback | Automated | Keep covered by `scripts/test-all.ps1`. |
 | `REQ-MEKHQ-ATOW-009` | `gm/session-procedure.md`; linked play loop; `scripts/test-mekhq-context-packet.ps1` checks selected campaign, bridge metadata, pending actions, and campaign memory inputs | Automated | Expand only if future helper output changes. |
 | `REQ-MEKHQ-ATOW-010` | Linked play loop documents date authority; `scripts/test-mekhq-context-packet.ps1` fixture includes MekHQ date and bridge discrepancy metadata | Manual | Date reconciliation still needs playtest judgment or a future bridge discrepancy validator. |
 | `REQ-MEKHQ-ATOW-011` | Linked play loop and pending workflow docs; `scripts/test-mekhq-context-packet.ps1` checks unresolved pending item visibility and validator output | Automated | Expand if unsupported-field reporting gains a structured schema. |
 | `REQ-MEKHQ-ATOW-012` | Linked play loop and GM scene docs | Manual | Issue `#37` manual playtest should validate UI-linked play flow. |
 | `REQ-MEKHQ-ATOW-013` | GM session procedure and router workflow | Manual | Future GM context scenarios can assert route references, but rule interpretation remains judgment-heavy. |
 | `REQ-MEKHQ-ATOW-014` | Linked play loop, state-save checklist, GM context design, and `scripts/test-mekhq-context-packet.ps1` authority-boundary checks | Automated | Scene-by-scene save quality remains a playtest concern. |
-| `REQ-MEKHQ-ATOW-015` | State-save checklist | Manual | Could become scenario coverage in issue `#45`; no separate child issue currently required. |
-| `REQ-MEKHQ-ATOW-016` | Pending workflow doc; pending regression checks generated owner file | Planned | Issue `#44` should add a pending-action validator. |
-| `REQ-MEKHQ-ATOW-017` | Pending workflow item schema | Planned | Issue `#44` should validate required fields and accepted values. |
-| `REQ-MEKHQ-ATOW-018` | Pending workflow lifecycle states | Planned | Issue `#44` should validate lifecycle states and transitions where deterministic. |
+| `REQ-MEKHQ-ATOW-015` | State-save checklist | Manual | Keep as playtest save-discipline evidence unless repeated drift justifies a future scenario test. |
+| `REQ-MEKHQ-ATOW-016` | Pending workflow doc; pending regression checks generated owner file; `scripts/validate-mekhq-pending-actions.ps1` validates pending entries | Automated | Keep structural validation in `scripts/test-all.ps1`. |
+| `REQ-MEKHQ-ATOW-017` | `scripts/validate-mekhq-pending-actions.ps1` and `scripts/test-validate-mekhq-pending-actions.ps1` validate required fields and accepted values | Automated | Expand if the pending item schema changes. |
+| `REQ-MEKHQ-ATOW-018` | Pending-action validator fixture coverage checks all lifecycle statuses that can be validated deterministically | Automated | Transition judgment still belongs in manual playtest notes. |
 | `REQ-MEKHQ-ATOW-019` | Pending workflow context packet notes; pending-action validator; `scripts/test-mekhq-context-packet.ps1` checks unresolved item labeling | Automated | None current. |
 | `REQ-MEKHQ-ATOW-020` | Pending workflow manual checklist | Manual | Issue `#37` manual playtest should validate real UI application steps. |
-| `REQ-MEKHQ-ATOW-021` | Pending workflow authority boundary | Manual | Issue `#37` should validate saved re-import confirmation; issue `#42` covers helper fixtures. |
-| `REQ-MEKHQ-ATOW-022` | Pending workflow reconciliation procedure | Planned | Issue `#44` should validate structure; issue `#45` can scenario-test blocked/mismatch context. |
+| `REQ-MEKHQ-ATOW-021` | Pending workflow authority boundary; issue `#42` covers helper fixtures | Manual | Issue `#37` should validate saved re-import confirmation with a real MekHQ UI step. |
+| `REQ-MEKHQ-ATOW-022` | Pending workflow reconciliation procedure; pending-action validator checks structure; context packet scenarios keep unresolved items visible | Automated | Actual re-import match judgment remains part of issue `#37`. |
 | `REQ-MEKHQ-ATOW-023` | Pending workflow reconciliation notes | Manual | Keep as playtest/context scenario expectation unless repeated failures justify a new issue. |
 | `REQ-MEKHQ-ATOW-024` | `gm/switch-to-classic-battletech.md`; `gm/tactical-encounter-handoff-checklist.md`; linked play loop | Procedure | Issue `#55` added an explicit switch trigger and handoff checklist; tactical resolution still belongs to Classic BattleTech, MegaMek, or MekHQ. |
 | `REQ-MEKHQ-ATOW-025` | `gm/tactical-encounter-handoff-checklist.md`; `gm/encounter-template.md`; linked play loop | Procedure | Handoff packet fields cover stakes, forces, pilots, skills, unit state, terrain, objectives, deployment, withdrawal, and MekHQ-owned confirmation points. |
@@ -135,16 +135,16 @@ Hard ledger changes created during play must be recorded as pending MekHQ applic
 | `REQ-MEKHQ-ATOW-027` | `docs/current/GM_CONTEXT_PACKET_DESIGN.md`; `scripts/build-gm-context-packet.ps1`; `scripts/test-mekhq-context-packet.ps1` | Automated | None current. |
 | `REQ-MEKHQ-ATOW-028` | Authority boundary docs; pending-action validator output; `scripts/test-mekhq-context-packet.ps1` manual-intent and structured-state checks | Automated | Future machine-readable packets could make this stricter. |
 | `REQ-MEKHQ-ATOW-029` | `scripts/build-gm-context-packet.ps1`; `scripts/test-mekhq-context-packet.ps1`; protected-source and no-writeback docs | Automated | None current. |
-| `REQ-MEKHQ-ATOW-030` | `scripts/test-mekhq-pending-workflow.ps1` uses sanitized fixture and cleanup | Planned | Issue `#40` should make this the top-level runner contract. |
-| `REQ-MEKHQ-ATOW-031` | Pending workflow regression checks protected-source ignores and no-writeback docs | Automated | Issue `#40` should keep this in the default deterministic suite. |
+| `REQ-MEKHQ-ATOW-030` | `scripts/test-all.ps1` runs deterministic suites built from sanitized fixtures and disposable output | Automated | Add future deterministic suites to `scripts/test-all.ps1`. |
+| `REQ-MEKHQ-ATOW-031` | Pending workflow regression checks protected-source ignores and no-writeback docs; `scripts/test-all.ps1` keeps this in the normal suite | Automated | Keep protected-source and no-writeback checks in default verification. |
 
 ## Child Issue Mapping
 
-- Issue `#40`: owns the top-level deterministic runner for all automated requirements and should include `REQ-MEKHQ-ATOW-030` and `REQ-MEKHQ-ATOW-031` as default suite rules.
-- Issue `#41`: owns focused bootstrap fixture coverage for `REQ-MEKHQ-ATOW-005` through `REQ-MEKHQ-ATOW-008`.
-- Issue `#42`: owns sanitized XML/gzip save summary coverage for `REQ-MEKHQ-ATOW-001` through `REQ-MEKHQ-ATOW-004` and supports re-import confirmation checks for `REQ-MEKHQ-ATOW-021`.
-- Issue `#43`: owns campaign-state validator coverage, especially standard file expectations from `REQ-MEKHQ-ATOW-006` and campaign selection/checkpoint prerequisites from `REQ-MEKHQ-ATOW-009`.
-- Issue `#44`: owns deterministic pending-action structure validation for `REQ-MEKHQ-ATOW-016` through `REQ-MEKHQ-ATOW-019` and parts of `REQ-MEKHQ-ATOW-022`.
+- Issue `#40`: done; owns the top-level deterministic runner for all automated requirements and includes `REQ-MEKHQ-ATOW-030` and `REQ-MEKHQ-ATOW-031` as default suite rules.
+- Issue `#41`: done; owns focused bootstrap fixture coverage for `REQ-MEKHQ-ATOW-005` through `REQ-MEKHQ-ATOW-008`.
+- Issue `#42`: done; owns sanitized XML/gzip save summary coverage for `REQ-MEKHQ-ATOW-001` through `REQ-MEKHQ-ATOW-004` and supports re-import confirmation checks for `REQ-MEKHQ-ATOW-021`.
+- Issue `#43`: done; owns campaign-state validator coverage, especially standard file expectations from `REQ-MEKHQ-ATOW-006` and campaign selection/checkpoint prerequisites from `REQ-MEKHQ-ATOW-009`.
+- Issue `#44`: done; owns deterministic pending-action structure validation for `REQ-MEKHQ-ATOW-016` through `REQ-MEKHQ-ATOW-019` and parts of `REQ-MEKHQ-ATOW-022`.
 - Issue `#45`: done; owns GM context packet regression scenarios for MekHQ-linked packet assembly, especially `REQ-MEKHQ-ATOW-009`, `REQ-MEKHQ-ATOW-011`, `REQ-MEKHQ-ATOW-014`, `REQ-MEKHQ-ATOW-019`, and `REQ-MEKHQ-ATOW-027` through `REQ-MEKHQ-ATOW-029`.
 - Issue `#37`: owns manual UI playtest evidence for `REQ-MEKHQ-ATOW-012`, `REQ-MEKHQ-ATOW-020`, `REQ-MEKHQ-ATOW-021`, and `REQ-MEKHQ-ATOW-023`.
 - Issue `#55`: done; owns tactical handoff checklist procedure coverage for `REQ-MEKHQ-ATOW-024` through `REQ-MEKHQ-ATOW-026`.
