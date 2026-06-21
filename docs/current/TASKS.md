@@ -6,11 +6,32 @@
 
 ## Next
 
+- Issue `#39`: define MekHQ-linked A Time of War workflow requirements and coverage matrix, with active handoff `docs/handoffs/active/define-mekhq-linked-atow-workflow-requirements-and-coverage-matrix.md`.
 - Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
+- Issue `#38`: parent epic for automated regression coverage of the MekHQ-linked A Time of War workflow.
+- Issue `#40`: add top-level deterministic test runner, with active handoff `docs/handoffs/active/add-top-level-deterministic-test-runner.md`.
+- Issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage, with active handoff `docs/handoffs/active/add-bootstrap-mekhq-campaign-unit-fixture-coverage.md`.
+- Issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage, with active handoff `docs/handoffs/active/add-summarize-mekhq-save-sanitized-xml-fixture-coverage.md`.
+- Issue `#43`: add campaign-state validator automated coverage, with active handoff `docs/handoffs/active/add-campaign-state-validator-automated-coverage.md`.
+- Issue `#44`: add pending MekHQ actions validator, with active handoff `docs/handoffs/active/add-pending-mekhq-actions-validator.md`.
+- Issue `#45`: add GM context packet regression scenarios for MekHQ-linked play, with active handoff `docs/handoffs/active/add-gm-context-packet-regression-scenarios-for-mekhq-linked-play.md`, after context packet dependencies exist.
+- Issue `#46`: source-review glossary and term alias coverage, with active handoff `docs/handoffs/active/source-review-glossary-and-term-alias-coverage.md`.
+- Issue `#47`: expand page-reference index for placeholder subsystems, with active handoff `docs/handoffs/active/expand-page-reference-index-for-placeholder-subsystems.md`.
+- Issue `#48`: normalize manifest metadata and coverage statuses, with active handoff `docs/handoffs/active/normalize-manifest-metadata-and-coverage-statuses.md`.
+- Issue `#49`: add rules index consistency validator, with active handoff `docs/handoffs/active/add-rules-index-consistency-validator.md`.
+- Issue `#50`: add rules coverage reporter, with active handoff `docs/handoffs/active/add-rules-coverage-reporter.md`.
+- Issue `#51`: prototype rules route helper, with active handoff `docs/handoffs/active/prototype-rules-route-helper.md`.
+- Issue `#52`: map transport acquisition and large-asset ownership source coverage, with active handoff `docs/handoffs/active/map-transport-acquisition-and-large-asset-ownership-source-coverage.md`.
+- Issue `#53`: summarize transport acquisition and large-asset procedures, with active handoff `docs/handoffs/active/summarize-transport-acquisition-and-large-asset-procedures.md`, after issue `#52` confirms useful source coverage.
+- Issue `#54`: design richer DropShip and unit asset sheet schema, with active handoff `docs/handoffs/active/design-richer-dropship-and-unit-asset-sheet-schema.md`, after issue `#53` or with provisional gaps clearly marked.
+- Issue `#55`: add tactical encounter handoff checklist, with active handoff `docs/handoffs/active/add-tactical-encounter-handoff-checklist.md`.
+- Issue `#56`: evaluate read-only MEK-RPG dashboard boundaries, with active handoff `docs/handoffs/active/evaluate-read-only-mek-rpg-dashboard-boundaries.md`.
+- Issue `#57`: design read-only dashboard data adapter contract, with active handoff `docs/handoffs/active/design-read-only-dashboard-data-adapter-contract.md`, after issue `#56`.
+- Issue `#58`: add campaign-local session archive helper, with active handoff `docs/handoffs/active/add-campaign-local-session-archive-helper.md`.
 - Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
 - Issue `#30`: parent epic for GM context architecture informed by AI Dungeon-style memory lessons.
 - Issue `#32`: define campaign memory strata and semantic checkpoints after or alongside issue `#31`.
@@ -18,12 +39,12 @@
 - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
 - Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
-- If the `Atlas Field` campaign reaches actual BattleMech movement or combat, build a lightweight handoff checklist for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
+- If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use issue `#55`'s tactical handoff checklist work as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
-- Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added.
-- Future feature idea: evaluate a read-only MEK-RPG web dashboard for campaign visibility, NPC/chat-history review, state-audit debugging, GM context inspection, and optional MekHQ summary display; start with API/ownership boundaries before any Sunnytown-derived UI or write controls.
-- Add campaign-local session archive helper after more play if `previous-sessions.md` becomes cumbersome.
-- Add richer DropShip and unit asset sheets after transport ownership rules are summarized.
+- Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; current infrastructure work is tracked in issues `#46`-`#51`.
+- Future read-only MEK-RPG web dashboard work is tracked in issues `#56` and `#57`; start with API/ownership boundaries before any Sunnytown-derived UI or write controls.
+- Campaign-local session archive helper work is tracked in issue `#58`.
+- Richer DropShip and unit asset sheet work is tracked in issue `#54` after transport ownership/source coverage issues `#52` and `#53`.
 - Repeat manual validation/playtest checkpoints after adding major playable layers.
 
 ## Blocked
