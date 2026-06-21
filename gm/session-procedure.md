@@ -7,9 +7,10 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
 1. Review `campaign-state/active-campaign.md`.
 2. If no active campaign is selected, ask which campaign save folder to load or whether to create one from `campaigns/_template/`.
 3. Review `campaign-state/setting-basics.md` for table canon, open user choices, and the canon policy.
-4. Review the active campaign folder's `overview.md`, `current-state.md`, `pcs.md`, `npcs.md`, `factions.md`, `locations.md`, `assets.md`, `relationships.md`, `missions.md`, `hooks.md`, `pending-mekhq-actions.md`, `session-log.md`, `previous-sessions.md`, `rules-gaps.md`, `playtest-notes.md`, and `safety-and-tone.md` as needed for the next scene.
-5. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
-6. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
+4. Assemble a GM context packet using `docs/current/GM_CONTEXT_PACKET_DESIGN.md`: load the active campaign's structured state, recent session log, relevant durable memory, rules gaps, and safety/tone notes without blending authority layers.
+5. For MekHQ-linked campaigns, include `mekhq-bridge.md` and unresolved `pending-mekhq-actions.md` items as manual-action intents, not confirmed hard ledger facts.
+6. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
+7. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
 
 ## During Play
 

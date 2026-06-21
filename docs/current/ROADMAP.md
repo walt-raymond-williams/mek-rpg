@@ -182,9 +182,10 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Mode: Project development / play workflow design
 - Research input: AI Dungeon and Latitude public memory/model-development notes suggest that long-running AI RPG play benefits from explicit context layers, distinct summary and memory roles, semantic checkpoints, portable model assumptions, and regression-style evaluation.
 - Goal: define a repeatable GM context packet workflow that assembles the active campaign, current scene, structured campaign files, rules routes, recent event history, older summaries, relevant hooks or memories, and optional MekHQ bridge facts without blurring ownership boundaries.
+- Design note: `docs/current/GM_CONTEXT_PACKET_DESIGN.md`.
 - Ownership boundary: rules summaries and indexes should guide procedures; campaign save files should own persistent RPG state; narrative summaries should compress continuity but not override structured sheets; MekHQ should remain authoritative for hard logistics where the bridge applies; the LLM should frame scenes and make judgment calls from the assembled context.
 - Initial child issues:
-  - Issue `#31`: define GM context packet design.
+  - Done in issue `#31`: define GM context packet design.
   - Issue `#32`: define campaign memory strata and semantic checkpoints.
   - Issue `#33`: prototype GM context packet helper after issue `#31` defines the packet shape.
   - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
@@ -193,13 +194,23 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ### GM Context Dependency Order
 
 1. Done in issue `#35`: pending MekHQ application item handling uses `pending-mekhq-actions.md`, so MekHQ-linked context packets have a concrete pending-action source.
-2. Issue `#31` defines the packet layers, authority order, source files, and mode differences.
+2. Done in issue `#31`: `docs/current/GM_CONTEXT_PACKET_DESIGN.md` defines packet layers, authority order, source files, mode differences, MekHQ pending-intent handling, and helper requirements.
 3. Issue `#32` defines checkpoint triggers and how campaign-local files divide recent log, compressed summary, structured state, hooks, rules gaps, and corrected facts.
 4. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
 5. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Define GM context packet design
+
+- Status: Done
+- Issue: `#31`
+- Handoff: `docs/handoffs/archive/define-gm-context-packet-design.md`
+- Design: `docs/current/GM_CONTEXT_PACKET_DESIGN.md`
+- Mode: Project development / design
+- Goal: Define the canonical GM context packet: the ordered, inspectable bundle of instructions, campaign state, rules routes, recent events, summaries, retrieved memories, and optional MekHQ bridge facts used before or during play.
+- Acceptance: design defines authority order, packet layers, file and index inputs, mode differences for play/rules lookup/MekHQ-linked play/project development, protected-source and no-writeback boundaries, pending MekHQ item treatment as intents, stale-context failure modes, a packet skeleton, and helper requirements for issue `#33`; `gm/session-procedure.md` now points play setup at the packet design.
 
 ### Add pending MekHQ actions validator
 

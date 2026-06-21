@@ -6,7 +6,8 @@
 
 ## Next
 
-- Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
+- Issue `#32`: define campaign memory strata and semantic checkpoints after issue `#31`, with active handoff `docs/handoffs/active/define-campaign-memory-strata-and-semantic-checkpoints.md` if present.
+- Issue `#33`: prototype GM context packet helper using `docs/current/GM_CONTEXT_PACKET_DESIGN.md` after issue `#32` or when minimal helper scope is clear.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
@@ -28,8 +29,6 @@
 - Issue `#58`: add campaign-local session archive helper, with active handoff `docs/handoffs/active/add-campaign-local-session-archive-helper.md`.
 - Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
 - Issue `#30`: parent epic for GM context architecture informed by AI Dungeon-style memory lessons.
-- Issue `#32`: define campaign memory strata and semantic checkpoints after or alongside issue `#31`.
-- Issue `#33`: prototype GM context packet helper after issue `#31` defines packet shape.
 - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
 - Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
@@ -47,6 +46,7 @@
 
 ## Done
 
+- Issue `#31` implemented: added `docs/current/GM_CONTEXT_PACKET_DESIGN.md` to define GM context packet authority order, inputs, layers, mode differences, MekHQ-linked pending-intent handling, source boundaries, packet skeleton, helper requirements for issue `#33`, and follow-up boundaries; updated `gm/session-procedure.md` to use the packet design before play.
 - Issue `#44` implemented: added `scripts/validate-mekhq-pending-actions.ps1` and `scripts/test-validate-mekhq-pending-actions.ps1` to validate pending item ids, required fields, allowed statuses/types/priorities, date shapes, invalid values, missing fields, duplicate ids, unresolved pending-intent reporting, and `scripts/test-all.ps1` integration without treating pending actions as confirmed hard ledger facts.
 - Issue `#43` implemented: added `scripts/test-validate-campaign-state.ps1` and a `-RepoRoot` validator test hook to cover valid explicit campaigns, missing standard file failure, missing top-level heading warning behavior, `-StrictActive` with no active campaign, legacy `campaign-state/` active pointer rejection, unsafe campaign id rejection, disposable fixture cleanup, and `scripts/test-all.ps1` integration.
 - Issue `#42` implemented: added sanitized XML fixture coverage for `scripts/summarize-mekhq-save.py`, including plain XML parsing, temp-generated gzip parsing, JSON top-level and representative value assertions, Markdown smoke coverage, missing-section behavior, read-only fixture hash checks, and `scripts/test-all.ps1` integration.

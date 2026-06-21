@@ -5,7 +5,7 @@
 - GitHub issue: `#31` Define GM context packet design
 - Roadmap entry: GM context architecture epic
 - Mode: Project development
-- Priority: Next
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -44,21 +44,11 @@ Issue `#26`, `#27`, `#28`, and `#29` are complete. MekHQ ownership terms can be 
 
 Issue `#35` should run first. The context packet design should consume `campaigns/<campaign-id>/pending-mekhq-actions.md` as the campaign-local pending-action layer rather than inventing its own queue.
 
-## Expected Output
+## Output
 
-- A new durable design document, recommended path: `docs/current/GM_CONTEXT_PACKET_DESIGN.md`.
-- The document should define:
-  - context packet layers
-  - authority order between layers
-  - file or index inputs for each layer
-  - freshness expectations and stale-context failure modes
-  - differences between play mode, rules lookup mode, and MekHQ-linked play
-  - how unresolved `pending-mekhq-actions.md` items enter MekHQ-linked play context
-  - source and copyright boundaries
-  - what later issue `#33` should implement in a deterministic helper
-- Update related docs only if the design changes the live play start procedure or issue sequencing.
-- Update `docs/current/TASKS.md` and `docs/current/ROADMAP.md` as needed for accurate work state.
-- Archive this handoff after issue completion.
+- Added `docs/current/GM_CONTEXT_PACKET_DESIGN.md`.
+- Updated `gm/session-procedure.md` to assemble a GM context packet before play.
+- Updated `docs/current/TASKS.md` and `docs/current/ROADMAP.md`.
 
 ## Files And Areas
 
@@ -118,8 +108,8 @@ git status --short --branch
 - No protected raw source committed.
 - Changes committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Should issue `#31` only define the packet shape, leaving all checkpoint and memory-strata details to issue `#32`, or should it define minimal checkpoint expectations now?
-- Should the design include a sample packet skeleton in the doc, or leave examples to issue `#33` when the helper is prototyped?
-- Should optional retrieved memories be file-based only for now, or should the design name future semantic retrieval as a placeholder without implementing it?
+- Issue `#31` defines the packet shape and minimal freshness/failure expectations. Issue `#32` still owns detailed memory strata and semantic checkpoint triggers.
+- The design includes a sample packet skeleton so issue `#33` has an implementable target.
+- Retrieved memories remain file-based or placeholder-level for now; no semantic retrieval implementation is introduced.
