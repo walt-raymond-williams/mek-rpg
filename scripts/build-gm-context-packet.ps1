@@ -332,6 +332,8 @@ else {
 Write-SectionHeader "Rules Routes"
 Write-SourceLine "Task router" "indexes/task-router.md" -Required
 Write-SourceLine "Page reference index" "indexes/page-reference-index.md" -Required
+Write-SourceLine "Tactical handoff procedure" "gm/switch-to-classic-battletech.md"
+Write-SourceLine "Vehicle and tactical bridge overview" "rules/vehicles-and-mechs/overview.md"
 if ($campaignRelativePath) {
     Write-SourceLine "Campaign rules gaps" "$campaignRelativePath/rules-gaps.md" -Required
 }
@@ -368,7 +370,7 @@ if ($RunValidators) {
     if ($campaignRelativePath) {
         $pendingValidatorPath = Join-Path $script:RepoRootResolved "scripts\validate-mekhq-pending-actions.ps1"
         $pendingPath = Join-Path $campaignPath "pending-mekhq-actions.md"
-        if (Test-Path -LiteralPath $pendingValidatorPath -PathType Leaf -and Test-Path -LiteralPath $pendingPath -PathType Leaf) {
+        if ((Test-Path -LiteralPath $pendingValidatorPath -PathType Leaf) -and (Test-Path -LiteralPath $pendingPath -PathType Leaf)) {
             Write-Output ""
             Write-Output "### Pending MekHQ Action Validator"
             $pendingOutput = & powershell -NoProfile -ExecutionPolicy Bypass -File $pendingValidatorPath $pendingPath -ReportUnresolved 2>&1

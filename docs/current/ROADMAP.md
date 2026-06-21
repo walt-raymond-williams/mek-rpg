@@ -42,7 +42,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
-- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`, campaign-state validator coverage in `scripts/test-validate-campaign-state.ps1`, and pending-action validator coverage in `scripts/test-validate-mekhq-pending-actions.ps1`; epic issue `#38` continues through GM context packet scenarios after context packet dependencies exist.
+- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`, campaign-state validator coverage in `scripts/test-validate-campaign-state.ps1`, pending-action validator coverage in `scripts/test-validate-mekhq-pending-actions.ps1`, and MekHQ-linked GM context packet scenarios in `scripts/test-mekhq-context-packet.ps1`.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has a staged path: source-coverage mapping (`#52`), transport/large-asset summary work if supported (`#53`), richer DropShip/unit asset sheet design (`#54`), and tactical encounter handoff checklist support (`#55`).
@@ -133,7 +133,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   4. Done in issue `#42`: save-summary XML/gzip fixture coverage is integrated into `scripts/test-all.ps1`.
   5. Done in issue `#43`: campaign-state validator coverage is integrated into `scripts/test-all.ps1`.
   6. Done in issue `#44`: pending-action structural validation is integrated into `scripts/test-all.ps1`.
-  7. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
+  7. Done in issue `#45`: MekHQ-linked context packet scenarios validate bridge metadata, pending intents, stale-memory avoidance, rules/tactical route references, protected-source boundaries, and no-writeback behavior.
 
 ### MekHQ-to-MEK-RPG campaign bridge epic
 
@@ -201,6 +201,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Add GM context packet regression scenarios for MekHQ-linked play
+
+- Status: Done
+- Issue: `#45`
+- Handoff: `docs/handoffs/archive/add-gm-context-packet-regression-scenarios-for-mekhq-linked-play.md`
+- Tests: `scripts/test-mekhq-context-packet.ps1`
+- Mode: Project development / regression scenarios
+- Goal: Add regression scenarios that verify context assembly preserves MekHQ/MEK-RPG authority boundaries and uses pending actions correctly.
+- Acceptance: scripted fixture checks bridge metadata and unresolved pending actions are included; pending actions are labeled as manual-action intents, not confirmed ledger facts; structured campaign state remains distinct from stale summaries; rules and tactical handoff route references are present without rules interpretation; protected source, raw save, no-writeback, and read-only boundaries are preserved; scenario docs, test runner, command docs, coverage matrix, roadmap, and tasks are updated.
 
 ### Add GM context regression scenarios
 

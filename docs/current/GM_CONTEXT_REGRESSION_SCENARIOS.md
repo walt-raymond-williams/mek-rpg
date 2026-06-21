@@ -114,7 +114,24 @@ Expected GM behavior:
 - Create or update a pending item in `pending-mekhq-actions.md` for hard ledger changes.
 - Do not treat the change as final funds, roster, repair, contract, scenario, damage, or date state until the user applies it in MekHQ and a saved import confirms it.
 
-Detailed scripted MekHQ-linked packet cases are tracked separately by issue `#45`.
+## MekHQ-Linked Scripted Scenarios
+
+Run scripted MekHQ-linked coverage:
+
+```powershell
+./scripts/test-mekhq-context-packet.ps1
+```
+
+The scripted suite uses a disposable MekHQ-linked campaign folder with fixture `mekhq-bridge.md` metadata and a valid unresolved `pending-mekhq-actions.md` item. It does not use a real MekHQ save, raw MekHQ XML, protected A Time of War source text, or direct writeback.
+
+| Scenario | Coverage | Expected Result |
+| --- | --- | --- |
+| `MEKHQ-CTX-001` bridge and pending inputs | Context includes latest bridge metadata and unresolved pending actions. | Packet reports `mekhq-bridge.md`, `pending-mekhq-actions.md`, and the unresolved pending item id. |
+| `MEKHQ-CTX-002` pending intent labeling | Pending MekHQ actions are not confirmed facts. | Validator output labels unresolved items as manual-action checklists, and packet authority notes label pending items as intents. |
+| `MEKHQ-CTX-003` stale memory avoidance | Structured campaign state takes precedence over stale narrative summaries. | Packet lists current state and older archives separately, with structured-state precedence visible. |
+| `MEKHQ-CTX-004` rules and tactical route references | Rules routes are referenced without inventing rules, and tactical handoff sources are available. | Packet lists `indexes/task-router.md`, `gm/switch-to-classic-battletech.md`, and vehicle/tactical bridge overview. |
+| `MEKHQ-CTX-005` protected source and no-writeback boundary | Context assembly avoids raw source, raw saves, direct MekHQ writeback, and invented rules. | Packet names protected-source/raw-save boundaries and states it does not interpret rules or apply MekHQ changes. |
+| `MEKHQ-CTX-006` read-only behavior | Context assembly does not mutate campaign files. | Pending action fixture hash remains unchanged after packet generation. |
 
 ## Pass/Fail Recording
 

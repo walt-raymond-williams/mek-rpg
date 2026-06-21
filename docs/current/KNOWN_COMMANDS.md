@@ -32,6 +32,7 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
 ./scripts/test-build-gm-context-packet.ps1
 ./scripts/test-gm-context-regressions.ps1
+./scripts/test-mekhq-context-packet.ps1
 ./scripts/test-validate-campaign-state.ps1
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/_template/pending-mekhq-actions.md
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/isekai-atlas-field/pending-mekhq-actions.md -ReportUnresolved
@@ -66,7 +67,9 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `test-gm-context-regressions.ps1` uses a disposable temp repository fixture to check deterministic context regression scenarios from `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md`: active campaign selection, recent and durable memory separation, structured-state precedence, rules routing boundaries, missing-file warnings, protected-source boundaries, and read-only packet assembly.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-build-gm-context-packet.ps1`, and `test-gm-context-regressions.ps1`, and should grow as issue `#45` adds context packet scenarios.
+`test-mekhq-context-packet.ps1` uses a disposable MekHQ-linked campaign fixture to check context packet bridge metadata, unresolved pending actions, manual-intent labeling, stale-memory avoidance, rules/tactical handoff source references, protected-source/no-writeback boundaries, and read-only behavior.
+
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-build-gm-context-packet.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
 
 ## Verify Protected Source Is Not Staged
 

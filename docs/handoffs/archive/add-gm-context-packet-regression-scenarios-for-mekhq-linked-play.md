@@ -7,7 +7,7 @@
 - Related epic: `#30` GM context architecture
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / regression scenarios
-- Priority: Blocked until issue `#31` defines context packet design and likely issue `#33` creates a helper to test.
+- Status: Completed and archived after issue `#31`, issue `#33`, and issue `#34` provided the packet design, helper, and general scenario baseline.
 
 ## Goal
 
@@ -25,12 +25,14 @@ Read these first:
 - GitHub issues `#30`, `#31`, `#33`, `#38`, `#39`, and `#45`
 - `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
-- `docs/handoffs/active/define-gm-context-packet-design.md`
+- `docs/current/GM_CONTEXT_PACKET_DESIGN.md`
 
-## Expected Output
+## Output
 
-- Scenario fixtures and deterministic checks for GM context packet behavior.
-- Documentation updates and test runner integration if `scripts/test-all.ps1` exists.
+- Added `scripts/test-mekhq-context-packet.ps1`.
+- Extended `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` with MekHQ-linked scripted scenarios.
+- Integrated the suite into `scripts/test-all.ps1`.
+- Updated `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, `scripts/README.md`, `docs/current/KNOWN_COMMANDS.md`, `docs/current/TASKS.md`, and `docs/current/ROADMAP.md`.
 
 ## Files And Areas
 
@@ -72,6 +74,7 @@ git diff --check
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Which context packet helper output format should become the stable test target?
+- The stable test target is the human-readable Markdown source report from `scripts/build-gm-context-packet.ps1`.
+- The test remains fixture-only and does not require real MekHQ saves, protected source files, raw MekHQ XML, network access, or direct MekHQ writeback.

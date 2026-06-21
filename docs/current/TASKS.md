@@ -6,13 +6,11 @@
 
 ## Next
 
-- Issue `#45`: add MekHQ-linked GM context packet regression scenarios after issue `#33` provides the helper output.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
 - Issue `#38`: parent epic for automated regression coverage of the MekHQ-linked A Time of War workflow.
-- Issue `#45`: add GM context packet regression scenarios for MekHQ-linked play, with active handoff `docs/handoffs/active/add-gm-context-packet-regression-scenarios-for-mekhq-linked-play.md`, after context packet dependencies exist.
 - Issue `#46`: source-review glossary and term alias coverage, with active handoff `docs/handoffs/active/source-review-glossary-and-term-alias-coverage.md`.
 - Issue `#47`: expand page-reference index for placeholder subsystems, with active handoff `docs/handoffs/active/expand-page-reference-index-for-placeholder-subsystems.md`.
 - Issue `#48`: normalize manifest metadata and coverage statuses, with active handoff `docs/handoffs/active/normalize-manifest-metadata-and-coverage-statuses.md`.
@@ -44,6 +42,7 @@
 
 ## Done
 
+- Issue `#45` implemented: added `scripts/test-mekhq-context-packet.ps1` and MekHQ-linked scenarios in `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` to verify context packets include bridge metadata, unresolved pending actions, pending-intent/manual-checklist labels, structured-state precedence over stale summaries, rules/tactical handoff route references, protected-source/no-writeback boundaries, and read-only behavior; integrated the suite into `scripts/test-all.ps1`, command docs, and the MekHQ-linked workflow coverage matrix.
 - Issue `#34` implemented: added `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` plus `scripts/test-gm-context-regressions.ps1` to document manual and scripted context scenarios for active campaign selection, recent/durable memory separation, structured-state precedence, corrected/stale memory behavior, rules routing, protected-source boundaries, tactical handoff, MekHQ ownership boundaries, and read-only packet assembly; integrated the scripted suite into `scripts/test-all.ps1` and command docs.
 - Issue `#33` implemented: added `scripts/build-gm-context-packet.ps1` and `scripts/test-build-gm-context-packet.ps1` to report ordered GM context packet source files for the active or explicit campaign, flag missing or unsafe active state, preserve protected-source/no-rules-interpretation boundaries, optionally append validator output, and integrate with `scripts/test-all.ps1`; documented usage in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
 - Issue `#32` implemented: expanded `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` with memory strata, semantic checkpoint triggers, file ownership rules, correction/supersession handling, stale-summary precedence, and MekHQ pending-intent boundaries; updated `gm/state-save-checklist.md`, `campaigns/README.md`, and roadmap/task tracking.

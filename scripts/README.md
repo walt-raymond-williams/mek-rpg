@@ -16,6 +16,7 @@
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-gm-context-regressions.ps1`: runs disposable context-packet regression scenarios for active campaign selection, memory layering, structured-state precedence, rules routing, missing-file warnings, protected-source boundaries, and read-only behavior.
+- `test-mekhq-context-packet.ps1`: runs disposable MekHQ-linked context packet scenarios for bridge metadata, unresolved pending actions, pending-intent labeling, stale-memory avoidance, tactical handoff routing, protected-source/no-writeback boundaries, and read-only behavior.
 - `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification.
 
 ## Campaign Saves
@@ -29,6 +30,7 @@
 ./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
 ./scripts/test-build-gm-context-packet.ps1
 ./scripts/test-gm-context-regressions.ps1
+./scripts/test-mekhq-context-packet.ps1
 ./scripts/test-validate-campaign-state.ps1
 ```
 
@@ -53,7 +55,7 @@ The context packet helper reads `campaign-state/active-campaign.md` unless a cam
 
 Use `-RunValidators` to append output from `validate-campaign-state.ps1` and `validate-mekhq-pending-actions.ps1 -ReportUnresolved`. Validator failures are reported as warnings inside the packet report so the user can inspect the source problem directly.
 
-`docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` records the manual and scripted scenario set for continuity, rules routing, state ownership, tactical handoff, and MekHQ boundary checks. `test-gm-context-regressions.ps1` covers the deterministic scenarios that can be verified without live play judgment.
+`docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` records the manual and scripted scenario set for continuity, rules routing, state ownership, tactical handoff, and MekHQ boundary checks. `test-gm-context-regressions.ps1` covers the deterministic scenarios that can be verified without live play judgment. `test-mekhq-context-packet.ps1` adds MekHQ-linked packet coverage using fixture bridge metadata and unresolved pending actions.
 
 ## Dice Rolls
 
@@ -106,4 +108,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, pending-action validator coverage, GM context packet helper coverage, and GM context regression scenarios, and is the extension point for future fixture and validator suites from issue `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, pending-action validator coverage, GM context packet helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
