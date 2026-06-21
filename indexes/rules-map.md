@@ -13,7 +13,10 @@ Skills define trained capabilities, subskills, specialties, training needs, and 
 Personal combat in `rules/personal-combat/` handles RPG-scale fights using five-second turns: initiative, action and movement choices, ranged attacks, melee attacks, damage, wound effects, end-phase cleanup, and healing/recovery. It depends on core resolution for Action Checks and Opposed Actions. It should hand off to Classic BattleTech, MegaMek, or MekHQ when exact tactical unit combat matters.
 
 ## Damage and Recovery
-Damage and recovery cover immediate harm, standard damage, fatigue, stun, consciousness, bleeding, treatment, downtime, and lasting consequences. Personal-combat summaries own the immediate rules; campaign files should own long-term state and story consequences.
+Damage and recovery cover immediate harm, standard damage, fatigue, stun, consciousness, bleeding, armor/barrier interactions, treatment, downtime, and lasting consequences. Personal-combat summaries own the immediate rules; campaign files should own long-term state and story consequences. `rules/combat/armor-and-barriers.md` covers detailed AP/BAR, degradation, barrier, and stacked-protection routing without reproducing source tables.
+
+## Optional Personal Combat
+Optional personal-combat details in `rules/combat/optional-personal-combat.md` cover morale checks, hit locations, knockdown checks, and lethality-reduction options. These procedures are opt-in and should not be treated as default combat rules unless the GM or user explicitly enables them.
 
 ## Equipment
 Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: personal weapons, ammunition, explosives, armor and protective gear, electronics, medical gear, power supplies, repair tools, survival gear, and espionage/security gear. These summaries are lookup guides, not reproduced catalogs; exact item stats, table values, kit contents, and device notes remain in the private source pages.

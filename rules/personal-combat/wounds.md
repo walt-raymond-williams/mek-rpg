@@ -52,6 +52,7 @@ For player characters, pause before applying fatal consequences in kid-friendly 
 - `rules/personal-combat/damage.md`
 - `rules/personal-combat/end-phase.md`
 - `rules/personal-combat/recovery.md`
+- `rules/combat/optional-personal-combat.md`
 - `rules/core/attribute-checks.md`
 - `rules/campaign/injuries-recovery.md`
 - `gm/kid-friendly-mode.md`

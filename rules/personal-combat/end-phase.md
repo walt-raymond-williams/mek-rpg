@@ -50,6 +50,7 @@ For live play, write down every continuous effect with its source, damage type, 
 - `rules/personal-combat/damage.md`
 - `rules/personal-combat/wounds.md`
 - `rules/personal-combat/recovery.md`
+- `rules/combat/optional-personal-combat.md`
 - `rules/core/basic-action-resolution.md`
 
 ## Source References
@@ -60,4 +61,4 @@ For live play, write down every continuous effect with its source, damage type, 
 
 ## Status
 
-Draft. Checked against the mapped private source pages for issue `#7`; fatigue table entries are cited rather than reproduced.
+Draft. Checked against the mapped private source pages for issue `#7`; fatigue table entries are cited rather than reproduced, and optional morale rules route through `rules/combat/optional-personal-combat.md`.

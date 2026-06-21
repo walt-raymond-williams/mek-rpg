@@ -51,6 +51,8 @@ Use this summary to adjudicate personal armor, shields, protective clothing, hos
 - `rules/equipment/personal-gear.md`
 - `rules/personal-combat/damage.md`
 - `rules/personal-combat/wounds.md`
+- `rules/combat/armor-and-barriers.md`
+- `rules/combat/optional-personal-combat.md`
 - `rules/core/opposed-actions.md`
 - `gm/switch-to-classic-battletech.md`
 

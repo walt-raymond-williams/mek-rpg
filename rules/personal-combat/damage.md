@@ -53,6 +53,8 @@ For table-driven details, stop and inspect the cited page. This summary is meant
 - `rules/personal-combat/wounds.md`
 - `rules/personal-combat/end-phase.md`
 - `rules/personal-combat/recovery.md`
+- `rules/combat/armor-and-barriers.md`
+- `rules/combat/optional-personal-combat.md`
 - `rules/equipment/armor.md`
 - `rules/equipment/weapons.md`
 - `gm/kid-friendly-mode.md`

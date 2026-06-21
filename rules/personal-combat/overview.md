@@ -52,6 +52,8 @@ Before the first roll, tell the players what is immediately visible: range bands
 - `rules/personal-combat/wounds.md`
 - `rules/personal-combat/end-phase.md`
 - `rules/personal-combat/recovery.md`
+- `rules/combat/armor-and-barriers.md`
+- `rules/combat/optional-personal-combat.md`
 - `rules/core/basic-action-resolution.md`
 - `gm/switch-to-classic-battletech.md`
 
@@ -61,4 +63,4 @@ Before the first roll, tell the players what is immediately visible: range bands
 
 ## Status
 
-Draft. Checked against the mapped private source pages for issue `#7`; optional personal-combat rules and tactical addendum rules are intentionally out of scope.
+Draft. Checked against the mapped private source pages for issue `#7`; optional personal-combat rules are routed through `rules/combat/optional-personal-combat.md`, and tactical addendum rules remain outside default personal combat.

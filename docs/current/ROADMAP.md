@@ -107,13 +107,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Parallel-track note: issue `#37` is complete; the rules wave does not depend on MekHQ UI validation.
 - Child issues:
   - Done issue `#60`: source-reviewed character detail gaps, with archived handoff `docs/handoffs/archive/source-review-character-detail-gaps.md`.
-  - Open issue `#61`: source-review personal combat detail gaps, with active handoff `docs/handoffs/active/source-review-personal-combat-detail-gaps.md`.
+  - Done issue `#61`: source-reviewed personal combat detail gaps, with archived handoff `docs/handoffs/archive/source-review-personal-combat-detail-gaps.md`.
   - Open issue `#62`: source-review tactical addendum boundaries, with active handoff `docs/handoffs/active/source-review-tactical-addendum-boundaries.md`.
   - Open issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
   - Open issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
 - Dependency order:
   1. Done in issue `#60`: character detail gaps now support future PC/NPC sheet review and eventual focused validators.
-  2. Issue `#61` next: personal-combat details are the most likely immediate play gap after the current minimum combat layer.
+  2. Done in issue `#61`: personal-combat details now cover armor/barriers and opt-in optional rules after the current minimum combat layer.
   3. Issue `#62` next: tactical addendum work should refine handoff decisions after personal-scale gaps are clearer.
   4. Issue `#63` next: equipment and hazard work supports missions, injury aftermath, and vehicle/asset scenes, but may split if it grows too large.
   5. Issue `#64` last in this wave: GM/campaign orientation is useful, but should stay procedure- and routing-focused rather than lore-heavy.

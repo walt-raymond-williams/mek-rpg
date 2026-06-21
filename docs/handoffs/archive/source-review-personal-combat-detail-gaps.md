@@ -41,11 +41,11 @@ Task-specific context:
 
 ## Expected Output
 
-- Source-reviewed, paraphrased summaries for:
+- Completed source-reviewed, paraphrased summaries for:
   - `combat.armor-barriers`
   - `combat.optional-personal`
-- Updated router, page-reference index, rules map, and manifest entries where appropriate.
-- Validation scenarios covering common table questions such as barriers, cover, armor degradation, stacked protection, morale, hit locations, knockdown, and optional lethality handling.
+- Updated router, page-reference index, rules map, subsystem index, and manifest entries.
+- Validation scenarios recorded in `docs/current/PERSONAL_COMBAT_DETAIL_GAPS_SOURCE_REVIEW_VALIDATION.md`.
 
 ## Files And Areas
 
@@ -85,16 +85,24 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Acceptance Criteria
 
-- Correct mode identified.
+- Correct mode identified: source processing / project development.
 - Scoped source pages reviewed.
 - Summaries are paraphrased, procedural, and page-referenced.
 - Optional-rule status is explicit.
-- Router, page-reference index, rules map, and manifest stay consistent.
-- Validation or scenario checks are recorded.
+- Router, page-reference index, rules map, subsystem index, and manifest updated.
+- Validation/scenario checks recorded in `docs/current/PERSONAL_COMBAT_DETAIL_GAPS_SOURCE_REVIEW_VALIDATION.md`.
 - Raw source files remain ignored and unstaged.
-- Roadmap, task state, and handoff are updated.
-- Changes are committed and pushed.
+- Roadmap, task state, and handoff updated.
+- Changes committed and pushed in the issue close-out.
 
 ## Open Questions
 
-- Should optional personal combat rules be routed only when the user asks for them, or should the main personal-combat overview point to them as an optional escalation path?
+- Resolved for issue `#61`: optional personal combat rules are routed when the user/GM asks for optional detail or a relevant table question arises; the main overview links to them as an opt-in escalation path, not default procedure.
+
+## Completion Notes
+
+- Added `rules/combat/armor-and-barriers.md`.
+- Added `rules/combat/optional-personal-combat.md`.
+- Added `docs/current/PERSONAL_COMBAT_DETAIL_GAPS_SOURCE_REVIEW_VALIDATION.md`.
+- Cross-linked the new files from existing personal-combat and armor summaries.
+- Promoted `combat.armor-barriers` and `combat.optional-personal` from mapped-only targets to committed draft manifest entries.

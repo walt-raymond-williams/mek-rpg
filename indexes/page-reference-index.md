@@ -29,7 +29,9 @@ Use this file to map summary files and topics to A Time of War page references a
 | Melee personal attacks | `rules/personal-combat/melee-attacks.md` | A Time of War PDF pages 177-180 / printed pages 175-178 | Draft |
 | Personal combat damage resolution | `rules/personal-combat/damage.md` | A Time of War PDF pages 179-184 and 185-187 / printed pages 177-182 and 183-185 | Draft |
 | Wounds and damage effects | `rules/personal-combat/wounds.md` | A Time of War PDF pages 184-187 / printed pages 182-185 | Draft |
+| Armor, barriers, AP vs. BAR, armor degradation, barrier integrity, and stacked protection | `rules/combat/armor-and-barriers.md` | A Time of War PDF pages 187-190 / printed pages 185-188 | Draft |
 | Personal combat end phase | `rules/personal-combat/end-phase.md` | A Time of War PDF page 191 / printed page 189 | Draft |
+| Optional personal combat rules, morale, hit locations, knockdown, and lethality reduction | `rules/combat/optional-personal-combat.md` | A Time of War PDF pages 191-194 / printed pages 189-192 | Draft; optional rules must be explicitly enabled |
 | Healing and recovery | `rules/personal-combat/recovery.md` | A Time of War PDF pages 194-197 / printed pages 192-195 | Draft |
 | Equipment acquisition, availability, legality, use, and repair basics | `rules/equipment/overview.md` | A Time of War PDF pages 256-261 / printed pages 254-259 | Draft |
 | Personal weapons, ammunition, accessories, explosives, ordnance, and support weapons | `rules/equipment/weapons.md` | A Time of War PDF pages 262-288 / printed pages 260-286 | Draft |
@@ -61,8 +63,6 @@ These entries come from `source/atow-chapter-section-map.md`. They are source-lo
 | Major factions, historical eras, and campaign-orientation setting context | `rules/universe/factions-and-history.md` | A Time of War PDF pages 23-29 / printed pages 21-27 | Mapped only; needs source review before rules use |
 | BattleTech product-line relationship, source handoff, and tactical-tool boundary | `gm/battletech-source-handoff.md` | A Time of War PDF pages 33-34 / printed pages 31-32 | Mapped only; needs source review before GM procedure use |
 | Rules-selection and GM adjudication posture | `gm/rules-adjudication-posture.md` | A Time of War PDF page 35 / printed page 33 | Mapped only; needs source review before GM procedure use |
-| Personal combat armor, barriers, armor degradation, and stacked armor | `rules/combat/armor-and-barriers.md` | A Time of War PDF pages 187-190 / printed pages 185-188 | Mapped only; table-heavy source review target |
-| Optional personal combat rules, morale, hit locations, knockdown, and lethality reduction | `rules/combat/optional-personal-combat.md` | A Time of War PDF pages 191-194 / printed pages 189-192 | Mapped only; optional/table-heavy source review target |
 | Tactical combat scope and unit framing | `rules/tactical/tactical-combat-overview.md` | A Time of War PDF pages 202-203 / printed pages 200-201 | Partially covered by vehicle bridge; route full tactics to Classic BattleTech/MegaMek/MekHQ |
 | Tactical turn, initiative phase, and tactical action sequence | `rules/tactical/tactical-turn-and-initiative.md` | A Time of War PDF pages 204-207 / printed pages 202-205 | Mapped only; tactical handoff boundary applies |
 | Tactical movement actions, vehicular combat, and weapon damage conversion | `rules/tactical/vehicle-actions.md` | A Time of War PDF pages 208-213 / printed pages 206-211 | Partially covered by vehicle bridge; tactical handoff boundary applies |

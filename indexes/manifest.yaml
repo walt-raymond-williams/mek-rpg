@@ -381,6 +381,20 @@ rules:
       - combat.end-phase
       - combat.healing-recovery
     status: draft
+  - id: combat.armor-barriers
+    title: Armor And Barriers
+    subsystem: personal-combat
+    summary: rules/combat/armor-and-barriers.md
+    source_pages:
+      pdf: [187, 188, 189, 190]
+      printed: [185, 186, 187, 188]
+    related:
+      - combat.damage-resolution
+      - combat.damage-effects
+      - equipment.personal-protection
+      - combat.optional-personal
+      - gm.switch-to-classic-battletech
+    status: draft
   - id: combat.end-phase
     title: End Phase
     subsystem: personal-combat
@@ -392,6 +406,20 @@ rules:
       - combat.damage-resolution
       - combat.damage-effects
       - combat.healing-recovery
+    status: draft
+  - id: combat.optional-personal
+    title: Optional Personal Combat Rules
+    subsystem: personal-combat
+    summary: rules/combat/optional-personal-combat.md
+    source_pages:
+      pdf: [191, 192, 193, 194]
+      printed: [189, 190, 191, 192]
+    related:
+      - combat.personal-overview
+      - combat.damage-effects
+      - combat.armor-barriers
+      - combat.healing-recovery
+      - gm.switch-to-classic-battletech
     status: draft
   - id: combat.healing-recovery
     title: Healing And Recovery
@@ -726,28 +754,6 @@ mapped_rules:
     source_pages:
       pdf: [35]
       printed: [33]
-    status: mapped-only
-  - id: combat.armor-barriers
-    title: Armor And Barriers
-    subsystem: personal-combat
-    candidate: rules/combat/armor-and-barriers.md
-    source_pages:
-      pdf: [187, 188, 189, 190]
-      printed: [185, 186, 187, 188]
-    related:
-      - combat.damage-effects
-      - equipment.personal-protection
-    status: mapped-only
-  - id: combat.optional-personal
-    title: Optional Personal Combat Rules
-    subsystem: personal-combat
-    candidate: rules/combat/optional-personal-combat.md
-    source_pages:
-      pdf: [191, 192, 193, 194]
-      printed: [189, 190, 191, 192]
-    related:
-      - combat.personal-overview
-      - combat.damage-effects
     status: mapped-only
   - id: tactical.overview
     title: Tactical Combat Overview
