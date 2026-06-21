@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
 - Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
@@ -26,6 +25,7 @@
 
 ## Done
 
+- Issue `#25` completed: the MekHQ-to-MEK-RPG bridge exploration now has a documented ownership model, one-day play loop, read-only save summary helper, campaign bootstrap helper, pending-application workflow, automated regression coverage, and a separate user-task issue `#37` for the remaining live MekHQ UI validation.
 - Issue `#58` implemented: added `scripts/archive-campaign-session.ps1` and disposable fixture coverage to preserve exact `session-log.md` text in campaign-local `previous-sessions.md`, require explicit campaign selection and `-ConfirmArchive` before mutation, support `-WhatIf`, create temp backups, optionally reset the active session log, and document the command in campaign/save tooling docs.
 - Issue `#57` implemented: added `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md` with a file/CLI JSON-first adapter contract for active campaign selection, campaign file inventory, GM context packet inspection, optional sanitized MekHQ summary input, warnings/errors, protected path exclusions, read-only proof points, fixture strategy, and follow-up implementation guidance.
 - Issue `#56` implemented: added `docs/current/READ_ONLY_DASHBOARD_EVALUATION.md` to define target users, read-only workflows, data sources, ownership boundaries, privacy/protected-source/MekHQ-save boundaries, hard exclusions for writeback/control actions, and a recommendation to proceed to issue `#57` for a data adapter contract before UI work.

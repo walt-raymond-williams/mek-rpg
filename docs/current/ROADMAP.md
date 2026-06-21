@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25` and MekHQ manual verification issue `#37` are the active staged exploration paths. Rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued. MekHQ manual verification issue `#37` is the remaining user-assisted staged exploration path. MekHQ bridge epic issue `#25`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
 
@@ -138,7 +138,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### MekHQ-to-MEK-RPG campaign bridge epic
 
-- Status: Open
+- Status: Done for agent-executable bridge exploration; manual UI validation continues in issue `#37`.
 - Epic issue: `#25`
 - Mode: Project development / play workflow design
 - Source context:
@@ -154,7 +154,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done in issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
   - Done in issue `#35`: define the pending MekHQ application checklist workflow so RPG-side ledger intents have a concrete manual-application path before context packet work consumes them.
   - Done in issue `#36`: add automated MekHQ pending workflow regression tests to guard queue ownership, bootstrap output, validator coverage, and no-writeback boundaries.
-  - Issue `#37`: run a human-in-the-loop MekHQ pending workflow playtest to validate the manual UI apply, save, re-import, and reconciliation loop.
+  - User task issue `#37`: run a human-in-the-loop MekHQ pending workflow playtest to validate the manual UI apply, save, re-import, and reconciliation loop.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
 ### Dependency Order
@@ -165,8 +165,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 4. Done in issue `#28`: `scripts/bootstrap-mekhq-campaign.py` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
 5. Done in issue `#35`: `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` defines the pending MekHQ application checklist workflow for manual UI application, re-import confirmation, and unresolved ledger-intent tracking.
 6. Done in issue `#36`: automated regression checks cover the pending workflow's structural and documentation contracts.
-7. Issue `#37` runs a real or disposable MekHQ UI playtest when the user selects a safe save.
-8. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
+7. User task issue `#37` runs a real or disposable MekHQ UI playtest when the user selects a safe save.
+8. Done in issue `#25`: the agent-executable staged bridge exploration is complete; the remaining proof of table usefulness is tracked by issue `#37`.
 
 ### Not Yet Promoted
 
