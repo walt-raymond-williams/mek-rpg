@@ -284,7 +284,7 @@ Common result fields:
 
 ### `proposed_state_changes`
 
-This field aligns with issue `#78`; it is intentionally a proposal list, not an edit script.
+This field follows `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md`; it is intentionally a proposal list, not an edit script.
 
 ```json
 [

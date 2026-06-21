@@ -11,7 +11,6 @@
 ## Backlog
 
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
-- Issue `#78`: add the state-change proposal schema before combat checkpoint helpers emit campaign-update suggestions.
 - Issue `#83`: add golden ruling regression scenarios after route tests and authority-gate behavior exist.
 - Issue `#77`: prototype the RPG-scale personal-combat checkpoint contract after state-change proposals are defined.
 - Issue `#79`: evaluate core library / CLI / local service migration only after repeated contract use and fixture coverage.
@@ -29,6 +28,7 @@
 
 ## Done
 
+- Issue `#78` implemented: added `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md` to define approval-gated proposal objects for MEK-RPG memory, workflow notes, and MekHQ pending intents, including target owner files, evidence labels, authority source, approval/application steps, MekHQ hard-ledger boundaries, no-hidden-mutation proof, and examples for skill checks, opposed checks, injury/damage, equipment loss, and pending MekHQ ledger intents.
 - Issue `#75` implemented: added `scripts/resolve-basic-check.ps1`, `scripts/test-resolve-basic-check.ps1`, and basic-check fixtures to prototype `core.basic_check` as JSON input/output with authority consumption, roll breakdown, margin/degree, citations, warnings, empty proposed state changes, refusal behavior, and no-hidden-mutation proof.
 - Issue `#76` implemented: added `scripts/resolve-opposed-check.ps1`, `scripts/test-resolve-opposed-check.ps1`, and opposed-check fixtures to prototype `core.opposed_check` with actor/defender inputs, comparative roll breakdowns, winner or no-clean-winner outcomes, net margin/degree, citations, warnings, empty proposed state changes, refusal behavior, and no-hidden-mutation proof.
 - Issue `#81` implemented: extended `scripts/validate-rules-indexes.ps1` and `scripts/test-validate-rules-indexes.ps1` to check committed source-offset metadata, PDF/printed page offset consistency, manifest/page-reference page coverage, and summary `Source References` coverage without reading protected raw source.
