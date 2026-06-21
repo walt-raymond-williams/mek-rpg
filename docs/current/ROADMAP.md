@@ -15,7 +15,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ campaign bootstrap now creates a MEK-RPG campaign folder from read-only summary JSON, adds a campaign-local `mekhq-bridge.md`, and preserves the read-only MekHQ ownership boundary.
 - MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36`; human-in-the-loop MekHQ UI validation remains in issue `#37`.
-- Regression coverage for the full MekHQ-linked A Time of War workflow is now tracked by epic issue `#38`, starting with concrete requirements and a coverage matrix in issue `#39`.
+- Regression coverage for the full MekHQ-linked A Time of War workflow is tracked by epic issue `#38`; issue `#39` added `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md` as the requirements and coverage contract for child issues `#40`-`#45`.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
@@ -42,7 +42,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
-- MekHQ-linked A Time of War regression coverage needs requirements-driven expansion through epic issue `#38`: requirements matrix, test runner, bootstrap fixture tests, summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
+- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`; epic issue `#38` continues through the test runner, bootstrap fixture tests, summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has a staged path: source-coverage mapping (`#52`), transport/large-asset summary work if supported (`#53`), richer DropShip/unit asset sheet design (`#54`), and tactical encounter handoff checklist support (`#55`).
@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#39`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#40`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
 
 ## Open Issues
 
@@ -117,8 +117,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Goal: increase automated regression and unit-style coverage around the MEK-RPG workflow for A Time of War play tied to MekHQ, so future changes identify behavior regressions before live campaign use.
 - Starting point: the repository currently has one automated regression harness, `scripts/test-mekhq-pending-workflow.ps1`, plus manual validation reports.
 - Coverage posture: tests should use sanitized committed fixtures, disposable output, deterministic assertions, no real MekHQ saves, no protected source text, and no direct MekHQ `.cpnx`, `.cpnx.gz`, or XML writeback.
+- Requirements contract: `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`.
 - Child issues:
-  - Issue `#39`: define MekHQ-linked A Time of War workflow requirements and coverage matrix.
+  - Done in issue `#39`: define MekHQ-linked A Time of War workflow requirements and coverage matrix.
   - Issue `#40`: add top-level deterministic test runner.
   - Issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage.
   - Issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage.
@@ -126,10 +127,10 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Issue `#44`: add pending MekHQ actions validator.
   - Issue `#45`: add GM context packet regression scenarios for MekHQ-linked play after context packet dependencies exist.
 - Dependency order:
-  1. Issue `#39` defines requirements and maps coverage.
+  1. Done in issue `#39`: requirements and coverage matrix define stable `REQ-MEKHQ-ATOW-*` IDs and child issue ownership.
   2. Issue `#40` adds the top-level runner and can initially wrap existing tests.
   3. Issues `#41`, `#42`, and `#43` expand deterministic helper and validator coverage.
-  4. Issue `#44` adds pending-action structural validation once the stable schema is clear.
+  4. Issue `#44` adds pending-action structural validation using the requirement schema and pending workflow states.
   5. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
 
 ### MekHQ-to-MEK-RPG campaign bridge epic
@@ -197,6 +198,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Define MekHQ-linked A Time of War workflow requirements and coverage matrix
+
+- Status: Done
+- Issue: `#39`
+- Handoff: `docs/handoffs/archive/define-mekhq-linked-atow-workflow-requirements-and-coverage-matrix.md`
+- Requirements: `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`
+- Mode: Project development / requirements
+- Goal: Define testable MekHQ-linked A Time of War workflow requirements and map them to current, planned, manual, blocked, or missing coverage.
+- Acceptance: stable `REQ-MEKHQ-ATOW-*` requirements cover import, bootstrap, pre-session checkpoint, in-day RPG play, pending hard ledger intents, manual MekHQ application, re-import reconciliation, tactical handoff, GM context packet boundaries, and regression safety boundaries; the matrix maps existing coverage, child issues `#40`-`#45`, manual issue `#37`, tactical handoff issue `#55`, and open gaps without authorizing source processing or direct MekHQ writeback.
 
 ### Add automated MekHQ pending workflow regression tests
 

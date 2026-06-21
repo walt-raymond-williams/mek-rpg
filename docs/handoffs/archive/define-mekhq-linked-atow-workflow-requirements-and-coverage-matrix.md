@@ -6,7 +6,7 @@
 - Parent epic: `#38`
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / requirements
-- Priority: Next; do this before expanding broad regression coverage.
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -37,12 +37,13 @@ Task-specific context:
 - `gm/state-save-checklist.md`
 - `scripts/test-mekhq-pending-workflow.ps1`
 
-## Expected Output
+## Output
 
-- New doc, recommended path: `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`.
-- Requirements with stable IDs such as `REQ-MEKHQ-ATOW-001`.
-- Coverage matrix mapping requirements to existing tests, planned child issues, manual validation, blockers, or missing coverage.
-- Roadmap and task updates.
+- Added `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`.
+- Added stable `REQ-MEKHQ-ATOW-*` requirements.
+- Added a coverage matrix mapping requirements to automated, manual, planned, blocked, and missing coverage.
+- Mapped child issues `#40`-`#45`, manual playtest issue `#37`, and tactical handoff issue `#55`.
+- Updated `docs/current/ROADMAP.md` and `docs/current/TASKS.md`.
 
 ## Files And Areas
 
@@ -85,7 +86,7 @@ git check-ignore source/atow-text/page-001.txt
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Should requirements explicitly define a future machine-readable manifest, or is a Markdown matrix enough for this pass?
-- Should issue `#37` manual playtest be delayed until the requirements matrix exists?
+- Markdown is enough for this pass. Issue `#40` can decide whether a future machine-readable manifest is useful when adding the top-level deterministic runner.
+- Issue `#37` can proceed after this requirements matrix because manual validation now has explicit requirements to check.
