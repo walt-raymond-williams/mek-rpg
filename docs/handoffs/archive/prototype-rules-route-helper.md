@@ -32,9 +32,10 @@ Task-specific context:
 
 ## Expected Output
 
-- Small helper script and documentation.
-- Clear limitation notes that the helper is not rules authority.
-- Roadmap and task updates.
+- Completed: added `scripts/route-rules-prompt.ps1` with text and JSON output.
+- Completed: added `scripts/test-route-rules-prompt.ps1` and wired it into `scripts/test-all.ps1`.
+- Completed: documented the helper and its non-authority boundary in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Completed: updated roadmap and task tracking.
 
 ## Files And Areas
 
@@ -72,4 +73,4 @@ git status --short --branch
 
 ## Open Questions
 
-- Is simple keyword scoring enough for the first helper, or should it only expose exact router rows until the router has richer aliases?
+- Resolved for prototype: simple deterministic keyword scoring is enough, with transparent scores and routed files.

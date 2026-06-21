@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#51`: prototype rules route helper, with active handoff `docs/handoffs/active/prototype-rules-route-helper.md`.
 - Issue `#52`: map transport acquisition and large-asset ownership source coverage, with active handoff `docs/handoffs/active/map-transport-acquisition-and-large-asset-ownership-source-coverage.md`.
 - Issue `#53`: summarize transport acquisition and large-asset procedures, with active handoff `docs/handoffs/active/summarize-transport-acquisition-and-large-asset-procedures.md`, after issue `#52` confirms useful source coverage.
 - Issue `#54`: design richer DropShip and unit asset sheet schema, with active handoff `docs/handoffs/active/design-richer-dropship-and-unit-asset-sheet-schema.md`, after issue `#53` or with provisional gaps clearly marked.
@@ -35,6 +34,7 @@
 
 ## Done
 
+- Issue `#51` implemented: added `scripts/route-rules-prompt.ps1` and `scripts/test-route-rules-prompt.ps1` to score short prompts against committed router rows, report candidate files, manifest statuses, page references, and warnings, preserve the read-summaries-before-ruling boundary, and integrate the smoke test into `scripts/test-all.ps1`.
 - Issue `#50` implemented: added `scripts/report-rules-coverage.ps1` and `scripts/test-report-rules-coverage.ps1` to report manifest coverage by subsystem and status in text or JSON, distinguish validation-backed drafts, mapped-only placeholders, partial drafts, source-reviewed routing aids, and source-lookup-only back matter, and integrate the smoke test into `scripts/test-all.ps1`.
 - Issue `#49` implemented: added `scripts/validate-rules-indexes.ps1` and `scripts/test-validate-rules-indexes.ps1` to check router/rules-map/page-reference paths, manifest IDs, allowed statuses, related IDs, source-page metadata, committed summary/page-reference consistency, and non-authoritative mapped-target warnings; integrated the suite into `scripts/test-all.ps1` and command docs.
 - Issue `#48` implemented: normalized `indexes/manifest.yaml` with manifest purpose/source-boundary metadata, a status legend, a source-reviewed glossary index entry, mapped-only and partial-draft source targets for placeholder subsystems, and a README note that distinguishes committed summaries from non-authoritative mapped targets.

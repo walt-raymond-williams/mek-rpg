@@ -39,6 +39,9 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/report-rules-coverage.ps1
 ./scripts/report-rules-coverage.ps1 -Format json
 ./scripts/test-report-rules-coverage.ps1
+./scripts/route-rules-prompt.ps1 "Can I shoot from cover?"
+./scripts/route-rules-prompt.ps1 "BattleMech heat and tactical movement" -Format json
+./scripts/test-route-rules-prompt.ps1
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/_template/pending-mekhq-actions.md
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/isekai-atlas-field/pending-mekhq-actions.md -ReportUnresolved
 ./scripts/test-validate-mekhq-pending-actions.ps1
@@ -68,6 +71,8 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `report-rules-coverage.ps1` summarizes manifest coverage by subsystem and status using committed metadata only. Default text output is for planning; `-Format json` emits machine-readable output. `test-report-rules-coverage.ps1` smoke-tests both formats.
 
+`route-rules-prompt.ps1` scores a short rules or play prompt against `indexes/task-router.md` and reports candidate route rows, files to read, manifest status, page references, and warnings. It does not answer the rule; read the routed summaries before ruling. `test-route-rules-prompt.ps1` smoke-tests text and JSON output.
+
 `validate-mekhq-pending-actions.ps1` validates pending item ids, required fields, allowed status/type/priority values, date shapes, duplicate ids, and unresolved pending-intent reporting. `-ReportUnresolved` lists manual-action checklists for day-advance review without treating them as confirmed hard ledger facts.
 
 `test-validate-mekhq-pending-actions.ps1` uses temp fixture files to check empty/default files, all lifecycle statuses, invalid values, missing fields, and unresolved reporting.
@@ -78,7 +83,7 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `test-mekhq-context-packet.ps1` uses a disposable MekHQ-linked campaign fixture to check context packet bridge metadata, unresolved pending actions, manual-intent labeling, stale-memory avoidance, rules/tactical handoff source references, protected-source/no-writeback boundaries, and read-only behavior.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-build-gm-context-packet.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-build-gm-context-packet.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
 
 ## Verify Protected Source Is Not Staged
 
