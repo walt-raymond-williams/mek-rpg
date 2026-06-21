@@ -107,6 +107,7 @@ Rules lookup mode should usually not edit files during play. If a gap is found, 
 - Keep commits small and logical.
 - Reference issue numbers in commit messages when practical.
 - Do not fail local setup if GitHub is not connected; record the blocker.
+- If the user asks to use `$resolve-github-issues`, run the autonomous issue-resolution loop from the named skill and continue across context compactions by recovering state from GitHub Issues, active handoffs, `docs/current/ROADMAP.md`, `docs/current/TASKS.md`, git status, and pushed commits rather than chat memory alone.
 
 Project-development close-out:
 

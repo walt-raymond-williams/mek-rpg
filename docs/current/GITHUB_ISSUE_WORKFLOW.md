@@ -14,6 +14,26 @@ Use GitHub Issues for executable project development work, source-processing mil
 
 For this private repo, direct commits to `master` are acceptable for small coherent tasks unless the user requests a feature branch. Use a feature branch for broad, risky, or multi-issue work that should be reviewed as a unit.
 
+## Autonomous Issue Drain And Compaction Continuity
+
+When the user says `Use $resolve-github-issues in this repository.` or otherwise asks an agent to drain, resolve, or work through open issues autonomously, treat that as permission to use the `resolve-github-issues` skill loop:
+
+1. Read the project start docs and this workflow.
+2. Check `git status --short --branch`, `gh auth status`, and `gh issue list --state open --limit 100`.
+3. Select the next issue from documented priority in `docs/current/TASKS.md`, `docs/current/ROADMAP.md`, issue dependencies, and active handoffs.
+4. Resolve one issue completely: read the issue and handoff, implement the scoped change, verify, self-review, commit, push, comment or close the issue, and archive/update the handoff as appropriate.
+5. Refresh the open issue list and continue without asking for confirmation until no open issue remains or every remaining issue is documented as blocked, invalid, duplicate, already fixed, user-only, or dependency-gated.
+
+Context compaction does not by itself complete or cancel this loop. After a compaction or resume, the agent should recover from durable state rather than chat memory:
+
+- GitHub open and closed issues are the source of truth for what remains.
+- Active handoffs under `docs/handoffs/active/` explain per-issue execution context.
+- Archived handoffs under `docs/handoffs/archive/` plus closed issue comments explain completed work.
+- `docs/current/TASKS.md` and `docs/current/ROADMAP.md` provide priority, dependency order, and current staged paths.
+- `git status --short --branch`, recent commits, and pushed branch state show whether any previous turn left unfinished local work.
+
+If compaction happens mid-issue, resume by re-reading the issue body, comments, handoff, relevant files, and current diff. Do not assume the previous chat summary is complete. If an issue is dependency-gated or user-only, leave a GitHub comment explaining the blocker when useful, leave it open, and continue to the next actionable issue.
+
 ## Before Creating Issues
 
 Run:
