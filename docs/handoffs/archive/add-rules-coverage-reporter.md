@@ -33,9 +33,10 @@ Task-specific context:
 
 ## Expected Output
 
-- New coverage reporter script.
-- Documentation for command usage and output.
-- Roadmap and task updates.
+- Completed: added `scripts/report-rules-coverage.ps1` with text and JSON output.
+- Completed: added `scripts/test-report-rules-coverage.ps1` and wired it into `scripts/test-all.ps1`.
+- Completed: documented command usage and output shape in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Completed: updated roadmap and task tracking.
 
 ## Files And Areas
 
@@ -73,4 +74,4 @@ git status --short --branch
 
 ## Open Questions
 
-- Should the default output be human-readable text with optional JSON, or JSON-first for agent tooling?
+- Resolved: default to human-readable text with `-Format json` for agent tooling.

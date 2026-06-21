@@ -30,6 +30,10 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-validate-rules-indexes.ps1"
     },
     @{
+        Name = "Rules coverage reporter smoke tests"
+        Path = Join-Path $repoRoot "scripts\test-report-rules-coverage.ps1"
+    },
+    @{
         Name = "GM context packet helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-gm-context-packet.ps1"
     },
