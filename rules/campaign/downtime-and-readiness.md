@@ -26,6 +26,7 @@ Use this summary when time passes between missions and the GM needs to determine
    - Healing or surgery: `rules/campaign/injuries-recovery.md`.
    - XP, training, or downtime advancement: `rules/campaign/advancement.md`.
    - Gear acquisition or repair: `rules/equipment/overview.md`.
+   - Transport, large-asset, title, or readiness questions: `rules/campaign/transport-and-large-assets.md`.
    - Contacts or favors: `rules/campaign/contacts.md`.
    - Reputation or faction fallout: `rules/campaign/reputation.md`.
    - Contract aftermath or new work: `rules/campaign/contracts.md`.
@@ -53,6 +54,7 @@ Keep the workflow compact. For each downtime interval, record the interval, each
 - `rules/campaign/advancement.md`
 - `rules/campaign/injuries-recovery.md`
 - `rules/campaign/contracts.md`
+- `rules/campaign/transport-and-large-assets.md`
 - `rules/campaign/contacts.md`
 - `rules/campaign/reputation.md`
 - `rules/equipment/overview.md`

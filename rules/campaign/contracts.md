@@ -46,6 +46,7 @@ The searched A Time of War campaign pages support rewards, salaries, bonuses, we
 
 - `gm/mission-template.md`
 - `rules/campaign/advancement.md`
+- `rules/campaign/transport-and-large-assets.md`
 - `rules/campaign/contacts.md`
 - `rules/campaign/reputation.md`
 - `rules/equipment/overview.md`

@@ -22,7 +22,7 @@ Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: perso
 Vehicle and BattleMech rules in `rules/vehicles-and-mechs/` connect RPG characters to Driving, Piloting, Gunnery, MechWarrior crew roles, vehicle assets, Special Pilot Ability routing, and RPG-to-Classic BattleTech conversion notes. These summaries identify scene scale and handoff points; they do not reproduce full tactical BattleTech rules, unit records, vehicle tables, fuel tables, or tactical modifiers.
 
 ## Campaign Advancement
-Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, and campaign save files for durable state.
+Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, transport and large-asset acquisition, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, vehicle summaries for crew/operation boundaries, and campaign save files for durable state.
 
 ## GM Procedures
 GM files describe scene flow, roll policy, session procedure, kid-friendly constraints, and templates.

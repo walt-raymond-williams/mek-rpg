@@ -426,6 +426,7 @@ rules:
     related:
       - campaign.advancement
       - campaign.contracts
+      - campaign.transport-large-assets
       - campaign.contacts
       - campaign.reputation
       - campaign.injuries-recovery
@@ -459,9 +460,28 @@ rules:
     related:
       - campaign.overview
       - campaign.advancement
+      - campaign.transport-large-assets
       - campaign.contacts
       - campaign.reputation
       - equipment.acquire-use
+    status: draft
+  - id: campaign.transport-large-assets
+    title: Transport And Large Assets
+    subsystem: campaign
+    summary: rules/campaign/transport-and-large-assets.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 202, 203, 204, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 256, 257, 258, 259, 260, 261, 323, 324, 325, 326, 327, 332, 333, 334, 335, 336, 337, 338, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 200, 201, 202, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 254, 255, 256, 257, 258, 259, 321, 322, 323, 324, 325, 330, 331, 332, 333, 334, 335, 336, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.overview
+      - campaign.contracts
+      - campaign.downtime-readiness
+      - campaign.reputation
+      - equipment.acquire-use
+      - vehicles.overview
+      - vehicles.piloting
+      - vehicles.gunnery
+      - gm.switch-to-classic-battletech
     status: draft
   - id: campaign.contacts
     title: Contacts And Favors
@@ -519,6 +539,7 @@ rules:
       - campaign.contracts
       - campaign.contacts
       - campaign.reputation
+      - campaign.transport-large-assets
       - equipment.acquire-use
     status: draft
   - id: vehicles.overview
@@ -535,6 +556,7 @@ rules:
       - vehicles.classic-conversion
       - core.skill-checks
       - equipment.acquire-use
+      - campaign.transport-large-assets
       - gm.switch-to-classic-battletech
     status: draft
   - id: vehicles.piloting
@@ -838,6 +860,7 @@ mapped_rules:
       printed: [321, 322, 323, 324, 325]
     related:
       - vehicles.overview
+      - campaign.transport-large-assets
       - equipment.acquire-use
     status: mapped-only
   - id: campaign.advancement-rewards

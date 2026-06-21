@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#53`: summarize transport acquisition and large-asset procedures, with active handoff `docs/handoffs/active/summarize-transport-acquisition-and-large-asset-procedures.md`, narrowed by `docs/current/TRANSPORT_LARGE_ASSET_SOURCE_COVERAGE.md`.
 - Issue `#54`: design richer DropShip and unit asset sheet schema, with active handoff `docs/handoffs/active/design-richer-dropship-and-unit-asset-sheet-schema.md`, after issue `#53` or with provisional gaps clearly marked.
 - Issue `#55`: add tactical encounter handoff checklist, with active handoff `docs/handoffs/active/add-tactical-encounter-handoff-checklist.md`.
 - Issue `#56`: evaluate read-only MEK-RPG dashboard boundaries, with active handoff `docs/handoffs/active/evaluate-read-only-mek-rpg-dashboard-boundaries.md`.
@@ -33,6 +32,7 @@
 
 ## Done
 
+- Issue `#53` implemented: added `rules/campaign/transport-and-large-assets.md` as a narrowed, paraphrased campaign procedure for transport acquisition, DropShip/large-asset scene framing, inspection defects, fuel/readiness, title gaps, and campaign save updates; updated router, page references, manifest, rules map, and related summaries while preserving unsupported DropShip economy, title/lien/permit law, crew payroll, tactical aerospace combat, and MekHQ ledger boundaries.
 - Issue `#52` implemented: added `docs/current/TRANSPORT_LARGE_ASSET_SOURCE_COVERAGE.md` to map A Time of War support for transport and large assets, separate acquisition/vehicle/fuel/trait/skill/campaign hooks from unsupported DropShip title, lien, permit, exact economy, and tactical-combat gaps, and recommend a narrowed scope for issue `#53`.
 - Issue `#51` implemented: added `scripts/route-rules-prompt.ps1` and `scripts/test-route-rules-prompt.ps1` to score short prompts against committed router rows, report candidate files, manifest statuses, page references, and warnings, preserve the read-summaries-before-ruling boundary, and integrate the smoke test into `scripts/test-all.ps1`.
 - Issue `#50` implemented: added `scripts/report-rules-coverage.ps1` and `scripts/test-report-rules-coverage.ps1` to report manifest coverage by subsystem and status in text or JSON, distinguish validation-backed drafts, mapped-only placeholders, partial drafts, source-reviewed routing aids, and source-lookup-only back matter, and integrate the smoke test into `scripts/test-all.ps1`.

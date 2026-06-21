@@ -58,6 +58,7 @@ Use this summary to decide how RPG characters interact with vehicles, BattleMech
 - `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
 - `rules/character-creation/skills.md`
 - `rules/equipment/overview.md`
+- `rules/campaign/transport-and-large-assets.md`
 - `rules/campaign/downtime-and-readiness.md`
 - `gm/switch-to-classic-battletech.md`
 - `gm/encounter-template.md`
