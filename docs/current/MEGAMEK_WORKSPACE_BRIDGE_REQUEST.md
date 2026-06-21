@@ -221,6 +221,7 @@ From `C:\Users\waltr\Documents\mek-rpg`:
 - `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
 - `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`
 - `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`
+- `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`
 - `gm/tactical-encounter-handoff-checklist.md`

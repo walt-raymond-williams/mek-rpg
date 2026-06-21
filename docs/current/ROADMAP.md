@@ -51,6 +51,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
 - The next rules source-review expansion wave is now tracked under epic issue `#59`, with executable child issues `#60`-`#64` and active handoffs.
 - MegaMek workspace bridge-primitives feedback is now tracked under epic issue `#66`, with child issues `#67`-`#69` for read-only checkpoint export consumption, headless day-advance risk documentation, and a gated contract-market accept/decline probe plan.
+- Issue `#67` added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract and gap map for a future MekHQ-owned read-only checkpoint export; the current Python helper remains a read-only prototype/fallback.
 
 ## Active Work
 
@@ -76,11 +77,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Headless day advancement is not low-risk because `CampaignNewDayManager#newDay()` reaches GUI state and can trigger prompts/events.
   - The first possible write-side follow-up is a narrow contract-market accept/decline command, but only after stable contract IDs and prompt policy are validated.
 - Child issues:
-  - Open issue `#67`: consume future MekHQ read-only checkpoint export, with active handoff `docs/handoffs/active/consume-mekhq-read-only-checkpoint-export.md`.
+  - Done issue `#67`: added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` for future MekHQ-owned read-only checkpoint export consumption and current-helper gap comparison.
   - Done issue `#68`: documented headless MekHQ day-advance risk and preserved manual UI advance/save/re-import as the current supported workflow.
   - Open issue `#69`: plan contract-market accept-decline bridge probe, with active handoff `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`.
 - Dependency order:
-  1. Issue `#67` first: define how MEK-RPG should consume a MekHQ-owned read-only checkpoint export and compare it to the current Python prototype output.
+  1. Done in issue `#67`: MEK-RPG now has a consumer contract, adapter plan, and gap map for a future MekHQ-owned read-only checkpoint export.
   2. Done in issue `#68`: MEK-RPG docs now state that headless day advancement is blocked on MekHQ source work and prompt policy because the new-day flow reaches GUI state.
   3. Issue `#69` next: plan contract-market accept/decline as a gated future write-side probe with stable IDs, prompt policy, disposable validation, and saved re-import confirmation.
 - Boundary: do not create broad writeback automation, direct save/XML edits, or headless day-advance implementation issues from MEK-RPG until the MegaMek workspace supplies source-backed safe primitives and prompt policies.

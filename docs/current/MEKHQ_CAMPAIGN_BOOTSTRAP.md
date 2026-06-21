@@ -4,6 +4,8 @@ Status: issue `#28` prototype.
 
 Purpose: create a playable MEK-RPG `campaigns/<campaign-id>/` save folder from the JSON output of `scripts/summarize-mekhq-save.py`, while keeping MekHQ hard ledger facts separate from MEK-RPG narrative overlays.
 
+Future checkpoint exports should follow the consumer contract in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`. If MekHQ later provides a source-backed read-only export, add a small adapter that normalizes that export into the existing summary shape before changing bootstrap behavior.
+
 ## Helper
 
 Script:
@@ -15,7 +17,7 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --embedded-pc-name "RPG Protagonist"
 ```
 
-The helper consumes only the summary JSON. It does not open, edit, or write a MekHQ `.cpnx`, `.cpnx.gz`, or XML save.
+The helper consumes only the summary JSON. It does not open, edit, or write a MekHQ `.cpnx`, `.cpnx.gz`, or XML save. The summary may come from the current MEK-RPG fallback parser or, after adapter work, from a MekHQ-owned read-only checkpoint export normalized to the same top-level sections.
 
 ## Behavior
 
@@ -25,6 +27,7 @@ The helper consumes only the summary JSON. It does not open, edit, or write a Me
 - Does not edit `campaign-state/active-campaign.md`.
 - Generates campaign stubs for overview, current state, PCs, NPCs, assets, missions, relationships, hooks, locations, factions, pending MekHQ actions, and session log.
 - Adds `campaigns/<campaign-id>/mekhq-bridge.md` for bridge metadata, cross-references, warnings, unsupported fields, and bridge discrepancies.
+- Preserves warning, unsupported, inferred, and method-backed provenance from the summary when available.
 
 ## Viewpoint Selection
 

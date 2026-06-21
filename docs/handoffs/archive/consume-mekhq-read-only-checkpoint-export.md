@@ -76,4 +76,12 @@ git diff --check
 
 ## Open Questions
 
-- Should MEK-RPG define the desired JSON schema first, or wait for the MegaMek workspace to propose the exporter contract?
+- Resolved for issue `#67`: MEK-RPG defines the desired consumer contract now in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`, but adapter implementation waits until the MegaMek workspace provides a draft export shape or sanitized fixture.
+
+## Completion Notes
+
+- Added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`.
+- Compared the current `scripts/summarize-mekhq-save.py` JSON shape against recommended MekHQ-owned export fields.
+- Marked derived and method-backed gaps for funds, location/travel, personnel availability/pay/injury semantics, unit condition/transport/repair readiness, markets, contract offers, logistics, and report alerts.
+- Updated `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`, `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`, `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`, `docs/current/MEGAMEK_WORKSPACE_BRIDGE_REQUEST.md`, `docs/current/MEGAMEK_WORKSPACE_SYNC_MEMO.md`, `docs/current/ROADMAP.md`, and `docs/current/TASKS.md`.
+- No adapter implementation issue was created yet because it depends on a MegaMek-owned export contract or representative sanitized fixture.

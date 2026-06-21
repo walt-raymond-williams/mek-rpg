@@ -4,6 +4,8 @@ Status: issue `#27` prototype.
 
 Purpose: document the first read-only helper for summarizing MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML saves into MEK-RPG bridge facts.
 
+For future MekHQ-owned checkpoint export consumption, use `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the preferred consumer contract and gap map. This helper remains a read-only prototype/fallback, not the long-term authority for values that should be produced by MekHQ methods.
+
 ## Helper
 
 Script:
@@ -53,6 +55,8 @@ Evidence label: `Inferred`.
 
 - Funds are calculated by summing serialized finance transaction amounts by currency. MekHQ source confirms `Finances.getBalance()` calculates balance from transactions, but users should confirm in MekHQ UI when exact funds matter.
 - Unit repair/damage summary counts parts linked by `unitId` and includes a cleaned maintenance report excerpt. The helper does not interpret armor, internal structure, critical slots, repair difficulty, or repair duration.
+
+If a future MekHQ-owned exporter provides method-backed values for these fields, MEK-RPG should prefer that export over this helper's inferred values and preserve the provenance in `mekhq-bridge.md`.
 
 ## Unsupported Or Needs Inspection
 

@@ -38,7 +38,7 @@ We received the following guidance from `docs/current/MEK_RPG_MEKHQ_BRIDGE_PRIMI
 MEK-RPG has now tracked that feedback in issues:
 
 - `#66`: Epic: track MekHQ bridge primitives follow-up
-- `#67`: Consume future MekHQ read-only checkpoint export
+- `#67`: Consume future MekHQ read-only checkpoint export (done as MEK-RPG consumer contract)
 - `#68`: Document headless MekHQ day-advance risk (done)
 - `#69`: Plan contract-market accept-decline bridge probe
 
@@ -51,7 +51,7 @@ MEK-RPG has started with the documentation-risk item and should continue with re
    - No implementation or automation was added.
 
 2. Issue `#67`: consume future MekHQ read-only checkpoint export.
-   - Goal: compare current `scripts/summarize-mekhq-save.py` JSON with the recommended MekHQ-owned checkpoint export.
+   - Result: `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` now compares current `scripts/summarize-mekhq-save.py` JSON with the recommended MekHQ-owned checkpoint export.
    - Output: MEK-RPG-side consumer expectations, adapter/contract notes, and a gap list.
    - No write automation.
 
@@ -128,11 +128,12 @@ After MEK-RPG completes issues `#68` and the planning portion of `#67`, we shoul
 - `docs/current/MEGAMEK_WORKSPACE_BRIDGE_REQUEST.md`
 - `docs/current/MEGAMEK_WORKSPACE_SYNC_MEMO.md`
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
+- `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`
 - `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`
-- `docs/handoffs/active/consume-mekhq-read-only-checkpoint-export.md`
+- `docs/handoffs/archive/consume-mekhq-read-only-checkpoint-export.md`
 - `docs/handoffs/archive/document-headless-day-advance-risk.md`
 - `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`

@@ -17,6 +17,8 @@ The first bridge is read-only from MekHQ:
 3. MEK-RPG reads or summarizes the saved MekHQ state.
 4. MEK-RPG updates campaign-folder summaries and RPG overlays without writing back to the MekHQ save.
 
+Issue `#67` adds `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract for a future MekHQ-owned checkpoint export. Prefer that source-backed export for method-derived values when it exists; keep the current Python save-summary helper as a fallback/prototype.
+
 ## MekHQ-Owned Facts
 
 Treat these as imported hard facts when present in the MekHQ save or summary output:
@@ -136,6 +138,8 @@ The first helper may emit JSON, Markdown, or both. The data model should be sour
 - `unsupported`: fields the helper could not map cleanly.
 
 Markdown generated into campaign files should quote no raw MekHQ XML and should not include large copied source text. Use summaries and IDs.
+
+For future checkpoint exporter work, preserve this broad shape but add producer/schema metadata, method-backed provenance, object-scoped warnings, and classified reports as described in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`.
 
 ## Non-Goals
 
