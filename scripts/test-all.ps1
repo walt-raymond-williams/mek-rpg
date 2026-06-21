@@ -22,6 +22,10 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-mekhq-checkpoint-fixture.ps1"
     },
     @{
+        Name = "MekHQ checkpoint prototype-output fixture coverage"
+        Path = Join-Path $repoRoot "scripts\test-mekhq-checkpoint-prototype-fixture.ps1"
+    },
+    @{
         Name = "Campaign-state validator coverage"
         Path = Join-Path $repoRoot "scripts\test-validate-campaign-state.ps1"
     },

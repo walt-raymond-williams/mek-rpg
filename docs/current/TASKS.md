@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#86`: add checkpoint adapter tests using disposable-save prototype output.
 - Issue `#87`: define the MEK-RPG consumed-field mapping for MekHQ checkpoint exports.
 - Issue `#88`: define GM-facing surfacing for checkpoint warnings and unsupported fields.
 - Issue `#89`: add checkpoint fixture edge cases for adapter robustness.
@@ -42,6 +41,7 @@
 
 ## Done
 
+- Issue `#86` implemented: added a sanitized compact fixture excerpt from the MegaMek workspace jar-backed checkpoint prototype output against a disposable `The Learning Ropes` save, added `scripts/test-mekhq-checkpoint-prototype-fixture.ps1` to validate prototype metadata, observed counts, method-backed sample values, warning/unsupported preservation, sanitized local paths, and the experimental/non-production boundary, wired it into `scripts/test-all.ps1`, and documented the command.
 - Issue `#85` implemented: copied the sanitized `mekhq-read-only-checkpoint` fixture into `tests/fixtures/`, added `scripts/test-mekhq-checkpoint-fixture.ps1` to validate the checkpoint top-level shape, value/evidence/method-backed/source-owner envelopes, representative hard-ledger sections, report buckets, market warnings, unsupported fields, and no-stable-market-selector boundary, wired it into `scripts/test-all.ps1`, and documented the command.
 - Issue `#65` implemented: added `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md` to define MekHQ-linked PC/NPC ownership boundaries, reusable linked-person entry shapes, expansion rules, import refresh behavior, discrepancy handling, and an explicit documentation-only/no-code decision; updated bootstrap/data-model/campaign template docs and archived the handoff.
 - Issue `#64` implemented: added source-reviewed GM and campaign orientation routing aids for intro-to-play, factions/history, source handoff, adjudication posture, NPCs/encounters, GM tips, adventure seed routing, rank/title/power, world aesthetics, worldbuilding categories, and world-profile lookup; updated router, page references, rules map, subsystem index, manifest metadata, cross-links, validation notes, and archived the handoff while preserving lore/seed/profile/table boundaries.

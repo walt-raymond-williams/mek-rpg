@@ -1,0 +1,427 @@
+{
+  "bridge_metadata": {
+    "schema_name": "mekhq-read-only-checkpoint",
+    "schema_version": "0.1",
+    "producer": "workspace-jar-backed-prototype",
+    "producer_version": "0.1",
+    "mekhq_version": "0.51.00",
+    "exported_at": "SANITIZED: prototype output generated 2026-06-21",
+    "input_path": "SANITIZED: disposable MekHQ save copy",
+    "save_timestamp": "2026-06-18T21:53:58.465115200Z",
+    "save_size_bytes": 146037,
+    "gzip": true,
+    "read_only": true,
+    "checkpoint_id": "prototype-3025-07-20",
+    "evidence": "Confirmed from MekHQ export",
+    "warnings": [
+      "Prototype exporter; validate before production use.",
+      "Classpath uses installed MekHQ jars and initializes MekHQ data without launching the GUI."
+    ],
+    "prototype_observed_counts": {
+      "personnel": 106,
+      "units": 27,
+      "contracts": 1,
+      "scenarios": 2,
+      "unit_offers": 48,
+      "unsupported": 3
+    }
+  },
+  "campaign": {
+    "id": {
+      "value": "Unknown",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "name": {
+      "value": "The Learning Ropes",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getName()",
+      "warnings": []
+    },
+    "date": {
+      "value": "3025-07-20",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getLocalDate()",
+      "warnings": []
+    },
+    "start_date": {
+      "value": "Unknown",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "faction": {
+      "value": "MERC",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getFaction()",
+      "warnings": []
+    },
+    "gm_mode": {
+      "value": "Unknown",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "location": {
+      "current_system_id": {
+        "value": "Astrokaszy",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": []
+      },
+      "current_system_name": {
+        "value": "Astrokaszy",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": []
+      },
+      "current_location": {
+        "value": "SANITIZED: prototype object string",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentLocation()",
+        "warnings": [
+          "Prototype emitted an object string here; production exporter should serialize stable location fields."
+        ]
+      },
+      "travel_state": {
+        "value": "Unknown",
+        "evidence": "Needs MekHQ inspection",
+        "method_backed": false,
+        "source_owner": "Location/LocationNode",
+        "warnings": []
+      }
+    }
+  },
+  "finances": {
+    "balance": {
+      "value": "CSB 91255718",
+      "currency": "C-bills",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getBalance()",
+      "warnings": []
+    },
+    "loan_balance": {
+      "value": "CSB 0",
+      "currency": "C-bills",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getLoanBalance()",
+      "warnings": []
+    },
+    "has_active_loans": {
+      "value": "false",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#hasActiveLoans()",
+      "warnings": []
+    },
+    "recent_transactions": []
+  },
+  "personnel": [
+    {
+      "id": "fd15b53b-14fa-4c36-ae9a-111c3ccd27ec",
+      "display_name": "SANITIZED: sample captain",
+      "full_title": "SANITIZED: sample captain",
+      "primary_role": {
+        "raw_code": "MekWarrior",
+        "label": "MekWarrior",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getPrimaryRoleDesc()"
+      },
+      "status": {
+        "raw_code": "Active",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getStatus()"
+      },
+      "unit_id": "4653009b-0108-465c-bad3-cc19c3cb742c",
+      "fatigue": {
+        "value": "1",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getFatigueDirect()",
+        "warnings": []
+      },
+      "hits": {
+        "value": "0",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getHits()",
+        "warnings": []
+      },
+      "salary": {
+        "value": "CSB 3000.0",
+        "currency": "C-bills",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getSalary(Campaign)",
+        "warnings": []
+      },
+      "injuries": [],
+      "skills": [],
+      "warnings": []
+    }
+  ],
+  "units": [
+    {
+      "id": "21d83f0a-a3c9-435c-a6eb-d6043ddde12f",
+      "display_name": "Griffin GRF-1N",
+      "entity": {
+        "chassis": "Griffin",
+        "model": "GRF-1N",
+        "type": "BipedMek",
+        "weight_tons": "55.0",
+        "source_owner": "Unit#getEntity()"
+      },
+      "status": {
+        "raw_code": "Deployed",
+        "label": "Deployed",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getStatus()"
+      },
+      "scenario_id": "1",
+      "crew": [],
+      "tech_id": "SANITIZED: technician id",
+      "engineer_id": "Unknown",
+      "damage_state": {
+        "value": "Undamaged",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getCondition(); Unit#getDamageState()",
+        "warnings": []
+      },
+      "repair_summary": {
+        "parts_needed_count": 0,
+        "parts_needing_service_count": 1,
+        "under_repair": "false",
+        "last_maintenance_report": "SANITIZED: prototype emitted a long maintenance report; fixture preserves shape without committing the full report.",
+        "source_owner": "Unit#getPartsNeeded(); Unit#getPartsNeedingService(...); Unit#isUnderRepair(); Unit#getLastMaintenanceReport()"
+      },
+      "transport": {
+        "ship_transport": [],
+        "tactical_transport": [],
+        "tow_transport": [],
+        "warnings": [
+          "Prototype does not validate exact transport assignment semantics."
+        ]
+      },
+      "warnings": []
+    }
+  ],
+  "contracts": [
+    {
+      "id": 1,
+      "display_name": "SANITIZED: sample objective raid",
+      "type": "Objective Raid",
+      "status": {
+        "raw_code": "Active",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Mission#getStatus()"
+      },
+      "system_id": "Astrokaszy",
+      "system_name": "Astrokaszy",
+      "employer": "Unknown",
+      "enemy": "Unknown",
+      "start_date": "Unknown",
+      "end_date": "Unknown",
+      "terms": {
+        "source_owner": "Contract getters",
+        "warnings": [
+          "Prototype emits generic Mission fields only unless mission is a Contract subclass."
+        ]
+      },
+      "scenario_ids": [1, 2],
+      "warnings": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": 1,
+      "mission_id": 1,
+      "display_name": "SANITIZED: current scenario",
+      "status": {
+        "raw_code": "Pending",
+        "label": "Pending",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Scenario#getStatus()"
+      },
+      "date": "3025-07-20",
+      "report": {
+        "text": "Unknown",
+        "sanitized": true,
+        "source_owner": "Scenario#getReport()"
+      },
+      "player_force": {
+        "formation_id": "Unknown",
+        "source_owner": "Scenario#getForces(Campaign)"
+      },
+      "bot_forces": [],
+      "warnings": []
+    },
+    {
+      "id": 2,
+      "mission_id": 1,
+      "display_name": "SANITIZED: resolved scenario",
+      "status": {
+        "raw_code": "Draw",
+        "label": "Draw",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Scenario#getStatus()"
+      },
+      "date": "3025-07-11",
+      "report": {
+        "text": "SANITIZED: objective summary report text",
+        "sanitized": true,
+        "source_owner": "Scenario#getReport()"
+      },
+      "player_force": {
+        "formation_id": "Unknown",
+        "source_owner": "Scenario#getForces(Campaign)"
+      },
+      "bot_forces": [],
+      "warnings": []
+    }
+  ],
+  "repairs_and_logistics": {
+    "shopping_list": [],
+    "repair_work": [],
+    "parts_pressure": [],
+    "cargo": {
+      "value": "Unknown",
+      "evidence": "Needs MekHQ inspection",
+      "method_backed": "Unknown",
+      "source_owner": "CargoStatistics",
+      "warnings": [
+        "Prototype does not validate cargo pressure."
+      ]
+    },
+    "transport_bays": {
+      "value": "Unknown",
+      "evidence": "Needs MekHQ inspection",
+      "method_backed": "Unknown",
+      "source_owner": "HangarStatistics",
+      "warnings": [
+        "Prototype does not validate bay occupancy."
+      ]
+    },
+    "warnings": []
+  },
+  "markets": {
+    "unit_offers": [
+      {
+        "id": null,
+        "stable_selector_available": false,
+        "display_name": "Prime Mover (Succession Wars)",
+        "market_type": "Civilian Market",
+        "unit_type": "1",
+        "unit_name": "Prime Mover (Succession Wars)",
+        "percent": 110,
+        "transit_duration_days": 0,
+        "final_price": {
+          "value": "CSB 553768",
+          "currency": "C-bills",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "UnitMarketOffer#getPrice()",
+          "warnings": []
+        },
+        "entity": {
+          "type": "SupportTank",
+          "source_owner": "UnitMarketOffer#getEntity()"
+        },
+        "guard_fields": [
+          "market_type",
+          "unit_type",
+          "unit_name",
+          "percent",
+          "transit_duration_days"
+        ],
+        "warnings": [
+          "UnitMarketOffer#writeToXML(...) does not expose a source-confirmed unique offer UUID."
+        ]
+      }
+    ],
+    "personnel_applicants": [],
+    "contract_offers": [],
+    "warnings": []
+  },
+  "reports": {
+    "current": [
+      {
+        "category": "current",
+        "text": "Wednesday, July 20, 3025",
+        "date": "Unknown",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentReport()",
+        "contains_html": false,
+        "warnings": []
+      }
+    ],
+    "technical": [
+      {
+        "category": "technical",
+        "text": "SANITIZED: maintenance report line",
+        "date": "Unknown",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getTechnicalReport()",
+        "contains_html": false,
+        "warnings": []
+      }
+    ],
+    "skill": [],
+    "finances": [],
+    "acquisitions": [],
+    "medical": [],
+    "personnel": [],
+    "battle": [],
+    "politics": [],
+    "aggregate": [],
+    "warnings": []
+  },
+  "unsupported": [
+    {
+      "area": "markets.unit_offers",
+      "field": "stable_offer_id",
+      "reason": "UnitMarketOffer#writeToXML(...) does not expose a unique offer UUID.",
+      "evidence": "Unsupported",
+      "recommended_owner": "MekHQ exporter or future source change",
+      "blocks_automation": true
+    },
+    {
+      "area": "repairs_and_logistics.cargo",
+      "field": "exact_cargo_pressure",
+      "reason": "Prototype does not validate cargo pressure.",
+      "evidence": "Needs MekHQ inspection",
+      "recommended_owner": "MekHQ exporter validation pass",
+      "blocks_automation": false
+    },
+    {
+      "area": "write_commands",
+      "field": "all",
+      "reason": "Prototype is read-only and implements no save writeback or campaign actions.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future explicit write-command issue, if approved",
+      "blocks_automation": true
+    }
+  ]
+}
