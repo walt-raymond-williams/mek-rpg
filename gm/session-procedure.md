@@ -22,9 +22,10 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
    - Character-scale firefights, brawls, injury, bleeding, stun, recovery, or combat turns: `rules/personal-combat/`.
    - Personal weapons, armor, electronics, medical gear, or mission gear: `rules/equipment/`.
    - Mission aftermath, XP, contracts, contacts, reputation, injury downtime, and readiness: `rules/campaign/`.
+   - Faction, era, rank/title, NPC, encounter, source authority, adjudication, and world-orientation questions: `rules/universe/`, `rules/gamemastering/`, `rules/campaign/power-rank-and-title.md`, and the relevant `gm/` orientation file.
    - RPG-scale vehicle scenes, piloting, gunnery, MechWarrior notes, crew roles, vehicle assets, or conversion notes: `rules/vehicles-and-mechs/`.
    - BattleMechs, vehicles, facing, heat, armor locations, hex movement, weapon ranges, ammunition, or detailed unit state: `gm/switch-to-classic-battletech.md`.
-5. If the committed summaries are insufficient, make a provisional ruling only when needed to keep play moving, then record the gap in the active campaign folder's `rules-gaps.md`.
+5. If the committed summaries are insufficient, use `gm/rules-adjudication-posture.md`; make a provisional ruling only when needed to keep play moving, then record the gap in the active campaign folder's `rules-gaps.md`.
 6. Track important choices, injuries, equipment losses, faction reactions, relationship changes, location changes, asset changes, promises, rewards, costs, and new table canon.
 7. Keep playtest-only facts separate from table canon unless the user explicitly promotes them.
 8. For MekHQ-linked campaigns, write hard ledger intents to `pending-mekhq-actions.md` instead of treating them as final funds, roster, contract, repair, scenario, or date facts.

@@ -908,39 +908,155 @@ rules:
       - vehicles.classic-conversion
       - gm.switch-to-classic-battletech
     status: source-reviewed-routing-aid
-mapped_rules:
   - id: universe.intro-to-play
     title: Intro To Play
     subsystem: universe
-    candidate: rules/universe/intro-to-play.md
+    summary: rules/universe/intro-to-play.md
     source_pages:
       pdf: [18, 19, 20, 21, 22, 23]
       printed: [16, 17, 18, 19, 20, 21]
-    status: mapped-only
+    related:
+      - universe.factions-history
+      - universe.glossary-source-map
+      - gm.battletech-source-handoff
+      - gm.rules-adjudication-posture
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
   - id: universe.factions-history
     title: Factions And History
     subsystem: universe
-    candidate: rules/universe/factions-and-history.md
+    summary: rules/universe/factions-and-history.md
     source_pages:
       pdf: [23, 24, 25, 26, 27, 28, 29]
       printed: [21, 22, 23, 24, 25, 26, 27]
-    status: mapped-only
+    related:
+      - universe.intro-to-play
+      - universe.glossary-source-map
+      - campaign.reputation
+      - campaign.contacts
+      - campaign.power-rank-title
+    status: source-reviewed-routing-aid
   - id: gm.battletech-source-handoff
     title: BattleTech Source Handoff
     subsystem: gm-procedure
-    candidate: gm/battletech-source-handoff.md
+    summary: gm/battletech-source-handoff.md
     source_pages:
       pdf: [33, 34]
       printed: [31, 32]
-    status: mapped-only
+    related:
+      - gm.rules-adjudication-posture
+      - gm.switch-to-classic-battletech
+      - tactical.overview
+      - vehicles.classic-conversion
+    status: source-reviewed-routing-aid
   - id: gm.rules-adjudication-posture
     title: Rules Adjudication Posture
     subsystem: gm-procedure
-    candidate: gm/rules-adjudication-posture.md
+    summary: gm/rules-adjudication-posture.md
     source_pages:
       pdf: [35]
       printed: [33]
-    status: mapped-only
+    related:
+      - gm.battletech-source-handoff
+      - gm.switch-to-classic-battletech
+      - core.action-checks
+      - core.basic-action-resolution
+    status: source-reviewed-routing-aid
+  - id: gamemastering.npcs-encounters
+    title: NPCs And Encounters
+    subsystem: gamemastering
+    summary: rules/gamemastering/npcs-and-encounters.md
+    source_pages:
+      pdf: [338, 339, 340, 341, 342, 343, 344]
+      printed: [336, 337, 338, 339, 340, 341, 342]
+    related:
+      - character.overview
+      - character.attributes
+      - character.skills
+      - character.traits
+      - campaign.contacts
+      - campaign.reputation
+    status: source-reviewed-routing-aid
+  - id: gm.tips-stories
+    title: Gamemastering Tips And Stories
+    subsystem: gamemastering
+    summary: gm/gamemastering-tips.md
+    source_pages:
+      pdf: [344, 345, 346, 347, 348, 349]
+      printed: [342, 343, 344, 345, 346, 347]
+    related:
+      - gamemastering.npcs-encounters
+      - gm.adventure-seeds-map
+      - gm.rules-adjudication-posture
+    status: source-reviewed-routing-aid
+  - id: gm.adventure-seeds-map
+    title: Adventure Seeds Map
+    subsystem: gamemastering
+    summary: gm/adventure-seeds-map.md
+    source_pages:
+      pdf: [349, 350, 351]
+      printed: [347, 348, 349]
+    related:
+      - gm.tips-stories
+      - gamemastering.npcs-encounters
+      - campaign.contracts
+      - campaign.reputation
+    status: source-reviewed-routing-aid
+  - id: campaign.power-rank-title
+    title: Power Rank And Title
+    subsystem: campaign
+    summary: rules/campaign/power-rank-and-title.md
+    source_pages:
+      pdf: [351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.advancement
+      - campaign.reputation
+      - campaign.contacts
+      - campaign.downtime-readiness
+      - universe.factions-history
+    status: source-reviewed-routing-aid
+  - id: gm.universal-aesthetics
+    title: Universal Aesthetics
+    subsystem: gamemastering
+    summary: gm/universal-aesthetics.md
+    source_pages:
+      pdf: [361, 362, 363, 364]
+      printed: [359, 360, 361, 362]
+    related:
+      - gm.touring-stars
+      - gm.whistle-stop-tour
+      - special.planetary-conditions
+      - campaign.reputation
+    status: source-reviewed-routing-aid
+  - id: gm.touring-stars
+    title: Touring The Stars
+    subsystem: gamemastering
+    summary: gm/touring-the-stars.md
+    source_pages:
+      pdf: [364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376]
+      printed: [362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374]
+    related:
+      - gm.universal-aesthetics
+      - gm.whistle-stop-tour
+      - equipment.acquire-use
+      - equipment.electronics
+      - campaign.transport-large-assets
+    status: source-reviewed-routing-aid
+  - id: gm.whistle-stop-tour
+    title: Whistle Stop Tour
+    subsystem: gamemastering
+    summary: gm/whistle-stop-tour.md
+    source_pages:
+      pdf: [376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388]
+      printed: [374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386]
+    related:
+      - gm.universal-aesthetics
+      - gm.touring-stars
+      - special.planetary-conditions
+      - campaign.reputation
+    status: source-reviewed-routing-aid
+mapped_rules:
   - id: campaign.advancement-rewards
     title: Advancement And Rewards
     subsystem: campaign
@@ -952,66 +1068,6 @@ mapped_rules:
       - campaign.advancement
       - character.xp-advancement
     status: partial-draft
-  - id: gamemastering.npcs-encounters
-    title: NPCs And Encounters
-    subsystem: gamemastering
-    candidate: rules/gamemastering/npcs-and-encounters.md
-    source_pages:
-      pdf: [338, 339, 340, 341, 342, 343, 344]
-      printed: [336, 337, 338, 339, 340, 341, 342]
-    status: mapped-only
-  - id: gm.tips-stories
-    title: Gamemastering Tips And Stories
-    subsystem: gamemastering
-    candidate: gm/gamemastering-tips.md
-    source_pages:
-      pdf: [344, 345, 346, 347, 348, 349]
-      printed: [342, 343, 344, 345, 346, 347]
-    status: mapped-only
-  - id: gm.adventure-seeds-map
-    title: Adventure Seeds Map
-    subsystem: gamemastering
-    candidate: gm/adventure-seeds-map.md
-    source_pages:
-      pdf: [349, 350, 351]
-      printed: [347, 348, 349]
-    status: mapped-only
-  - id: campaign.power-rank-title
-    title: Power Rank And Title
-    subsystem: campaign
-    candidate: rules/campaign/power-rank-and-title.md
-    source_pages:
-      pdf: [351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
-      printed: [349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
-    related:
-      - campaign.reputation
-      - campaign.contacts
-      - campaign.downtime-readiness
-    status: partial-draft
-  - id: gm.universal-aesthetics
-    title: Universal Aesthetics
-    subsystem: gamemastering
-    candidate: gm/universal-aesthetics.md
-    source_pages:
-      pdf: [361, 362, 363, 364]
-      printed: [359, 360, 361, 362]
-    status: mapped-only
-  - id: gm.touring-stars
-    title: Touring The Stars
-    subsystem: gamemastering
-    candidate: gm/touring-the-stars.md
-    source_pages:
-      pdf: [364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376]
-      printed: [362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374]
-    status: mapped-only
-  - id: gm.whistle-stop-tour
-    title: Whistle Stop Tour
-    subsystem: gamemastering
-    candidate: gm/whistle-stop-tour.md
-    source_pages:
-      pdf: [376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388]
-      printed: [374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386]
-    status: mapped-only
   - id: back.record-sheets-tables
     title: Record Sheets And Reference Tables
     subsystem: back-matter

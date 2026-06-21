@@ -38,7 +38,8 @@ if ($LASTEXITCODE -ne 0) {
 $text = $textOutput -join "`n"
 Assert-True -Condition ($text -match "Rules coverage report") -Message "Text report has expected heading."
 Assert-True -Condition ($text -match "\[core-resolution\]") -Message "Text report includes core-resolution subsystem."
-Assert-True -Condition ($text -match "mapped-only placeholder") -Message "Text report distinguishes mapped-only coverage."
+Assert-True -Condition ($text -match "partial draft; needs source review") -Message "Text report distinguishes partial-draft coverage."
+Assert-True -Condition ($text -match "source lookup only") -Message "Text report distinguishes source-lookup-only coverage."
 Assert-True -Condition ($text -match "drafted/routed") -Message "Text report distinguishes drafted/routed coverage."
 
 Write-Test "Checking JSON coverage report."
@@ -51,7 +52,7 @@ if ($LASTEXITCODE -ne 0) {
 $report = ($jsonOutput -join "`n") | ConvertFrom-Json
 Assert-True -Condition ($report.totals.covered_entries -gt 0) -Message "JSON report has coverage entries."
 Assert-True -Condition (@($report.subsystems | Where-Object { $_.subsystem -eq "core-resolution" }).Count -eq 1) -Message "JSON report includes core-resolution subsystem."
-Assert-True -Condition (@($report.subsystems | Where-Object { $_.subsystem -eq "special-case-rules" }).Count -eq 1) -Message "JSON report includes mapped special-case subsystem."
+Assert-True -Condition (@($report.subsystems | Where-Object { $_.subsystem -eq "gamemastering" }).Count -eq 1) -Message "JSON report includes gamemastering subsystem."
 
 Write-Host ""
 Write-Host "Rules coverage reporter tests passed."

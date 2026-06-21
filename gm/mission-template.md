@@ -15,6 +15,8 @@ Primary objective and optional secondary objectives.
 ## Opposition
 Named NPCs, factions, units, or environmental threats.
 
+Routes: `rules/gamemastering/npcs-and-encounters.md`, `rules/universe/factions-and-history.md`, `rules/campaign/power-rank-and-title.md`, `gm/universal-aesthetics.md`.
+
 ## Scenes
 1. Briefing:
 2. Approach:
@@ -26,8 +28,11 @@ Named NPCs, factions, units, or environmental threats.
 Payment, salvage, reputation, contacts, favors, or information.
 
 ## Consequence Routes
+- Source authority and temporary rulings: `gm/battletech-source-handoff.md`, `gm/rules-adjudication-posture.md`
+- Adventure seed or mission prompt routing: `gm/adventure-seeds-map.md`, `gm/gamemastering-tips.md`
 - Contract terms and payment: `rules/campaign/contracts.md`
 - XP, training, salary, rank, or bonuses: `rules/campaign/advancement.md`
+- Power, rank, title, office, or command authority: `rules/campaign/power-rank-and-title.md`
 - Contacts, favors, and borrowed resources: `rules/campaign/contacts.md`
 - Reputation and faction standing: `rules/campaign/reputation.md`
 - Injury downtime and readiness: `rules/campaign/injuries-recovery.md`, `rules/campaign/downtime-and-readiness.md`

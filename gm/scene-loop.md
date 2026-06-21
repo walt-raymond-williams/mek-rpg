@@ -10,4 +10,6 @@ Use 2-4 options when the player seems unsure. Options should be concrete actions
 
 When a scene depends on setting assumptions, read `campaign-state/setting-basics.md` and prefer recorded table canon. Mark precise official canon as `Needs lookup` when it matters and has not been verified.
 
+For faction, source authority, temporary rulings, NPC construction, rank/title, or world-orientation questions, route through `indexes/task-router.md` to the relevant universe, campaign, gamemastering, or GM orientation aid before making durable rulings.
+
 End a scene when the objective is resolved, the situation changes location, or a tactical encounter begins.

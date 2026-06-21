@@ -111,6 +111,16 @@ Before starting or resuming a campaign session:
 5. Ask the user for any open choice that is necessary for the next scene.
 6. If a precise canon fact matters, mark it `Needs lookup` until verified.
 
+## Source-Reviewed Orientation Routes
+
+- New-player and table-role orientation: `rules/universe/intro-to-play.md`
+- Broad faction and era orientation: `rules/universe/factions-and-history.md`
+- Common terminology: `indexes/term-glossary.md`
+- Source authority and tactical-tool handoff: `gm/battletech-source-handoff.md`
+- Rules-selection and temporary-ruling posture: `gm/rules-adjudication-posture.md`
+- Rank, title, office, Clan social rank, and power consequences: `rules/campaign/power-rank-and-title.md`
+- World aesthetics, worldbuilding categories, and world-profile lookup: `gm/universal-aesthetics.md`, `gm/touring-the-stars.md`, `gm/whistle-stop-tour.md`
+
 ## Open Questions
 
 - Which era and starting date should become table canon?

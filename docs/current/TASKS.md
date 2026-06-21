@@ -2,16 +2,14 @@
 
 ## Now
 
-- Issue `#59`: keep the next rules source-review expansion wave visible while child issues `#60`-`#64` are completed.
+- Issue `#65`: create MekHQ personnel-to-PC/NPC sheet workflow, with active handoff `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`, to turn parsed MekHQ personnel into useful campaign-local PC/NPC entries without inventing A Time of War stats.
 
 ## Next
 
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
-- Issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
 
 ## Backlog
 
-- Issue `#65`: create MekHQ personnel-to-PC/NPC sheet workflow, with active handoff `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`, to turn parsed MekHQ personnel into useful campaign-local PC/NPC entries without inventing A Time of War stats.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
@@ -26,6 +24,7 @@
 
 ## Done
 
+- Issue `#64` implemented: added source-reviewed GM and campaign orientation routing aids for intro-to-play, factions/history, source handoff, adjudication posture, NPCs/encounters, GM tips, adventure seed routing, rank/title/power, world aesthetics, worldbuilding categories, and world-profile lookup; updated router, page references, rules map, subsystem index, manifest metadata, cross-links, validation notes, and archived the handoff while preserving lore/seed/profile/table boundaries.
 - Issue `#63` implemented: added source-reviewed equipment and hazard routing aids for planetary conditions, creatures, diseases, battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel; updated router, page references, rules map, subsystem index, manifest metadata, cross-links, validation notes, and archived the handoff while preserving table/catalog/stat-block boundaries.
 - Issue `#62` implemented: added source-reviewed tactical addendum routing aids for tactical scope, turn/initiative, vehicle actions, tactical damage/traits, heat, and Special Pilot Abilities; updated router, page references, rules map, subsystem index, manifest metadata, vehicle/GM cross-links, validation notes, and archived the handoff while preserving Classic BattleTech/MegaMek/MekHQ tactical authority.
 - Issue `#61` implemented: added source-reviewed armor/barrier and optional personal-combat summaries, including AP/BAR routing, degradation, stacked protection, morale, hit locations, knockdown, and lethality-reduction guidance; updated router, page references, rules map, subsystem index, manifest metadata, existing combat cross-links, validation notes, and archived the handoff.

@@ -111,4 +111,12 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Open Questions
 
-- Should adventure seed and world-tour material stay as sparse routing maps only, or is there value in original, non-source-derived prompt scaffolds linked to page references?
+- Resolved for issue `#64`: adventure seed and world-tour material stayed as sparse routing maps. `gm/adventure-seeds-map.md` includes only an original table scaffold and source-page route; `gm/whistle-stop-tour.md` avoids summarizing individual world profiles.
+
+## Completion Notes
+
+- Added source-reviewed routing aids and procedures for all scoped mapped entries.
+- Updated `indexes/task-router.md`, `indexes/page-reference-index.md`, `indexes/rules-map.md`, `indexes/subsystem-index.md`, and `indexes/manifest.yaml`.
+- Added `docs/current/GM_CAMPAIGN_ORIENTATION_SOURCE_REVIEW_VALIDATION.md`.
+- Updated GM/campaign entry points so source handoff, adjudication, NPC/encounter, rank/title, and world-orientation routes are discoverable during play.
+- Preserved the copyright boundary: no lore prose, seed entries, world profiles, source tables, NPC templates, equipment kits, rank lists, or trait recommendations were copied into committed docs.

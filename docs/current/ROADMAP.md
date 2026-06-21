@@ -89,7 +89,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### MekHQ personnel-to-PC/NPC sheet workflow
 
-- Status: Open
+- Status: Done
 - Issue: `#65`
 - Handoff: `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`
 - Mode: Project development
@@ -100,7 +100,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Next rules source-review expansion wave
 
-- Status: Open
+- Status: Done
 - Epic issue: `#59`
 - Mode: Source processing / project development
 - Goal: turn the highest-value mapped-only and partial-draft A Time of War areas into committed paraphrased summaries, routing aids, or GM procedures without trying to summarize the whole book in one pass.
@@ -110,13 +110,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done issue `#61`: source-reviewed personal combat detail gaps, with archived handoff `docs/handoffs/archive/source-review-personal-combat-detail-gaps.md`.
   - Done issue `#62`: source-reviewed tactical addendum boundaries, with archived handoff `docs/handoffs/archive/source-review-tactical-addendum-boundaries.md`.
   - Done issue `#63`: source-reviewed equipment and hazard gaps, with archived handoff `docs/handoffs/archive/source-review-equipment-and-hazard-gaps.md`.
-  - Open issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
+  - Done issue `#64`: source-reviewed GM and campaign orientation gaps, with archived handoff `docs/handoffs/archive/source-review-gm-campaign-orientation-gaps.md`.
 - Dependency order:
   1. Done in issue `#60`: character detail gaps now support future PC/NPC sheet review and eventual focused validators.
   2. Done in issue `#61`: personal-combat details now cover armor/barriers and opt-in optional rules after the current minimum combat layer.
   3. Done in issue `#62`: tactical addendum routing now refines handoff decisions after personal-scale gaps are clearer.
   4. Done in issue `#63`: equipment and hazard routing now supports missions, injury aftermath, and vehicle/asset scenes.
-  5. Issue `#64` last in this wave: GM/campaign orientation is useful, but should stay procedure- and routing-focused rather than lore-heavy.
+  5. Done in issue `#64`: GM/campaign orientation now stays procedure- and routing-focused rather than lore-heavy.
 - Boundary: this wave permits explicit source-processing for scoped page ranges only. Do not commit protected raw source, copied tables, catalog lists, stat blocks, adventure text, or long lore passages. Use paraphrase, page references, route guidance, and uncertainty labels.
 
 ### Rules lookup infrastructure and metadata queue

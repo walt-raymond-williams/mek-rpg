@@ -3,6 +3,9 @@
 ## Core Resolution
 Core action summaries in `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, Edge, and character record basics. These summaries determine when to roll, what kind of roll to use, how modifiers and margins work, when a player can spend Edge, and how to review the play-facing fields on a character record.
 
+## Universe Orientation
+Universe orientation in `rules/universe/` and `indexes/term-glossary.md` covers new-player RPG orientation, table roles, broad faction and era routing, and common BattleTech terminology. These files are source-reviewed routing aids for scene framing and canon triage; they do not reproduce faction essays, timelines, glossary entries, or world canon.
+
 ## Character Creation
 Character creation in `rules/character-creation/` covers campaign fit, creation method selection, Life Modules, Skill Fields, attributes, traits, skills, purchasing and cleanup, final sheet review, starting equipment routing, and post-creation XP advancement. These summaries are procedural guides; exact module entries, field lists, trait catalogs, skill lists, XP tables, and sample sheets remain private source lookups.
 
@@ -34,10 +37,13 @@ Vehicle and BattleMech rules in `rules/vehicles-and-mechs/` connect RPG characte
 Tactical addendum routing in `rules/tactical/` covers the A Time of War bridge between RPG characters and small tactical engagements: tactical scope, unit categories, turn/initiative structure, vehicle actions, movement routing, damage conversion boundaries, weapon-trait lookup points, heat, and Special Pilot Ability routing. These files are source-reviewed routing aids only; exact tactical tables, modifiers, weapon entries, heat accounting, armor locations, critical hits, and full unit turns remain private source or external tactical-tool work.
 
 ## Campaign Advancement
-Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, transport and large-asset acquisition, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, vehicle summaries for crew/operation boundaries, and campaign save files for durable state.
+Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, transport and large-asset acquisition, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, title, status, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, vehicle summaries for crew/operation boundaries, universe orientation for faction/status context, and campaign save files for durable state.
 
 ## GM Procedures
-GM files describe scene flow, roll policy, session procedure, kid-friendly constraints, and templates.
+GM files describe scene flow, roll policy, session procedure, kid-friendly constraints, source handoff, adjudication posture, campaign technique, adventure-seed routing, world aesthetics, worldbuilding categories, world-profile routing, and templates. GM orientation files are procedure/routing aids; sourcebook lore, adventure seed text, world profiles, record sheets, technical readouts, and fiction remain private source or external lookup.
+
+## Gamemastering Orientation
+Gamemastering orientation covers NPC/encounter construction, random encounter routing, GM preparation, player-agency guidance, adventure seed lookup, and table-useful world presentation. These routes support live play and mission creation without reproducing NPC templates, encounter tables, published seed entries, setting essays, title/rank tables, USILR tables, or world profiles.
 
 ## Classic BattleTech Integration
 When tactical movement, facing, heat, armor locations, weapon range brackets, ammunition, exact unit turns, or full lance-scale combat matter, generate a Classic BattleTech, MegaMek, or MekHQ encounter setup. Bring back campaign consequences afterward through `rules/campaign/`, active campaign assets, and the GM state-save checklist.
