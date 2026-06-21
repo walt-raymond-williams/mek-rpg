@@ -5,7 +5,7 @@
 - GitHub issue: `#36` Add automated MekHQ pending workflow regression tests
 - Roadmap entry: MekHQ bridge verification / pending application regression coverage
 - Mode: Project development
-- Priority: Next after or alongside issue `#31`, before relying heavily on MekHQ pending actions in generated context helpers
+- Status: Completed; archive after commit and push.
 
 ## Goal
 
@@ -105,6 +105,14 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Open Questions
 
-- Should the test script live as a standalone PowerShell script only, or should it become part of a broader `scripts/test-all.ps1` later?
-- Should the negative validator test copy `campaigns/_template/` to a temp root, or create a minimal fake campaign under a temp repository copy?
-- Should issue `#33` later call this regression script before generating context packets that include MekHQ pending actions?
+- Resolved for this issue: keep the test as standalone `scripts/test-mekhq-pending-workflow.ps1`; a broader `scripts/test-all.ps1` can be added later if multiple regression scripts accumulate.
+- Resolved for this issue: the negative validator test copies the disposable generated campaign folder, removes `pending-mekhq-actions.md`, and confirms the existing validator fails.
+- Deferred: issue `#33` can call this regression script before context-packet helper work if pending-action contracts change or become input to generated packets.
+
+## Completion Notes
+
+- Added `scripts/test-mekhq-pending-workflow.ps1`.
+- Added sanitized fixture `tests/fixtures/mekhq-summary-minimal.json`.
+- Documented the command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Updated `docs/current/TASKS.md` and `docs/current/ROADMAP.md`.
+- Verification run: `./scripts/test-mekhq-pending-workflow.ps1` passed.

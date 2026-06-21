@@ -1,0 +1,147 @@
+{
+  "bridge_metadata": {
+    "helper": "summarize-mekhq-save.py",
+    "helper_version": "test-fixture",
+    "input_path": "C:\\Sanitized\\Fixture Campaign.cpnx",
+    "save_timestamp": "2026-06-20T12:00:00Z",
+    "import_timestamp": "2026-06-20T12:05:00Z",
+    "save_size_bytes": 12345,
+    "gzip_compressed": false,
+    "mekhq_save_version": "sanitized-test",
+    "warnings": [
+      "Sanitized minimal fixture for regression tests."
+    ],
+    "unsupported_section_names": []
+  },
+  "campaign": {
+    "mekhq_campaign_id": "fixture-campaign-001",
+    "name": "Fixture Lances",
+    "date": "3025-07-20",
+    "start_date": "3025-07-01",
+    "faction": "Independent",
+    "location": {
+      "current_system_id": "Galatea",
+      "transit_time": "Unknown",
+      "recharge_time": "Unknown",
+      "jump_zenith": "Unknown"
+    },
+    "funds": {
+      "calculated_balance_by_currency": {
+        "C-Bills": 1250000
+      }
+    }
+  },
+  "finances": {
+    "funds": {
+      "calculated_balance_by_currency": {
+        "C-Bills": 1250000
+      }
+    },
+    "transaction_count": 2,
+    "recent_transactions": [],
+    "loan_count": 0,
+    "asset_count": 0,
+    "loan_defaults": [],
+    "failed_collateral": []
+  },
+  "personnel": [
+    {
+      "mekhq_person_id": "p-001",
+      "display_name": "Avery Holt",
+      "role": "Commander",
+      "rank": "Captain",
+      "faction": "Independent",
+      "assignment": {
+        "unit_id": "u-001"
+      },
+      "availability": "Active",
+      "injury_fatigue_flags": "None",
+      "commander": true,
+      "evidence": "Confirmed from sanitized fixture"
+    },
+    {
+      "mekhq_person_id": "p-002",
+      "display_name": "Mira Voss",
+      "role": "Technician",
+      "rank": "Tech",
+      "faction": "Independent",
+      "assignment": {
+        "unit_id": "Unknown"
+      },
+      "availability": "Active",
+      "injury_fatigue_flags": "None",
+      "commander": false,
+      "evidence": "Confirmed from sanitized fixture"
+    }
+  ],
+  "units": [
+    {
+      "mekhq_unit_id": "u-001",
+      "display_name": "CN9-A Centurion Fixture",
+      "type": "BattleMech",
+      "status": {
+        "site": "Field"
+      },
+      "crew": {
+        "driver": {
+          "id": "p-001",
+          "display_name": "Avery Holt"
+        }
+      },
+      "damage_repair_summary": {
+        "linked_part_count": 0,
+        "last_maintenance_report": "None"
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "mekhq_contract_id": "c-001",
+      "name": "Fixture Security Detail",
+      "type": "Security",
+      "employer": "Fixture Employer",
+      "status": "Active",
+      "deadline": "3025-08-01",
+      "system_id": "Galatea",
+      "objective_summary": "Protect a sanitized test convoy.",
+      "terms_summary": {
+        "payment_multiplier": "1.0",
+        "salvage_pct": "Unknown",
+        "command_rights": "Independent"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "mekhq_scenario_id": "s-001",
+      "contract_id": "c-001",
+      "name": "Fixture Patrol",
+      "status": "Pending",
+      "date": "3025-07-21"
+    }
+  ],
+  "repairs_and_logistics": {
+    "shopping_list_count": 0,
+    "parts_count": 0,
+    "unit_linked_parts_count": 0,
+    "transport_cargo_pressure": "Unknown"
+  },
+  "markets": {
+    "unit_market_offers": [
+      {
+        "unit_name": "Fixture Jenner",
+        "unit_type": "BattleMech",
+        "price_percent": "100"
+      }
+    ],
+    "personnel_market_applicants": [],
+    "contract_market_offers": []
+  },
+  "unsupported": [
+    {
+      "field": "fixture-only-field",
+      "reason": "Fixture keeps unsupported handling visible without real save payloads.",
+      "evidence": "Sanitized fixture"
+    }
+  ]
+}

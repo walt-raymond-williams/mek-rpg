@@ -7,7 +7,6 @@
 ## Next
 
 - Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
-- Issue `#36`: add automated MekHQ pending workflow regression tests, with active handoff `docs/handoffs/active/add-automated-mekhq-pending-workflow-regression-tests.md`.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
@@ -33,6 +32,7 @@
 
 ## Done
 
+- Issue `#36` implemented: added `scripts/test-mekhq-pending-workflow.ps1` and `tests/fixtures/mekhq-summary-minimal.json` to regression-check MekHQ pending workflow bootstrap output, `pending-mekhq-actions.md` ownership, `mekhq-bridge.md` queue pointers, validator positive and negative coverage, no direct MekHQ save/XML writeback boundaries, protected-source ignore rules, and disposable cleanup.
 - Issue `#35` implemented: added `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`, made `pending-mekhq-actions.md` a standard campaign-local file, updated MekHQ linked play/bootstrap guidance and generated MekHQ-linked campaign output, taught the campaign validator about the new file, and updated issue `#31` context-packet handoff to consume unresolved pending items as manual-action intents rather than hard ledger facts.
 - Issue `#28` implemented: added `scripts/bootstrap-mekhq-campaign.py` to create MEK-RPG campaign save folders from read-only MekHQ summary JSON; generated campaign-local `mekhq-bridge.md` metadata and stubs for current state, viewpoint PC, NPCs, assets, missions, relationships, hooks, locations, factions, and session log; documented viewpoint selection, overwrite refusal, and ownership boundaries; verified with disposable `The Learning Ropes` summary output and throwaway campaign folders.
 - Issue `#27` implemented: added `scripts/summarize-mekhq-save.py` to read plain or gzip MekHQ campaign saves without writing to them and emit JSON or Markdown bridge summaries; documented confirmed, inferred, unsupported, and needs-inspection mappings in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`; updated helper command docs; verified against disposable plain and gzip `The Learning Ropes` saves from the sister workspace.
