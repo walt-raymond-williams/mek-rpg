@@ -45,7 +45,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`, campaign-state validator coverage in `scripts/test-validate-campaign-state.ps1`, pending-action validator coverage in `scripts/test-validate-mekhq-pending-actions.ps1`, and MekHQ-linked GM context packet scenarios in `scripts/test-mekhq-context-packet.ps1`.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
-- The DropShip/large-asset gap from the Galatea playtest now has a staged path: source-coverage mapping (`#52`), transport/large-asset summary work if supported (`#53`), richer DropShip/unit asset sheet design (`#54`), and tactical encounter handoff checklist support (`#55`).
+- The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`; transport/large-asset summary work continues in issue `#53` with a narrowed scope, followed by richer DropShip/unit asset sheet design (`#54`) and tactical encounter handoff checklist support (`#55`).
 - The read-only dashboard idea is now issue-tracked as boundary evaluation (`#56`) followed by a read-only data adapter contract (`#57`) if the evaluation says to proceed. Campaign session archive helper work is tracked in issue `#58`.
 
 ## Active Work
@@ -83,16 +83,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Mode: Source processing / project development
 - Goal: address the DropShip and large-asset gaps discovered during play while preserving the boundary between A Time of War summaries, table rulings, Classic BattleTech/MegaMek/MekHQ tactical handling, and MEK-RPG campaign memory.
 - Child issues:
-  - Issue `#52`: map transport acquisition and large-asset ownership source coverage.
-  - Issue `#53`: summarize transport acquisition and large-asset procedures if issue `#52` confirms useful source coverage.
+  - Done in issue `#52`: map transport acquisition and large-asset ownership source coverage.
+  - Issue `#53`: summarize transport acquisition and large-asset procedures using the narrowed scope in `docs/current/TRANSPORT_LARGE_ASSET_SOURCE_COVERAGE.md`.
   - Issue `#54`: design richer DropShip and unit asset sheet schema after summary coverage or with clearly marked provisional fields.
   - Issue `#55`: add tactical encounter handoff checklist.
 - Dependency order:
-  1. Issue `#52` maps what the source actually supports.
-  2. Issue `#53` writes paraphrased summaries only if the mapping supports them.
+  1. Done in issue `#52`: mapped what the source actually supports.
+  2. Issue `#53` writes a narrowed paraphrased summary for acquisition/asset procedure and explicitly preserves unsupported DropShip economy/legal gaps.
   3. Issue `#54` designs asset sheets from the confirmed/provisional coverage.
   4. Issue `#55` can proceed independently as a GM workflow checklist, but should link to asset-sheet work when available.
-- Boundary: direct MekHQ writeback, tactical rules implementation, copied equipment/price tables, and raw source text remain out of scope.
+- Boundary: direct MekHQ writeback, tactical rules implementation, copied equipment/price tables, raw source text, definitive DropShip title/lien law, and exact DropShip operating economics remain out of scope.
 
 ### Read-only dashboard and session tooling queue
 

@@ -33,9 +33,9 @@ Task-specific context:
 
 ## Expected Output
 
-- Concise source-coverage note under `docs/current/` or `source/`.
-- Recommendation on whether issue `#53` is ready, blocked, or should be narrowed.
-- Roadmap and task updates.
+- Completed: added `docs/current/TRANSPORT_LARGE_ASSET_SOURCE_COVERAGE.md`.
+- Completed: recommended issue `#53` proceed with narrowed scope as a safe GM procedure, not a definitive DropShip ownership economy.
+- Completed: updated roadmap and task tracking.
 
 ## Files And Areas
 
@@ -72,4 +72,4 @@ git status --short --branch
 
 ## Open Questions
 
-- Does A Time of War meaningfully cover DropShip ownership logistics, or should MEK-RPG treat most of this as MekHQ/table-canon territory?
+- Resolved for now: A Time of War supports acquisition scene framing, vehicle/fuel/trait/skill hooks, and campaign-state pressure, but most detailed DropShip ownership logistics should remain MekHQ/table-canon or external-source territory.
