@@ -100,6 +100,21 @@ rules:
       - core.action-checks
       - core.basic-action-resolution
     status: draft
+  - id: core.character-record-basics
+    title: Character Record Basics
+    subsystem: core-resolution
+    summary: rules/core/character-record-basics.md
+    source_pages:
+      pdf: [36, 37, 38, 39]
+      printed: [34, 35, 36, 37]
+    related:
+      - character.overview
+      - character.attributes
+      - character.skills
+      - character.traits
+      - traits.catalog-map
+      - skills.catalog-map
+    status: draft
   - id: character.overview
     title: Character Creation Overview
     subsystem: character-creation
@@ -127,6 +142,34 @@ rules:
       - character.attributes
       - character.traits
       - character.skills
+    status: draft
+  - id: character.skill-fields
+    title: Skill Fields
+    subsystem: character-creation
+    summary: rules/character-creation/skill-fields.md
+    source_pages:
+      pdf: [84, 85, 86, 87, 88, 89, 90, 91, 92]
+      printed: [82, 83, 84, 85, 86, 87, 88, 89, 90]
+    related:
+      - character.lifepaths
+      - character.skills
+      - skills.catalog-map
+    status: draft
+  - id: character.purchasing-elements
+    title: Purchasing Character Elements
+    subsystem: character-creation
+    summary: rules/character-creation/purchasing-character-elements.md
+    source_pages:
+      pdf: [87, 88, 89, 90, 91, 92]
+      printed: [85, 86, 87, 88, 89, 90]
+    related:
+      - character.overview
+      - character.attributes
+      - character.traits
+      - character.skills
+      - character.skill-fields
+      - traits.catalog-map
+      - skills.catalog-map
     status: draft
   - id: character.attributes
     title: Attributes
@@ -159,6 +202,21 @@ rules:
       - character.xp-advancement
       - equipment.acquire-use
     status: draft
+  - id: traits.catalog-map
+    title: Trait Catalog Map
+    subsystem: traits
+    summary: rules/traits/trait-catalog-map.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135]
+    related:
+      - character.traits
+      - character.purchasing-elements
+      - equipment.acquire-use
+      - vehicles.overview
+      - campaign.contacts
+      - campaign.reputation
+    status: source-reviewed-routing-aid
   - id: character.skills
     title: Character Skills
     subsystem: character-creation
@@ -175,6 +233,21 @@ rules:
       - core.skill-checks
       - vehicles.mechwarrior-skills
     status: draft
+  - id: skills.catalog-map
+    title: Skill Catalog Map
+    subsystem: skills
+    summary: rules/skills/skill-catalog-map.md
+    source_pages:
+      pdf: [142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161]
+      printed: [140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159]
+    related:
+      - character.skills
+      - character.skill-fields
+      - core.skill-checks
+      - vehicles.piloting
+      - vehicles.gunnery
+      - vehicles.mechwarrior-skills
+    status: source-reviewed-routing-aid
   - id: character.xp-advancement
     title: XP Advancement
     subsystem: character-creation
@@ -654,63 +727,6 @@ mapped_rules:
       pdf: [35]
       printed: [33]
     status: mapped-only
-  - id: core.character-record-basics
-    title: Character Record Basics
-    subsystem: core-resolution
-    candidate: rules/core/character-record-basics.md
-    source_pages:
-      pdf: [36, 37, 38, 39]
-      printed: [34, 35, 36, 37]
-    related:
-      - character.overview
-      - character.attributes
-      - character.skills
-      - character.traits
-    status: mapped-only
-  - id: character.skill-fields
-    title: Skill Fields
-    subsystem: character-creation
-    candidate: rules/character-creation/skill-fields.md
-    source_pages:
-      pdf: [84, 85, 86, 87]
-      printed: [82, 83, 84, 85]
-    related:
-      - character.lifepaths
-      - character.skills
-    status: partial-draft
-  - id: character.purchasing-elements
-    title: Purchasing Character Elements
-    subsystem: character-creation
-    candidate: rules/character-creation/purchasing-character-elements.md
-    source_pages:
-      pdf: [87, 88, 89, 90, 91, 92]
-      printed: [85, 86, 87, 88, 89, 90]
-    related:
-      - character.overview
-      - character.attributes
-      - character.traits
-      - character.skills
-    status: partial-draft
-  - id: traits.catalog-map
-    title: Trait Catalog Map
-    subsystem: traits
-    candidate: rules/traits/trait-catalog-map.md
-    source_pages:
-      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137]
-      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135]
-    related:
-      - character.traits
-    status: partial-draft
-  - id: skills.catalog-map
-    title: Skill Catalog Map
-    subsystem: skills
-    candidate: rules/skills/skill-catalog-map.md
-    source_pages:
-      pdf: [143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161]
-      printed: [141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159]
-    related:
-      - character.skills
-    status: partial-draft
   - id: combat.armor-barriers
     title: Armor And Barriers
     subsystem: personal-combat

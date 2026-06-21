@@ -1,13 +1,13 @@
 # Rules Map
 
 ## Core Resolution
-Core action summaries in `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, and Edge. These summaries determine when to roll, what kind of roll to use, how modifiers and margins work, and when a player can spend Edge.
+Core action summaries in `rules/core/` cover Action Checks, Attribute Checks, Skill Checks, Opposed Actions, Basic Action Resolution, Edge, and character record basics. These summaries determine when to roll, what kind of roll to use, how modifiers and margins work, when a player can spend Edge, and how to review the play-facing fields on a character record.
 
 ## Character Creation
-Character creation in `rules/character-creation/` covers campaign fit, creation method selection, Life Modules, attributes, traits, skills, XP cleanup, final sheet review, starting equipment routing, and post-creation XP advancement. These summaries are procedural guides; exact module entries, trait catalogs, skill lists, XP tables, and sample sheets remain private source lookups.
+Character creation in `rules/character-creation/` covers campaign fit, creation method selection, Life Modules, Skill Fields, attributes, traits, skills, purchasing and cleanup, final sheet review, starting equipment routing, and post-creation XP advancement. These summaries are procedural guides; exact module entries, field lists, trait catalogs, skill lists, XP tables, and sample sheets remain private source lookups.
 
 ## Skills and Traits
-Skills define trained capabilities, subskills, specialties, training needs, and role coverage. Traits modify a character's capabilities, resources, social position, liabilities, vehicle access, and recurring campaign hooks.
+Skills define trained capabilities, subskills, specialties, training needs, and role coverage. Traits modify a character's capabilities, resources, social position, liabilities, vehicle access, and recurring campaign hooks. `rules/skills/skill-catalog-map.md` and `rules/traits/trait-catalog-map.md` are source-reviewed routing aids for finding exact private source pages without reproducing catalogs or tables.
 
 ## Personal Combat
 Personal combat in `rules/personal-combat/` handles RPG-scale fights using five-second turns: initiative, action and movement choices, ranged attacks, melee attacks, damage, wound effects, end-phase cleanup, and healing/recovery. It depends on core resolution for Action Checks and Opposed Actions. It should hand off to Classic BattleTech, MegaMek, or MekHQ when exact tactical unit combat matters.

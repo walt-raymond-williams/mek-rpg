@@ -40,14 +40,14 @@ Task-specific context:
 
 ## Expected Output
 
-- Source-reviewed, paraphrased summaries or routing maps for:
+- Completed source-reviewed, paraphrased summaries or routing maps for:
   - `core.character-record-basics`
   - `character.skill-fields`
   - `character.purchasing-elements`
   - `traits.catalog-map`
   - `skills.catalog-map`
-- Updated router, page-reference index, rules map, and manifest entries where appropriate.
-- A focused validation note or scenario checks showing how a future agent should use the new routes for character creation and sheet review.
+- Updated router, page-reference index, rules map, subsystem index, and manifest entries.
+- Focused validation note: `docs/current/CHARACTER_DETAIL_GAPS_SOURCE_REVIEW_VALIDATION.md`.
 
 ## Files And Areas
 
@@ -89,16 +89,26 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Acceptance Criteria
 
-- Correct mode identified.
+- Correct mode identified: source processing / project development.
 - Scoped source pages reviewed.
 - New summaries/maps are paraphrased and page-referenced.
-- Router, page-reference index, rules map, and manifest stay consistent.
-- Validation or scenario checks are recorded.
+- Router, page-reference index, rules map, subsystem index, and manifest updated.
+- Validation/scenario checks recorded in `docs/current/CHARACTER_DETAIL_GAPS_SOURCE_REVIEW_VALIDATION.md`.
 - Raw source files remain ignored and unstaged.
-- Roadmap, task state, and handoff are updated.
-- Changes are committed and pushed.
+- Roadmap, task state, and handoff updated.
+- Changes committed and pushed in the issue close-out.
 
 ## Open Questions
 
-- Should trait and skill catalog maps live as standalone routing aids only, or should adjacent character summaries link to them as partial authority?
+- Resolved for issue `#60`: trait and skill catalog maps live as standalone source-reviewed routing aids, and adjacent character summaries/indexes link to them for page routing rather than full catalog authority.
 - Does character-record basics need a future sheet validator issue after real PC sheets stabilize?
+
+## Completion Notes
+
+- Added `rules/core/character-record-basics.md`.
+- Added `rules/character-creation/skill-fields.md`.
+- Added `rules/character-creation/purchasing-character-elements.md`.
+- Added `rules/traits/trait-catalog-map.md`.
+- Added `rules/skills/skill-catalog-map.md`.
+- Added `docs/current/CHARACTER_DETAIL_GAPS_SOURCE_REVIEW_VALIDATION.md`.
+- Updated routing/index metadata to promote the issue `#60` mapped targets to committed draft or source-reviewed routing-aid entries.
