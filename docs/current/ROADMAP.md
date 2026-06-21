@@ -45,6 +45,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
 - MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`, campaign-state validator coverage in `scripts/test-validate-campaign-state.ps1`, pending-action validator coverage in `scripts/test-validate-mekhq-pending-actions.ps1`, and MekHQ-linked GM context packet scenarios in `scripts/test-mekhq-context-packet.ps1`.
 - MekHQ pending application workflow has human-in-the-loop UI validation from issue `#37` for the manual apply/save/re-import loop, using a one-day advancement item.
+- MekHQ personnel parsing currently captures roster basics and bootstrap stubs; issue `#65` now tracks the missing workflow for turning parsed MekHQ personnel into durable MEK-RPG PC/NPC sheet entries.
 - Rules lookup infrastructure now has completed glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
@@ -53,12 +54,24 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Active Work
 
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
+- Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
 
 ## Ready For Issue Candidates
 
 - None currently unissued for the next rules wave. Rules source-review expansion is now issued as `#59`-`#64`. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
+
+### MekHQ personnel-to-PC/NPC sheet workflow
+
+- Status: Open
+- Issue: `#65`
+- Handoff: `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`
+- Mode: Project development
+- Goal: define how parsed MekHQ personnel become useful MEK-RPG `pcs.md` and `npcs.md` entries while preserving MekHQ ownership of roster facts and MEK-RPG ownership of A Time of War overlays, motives, relationships, goals, secrets, scene memory, and sheet gaps.
+- Starting point: `scripts/summarize-mekhq-save.py` already extracts person id, display name, role, rank, faction, assignment, availability, injury/fatigue flags, commander flags, and personnel market applicants; `bootstrap-mekhq-campaign.py` already writes a selected viewpoint PC stub, sampled NPC stubs, and bridge cross-references.
+- Acceptance: document the reusable linked-person sheet shape, selection/expansion rules, import refresh behavior, discrepancy handling, and whether bootstrap/helper code should change now or later; add focused tests if generated output changes.
+- Boundary: do not invent full A Time of War stats from MekHQ role/rank fields, do not write to MekHQ saves or raw XML, and do not commit raw MekHQ payloads.
 
 ### Next rules source-review expansion wave
 

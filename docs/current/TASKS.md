@@ -15,6 +15,7 @@
 
 ## Backlog
 
+- Issue `#65`: create MekHQ personnel-to-PC/NPC sheet workflow, with active handoff `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`, to turn parsed MekHQ personnel into useful campaign-local PC/NPC entries without inventing A Time of War stats.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
