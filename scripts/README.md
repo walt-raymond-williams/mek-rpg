@@ -5,6 +5,7 @@
 - `build-rule-manifest.md`: notes for future manifest generation.
 - `new-campaign-save.ps1`: creates `campaigns/<campaign-id>/` from `campaigns/_template/` without overwriting an existing save.
 - `validate-campaign-state.ps1`: checks the active campaign pointer, campaign template, and selected or explicit campaign save folder for deterministic structure problems.
+- `build-gm-context-packet.ps1`: reports the ordered GM context packet source files for the active or explicit campaign without interpreting rules, summarizing scenes, or mutating campaign files.
 - `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
 - `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary.
@@ -23,6 +24,9 @@
 ./scripts/validate-campaign-state.ps1
 ./scripts/validate-campaign-state.ps1 -CampaignId playtest-galatea-dropship
 ./scripts/validate-campaign-state.ps1 -StrictActive
+./scripts/build-gm-context-packet.ps1
+./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
+./scripts/test-build-gm-context-packet.ps1
 ./scripts/test-validate-campaign-state.ps1
 ```
 
@@ -33,6 +37,19 @@ The validator reports `OK`, `WARN`, and `FAIL` lines. It checks `campaign-state/
 `test-validate-campaign-state.ps1` uses a disposable temp repository fixture through the validator's `-RepoRoot` test hook. It checks valid explicit campaign validation, missing standard file failure, missing top-level heading warnings, `-StrictActive` with no active campaign, legacy flat `campaign-state/` active pointer rejection, unsafe campaign id rejection, and one live explicit campaign validation.
 
 When required campaign save files or persistent campaign-state structures change, update `validate-campaign-state.ps1` or add a narrower companion validator as part of the same task. Keep this validator focused on shared save-folder structure and active-campaign safety; deeper checks for character sheets, vehicles, contracts, or other specialized records can live in separate scripts when that keeps the boundary clearer.
+
+## GM Context Packet
+
+```powershell
+./scripts/build-gm-context-packet.ps1
+./scripts/build-gm-context-packet.ps1 isekai-atlas-field
+./scripts/build-gm-context-packet.ps1 -RunValidators
+./scripts/test-build-gm-context-packet.ps1
+```
+
+The context packet helper reads `campaign-state/active-campaign.md` unless a campaign id is supplied, checks the selected `campaigns/<campaign-id>/` folder, and prints the packet sections from `docs/current/GM_CONTEXT_PACKET_DESIGN.md`: request/mode inputs, active campaign, authority notes, current scene state, MekHQ bridge and pending intents, rules routes, recent events, durable memory, and warnings. It packages source paths only; it does not read ignored raw source text, interpret A Time of War rules, summarize play, advance time, apply pending MekHQ actions, or rewrite campaign files.
+
+Use `-RunValidators` to append output from `validate-campaign-state.ps1` and `validate-mekhq-pending-actions.ps1 -ReportUnresolved`. Validator failures are reported as warnings inside the packet report so the user can inspect the source problem directly.
 
 ## Dice Rolls
 
@@ -85,4 +102,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, and pending-action validator coverage, and is the extension point for future fixture and validator suites from issue `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, pending-action validator coverage, and GM context packet helper coverage, and is the extension point for future fixture and validator suites from issue `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.

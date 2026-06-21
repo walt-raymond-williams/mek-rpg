@@ -28,6 +28,9 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/validate-campaign-state.ps1
 ./scripts/validate-campaign-state.ps1 -CampaignId playtest-galatea-dropship
 ./scripts/validate-campaign-state.ps1 -StrictActive
+./scripts/build-gm-context-packet.ps1
+./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
+./scripts/test-build-gm-context-packet.ps1
 ./scripts/test-validate-campaign-state.ps1
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/_template/pending-mekhq-actions.md
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/isekai-atlas-field/pending-mekhq-actions.md -ReportUnresolved
@@ -44,7 +47,7 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 ./scripts/test-all.ps1
 ```
 
-`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes. `summarize-mekhq-save.py` reads MekHQ saves without writing to them and emits JSON or Markdown bridge facts; see `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md` for mappings and limitations. `bootstrap-mekhq-campaign.py` creates a new MEK-RPG campaign save from summary JSON, refuses overwrites, leaves the active-campaign pointer unchanged, and writes campaign-local MekHQ bridge metadata; see `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`.
+`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `build-gm-context-packet.ps1` reports the ordered context packet sources for the active or explicit campaign without interpreting rules, summarizing scenes, advancing time, applying MekHQ changes, reading ignored raw source text, or mutating campaign files. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes. `summarize-mekhq-save.py` reads MekHQ saves without writing to them and emits JSON or Markdown bridge facts; see `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md` for mappings and limitations. `bootstrap-mekhq-campaign.py` creates a new MEK-RPG campaign save from summary JSON, refuses overwrites, leaves the active-campaign pointer unchanged, and writes campaign-local MekHQ bridge metadata; see `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`.
 
 `test-mekhq-pending-workflow.ps1` uses a sanitized fixture and disposable campaign folders to regression-check pending-action ownership, bootstrap output, validator coverage, no-writeback boundaries, and protected-source ignore rules.
 
@@ -58,7 +61,9 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `test-validate-mekhq-pending-actions.ps1` uses temp fixture files to check empty/default files, all lifecycle statuses, invalid values, missing fields, and unresolved reporting.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, and `test-validate-mekhq-pending-actions.ps1`, and should grow as issue `#45` adds context packet scenarios.
+`test-build-gm-context-packet.ps1` uses a disposable temp repository fixture to check active and explicit campaign resolution, packet section output, protected-source/no-interpretation boundaries, missing-file warnings, legacy active pointer failure, and read-only behavior.
+
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, and `test-build-gm-context-packet.ps1`, and should grow as issue `#45` adds context packet scenarios.
 
 ## Verify Protected Source Is Not Staged
 

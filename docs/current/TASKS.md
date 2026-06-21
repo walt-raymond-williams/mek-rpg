@@ -6,8 +6,8 @@
 
 ## Next
 
-- Issue `#33`: prototype GM context packet helper using `docs/current/GM_CONTEXT_PACKET_DESIGN.md` after issue `#32` or when minimal helper scope is clear.
 - Issue `#34`: add GM context regression scenarios after issue `#33` provides helper output or a stable packet assembly target.
+- Issue `#45`: add MekHQ-linked GM context packet regression scenarios after issue `#33` provides the helper output.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
@@ -45,6 +45,7 @@
 
 ## Done
 
+- Issue `#33` implemented: added `scripts/build-gm-context-packet.ps1` and `scripts/test-build-gm-context-packet.ps1` to report ordered GM context packet source files for the active or explicit campaign, flag missing or unsafe active state, preserve protected-source/no-rules-interpretation boundaries, optionally append validator output, and integrate with `scripts/test-all.ps1`; documented usage in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
 - Issue `#32` implemented: expanded `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` with memory strata, semantic checkpoint triggers, file ownership rules, correction/supersession handling, stale-summary precedence, and MekHQ pending-intent boundaries; updated `gm/state-save-checklist.md`, `campaigns/README.md`, and roadmap/task tracking.
 - Issue `#31` implemented: added `docs/current/GM_CONTEXT_PACKET_DESIGN.md` to define GM context packet authority order, inputs, layers, mode differences, MekHQ-linked pending-intent handling, source boundaries, packet skeleton, helper requirements for issue `#33`, and follow-up boundaries; updated `gm/session-procedure.md` to use the packet design before play.
 - Issue `#44` implemented: added `scripts/validate-mekhq-pending-actions.ps1` and `scripts/test-validate-mekhq-pending-actions.ps1` to validate pending item ids, required fields, allowed statuses/types/priorities, date shapes, invalid values, missing fields, duplicate ids, unresolved pending-intent reporting, and `scripts/test-all.ps1` integration without treating pending actions as confirmed hard ledger facts.

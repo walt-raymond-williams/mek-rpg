@@ -187,7 +187,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Initial child issues:
   - Done in issue `#31`: define GM context packet design.
   - Done in issue `#32`: define campaign memory strata and semantic checkpoints.
-  - Issue `#33`: prototype GM context packet helper after issue `#31` defines the packet shape.
+  - Done in issue `#33`: prototype GM context packet helper after issue `#31` defines the packet shape.
   - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
 - Deferred until the design proves useful: vector-memory experiments, model-specific prompt tuning, automatic narrative summary rewrites, and any direct MekHQ writeback behavior.
 
@@ -196,11 +196,21 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 1. Done in issue `#35`: pending MekHQ application item handling uses `pending-mekhq-actions.md`, so MekHQ-linked context packets have a concrete pending-action source.
 2. Done in issue `#31`: `docs/current/GM_CONTEXT_PACKET_DESIGN.md` defines packet layers, authority order, source files, mode differences, MekHQ pending-intent handling, and helper requirements.
 3. Done in issue `#32`: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` defines memory strata, checkpoint triggers, file ownership, correction handling, MekHQ intent boundaries, and stale-summary precedence.
-4. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
+4. Done in issue `#33`: `scripts/build-gm-context-packet.ps1` reports packet inputs without inventing facts, interpreting rules, reading protected source, or mutating campaign files.
 5. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Prototype GM context packet helper
+
+- Status: Done
+- Issue: `#33`
+- Script: `scripts/build-gm-context-packet.ps1`
+- Tests: `scripts/test-build-gm-context-packet.ps1`
+- Mode: Project development / helper
+- Goal: Prototype a deterministic helper that assembles or reports GM context packet sources for the active campaign without inventing campaign facts or performing rules interpretation.
+- Acceptance: helper reads the active campaign pointer or explicit campaign id, reports packet sections in the issue `#31` order, flags missing files and unsafe active pointers, keeps raw source and direct MekHQ writeback out of scope, optionally appends campaign and pending-action validator output, documents usage in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`, and has disposable fixture coverage integrated into `scripts/test-all.ps1`.
 
 ### Define campaign memory strata and semantic checkpoints
 
