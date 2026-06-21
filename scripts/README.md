@@ -5,7 +5,7 @@
 - `build-rule-manifest.md`: notes for future manifest generation.
 - `new-campaign-save.ps1`: creates `campaigns/<campaign-id>/` from `campaigns/_template/` without overwriting an existing save.
 - `validate-campaign-state.ps1`: checks the active campaign pointer, campaign template, and selected or explicit campaign save folder for deterministic structure problems.
-- `validate-rules-indexes.ps1`: checks task-router links, rules-map links, page-reference links, manifest IDs, source-page metadata, related IDs, and missing summary files without reading protected source.
+- `validate-rules-indexes.ps1`: checks task-router links, rules-map links, page-reference links, manifest IDs, source-page metadata, source-offset assumptions, manifest/page-reference/source-reference consistency, related IDs, and missing summary files without reading protected source.
 - `report-rules-coverage.ps1`: reports rules coverage by subsystem and status from committed manifest metadata, with text output by default and optional JSON.
 - `route-rules-prompt.ps1`: scores a short rules/play prompt against committed router rows and reports candidate files, manifest statuses, page references, and warnings without answering the rule.
 - `check-ruling-authority.ps1`: evaluates the primary route-helper candidate and reports whether the prompt is authoritative, provisional, source-lookup-required, external-authority-required, cannot-adjudicate, or blocked/missing-route without answering the rule.
@@ -112,7 +112,7 @@ The roller reports the expression, individual dice, modifier, and total. It does
 ./scripts/test-check-ruling-authority.ps1
 ```
 
-The rules index validator checks deterministic lookup metadata only. It verifies that committed router, rules-map, page-reference, and manifest paths resolve where they should; manifest IDs are unique; allowed statuses are used; source page arrays exist where expected; related IDs resolve; and committed rule/index entries appear in the page-reference index. Mapped-only candidate paths are warnings rather than failures because they are future summary targets, not current rules authority.
+The rules index validator checks deterministic lookup metadata only. It verifies that committed router, rules-map, page-reference, and manifest paths resolve where they should; manifest IDs are unique; allowed statuses are used; source page arrays exist where expected; PDF/printed page offsets match the committed `PDF page = printed page + 2` assumption; related IDs resolve; committed rule/index entries appear in the page-reference index; manifest source pages are covered by page-reference rows; and committed summaries with manifest coverage include matching `Source References`. Mapped-only candidate paths are warnings rather than failures because they are future summary targets, not current rules authority.
 
 The rules coverage reporter groups manifest entries by subsystem and status. Text output is for human planning; JSON output is for future tooling. It distinguishes drafted/routed entries, validation-report-backed draft areas, mapped-only placeholders, partial drafts that still need source review for mapped targets, source-reviewed routing aids, and source-lookup-only back matter. It reads committed metadata only and does not inspect protected source files.
 

@@ -11,7 +11,6 @@
 ## Backlog
 
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
-- Issue `#81`: add page-reference and source-offset integrity checks after the initial authority/route plan is accepted.
 - Issue `#75`: prototype the basic check resolver contract after the JSON contract and authority gate are defined.
 - Issue `#76`: prototype the opposed check resolver contract after the basic check resolver shape exists.
 - Issue `#78`: add the state-change proposal schema before combat checkpoint helpers emit campaign-update suggestions.
@@ -32,6 +31,7 @@
 
 ## Done
 
+- Issue `#81` implemented: extended `scripts/validate-rules-indexes.ps1` and `scripts/test-validate-rules-indexes.ps1` to check committed source-offset metadata, PDF/printed page offset consistency, manifest/page-reference page coverage, and summary `Source References` coverage without reading protected raw source.
 - Issue `#73` implemented: added `docs/current/SCRIPT_MECHANIC_CONTRACT_AUDIT.md` to classify existing scripts as mechanic-adjacent utilities, mechanic prototype candidates, safety/authority infrastructure, routing/metadata infrastructure, campaign infrastructure, MekHQ bridge infrastructure, source-processing support, or test infrastructure; recommended no premature service conversion or retirements.
 - Issue `#80` implemented: added `docs/current/RULING_AUTHORITY_GATE.md`, `scripts/check-ruling-authority.ps1`, and `scripts/test-check-ruling-authority.ps1` to classify routed prompts as authoritative, provisional, source-lookup-required, external-authority-required, cannot-adjudicate, or blocked/missing-route; wired the suite into `scripts/test-all.ps1` and linked the gate from rules adjudication and command docs.
 - Issue `#74` implemented: added `tests/fixtures/rules-route-golden-prompts.fixture.json` and expanded `scripts/test-route-rules-prompt.ps1` to assert rules-lookup mode, protected-source boundary text, expected candidate files, manifest statuses, page-reference statuses/source-page text, warnings, missing-route behavior, tactical handoff routing, ambiguous ruling routing, and source-review gap behavior for common RPG procedure prompts.

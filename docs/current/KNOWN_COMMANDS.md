@@ -84,7 +84,7 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 
 `test-validate-campaign-state.ps1` uses a disposable temp repository fixture to check `validate-campaign-state.ps1` positive and negative behavior without mutating the live active campaign pointer.
 
-`validate-rules-indexes.ps1` checks task-router links, rules-map paths, page-reference links, manifest IDs, allowed statuses, related IDs, source-page metadata, and missing summary files. Mapped-only future summary targets are warnings, not failures. `test-validate-rules-indexes.ps1` uses a disposable fixture to check valid metadata, a missing router target, and a missing manifest summary.
+`validate-rules-indexes.ps1` checks task-router links, rules-map paths, page-reference links, manifest IDs, allowed statuses, related IDs, source-page metadata, the committed `PDF page = printed page + 2` offset assumption, manifest/page-reference page coverage, summary `Source References`, and missing summary files. Mapped-only future summary targets are warnings, not failures. `test-validate-rules-indexes.ps1` uses a disposable fixture to check valid metadata, missing router targets, missing manifest summaries, offset metadata failures, manifest/page-reference mismatches, and missing summary source references.
 
 `report-rules-coverage.ps1` summarizes manifest coverage by subsystem and status using committed metadata only. Default text output is for planning; `-Format json` emits machine-readable output. `test-report-rules-coverage.ps1` smoke-tests both formats.
 

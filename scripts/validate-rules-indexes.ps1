@@ -77,6 +77,90 @@ function Test-RepoPathExists {
     }
 }
 
+function ConvertTo-PageNumbers {
+    param([string]$Text)
+
+    $pages = [System.Collections.Generic.List[int]]::new()
+    if ([string]::IsNullOrWhiteSpace($Text)) {
+        return @()
+    }
+
+    $matches = [regex]::Matches($Text, '\d+(?:\s*-\s*\d+)?')
+    foreach ($match in $matches) {
+        $value = $match.Value -replace '\s+', ''
+        if ($value -match '^(\d+)-(\d+)$') {
+            $start = [int]$Matches[1]
+            $end = [int]$Matches[2]
+            if ($end -lt $start) {
+                continue
+            }
+
+            for ($page = $start; $page -le $end; $page++) {
+                $pages.Add($page)
+            }
+        }
+        else {
+            $pages.Add([int]$value)
+        }
+    }
+
+    return @($pages | Sort-Object -Unique)
+}
+
+function Get-SourcePagesFromText {
+    param(
+        [string]$Text,
+        [ValidateSet("pdf", "printed")]
+        [string]$Kind
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Text)) {
+        return @()
+    }
+
+    $pattern = if ($Kind -eq "pdf") {
+        'PDF page(?:s)?\s+(.+?)(?:\s*/\s*printed|\s*$)'
+    }
+    else {
+        'printed page(?:s)?\s+(.+?)(?:\.|\s*$)'
+    }
+
+    $matches = [regex]::Matches($Text, $pattern, [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+    $pages = [System.Collections.Generic.List[int]]::new()
+    foreach ($match in $matches) {
+        foreach ($page in (ConvertTo-PageNumbers -Text $match.Groups[1].Value)) {
+            $pages.Add($page)
+        }
+    }
+
+    return @($pages | Sort-Object -Unique)
+}
+
+function Test-Subset {
+    param(
+        [int[]]$ExpectedSubset,
+        [int[]]$ActualSuperset
+    )
+
+    foreach ($page in @($ExpectedSubset)) {
+        if (@($ActualSuperset) -notcontains $page) {
+            return $false
+        }
+    }
+
+    return $true
+}
+
+function Format-PageList {
+    param([int[]]$Pages)
+
+    if (@($Pages).Count -eq 0) {
+        return "none"
+    }
+
+    return (@($Pages) | Sort-Object -Unique) -join ", "
+}
+
 function Get-BacktickPaths {
     param([string]$Text)
 
@@ -148,6 +232,8 @@ function Get-ManifestEntries {
                 Related = [System.Collections.Generic.List[string]]::new()
                 HasPdfPages = $false
                 HasPrintedPages = $false
+                PdfPages = @()
+                PrintedPages = @()
             }
             $entries.Add($currentEntry)
             $currentListKey = $null
@@ -178,11 +264,13 @@ function Get-ManifestEntries {
 
         if ($line -match '^\s{6}pdf:\s*\[(.*?)\]\s*$') {
             $currentEntry.HasPdfPages = -not [string]::IsNullOrWhiteSpace($Matches[1])
+            $currentEntry.PdfPages = @(ConvertTo-PageNumbers -Text $Matches[1])
             continue
         }
 
         if ($line -match '^\s{6}printed:\s*\[(.*?)\]\s*$') {
             $currentEntry.HasPrintedPages = -not [string]::IsNullOrWhiteSpace($Matches[1])
+            $currentEntry.PrintedPages = @(ConvertTo-PageNumbers -Text $Matches[1])
             continue
         }
     }
@@ -190,6 +278,39 @@ function Get-ManifestEntries {
     foreach ($entry in $entries) {
         [pscustomobject]$entry
     }
+}
+
+function Get-PageReferenceRows {
+    param([string]$PageReferencePath)
+
+    $rows = [System.Collections.Generic.List[object]]::new()
+    $lines = Get-Content -LiteralPath $PageReferencePath
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        $line = $lines[$i]
+        if ($line -notmatch '^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|$') {
+            continue
+        }
+
+        $topic = $Matches[1].Trim()
+        if ($topic -eq "---" -or $topic -eq "Topic") {
+            continue
+        }
+
+        $sourcePages = $Matches[3].Trim()
+        foreach ($pathInfo in (Get-BacktickPaths -Text $Matches[2])) {
+            $rows.Add([pscustomobject]@{
+                Line = $i + 1
+                Topic = $topic
+                Path = $pathInfo.Path
+                SourcePages = $sourcePages
+                Status = $Matches[4].Trim()
+                PdfPages = @(Get-SourcePagesFromText -Text $sourcePages -Kind pdf)
+                PrintedPages = @(Get-SourcePagesFromText -Text $sourcePages -Kind printed)
+            })
+        }
+    }
+
+    return $rows
 }
 
 $repoRoot = if ($RepoRoot) {
@@ -203,6 +324,8 @@ $taskRouterPath = Join-Path $repoRoot "indexes\task-router.md"
 $rulesMapPath = Join-Path $repoRoot "indexes\rules-map.md"
 $pageReferencePath = Join-Path $repoRoot "indexes\page-reference-index.md"
 $manifestPath = Join-Path $repoRoot "indexes\manifest.yaml"
+$extractionNotesPath = Join-Path $repoRoot "source\extraction-notes.md"
+$chapterSectionMapPath = Join-Path $repoRoot "source\atow-chapter-section-map.md"
 
 Write-Host "Rules index validation"
 Write-Host "Repository: $repoRoot"
@@ -219,6 +342,35 @@ foreach ($requiredPath in @($taskRouterPath, $rulesMapPath, $pageReferencePath, 
 
 if ($script:ErrorCount -eq 0) {
     Write-Host ""
+    Write-Host "Checking source offset metadata"
+
+    if (Test-Path -LiteralPath $extractionNotesPath -PathType Leaf) {
+        $extractionNotesText = Get-Content -LiteralPath $extractionNotesPath -Raw
+        if ($extractionNotesText -match 'PDF page = printed page \+ 2') {
+            Write-Ok "Extraction notes record PDF-to-printed page offset."
+        }
+        else {
+            Write-Fail "Extraction notes do not record expected PDF-to-printed page offset."
+        }
+    }
+    else {
+        Write-Fail "Extraction notes missing: source/extraction-notes.md"
+    }
+
+    if (Test-Path -LiteralPath $chapterSectionMapPath -PathType Leaf) {
+        $chapterMapText = Get-Content -LiteralPath $chapterSectionMapPath -Raw
+        if ($chapterMapText -match 'PDF page = printed page \+ 2') {
+            Write-Ok "Chapter/section map records PDF-to-printed page offset."
+        }
+        else {
+            Write-Fail "Chapter/section map does not record expected PDF-to-printed page offset."
+        }
+    }
+    else {
+        Write-Fail "Chapter/section map missing: source/atow-chapter-section-map.md"
+    }
+
+    Write-Host ""
     Write-Host "Checking router and rules-map links"
 
     foreach ($pathInfo in (Get-IndexedBacktickPaths -Path $taskRouterPath)) {
@@ -233,11 +385,32 @@ if ($script:ErrorCount -eq 0) {
     Write-Host "Checking page-reference linked files"
 
     $pageReferenceText = Get-Content -LiteralPath $pageReferencePath -Raw
+    $pageReferenceRows = @(Get-PageReferenceRows -PageReferencePath $pageReferencePath)
+    $pageReferenceRowsByPath = @{}
     $pageReferencePaths = [System.Collections.Generic.HashSet[string]]::new()
     foreach ($pathInfo in (Get-IndexedBacktickPaths -Path $pageReferencePath)) {
         [void]$pageReferencePaths.Add($pathInfo.Path)
         $warnOnly = $pathInfo.Text -match 'Mapped only|Partially covered|Source lookup only|candidate'
         Test-RepoPathExists -Root $repoRoot -RelativePath $pathInfo.Path -Context "Page reference line $($pathInfo.Line)" -WarnOnly:$warnOnly
+    }
+
+    foreach ($row in $pageReferenceRows) {
+        if (-not $pageReferenceRowsByPath.ContainsKey($row.Path)) {
+            $pageReferenceRowsByPath[$row.Path] = [System.Collections.Generic.List[object]]::new()
+        }
+
+        $pageReferenceRowsByPath[$row.Path].Add($row)
+
+        if (@($row.PdfPages).Count -gt 0 -and @($row.PrintedPages).Count -gt 0 -and @($row.PdfPages).Count -eq @($row.PrintedPages).Count) {
+            for ($pageIndex = 0; $pageIndex -lt @($row.PdfPages).Count; $pageIndex++) {
+                if ($row.PdfPages[$pageIndex] -ne ($row.PrintedPages[$pageIndex] + 2)) {
+                    Write-Fail "Page-reference line $($row.Line) violates PDF=printed+2 offset for $($row.Path): PDF $($row.PdfPages[$pageIndex]) / printed $($row.PrintedPages[$pageIndex])."
+                }
+            }
+        }
+        elseif (@($row.PdfPages).Count -gt 0 -or @($row.PrintedPages).Count -gt 0) {
+            Write-Warn "Page-reference line $($row.Line) has non-comparable PDF/printed page ranges for $($row.Path)."
+        }
     }
 
     Write-Host ""
@@ -275,6 +448,19 @@ if ($script:ErrorCount -eq 0) {
             if (-not $entry.HasPrintedPages) {
                 Write-Fail "Manifest entry '$($entry.Id)' has no printed source_pages array."
             }
+
+            if (@($entry.PdfPages).Count -gt 0 -and @($entry.PrintedPages).Count -gt 0) {
+                if (@($entry.PdfPages).Count -ne @($entry.PrintedPages).Count) {
+                    Write-Fail "Manifest entry '$($entry.Id)' has unmatched PDF and printed source page counts."
+                }
+                else {
+                    for ($pageIndex = 0; $pageIndex -lt @($entry.PdfPages).Count; $pageIndex++) {
+                        if ($entry.PdfPages[$pageIndex] -ne ($entry.PrintedPages[$pageIndex] + 2)) {
+                            Write-Fail "Manifest entry '$($entry.Id)' violates PDF=printed+2 offset: PDF $($entry.PdfPages[$pageIndex]) / printed $($entry.PrintedPages[$pageIndex])."
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -295,6 +481,35 @@ if ($script:ErrorCount -eq 0) {
             if (-not $pageReferencePaths.Contains($entry.summary)) {
                 Write-Fail "Rule manifest entry '$($entry.Id)' summary is missing from page-reference index: $($entry.summary)"
             }
+            elseif ($pageReferenceRowsByPath.ContainsKey($entry.summary)) {
+                $matchingRows = @($pageReferenceRowsByPath[$entry.summary])
+                $pageRefPdfPages = @($matchingRows | ForEach-Object { $_.PdfPages } | Sort-Object -Unique)
+                $pageRefPrintedPages = @($matchingRows | ForEach-Object { $_.PrintedPages } | Sort-Object -Unique)
+                if (-not (Test-Subset -ExpectedSubset $entry.PdfPages -ActualSuperset $pageRefPdfPages)) {
+                    Write-Fail "Rule manifest entry '$($entry.Id)' PDF pages are not covered by page-reference index for $($entry.summary). Manifest: $(Format-PageList -Pages $entry.PdfPages); page-reference: $(Format-PageList -Pages $pageRefPdfPages)."
+                }
+                if (-not (Test-Subset -ExpectedSubset $entry.PrintedPages -ActualSuperset $pageRefPrintedPages)) {
+                    Write-Fail "Rule manifest entry '$($entry.Id)' printed pages are not covered by page-reference index for $($entry.summary). Manifest: $(Format-PageList -Pages $entry.PrintedPages); page-reference: $(Format-PageList -Pages $pageRefPrintedPages)."
+                }
+            }
+
+            $summaryPath = Resolve-RepoPath -Root $repoRoot -RelativePath $entry.summary
+            if (Test-Path -LiteralPath $summaryPath -PathType Leaf) {
+                $summaryText = Get-Content -LiteralPath $summaryPath -Raw
+                if ($summaryText -notmatch '## Source References') {
+                    Write-Fail "Rule manifest entry '$($entry.Id)' summary lacks a Source References section: $($entry.summary)"
+                }
+                else {
+                    $summaryPdfPages = @(Get-SourcePagesFromText -Text $summaryText -Kind pdf)
+                    $summaryPrintedPages = @(Get-SourcePagesFromText -Text $summaryText -Kind printed)
+                    if (-not (Test-Subset -ExpectedSubset $entry.PdfPages -ActualSuperset $summaryPdfPages)) {
+                        Write-Fail "Rule manifest entry '$($entry.Id)' PDF pages are not covered by summary Source References for $($entry.summary). Manifest: $(Format-PageList -Pages $entry.PdfPages); summary: $(Format-PageList -Pages $summaryPdfPages)."
+                    }
+                    if (-not (Test-Subset -ExpectedSubset $entry.PrintedPages -ActualSuperset $summaryPrintedPages)) {
+                        Write-Fail "Rule manifest entry '$($entry.Id)' printed pages are not covered by summary Source References for $($entry.summary). Manifest: $(Format-PageList -Pages $entry.PrintedPages); summary: $(Format-PageList -Pages $summaryPrintedPages)."
+                    }
+                }
+            }
         }
         elseif ($entry.Section -eq "indexes") {
             if (-not $entry.PSObject.Properties.Name.Contains("file")) {
@@ -305,6 +520,17 @@ if ($script:ErrorCount -eq 0) {
             Test-RepoPathExists -Root $repoRoot -RelativePath $entry.file -Context "Manifest index '$($entry.Id)'"
             if (-not $pageReferencePaths.Contains($entry.file)) {
                 Write-Fail "Index manifest entry '$($entry.Id)' file is missing from page-reference index: $($entry.file)"
+            }
+            elseif ($pageReferenceRowsByPath.ContainsKey($entry.file)) {
+                $matchingRows = @($pageReferenceRowsByPath[$entry.file])
+                $pageRefPdfPages = @($matchingRows | ForEach-Object { $_.PdfPages } | Sort-Object -Unique)
+                $pageRefPrintedPages = @($matchingRows | ForEach-Object { $_.PrintedPages } | Sort-Object -Unique)
+                if (-not (Test-Subset -ExpectedSubset $entry.PdfPages -ActualSuperset $pageRefPdfPages)) {
+                    Write-Fail "Index manifest entry '$($entry.Id)' PDF pages are not covered by page-reference index for $($entry.file)."
+                }
+                if (-not (Test-Subset -ExpectedSubset $entry.PrintedPages -ActualSuperset $pageRefPrintedPages)) {
+                    Write-Fail "Index manifest entry '$($entry.Id)' printed pages are not covered by page-reference index for $($entry.file)."
+                }
             }
         }
         elseif ($entry.Section -eq "gm") {

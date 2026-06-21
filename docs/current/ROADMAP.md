@@ -120,7 +120,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   4. Done issue `#74`: added golden route tests for common RPG procedures.
   5. Done issue `#80`: added a deterministic ruling authority gate.
   6. Done issue `#73`: audited existing scripts against the mechanic contract.
-  7. Open issue `#81`: Add page-reference and source-offset integrity checks.
+  7. Done issue `#81`: added page-reference and source-offset integrity checks.
   8. Open issue `#75`: Prototype basic check resolver contract.
   9. Open issue `#76`: Prototype opposed check resolver contract.
   10. Open issue `#78`: Add state-change proposal schema.
@@ -135,7 +135,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   5. Done in issue `#74`: added fixture-driven route tests before broad resolver use.
   6. Done in issue `#80`: added the ruling authority gate before broad resolver use.
   7. Done in issue `#73`: audited existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
-  8. Add page-reference/source-offset checks to reduce stale citation risk.
+  8. Done in issue `#81`: added page-reference/source-offset checks to reduce stale citation risk.
   9. Prototype the basic check, then opposed check.
   10. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
   11. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.

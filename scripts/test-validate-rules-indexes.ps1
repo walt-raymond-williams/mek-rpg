@@ -88,6 +88,21 @@ Core rules live in `rules/core/`.
 | Future skill catalog | `rules/skills/skill-catalog-map.md` | A Time of War PDF pages 143-161 / printed pages 141-159 | Partially covered; catalog/map only |
 '@
 
+    Set-FixtureFile -RelativePath "source/extraction-notes.md" -Content @'
+# Extraction Notes
+
+- Page-number offset notes:
+  - Numbered interior pages use a consistent offset: `PDF page = printed page + 2`.
+'@
+
+    Set-FixtureFile -RelativePath "source/atow-chapter-section-map.md" -Content @'
+# A Time Of War Chapter And Section Map
+
+## Page Offset
+
+- Numbered interior pages use a consistent offset: `PDF page = printed page + 2`.
+'@
+
     Set-FixtureFile -RelativePath "indexes/manifest.yaml" -Content @'
 metadata:
   status_legend:
@@ -127,13 +142,27 @@ gm:
     status: draft
 '@
 
-    Set-FixtureFile -RelativePath "rules/core/action-checks.md" -Content "# Action Checks"
+    Set-FixtureFile -RelativePath "rules/core/action-checks.md" -Content @'
+# Action Checks
+
+## Source References
+
+- A Time of War, PDF page 40 / printed page 38.
+'@
     Set-FixtureFile -RelativePath "gm/scene-loop.md" -Content "# Scene Loop"
-    Set-FixtureFile -RelativePath "indexes/term-glossary.md" -Content "# Term Glossary"
+    Set-FixtureFile -RelativePath "indexes/term-glossary.md" -Content @'
+# Term Glossary
+
+## Source References
+
+- A Time of War, PDF pages 30-32 / printed pages 28-30.
+'@
 
     Write-Test "Checking valid fixture passes with mapped-only candidate warnings."
     $validOutput = Invoke-Validator -FixtureRoot $tempRoot -ExpectedExitCode 0 -Label "Valid fixture"
     Assert-True -Condition ($validOutput -match "Mapped manifest 'skills.catalog-map' candidate path not present yet") -Message "Valid fixture warns for missing mapped-only candidate without failing."
+    Assert-True -Condition ($validOutput -match "Extraction notes record PDF-to-printed page offset") -Message "Valid fixture checks extraction offset metadata."
+    Assert-True -Condition ($validOutput -match "Chapter/section map records PDF-to-printed page offset") -Message "Valid fixture checks chapter-map offset metadata."
 
     Write-Test "Checking router missing file fails."
     Add-Content -LiteralPath (Join-Path $tempRoot "indexes\task-router.md") -Value '| broken | `rules/core/missing.md` |  |'
@@ -147,6 +176,31 @@ gm:
         Set-Content -LiteralPath (Join-Path $tempRoot "indexes\manifest.yaml") -Encoding UTF8
     $manifestOutput = Invoke-Validator -FixtureRoot $tempRoot -ExpectedExitCode 1 -Label "Missing manifest summary"
     Assert-True -Condition ($manifestOutput -match "rules/core/missing-summary.md") -Message "Missing manifest summary is reported."
+
+    Write-Test "Checking source offset metadata failure."
+    (Get-Content -LiteralPath (Join-Path $tempRoot "indexes\manifest.yaml")) -replace 'summary: rules/core/missing-summary.md', 'summary: rules/core/action-checks.md' |
+        Set-Content -LiteralPath (Join-Path $tempRoot "indexes\manifest.yaml") -Encoding UTF8
+    Set-FixtureFile -RelativePath "source/extraction-notes.md" -Content "# Extraction Notes`n`nNo offset here."
+    $offsetOutput = Invoke-Validator -FixtureRoot $tempRoot -ExpectedExitCode 1 -Label "Missing offset metadata"
+    Assert-True -Condition ($offsetOutput -match "Extraction notes do not record expected PDF-to-printed page offset") -Message "Missing extraction offset is reported."
+
+    Write-Test "Checking manifest/page-reference mismatch fails."
+    Set-FixtureFile -RelativePath "source/extraction-notes.md" -Content @'
+# Extraction Notes
+
+- `PDF page = printed page + 2`
+'@
+    (Get-Content -LiteralPath (Join-Path $tempRoot "indexes\page-reference-index.md")) -replace 'A Time of War PDF page 40 / printed page 38', 'A Time of War PDF page 41 / printed page 39' |
+        Set-Content -LiteralPath (Join-Path $tempRoot "indexes\page-reference-index.md") -Encoding UTF8
+    $pageMismatchOutput = Invoke-Validator -FixtureRoot $tempRoot -ExpectedExitCode 1 -Label "Manifest/page-reference mismatch"
+    Assert-True -Condition ($pageMismatchOutput -match "PDF pages are not covered by page-reference index") -Message "Manifest/page-reference PDF mismatch is reported."
+
+    Write-Test "Checking missing summary Source References fails."
+    (Get-Content -LiteralPath (Join-Path $tempRoot "indexes\page-reference-index.md")) -replace 'A Time of War PDF page 41 / printed page 39', 'A Time of War PDF page 40 / printed page 38' |
+        Set-Content -LiteralPath (Join-Path $tempRoot "indexes\page-reference-index.md") -Encoding UTF8
+    Set-FixtureFile -RelativePath "rules/core/action-checks.md" -Content "# Action Checks`n`nNo source references section."
+    $summarySourceOutput = Invoke-Validator -FixtureRoot $tempRoot -ExpectedExitCode 1 -Label "Missing summary source references"
+    Assert-True -Condition ($summarySourceOutput -match "summary lacks a Source References section") -Message "Missing summary Source References section is reported."
 }
 finally {
     if (Test-Path -LiteralPath $tempRoot) {
