@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "request_id": "fixture-personal-checkpoint-success",
+  "mechanic_id": "combat.personal_checkpoint",
+  "campaign_id": "fixture-campaign",
+  "checkpoint": {
+    "scene_scale": "personal",
+    "turn": 2,
+    "phase": "end",
+    "active_actor_id": "pc-scout",
+    "initiative_order": ["pc-scout", "npc-guard"],
+    "participants": [
+      {
+        "id": "pc-scout",
+        "side": "pcs",
+        "condition": "fatigued"
+      },
+      {
+        "id": "npc-guard",
+        "side": "opposition",
+        "condition": "stunned"
+      }
+    ],
+    "active_effects": [
+      {
+        "id": "effect-001",
+        "kind": "stun",
+        "target_id": "npc-guard",
+        "source": "fixture"
+      }
+    ],
+    "declared_actions": [
+      {
+        "actor_id": "pc-scout",
+        "action": "move to cover",
+        "status": "resolved"
+      }
+    ],
+    "tactical_handoff_triggers": []
+  },
+  "state_change_requests": [
+    {
+      "proposal_id": "proposal-fixture-001",
+      "change_class": "rpg_memory",
+      "change_type": "session_log",
+      "target": {
+        "campaign_id": "fixture-campaign",
+        "file": "campaigns/fixture-campaign/session-log.md",
+        "section": "State Changes",
+        "entity_ref": "npc-guard"
+      },
+      "summary": "Record that the guard was stunned during the personal-scale fight.",
+      "proposed_text": "- NPC guard was stunned during turn 2; confirm exact recovery or follow-up effects before the next exchange.",
+      "evidence_label": "mechanic-result",
+      "result_summary": "End-phase checkpoint recorded a stun effect.",
+      "source_files": ["rules/personal-combat/damage.md", "rules/personal-combat/end-phase.md"],
+      "application_step": "Append to session-log.md after GM review.",
+      "unresolved_questions": ["Confirm exact stun recovery from source/user input if it matters next turn."]
+    }
+  ],
+  "authority": {
+    "status": "provisional",
+    "confidence": "medium",
+    "routed_files": [
+      {
+        "path": "rules/personal-combat/overview.md",
+        "manifest_ids": ["personal-combat.overview"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF pages 166-167 / printed pages 164-165",
+        "page_reference_status": "Draft",
+        "warnings": []
+      },
+      {
+        "path": "rules/personal-combat/end-phase.md",
+        "manifest_ids": ["personal-combat.end-phase"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF page 191 / printed page 189",
+        "page_reference_status": "Draft",
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      {
+        "code": "draft-summary",
+        "severity": "caution",
+        "message": "Draft summaries can support source-aware play, but the ruling remains provisional."
+      }
+    ],
+    "required_next_action": "Review checkpoint and apply accepted state-change proposals manually."
+  }
+}

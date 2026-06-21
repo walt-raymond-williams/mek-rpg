@@ -62,6 +62,10 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-resolve-opposed-check.ps1"
     },
     @{
+        Name = "Personal combat checkpoint fixture tests"
+        Path = Join-Path $repoRoot "scripts\test-checkpoint-personal-combat.ps1"
+    },
+    @{
         Name = "GM context packet helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-gm-context-packet.ps1"
     },

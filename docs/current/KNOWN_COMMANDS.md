@@ -53,6 +53,8 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/test-resolve-basic-check.ps1
 ./scripts/resolve-opposed-check.ps1 -InputFile tests/fixtures/opposed-check-success.fixture.json
 ./scripts/test-resolve-opposed-check.ps1
+./scripts/checkpoint-personal-combat.ps1 -InputFile tests/fixtures/personal-combat-checkpoint-success.fixture.json
+./scripts/test-checkpoint-personal-combat.ps1
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/_template/pending-mekhq-actions.md
 ./scripts/validate-mekhq-pending-actions.ps1 campaigns/isekai-atlas-field/pending-mekhq-actions.md -ReportUnresolved
 ./scripts/test-validate-mekhq-pending-actions.ps1
@@ -100,6 +102,8 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 
 `resolve-opposed-check.ps1` is a JSON-in/JSON-out prototype for `core.opposed_check`. It consumes actor and defender participants, explicit side target numbers, side modifiers, an authority envelope, and fixed or random `2d6` rolls, then reports comparative roll breakdowns, winner or no-clean-winner outcome, net margin, degree, citations, warnings, empty proposed state changes, unresolved GM follow-up for ties/mutual failures, and no-hidden-mutation proof. It refuses unsafe authority statuses instead of inventing rules. `test-resolve-opposed-check.ps1` covers success, tied margins, source-lookup refusal, invalid input, and no-mutation behavior.
 
+`checkpoint-personal-combat.ps1` is a JSON-in/JSON-out prototype for `combat.personal_checkpoint`. It consumes explicit RPG-scale checkpoint state, reports turn/phase/initiative/effect/action tracking, emits state-change proposals only through `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md`, and refuses tactical BattleTech/MegaMek/MekHQ scenes with `external_authority_required`. `test-checkpoint-personal-combat.ps1` covers personal-scale checkpoint output, tactical handoff refusal, invalid input, and no-mutation behavior.
+
 `validate-mekhq-pending-actions.ps1` validates pending item ids, required fields, allowed status/type/priority values, date shapes, duplicate ids, and unresolved pending-intent reporting. `-ReportUnresolved` lists manual-action checklists for day-advance review without treating them as confirmed hard ledger facts.
 
 `test-validate-mekhq-pending-actions.ps1` uses temp fixture files to check empty/default files, all lifecycle statuses, invalid values, missing fields, and unresolved reporting.
@@ -112,7 +116,7 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 
 `test-mekhq-context-packet.ps1` uses a disposable MekHQ-linked campaign fixture to check context packet bridge metadata, unresolved pending actions, manual-intent labeling, stale-memory avoidance, rules/tactical handoff source references, protected-source/no-writeback boundaries, and read-only behavior.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-mekhq-checkpoint-fixture.ps1`, `test-mekhq-checkpoint-prototype-fixture.ps1`, `test-mekhq-checkpoint-edge-fixtures.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-check-ruling-authority.ps1`, `test-resolve-basic-check.ps1`, `test-resolve-opposed-check.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`; the route helper suite includes golden fixture coverage for common RPG procedures and route failure paths.
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-mekhq-checkpoint-fixture.ps1`, `test-mekhq-checkpoint-prototype-fixture.ps1`, `test-mekhq-checkpoint-edge-fixtures.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-check-ruling-authority.ps1`, `test-resolve-basic-check.ps1`, `test-resolve-opposed-check.ps1`, `test-checkpoint-personal-combat.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`; the route helper suite includes golden fixture coverage for common RPG procedures and route failure paths.
 
 ## Verify Protected Source Is Not Staged
 

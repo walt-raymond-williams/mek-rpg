@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "request_id": "fixture-personal-checkpoint-handoff",
+  "mechanic_id": "combat.personal_checkpoint",
+  "campaign_id": "fixture-campaign",
+  "checkpoint": {
+    "scene_scale": "tactical",
+    "turn": 1,
+    "phase": "action",
+    "active_actor_id": "unit-locust",
+    "initiative_order": ["unit-locust", "unit-scorpion"],
+    "participants": [
+      {
+        "id": "unit-locust",
+        "side": "pcs",
+        "unit_type": "BattleMech"
+      },
+      {
+        "id": "unit-scorpion",
+        "side": "opposition",
+        "unit_type": "combat vehicle"
+      }
+    ],
+    "tactical_handoff_triggers": [
+      "BattleMech tactical movement matters",
+      "facing and armor locations matter",
+      "salvage and repair consequences may affect MekHQ"
+    ]
+  },
+  "state_change_requests": [
+    {
+      "proposal_id": "proposal-should-not-emit",
+      "change_class": "mekhq_pending_intent",
+      "change_type": "pending_mekhq_action",
+      "summary": "Should be refused until tactical result exists.",
+      "proposed_text": "Do not emit this before handoff.",
+      "target": {
+        "campaign_id": "fixture-campaign",
+        "file": "campaigns/fixture-campaign/pending-mekhq-actions.md",
+        "section": "Pending Items"
+      },
+      "mekhq_boundary": {
+        "affects_mekhq_hard_ledger": true,
+        "pending_item_id": "mekhq-pending-fixture-001",
+        "confirmation_required": "Saved MekHQ import confirms tactical result."
+      }
+    }
+  ],
+  "authority": {
+    "status": "provisional",
+    "confidence": "medium",
+    "routed_files": [
+      {
+        "path": "gm/switch-to-classic-battletech.md",
+        "manifest_ids": ["gm.switch-to-classic-battletech"],
+        "statuses": ["draft"],
+        "source_pages": "Project tactical handoff procedure",
+        "page_reference_status": "Project",
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      {
+        "code": "external-tactical-authority",
+        "severity": "blocker",
+        "message": "Tactical combat requires Classic BattleTech, MegaMek, MekHQ, or tabletop authority."
+      }
+    ],
+    "required_next_action": "Prepare a tactical handoff packet."
+  }
+}

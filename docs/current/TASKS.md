@@ -11,7 +11,6 @@
 ## Backlog
 
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
-- Issue `#77`: prototype the RPG-scale personal-combat checkpoint contract after state-change proposals are defined.
 - Issue `#79`: evaluate core library / CLI / local service migration only after repeated contract use and fixture coverage.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
@@ -28,6 +27,7 @@
 ## Done
 
 - Issue `#83` implemented: added `docs/current/RULING_REGRESSION_SCENARIOS.md` as manual golden ruling scenarios for simple skill checks, opposed checks, Edge, initiative, ranged attacks, damage, piloting/control, equipment lookup, ambiguous lookup, source conflict, missing routes/page references, campaign persistence, and salvage/repair/cost workflows; each scenario records expected lookup, citation, state proposal, and failure behavior.
+- Issue `#77` implemented: added `scripts/checkpoint-personal-combat.ps1`, `scripts/test-checkpoint-personal-combat.ps1`, and personal-combat checkpoint fixtures to prototype `combat.personal_checkpoint` with RPG-scale turn/phase/checkpoint tracking, tactical handoff refusal, schema-shaped state-change proposals, citations/warnings, and no-hidden-mutation proof.
 - Issue `#78` implemented: added `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md` to define approval-gated proposal objects for MEK-RPG memory, workflow notes, and MekHQ pending intents, including target owner files, evidence labels, authority source, approval/application steps, MekHQ hard-ledger boundaries, no-hidden-mutation proof, and examples for skill checks, opposed checks, injury/damage, equipment loss, and pending MekHQ ledger intents.
 - Issue `#75` implemented: added `scripts/resolve-basic-check.ps1`, `scripts/test-resolve-basic-check.ps1`, and basic-check fixtures to prototype `core.basic_check` as JSON input/output with authority consumption, roll breakdown, margin/degree, citations, warnings, empty proposed state changes, refusal behavior, and no-hidden-mutation proof.
 - Issue `#76` implemented: added `scripts/resolve-opposed-check.ps1`, `scripts/test-resolve-opposed-check.ps1`, and opposed-check fixtures to prototype `core.opposed_check` with actor/defender inputs, comparative roll breakdowns, winner or no-clean-winner outcomes, net margin/degree, citations, warnings, empty proposed state changes, refusal behavior, and no-hidden-mutation proof.
