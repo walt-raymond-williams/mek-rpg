@@ -106,6 +106,10 @@ The user must perform the MekHQ UI action and save the MekHQ campaign. MEK-RPG s
 
 ## Open Questions
 
-- Which MekHQ action is the best first live test: purchase, hiring, contract decision, repair/logistics change, or day advancement?
-- Should this run against a disposable sister-workspace save first, then a table-canon-linked save later?
-- If a concrete MekHQ-side support need appears, should the follow-up be created in this repo first or directly in the MegaMek workspace group?
+- Completed test action: day advancement.
+- Tested save: `C:\Users\waltr\Documents\megamek-workspace\external\installs\MekHQ-0.51.00\campaigns\mek-rpg-test.cpnx`
+- MEK-RPG campaign folder: `campaigns/mekhq-pending-playtest/`
+- Pending item: `mekhq-pending-2026-06-21-001`
+- Result: user advanced MekHQ one day in the UI and overwrote the save; read-only re-import confirmed date `3025-07-25`; pending item marked `resolved`.
+- Validation report: `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`
+- Follow-up: document explicit UTF-8 summary file creation for Windows PowerShell to avoid bootstrap JSON decode errors.

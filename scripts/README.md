@@ -134,6 +134,15 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 ./scripts/test-bootstrap-mekhq-campaign.ps1
 ```
 
+When creating a JSON summary file in Windows PowerShell, prefer an explicit UTF-8 write instead of `>` redirection if `bootstrap-mekhq-campaign.py` will read the file:
+
+```powershell
+$summary = ".\mekhq-summary.json"
+$json = & python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
+[System.IO.File]::WriteAllText([System.IO.Path]::GetFullPath($summary), ($json -join [Environment]::NewLine), [System.Text.UTF8Encoding]::new($false))
+python ./scripts/bootstrap-mekhq-campaign.py --summary $summary --campaign-id my-linked-campaign
+```
+
 The bootstrap helper consumes only summary JSON, copies `campaigns/_template/`, refuses existing campaign folders, does not edit `campaign-state/active-campaign.md`, and writes a campaign-local `mekhq-bridge.md` with source metadata, warnings, cross-references, and pending MekHQ application notes. See `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md` for the generated file convention and ownership boundary.
 
 The bootstrap fixture test uses `tests/fixtures/mekhq-summary-minimal.json` and disposable `campaigns/mekhq-bootstrap-test-*` folders. It checks valid bootstrap output, invalid campaign id rejection, existing-folder refusal, viewpoint selection by id and exact name, commander fallback, embedded PC generation, required headings, ownership/no-writeback language, active pointer preservation, and cleanup.

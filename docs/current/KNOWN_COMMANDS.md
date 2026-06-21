@@ -57,6 +57,7 @@ python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format 
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
 ./scripts/test-bootstrap-mekhq-campaign.ps1
+$summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json; [System.IO.File]::WriteAllText([System.IO.Path]::GetFullPath($summary), ($json -join [Environment]::NewLine), [System.Text.UTF8Encoding]::new($false))
 ./scripts/test-mekhq-pending-workflow.ps1
 ./scripts/test-all.ps1
 ```
