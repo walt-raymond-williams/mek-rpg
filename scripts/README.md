@@ -9,6 +9,7 @@
 - `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary.
 - `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from `summarize-mekhq-save.py` JSON output.
 - `test-mekhq-pending-workflow.ps1`: runs disposable regression checks for MekHQ pending-action bootstrap, validation, no-writeback boundaries, and protected-source guards.
+- `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification.
 
 ## Campaign Saves
 
@@ -60,6 +61,9 @@ The bootstrap helper consumes only summary JSON, copies `campaigns/_template/`, 
 
 ```powershell
 ./scripts/test-mekhq-pending-workflow.ps1
+./scripts/test-all.ps1
 ```
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
+
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression and is the extension point for future fixture and validator suites from issues `#41` through `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.

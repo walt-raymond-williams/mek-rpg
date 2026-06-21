@@ -6,7 +6,7 @@
 - Parent epic: `#38`
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / testing
-- Priority: After issue `#39`, or earlier if only wiring the existing regression script.
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -26,11 +26,11 @@ Read these first:
 - `scripts/README.md`
 - `docs/current/KNOWN_COMMANDS.md`
 
-## Expected Output
+## Output
 
-- New script, recommended path: `scripts/test-all.ps1`.
-- Documentation updates for the command.
-- Roadmap and task updates.
+- Added `scripts/test-all.ps1`.
+- Documented the command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Updated roadmap and task state.
 
 ## Files And Areas
 
@@ -67,6 +67,6 @@ git status --short --branch
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Should the runner fail fast, or continue and summarize all failures?
+- The runner continues through configured suites and summarizes failures at the end. With one current suite this behaves like a direct wrapper, and it will be useful as issues `#41` through `#45` add more suites.

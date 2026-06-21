@@ -42,7 +42,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
-- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`; epic issue `#38` continues through the test runner, bootstrap fixture tests, summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
+- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md` and a top-level deterministic runner in `scripts/test-all.ps1`; epic issue `#38` continues through bootstrap fixture tests, summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has a staged path: source-coverage mapping (`#52`), transport/large-asset summary work if supported (`#53`), richer DropShip/unit asset sheet design (`#54`), and tactical encounter handoff checklist support (`#55`).
@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#40`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#41`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
 
 ## Open Issues
 
@@ -120,7 +120,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Requirements contract: `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`.
 - Child issues:
   - Done in issue `#39`: define MekHQ-linked A Time of War workflow requirements and coverage matrix.
-  - Issue `#40`: add top-level deterministic test runner.
+  - Done in issue `#40`: add top-level deterministic test runner.
   - Issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage.
   - Issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage.
   - Issue `#43`: add campaign-state validator automated coverage.
@@ -128,8 +128,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Issue `#45`: add GM context packet regression scenarios for MekHQ-linked play after context packet dependencies exist.
 - Dependency order:
   1. Done in issue `#39`: requirements and coverage matrix define stable `REQ-MEKHQ-ATOW-*` IDs and child issue ownership.
-  2. Issue `#40` adds the top-level runner and can initially wrap existing tests.
-  3. Issues `#41`, `#42`, and `#43` expand deterministic helper and validator coverage.
+  2. Done in issue `#40`: `scripts/test-all.ps1` runs deterministic suites and initially wraps existing tests.
+  3. Issues `#41`, `#42`, and `#43` expand deterministic helper and validator coverage and add their suites to `scripts/test-all.ps1`.
   4. Issue `#44` adds pending-action structural validation using the requirement schema and pending workflow states.
   5. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
 
@@ -198,6 +198,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Add top-level deterministic test runner
+
+- Status: Done
+- Issue: `#40`
+- Handoff: `docs/handoffs/archive/add-top-level-deterministic-test-runner.md`
+- Script: `scripts/test-all.ps1`
+- Mode: Project development / testing
+- Goal: Add a single local command that runs all deterministic MEK-RPG regression and unit-style checks and exits nonzero on failure.
+- Acceptance: runner executes from the repository root, preserves child suite output, reports failing child commands clearly, exits nonzero on failure, currently wraps `scripts/test-mekhq-pending-workflow.ps1`, is documented in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`, and does not require real MekHQ saves, protected source files, network access, or user interaction.
 
 ### Define MekHQ-linked A Time of War workflow requirements and coverage matrix
 

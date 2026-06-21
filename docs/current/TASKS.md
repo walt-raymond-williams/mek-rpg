@@ -6,14 +6,13 @@
 
 ## Next
 
-- Issue `#40`: add top-level deterministic test runner, with active handoff `docs/handoffs/active/add-top-level-deterministic-test-runner.md`, using `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md` as the suite contract.
+- Issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage, with active handoff `docs/handoffs/active/add-bootstrap-mekhq-campaign-unit-fixture-coverage.md`, and add it to `scripts/test-all.ps1`.
 - Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
 - Issue `#38`: parent epic for automated regression coverage of the MekHQ-linked A Time of War workflow.
-- Issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage, with active handoff `docs/handoffs/active/add-bootstrap-mekhq-campaign-unit-fixture-coverage.md`.
 - Issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage, with active handoff `docs/handoffs/active/add-summarize-mekhq-save-sanitized-xml-fixture-coverage.md`.
 - Issue `#43`: add campaign-state validator automated coverage, with active handoff `docs/handoffs/active/add-campaign-state-validator-automated-coverage.md`.
 - Issue `#44`: add pending MekHQ actions validator, with active handoff `docs/handoffs/active/add-pending-mekhq-actions-validator.md`.
@@ -52,6 +51,7 @@
 
 ## Done
 
+- Issue `#40` implemented: added `scripts/test-all.ps1` as the top-level deterministic runner, documented it in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`, and wired the current MekHQ pending workflow regression as the first suite without requiring real MekHQ saves, protected source files, network access, or user interaction.
 - Issue `#39` implemented: added `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md` with stable `REQ-MEKHQ-ATOW-*` requirements, a coverage matrix mapping automated, manual, planned, blocked, and missing coverage, child issue ownership for issues `#40`-`#45`, manual playtest and tactical handoff mappings, and verification guidance for pending workflow, no-writeback, and protected-source boundaries.
 - Issue `#36` implemented: added `scripts/test-mekhq-pending-workflow.ps1` and `tests/fixtures/mekhq-summary-minimal.json` to regression-check MekHQ pending workflow bootstrap output, `pending-mekhq-actions.md` ownership, `mekhq-bridge.md` queue pointers, validator positive and negative coverage, no direct MekHQ save/XML writeback boundaries, protected-source ignore rules, and disposable cleanup.
 - Issue `#35` implemented: added `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`, made `pending-mekhq-actions.md` a standard campaign-local file, updated MekHQ linked play/bootstrap guidance and generated MekHQ-linked campaign output, taught the campaign validator about the new file, and updated issue `#31` context-packet handoff to consume unresolved pending items as manual-action intents rather than hard ledger facts.
