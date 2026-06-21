@@ -722,6 +722,86 @@ rules:
       - vehicles.mechwarrior-skills
       - gm.switch-to-classic-battletech
     status: draft
+  - id: tactical.overview
+    title: Tactical Combat Overview
+    subsystem: tactical
+    summary: rules/tactical/tactical-combat-overview.md
+    source_pages:
+      pdf: [202, 203]
+      printed: [200, 201]
+    related:
+      - tactical.turn-initiative
+      - tactical.vehicle-actions
+      - tactical.damage-traits
+      - tactical.heat-pilot-abilities
+      - vehicles.overview
+      - vehicles.classic-conversion
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
+  - id: tactical.turn-initiative
+    title: Tactical Turn And Initiative
+    subsystem: tactical
+    summary: rules/tactical/tactical-turn-and-initiative.md
+    source_pages:
+      pdf: [204, 205, 206, 207]
+      printed: [202, 203, 204, 205]
+    related:
+      - tactical.overview
+      - tactical.vehicle-actions
+      - tactical.heat-pilot-abilities
+      - vehicles.classic-conversion
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
+  - id: tactical.vehicle-actions
+    title: Tactical Vehicle Actions
+    subsystem: tactical
+    summary: rules/tactical/vehicle-actions.md
+    source_pages:
+      pdf: [208, 209, 210, 211, 212, 213]
+      printed: [206, 207, 208, 209, 210, 211]
+    related:
+      - tactical.overview
+      - tactical.turn-initiative
+      - tactical.damage-traits
+      - vehicles.overview
+      - vehicles.piloting
+      - vehicles.gunnery
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
+  - id: tactical.damage-traits
+    title: Tactical Damage And Traits
+    subsystem: tactical
+    summary: rules/tactical/tactical-damage-and-traits.md
+    source_pages:
+      pdf: [214, 215, 216, 217, 218, 219, 220]
+      printed: [212, 213, 214, 215, 216, 217, 218]
+    related:
+      - tactical.overview
+      - tactical.vehicle-actions
+      - tactical.heat-pilot-abilities
+      - combat.damage-resolution
+      - combat.armor-barriers
+      - vehicles.gunnery
+      - vehicles.classic-conversion
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
+  - id: tactical.heat-pilot-abilities
+    title: Heat And Pilot Abilities
+    subsystem: tactical
+    summary: rules/tactical/heat-and-pilot-abilities.md
+    source_pages:
+      pdf: [220, 221, 222, 223, 224, 225, 226, 227]
+      printed: [218, 219, 220, 221, 222, 223, 224, 225]
+    related:
+      - tactical.overview
+      - tactical.turn-initiative
+      - tactical.damage-traits
+      - vehicles.piloting
+      - vehicles.gunnery
+      - vehicles.mechwarrior-skills
+      - vehicles.classic-conversion
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
 mapped_rules:
   - id: universe.intro-to-play
     title: Intro To Play
@@ -755,63 +835,6 @@ mapped_rules:
       pdf: [35]
       printed: [33]
     status: mapped-only
-  - id: tactical.overview
-    title: Tactical Combat Overview
-    subsystem: tactical
-    candidate: rules/tactical/tactical-combat-overview.md
-    source_pages:
-      pdf: [202, 203]
-      printed: [200, 201]
-    related:
-      - vehicles.overview
-      - gm.switch-to-classic-battletech
-    status: partial-draft
-  - id: tactical.turn-initiative
-    title: Tactical Turn And Initiative
-    subsystem: tactical
-    candidate: rules/tactical/tactical-turn-and-initiative.md
-    source_pages:
-      pdf: [204, 205, 206, 207]
-      printed: [202, 203, 204, 205]
-    related:
-      - vehicles.classic-conversion
-      - gm.switch-to-classic-battletech
-    status: mapped-only
-  - id: tactical.vehicle-actions
-    title: Tactical Vehicle Actions
-    subsystem: tactical
-    candidate: rules/tactical/vehicle-actions.md
-    source_pages:
-      pdf: [208, 209, 210, 211, 212, 213]
-      printed: [206, 207, 208, 209, 210, 211]
-    related:
-      - vehicles.overview
-      - vehicles.piloting
-      - vehicles.gunnery
-    status: partial-draft
-  - id: tactical.damage-traits
-    title: Tactical Damage And Traits
-    subsystem: tactical
-    candidate: rules/tactical/tactical-damage-and-traits.md
-    source_pages:
-      pdf: [214, 215, 216, 217, 218, 219, 220]
-      printed: [212, 213, 214, 215, 216, 217, 218]
-    related:
-      - vehicles.gunnery
-      - vehicles.classic-conversion
-    status: partial-draft
-  - id: tactical.heat-pilot-abilities
-    title: Heat And Pilot Abilities
-    subsystem: tactical
-    candidate: rules/tactical/heat-and-pilot-abilities.md
-    source_pages:
-      pdf: [220, 221, 222, 223, 224, 225, 226, 227]
-      printed: [218, 219, 220, 221, 222, 223, 224, 225]
-    related:
-      - vehicles.piloting
-      - vehicles.gunnery
-      - vehicles.mechwarrior-skills
-    status: partial-draft
   - id: special.planetary-conditions
     title: Planetary Conditions
     subsystem: special-case-rules

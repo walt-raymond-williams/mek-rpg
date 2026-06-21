@@ -56,6 +56,9 @@ Use this summary to decide how RPG characters interact with vehicles, BattleMech
 - `rules/vehicles-and-mechs/gunnery.md`
 - `rules/vehicles-and-mechs/mechwarrior-skills.md`
 - `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
+- `rules/tactical/tactical-combat-overview.md`
+- `rules/tactical/vehicle-actions.md`
+- `rules/tactical/tactical-damage-and-traits.md`
 - `rules/character-creation/skills.md`
 - `rules/equipment/overview.md`
 - `rules/campaign/transport-and-large-assets.md`

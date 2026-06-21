@@ -103,4 +103,11 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Open Questions
 
-- Should these outputs live under `rules/tactical/`, or should some tactical-boundary material remain in `gm/` as pure handoff procedure?
+- Resolved: outputs live under `rules/tactical/` as source-reviewed routing aids. GM files retain tactical handoff procedure ownership and link to the tactical routing layer.
+
+## Completion Notes
+
+- Added `rules/tactical/tactical-combat-overview.md`, `rules/tactical/tactical-turn-and-initiative.md`, `rules/tactical/vehicle-actions.md`, `rules/tactical/tactical-damage-and-traits.md`, and `rules/tactical/heat-and-pilot-abilities.md`.
+- Added `docs/current/TACTICAL_ADDENDUM_BOUNDARY_SOURCE_REVIEW_VALIDATION.md`.
+- Updated router, page-reference index, rules map, subsystem index, manifest metadata, vehicle summaries, GM handoff docs, roadmap, and task state.
+- Preserved the boundary that Classic BattleTech, MegaMek, MekHQ, Total Warfare, Tactical Operations, or private source lookup own exact tactical combat.

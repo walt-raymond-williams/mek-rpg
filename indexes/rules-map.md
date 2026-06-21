@@ -24,6 +24,9 @@ Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: perso
 ## Vehicles and BattleMechs
 Vehicle and BattleMech rules in `rules/vehicles-and-mechs/` connect RPG characters to Driving, Piloting, Gunnery, MechWarrior crew roles, vehicle assets, Special Pilot Ability routing, and RPG-to-Classic BattleTech conversion notes. These summaries identify scene scale and handoff points; they do not reproduce full tactical BattleTech rules, unit records, vehicle tables, fuel tables, or tactical modifiers.
 
+## Tactical Addendum
+Tactical addendum routing in `rules/tactical/` covers the A Time of War bridge between RPG characters and small tactical engagements: tactical scope, unit categories, turn/initiative structure, vehicle actions, movement routing, damage conversion boundaries, weapon-trait lookup points, heat, and Special Pilot Ability routing. These files are source-reviewed routing aids only; exact tactical tables, modifiers, weapon entries, heat accounting, armor locations, critical hits, and full unit turns remain private source or external tactical-tool work.
+
 ## Campaign Advancement
 Campaign systems in `rules/campaign/` cover persistent consequences after play: XP and advancement, contracts and mission aftermath, transport and large-asset acquisition, contacts and favors, reputation and faction standing, injury recovery, downtime, mission readiness, rank, wealth, and power. These summaries depend on core resolution for checks, personal combat for wounds, equipment for gear/medical support, vehicle summaries for crew/operation boundaries, and campaign save files for durable state.
 

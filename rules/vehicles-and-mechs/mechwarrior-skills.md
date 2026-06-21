@@ -56,6 +56,8 @@ Use this summary to connect an RPG character's sheet to BattleMech, IndustrialMe
 - `rules/vehicles-and-mechs/piloting.md`
 - `rules/vehicles-and-mechs/gunnery.md`
 - `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
+- `rules/tactical/tactical-combat-overview.md`
+- `rules/tactical/heat-and-pilot-abilities.md`
 - `gm/switch-to-classic-battletech.md`
 - `gm/encounter-template.md`
 

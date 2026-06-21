@@ -52,6 +52,9 @@ Use this summary when a character fires weapons mounted on BattleMechs, Industri
 - `rules/vehicles-and-mechs/piloting.md`
 - `rules/vehicles-and-mechs/mechwarrior-skills.md`
 - `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
+- `rules/tactical/vehicle-actions.md`
+- `rules/tactical/tactical-damage-and-traits.md`
+- `rules/tactical/heat-and-pilot-abilities.md`
 - `rules/personal-combat/ranged-attacks.md`
 - `rules/equipment/weapons.md`
 - `gm/switch-to-classic-battletech.md`

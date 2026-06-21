@@ -50,6 +50,8 @@ Use this summary when a character controls a BattleMech, IndustrialMech, battle 
 - `rules/vehicles-and-mechs/gunnery.md`
 - `rules/vehicles-and-mechs/mechwarrior-skills.md`
 - `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
+- `rules/tactical/vehicle-actions.md`
+- `rules/tactical/heat-and-pilot-abilities.md`
 - `rules/core/skill-checks.md`
 - `rules/core/basic-action-resolution.md`
 - `gm/switch-to-classic-battletech.md`

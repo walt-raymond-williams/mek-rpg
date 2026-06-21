@@ -29,6 +29,11 @@ Read only what the encounter needs:
 - `gm/encounter-template.md`
 - `rules/vehicles-and-mechs/overview.md`
 - `rules/vehicles-and-mechs/converting-to-classic-battletech.md`
+- `rules/tactical/tactical-combat-overview.md`
+- `rules/tactical/tactical-turn-and-initiative.md`
+- `rules/tactical/vehicle-actions.md`
+- `rules/tactical/tactical-damage-and-traits.md`
+- `rules/tactical/heat-and-pilot-abilities.md`
 - `docs/current/ASSET_SHEET_SCHEMA.md`
 - For MekHQ-linked campaigns: `mekhq-bridge.md`, `pending-mekhq-actions.md`, and `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 

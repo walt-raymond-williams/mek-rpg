@@ -14,6 +14,8 @@ Switch when one or more are true:
 
 Before setup, use `gm/tactical-encounter-handoff-checklist.md` to prepare the handoff packet.
 
+For A Time of War tactical addendum routing before handoff, start with `rules/tactical/tactical-combat-overview.md`, then use the narrower tactical files only to identify source lookups and handoff facts. Do not resolve exact unit turns, heat, armor, weapon traits, or damage conversion from summaries.
+
 Encounter setup should include:
 
 - Map environment and terrain assumptions.

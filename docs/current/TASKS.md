@@ -7,7 +7,6 @@
 ## Next
 
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
-- Issue `#62`: source-review tactical addendum boundaries, with active handoff `docs/handoffs/active/source-review-tactical-addendum-boundaries.md`.
 - Issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
 - Issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
 
@@ -28,6 +27,7 @@
 
 ## Done
 
+- Issue `#62` implemented: added source-reviewed tactical addendum routing aids for tactical scope, turn/initiative, vehicle actions, tactical damage/traits, heat, and Special Pilot Abilities; updated router, page references, rules map, subsystem index, manifest metadata, vehicle/GM cross-links, validation notes, and archived the handoff while preserving Classic BattleTech/MegaMek/MekHQ tactical authority.
 - Issue `#61` implemented: added source-reviewed armor/barrier and optional personal-combat summaries, including AP/BAR routing, degradation, stacked protection, morale, hit locations, knockdown, and lethality-reduction guidance; updated router, page references, rules map, subsystem index, manifest metadata, existing combat cross-links, validation notes, and archived the handoff.
 - Issue `#60` implemented: added source-reviewed character record basics, Skill Field, character purchase/cleanup, trait catalog routing, and skill catalog routing files; updated task router, page references, rules map, subsystem index, manifest metadata, and validation notes while preserving source-table/catalog boundaries.
 - Issue `#66` completed: the MegaMek bridge-primitives follow-up queue is closed out with child issues `#67`-`#69` done; MEK-RPG now has a read-only checkpoint export consumer contract, headless day-advance risk documentation, and a gated contract-market accept/decline probe plan without authorizing write automation.
