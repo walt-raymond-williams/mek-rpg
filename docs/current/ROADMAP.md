@@ -7,7 +7,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
 - Core resolution, character creation, personal combat, equipment, campaign consequences, and vehicles/MechWarrior bridge have draft paraphrased summaries with live router coverage and validation reports where applicable.
-- Glossary and deeper metadata remain placeholder-level and need source review before they can support serious rules lookup.
+- The term glossary now has source-reviewed universe terminology and common rules/workspace aliases; deeper page-reference and manifest metadata remain in the rules lookup infrastructure queue.
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
@@ -34,7 +34,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Placeholder-Level
 
-- Glossary and deeper index metadata: stable term definitions, expanded page references, and manifest coverage for placeholder subsystems.
+- Deeper index metadata: expanded page references and manifest coverage for placeholder subsystems.
 
 ### Validation Needs
 
@@ -64,18 +64,18 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Mode: Project development / source processing where explicitly noted
 - Goal: make rules lookup safer for autonomous agents by improving terminology, page references, manifest status, deterministic validation, coverage reporting, and route discovery without turning placeholder areas into rules authority.
 - Child issues:
-  - Issue `#46`: source-review glossary and term alias coverage.
+  - Done in issue `#46`: source-review glossary and term alias coverage.
   - Issue `#47`: expand page-reference index for placeholder subsystems.
   - Issue `#48`: normalize manifest metadata and coverage statuses.
   - Issue `#49`: add rules index consistency validator.
   - Issue `#50`: add rules coverage reporter.
   - Issue `#51`: prototype rules route helper.
 - Dependency order:
-  1. Issues `#46` and `#47` improve human-readable lookup references.
+  1. Issue `#46` improved term aliases; issue `#47` expands human-readable page references.
   2. Issue `#48` makes manifest status and IDs more reliable.
   3. Issues `#49` and `#50` add deterministic validation and reporting.
   4. Issue `#51` can use the improved metadata to route natural-language prompts to candidate summaries and warnings.
-- Boundary: do not read or commit protected raw source except in the explicit source-review portions of issue `#46`; the helper in issue `#51` must route to committed summaries and indexes, not answer rules directly.
+- Boundary: do not read or commit protected raw source except in explicit source-review work; the helper in issue `#51` must route to committed summaries and indexes, not answer rules directly.
 
 ### Transport, large-asset, and tactical handoff queue
 

@@ -34,9 +34,9 @@ Task-specific context:
 
 ## Expected Output
 
-- Updated `indexes/term-glossary.md`.
-- Related router, rules-map, manifest, or page-reference updates only where useful.
-- Roadmap and task updates.
+- Completed: updated `indexes/term-glossary.md` with concise paraphrased universe terms from A Time of War PDF pages 30-32 / printed pages 28-30 and common workspace/rules aliases.
+- Completed: added the glossary to `indexes/page-reference-index.md`.
+- Completed: updated roadmap and task tracking.
 
 ## Files And Areas
 
@@ -76,4 +76,4 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Open Questions
 
-- Should the glossary stay purely human-readable Markdown, or should issue `#48` later mirror key aliases in manifest metadata?
+- Deferred to issue `#48`: decide whether key aliases should be mirrored in manifest metadata.

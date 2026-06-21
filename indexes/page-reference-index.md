@@ -10,6 +10,7 @@ Use this file to map summary files and topics to A Time of War page references a
 | Opposed actions | `rules/core/opposed-actions.md` | A Time of War PDF pages 41-42 / printed pages 39-40 | Draft |
 | Basic action resolution, modifiers, fumbles, high rolls, and margin | `rules/core/basic-action-resolution.md` | A Time of War PDF pages 42-44 / printed pages 40-42 | Draft |
 | Edge | `rules/core/edge.md` | A Time of War PDF pages 44-45 / printed pages 42-43 | Draft |
+| Universe terminology and common BattleTech setting aliases | `indexes/term-glossary.md` | A Time of War PDF pages 30-32 / printed pages 28-30 | Source-reviewed glossary routing aid |
 | Character creation overview, methods, final touches, and character record completion | `rules/character-creation/overview.md` | A Time of War PDF pages 50-53 and 93-103 / printed pages 48-51 and 91-101 | Draft |
 | Lifepaths, Life Modules, affiliations, education, real-life modules, and skill fields | `rules/character-creation/lifepaths.md` | A Time of War PDF pages 50-87 / printed pages 48-85 | Draft |
 | Character creation attributes, prerequisites, optimization, and attribute advancement | `rules/character-creation/attributes.md` | A Time of War PDF pages 50-53, 87-92, and 332-336 / printed pages 48-51, 85-90, and 330-334 | Draft |
