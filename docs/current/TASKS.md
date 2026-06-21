@@ -2,11 +2,10 @@
 
 ## Now
 
-- None.
+- Issue `#31`: define GM context packet design, with active handoff `docs/handoffs/active/define-gm-context-packet-design.md`.
 
 ## Next
 
-- Issue `#31`: define GM context packet design after the current MekHQ ownership mapping pass, so play context can explicitly layer instructions, active campaign state, rules routes, recent events, summaries, retrieved memories, and optional MekHQ facts.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
