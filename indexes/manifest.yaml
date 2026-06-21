@@ -517,6 +517,112 @@ rules:
       - combat.damage-effects
       - core.skill-checks
     status: draft
+  - id: equipment.battle-armor-exoskeletons
+    title: Battle Armor And Exoskeletons
+    subsystem: equipment
+    summary: rules/equipment/battle-armor-and-exoskeletons.md
+    source_pages:
+      pdf: [300, 301, 302]
+      printed: [298, 299, 300]
+    related:
+      - equipment.personal-protection
+      - vehicles.overview
+      - vehicles.piloting
+      - vehicles.gunnery
+      - tactical.overview
+      - tactical.vehicle-actions
+      - tactical.damage-traits
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
+  - id: equipment.prosthetics-implants
+    title: Prosthetics And Implants
+    subsystem: equipment
+    summary: rules/equipment/prosthetics-and-implants.md
+    source_pages:
+      pdf: [316, 317, 318, 319, 320]
+      printed: [314, 315, 316, 317, 318]
+    related:
+      - equipment.medical-gear
+      - campaign.injuries-recovery
+      - combat.healing-recovery
+      - character.traits
+      - tactical.heat-pilot-abilities
+      - vehicles.mechwarrior-skills
+    status: source-reviewed-routing-aid
+  - id: equipment.drugs-poisons
+    title: Drugs And Poisons
+    subsystem: equipment
+    summary: rules/equipment/drugs-and-poisons.md
+    source_pages:
+      pdf: [319, 320, 321, 322, 323]
+      printed: [317, 318, 319, 320, 321]
+    related:
+      - equipment.medical-gear
+      - combat.damage-resolution
+      - combat.healing-recovery
+      - special.diseases
+      - special.creatures
+      - campaign.injuries-recovery
+    status: source-reviewed-routing-aid
+  - id: equipment.personal-vehicles
+    title: Personal Vehicles And Fuel
+    subsystem: equipment
+    summary: rules/equipment/personal-vehicles.md
+    source_pages:
+      pdf: [323, 324, 325, 326, 327]
+      printed: [321, 322, 323, 324, 325]
+    related:
+      - vehicles.overview
+      - campaign.transport-large-assets
+      - equipment.acquire-use
+      - tactical.vehicle-actions
+      - tactical.damage-traits
+    status: source-reviewed-routing-aid
+  - id: special.planetary-conditions
+    title: Planetary Conditions
+    subsystem: special-case-rules
+    summary: rules/special/planetary-conditions.md
+    source_pages:
+      pdf: [232, 233, 234, 235, 236, 237, 238, 239, 240]
+      printed: [230, 231, 232, 233, 234, 235, 236, 237, 238]
+    related:
+      - combat.action-movement
+      - combat.damage-resolution
+      - combat.end-phase
+      - equipment.personal-protection
+      - equipment.power-misc-health
+      - tactical.vehicle-actions
+      - gm.switch-to-classic-battletech
+    status: source-reviewed-routing-aid
+  - id: special.creatures
+    title: Creatures
+    subsystem: special-case-rules
+    summary: rules/special/creatures.md
+    source_pages:
+      pdf: [240, 241, 242, 243, 244, 245, 246, 247]
+      printed: [238, 239, 240, 241, 242, 243, 244, 245]
+    related:
+      - combat.personal-overview
+      - combat.melee
+      - combat.damage-resolution
+      - combat.healing-recovery
+      - equipment.drugs-poisons
+      - special.diseases
+    status: source-reviewed-routing-aid
+  - id: special.diseases
+    title: Diseases
+    subsystem: special-case-rules
+    summary: rules/special/diseases.md
+    source_pages:
+      pdf: [247, 248, 249, 250, 251]
+      printed: [245, 246, 247, 248, 249]
+    related:
+      - combat.healing-recovery
+      - equipment.medical-gear
+      - equipment.drugs-poisons
+      - campaign.injuries-recovery
+      - campaign.downtime-readiness
+    status: source-reviewed-routing-aid
   - id: campaign.overview
     title: Campaign Consequences Overview
     subsystem: campaign
@@ -834,79 +940,6 @@ mapped_rules:
     source_pages:
       pdf: [35]
       printed: [33]
-    status: mapped-only
-  - id: special.planetary-conditions
-    title: Planetary Conditions
-    subsystem: special-case-rules
-    candidate: rules/special/planetary-conditions.md
-    source_pages:
-      pdf: [232, 233, 234, 235, 236, 237, 238, 239, 240]
-      printed: [230, 231, 232, 233, 234, 235, 236, 237, 238]
-    status: mapped-only
-  - id: special.creatures
-    title: Creatures
-    subsystem: special-case-rules
-    candidate: rules/special/creatures.md
-    source_pages:
-      pdf: [240, 241, 242, 243, 244, 245, 246, 247]
-      printed: [238, 239, 240, 241, 242, 243, 244, 245]
-    status: mapped-only
-  - id: special.diseases
-    title: Diseases
-    subsystem: special-case-rules
-    candidate: rules/special/diseases.md
-    source_pages:
-      pdf: [247, 248, 249, 250, 251]
-      printed: [245, 246, 247, 248, 249]
-    related:
-      - combat.healing-recovery
-      - equipment.medical-gear
-    status: mapped-only
-  - id: equipment.battle-armor-exoskeletons
-    title: Battle Armor And Exoskeletons
-    subsystem: equipment
-    candidate: rules/equipment/battle-armor-and-exoskeletons.md
-    source_pages:
-      pdf: [300, 301, 302]
-      printed: [298, 299, 300]
-    related:
-      - equipment.personal-protection
-      - vehicles.overview
-      - gm.switch-to-classic-battletech
-    status: mapped-only
-  - id: equipment.prosthetics-implants
-    title: Prosthetics And Implants
-    subsystem: equipment
-    candidate: rules/equipment/prosthetics-and-implants.md
-    source_pages:
-      pdf: [316, 317, 318, 319, 320]
-      printed: [314, 315, 316, 317, 318]
-    related:
-      - equipment.medical-gear
-      - campaign.injuries-recovery
-    status: mapped-only
-  - id: equipment.drugs-poisons
-    title: Drugs And Poisons
-    subsystem: equipment
-    candidate: rules/equipment/drugs-and-poisons.md
-    source_pages:
-      pdf: [319, 320, 321, 322, 323]
-      printed: [317, 318, 319, 320, 321]
-    related:
-      - equipment.medical-gear
-      - combat.damage-resolution
-    status: mapped-only
-  - id: equipment.personal-vehicles
-    title: Personal Vehicles And Fuel
-    subsystem: equipment
-    candidate: rules/equipment/personal-vehicles.md
-    source_pages:
-      pdf: [323, 324, 325, 326, 327]
-      printed: [321, 322, 323, 324, 325]
-    related:
-      - vehicles.overview
-      - campaign.transport-large-assets
-      - equipment.acquire-use
     status: mapped-only
   - id: campaign.advancement-rewards
     title: Advancement And Rewards

@@ -51,6 +51,10 @@ Use this summary to decide whether a character can obtain, carry, maintain, and 
 - `rules/equipment/electronics.md`
 - `rules/equipment/medical-gear.md`
 - `rules/equipment/personal-gear.md`
+- `rules/equipment/battle-armor-and-exoskeletons.md`
+- `rules/equipment/prosthetics-and-implants.md`
+- `rules/equipment/drugs-and-poisons.md`
+- `rules/equipment/personal-vehicles.md`
 - `rules/core/skill-checks.md`
 - `rules/core/basic-action-resolution.md`
 - `gm/switch-to-classic-battletech.md`

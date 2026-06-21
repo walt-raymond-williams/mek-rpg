@@ -61,6 +61,8 @@ Use this summary to decide how RPG characters interact with vehicles, BattleMech
 - `rules/tactical/tactical-damage-and-traits.md`
 - `rules/character-creation/skills.md`
 - `rules/equipment/overview.md`
+- `rules/equipment/personal-vehicles.md`
+- `rules/equipment/battle-armor-and-exoskeletons.md`
 - `rules/campaign/transport-and-large-assets.md`
 - `rules/campaign/downtime-and-readiness.md`
 - `gm/switch-to-classic-battletech.md`

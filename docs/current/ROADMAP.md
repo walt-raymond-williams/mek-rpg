@@ -109,13 +109,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done issue `#60`: source-reviewed character detail gaps, with archived handoff `docs/handoffs/archive/source-review-character-detail-gaps.md`.
   - Done issue `#61`: source-reviewed personal combat detail gaps, with archived handoff `docs/handoffs/archive/source-review-personal-combat-detail-gaps.md`.
   - Done issue `#62`: source-reviewed tactical addendum boundaries, with archived handoff `docs/handoffs/archive/source-review-tactical-addendum-boundaries.md`.
-  - Open issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
+  - Done issue `#63`: source-reviewed equipment and hazard gaps, with archived handoff `docs/handoffs/archive/source-review-equipment-and-hazard-gaps.md`.
   - Open issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
 - Dependency order:
   1. Done in issue `#60`: character detail gaps now support future PC/NPC sheet review and eventual focused validators.
   2. Done in issue `#61`: personal-combat details now cover armor/barriers and opt-in optional rules after the current minimum combat layer.
   3. Done in issue `#62`: tactical addendum routing now refines handoff decisions after personal-scale gaps are clearer.
-  4. Issue `#63` next: equipment and hazard work supports missions, injury aftermath, and vehicle/asset scenes, but may split if it grows too large.
+  4. Done in issue `#63`: equipment and hazard routing now supports missions, injury aftermath, and vehicle/asset scenes.
   5. Issue `#64` last in this wave: GM/campaign orientation is useful, but should stay procedure- and routing-focused rather than lore-heavy.
 - Boundary: this wave permits explicit source-processing for scoped page ranges only. Do not commit protected raw source, copied tables, catalog lists, stat blocks, adventure text, or long lore passages. Use paraphrase, page references, route guidance, and uncertainty labels.
 

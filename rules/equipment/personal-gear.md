@@ -49,6 +49,7 @@ Use this summary for non-weapon personal equipment: power packs, chargers, repai
 - `rules/equipment/overview.md`
 - `rules/equipment/electronics.md`
 - `rules/equipment/medical-gear.md`
+- `rules/special/planetary-conditions.md`
 - `rules/core/skill-checks.md`
 - `rules/core/basic-action-resolution.md`
 - `rules/personal-combat/damage.md`

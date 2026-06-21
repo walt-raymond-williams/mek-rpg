@@ -52,6 +52,9 @@ Keep severe injury narration table-appropriate. In kid-friendly mode, preserve s
 - `rules/personal-combat/end-phase.md`
 - `rules/equipment/medical-gear.md`
 - `rules/equipment/personal-gear.md`
+- `rules/equipment/prosthetics-and-implants.md`
+- `rules/equipment/drugs-and-poisons.md`
+- `rules/special/diseases.md`
 - `rules/campaign/downtime-and-readiness.md`
 - `gm/kid-friendly-mode.md`
 - Active `campaigns/<campaign-id>/pcs.md`

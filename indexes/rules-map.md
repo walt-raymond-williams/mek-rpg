@@ -21,6 +21,12 @@ Optional personal-combat details in `rules/combat/optional-personal-combat.md` c
 ## Equipment
 Equipment in `rules/equipment/` covers RPG-scale gear acquisition and use: personal weapons, ammunition, explosives, armor and protective gear, electronics, medical gear, power supplies, repair tools, survival gear, and espionage/security gear. These summaries are lookup guides, not reproduced catalogs; exact item stats, table values, kit contents, and device notes remain in the private source pages.
 
+## Equipment Detail Routing
+Equipment detail routing adds source-reviewed lookup aids for battle armor and exoskeletons, prosthetics and implants, drugs and poisons, and personal vehicles and fuel. These files support mission gear, injury aftermath, sensitive medical/drug topics, and vehicle asset planning while keeping exact catalogs, stat blocks, doses, fuel prices, and tactical suit/vehicle rules in private source or external tools.
+
+## Special Case Hazards
+Special-case hazard routing in `rules/special/` covers planetary conditions, creatures, and diseases. These summaries help frame terrain, weather, atmosphere, gravity, environmental exposure, animal encounters, venom, inoculation, illness, and disease plot clocks without copying tables or providing real-world medical/survival guidance.
+
 ## Vehicles and BattleMechs
 Vehicle and BattleMech rules in `rules/vehicles-and-mechs/` connect RPG characters to Driving, Piloting, Gunnery, MechWarrior crew roles, vehicle assets, Special Pilot Ability routing, and RPG-to-Classic BattleTech conversion notes. These summaries identify scene scale and handoff points; they do not reproduce full tactical BattleTech rules, unit records, vehicle tables, fuel tables, or tactical modifiers.
 

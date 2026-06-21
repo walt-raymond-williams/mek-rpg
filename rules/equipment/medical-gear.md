@@ -51,6 +51,9 @@ Use this summary to connect medical equipment, field treatment supplies, stimula
 - `rules/personal-combat/end-phase.md`
 - `rules/equipment/overview.md`
 - `rules/equipment/personal-gear.md`
+- `rules/equipment/prosthetics-and-implants.md`
+- `rules/equipment/drugs-and-poisons.md`
+- `rules/special/diseases.md`
 - `rules/core/skill-checks.md`
 - `rules/campaign/injuries-recovery.md`
 

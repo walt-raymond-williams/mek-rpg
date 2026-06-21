@@ -49,6 +49,8 @@ Use this summary to adjudicate personal armor, shields, protective clothing, hos
 - `rules/equipment/overview.md`
 - `rules/equipment/weapons.md`
 - `rules/equipment/personal-gear.md`
+- `rules/equipment/battle-armor-and-exoskeletons.md`
+- `rules/special/planetary-conditions.md`
 - `rules/personal-combat/damage.md`
 - `rules/personal-combat/wounds.md`
 - `rules/combat/armor-and-barriers.md`

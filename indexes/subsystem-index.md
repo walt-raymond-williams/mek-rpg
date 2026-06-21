@@ -8,7 +8,8 @@
 - Combat detail routing: `rules/combat/` (`rules/combat/armor-and-barriers.md`, `rules/combat/optional-personal-combat.md`)
 - Vehicles and BattleMechs: `rules/vehicles-and-mechs/` (`rules/vehicles-and-mechs/overview.md`, `rules/vehicles-and-mechs/piloting.md`, `rules/vehicles-and-mechs/gunnery.md`, `rules/vehicles-and-mechs/mechwarrior-skills.md`, `rules/vehicles-and-mechs/converting-to-classic-battletech.md`)
 - Tactical addendum routing: `rules/tactical/` (`rules/tactical/tactical-combat-overview.md`, `rules/tactical/tactical-turn-and-initiative.md`, `rules/tactical/vehicle-actions.md`, `rules/tactical/tactical-damage-and-traits.md`, `rules/tactical/heat-and-pilot-abilities.md`)
-- Equipment: `rules/equipment/` (`rules/equipment/overview.md`, `rules/equipment/weapons.md`, `rules/equipment/armor.md`, `rules/equipment/electronics.md`, `rules/equipment/medical-gear.md`, `rules/equipment/personal-gear.md`)
+- Equipment: `rules/equipment/` (`rules/equipment/overview.md`, `rules/equipment/weapons.md`, `rules/equipment/armor.md`, `rules/equipment/electronics.md`, `rules/equipment/medical-gear.md`, `rules/equipment/personal-gear.md`, `rules/equipment/battle-armor-and-exoskeletons.md`, `rules/equipment/prosthetics-and-implants.md`, `rules/equipment/drugs-and-poisons.md`, `rules/equipment/personal-vehicles.md`)
+- Special case hazards: `rules/special/` (`rules/special/planetary-conditions.md`, `rules/special/creatures.md`, `rules/special/diseases.md`)
 - Campaign: `rules/campaign/` (`rules/campaign/overview.md`, `rules/campaign/advancement.md`, `rules/campaign/contracts.md`, `rules/campaign/transport-and-large-assets.md`, `rules/campaign/contacts.md`, `rules/campaign/reputation.md`, `rules/campaign/injuries-recovery.md`, `rules/campaign/downtime-and-readiness.md`)
 - GM procedure: `gm/`
 - Campaign state: `campaign-state/`

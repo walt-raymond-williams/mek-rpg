@@ -59,6 +59,7 @@ This is a campaign procedure, not a DropShip economy. It uses A Time of War supp
 ## Related Files
 
 - `rules/equipment/overview.md`
+- `rules/equipment/personal-vehicles.md`
 - `rules/vehicles-and-mechs/overview.md`
 - `rules/vehicles-and-mechs/piloting.md`
 - `rules/vehicles-and-mechs/gunnery.md`

@@ -103,4 +103,12 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Open Questions
 
-- Should this issue split if the hazard summaries grow too large, especially planetary conditions versus equipment aftermath?
+- Resolved: the issue stayed cohesive by writing concise routing aids rather than table-heavy summaries.
+
+## Completion Notes
+
+- Added `rules/special/planetary-conditions.md`, `rules/special/creatures.md`, and `rules/special/diseases.md`.
+- Added `rules/equipment/battle-armor-and-exoskeletons.md`, `rules/equipment/prosthetics-and-implants.md`, `rules/equipment/drugs-and-poisons.md`, and `rules/equipment/personal-vehicles.md`.
+- Added `docs/current/EQUIPMENT_HAZARD_SOURCE_REVIEW_VALIDATION.md`.
+- Updated router, page-reference index, rules map, subsystem index, manifest metadata, related equipment/campaign/vehicle summaries, roadmap, and task state.
+- Preserved table/catalog/stat-block boundaries and framed sensitive medical, disease, drug, poison, and implant topics as fictional game procedures only.
