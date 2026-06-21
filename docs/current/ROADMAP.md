@@ -188,7 +188,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done in issue `#31`: define GM context packet design.
   - Done in issue `#32`: define campaign memory strata and semantic checkpoints.
   - Done in issue `#33`: prototype GM context packet helper after issue `#31` defines the packet shape.
-  - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
+  - Done in issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
 - Deferred until the design proves useful: vector-memory experiments, model-specific prompt tuning, automatic narrative summary rewrites, and any direct MekHQ writeback behavior.
 
 ### GM Context Dependency Order
@@ -197,10 +197,20 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 2. Done in issue `#31`: `docs/current/GM_CONTEXT_PACKET_DESIGN.md` defines packet layers, authority order, source files, mode differences, MekHQ pending-intent handling, and helper requirements.
 3. Done in issue `#32`: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` defines memory strata, checkpoint triggers, file ownership, correction handling, MekHQ intent boundaries, and stale-summary precedence.
 4. Done in issue `#33`: `scripts/build-gm-context-packet.ps1` reports packet inputs without inventing facts, interpreting rules, reading protected source, or mutating campaign files.
-5. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
+5. Done in issue `#34`: `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` and `scripts/test-gm-context-regressions.ps1` validate continuity, rules routing, structured-state precedence, stale-memory avoidance, protected-source boundaries, tactical handoff expectations, and MekHQ ownership boundaries against repeatable scenarios.
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Add GM context regression scenarios
+
+- Status: Done
+- Issue: `#34`
+- Scenarios: `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md`
+- Tests: `scripts/test-gm-context-regressions.ps1`
+- Mode: Project development / validation
+- Goal: Create regression scenarios for GM context, continuity, rules routing, and state ownership so future changes can be checked against known failure modes.
+- Acceptance: scenario document covers continuity, rules routing, state ownership, corrected/stale memory, tactical handoff, and MekHQ boundary cases; scripted suite verifies active campaign selection, recent and durable memory separation, structured-state precedence, rules routing inputs, missing-file warnings, protected-source boundaries, and read-only helper behavior; manual checks are separated from scripted checks; `scripts/test-all.ps1`, command docs, roadmap, and tasks are updated.
 
 ### Prototype GM context packet helper
 

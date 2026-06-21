@@ -28,6 +28,10 @@ $suites = @(
     @{
         Name = "GM context packet helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-gm-context-packet.ps1"
+    },
+    @{
+        Name = "GM context regression scenarios"
+        Path = Join-Path $repoRoot "scripts\test-gm-context-regressions.ps1"
     }
 )
 

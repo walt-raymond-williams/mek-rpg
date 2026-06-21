@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#34`: add GM context regression scenarios after issue `#33` provides helper output or a stable packet assembly target.
 - Issue `#45`: add MekHQ-linked GM context packet regression scenarios after issue `#33` provides the helper output.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
@@ -45,6 +44,7 @@
 
 ## Done
 
+- Issue `#34` implemented: added `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` plus `scripts/test-gm-context-regressions.ps1` to document manual and scripted context scenarios for active campaign selection, recent/durable memory separation, structured-state precedence, corrected/stale memory behavior, rules routing, protected-source boundaries, tactical handoff, MekHQ ownership boundaries, and read-only packet assembly; integrated the scripted suite into `scripts/test-all.ps1` and command docs.
 - Issue `#33` implemented: added `scripts/build-gm-context-packet.ps1` and `scripts/test-build-gm-context-packet.ps1` to report ordered GM context packet source files for the active or explicit campaign, flag missing or unsafe active state, preserve protected-source/no-rules-interpretation boundaries, optionally append validator output, and integrate with `scripts/test-all.ps1`; documented usage in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
 - Issue `#32` implemented: expanded `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` with memory strata, semantic checkpoint triggers, file ownership rules, correction/supersession handling, stale-summary precedence, and MekHQ pending-intent boundaries; updated `gm/state-save-checklist.md`, `campaigns/README.md`, and roadmap/task tracking.
 - Issue `#31` implemented: added `docs/current/GM_CONTEXT_PACKET_DESIGN.md` to define GM context packet authority order, inputs, layers, mode differences, MekHQ-linked pending-intent handling, source boundaries, packet skeleton, helper requirements for issue `#33`, and follow-up boundaries; updated `gm/session-procedure.md` to use the packet design before play.
