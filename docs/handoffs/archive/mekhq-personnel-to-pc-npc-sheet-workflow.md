@@ -96,7 +96,15 @@ git check-ignore source/atow-text/page-001.txt
 
 ## Open Questions
 
-- Should the first implementation be documentation-only, or should bootstrap output immediately generate richer imported-person entries?
-- Should expanded NPC generation remain sampled/capped, or should it produce full roster sections with terse entries?
-- Should linked PCs and linked NPCs share one sheet schema with different headings, or use separate PC/NPC variants?
-- After issue `#60`, should A Time of War sheet-gap fields become stricter or validator-backed?
+- Resolved for issue `#65`: first implementation is documentation-only. Bootstrap stays sparse because refresh/merge behavior needs real play pressure and focused fixture coverage.
+- Resolved for issue `#65`: expanded NPC generation remains selective; large rosters stay in MekHQ and `mekhq-bridge.md` cross-references until a person becomes scene-relevant.
+- Resolved for issue `#65`: linked PCs and NPCs share the same boundary pattern but use PC/NPC-specific entry variants.
+- Deferred: stricter A Time of War sheet-gap validation can be added later after real linked PC/NPC entries exist.
+
+## Completion Notes
+
+- Added `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md`.
+- Documented current parsed personnel coverage, linked-person expansion rules, PC/NPC entry shapes, import refresh behavior, discrepancy handling, and the no-code decision.
+- Updated MekHQ bootstrap and bridge data model docs to route richer linked-person entries through the new workflow.
+- Updated campaign README and template `pcs.md`/`npcs.md` with MekHQ-linked entry templates.
+- Preserved boundaries: no raw MekHQ saves/XML, no direct MekHQ writeback, no invented A Time of War stats from MekHQ role/rank fields.

@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#65`: create MekHQ personnel-to-PC/NPC sheet workflow, with active handoff `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`, to turn parsed MekHQ personnel into useful campaign-local PC/NPC entries without inventing A Time of War stats.
+- No open GitHub issue is currently selected.
 
 ## Next
 
@@ -24,6 +24,7 @@
 
 ## Done
 
+- Issue `#65` implemented: added `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md` to define MekHQ-linked PC/NPC ownership boundaries, reusable linked-person entry shapes, expansion rules, import refresh behavior, discrepancy handling, and an explicit documentation-only/no-code decision; updated bootstrap/data-model/campaign template docs and archived the handoff.
 - Issue `#64` implemented: added source-reviewed GM and campaign orientation routing aids for intro-to-play, factions/history, source handoff, adjudication posture, NPCs/encounters, GM tips, adventure seed routing, rank/title/power, world aesthetics, worldbuilding categories, and world-profile lookup; updated router, page references, rules map, subsystem index, manifest metadata, cross-links, validation notes, and archived the handoff while preserving lore/seed/profile/table boundaries.
 - Issue `#63` implemented: added source-reviewed equipment and hazard routing aids for planetary conditions, creatures, diseases, battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel; updated router, page references, rules map, subsystem index, manifest metadata, cross-links, validation notes, and archived the handoff while preserving table/catalog/stat-block boundaries.
 - Issue `#62` implemented: added source-reviewed tactical addendum routing aids for tactical scope, turn/initiative, vehicle actions, tactical damage/traits, heat, and Special Pilot Abilities; updated router, page references, rules map, subsystem index, manifest metadata, vehicle/GM cross-links, validation notes, and archived the handoff while preserving Classic BattleTech/MegaMek/MekHQ tactical authority.

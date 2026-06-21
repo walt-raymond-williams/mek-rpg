@@ -22,8 +22,8 @@ The helper creates the folder only when it does not already exist and does not c
 
 - `overview.md`: campaign premise, status, canon policy, and table-level assumptions.
 - `current-state.md`: where play resumes, current date, active scene, and immediate next prompt.
-- `pcs.md`: player characters, conditions, gear, goals, and sheet gaps.
-- `npcs.md`: named NPCs, locations, affiliations, attitudes, goals, secrets, and status.
+- `pcs.md`: player characters, conditions, gear, goals, sheet gaps, and MekHQ-linked PC overlays when applicable.
+- `npcs.md`: named NPCs, locations, affiliations, attitudes, goals, secrets, status, and important MekHQ-linked personnel overlays when applicable.
 - `factions.md`: organizations, agendas, posture, assets, and important NPCs.
 - `locations.md`: places introduced during play and what matters there.
 - `assets.md`: money, ships, vehicles, contracts, permits, repairs, debts, and cargo.
@@ -50,6 +50,10 @@ When a completed `session-log.md` should be preserved wholesale, run `./scripts/
 Vehicle, BattleMech, battle armor, aerospace, DropShip, property, cargo, contract-right, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `docs/current/ASSET_SHEET_SCHEMA.md`, `rules/campaign/transport-and-large-assets.md`, and `rules/vehicles-and-mechs/overview.md` to decide what to record: stable slug, category, status, evidence labels, owner/controller, ownership evidence, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, MekHQ references, tactical handoff notes, and open source/tool lookups.
 
 Keep confirmed hard facts separate from RPG narrative memory. In MekHQ-linked campaigns, exact unit condition, funds, cargo, markets, repairs, rosters, contracts, and tactical outcomes remain MekHQ-owned until imported from a saved MekHQ campaign.
+
+## MekHQ-Linked Personnel Sheets
+
+For MekHQ-linked campaigns, use `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md` when expanding imported personnel into `pcs.md` or `npcs.md`. Preserve MekHQ person ids exactly, keep imported roster facts in a labeled MekHQ-owned block, and keep A Time of War overlays, motives, secrets, relationships, scene memory, and sheet gaps in MEK-RPG-owned blocks. Do not infer full RPG stats from MekHQ role, rank, assignment, or availability fields.
 
 ## MekHQ-Linked Pending Actions
 

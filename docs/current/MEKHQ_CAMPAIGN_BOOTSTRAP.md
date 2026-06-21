@@ -41,6 +41,8 @@ If no selector is supplied, the helper chooses the first imported person with `c
 
 The selected viewpoint is a play camera, not a final rules sheet. A Time of War attributes, skills, traits, Edge, XP, gear, private goals, personality, secrets, and relationship state remain sparse or TBD until established in MEK-RPG.
 
+For richer linked `pcs.md` and `npcs.md` entries, use `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md`. Bootstrap output is intentionally sparse and should not be treated as a refresh/merge tool for existing RPG memory.
+
 ## Bridge File Convention
 
 `mekhq-bridge.md` is the campaign-local technical bridge note. It should contain:
@@ -55,6 +57,8 @@ The selected viewpoint is a play camera, not a final rules sheet. A Time of War 
 Keep table-facing campaign premise and scene state in the normal campaign files. Keep technical import metadata, unsupported fields, and ID cross-references in `mekhq-bridge.md`.
 
 `pending-mekhq-actions.md` is the campaign-local manual application queue. Use it for proposed or committed hard ledger changes that must be applied in MekHQ and confirmed by a later import before becoming final facts.
+
+`pcs.md` and `npcs.md` may contain expanded MekHQ-linked person entries. Keep MekHQ-owned roster fields in a clearly labeled block, keep A Time of War overlays and RPG memory in separate blocks, and preserve MekHQ person ids exactly. Do not infer full RPG stats from imported role/rank fields.
 
 ## Ownership Boundary
 

@@ -91,11 +91,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - Status: Done
 - Issue: `#65`
-- Handoff: `docs/handoffs/active/mekhq-personnel-to-pc-npc-sheet-workflow.md`
+- Handoff: `docs/handoffs/archive/mekhq-personnel-to-pc-npc-sheet-workflow.md`
 - Mode: Project development
 - Goal: define how parsed MekHQ personnel become useful MEK-RPG `pcs.md` and `npcs.md` entries while preserving MekHQ ownership of roster facts and MEK-RPG ownership of A Time of War overlays, motives, relationships, goals, secrets, scene memory, and sheet gaps.
 - Starting point: `scripts/summarize-mekhq-save.py` already extracts person id, display name, role, rank, faction, assignment, availability, injury/fatigue flags, commander flags, and personnel market applicants; `bootstrap-mekhq-campaign.py` already writes a selected viewpoint PC stub, sampled NPC stubs, and bridge cross-references.
 - Acceptance: document the reusable linked-person sheet shape, selection/expansion rules, import refresh behavior, discrepancy handling, and whether bootstrap/helper code should change now or later; add focused tests if generated output changes.
+- Outcome: documentation-only first pass in `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md`; bootstrap remains a sparse one-time campaign creation helper, while a future personnel refresh/merge helper should wait for real play pressure and focused fixture coverage.
 - Boundary: do not invent full A Time of War stats from MekHQ role/rank fields, do not write to MekHQ saves or raw XML, and do not commit raw MekHQ payloads.
 
 ### Next rules source-review expansion wave
