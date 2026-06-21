@@ -3,6 +3,7 @@
 ## Now
 
 - Issue `#59`: keep the next rules source-review expansion wave visible while child issues `#60`-`#64` are completed.
+- Issue `#66`: track MekHQ bridge primitives follow-up from the MegaMek workspace assessment while child issues `#67`-`#69` are completed.
 
 ## Next
 
@@ -12,6 +13,9 @@
 - Issue `#62`: source-review tactical addendum boundaries, with active handoff `docs/handoffs/active/source-review-tactical-addendum-boundaries.md`.
 - Issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
 - Issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
+- Issue `#67`: consume future MekHQ read-only checkpoint export, with active handoff `docs/handoffs/active/consume-mekhq-read-only-checkpoint-export.md`.
+- Issue `#68`: document headless MekHQ day-advance risk, with active handoff `docs/handoffs/active/document-headless-day-advance-risk.md`.
+- Issue `#69`: plan contract-market accept-decline bridge probe, with active handoff `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`.
 
 ## Backlog
 

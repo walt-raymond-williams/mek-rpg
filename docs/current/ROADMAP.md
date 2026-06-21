@@ -50,17 +50,40 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
 - The next rules source-review expansion wave is now tracked under epic issue `#59`, with executable child issues `#60`-`#64` and active handoffs.
+- MegaMek workspace bridge-primitives feedback is now tracked under epic issue `#66`, with child issues `#67`-`#69` for read-only checkpoint export consumption, headless day-advance risk documentation, and a gated contract-market accept/decline probe plan.
 
 ## Active Work
 
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
+- Issue `#66`: MekHQ bridge primitives follow-up queue tracks the MegaMek workspace recommendation to prioritize read-only checkpoint export, keep headless day advancement marked risky, and gate contract-market accept/decline write-side planning.
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the next rules wave. Rules source-review expansion is now issued as `#59`-`#64`. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the next rules wave or bridge-primitives follow-up. Rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up is issued as `#66`-`#69`. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
+
+### MekHQ bridge primitives follow-up queue
+
+- Status: Open
+- Epic issue: `#66`
+- Mode: Project development / cross-workspace coordination
+- Source input: `C:\Users\waltr\Documents\megamek-workspace\docs\current\MEK_RPG_MEKHQ_BRIDGE_PRIMITIVES.md`
+- Goal: consume the MegaMek workspace source-backed bridge-primitives assessment while keeping MEK-RPG on a read-only-first path and avoiding premature write automation.
+- Key findings to preserve:
+  - Read-only checkpoint export is the near-term recommendation.
+  - Headless day advancement is not low-risk because `CampaignNewDayManager#newDay()` reaches GUI state and can trigger prompts/events.
+  - The first possible write-side follow-up is a narrow contract-market accept/decline command, but only after stable contract IDs and prompt policy are validated.
+- Child issues:
+  - Open issue `#67`: consume future MekHQ read-only checkpoint export, with active handoff `docs/handoffs/active/consume-mekhq-read-only-checkpoint-export.md`.
+  - Open issue `#68`: document headless MekHQ day-advance risk, with active handoff `docs/handoffs/active/document-headless-day-advance-risk.md`.
+  - Open issue `#69`: plan contract-market accept-decline bridge probe, with active handoff `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`.
+- Dependency order:
+  1. Issue `#67` first: define how MEK-RPG should consume a MekHQ-owned read-only checkpoint export and compare it to the current Python prototype output.
+  2. Issue `#68` next: make sure MEK-RPG docs do not imply low-risk headless day advancement after the MegaMek source review found GUI coupling.
+  3. Issue `#69` next: plan contract-market accept/decline as a gated future write-side probe with stable IDs, prompt policy, disposable validation, and saved re-import confirmation.
+- Boundary: do not create broad writeback automation, direct save/XML edits, or headless day-advance implementation issues from MEK-RPG until the MegaMek workspace supplies source-backed safe primitives and prompt policies.
 
 ### MekHQ personnel-to-PC/NPC sheet workflow
 
