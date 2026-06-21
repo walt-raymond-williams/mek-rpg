@@ -39,7 +39,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-- None.
+### Define MekHQ-linked one-day play loop and writeback boundaries
+
+- Status: Open / Now
+- Issue: `#29`
+- Handoff: `docs/handoffs/active/define-mekhq-linked-one-day-play-loop.md`
+- Mode: Project development / play workflow design
+- Goal: define the safe one-day RPG play loop for MekHQ-linked campaigns and document what remains MEK-RPG-only memory, what the user applies manually in MekHQ, what can be handed off as artifacts, what needs future source-backed automation, and what is unsafe.
+- Dependencies: issue `#26` completed the ownership and campaign-folder mapping in `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`.
+- Blocks: issue `#28` campaign bootstrap shape and informs issue `#27` helper output priorities.
 
 ## Ready For Issue Candidates
 
