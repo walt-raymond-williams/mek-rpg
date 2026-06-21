@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#58`: add campaign-local session archive helper, with active handoff `docs/handoffs/active/add-campaign-local-session-archive-helper.md`.
 - Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
 - Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
@@ -18,7 +17,6 @@
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; current infrastructure work is tracked in issues `#46`-`#51`.
 - Future read-only MEK-RPG web dashboard implementation should start with a read-only JSON adapter following `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`, before any Sunnytown-derived UI or write controls.
-- Campaign-local session archive helper work is tracked in issue `#58`.
 - Richer DropShip and unit asset sheet work is tracked in issue `#54` after transport ownership/source coverage issues `#52` and `#53`.
 - Repeat manual validation/playtest checkpoints after adding major playable layers.
 
@@ -28,6 +26,7 @@
 
 ## Done
 
+- Issue `#58` implemented: added `scripts/archive-campaign-session.ps1` and disposable fixture coverage to preserve exact `session-log.md` text in campaign-local `previous-sessions.md`, require explicit campaign selection and `-ConfirmArchive` before mutation, support `-WhatIf`, create temp backups, optionally reset the active session log, and document the command in campaign/save tooling docs.
 - Issue `#57` implemented: added `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md` with a file/CLI JSON-first adapter contract for active campaign selection, campaign file inventory, GM context packet inspection, optional sanitized MekHQ summary input, warnings/errors, protected path exclusions, read-only proof points, fixture strategy, and follow-up implementation guidance.
 - Issue `#56` implemented: added `docs/current/READ_ONLY_DASHBOARD_EVALUATION.md` to define target users, read-only workflows, data sources, ownership boundaries, privacy/protected-source/MekHQ-save boundaries, hard exclusions for writeback/control actions, and a recommendation to proceed to issue `#57` for a data adapter contract before UI work.
 - Issue `#55` implemented: added `gm/tactical-encounter-handoff-checklist.md` with switch triggers, pre-handoff sources, forces, pilots, skills, unit state, terrain, objectives, deployment, withdrawal, salvage stakes, MekHQ-linked scenario/import boundaries, and return-to-campaign updates; linked it from GM handoff docs, mission/encounter templates, state-save routing, vehicle conversion guidance, and the MekHQ requirements matrix.

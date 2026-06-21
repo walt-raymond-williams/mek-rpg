@@ -42,6 +42,10 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-build-gm-context-packet.ps1"
     },
     @{
+        Name = "Campaign session archive helper coverage"
+        Path = Join-Path $repoRoot "scripts\test-archive-campaign-session.ps1"
+    },
+    @{
         Name = "GM context regression scenarios"
         Path = Join-Path $repoRoot "scripts\test-gm-context-regressions.ps1"
     },

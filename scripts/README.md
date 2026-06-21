@@ -9,6 +9,7 @@
 - `report-rules-coverage.ps1`: reports rules coverage by subsystem and status from committed manifest metadata, with text output by default and optional JSON.
 - `route-rules-prompt.ps1`: scores a short rules/play prompt against committed router rows and reports candidate files, manifest statuses, page references, and warnings without answering the rule.
 - `build-gm-context-packet.ps1`: reports the ordered GM context packet source files for the active or explicit campaign without interpreting rules, summarizing scenes, or mutating campaign files.
+- `archive-campaign-session.ps1`: appends an exact copy of a campaign `session-log.md` into campaign-local `previous-sessions.md`, with explicit confirmation, optional reset, and temp backups.
 - `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
 - `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary.
@@ -20,6 +21,7 @@
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
 - `test-route-rules-prompt.ps1`: smoke-tests the rules route helper text and JSON output.
+- `test-archive-campaign-session.ps1`: runs disposable campaign-save coverage for the session archive helper's confirmation, preview, archive, reset, validation, and cleanup behavior.
 - `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-gm-context-regressions.ps1`: runs disposable context-packet regression scenarios for active campaign selection, memory layering, structured-state precedence, rules routing, missing-file warnings, protected-source boundaries, and read-only behavior.
 - `test-mekhq-context-packet.ps1`: runs disposable MekHQ-linked context packet scenarios for bridge metadata, unresolved pending actions, pending-intent labeling, stale-memory avoidance, tactical handoff routing, protected-source/no-writeback boundaries, and read-only behavior.
@@ -34,7 +36,11 @@
 ./scripts/validate-campaign-state.ps1 -StrictActive
 ./scripts/build-gm-context-packet.ps1
 ./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
+./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ArchiveTitle "Session 3 - Depot Escape"
+./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ResetSessionLog -ArchiveTitle "Session 3 - Depot Escape"
+./scripts/archive-campaign-session.ps1 -UseActive -ConfirmArchive -WhatIf
 ./scripts/test-build-gm-context-packet.ps1
+./scripts/test-archive-campaign-session.ps1
 ./scripts/test-gm-context-regressions.ps1
 ./scripts/test-mekhq-context-packet.ps1
 ./scripts/test-validate-campaign-state.ps1
@@ -47,6 +53,19 @@ The validator reports `OK`, `WARN`, and `FAIL` lines. It checks `campaign-state/
 `test-validate-campaign-state.ps1` uses a disposable temp repository fixture through the validator's `-RepoRoot` test hook. It checks valid explicit campaign validation, missing standard file failure, missing top-level heading warnings, `-StrictActive` with no active campaign, legacy flat `campaign-state/` active pointer rejection, unsafe campaign id rejection, and one live explicit campaign validation.
 
 When required campaign save files or persistent campaign-state structures change, update `validate-campaign-state.ps1` or add a narrower companion validator as part of the same task. Keep this validator focused on shared save-folder structure and active-campaign safety; deeper checks for character sheets, vehicles, contracts, or other specialized records can live in separate scripts when that keeps the boundary clearer.
+
+## Session Archive Helper
+
+```powershell
+./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ArchiveTitle "Session 3 - Depot Escape"
+./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ResetSessionLog -ArchiveTitle "Session 3 - Depot Escape"
+./scripts/archive-campaign-session.ps1 -UseActive -ConfirmArchive -WhatIf
+./scripts/test-archive-campaign-session.ps1
+```
+
+The archive helper requires either an explicit campaign id or `-UseActive`, and it refuses to mutate files unless `-ConfirmArchive` is supplied. Use `-WhatIf` to preview the selected campaign, target files, title, reset choice, and backup directory without changing anything.
+
+The helper appends the exact current `session-log.md` text to `previous-sessions.md` with a timestamped wrapper. It does not summarize, rewrite, or invent completed-session text. Before changing files, it copies `session-log.md` and `previous-sessions.md` to a temp backup folder. Add `-ResetSessionLog` only when the current session log should be replaced with a fresh template containing an archive note.
 
 ## GM Context Packet
 
@@ -133,4 +152,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper smoke tests, GM context packet helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper smoke tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.

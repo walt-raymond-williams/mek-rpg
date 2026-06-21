@@ -43,6 +43,8 @@ Use `rules/campaign/overview.md` as the rules route for persistent consequences 
 
 Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` and `gm/state-save-checklist.md` for the full memory-strata and semantic-checkpoint policy. Update campaign files when a meaningful event changes future play, not on a fixed turn count. Structured state files outrank old narrative summaries; keep old summaries only when they are clearly archived, corrected, or still useful context.
 
+When a completed `session-log.md` should be preserved wholesale, run `./scripts/archive-campaign-session.ps1 <campaign-id> -ConfirmArchive -ArchiveTitle "<title>"`. The helper appends an exact copy to `previous-sessions.md`, creates temp backups, and never invents a summary; use `-WhatIf` to preview and `-ResetSessionLog` only when the active log should roll forward.
+
 ## Vehicle And Unit Assets
 
 Vehicle, BattleMech, battle armor, aerospace, DropShip, property, cargo, contract-right, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `docs/current/ASSET_SHEET_SCHEMA.md`, `rules/campaign/transport-and-large-assets.md`, and `rules/vehicles-and-mechs/overview.md` to decide what to record: stable slug, category, status, evidence labels, owner/controller, ownership evidence, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, MekHQ references, tactical handoff notes, and open source/tool lookups.

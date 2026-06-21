@@ -6,7 +6,7 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 
 1. Update `current-state.md` with the exact resume point, current location, current date or in-day time, immediate pressure, current party, and next prompt.
 2. Update `session-log.md` with active or most recent session notes: concise summary, important choices, rolls, rulings, consequences, rewards, costs, queued pending item ids, and next-session prompts.
-3. When a session is complete, append a durable dated summary to `previous-sessions.md` before `session-log.md` is reused for the next session.
+3. When a session is complete, append durable completed-session material to `previous-sessions.md` before `session-log.md` is reused for the next session. Use `./scripts/archive-campaign-session.ps1 <campaign-id> -ConfirmArchive -ArchiveTitle "<title>"` when an exact-copy archive is useful; add `-ResetSessionLog` only after confirming the active log should be refreshed.
 4. Update `pcs.md` for injuries, fatigue, gear, money, goals, sheet gaps, or player-specific notes.
 5. Update `npcs.md` for new NPCs, current whereabouts, attitude changes, promises, secrets, and last-seen status.
 6. Update `factions.md` for reputation, obligations, hostility, favors, assets, or new faction pressure.

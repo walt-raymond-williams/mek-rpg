@@ -46,7 +46,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
-- The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work is tracked in issue `#58`.
+- The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
 
 ## Active Work
 
@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, and session archive helper issue `#58` are the active staged exploration paths. Rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard boundary issue `#56`, dashboard data contract issue `#57`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued. Open MekHQ bridge issue `#25` and MekHQ manual verification issue `#37` are the active staged exploration paths. Rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
 
@@ -102,11 +102,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Child issues:
   - Done in issue `#56`: evaluate read-only MEK-RPG dashboard boundaries.
   - Done in issue `#57`: design read-only dashboard data adapter contract after issue `#56` recommended proceeding.
-  - Issue `#58`: add campaign-local session archive helper.
+  - Done in issue `#58`: add campaign-local session archive helper.
 - Dependency order:
   1. Done in issue `#56`: dashboard scope and exclusions are documented.
   2. Done in issue `#57`: data ownership and serialization are defined before any frontend exists.
-  3. Issue `#58` is independent convenience automation, but must stay conservative with live campaign logs.
+  3. Done in issue `#58`: session archive automation stays conservative with live campaign logs.
 - Boundary: no dashboard write controls, live movement controls, Sunnytown-derived gameplay surface, direct MekHQ writeback, protected source display, or raw MekHQ save reads in the dashboard layer.
 - Decision: issue `#56` recommends campaign state audit and GM context inspection as the first dashboard value, and issue `#57` defines a file/CLI JSON contract before any UI or local HTTP wrapper exists.
 

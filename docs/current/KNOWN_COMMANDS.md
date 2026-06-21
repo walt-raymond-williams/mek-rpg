@@ -30,7 +30,11 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/validate-campaign-state.ps1 -StrictActive
 ./scripts/build-gm-context-packet.ps1
 ./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
+./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ArchiveTitle "Session 3 - Depot Escape"
+./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ResetSessionLog -ArchiveTitle "Session 3 - Depot Escape"
+./scripts/archive-campaign-session.ps1 -UseActive -ConfirmArchive -WhatIf
 ./scripts/test-build-gm-context-packet.ps1
+./scripts/test-archive-campaign-session.ps1
 ./scripts/test-gm-context-regressions.ps1
 ./scripts/test-mekhq-context-packet.ps1
 ./scripts/test-validate-campaign-state.ps1
@@ -57,7 +61,7 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 ./scripts/test-all.ps1
 ```
 
-`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `build-gm-context-packet.ps1` reports the ordered context packet sources for the active or explicit campaign without interpreting rules, summarizing scenes, advancing time, applying MekHQ changes, reading ignored raw source text, or mutating campaign files. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes. `summarize-mekhq-save.py` reads MekHQ saves without writing to them and emits JSON or Markdown bridge facts; see `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md` for mappings and limitations. `bootstrap-mekhq-campaign.py` creates a new MEK-RPG campaign save from summary JSON, refuses overwrites, leaves the active-campaign pointer unchanged, and writes campaign-local MekHQ bridge metadata; see `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`.
+`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `build-gm-context-packet.ps1` reports the ordered context packet sources for the active or explicit campaign without interpreting rules, summarizing scenes, advancing time, applying MekHQ changes, reading ignored raw source text, or mutating campaign files. `archive-campaign-session.ps1` appends the exact current campaign `session-log.md` text into `previous-sessions.md`, requires explicit campaign selection and `-ConfirmArchive` for mutation, supports `-WhatIf`, creates temp backups, and only resets the session log when `-ResetSessionLog` is supplied. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes. `summarize-mekhq-save.py` reads MekHQ saves without writing to them and emits JSON or Markdown bridge facts; see `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md` for mappings and limitations. `bootstrap-mekhq-campaign.py` creates a new MEK-RPG campaign save from summary JSON, refuses overwrites, leaves the active-campaign pointer unchanged, and writes campaign-local MekHQ bridge metadata; see `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`.
 
 `test-mekhq-pending-workflow.ps1` uses a sanitized fixture and disposable campaign folders to regression-check pending-action ownership, bootstrap output, validator coverage, no-writeback boundaries, and protected-source ignore rules.
 
@@ -79,11 +83,13 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `test-build-gm-context-packet.ps1` uses a disposable temp repository fixture to check active and explicit campaign resolution, packet section output, protected-source/no-interpretation boundaries, missing-file warnings, legacy active pointer failure, and read-only behavior.
 
+`test-archive-campaign-session.ps1` uses a disposable campaign copy to check confirmation refusal, preview no-op behavior, exact session text preservation, optional reset, validator compatibility, temp backups, and cleanup.
+
 `test-gm-context-regressions.ps1` uses a disposable temp repository fixture to check deterministic context regression scenarios from `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md`: active campaign selection, recent and durable memory separation, structured-state precedence, rules routing boundaries, missing-file warnings, protected-source boundaries, and read-only packet assembly.
 
 `test-mekhq-context-packet.ps1` uses a disposable MekHQ-linked campaign fixture to check context packet bridge metadata, unresolved pending actions, manual-intent labeling, stale-memory avoidance, rules/tactical handoff source references, protected-source/no-writeback boundaries, and read-only behavior.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-build-gm-context-packet.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
 
 ## Verify Protected Source Is Not Staged
 
