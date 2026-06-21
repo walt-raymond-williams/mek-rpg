@@ -11,7 +11,6 @@
 ## Backlog
 
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
-- Issue `#75`: prototype the basic check resolver contract after the JSON contract and authority gate are defined.
 - Issue `#76`: prototype the opposed check resolver contract after the basic check resolver shape exists.
 - Issue `#78`: add the state-change proposal schema before combat checkpoint helpers emit campaign-update suggestions.
 - Issue `#83`: add golden ruling regression scenarios after route tests and authority-gate behavior exist.
@@ -31,6 +30,7 @@
 
 ## Done
 
+- Issue `#75` implemented: added `scripts/resolve-basic-check.ps1`, `scripts/test-resolve-basic-check.ps1`, and basic-check fixtures to prototype `core.basic_check` as JSON input/output with authority consumption, roll breakdown, margin/degree, citations, warnings, empty proposed state changes, refusal behavior, and no-hidden-mutation proof.
 - Issue `#81` implemented: extended `scripts/validate-rules-indexes.ps1` and `scripts/test-validate-rules-indexes.ps1` to check committed source-offset metadata, PDF/printed page offset consistency, manifest/page-reference page coverage, and summary `Source References` coverage without reading protected raw source.
 - Issue `#73` implemented: added `docs/current/SCRIPT_MECHANIC_CONTRACT_AUDIT.md` to classify existing scripts as mechanic-adjacent utilities, mechanic prototype candidates, safety/authority infrastructure, routing/metadata infrastructure, campaign infrastructure, MekHQ bridge infrastructure, source-processing support, or test infrastructure; recommended no premature service conversion or retirements.
 - Issue `#80` implemented: added `docs/current/RULING_AUTHORITY_GATE.md`, `scripts/check-ruling-authority.ps1`, and `scripts/test-check-ruling-authority.ps1` to classify routed prompts as authoritative, provisional, source-lookup-required, external-authority-required, cannot-adjudicate, or blocked/missing-route; wired the suite into `scripts/test-all.ps1` and linked the gate from rules adjudication and command docs.

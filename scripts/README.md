@@ -9,6 +9,7 @@
 - `report-rules-coverage.ps1`: reports rules coverage by subsystem and status from committed manifest metadata, with text output by default and optional JSON.
 - `route-rules-prompt.ps1`: scores a short rules/play prompt against committed router rows and reports candidate files, manifest statuses, page references, and warnings without answering the rule.
 - `check-ruling-authority.ps1`: evaluates the primary route-helper candidate and reports whether the prompt is authoritative, provisional, source-lookup-required, external-authority-required, cannot-adjudicate, or blocked/missing-route without answering the rule.
+- `resolve-basic-check.ps1`: JSON-in/JSON-out prototype for `core.basic_check` that consumes an authority envelope, explicit target number, modifiers, and a fixed or random `2d6` roll; it returns a provisional/resolved result or refuses unsafe authority without mutating state.
 - `build-gm-context-packet.ps1`: reports the ordered GM context packet source files for the active or explicit campaign without interpreting rules, summarizing scenes, or mutating campaign files.
 - `archive-campaign-session.ps1`: appends an exact copy of a campaign `session-log.md` into campaign-local `previous-sessions.md`, with explicit confirmation, optional reset, and temp backups.
 - `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
@@ -26,6 +27,7 @@
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
 - `test-route-rules-prompt.ps1`: tests the rules route helper text/JSON output plus golden prompt fixtures for common RPG procedures, missing routes, tactical handoff, and source-review gaps.
 - `test-check-ruling-authority.ps1`: tests the ruling authority gate across live route prompts and disposable status fixtures for draft, source-reviewed-routing-aid, mapped-only, partial-draft, source-lookup-only, needs-source-review, missing metadata, tactical handoff, and missing routes.
+- `test-resolve-basic-check.ps1`: tests the basic check resolver success, source-lookup refusal, citation/warning preservation, and no-hidden-mutation behavior.
 - `test-archive-campaign-session.ps1`: runs disposable campaign-save coverage for the session archive helper's confirmation, preview, archive, reset, validation, and cleanup behavior.
 - `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-gm-context-regressions.ps1`: runs disposable context-packet regression scenarios for active campaign selection, memory layering, structured-state precedence, rules routing, missing-file warnings, protected-source boundaries, and read-only behavior.
@@ -110,6 +112,8 @@ The roller reports the expression, individual dice, modifier, and total. It does
 ./scripts/check-ruling-authority.ps1 "Can I shoot from cover?"
 ./scripts/check-ruling-authority.ps1 "BattleMech heat and tactical movement" -Format json
 ./scripts/test-check-ruling-authority.ps1
+./scripts/resolve-basic-check.ps1 -InputFile tests/fixtures/basic-check-success.fixture.json
+./scripts/test-resolve-basic-check.ps1
 ```
 
 The rules index validator checks deterministic lookup metadata only. It verifies that committed router, rules-map, page-reference, and manifest paths resolve where they should; manifest IDs are unique; allowed statuses are used; source page arrays exist where expected; PDF/printed page offsets match the committed `PDF page = printed page + 2` assumption; related IDs resolve; committed rule/index entries appear in the page-reference index; manifest source pages are covered by page-reference rows; and committed summaries with manifest coverage include matching `Source References`. Mapped-only candidate paths are warnings rather than failures because they are future summary targets, not current rules authority.
@@ -121,6 +125,8 @@ The route helper uses deterministic keyword scoring against `indexes/task-router
 `test-route-rules-prompt.ps1` uses `tests/fixtures/rules-route-golden-prompts.fixture.json` to check common route behavior for simple checks, opposed checks, Edge use, initiative, ranged and melee attacks, damage/wounds, recovery, equipment use, campaign consequences, vehicle piloting, tactical handoff, ambiguous rulings, missing rules, and source-review gaps.
 
 The ruling authority gate consumes route-helper output and evaluates the primary candidate. It returns an authority envelope for later helpers: `authoritative`, `provisional`, `source_lookup_required`, `external_authority_required`, `cannot_adjudicate`, or `blocked_missing_route`. It reports routed files, manifest ids/statuses, page-reference text, warnings, required next action, and source-boundary proof; it never answers the rule.
+
+The basic check resolver is the first narrow mechanic prototype. It requires JSON input with `mechanic_id: core.basic_check`, an authority envelope, explicit `mechanic_inputs.target_number`, optional explicit modifiers, and a fixed or random `2d6` roll. It reports roll breakdown, success/failure, margin, degree, citations, warnings, empty proposed state changes, and no-hidden-mutation proof. It refuses source-lookup, external-authority, cannot-adjudicate, and missing-route authority statuses instead of inventing mechanics.
 
 ## MekHQ Save Summaries
 
@@ -182,4 +188,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.

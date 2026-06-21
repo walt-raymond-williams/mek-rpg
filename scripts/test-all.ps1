@@ -54,6 +54,10 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-check-ruling-authority.ps1"
     },
     @{
+        Name = "Basic check resolver fixture tests"
+        Path = Join-Path $repoRoot "scripts\test-resolve-basic-check.ps1"
+    },
+    @{
         Name = "GM context packet helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-gm-context-packet.ps1"
     },

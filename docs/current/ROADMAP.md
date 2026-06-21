@@ -121,7 +121,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   5. Done issue `#80`: added a deterministic ruling authority gate.
   6. Done issue `#73`: audited existing scripts against the mechanic contract.
   7. Done issue `#81`: added page-reference and source-offset integrity checks.
-  8. Open issue `#75`: Prototype basic check resolver contract.
+  8. Done issue `#75`: prototyped the basic check resolver contract.
   9. Open issue `#76`: Prototype opposed check resolver contract.
   10. Open issue `#78`: Add state-change proposal schema.
   11. Open issue `#83`: Add golden ruling regression scenarios.
@@ -136,11 +136,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   6. Done in issue `#80`: added the ruling authority gate before broad resolver use.
   7. Done in issue `#73`: audited existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
   8. Done in issue `#81`: added page-reference/source-offset checks to reduce stale citation risk.
-  9. Prototype the basic check, then opposed check.
-  10. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
-  11. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
-  12. Prototype RPG-scale personal-combat checkpointing only after state proposals and authority behavior are explicit.
-  13. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
+  9. Done in issue `#75`: prototyped the basic check resolver contract.
+  10. Prototype the opposed check.
+  11. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
+  12. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
+  13. Prototype RPG-scale personal-combat checkpointing only after state proposals and authority behavior are explicit.
+  14. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
 - Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, failure behavior, and uncertainty labels.
 
 ### MekHQ bridge primitives follow-up queue

@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "request_id": "fixture-basic-success",
+  "mechanic_id": "core.basic_check",
+  "campaign_id": null,
+  "state_snapshot_ref": {
+    "read_files": [],
+    "unread_state_reason": "Fixture supplies all inputs.",
+    "forbidden_paths_checked": [
+      "source/atow-pdf/",
+      "source/atow-text/"
+    ]
+  },
+  "declared_action": {
+    "label": "Force a stuck hatch",
+    "intent": "Open the hatch before the patrol arrives",
+    "stakes": "On failure, lose time and make noise",
+    "scope": "rpg-scale",
+    "requested_resolution": "basic-check"
+  },
+  "participants": {
+    "actor": {
+      "id": "pc-test",
+      "display_name": "Test PC",
+      "source": "fixture"
+    }
+  },
+  "mechanic_inputs": {
+    "target_number": 7,
+    "check_basis": {
+      "kind": "skill",
+      "name": "Technician",
+      "source": "fixture"
+    },
+    "modifiers": [
+      {
+        "label": "Good tools",
+        "value": 1,
+        "source": "fixture"
+      }
+    ]
+  },
+  "roll": {
+    "mode": "fixed",
+    "expression": "2d6",
+    "values": [3, 4],
+    "reason": "Fixture-controlled result"
+  },
+  "authority": {
+    "status": "provisional",
+    "confidence": "medium",
+    "routed_files": [
+      {
+        "path": "rules/core/skill-checks.md",
+        "manifest_ids": ["core.skill-checks"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF page 41 / printed page 39",
+        "page_reference_status": "Draft",
+        "warnings": []
+      },
+      {
+        "path": "rules/core/basic-action-resolution.md",
+        "manifest_ids": ["core.basic-action-resolution"],
+        "statuses": ["draft"],
+        "source_pages": "A Time of War PDF pages 42-44 / printed pages 40-42",
+        "page_reference_status": "Draft",
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      {
+        "code": "draft-summary",
+        "severity": "caution",
+        "message": "Draft summaries can support source-aware play, but the ruling remains provisional."
+      }
+    ],
+    "required_next_action": "Read the routed committed summaries and make a cautious GM ruling."
+  }
+}
