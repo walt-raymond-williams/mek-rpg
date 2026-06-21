@@ -68,3 +68,9 @@ git status --short --branch
 ## Open Questions
 
 - None currently. If the user changes priority, update `TASKS.md` and this handoff.
+
+## Completion
+
+- Completed in issue `#70`.
+- Roadmap now marks the planning checkpoint done while child issues `#71`-`#83` remain open in dependency order.
+- Next executable issue is `#71`, the deterministic mechanics catalog.

@@ -61,7 +61,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
 - Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
-- Issue `#70`: ruling safety and deterministic mechanics maturation is the next open planning epic; child issues `#71`-`#83` are open.
+- Issue `#70`: ruling safety and deterministic mechanics maturation planning is complete; child issues `#71`-`#83` remain open in dependency order.
 
 ## Ready For Issue Candidates
 
@@ -98,8 +98,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Ruling safety and deterministic mechanics maturation
 
-- Status: Open
-- Epic issue: `#70`
+- Status: Planning complete; child queue open
+- Planning epic issue: `#70`
 - Mode: Project development / rules-assistant automation planning
 - Goal: preserve source-aware agent adjudication while adding enforceable ruling authority checks and deterministic helpers for stable, repeatable mechanics.
 - Purpose and posture:
@@ -111,23 +111,24 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - The agent remains responsible for narration, source lookup, uncertainty handling, edge-case reasoning, and deciding when a source gap or tactical handoff matters.
   - Deterministic helpers should own repeatable math, check resolution, authority/failure reporting, and state-proposal procedures where the rule shape is stable.
   - The ruling authority gate should come before broad resolver use so missing, mapped-only, source-lookup-only, or tactical-hand-off cases cannot be silently overclaimed.
+- Planning checkpoint:
+  1. Done issue `#70`: confirmed the deterministic mechanics maturation track, dependency order, and boundaries.
 - Child issues:
-  1. Open issue `#70`: Epic: Plan deterministic mechanics maturation track.
-  2. Open issue `#71`: Create deterministic mechanics catalog.
-  3. Open issue `#72`: Define standard mechanic JSON contract.
-  4. Open issue `#82`: Define BattleTech source precedence and conflict policy.
-  5. Open issue `#74`: Add golden route tests for common RPG procedures.
-  6. Open issue `#80`: Add ruling authority gate.
-  7. Open issue `#73`: Audit existing scripts against mechanic contract.
-  8. Open issue `#81`: Add page-reference and source-offset integrity checks.
-  9. Open issue `#75`: Prototype basic check resolver contract.
-  10. Open issue `#76`: Prototype opposed check resolver contract.
-  11. Open issue `#78`: Add state-change proposal schema.
-  12. Open issue `#83`: Add golden ruling regression scenarios.
-  13. Open issue `#77`: Prototype RPG-scale personal-combat checkpoint contract.
-  14. Open issue `#79`: Evaluate core library / CLI / local service migration path.
+  1. Open issue `#71`: Create deterministic mechanics catalog.
+  2. Open issue `#72`: Define standard mechanic JSON contract.
+  3. Open issue `#82`: Define BattleTech source precedence and conflict policy.
+  4. Open issue `#74`: Add golden route tests for common RPG procedures.
+  5. Open issue `#80`: Add ruling authority gate.
+  6. Open issue `#73`: Audit existing scripts against mechanic contract.
+  7. Open issue `#81`: Add page-reference and source-offset integrity checks.
+  8. Open issue `#75`: Prototype basic check resolver contract.
+  9. Open issue `#76`: Prototype opposed check resolver contract.
+  10. Open issue `#78`: Add state-change proposal schema.
+  11. Open issue `#83`: Add golden ruling regression scenarios.
+  12. Open issue `#77`: Prototype RPG-scale personal-combat checkpoint contract.
+  13. Open issue `#79`: Evaluate core library / CLI / local service migration path.
 - Dependency order:
-  1. Plan the track and confirm the child queue.
+  1. Done in issue `#70`: plan the track and confirm the child queue.
   2. Catalog candidate procedures and ownership boundaries.
   3. Define the standard JSON contract, including an authority envelope, before resolver prototypes.
   4. Define source precedence and add route fixtures so authority behavior has deterministic coverage.
