@@ -2,7 +2,7 @@
 
 Date: 2026-06-21
 
-Status: proposed tracking policy for issues `#84` through `#89`.
+Status: adopted tracking policy for completed MEK-RPG issues `#84` through `#89`; use the boundary and feedback sections for future MegaMek-side exporter coordination.
 
 Purpose: define how MEK-RPG should track its checkpoint-adapter work while giving the MegaMek workspace clear dependency points for exporter hardening, schema decisions, and "waiting on RPG team" tickets.
 
