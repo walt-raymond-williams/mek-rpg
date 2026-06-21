@@ -57,6 +57,7 @@ function Initialize-TempRepo {
         "docs/current/MEKHQ_BRIDGE_DATA_MODEL.md",
         "docs/current/MEKHQ_LINKED_PLAY_LOOP.md",
         "docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md",
+        "docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md",
         "gm/session-procedure.md",
         "gm/switch-to-classic-battletech.md",
         "indexes/task-router.md",
@@ -156,6 +157,7 @@ No direct MekHQ save or XML writeback is authorized.
     $packet = Invoke-Packet "MekHQ-linked context packet"
     Assert-True ($packet.Contains('MekHQ bridge metadata: `campaigns/mekhq-context-alpha/mekhq-bridge.md` [OK]')) "Packet includes bridge metadata file."
     Assert-True ($packet.Contains('Pending MekHQ intents: `campaigns/mekhq-context-alpha/pending-mekhq-actions.md` [OK]')) "Packet includes pending actions file."
+    Assert-True ($packet.Contains('Checkpoint warning surfacing policy: `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md` [OK]')) "Packet includes checkpoint warning surfacing policy."
     Assert-True ($packet -match "mekhq-pending-2026-06-21-045") "Packet validator output reports unresolved pending item id."
 
     Write-Step "MEKHQ-CTX-002 pending actions stay labeled as intents/manual checklists."

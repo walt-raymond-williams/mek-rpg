@@ -109,12 +109,14 @@ Inputs for MekHQ-linked campaigns:
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
+- `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md`
 - latest output from `scripts/summarize-mekhq-save.py` when explicitly imported
 
 Purpose:
 
 - identify MekHQ-owned hard facts: date, day advancement, finances, rosters, unit condition, repairs, contracts, markets, scenarios, tactical outcomes, logistics, and bridge warnings
 - preserve imported IDs and unsupported-field notes
+- classify checkpoint warnings and unsupported fields as blockers, manual-inspection items, caution notes, or FYI diagnostics before surfacing them to the GM
 
 Failure modes:
 
@@ -213,6 +215,7 @@ Inputs:
 - `rules-gaps.md`
 - `playtest-notes.md`
 - `mekhq-bridge.md` warnings and unsupported fields
+- `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md` for MekHQ-linked warning severity
 - active handoffs or issue notes when doing project development
 
 Purpose:

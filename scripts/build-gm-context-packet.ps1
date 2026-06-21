@@ -327,6 +327,7 @@ else {
     Write-SourceLine "MekHQ bridge data model" "docs/current/MEKHQ_BRIDGE_DATA_MODEL.md" -Required
     Write-SourceLine "MekHQ linked play loop" "docs/current/MEKHQ_LINKED_PLAY_LOOP.md" -Required
     Write-SourceLine "Pending application workflow" "docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md" -Required
+    Write-SourceLine "Checkpoint warning surfacing policy" "docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md" -Required
 }
 
 Write-SectionHeader "Rules Routes"

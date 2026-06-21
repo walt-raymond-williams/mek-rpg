@@ -4,6 +4,8 @@ Status: issue `#87` consumer decision for MEK-RPG checkpoint adapter experiments
 
 Purpose: define which MekHQ read-only checkpoint export fields MEK-RPG should consume directly, preserve as evidence, surface to the GM, ignore for now, or treat as blocked/unsafe before MegaMek hardens exporter output.
 
+Warning display policy: see `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md`.
+
 ## Decision
 
 MEK-RPG should keep the current top-level checkpoint shape:
