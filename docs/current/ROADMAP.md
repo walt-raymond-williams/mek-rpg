@@ -186,7 +186,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Ownership boundary: rules summaries and indexes should guide procedures; campaign save files should own persistent RPG state; narrative summaries should compress continuity but not override structured sheets; MekHQ should remain authoritative for hard logistics where the bridge applies; the LLM should frame scenes and make judgment calls from the assembled context.
 - Initial child issues:
   - Done in issue `#31`: define GM context packet design.
-  - Issue `#32`: define campaign memory strata and semantic checkpoints.
+  - Done in issue `#32`: define campaign memory strata and semantic checkpoints.
   - Issue `#33`: prototype GM context packet helper after issue `#31` defines the packet shape.
   - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
 - Deferred until the design proves useful: vector-memory experiments, model-specific prompt tuning, automatic narrative summary rewrites, and any direct MekHQ writeback behavior.
@@ -195,12 +195,22 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 1. Done in issue `#35`: pending MekHQ application item handling uses `pending-mekhq-actions.md`, so MekHQ-linked context packets have a concrete pending-action source.
 2. Done in issue `#31`: `docs/current/GM_CONTEXT_PACKET_DESIGN.md` defines packet layers, authority order, source files, mode differences, MekHQ pending-intent handling, and helper requirements.
-3. Issue `#32` defines checkpoint triggers and how campaign-local files divide recent log, compressed summary, structured state, hooks, rules gaps, and corrected facts.
+3. Done in issue `#32`: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` defines memory strata, checkpoint triggers, file ownership, correction handling, MekHQ intent boundaries, and stale-summary precedence.
 4. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
 5. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Define campaign memory strata and semantic checkpoints
+
+- Status: Done
+- Issue: `#32`
+- Design: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md`
+- Checklist: `gm/state-save-checklist.md`
+- Mode: Project development / design
+- Goal: Define campaign memory strata and semantic checkpoint rules so play updates logs, summaries, hooks, sheets, structured state, rules gaps, and MekHQ-linked pending intents at meaningful moments.
+- Acceptance: memory strategy distinguishes current resume state, active session record, completed-session archive, structured state sheets, rules/workflow memory, safety/tone, and MekHQ bridge/pending-intent layers; defines scene, mission, relationship, character/asset, combat/tactical, day-boundary/downtime, and session-close checkpoints; explains corrected, superseded, contradicted, and retconned facts; updates the GM state-save checklist and campaign README.
 
 ### Define GM context packet design
 

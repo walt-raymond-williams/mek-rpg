@@ -41,6 +41,8 @@ The helper creates the folder only when it does not already exist and does not c
 
 Use `rules/campaign/overview.md` as the rules route for persistent consequences after play. As a default ownership rule, put character-facing consequences in `pcs.md`, contract and money consequences in `assets.md` and `missions.md`, faction consequences in `factions.md`, personal favors and grudges in `relationships.md`, and future pressure in `hooks.md`.
 
+Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` and `gm/state-save-checklist.md` for the full memory-strata and semantic-checkpoint policy. Update campaign files when a meaningful event changes future play, not on a fixed turn count. Structured state files outrank old narrative summaries; keep old summaries only when they are clearly archived, corrected, or still useful context.
+
 ## Vehicle And Unit Assets
 
 Vehicle, BattleMech, battle armor, aerospace, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `rules/vehicles-and-mechs/overview.md` to decide what to record: owner/controller, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, tactical handoff notes, and open source/tool lookups.
