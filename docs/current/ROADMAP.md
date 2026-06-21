@@ -53,10 +53,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MegaMek workspace bridge-primitives feedback has been consumed under epic issue `#66`, with child issues `#67`-`#69` completing read-only checkpoint export consumption, headless day-advance risk documentation, and gated contract-market accept/decline probe planning.
 - Issue `#67` added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract and gap map for a future MekHQ-owned read-only checkpoint export; the current Python helper remains a read-only prototype/fallback.
 - Issue `#69` added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the gated future-write plan for contract-market accept/decline; no write automation is authorized until stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation exist.
+- The MegaMek workspace checkpoint export review memo is now tracked as MEK-RPG issue `#84`, with child issues `#85`-`#89` for adapter tests, prototype-output tests, consumed-field mapping, GM-facing diagnostics, and fixture edge cases. Cross-board dependency guidance lives in `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md`.
 - Deterministic mechanics maturation is now tracked under epic issue `#70`, with child issues `#71`-`#79` covering the mechanics catalog, JSON contract, existing-script audit, golden route tests, resolver prototypes, state-change proposal schema, and later library/service migration evaluation.
 
 ## Active Work
 
+- Issue `#84`: checkpoint export adapter experiments coordinate MEK-RPG consumption of the MegaMek workspace read-only MekHQ checkpoint export artifacts; child issues `#85`-`#89` are open.
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
 - Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
@@ -64,9 +66,36 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Ruling safety and deterministic mechanics maturation is issued as `#70`-`#83`; rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued. Checkpoint export adapter experiments are issued as `#84`-`#89`; ruling safety and deterministic mechanics maturation is issued as `#70`-`#83`; rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
+
+### MekHQ checkpoint export adapter experiments
+
+- Status: Open
+- Epic issue: `#84`
+- Mode: Project development / cross-workspace coordination
+- Source input: `C:\Users\waltr\Documents\megamek-workspace\docs\current\MEK_RPG_CHECKPOINT_EXPORT_REVIEW_MEMO.md`
+- Tracking proposal: `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md`
+- Goal: validate the MegaMek workspace read-only checkpoint export shape from the MEK-RPG consumer side before asking MegaMek to harden the exporter or freeze schema decisions.
+- Key decisions:
+  - MEK-RPG can create its own consumer-side issues without MegaMek confirmation.
+  - MegaMek confirmation is needed before creating or treating producer-side tickets as accepted commitments, freezing the schema, or assigning exporter work to them.
+  - Experimental prototype output may be consumed for adapter tests, but not as a production MekHQ export contract.
+  - Market offers remain display/opportunity data only until stable source-confirmed identifiers exist.
+- Child issues:
+  1. Open issue `#85`: add checkpoint adapter tests using the sanitized MekHQ fixture.
+  2. Open issue `#86`: add checkpoint adapter tests using disposable-save prototype output.
+  3. Open issue `#87`: define the MEK-RPG consumed-field mapping for MekHQ checkpoint exports.
+  4. Open issue `#88`: define GM-facing surfacing for checkpoint warnings and unsupported fields.
+  5. Open issue `#89`: add checkpoint fixture edge cases for adapter robustness.
+- Dependency order:
+  1. Start with sanitized fixture tests so the basic shape is executable in this repo.
+  2. Add prototype-output tests to validate real exporter-shaped data while preserving the experimental boundary.
+  3. Document consumed-field mapping before requesting field renames, removals, or schema hardening.
+  4. Define GM-facing warning and unsupported-field surfacing once the consumed-field categories are clear.
+  5. Add edge-case fixtures before treating adapter behavior as robust.
+- Boundary: read-only only. Do not implement day advancement, contract accept/decline, hiring, repair, purchase, sale, assignment, tactical result application, direct save/XML mutation, or market-offer automation selectors in this queue.
 
 ### Ruling safety and deterministic mechanics maturation
 

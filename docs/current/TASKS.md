@@ -2,10 +2,15 @@
 
 ## Now
 
-- No open GitHub issue is currently selected.
+- Issue `#84`: coordinate MekHQ checkpoint export adapter experiments and cross-board tracking.
 
 ## Next
 
+- Issue `#85`: add checkpoint adapter tests using the sanitized MekHQ fixture.
+- Issue `#86`: add checkpoint adapter tests using disposable-save prototype output.
+- Issue `#87`: define the MEK-RPG consumed-field mapping for MekHQ checkpoint exports.
+- Issue `#88`: define GM-facing surfacing for checkpoint warnings and unsupported fields.
+- Issue `#89`: add checkpoint fixture edge cases for adapter robustness.
 - Issue `#70`: plan the ruling safety and deterministic mechanics maturation track, confirming child issue dependency order and boundaries before resolver implementation.
 - Issue `#71`: create the deterministic mechanics catalog after the epic planning pass.
 - Issue `#72`: define the standard mechanic JSON contract, including authority metadata and failure behavior.
@@ -16,6 +21,7 @@
 
 ## Backlog
 
+- Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - Issue `#81`: add page-reference and source-offset integrity checks after the initial authority/route plan is accepted.
 - Issue `#75`: prototype the basic check resolver contract after the JSON contract and authority gate are defined.
 - Issue `#76`: prototype the opposed check resolver contract after the basic check resolver shape exists.
