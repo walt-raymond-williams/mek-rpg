@@ -60,48 +60,58 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
 - Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
-- Issue `#70`: deterministic mechanics maturation track is the next open planning epic; child issues `#71`-`#79` are open.
+- Issue `#70`: ruling safety and deterministic mechanics maturation is the next open planning epic; child issues `#71`-`#83` are open.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Deterministic mechanics maturation is issued as `#70`-`#79`; rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued. Ruling safety and deterministic mechanics maturation is issued as `#70`-`#83`; rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
 
-### Deterministic mechanics maturation track
+### Ruling safety and deterministic mechanics maturation
 
 - Status: Open
 - Epic issue: `#70`
 - Mode: Project development / rules-assistant automation planning
-- Goal: identify high-frequency RPG procedures currently adjudicated by the agent and gradually convert stable ones into deterministic, testable mechanic contracts.
+- Goal: preserve source-aware agent adjudication while adding enforceable ruling authority checks and deterministic helpers for stable, repeatable mechanics.
 - Purpose and posture:
   - PowerShell scripts are acceptable as executable prototypes in this Windows-first workspace.
-  - Scripts should evolve toward explicit JSON input/output contracts, including rule/source authority, manifest status, warnings, and proposed state changes.
+  - Scripts should evolve toward explicit JSON input/output contracts, including rule/source authority, manifest status, page references, warnings, failure behavior, and proposed state changes.
   - Stable contracts may later be promoted into a core library, CLI, local service, or dashboard adapter, but only after contracts and fixture tests stabilize.
   - This track is not a full rules-engine rewrite.
   - This track does not automate full BattleTech tactical combat, replace Classic BattleTech/MegaMek/MekHQ/tabletop authority, or take over MekHQ hard-ledger ownership.
   - The agent remains responsible for narration, source lookup, uncertainty handling, edge-case reasoning, and deciding when a source gap or tactical handoff matters.
-  - Deterministic helpers should own repeatable math, check resolution, and state-proposal procedures where the rule shape is stable.
-- Child issue candidates:
+  - Deterministic helpers should own repeatable math, check resolution, authority/failure reporting, and state-proposal procedures where the rule shape is stable.
+  - The ruling authority gate should come before broad resolver use so missing, mapped-only, source-lookup-only, or tactical-hand-off cases cannot be silently overclaimed.
+- Child issues:
   1. Open issue `#70`: Epic: Plan deterministic mechanics maturation track.
   2. Open issue `#71`: Create deterministic mechanics catalog.
   3. Open issue `#72`: Define standard mechanic JSON contract.
-  4. Open issue `#73`: Audit existing scripts against mechanic contract.
+  4. Open issue `#82`: Define BattleTech source precedence and conflict policy.
   5. Open issue `#74`: Add golden route tests for common RPG procedures.
-  6. Open issue `#75`: Prototype basic check resolver contract.
-  7. Open issue `#76`: Prototype opposed check resolver contract.
-  8. Open issue `#77`: Prototype RPG-scale personal-combat checkpoint contract.
-  9. Open issue `#78`: Add state-change proposal schema.
-  10. Open issue `#79`: Evaluate core library / CLI / local service migration path.
+  6. Open issue `#80`: Add ruling authority gate.
+  7. Open issue `#73`: Audit existing scripts against mechanic contract.
+  8. Open issue `#81`: Add page-reference and source-offset integrity checks.
+  9. Open issue `#75`: Prototype basic check resolver contract.
+  10. Open issue `#76`: Prototype opposed check resolver contract.
+  11. Open issue `#78`: Add state-change proposal schema.
+  12. Open issue `#83`: Add golden ruling regression scenarios.
+  13. Open issue `#77`: Prototype RPG-scale personal-combat checkpoint contract.
+  14. Open issue `#79`: Evaluate core library / CLI / local service migration path.
 - Dependency order:
   1. Plan the track and confirm the child queue.
   2. Catalog candidate procedures and ownership boundaries.
-  3. Define the standard JSON contract before resolver prototypes.
-  4. Audit existing scripts and add route fixtures so current infrastructure stays distinct from mechanics helpers.
-  5. Prototype the basic check, then opposed check, then RPG-scale personal-combat checkpoint contracts.
-  6. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
-  7. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
-- Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, and uncertainty labels.
+  3. Define the standard JSON contract, including an authority envelope, before resolver prototypes.
+  4. Define source precedence and add route fixtures so authority behavior has deterministic coverage.
+  5. Add the ruling authority gate before broad resolver use.
+  6. Audit existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
+  7. Add page-reference/source-offset checks to reduce stale citation risk.
+  8. Prototype the basic check, then opposed check.
+  9. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
+  10. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
+  11. Prototype RPG-scale personal-combat checkpointing only after state proposals and authority behavior are explicit.
+  12. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
+- Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, failure behavior, and uncertainty labels.
 
 ### MekHQ bridge primitives follow-up queue
 

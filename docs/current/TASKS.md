@@ -6,12 +6,23 @@
 
 ## Next
 
-- Issue `#70`: plan the deterministic mechanics maturation track, confirming child issue dependency order and boundaries before resolver implementation.
+- Issue `#70`: plan the ruling safety and deterministic mechanics maturation track, confirming child issue dependency order and boundaries before resolver implementation.
 - Issue `#71`: create the deterministic mechanics catalog after the epic planning pass.
+- Issue `#72`: define the standard mechanic JSON contract, including authority metadata and failure behavior.
+- Issue `#82`: define BattleTech source precedence and conflict policy before authority-gate implementation.
+- Issue `#74`: add golden route tests for common RPG procedures before resolver work.
+- Issue `#80`: add the ruling authority gate before basic/opposed check resolver prototypes are treated as usable.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 
+- Issue `#81`: add page-reference and source-offset integrity checks after the initial authority/route plan is accepted.
+- Issue `#75`: prototype the basic check resolver contract after the JSON contract and authority gate are defined.
+- Issue `#76`: prototype the opposed check resolver contract after the basic check resolver shape exists.
+- Issue `#78`: add the state-change proposal schema before combat checkpoint helpers emit campaign-update suggestions.
+- Issue `#83`: add golden ruling regression scenarios after route tests and authority-gate behavior exist.
+- Issue `#77`: prototype the RPG-scale personal-combat checkpoint contract after state-change proposals are defined.
+- Issue `#79`: evaluate core library / CLI / local service migration only after repeated contract use and fixture coverage.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
