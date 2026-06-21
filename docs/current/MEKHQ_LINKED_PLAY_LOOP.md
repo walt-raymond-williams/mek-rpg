@@ -164,6 +164,6 @@ Do not do these in current MEK-RPG workflows:
 
 Issue `#27` should make the read-only MekHQ summary helper useful for this loop by emitting pre-session checkpoint facts and unsupported-field warnings.
 
-Issue `#28` should decide whether MekHQ-linked campaign folders add a dedicated `mekhq-bridge.md` file for save path, import metadata, ownership reminder, cross-reference tables, pending MekHQ actions, and discrepancy notes.
+Issue `#28` adds a dedicated `mekhq-bridge.md` file for save path, import metadata, ownership reminder, cross-reference tables, pending MekHQ actions, and discrepancy notes.
 
 A later issue may define a campaign-local pending-action checklist if repeated manual MekHQ updates become cumbersome.

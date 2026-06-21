@@ -16,7 +16,6 @@
 - Issue `#32`: define campaign memory strata and semantic checkpoints after or alongside issue `#31`.
 - Issue `#33`: prototype GM context packet helper after issue `#31` defines packet shape.
 - Issue `#34`: add GM context regression scenarios after issue `#31` defines expected context behavior.
-- Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after issues `#26`, `#27`, and `#29` clarify mapping, summary input, and play/writeback boundaries.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, build a lightweight handoff checklist for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
@@ -31,6 +30,7 @@
 
 ## Done
 
+- Issue `#28` implemented: added `scripts/bootstrap-mekhq-campaign.py` to create MEK-RPG campaign save folders from read-only MekHQ summary JSON; generated campaign-local `mekhq-bridge.md` metadata and stubs for current state, viewpoint PC, NPCs, assets, missions, relationships, hooks, locations, factions, and session log; documented viewpoint selection, overwrite refusal, and ownership boundaries; verified with disposable `The Learning Ropes` summary output and throwaway campaign folders.
 - Issue `#27` implemented: added `scripts/summarize-mekhq-save.py` to read plain or gzip MekHQ campaign saves without writing to them and emit JSON or Markdown bridge summaries; documented confirmed, inferred, unsupported, and needs-inspection mappings in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`; updated helper command docs; verified against disposable plain and gzip `The Learning Ropes` saves from the sister workspace.
 - Issue `#29` implemented: added `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` to define the safe one-day MekHQ-linked RPG play loop, day ownership boundary, pre-session checkpoint, in-day scene handling, post-scene and end-of-day save expectations, MEK-RPG memory handling, MekHQ application queues, and writeback boundary matrix; direct MekHQ save/XML edits remain unsafe and out of scope.
 - Issue `#26` implemented: added `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` to define the read-only MekHQ bridge ownership boundary, campaign-folder mapping, overlay strategy, MekHQ ID preservation and MEK-RPG slug policy, unknown/unsupported field handling, non-goals, and follow-on priorities for issues `#27`-`#29`.

@@ -51,7 +51,7 @@ Issue `#27` should prioritize helper output that can populate or refresh these s
 
 | MekHQ fact | Campaign file | Mapping guidance |
 | --- | --- | --- |
-| Campaign name, faction, linked save path, bridge status | `overview.md`; optional `mekhq-bridge.md` after issue `#28` | Record the link, ownership boundary, and last imported save metadata. Keep the public table frame in `overview.md`; keep bridge technical details in a dedicated file if generated imports become common. |
+| Campaign name, faction, linked save path, bridge status | `overview.md`; generated `mekhq-bridge.md` for MekHQ-linked bootstrap saves | Record the link, ownership boundary, and last imported save metadata. Keep the public table frame in `overview.md`; keep bridge technical details in `mekhq-bridge.md`. |
 | Campaign date | `current-state.md` | Once linked, MekHQ date is authoritative for campaign date. MEK-RPG may track scene time inside the day, but day changes come from MekHQ. |
 | Current location, travel state, base | `current-state.md`, `locations.md` | Put the current resume location in `current-state.md`. Put stable system/base/location details and open narrative details in `locations.md`. |
 | Funds, debt, payroll, purchase/sale values, warnings | `assets.md` | Record as MekHQ-derived ledger summary. Do not manually recalculate unless MekHQ output is unavailable and the value is clearly marked provisional. |
@@ -159,6 +159,6 @@ Issue `#27` should inspect representative disposable saves and confirm exact ava
 3. Active contracts, scenarios, repairs, logistics alerts, and markets.
 4. Unsupported field reporting.
 
-Issue `#28` should decide whether a generated linked campaign uses only existing files or also adds `campaigns/<campaign-id>/mekhq-bridge.md`. Prefer a dedicated bridge file once generated imports need save paths, import timestamps, helper warnings, cross-reference tables, or unsupported-field reports.
+Issue `#28` chose a dedicated generated `campaigns/<campaign-id>/mekhq-bridge.md` file. Use it for save paths, import timestamps, helper warnings, cross-reference tables, unsupported-field reports, and pending MekHQ application notes. Keep table-facing campaign premise, scene state, and RPG memory in the normal campaign files.
 
 Issue `#29` should define the play loop around the read-only boundary: MEK-RPG can run scenes inside a MekHQ day, but hard ledger changes are applied in MekHQ first and imported afterward.

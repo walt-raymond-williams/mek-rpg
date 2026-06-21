@@ -32,9 +32,11 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/roll-dice.ps1 2d6+2 "Technician check"
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
+python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
+python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
 ```
 
-`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes. `summarize-mekhq-save.py` reads MekHQ saves without writing to them and emits JSON or Markdown bridge facts; see `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md` for mappings and limitations.
+`new-campaign-save.ps1` copies `campaigns/_template/` to a new campaign folder and leaves `campaign-state/active-campaign.md` unchanged. `validate-campaign-state.ps1` checks the active campaign pointer, template files, and the active or explicitly supplied save folder; `-StrictActive` fails when no active campaign is selected. `roll-dice.ps1` reports dice, modifier, and total only; use the rules summaries to interpret outcomes. `summarize-mekhq-save.py` reads MekHQ saves without writing to them and emits JSON or Markdown bridge facts; see `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md` for mappings and limitations. `bootstrap-mekhq-campaign.py` creates a new MEK-RPG campaign save from summary JSON, refuses overwrites, leaves the active-campaign pointer unchanged, and writes campaign-local MekHQ bridge metadata; see `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`.
 
 ## Verify Protected Source Is Not Staged
 

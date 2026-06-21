@@ -12,6 +12,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save.
+- MekHQ campaign bootstrap now creates a MEK-RPG campaign folder from read-only summary JSON, adds a campaign-local `mekhq-bridge.md`, and preserves the read-only MekHQ ownership boundary.
 - Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
@@ -44,7 +45,7 @@ None.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issues `#25`, `#27`, and `#28`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
 
 ## Open Issues
 
@@ -62,7 +63,7 @@ None.
   - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
   - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
   - Done in issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
-  - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
+  - Done in issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
 ### Dependency Order
@@ -70,7 +71,7 @@ None.
 1. Done in issue `#26`: `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` defines the ownership model, campaign-folder mapping, ID preservation, and uncertainty policy.
 2. Done in issue `#29`: `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
 3. Done in issue `#27`: `scripts/summarize-mekhq-save.py` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves under `C:\Users\waltr\Documents\megamek-workspace\` verified plain and gzip parsing; no purchased A Time of War source is involved.
-4. Issue `#28` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
+4. Done in issue `#28`: `scripts/bootstrap-mekhq-campaign.py` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
 5. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
 
 ### Not Yet Promoted
@@ -105,6 +106,17 @@ None.
 5. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Prototype MekHQ campaign bootstrap
+
+- Status: Done
+- Issue: `#28`
+- Handoff: `docs/handoffs/archive/prototype-mekhq-campaign-bootstrap.md`
+- Script: `scripts/bootstrap-mekhq-campaign.py`
+- Design note: `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
+- Mode: Project development / prototype helper
+- Goal: Create a playable MEK-RPG `campaigns/<campaign-id>/` save folder from read-only MekHQ summary JSON while keeping MekHQ hard ledger facts separate from MEK-RPG narrative overlays.
+- Acceptance: helper consumes `summarize-mekhq-save.py` JSON, refuses overwrites, preserves MekHQ IDs, supports MekHQ-person or embedded-PC viewpoint selection, leaves `campaign-state/active-campaign.md` unchanged, generates campaign stubs and `mekhq-bridge.md`, documents the bridge convention, and verifies against disposable `The Learning Ropes` summary output without committing raw MekHQ saves or protected source files.
 
 ### Prototype read-only MekHQ save summary helper
 
