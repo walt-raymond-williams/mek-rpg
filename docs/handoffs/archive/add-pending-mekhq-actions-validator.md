@@ -6,7 +6,7 @@
 - Parent epic: `#38`
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / validation
-- Priority: After issue `#39` defines stable requirements for pending item structure.
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -26,11 +26,13 @@ Read these first:
 - `campaigns/_template/pending-mekhq-actions.md`
 - `scripts/test-mekhq-pending-workflow.ps1`
 
-## Expected Output
+## Output
 
-- New validator script, likely `scripts/validate-mekhq-pending-actions.ps1`.
-- Fixture tests for valid and invalid pending action files.
-- Documentation updates and test runner integration if `scripts/test-all.ps1` exists.
+- Added `scripts/validate-mekhq-pending-actions.ps1`.
+- Added `scripts/test-validate-mekhq-pending-actions.ps1`.
+- Integrated the suite into `scripts/test-all.ps1`.
+- Documented the validator and test command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Updated roadmap and task state.
 
 ## Files And Areas
 
@@ -72,6 +74,6 @@ git diff --check
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Should the validator parse Markdown structurally or use line-oriented checks for the first pass?
+- The first pass uses conservative line-oriented Markdown checks for item headings and checklist fields. That is enough for the current schema and avoids pretending pending items are structured ledger facts.

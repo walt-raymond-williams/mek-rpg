@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#44`: add pending MekHQ actions validator, with active handoff `docs/handoffs/active/add-pending-mekhq-actions-validator.md`, and add it to `scripts/test-all.ps1`.
 - Issue `#31`: define GM context packet design, consuming `pending-mekhq-actions.md` as the MekHQ-linked pending-action layer.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
@@ -48,6 +47,7 @@
 
 ## Done
 
+- Issue `#44` implemented: added `scripts/validate-mekhq-pending-actions.ps1` and `scripts/test-validate-mekhq-pending-actions.ps1` to validate pending item ids, required fields, allowed statuses/types/priorities, date shapes, invalid values, missing fields, duplicate ids, unresolved pending-intent reporting, and `scripts/test-all.ps1` integration without treating pending actions as confirmed hard ledger facts.
 - Issue `#43` implemented: added `scripts/test-validate-campaign-state.ps1` and a `-RepoRoot` validator test hook to cover valid explicit campaigns, missing standard file failure, missing top-level heading warning behavior, `-StrictActive` with no active campaign, legacy `campaign-state/` active pointer rejection, unsafe campaign id rejection, disposable fixture cleanup, and `scripts/test-all.ps1` integration.
 - Issue `#42` implemented: added sanitized XML fixture coverage for `scripts/summarize-mekhq-save.py`, including plain XML parsing, temp-generated gzip parsing, JSON top-level and representative value assertions, Markdown smoke coverage, missing-section behavior, read-only fixture hash checks, and `scripts/test-all.ps1` integration.
 - Issue `#41` implemented: added `scripts/test-bootstrap-mekhq-campaign.ps1` to cover sanitized fixture bootstrap behavior for valid output, invalid campaign ids, existing target refusal, viewpoint selection by id, exact name, commander fallback, embedded PC generation, required headings, ownership/no-writeback language, active pointer preservation, disposable cleanup, and `scripts/test-all.ps1` integration.

@@ -5,6 +5,7 @@
 - `build-rule-manifest.md`: notes for future manifest generation.
 - `new-campaign-save.ps1`: creates `campaigns/<campaign-id>/` from `campaigns/_template/` without overwriting an existing save.
 - `validate-campaign-state.ps1`: checks the active campaign pointer, campaign template, and selected or explicit campaign save folder for deterministic structure problems.
+- `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
 - `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary.
 - `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from `summarize-mekhq-save.py` JSON output.
@@ -12,6 +13,7 @@
 - `test-bootstrap-mekhq-campaign.ps1`: runs fixture coverage for bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership language, and cleanup.
 - `test-summarize-mekhq-save.ps1`: runs sanitized XML and generated gzip fixture coverage for save-summary JSON/Markdown output and read-only behavior.
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
+- `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification.
 
 ## Campaign Saves
@@ -72,10 +74,15 @@ The bootstrap fixture test uses `tests/fixtures/mekhq-summary-minimal.json` and 
 ## MekHQ Pending Workflow Regression
 
 ```powershell
+./scripts/validate-mekhq-pending-actions.ps1 campaigns/_template/pending-mekhq-actions.md
+./scripts/validate-mekhq-pending-actions.ps1 campaigns/isekai-atlas-field/pending-mekhq-actions.md -ReportUnresolved
+./scripts/test-validate-mekhq-pending-actions.ps1
 ./scripts/test-mekhq-pending-workflow.ps1
 ./scripts/test-all.ps1
 ```
 
+The pending-action validator checks item headings, required checklist fields, allowed lifecycle statuses, allowed action types, allowed priorities, date shapes, duplicate ids, and unresolved pending intents. `-ReportUnresolved` lists unresolved manual-action checklists for day-advance review and explicitly labels them as pending intents, not confirmed hard ledger facts.
+
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, and campaign-state validator coverage, and is the extension point for future fixture and validator suites from issues `#44` through `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, campaign-state validator coverage, and pending-action validator coverage, and is the extension point for future fixture and validator suites from issue `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.

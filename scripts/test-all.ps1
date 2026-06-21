@@ -20,6 +20,10 @@ $suites = @(
     @{
         Name = "Campaign-state validator coverage"
         Path = Join-Path $repoRoot "scripts\test-validate-campaign-state.ps1"
+    },
+    @{
+        Name = "Pending MekHQ action validator coverage"
+        Path = Join-Path $repoRoot "scripts\test-validate-mekhq-pending-actions.ps1"
     }
 )
 
