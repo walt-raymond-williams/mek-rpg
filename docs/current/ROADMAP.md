@@ -50,24 +50,25 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea now has a boundary evaluation in issue `#56` and a read-only data adapter contract in issue `#57`; any future UI must sit on that contract. Campaign session archive helper work was implemented in issue `#58`.
 - The next rules source-review expansion wave is now tracked under epic issue `#59`, with executable child issues `#60`-`#64` and active handoffs.
-- MegaMek workspace bridge-primitives feedback is now tracked under epic issue `#66`, with child issues `#67`-`#69` for read-only checkpoint export consumption, headless day-advance risk documentation, and a gated contract-market accept/decline probe plan.
+- MegaMek workspace bridge-primitives feedback has been consumed under epic issue `#66`, with child issues `#67`-`#69` completing read-only checkpoint export consumption, headless day-advance risk documentation, and gated contract-market accept/decline probe planning.
 - Issue `#67` added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract and gap map for a future MekHQ-owned read-only checkpoint export; the current Python helper remains a read-only prototype/fallback.
+- Issue `#69` added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the gated future-write plan for contract-market accept/decline; no write automation is authorized until stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation exist.
 
 ## Active Work
 
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
-- Issue `#66`: MekHQ bridge primitives follow-up queue tracks the MegaMek workspace recommendation to prioritize read-only checkpoint export, keep headless day advancement marked risky, and gate contract-market accept/decline write-side planning.
+- Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the next rules wave or bridge-primitives follow-up. Rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up is issued as `#66`-`#69`. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the next rules wave or bridge-primitives follow-up. Rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Open Issues
 
 ### MekHQ bridge primitives follow-up queue
 
-- Status: Open
+- Status: Done
 - Epic issue: `#66`
 - Mode: Project development / cross-workspace coordination
 - Source input: `C:\Users\waltr\Documents\megamek-workspace\docs\current\MEK_RPG_MEKHQ_BRIDGE_PRIMITIVES.md`
@@ -79,11 +80,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Child issues:
   - Done issue `#67`: added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` for future MekHQ-owned read-only checkpoint export consumption and current-helper gap comparison.
   - Done issue `#68`: documented headless MekHQ day-advance risk and preserved manual UI advance/save/re-import as the current supported workflow.
-  - Open issue `#69`: plan contract-market accept-decline bridge probe, with active handoff `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`.
+  - Done issue `#69`: added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` for a gated contract-market accept/decline probe.
 - Dependency order:
   1. Done in issue `#67`: MEK-RPG now has a consumer contract, adapter plan, and gap map for a future MekHQ-owned read-only checkpoint export.
   2. Done in issue `#68`: MEK-RPG docs now state that headless day advancement is blocked on MekHQ source work and prompt policy because the new-day flow reaches GUI state.
-  3. Issue `#69` next: plan contract-market accept/decline as a gated future write-side probe with stable IDs, prompt policy, disposable validation, and saved re-import confirmation.
+  3. Done in issue `#69`: contract-market accept/decline is documented as a future MegaMek-side probe gated by stable IDs, prompt policy, disposable validation, and saved re-import confirmation.
 - Boundary: do not create broad writeback automation, direct save/XML edits, or headless day-advance implementation issues from MEK-RPG until the MegaMek workspace supplies source-backed safe primitives and prompt policies.
 
 ### MekHQ personnel-to-PC/NPC sheet workflow

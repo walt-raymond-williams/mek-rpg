@@ -37,14 +37,14 @@ We received the following guidance from `docs/current/MEK_RPG_MEKHQ_BRIDGE_PRIMI
 
 MEK-RPG has now tracked that feedback in issues:
 
-- `#66`: Epic: track MekHQ bridge primitives follow-up
+- `#66`: Epic: track MekHQ bridge primitives follow-up (done)
 - `#67`: Consume future MekHQ read-only checkpoint export (done as MEK-RPG consumer contract)
 - `#68`: Document headless MekHQ day-advance risk (done)
-- `#69`: Plan contract-market accept-decline bridge probe
+- `#69`: Plan contract-market accept-decline bridge probe (done as gated future-write plan)
 
-## MEK-RPG Work Starting Now
+## MEK-RPG Follow-Up Status
 
-MEK-RPG has started with the documentation-risk item and should continue with read-only-first follow-up work:
+MEK-RPG has completed the bridge-primitives follow-up docs and can continue independent rules/source-review and personnel sheet workflow work without blocking on MegaMek:
 
 1. Issue `#68`: documented headless day-advance risk.
    - Result: MEK-RPG docs now clearly say manual UI day advancement plus saved re-import is the current supported path.
@@ -55,7 +55,9 @@ MEK-RPG has started with the documentation-risk item and should continue with re
    - Output: MEK-RPG-side consumer expectations, adapter/contract notes, and a gap list.
    - No write automation.
 
-MEK-RPG can also continue independent rules/source-review work and personnel sheet workflow work without blocking on MegaMek.
+3. Issue `#69`: planned the contract-market accept/decline bridge probe.
+   - Result: `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` defines preconditions, refusal policy, disposable validation, and saved re-import confirmation fields.
+   - No implementation or automation was added.
 
 ## Requested MegaMek-Side Work
 
@@ -116,12 +118,12 @@ But MEK-RPG will only plan this for now. Before implementation, we need MegaMek-
 
 ## Desired Next Sync Point
 
-After MEK-RPG completes issues `#68` and the planning portion of `#67`, we should sync on:
+After MEK-RPG completed issues `#67`, `#68`, and `#69`, the next useful sync is on:
 
 - whether MegaMek will own the read-only checkpoint exporter
-- whether MEK-RPG should draft the consumer JSON schema first
+- whether MegaMek can use `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the starting consumer schema
 - which field group should be validated first with disposable saves
-- whether contract-market accept/decline is still the right first write-side probe
+- whether contract-market accept/decline remains the right first write-side probe after stable offer ids and prompt policy are confirmed
 
 ## Relevant MEK-RPG Files
 
@@ -129,6 +131,7 @@ After MEK-RPG completes issues `#68` and the planning portion of `#67`, we shoul
 - `docs/current/MEGAMEK_WORKSPACE_SYNC_MEMO.md`
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
 - `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`
+- `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md`
 - `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`
@@ -136,4 +139,4 @@ After MEK-RPG completes issues `#68` and the planning portion of `#67`, we shoul
 - `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`
 - `docs/handoffs/archive/consume-mekhq-read-only-checkpoint-export.md`
 - `docs/handoffs/archive/document-headless-day-advance-risk.md`
-- `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`
+- `docs/handoffs/archive/plan-contract-market-accept-decline-probe.md`

@@ -3,7 +3,6 @@
 ## Now
 
 - Issue `#59`: keep the next rules source-review expansion wave visible while child issues `#60`-`#64` are completed.
-- Issue `#66`: track MekHQ bridge primitives follow-up from the MegaMek workspace assessment while child issues `#67`-`#69` are completed.
 
 ## Next
 
@@ -13,7 +12,6 @@
 - Issue `#62`: source-review tactical addendum boundaries, with active handoff `docs/handoffs/active/source-review-tactical-addendum-boundaries.md`.
 - Issue `#63`: source-review equipment and hazard gaps, with active handoff `docs/handoffs/active/source-review-equipment-and-hazard-gaps.md`.
 - Issue `#64`: source-review GM and campaign orientation gaps, with active handoff `docs/handoffs/active/source-review-gm-campaign-orientation-gaps.md`.
-- Issue `#69`: plan contract-market accept-decline bridge probe, with active handoff `docs/handoffs/active/plan-contract-market-accept-decline-probe.md`.
 
 ## Backlog
 
@@ -32,6 +30,8 @@
 
 ## Done
 
+- Issue `#66` completed: the MegaMek bridge-primitives follow-up queue is closed out with child issues `#67`-`#69` done; MEK-RPG now has a read-only checkpoint export consumer contract, headless day-advance risk documentation, and a gated contract-market accept/decline probe plan without authorizing write automation.
+- Issue `#69` implemented: added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` to define the gated future contract-market accept/decline probe, including stable offer-id and guard-field preconditions, AtB/StratCon prompt refusal policy, disposable MekHQ validation sequence, saved re-import confirmation fields, MegaMek-side issue candidate, and non-goals; updated bridge workflow docs, roadmap/task state, and archived the handoff.
 - Issue `#67` implemented: added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` to define the MEK-RPG consumer contract for a future MekHQ-owned read-only checkpoint export, compare current `summarize-mekhq-save.py` JSON against recommended source-backed export fields, mark method-backed/derived gaps, preserve the Python helper as a read-only prototype/fallback, and defer adapter implementation until MegaMek provides a draft export shape or sanitized fixture.
 - Issue `#68` implemented: documented that headless MekHQ day advancement is not currently low-risk because MekHQ new-day processing reaches GUI state and can trigger prompts/events; preserved manual MekHQ UI advance, save, and re-import as the supported workflow; updated bridge request, play-loop, pending workflow, roadmap, and handoff state.
 - Issue `#37` completed: ran a human-in-the-loop MekHQ pending workflow playtest using `campaigns/mekhq-pending-playtest/`; user advanced MekHQ one day in the UI, saved, read-only re-import confirmed date `3025-07-25`, pending item `mekhq-pending-2026-06-21-001` was resolved, and validation was recorded in `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`.

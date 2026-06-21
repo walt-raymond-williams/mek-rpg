@@ -72,4 +72,14 @@ git diff --check
 
 ## Open Questions
 
-- Should decline be handled before accept because it may have fewer side effects, or does market removal still make it equally risky?
+- Resolved for issue `#69`: decline may have fewer side effects than accept, but it still changes market state and remains gated on stable selectors, source-confirmed semantics, disposable validation, and saved re-import confirmation. It should not be implemented first just because it appears simpler.
+
+## Completion Notes
+
+- Added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md`.
+- Documented stable offer-id and guard-field preconditions.
+- Defined accept and decline saved re-import confirmation fields.
+- Documented AtB/StratCon prompt blockers and a refusal-first policy.
+- Added a disposable validation sequence before any real campaign use.
+- Added a future MegaMek-side issue candidate without authorizing MEK-RPG-side write automation.
+- Updated `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md`, `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `docs/current/MEGAMEK_WORKSPACE_BRIDGE_REQUEST.md`, `docs/current/MEGAMEK_WORKSPACE_SYNC_MEMO.md`, `docs/current/ROADMAP.md`, and `docs/current/TASKS.md`.

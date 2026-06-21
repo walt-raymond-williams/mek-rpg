@@ -67,4 +67,11 @@ gh issue list --state open --limit 50
 
 ## Open Questions
 
-- Should the MegaMek workspace create its own implementation issue for read-only checkpoint export, or should MEK-RPG first draft a consumer JSON schema?
+- Resolved for issue `#66`: MEK-RPG drafted the consumer JSON/contract first in issue `#67`. MegaMek-side implementation work should start from that contract or a MegaMek-owned sanitized export fixture.
+
+## Completion Notes
+
+- Child issue `#67` completed: `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`.
+- Child issue `#68` completed: headless MekHQ day advancement remains manual UI advance/save/re-import only until MekHQ source work resolves GUI/prompt coupling.
+- Child issue `#69` completed: `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md`.
+- Queue preserves read-only-first posture and keeps all write-side work gated behind source-backed selectors, prompt policy, disposable validation, and saved re-import confirmation.

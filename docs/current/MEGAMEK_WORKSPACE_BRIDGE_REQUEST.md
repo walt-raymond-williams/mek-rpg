@@ -155,6 +155,8 @@ Initial target actions should be small and source-backed. Good candidates:
 
 This investigation should explicitly say when noninteractive operation is unsafe or too GUI-coupled.
 
+MEK-RPG issue `#69` adds `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the gated MEK-RPG-side plan for contract-market accept/decline. It requires stable offer ids, guard fields, prompt/dialog policy, disposable validation, and saved re-import confirmation before any implementation request.
+
 ### 4. Clarify Tactical Result Artifact Paths
 
 Goal: identify the safest existing artifact workflows for tactical outcomes.
@@ -222,6 +224,7 @@ From `C:\Users\waltr\Documents\mek-rpg`:
 - `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`
 - `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`
 - `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`
+- `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_PENDING_WORKFLOW_PLAYTEST_VALIDATION.md`
 - `gm/tactical-encounter-handoff-checklist.md`

@@ -127,7 +127,7 @@ After a saved MekHQ import:
 
 Purchases and sales: record the intended unit/item, seller, negotiated narrative result, price if known from MekHQ UI, and confirmation needed for funds, market removal, asset arrival, cargo, and transit.
 
-Contracts: record accept/decline/resolve intent, employer, target contract id, player-facing terms, and confirmation needed for contract status, deadline, scenario generation, payment, and salvage.
+Contracts: record accept/decline/resolve intent, employer, target contract id, player-facing terms, and confirmation needed for contract status, deadline, scenario generation, payment, and salvage. For future contract-market accept/decline command planning, use `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md`; until its preconditions are satisfied, contract decisions remain manual MekHQ UI actions plus saved re-import confirmation.
 
 Repairs and logistics: record target unit or part, desired repair or queue change, technician/part implications, and confirmation needed for queue state, part use, completion, and availability.
 
@@ -151,7 +151,7 @@ The packet must label unresolved pending items as intents or manual-action check
 
 No MegaMek workspace request is created by this issue. The current workflow deliberately uses manual MekHQ UI application plus saved re-import confirmation, and the possible MekHQ-side needs are still broad: safe APIs, supported import/export artifacts, command helpers, and source-backed write paths.
 
-Create a focused MegaMek workspace request later when repeated pending items show a concrete need, such as "apply a purchase from a checklist artifact", "export contract market offers with stable IDs", or "provide a supported command for personnel assignment." Until then, MEK-RPG should not imply that direct writeback is available or safe.
+Create a focused MegaMek workspace request later when repeated pending items show a concrete need, such as "apply a purchase from a checklist artifact", "export contract market offers with stable IDs", or "provide a supported command for personnel assignment." Issue `#69` defines a gated contract-market accept/decline probe plan, but it remains blocked on stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation. Until then, MEK-RPG should not imply that direct writeback is available or safe.
 
 ## Unsafe Current Behaviors
 
