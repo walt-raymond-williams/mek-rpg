@@ -37,7 +37,7 @@ Payment, salvage, reputation, contacts, favors, or information.
 What changes if the mission goes poorly.
 
 ## Tactical Handoff
-When to switch to Classic BattleTech, MegaMek, or MekHQ. Include forces, terrain, objectives, withdrawal conditions, pilot/gunnery notes, crew roles, damage state, ammunition/fuel assumptions, salvage stakes, and what campaign state should be updated afterward.
+When to switch to Classic BattleTech, MegaMek, or MekHQ. Use `gm/tactical-encounter-handoff-checklist.md`, then include forces, terrain, objectives, withdrawal conditions, pilot/gunnery notes, crew roles, damage state, ammunition/fuel assumptions, salvage stakes, and what campaign state should be updated afterward.
 
 ## Playtest Notes
 Rules routes, state fields, or GM procedure points this mission should exercise.

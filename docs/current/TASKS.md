@@ -10,14 +10,13 @@
 
 ## Backlog
 
-- Issue `#55`: add tactical encounter handoff checklist, with active handoff `docs/handoffs/active/add-tactical-encounter-handoff-checklist.md`.
 - Issue `#56`: evaluate read-only MEK-RPG dashboard boundaries, with active handoff `docs/handoffs/active/evaluate-read-only-mek-rpg-dashboard-boundaries.md`.
 - Issue `#57`: design read-only dashboard data adapter contract, with active handoff `docs/handoffs/active/design-read-only-dashboard-data-adapter-contract.md`, after issue `#56`.
 - Issue `#58`: add campaign-local session archive helper, with active handoff `docs/handoffs/active/add-campaign-local-session-archive-helper.md`.
 - Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
 - Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
-- If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use issue `#55`'s tactical handoff checklist work as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
+- If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; current infrastructure work is tracked in issues `#46`-`#51`.
 - Future read-only MEK-RPG web dashboard work is tracked in issues `#56` and `#57`; start with API/ownership boundaries before any Sunnytown-derived UI or write controls.
@@ -31,6 +30,7 @@
 
 ## Done
 
+- Issue `#55` implemented: added `gm/tactical-encounter-handoff-checklist.md` with switch triggers, pre-handoff sources, forces, pilots, skills, unit state, terrain, objectives, deployment, withdrawal, salvage stakes, MekHQ-linked scenario/import boundaries, and return-to-campaign updates; linked it from GM handoff docs, mission/encounter templates, state-save routing, vehicle conversion guidance, and the MekHQ requirements matrix.
 - Issue `#54` implemented: added `docs/current/ASSET_SHEET_SCHEMA.md` and expanded `campaigns/_template/assets.md`, `campaigns/README.md`, and `gm/state-save-checklist.md` with a Markdown-native large-asset schema for identity, ownership evidence, location, condition/readiness, crew, debts/liens, MekHQ references, tactical handoff notes, and narrative overlays; deferred a companion asset validator until real campaign records stabilize.
 - Issue `#53` implemented: added `rules/campaign/transport-and-large-assets.md` as a narrowed, paraphrased campaign procedure for transport acquisition, DropShip/large-asset scene framing, inspection defects, fuel/readiness, title gaps, and campaign save updates; updated router, page references, manifest, rules map, and related summaries while preserving unsupported DropShip economy, title/lien/permit law, crew payroll, tactical aerospace combat, and MekHQ ledger boundaries.
 - Issue `#52` implemented: added `docs/current/TRANSPORT_LARGE_ASSET_SOURCE_COVERAGE.md` to map A Time of War support for transport and large assets, separate acquisition/vehicle/fuel/trait/skill/campaign hooks from unsupported DropShip title, lien, permit, exact economy, and tactical-combat gaps, and recommend a narrowed scope for issue `#53`.

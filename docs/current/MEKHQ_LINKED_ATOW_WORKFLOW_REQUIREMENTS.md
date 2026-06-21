@@ -129,9 +129,9 @@ Hard ledger changes created during play must be recorded as pending MekHQ applic
 | `REQ-MEKHQ-ATOW-021` | Pending workflow authority boundary | Manual | Issue `#37` should validate saved re-import confirmation; issue `#42` covers helper fixtures. |
 | `REQ-MEKHQ-ATOW-022` | Pending workflow reconciliation procedure | Planned | Issue `#44` should validate structure; issue `#45` can scenario-test blocked/mismatch context. |
 | `REQ-MEKHQ-ATOW-023` | Pending workflow reconciliation notes | Manual | Keep as playtest/context scenario expectation unless repeated failures justify a new issue. |
-| `REQ-MEKHQ-ATOW-024` | `gm/switch-to-classic-battletech.md`; linked play loop | Planned | Issue `#55` should add a tactical encounter handoff checklist. |
-| `REQ-MEKHQ-ATOW-025` | Encounter template and linked play loop provide partial guidance | Planned | Issue `#55` should make handoff inputs explicit. |
-| `REQ-MEKHQ-ATOW-026` | Linked play loop outcome handling | Planned | Issue `#55` should include post-tactical import confirmation prompts. |
+| `REQ-MEKHQ-ATOW-024` | `gm/switch-to-classic-battletech.md`; `gm/tactical-encounter-handoff-checklist.md`; linked play loop | Procedure | Issue `#55` added an explicit switch trigger and handoff checklist; tactical resolution still belongs to Classic BattleTech, MegaMek, or MekHQ. |
+| `REQ-MEKHQ-ATOW-025` | `gm/tactical-encounter-handoff-checklist.md`; `gm/encounter-template.md`; linked play loop | Procedure | Handoff packet fields cover stakes, forces, pilots, skills, unit state, terrain, objectives, deployment, withdrawal, and MekHQ-owned confirmation points. |
+| `REQ-MEKHQ-ATOW-026` | `gm/tactical-encounter-handoff-checklist.md`; linked play loop outcome handling; state-save checklist | Procedure | Return-to-campaign checklist records post-tactical updates and MekHQ save/re-import boundaries before final hard ledger facts are treated as confirmed. |
 | `REQ-MEKHQ-ATOW-027` | `docs/current/GM_CONTEXT_PACKET_DESIGN.md`; `scripts/build-gm-context-packet.ps1`; `scripts/test-mekhq-context-packet.ps1` | Automated | None current. |
 | `REQ-MEKHQ-ATOW-028` | Authority boundary docs; pending-action validator output; `scripts/test-mekhq-context-packet.ps1` manual-intent and structured-state checks | Automated | Future machine-readable packets could make this stricter. |
 | `REQ-MEKHQ-ATOW-029` | `scripts/build-gm-context-packet.ps1`; `scripts/test-mekhq-context-packet.ps1`; protected-source and no-writeback docs | Automated | None current. |
@@ -147,7 +147,7 @@ Hard ledger changes created during play must be recorded as pending MekHQ applic
 - Issue `#44`: owns deterministic pending-action structure validation for `REQ-MEKHQ-ATOW-016` through `REQ-MEKHQ-ATOW-019` and parts of `REQ-MEKHQ-ATOW-022`.
 - Issue `#45`: done; owns GM context packet regression scenarios for MekHQ-linked packet assembly, especially `REQ-MEKHQ-ATOW-009`, `REQ-MEKHQ-ATOW-011`, `REQ-MEKHQ-ATOW-014`, `REQ-MEKHQ-ATOW-019`, and `REQ-MEKHQ-ATOW-027` through `REQ-MEKHQ-ATOW-029`.
 - Issue `#37`: owns manual UI playtest evidence for `REQ-MEKHQ-ATOW-012`, `REQ-MEKHQ-ATOW-020`, `REQ-MEKHQ-ATOW-021`, and `REQ-MEKHQ-ATOW-023`.
-- Issue `#55`: owns tactical handoff checklist work for `REQ-MEKHQ-ATOW-024` through `REQ-MEKHQ-ATOW-026`.
+- Issue `#55`: done; owns tactical handoff checklist procedure coverage for `REQ-MEKHQ-ATOW-024` through `REQ-MEKHQ-ATOW-026`.
 
 ## Open Coverage Gaps
 

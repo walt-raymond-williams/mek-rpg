@@ -53,6 +53,7 @@ Use this summary when an A Time of War character needs a Classic BattleTech, Tot
 - `rules/vehicles-and-mechs/gunnery.md`
 - `rules/vehicles-and-mechs/mechwarrior-skills.md`
 - `gm/switch-to-classic-battletech.md`
+- `gm/tactical-encounter-handoff-checklist.md`
 - `gm/encounter-template.md`
 - `campaigns/README.md`
 

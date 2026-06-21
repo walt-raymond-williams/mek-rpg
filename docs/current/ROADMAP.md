@@ -45,7 +45,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`, campaign-state validator coverage in `scripts/test-validate-campaign-state.ps1`, pending-action validator coverage in `scripts/test-validate-mekhq-pending-actions.ps1`, and MekHQ-linked GM context packet scenarios in `scripts/test-mekhq-context-packet.ps1`.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
-- The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, and a Markdown-native asset sheet schema in issue `#54`; follow-up work continues with tactical encounter handoff checklist support (`#55`).
+- The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea is now issue-tracked as boundary evaluation (`#56`) followed by a read-only data adapter contract (`#57`) if the evaluation says to proceed. Campaign session archive helper work is tracked in issue `#58`.
 
 ## Active Work
@@ -86,12 +86,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done in issue `#52`: map transport acquisition and large-asset ownership source coverage.
   - Done in issue `#53`: summarize transport acquisition and large-asset procedures using the narrowed scope in `docs/current/TRANSPORT_LARGE_ASSET_SOURCE_COVERAGE.md`.
   - Done in issue `#54`: design richer DropShip and unit asset sheet schema after summary coverage or with clearly marked provisional fields.
-  - Issue `#55`: add tactical encounter handoff checklist.
+  - Done in issue `#55`: add tactical encounter handoff checklist.
 - Dependency order:
   1. Done in issue `#52`: mapped what the source actually supports.
   2. Done in issue `#53`: wrote a narrowed paraphrased summary for acquisition/asset procedure and explicitly preserved unsupported DropShip economy/legal gaps.
   3. Done in issue `#54`: designed asset sheets from the confirmed/provisional coverage.
-  4. Issue `#55` can proceed independently as a GM workflow checklist, but should link to asset-sheet work when available.
+  4. Done in issue `#55`: added a GM workflow checklist linked to asset-sheet work.
 - Boundary: direct MekHQ writeback, tactical rules implementation, copied equipment/price tables, raw source text, definitive DropShip title/lien law, and exact DropShip operating economics remain out of scope.
 
 ### Read-only dashboard and session tooling queue
@@ -676,7 +676,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Expand `indexes/task-router.md` after verified summaries exist; current metadata and helper work is tracked in issues `#46`-`#51`.
 - Keep `indexes/manifest.yaml`, `indexes/task-router.md`, and helper scripts synchronized as future summaries are added.
 - Validate all summaries against source pages.
-- Add deeper MekHQ / MegaMek integration notes for encounter handoff, unit setup, campaign updates, and save-backed campaign bootstrapping; tactical handoff checklist work is tracked in issue `#55`.
+- Add deeper MekHQ / MegaMek integration notes for encounter handoff, unit setup, campaign updates, and save-backed campaign bootstrapping as live play proves new gaps; initial tactical handoff checklist work is complete in issue `#55`.
 - Future feature idea: investigate a read-only MEK-RPG web dashboard as a visibility and debugging layer over the active campaign save, GM context packets, session/NPC conversation history, state-audit warnings, and optional MekHQ bridge summaries. Boundary evaluation and data contract work are tracked in issues `#56` and `#57`; keep live movement, Sunnytown-derived game surfaces, and write/control actions out of scope until the dashboard value is proven.
 - Repeat manual validation after each new playable layer: source summaries, routing, GM procedure, playtest, bug issues.
 

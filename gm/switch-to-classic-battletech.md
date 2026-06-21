@@ -12,6 +12,8 @@ Switch when one or more are true:
 - Vehicle-versus-vehicle or BattleMech-versus-vehicle attacks are more important than a single RPG-scale consequence.
 - A tactical tool is needed to preserve unit state, damage, heat, ammo, repairs, or campaign force history.
 
+Before setup, use `gm/tactical-encounter-handoff-checklist.md` to prepare the handoff packet.
+
 Encounter setup should include:
 
 - Map environment and terrain assumptions.

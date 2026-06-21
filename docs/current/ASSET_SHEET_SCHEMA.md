@@ -181,6 +181,7 @@ A focused asset companion validator is a good future task after live campaign fi
 - `gm/state-save-checklist.md`
 - `rules/campaign/transport-and-large-assets.md`
 - `rules/vehicles-and-mechs/overview.md`
+- `gm/tactical-encounter-handoff-checklist.md`
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 

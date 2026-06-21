@@ -48,7 +48,7 @@ Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` for the full ownership policy. St
 - Injury recovery, medical care, surgery, lasting wounds, and mission availability: read `rules/campaign/injuries-recovery.md`; update `pcs.md`, `assets.md`, `missions.md`, and `current-state.md`.
 - Downtime, repair/acquisition prep, training time, travel, and mission readiness: read `rules/campaign/downtime-and-readiness.md`; update `current-state.md`, `pcs.md`, `assets.md`, `missions.md`, and `hooks.md`.
 - Transport acquisition, DropShip/large-asset control, title questions, liens, permits, inspection defects, remote locks, fuel/readiness, and crew access: read `rules/campaign/transport-and-large-assets.md`; update `assets.md`, `missions.md`, `factions.md`, `relationships.md`, and `hooks.md`.
-- Vehicles, BattleMechs, battle armor, aerospace assets, pilot/gunnery notes, crew roles, fuel, damage, and tactical handoff assumptions: read `rules/vehicles-and-mechs/overview.md`; update `assets.md`, `pcs.md`, `missions.md`, and `hooks.md`.
+- Vehicles, BattleMechs, battle armor, aerospace assets, pilot/gunnery notes, crew roles, fuel, damage, and tactical handoff assumptions: read `rules/vehicles-and-mechs/overview.md`, `gm/switch-to-classic-battletech.md`, and `gm/tactical-encounter-handoff-checklist.md`; update `assets.md`, `pcs.md`, `missions.md`, and `hooks.md`.
 - MekHQ-linked purchases, contracts, repairs, personnel changes, tactical outcomes, funds, and day advancement: update `pending-mekhq-actions.md` first; update hard ledger summaries only after a saved MekHQ import confirms them.
 
 ## Close-Out Questions
