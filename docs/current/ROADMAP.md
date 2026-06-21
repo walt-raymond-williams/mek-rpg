@@ -7,7 +7,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The legally owned A Time of War PDF has been extracted into ignored page-level text.
 - Issue `#4` produced the initial chapter and section map in `source/atow-chapter-section-map.md`.
 - Core resolution, character creation, personal combat, equipment, campaign consequences, and vehicles/MechWarrior bridge have draft paraphrased summaries with live router coverage and validation reports where applicable.
-- The term glossary now has source-reviewed universe terminology and common rules/workspace aliases; placeholder and partially covered subsystems now have mapped page-reference pointers; manifest metadata remains in the rules lookup infrastructure queue.
+- The term glossary now has source-reviewed universe terminology and common rules/workspace aliases; placeholder and partially covered subsystems now have mapped page-reference pointers; manifest metadata now distinguishes draft summaries from non-authoritative mapped targets.
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
@@ -34,7 +34,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Placeholder-Level
 
-- Deeper manifest metadata and coverage-status normalization for placeholder subsystems.
+- Deterministic index validation, coverage reporting, and route-helper support remain next for rules lookup infrastructure.
 
 ### Validation Needs
 
@@ -66,13 +66,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Child issues:
   - Done in issue `#46`: source-review glossary and term alias coverage.
   - Done in issue `#47`: expand page-reference index for placeholder subsystems.
-  - Issue `#48`: normalize manifest metadata and coverage statuses.
+  - Done in issue `#48`: normalize manifest metadata and coverage statuses.
   - Issue `#49`: add rules index consistency validator.
   - Issue `#50`: add rules coverage reporter.
   - Issue `#51`: prototype rules route helper.
 - Dependency order:
   1. Done in issues `#46` and `#47`: term aliases and human-readable page references.
-  2. Issue `#48` makes manifest status and IDs more reliable.
+  2. Done in issue `#48`: manifest status and IDs are more reliable.
   3. Issues `#49` and `#50` add deterministic validation and reporting.
   4. Issue `#51` can use the improved metadata to route natural-language prompts to candidate summaries and warnings.
 - Boundary: do not read or commit protected raw source except in explicit source-review work; the helper in issue `#51` must route to committed summaries and indexes, not answer rules directly.
@@ -674,7 +674,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - Expand personal combat, equipment, damage, and recovery beyond the current draft minimum only where play or validation finds missing detail.
 - Expand `indexes/task-router.md` after verified summaries exist; current metadata and helper work is tracked in issues `#46`-`#51`.
-- Fill `indexes/manifest.yaml` with stable IDs and source page arrays; active normalization is tracked in issue `#48`.
+- Keep `indexes/manifest.yaml` synchronized as future summaries are added; active deterministic checks are tracked in issues `#49` and `#50`.
 - Validate all summaries against source pages.
 - Add deeper MekHQ / MegaMek integration notes for encounter handoff, unit setup, campaign updates, and save-backed campaign bootstrapping; tactical handoff checklist work is tracked in issue `#55`.
 - Future feature idea: investigate a read-only MEK-RPG web dashboard as a visibility and debugging layer over the active campaign save, GM context packets, session/NPC conversation history, state-audit warnings, and optional MekHQ bridge summaries. Boundary evaluation and data contract work are tracked in issues `#56` and `#57`; keep live movement, Sunnytown-derived game surfaces, and write/control actions out of scope until the dashboard value is proven.

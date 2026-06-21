@@ -1,3 +1,29 @@
+metadata:
+  purpose: Machine-readable routing metadata for committed summaries, GM procedures, and mapped-only source targets.
+  source_boundary: Do not answer rules from mapped-only entries; use them only to locate owned source pages or plan future summaries.
+  status_legend:
+    draft: Committed paraphrased summary or procedure exists with source pages, but it is not fully verified rules authority.
+    source-reviewed-routing-aid: Committed routing aid reviewed against cited source pages; use for terminology/routing, not full rules procedures.
+    mapped-only: Source range and candidate path are mapped, but no committed summary or procedure exists; non-authoritative.
+    partial-draft: A committed summary covers adjacent or partial behavior, but the listed mapped topic still needs source review.
+    source-lookup-only: Source location is recorded only for private lookup; do not summarize tables or record sheets wholesale.
+    needs-source-review: Source review is required before using the entry for rules answers.
+    TBD: Metadata is intentionally unresolved.
+
+indexes:
+  - id: universe.glossary-source-map
+    title: Term Glossary
+    file: indexes/term-glossary.md
+    source_pages:
+      pdf: [30, 31, 32]
+      printed: [28, 29, 30]
+    related:
+      - gm.switch-to-classic-battletech
+      - vehicles.overview
+      - equipment.acquire-use
+      - core.action-checks
+    status: source-reviewed-routing-aid
+
 rules:
   - id: core.action-checks
     title: Action Checks
@@ -573,6 +599,327 @@ rules:
       - vehicles.mechwarrior-skills
       - gm.switch-to-classic-battletech
     status: draft
+mapped_rules:
+  - id: universe.intro-to-play
+    title: Intro To Play
+    subsystem: universe
+    candidate: rules/universe/intro-to-play.md
+    source_pages:
+      pdf: [18, 19, 20, 21, 22, 23]
+      printed: [16, 17, 18, 19, 20, 21]
+    status: mapped-only
+  - id: universe.factions-history
+    title: Factions And History
+    subsystem: universe
+    candidate: rules/universe/factions-and-history.md
+    source_pages:
+      pdf: [23, 24, 25, 26, 27, 28, 29]
+      printed: [21, 22, 23, 24, 25, 26, 27]
+    status: mapped-only
+  - id: gm.battletech-source-handoff
+    title: BattleTech Source Handoff
+    subsystem: gm-procedure
+    candidate: gm/battletech-source-handoff.md
+    source_pages:
+      pdf: [33, 34]
+      printed: [31, 32]
+    status: mapped-only
+  - id: gm.rules-adjudication-posture
+    title: Rules Adjudication Posture
+    subsystem: gm-procedure
+    candidate: gm/rules-adjudication-posture.md
+    source_pages:
+      pdf: [35]
+      printed: [33]
+    status: mapped-only
+  - id: core.character-record-basics
+    title: Character Record Basics
+    subsystem: core-resolution
+    candidate: rules/core/character-record-basics.md
+    source_pages:
+      pdf: [36, 37, 38, 39]
+      printed: [34, 35, 36, 37]
+    related:
+      - character.overview
+      - character.attributes
+      - character.skills
+      - character.traits
+    status: mapped-only
+  - id: character.skill-fields
+    title: Skill Fields
+    subsystem: character-creation
+    candidate: rules/character-creation/skill-fields.md
+    source_pages:
+      pdf: [84, 85, 86, 87]
+      printed: [82, 83, 84, 85]
+    related:
+      - character.lifepaths
+      - character.skills
+    status: partial-draft
+  - id: character.purchasing-elements
+    title: Purchasing Character Elements
+    subsystem: character-creation
+    candidate: rules/character-creation/purchasing-character-elements.md
+    source_pages:
+      pdf: [87, 88, 89, 90, 91, 92]
+      printed: [85, 86, 87, 88, 89, 90]
+    related:
+      - character.overview
+      - character.attributes
+      - character.traits
+      - character.skills
+    status: partial-draft
+  - id: traits.catalog-map
+    title: Trait Catalog Map
+    subsystem: traits
+    candidate: rules/traits/trait-catalog-map.md
+    source_pages:
+      pdf: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137]
+      printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135]
+    related:
+      - character.traits
+    status: partial-draft
+  - id: skills.catalog-map
+    title: Skill Catalog Map
+    subsystem: skills
+    candidate: rules/skills/skill-catalog-map.md
+    source_pages:
+      pdf: [143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161]
+      printed: [141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159]
+    related:
+      - character.skills
+    status: partial-draft
+  - id: combat.armor-barriers
+    title: Armor And Barriers
+    subsystem: personal-combat
+    candidate: rules/combat/armor-and-barriers.md
+    source_pages:
+      pdf: [187, 188, 189, 190]
+      printed: [185, 186, 187, 188]
+    related:
+      - combat.damage-effects
+      - equipment.personal-protection
+    status: mapped-only
+  - id: combat.optional-personal
+    title: Optional Personal Combat Rules
+    subsystem: personal-combat
+    candidate: rules/combat/optional-personal-combat.md
+    source_pages:
+      pdf: [191, 192, 193, 194]
+      printed: [189, 190, 191, 192]
+    related:
+      - combat.personal-overview
+      - combat.damage-effects
+    status: mapped-only
+  - id: tactical.overview
+    title: Tactical Combat Overview
+    subsystem: tactical
+    candidate: rules/tactical/tactical-combat-overview.md
+    source_pages:
+      pdf: [202, 203]
+      printed: [200, 201]
+    related:
+      - vehicles.overview
+      - gm.switch-to-classic-battletech
+    status: partial-draft
+  - id: tactical.turn-initiative
+    title: Tactical Turn And Initiative
+    subsystem: tactical
+    candidate: rules/tactical/tactical-turn-and-initiative.md
+    source_pages:
+      pdf: [204, 205, 206, 207]
+      printed: [202, 203, 204, 205]
+    related:
+      - vehicles.classic-conversion
+      - gm.switch-to-classic-battletech
+    status: mapped-only
+  - id: tactical.vehicle-actions
+    title: Tactical Vehicle Actions
+    subsystem: tactical
+    candidate: rules/tactical/vehicle-actions.md
+    source_pages:
+      pdf: [208, 209, 210, 211, 212, 213]
+      printed: [206, 207, 208, 209, 210, 211]
+    related:
+      - vehicles.overview
+      - vehicles.piloting
+      - vehicles.gunnery
+    status: partial-draft
+  - id: tactical.damage-traits
+    title: Tactical Damage And Traits
+    subsystem: tactical
+    candidate: rules/tactical/tactical-damage-and-traits.md
+    source_pages:
+      pdf: [214, 215, 216, 217, 218, 219, 220]
+      printed: [212, 213, 214, 215, 216, 217, 218]
+    related:
+      - vehicles.gunnery
+      - vehicles.classic-conversion
+    status: partial-draft
+  - id: tactical.heat-pilot-abilities
+    title: Heat And Pilot Abilities
+    subsystem: tactical
+    candidate: rules/tactical/heat-and-pilot-abilities.md
+    source_pages:
+      pdf: [220, 221, 222, 223, 224, 225, 226, 227]
+      printed: [218, 219, 220, 221, 222, 223, 224, 225]
+    related:
+      - vehicles.piloting
+      - vehicles.gunnery
+      - vehicles.mechwarrior-skills
+    status: partial-draft
+  - id: special.planetary-conditions
+    title: Planetary Conditions
+    subsystem: special-case-rules
+    candidate: rules/special/planetary-conditions.md
+    source_pages:
+      pdf: [232, 233, 234, 235, 236, 237, 238, 239, 240]
+      printed: [230, 231, 232, 233, 234, 235, 236, 237, 238]
+    status: mapped-only
+  - id: special.creatures
+    title: Creatures
+    subsystem: special-case-rules
+    candidate: rules/special/creatures.md
+    source_pages:
+      pdf: [240, 241, 242, 243, 244, 245, 246, 247]
+      printed: [238, 239, 240, 241, 242, 243, 244, 245]
+    status: mapped-only
+  - id: special.diseases
+    title: Diseases
+    subsystem: special-case-rules
+    candidate: rules/special/diseases.md
+    source_pages:
+      pdf: [247, 248, 249, 250, 251]
+      printed: [245, 246, 247, 248, 249]
+    related:
+      - combat.healing-recovery
+      - equipment.medical-gear
+    status: mapped-only
+  - id: equipment.battle-armor-exoskeletons
+    title: Battle Armor And Exoskeletons
+    subsystem: equipment
+    candidate: rules/equipment/battle-armor-and-exoskeletons.md
+    source_pages:
+      pdf: [300, 301, 302]
+      printed: [298, 299, 300]
+    related:
+      - equipment.personal-protection
+      - vehicles.overview
+      - gm.switch-to-classic-battletech
+    status: mapped-only
+  - id: equipment.prosthetics-implants
+    title: Prosthetics And Implants
+    subsystem: equipment
+    candidate: rules/equipment/prosthetics-and-implants.md
+    source_pages:
+      pdf: [316, 317, 318, 319, 320]
+      printed: [314, 315, 316, 317, 318]
+    related:
+      - equipment.medical-gear
+      - campaign.injuries-recovery
+    status: mapped-only
+  - id: equipment.drugs-poisons
+    title: Drugs And Poisons
+    subsystem: equipment
+    candidate: rules/equipment/drugs-and-poisons.md
+    source_pages:
+      pdf: [319, 320, 321, 322, 323]
+      printed: [317, 318, 319, 320, 321]
+    related:
+      - equipment.medical-gear
+      - combat.damage-resolution
+    status: mapped-only
+  - id: equipment.personal-vehicles
+    title: Personal Vehicles And Fuel
+    subsystem: equipment
+    candidate: rules/equipment/personal-vehicles.md
+    source_pages:
+      pdf: [323, 324, 325, 326, 327]
+      printed: [321, 322, 323, 324, 325]
+    related:
+      - vehicles.overview
+      - equipment.acquire-use
+    status: mapped-only
+  - id: campaign.advancement-rewards
+    title: Advancement And Rewards
+    subsystem: campaign
+    candidate: rules/campaign/advancement-and-rewards.md
+    source_pages:
+      pdf: [332, 333, 334, 335, 336, 337, 338]
+      printed: [330, 331, 332, 333, 334, 335, 336]
+    related:
+      - campaign.advancement
+      - character.xp-advancement
+    status: partial-draft
+  - id: gamemastering.npcs-encounters
+    title: NPCs And Encounters
+    subsystem: gamemastering
+    candidate: rules/gamemastering/npcs-and-encounters.md
+    source_pages:
+      pdf: [338, 339, 340, 341, 342, 343, 344]
+      printed: [336, 337, 338, 339, 340, 341, 342]
+    status: mapped-only
+  - id: gm.tips-stories
+    title: Gamemastering Tips And Stories
+    subsystem: gamemastering
+    candidate: gm/gamemastering-tips.md
+    source_pages:
+      pdf: [344, 345, 346, 347, 348, 349]
+      printed: [342, 343, 344, 345, 346, 347]
+    status: mapped-only
+  - id: gm.adventure-seeds-map
+    title: Adventure Seeds Map
+    subsystem: gamemastering
+    candidate: gm/adventure-seeds-map.md
+    source_pages:
+      pdf: [349, 350, 351]
+      printed: [347, 348, 349]
+    status: mapped-only
+  - id: campaign.power-rank-title
+    title: Power Rank And Title
+    subsystem: campaign
+    candidate: rules/campaign/power-rank-and-title.md
+    source_pages:
+      pdf: [351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.reputation
+      - campaign.contacts
+      - campaign.downtime-readiness
+    status: partial-draft
+  - id: gm.universal-aesthetics
+    title: Universal Aesthetics
+    subsystem: gamemastering
+    candidate: gm/universal-aesthetics.md
+    source_pages:
+      pdf: [361, 362, 363, 364]
+      printed: [359, 360, 361, 362]
+    status: mapped-only
+  - id: gm.touring-stars
+    title: Touring The Stars
+    subsystem: gamemastering
+    candidate: gm/touring-the-stars.md
+    source_pages:
+      pdf: [364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376]
+      printed: [362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374]
+    status: mapped-only
+  - id: gm.whistle-stop-tour
+    title: Whistle Stop Tour
+    subsystem: gamemastering
+    candidate: gm/whistle-stop-tour.md
+    source_pages:
+      pdf: [376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388]
+      printed: [374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386]
+    status: mapped-only
+  - id: back.record-sheets-tables
+    title: Record Sheets And Reference Tables
+    subsystem: back-matter
+    candidate: Source lookup only
+    source_pages:
+      pdf: [403, 404, 405, 406, 407, 408, 409]
+      printed: [401, 402, 403, 404, 405, 406, 407]
+    status: source-lookup-only
+
 gm:
   - id: gm.scene-loop
     title: Scene Loop

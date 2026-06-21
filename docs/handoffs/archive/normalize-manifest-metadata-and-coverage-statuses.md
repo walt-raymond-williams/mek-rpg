@@ -35,9 +35,9 @@ Task-specific context:
 
 ## Expected Output
 
-- Updated manifest metadata and coverage statuses.
-- Documentation notes if status meanings need clarification.
-- Roadmap and task updates.
+- Completed: updated `indexes/manifest.yaml` with purpose/source-boundary metadata, status definitions, a source-reviewed glossary index entry, and mapped-only or partial-draft placeholder targets.
+- Completed: documented manifest status interpretation in `indexes/README.md`.
+- Completed: updated roadmap and task tracking.
 
 ## Files And Areas
 
@@ -74,4 +74,4 @@ git status --short --branch
 
 ## Open Questions
 
-- Should the manifest become the source of truth for issue `#50` coverage reporting?
+- Deferred to issue `#50`: decide whether coverage reporting treats the manifest as the primary source of truth.
