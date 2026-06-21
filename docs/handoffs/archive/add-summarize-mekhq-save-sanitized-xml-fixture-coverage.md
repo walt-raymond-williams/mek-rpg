@@ -6,7 +6,7 @@
 - Parent epic: `#38`
 - Roadmap entry: Automated regression coverage for MekHQ-linked A Time of War workflow
 - Mode: Project development / testing
-- Priority: After issue `#39`; can proceed independently of bootstrap tests.
+- Status: Completed and archived after implementation.
 
 ## Goal
 
@@ -26,11 +26,14 @@ Read these first:
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
 - `scripts/summarize-mekhq-save.py`
 
-## Expected Output
+## Output
 
-- Sanitized XML fixture(s), with optional generated gzip fixture if deterministic and safe.
-- New deterministic test script for JSON and Markdown output shape.
-- Documentation updates and test runner integration if `scripts/test-all.ps1` exists.
+- Added `tests/fixtures/mekhq-save-sanitized.xml`.
+- Added `scripts/test-summarize-mekhq-save.ps1`.
+- Generate the gzip fixture copy in a temp directory during the test instead of committing a binary gzip file.
+- Integrated the suite into `scripts/test-all.ps1`.
+- Documented the command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Updated roadmap and task state.
 
 ## Files And Areas
 
@@ -73,6 +76,6 @@ git check-ignore source/atow-text/page-001.txt
 - Verification is run or blocker recorded.
 - Changes are committed and pushed.
 
-## Open Questions
+## Close-Out Notes
 
-- Should gzip fixture be committed as a binary file, generated during the test from XML, or skipped in favor of a temp-generated gzip?
+- The gzip fixture is generated during the test from committed sanitized XML. This proves gzip parsing without committing a binary save-like artifact.

@@ -10,6 +10,7 @@
 - `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from `summarize-mekhq-save.py` JSON output.
 - `test-mekhq-pending-workflow.ps1`: runs disposable regression checks for MekHQ pending-action bootstrap, validation, no-writeback boundaries, and protected-source guards.
 - `test-bootstrap-mekhq-campaign.ps1`: runs fixture coverage for bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership language, and cleanup.
+- `test-summarize-mekhq-save.ps1`: runs sanitized XML and generated gzip fixture coverage for save-summary JSON/Markdown output and read-only behavior.
 - `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification.
 
 ## Campaign Saves
@@ -43,9 +44,12 @@ python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format jso
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
+./scripts/test-summarize-mekhq-save.ps1
 ```
 
 The helper detects gzip compression by magic bytes, parses the save XML with structured XML APIs, and writes JSON or Markdown to stdout. It does not write to the MekHQ save. JSON is the primary output for later bridge automation; Markdown is a quick human checkpoint. Field mappings and unsupported areas are documented in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`.
+
+The save-summary fixture test uses committed sanitized XML plus a temp-generated gzip copy. It checks JSON top-level keys, representative campaign, finance, personnel, unit, contract, scenario, market, warning, and unsupported-field values; runs a Markdown smoke test; verifies sparse missing-section XML does not crash; and confirms the committed fixture is not mutated.
 
 ## MekHQ Campaign Bootstrap
 
@@ -70,4 +74,4 @@ The bootstrap fixture test uses `tests/fixtures/mekhq-summary-minimal.json` and 
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression and bootstrap fixture coverage, and is the extension point for future fixture and validator suites from issues `#42` through `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, and save-summary fixture coverage, and is the extension point for future fixture and validator suites from issues `#43` through `#45`. It does not require real MekHQ saves, protected source files, network access, or user interaction.

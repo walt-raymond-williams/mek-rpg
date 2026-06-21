@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<campaign version="sanitized-xml-fixture">
+  <info>
+    <id>xml-campaign-001</id>
+    <name>Fixture Test Lances</name>
+    <calendar>3025-07-22</calendar>
+    <campaignStartDate>3025-07-01</campaignStartDate>
+    <faction>Independent</faction>
+    <reputation>5</reputation>
+    <gmMode>true</gmMode>
+  </info>
+  <locations>
+    <location>
+      <currentSystemId>Galatea</currentSystemId>
+      <transitTime>0</transitTime>
+      <rechargeTime>0</rechargeTime>
+      <jumpZenith>true</jumpZenith>
+    </location>
+  </locations>
+  <finances>
+    <transactions>
+      <transaction>
+        <type>Income</type>
+        <date>3025-07-20</date>
+        <amount>1000000 C-Bills</amount>
+        <description>Sanitized fixture starting funds.</description>
+      </transaction>
+      <transaction>
+        <type>Expense</type>
+        <date>3025-07-21</date>
+        <amount>-250000 C-Bills</amount>
+        <description>Sanitized fixture maintenance cost.</description>
+      </transaction>
+    </transactions>
+    <loans />
+    <assets />
+  </finances>
+  <humanResources>
+    <asTechPool>true</asTechPool>
+    <asTechPoolMinutes>120</asTechPoolMinutes>
+    <medicPool>false</medicPool>
+    <personnel>
+      <person id="p-xml-001">
+        <givenName>Avery</givenName>
+        <surname>Holt</surname>
+        <callsign>Anchor</callsign>
+        <primaryRole>Commander</primaryRole>
+        <rank>Captain</rank>
+        <faction>Independent</faction>
+        <unitId>u-xml-001</unitId>
+        <status>Active</status>
+        <fatigue>1</fatigue>
+        <permanentFatigue>0</permanentFatigue>
+        <daysToWaitForHealing>0</daysToWaitForHealing>
+        <commander>true</commander>
+        <secondInCommand>false</secondInCommand>
+      </person>
+      <person id="p-xml-002">
+        <givenName>Mira</givenName>
+        <surname>Voss</surname>
+        <primaryRole>Technician</primaryRole>
+        <rank>Tech</rank>
+        <faction>Independent</faction>
+        <unitId>Unknown</unitId>
+        <status>Active</status>
+        <commander>false</commander>
+      </person>
+    </personnel>
+  </humanResources>
+  <units>
+    <unit id="u-xml-001">
+      <entity chassis="CN9-A" model="Centurion Fixture" type="BattleMech" deployment="Frontline" />
+      <site>Field</site>
+      <formationId>formation-001</formationId>
+      <scenarioId>s-xml-001</scenarioId>
+      <daysSinceMaintenance>3</daysSinceMaintenance>
+      <driverId>p-xml-001</driverId>
+      <gunnerId>p-xml-001</gunnerId>
+      <techId>p-xml-002</techId>
+      <lastMaintenanceReport>&lt;p&gt;Sanitized maintenance note.&lt;/p&gt;</lastMaintenanceReport>
+    </unit>
+  </units>
+  <parts>
+    <part id="part-001">
+      <name>Fixture actuator</name>
+      <unitId>u-xml-001</unitId>
+    </part>
+  </parts>
+  <missions>
+    <mission id="c-xml-001">
+      <name>Fixture Convoy Guard</name>
+      <type>Security</type>
+      <employer>Fixture Employer</employer>
+      <status>Active</status>
+      <endDate>3025-08-01</endDate>
+      <systemId>Galatea</systemId>
+      <desc>Protect sanitized cargo.</desc>
+      <paymentMultiplier>1.2</paymentMultiplier>
+      <salvagePct>10</salvagePct>
+      <commandRights>Independent</commandRights>
+      <transportComp>None</transportComp>
+      <supportAmount>0</supportAmount>
+      <advanceAmount>10000</advanceAmount>
+      <baseAmount>50000</baseAmount>
+      <feeAmount>0</feeAmount>
+      <scenarios>
+        <scenario id="s-xml-001">
+          <name>Fixture Roadblock</name>
+          <status>Pending</status>
+          <date>3025-07-23</date>
+          <desc>Sanitized tactical setup.</desc>
+        </scenario>
+      </scenarios>
+    </mission>
+  </missions>
+  <shoppingList>
+    <part id="shop-001" type="part">
+      <name>Fixture spare armor</name>
+      <quantity>2</quantity>
+      <quality>Normal</quality>
+      <unitId>u-xml-001</unitId>
+    </part>
+  </shoppingList>
+  <unitMarket>
+    <offer>
+      <market>Mercenary</market>
+      <unitType>BattleMech</unitType>
+      <unit>Fixture Jenner</unit>
+      <percent>95</percent>
+      <transitDuration>12</transitDuration>
+    </offer>
+  </unitMarket>
+  <personnelMarket>
+    <person id="p-market-001">
+      <givenName>Rin</givenName>
+      <surname>Calder</surname>
+      <primaryRole>MechWarrior</primaryRole>
+      <rank>Recruit</rank>
+      <faction>Independent</faction>
+      <status>Applicant</status>
+      <commander>false</commander>
+    </person>
+  </personnelMarket>
+  <contractMarket>
+    <method>Sanitized</method>
+    <lastId>contract-market-001</lastId>
+    <contract id="offer-001">
+      <name>Fixture Offer</name>
+      <employer>Offer Employer</employer>
+      <status>Offered</status>
+      <endDate>3025-09-01</endDate>
+    </contract>
+  </contractMarket>
+</campaign>

@@ -12,6 +12,10 @@ $suites = @(
     @{
         Name = "MekHQ bootstrap fixture coverage"
         Path = Join-Path $repoRoot "scripts\test-bootstrap-mekhq-campaign.ps1"
+    },
+    @{
+        Name = "MekHQ save summary fixture coverage"
+        Path = Join-Path $repoRoot "scripts\test-summarize-mekhq-save.ps1"
     }
 )
 

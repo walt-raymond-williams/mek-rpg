@@ -42,7 +42,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Placeholder summaries should not be treated as rules authority until source pages are reviewed, page references are added, and router paths pass lookup tests.
 - The campaign save helper and dice roller were rechecked during the first real campaign setup and live-play session. Repeat manual validation/playtest after future major playable layers.
 - MekHQ pending application workflow has automated structural regression coverage from issue `#36`; run `./scripts/test-mekhq-pending-workflow.ps1` after workflow or bootstrap changes.
-- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, and bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`; epic issue `#38` continues through summary helper XML/gzip fixture tests, campaign validator tests, pending-action validator, and GM context packet scenarios.
+- MekHQ-linked A Time of War regression coverage now has a requirements matrix in `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`, a top-level deterministic runner in `scripts/test-all.ps1`, bootstrap fixture coverage in `scripts/test-bootstrap-mekhq-campaign.ps1`, and save-summary XML/gzip fixture coverage in `scripts/test-summarize-mekhq-save.ps1`; epic issue `#38` continues through campaign validator tests, pending-action validator, and GM context packet scenarios.
 - MekHQ pending application workflow needs human-in-the-loop UI validation from issue `#37` before treating the full apply/save/re-import loop as proven in practice.
 - Rules lookup infrastructure now has a new overnight-ready queue: glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has a staged path: source-coverage mapping (`#52`), transport/large-asset summary work if supported (`#53`), richer DropShip/unit asset sheet design (`#54`), and tactical encounter handoff checklist support (`#55`).
@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#42`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and children `#43`-`#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
 
 ## Open Issues
 
@@ -122,7 +122,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done in issue `#39`: define MekHQ-linked A Time of War workflow requirements and coverage matrix.
   - Done in issue `#40`: add top-level deterministic test runner.
   - Done in issue `#41`: add `bootstrap-mekhq-campaign.py` unit-style fixture coverage.
-  - Issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage.
+  - Done in issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage.
   - Issue `#43`: add campaign-state validator automated coverage.
   - Issue `#44`: add pending MekHQ actions validator.
   - Issue `#45`: add GM context packet regression scenarios for MekHQ-linked play after context packet dependencies exist.
@@ -130,9 +130,10 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   1. Done in issue `#39`: requirements and coverage matrix define stable `REQ-MEKHQ-ATOW-*` IDs and child issue ownership.
   2. Done in issue `#40`: `scripts/test-all.ps1` runs deterministic suites and initially wraps existing tests.
   3. Done in issue `#41`: bootstrap helper fixture coverage is integrated into `scripts/test-all.ps1`.
-  4. Issues `#42` and `#43` expand deterministic helper and validator coverage and add their suites to `scripts/test-all.ps1`.
-  5. Issue `#44` adds pending-action structural validation using the requirement schema and pending workflow states.
-  6. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
+  4. Done in issue `#42`: save-summary XML/gzip fixture coverage is integrated into `scripts/test-all.ps1`.
+  5. Issue `#43` expands campaign-state validator coverage and adds its suite to `scripts/test-all.ps1`.
+  6. Issue `#44` adds pending-action structural validation using the requirement schema and pending workflow states.
+  7. Issue `#45` waits for issue `#31` context packet design and likely issue `#33` helper implementation.
 
 ### MekHQ-to-MEK-RPG campaign bridge epic
 
@@ -199,6 +200,17 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
+
+### Add summarize-mekhq-save sanitized XML fixture coverage
+
+- Status: Done
+- Issue: `#42`
+- Handoff: `docs/handoffs/archive/add-summarize-mekhq-save-sanitized-xml-fixture-coverage.md`
+- Script: `scripts/test-summarize-mekhq-save.ps1`
+- Fixture: `tests/fixtures/mekhq-save-sanitized.xml`
+- Mode: Project development / testing
+- Goal: Add automated fixture coverage for `scripts/summarize-mekhq-save.py` using tiny sanitized XML and gzip fixtures instead of real MekHQ saves.
+- Acceptance: fixture test compiles the helper, parses plain XML and temp-generated gzip XML, checks JSON top-level keys and representative campaign, finance, personnel, unit, contract, scenario, market, warning, and unsupported-field values, smoke-tests Markdown output, verifies sparse missing-section XML does not crash, confirms no adjacent output file is created, verifies the committed fixture hash is unchanged, and runs from `scripts/test-all.ps1`.
 
 ### Add bootstrap-mekhq-campaign unit-style fixture coverage
 

@@ -32,6 +32,7 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 ./scripts/roll-dice.ps1 2d6+2 "Technician check"
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
+./scripts/test-summarize-mekhq-save.ps1
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
 ./scripts/test-bootstrap-mekhq-campaign.ps1
@@ -45,7 +46,9 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 
 `test-bootstrap-mekhq-campaign.ps1` uses the sanitized minimal MekHQ summary fixture and disposable campaign folders to check bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership/no-writeback language, active pointer preservation, and cleanup.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1` and `test-bootstrap-mekhq-campaign.ps1`, and should grow as issues `#42` through `#45` add fixture and validator suites.
+`test-summarize-mekhq-save.ps1` uses committed sanitized XML and a temp-generated gzip copy to check `summarize-mekhq-save.py` JSON/Markdown output shape, warnings, unsupported fields, missing-section behavior, and read-only fixture handling.
+
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, and `test-summarize-mekhq-save.ps1`, and should grow as issues `#43` through `#45` add fixture and validator suites.
 
 ## Verify Protected Source Is Not Staged
 
