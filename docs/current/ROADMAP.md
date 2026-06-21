@@ -54,7 +54,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, regression coverage issue `#38` and child `#45`, GM context architecture issues `#30`-`#34`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issue `#25`, MekHQ manual verification issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, and dashboard/session tooling issues `#56`-`#58` are the active staged exploration paths. MekHQ regression coverage issue `#38` and GM context architecture issue `#30` are complete.
 
 ## Open Issues
 
@@ -111,7 +111,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Automated regression coverage for MekHQ-linked A Time of War workflow
 
-- Status: Open
+- Status: Done
 - Epic issue: `#38`
 - Mode: Project development / test strategy
 - Goal: increase automated regression and unit-style coverage around the MEK-RPG workflow for A Time of War play tied to MekHQ, so future changes identify behavior regressions before live campaign use.
@@ -125,7 +125,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Done in issue `#42`: add `summarize-mekhq-save.py` sanitized XML fixture coverage.
   - Done in issue `#43`: add campaign-state validator automated coverage.
   - Done in issue `#44`: add pending MekHQ actions validator.
-  - Issue `#45`: add GM context packet regression scenarios for MekHQ-linked play after context packet dependencies exist.
+  - Done in issue `#45`: add GM context packet regression scenarios for MekHQ-linked play.
 - Dependency order:
   1. Done in issue `#39`: requirements and coverage matrix define stable `REQ-MEKHQ-ATOW-*` IDs and child issue ownership.
   2. Done in issue `#40`: `scripts/test-all.ps1` runs deterministic suites and initially wraps existing tests.
@@ -177,7 +177,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### GM context architecture epic
 
-- Status: Open
+- Status: Done
 - Epic issue: `#30`
 - Mode: Project development / play workflow design
 - Research input: AI Dungeon and Latitude public memory/model-development notes suggest that long-running AI RPG play benefits from explicit context layers, distinct summary and memory roles, semantic checkpoints, portable model assumptions, and regression-style evaluation.
@@ -198,9 +198,29 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 3. Done in issue `#32`: `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` defines memory strata, checkpoint triggers, file ownership, correction handling, MekHQ intent boundaries, and stale-summary precedence.
 4. Done in issue `#33`: `scripts/build-gm-context-packet.ps1` reports packet inputs without inventing facts, interpreting rules, reading protected source, or mutating campaign files.
 5. Done in issue `#34`: `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` and `scripts/test-gm-context-regressions.ps1` validate continuity, rules routing, structured-state precedence, stale-memory avoidance, protected-source boundaries, tactical handoff expectations, and MekHQ ownership boundaries against repeatable scenarios.
-6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
+6. Done in epic issue `#30`: the context-packet workflow is documented, has a helper, and has regression coverage for general and MekHQ-linked packet boundaries.
 
 ## Done
+
+### Complete MekHQ-linked workflow regression coverage epic
+
+- Status: Done
+- Issue: `#38`
+- Requirements: `docs/current/MEKHQ_LINKED_ATOW_WORKFLOW_REQUIREMENTS.md`
+- Runner: `scripts/test-all.ps1`
+- Mode: Project development / test strategy
+- Goal: Create durable automated regression and unit-style coverage around the MEK-RPG workflow for A Time of War play tied to MekHQ.
+- Acceptance: requirements matrix, deterministic runner, bootstrap fixture coverage, save-summary XML/gzip fixture coverage, campaign-state validator coverage, pending-action validator coverage, GM context packet scenarios, and protected-source/no-writeback boundary checks are implemented; manual UI apply/save/re-import validation remains tracked in user-task issue `#37`.
+
+### Complete GM context architecture epic
+
+- Status: Done
+- Issue: `#30`
+- Design: `docs/current/GM_CONTEXT_PACKET_DESIGN.md`
+- Regression scenarios: `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md`
+- Mode: Project development / play workflow design
+- Goal: Create a staged project track for improving GM context architecture using explicit context layers, separate memory roles, semantic checkpoints, and repeatable validation.
+- Acceptance: child issues `#31` through `#34` are complete; the architecture preserves MEK RPG's rule-bound, source-bound, structured-state, and MekHQ ownership boundaries; helper and regression coverage are in place.
 
 ### Add GM context packet regression scenarios for MekHQ-linked play
 

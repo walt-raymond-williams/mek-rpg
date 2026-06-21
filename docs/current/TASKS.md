@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#38`: parent epic for automated regression coverage of the MekHQ-linked A Time of War workflow.
 - Issue `#46`: source-review glossary and term alias coverage, with active handoff `docs/handoffs/active/source-review-glossary-and-term-alias-coverage.md`.
 - Issue `#47`: expand page-reference index for placeholder subsystems, with active handoff `docs/handoffs/active/expand-page-reference-index-for-placeholder-subsystems.md`.
 - Issue `#48`: normalize manifest metadata and coverage statuses, with active handoff `docs/handoffs/active/normalize-manifest-metadata-and-coverage-statuses.md`.
@@ -25,7 +24,6 @@
 - Issue `#57`: design read-only dashboard data adapter contract, with active handoff `docs/handoffs/active/design-read-only-dashboard-data-adapter-contract.md`, after issue `#56`.
 - Issue `#58`: add campaign-local session archive helper, with active handoff `docs/handoffs/active/add-campaign-local-session-archive-helper.md`.
 - Issue `#25`: parent epic for the MekHQ-to-MEK-RPG campaign bridge.
-- Issue `#30`: parent epic for GM context architecture informed by AI Dungeon-style memory lessons.
 - Issue `#37`: run manual MekHQ pending workflow playtest, with active handoff `docs/handoffs/active/run-manual-mekhq-pending-workflow-playtest.md`, when the user has a disposable or intentionally selected MekHQ save ready.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use issue `#55`'s tactical handoff checklist work as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
@@ -42,6 +40,8 @@
 
 ## Done
 
+- Issue `#38` completed: MekHQ-linked A Time of War workflow regression coverage now has requirements, a deterministic top-level runner, bootstrap/save-summary/campaign-validator/pending-action/context-packet automated suites, protected-source/no-writeback checks, and recorded manual UI validation follow-up in issue `#37`.
+- Issue `#30` completed: GM context architecture now has a packet design, campaign memory strata and semantic checkpoint policy, deterministic context packet helper, and general context regression scenarios.
 - Issue `#45` implemented: added `scripts/test-mekhq-context-packet.ps1` and MekHQ-linked scenarios in `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` to verify context packets include bridge metadata, unresolved pending actions, pending-intent/manual-checklist labels, structured-state precedence over stale summaries, rules/tactical handoff route references, protected-source/no-writeback boundaries, and read-only behavior; integrated the suite into `scripts/test-all.ps1`, command docs, and the MekHQ-linked workflow coverage matrix.
 - Issue `#34` implemented: added `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` plus `scripts/test-gm-context-regressions.ps1` to document manual and scripted context scenarios for active campaign selection, recent/durable memory separation, structured-state precedence, corrected/stale memory behavior, rules routing, protected-source boundaries, tactical handoff, MekHQ ownership boundaries, and read-only packet assembly; integrated the scripted suite into `scripts/test-all.ps1` and command docs.
 - Issue `#33` implemented: added `scripts/build-gm-context-packet.ps1` and `scripts/test-build-gm-context-packet.ps1` to report ordered GM context packet source files for the active or explicit campaign, flag missing or unsafe active state, preserve protected-source/no-rules-interpretation boundaries, optionally append validator output, and integrate with `scripts/test-all.ps1`; documented usage in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
