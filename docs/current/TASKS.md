@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#89`: add checkpoint fixture edge cases for adapter robustness.
 - Issue `#70`: plan the ruling safety and deterministic mechanics maturation track, confirming child issue dependency order and boundaries before resolver implementation.
 - Issue `#71`: create the deterministic mechanics catalog after the epic planning pass.
 - Issue `#72`: define the standard mechanic JSON contract, including authority metadata and failure behavior.
@@ -39,6 +38,7 @@
 
 ## Done
 
+- Issue `#89` implemented: added a sanitized sparse/warning-heavy checkpoint edge fixture and `scripts/test-mekhq-checkpoint-edge-fixtures.ps1` to cover empty personnel/unit/scenario arrays, shallow contract terms, unknown finance/location values, warning-heavy logistics/report sections, a unit-market offer with no stable selector and no final price, unsupported blocker versus FYI distinctions, and read-only/sanitized fixture behavior; wired the suite into `scripts/test-all.ps1` and command docs.
 - Issue `#88` implemented: added `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md` with GM-facing severity categories, placement rules, unsupported-field handling, blocking criteria, packet wording, adapter guidance, and read-only boundaries; linked the policy from the consumed-field map and GM context packet design; updated `build-gm-context-packet.ps1` to include the policy for MekHQ-linked campaigns.
 - Issue `#87` implemented: added `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md` to classify checkpoint export fields as hard checkpoint facts, cautious context, GM-facing context, evidence/diagnostic only, blocked/unsafe, or ignored for now; documented required trust-boundary fields, market/logistics/write-command blockers, adapter implications, and MegaMek schema-hardening feedback; linked the map from checkpoint contract and cross-board tracking docs.
 - Issue `#86` implemented: added a sanitized compact fixture excerpt from the MegaMek workspace jar-backed checkpoint prototype output against a disposable `The Learning Ropes` save, added `scripts/test-mekhq-checkpoint-prototype-fixture.ps1` to validate prototype metadata, observed counts, method-backed sample values, warning/unsupported preservation, sanitized local paths, and the experimental/non-production boundary, wired it into `scripts/test-all.ps1`, and documented the command.

@@ -1,0 +1,277 @@
+{
+  "bridge_metadata": {
+    "schema_name": "mekhq-read-only-checkpoint",
+    "schema_version": "0.1",
+    "producer": "sanitized-edge-fixture",
+    "producer_version": "0.1",
+    "mekhq_version": "0.51.00",
+    "exported_at": "SANITIZED: edge fixture",
+    "input_path": "SANITIZED: edge-fixture.cpnx.gz",
+    "save_timestamp": "SANITIZED: edge fixture timestamp",
+    "save_size_bytes": 0,
+    "gzip": true,
+    "read_only": true,
+    "checkpoint_id": "edge-empty-warning-heavy",
+    "evidence": "Confirmed from MekHQ export",
+    "warnings": [
+      "Sanitized edge fixture only; not produced from a real user campaign save.",
+      "Intentionally sparse and warning-heavy for MEK-RPG adapter robustness tests."
+    ]
+  },
+  "campaign": {
+    "id": {
+      "value": "Unknown",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": [
+        "Campaign id absent in this edge fixture."
+      ]
+    },
+    "name": {
+      "value": "Sparse Edge Case Company",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getName()",
+      "warnings": []
+    },
+    "date": {
+      "value": "3025-08-01",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getLocalDate()",
+      "warnings": []
+    },
+    "start_date": {
+      "value": "Unknown",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "faction": {
+      "value": "Unknown",
+      "evidence": "Unknown",
+      "method_backed": "Unknown",
+      "source_owner": "Campaign#getFaction()",
+      "warnings": [
+        "Faction missing in edge fixture."
+      ]
+    },
+    "gm_mode": {
+      "value": "Unknown",
+      "evidence": "Unknown",
+      "method_backed": "Unknown",
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "location": {
+      "current_system_id": {
+        "value": "Unknown",
+        "evidence": "Needs MekHQ inspection",
+        "method_backed": "Unknown",
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": [
+          "Current system missing; inspect MekHQ before location-dependent play."
+        ]
+      },
+      "current_system_name": {
+        "value": "Unknown",
+        "evidence": "Needs MekHQ inspection",
+        "method_backed": "Unknown",
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": [
+          "Current system display name missing."
+        ]
+      },
+      "current_location": {
+        "value": "Unknown",
+        "evidence": "Needs MekHQ inspection",
+        "method_backed": "Unknown",
+        "source_owner": "Campaign#getCurrentLocation()",
+        "warnings": [
+          "Current location not available in this edge fixture."
+        ]
+      },
+      "travel_state": {
+        "value": "Unknown",
+        "evidence": "Needs MekHQ inspection",
+        "method_backed": "Unknown",
+        "source_owner": "Location/LocationNode",
+        "warnings": [
+          "Route/base semantics unavailable."
+        ]
+      }
+    }
+  },
+  "finances": {
+    "balance": {
+      "value": "Unknown",
+      "currency": "C-bills",
+      "evidence": "Unknown",
+      "method_backed": "Unknown",
+      "source_owner": "Finances#getBalance()",
+      "warnings": [
+        "Balance missing; do not make finance claims from this checkpoint."
+      ]
+    },
+    "loan_balance": {
+      "value": "Unknown",
+      "currency": "C-bills",
+      "evidence": "Unknown",
+      "method_backed": "Unknown",
+      "source_owner": "Finances#getLoanBalance()",
+      "warnings": []
+    },
+    "has_active_loans": {
+      "value": "Unknown",
+      "evidence": "Unknown",
+      "method_backed": "Unknown",
+      "source_owner": "Finances#hasActiveLoans()",
+      "warnings": []
+    },
+    "recent_transactions": []
+  },
+  "personnel": [],
+  "units": [],
+  "contracts": [
+    {
+      "id": 9001,
+      "display_name": "Sparse Contract Terms",
+      "type": "Contract",
+      "status": {
+        "raw_code": "ACTIVE",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Mission#getStatus()"
+      },
+      "system_id": "Unknown",
+      "system_name": "Unknown",
+      "employer": "Unknown",
+      "enemy": "Unknown",
+      "start_date": "Unknown",
+      "end_date": "Unknown",
+      "terms": {
+        "source_owner": "Contract getters",
+        "warnings": [
+          "Contract terms intentionally shallow; verify payment, salvage, command, support, and transport before contract scenes."
+        ]
+      },
+      "scenario_ids": [],
+      "warnings": [
+        "No linked scenarios are present in this sparse edge fixture."
+      ]
+    }
+  ],
+  "scenarios": [],
+  "repairs_and_logistics": {
+    "shopping_list": [],
+    "repair_work": [],
+    "parts_pressure": [],
+    "cargo": {
+      "value": "Unknown",
+      "evidence": "Needs MekHQ inspection",
+      "method_backed": "Unknown",
+      "source_owner": "CargoStatistics",
+      "warnings": [
+        "Cargo pressure missing; do not use this fixture for exact transport capacity."
+      ]
+    },
+    "transport_bays": {
+      "value": "Unknown",
+      "evidence": "Needs MekHQ inspection",
+      "method_backed": "Unknown",
+      "source_owner": "HangarStatistics",
+      "warnings": [
+        "Bay occupancy missing; verify in MekHQ before exact logistics rulings."
+      ]
+    },
+    "warnings": [
+      "Logistics section is warning-heavy by design."
+    ]
+  },
+  "markets": {
+    "unit_offers": [
+      {
+        "id": null,
+        "stable_selector_available": false,
+        "display_name": "Missing Price Offer",
+        "market_type": "Unknown",
+        "unit_type": "Unknown",
+        "unit_name": "Unknown",
+        "percent": "Unknown",
+        "transit_duration_days": "Unknown",
+        "entity": {
+          "type": "Unknown",
+          "source_owner": "UnitMarketOffer#getEntity()"
+        },
+        "guard_fields": [
+          "market_type",
+          "unit_type",
+          "unit_name",
+          "percent",
+          "transit_duration_days"
+        ],
+        "warnings": [
+          "Final price omitted in edge fixture.",
+          "Unit offer has no stable selector and cannot drive automation."
+        ]
+      }
+    ],
+    "personnel_applicants": [],
+    "contract_offers": [],
+    "warnings": [
+      "Market section is display-only."
+    ]
+  },
+  "reports": {
+    "current": [],
+    "skill": [],
+    "technical": [],
+    "finances": [],
+    "acquisitions": [],
+    "medical": [],
+    "personnel": [],
+    "battle": [],
+    "politics": [],
+    "aggregate": [],
+    "warnings": [
+      "Report classification unavailable in this edge fixture."
+    ]
+  },
+  "unsupported": [
+    {
+      "area": "markets.unit_offers",
+      "field": "stable_offer_id",
+      "reason": "No stable selector is available for the edge fixture offer.",
+      "evidence": "Unsupported",
+      "recommended_owner": "MekHQ exporter or future source change",
+      "blocks_automation": true
+    },
+    {
+      "area": "markets.unit_offers",
+      "field": "final_price",
+      "reason": "Final price omitted to prove adapters tolerate missing optional method-backed values.",
+      "evidence": "Unsupported",
+      "recommended_owner": "MekHQ exporter",
+      "blocks_automation": false
+    },
+    {
+      "area": "reports",
+      "field": "classification",
+      "reason": "Report buckets are empty and classification is unavailable.",
+      "evidence": "Unsupported",
+      "recommended_owner": "MekHQ exporter",
+      "blocks_automation": false
+    },
+    {
+      "area": "write_commands",
+      "field": "all",
+      "reason": "Checkpoint edge fixture is read-only and contains no command payload.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future explicit write-command issue, if approved",
+      "blocks_automation": true
+    }
+  ]
+}

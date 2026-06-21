@@ -88,13 +88,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   2. Done issue `#86`: added checkpoint adapter tests using sanitized disposable-save prototype output.
   3. Done issue `#87`: defined the MEK-RPG consumed-field mapping for MekHQ checkpoint exports.
   4. Done issue `#88`: defined GM-facing surfacing for checkpoint warnings and unsupported fields.
-  5. Open issue `#89`: add checkpoint fixture edge cases for adapter robustness.
+  5. Done issue `#89`: added checkpoint fixture edge cases for adapter robustness.
 - Dependency order:
   1. Done in issue `#85`: start with sanitized fixture tests so the basic shape is executable in this repo.
   2. Done in issue `#86`: add prototype-output tests to validate real exporter-shaped data while preserving the experimental boundary.
   3. Done in issue `#87`: document consumed-field mapping before requesting field renames, removals, or schema hardening.
   4. Done in issue `#88`: define GM-facing warning and unsupported-field surfacing once the consumed-field categories are clear.
-  5. Add edge-case fixtures before treating adapter behavior as robust.
+  5. Done in issue `#89`: add edge-case fixtures before treating adapter behavior as robust.
 - Boundary: read-only only. Do not implement day advancement, contract accept/decline, hiring, repair, purchase, sale, assignment, tactical result application, direct save/XML mutation, or market-offer automation selectors in this queue.
 
 ### Ruling safety and deterministic mechanics maturation

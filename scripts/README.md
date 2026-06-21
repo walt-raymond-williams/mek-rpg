@@ -19,6 +19,7 @@
 - `test-summarize-mekhq-save.ps1`: runs sanitized XML and generated gzip fixture coverage for save-summary JSON/Markdown output and read-only behavior.
 - `test-mekhq-checkpoint-fixture.ps1`: runs fixture coverage for the sanitized MekHQ read-only checkpoint export shape and trust-boundary metadata.
 - `test-mekhq-checkpoint-prototype-fixture.ps1`: runs fixture coverage for a sanitized compact excerpt of jar-backed prototype output from a disposable MekHQ save.
+- `test-mekhq-checkpoint-edge-fixtures.ps1`: runs edge-case fixture coverage for sparse, warning-heavy, unsupported, and missing optional checkpoint export data.
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
@@ -122,6 +123,7 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 ./scripts/test-summarize-mekhq-save.ps1
 ./scripts/test-mekhq-checkpoint-fixture.ps1
 ./scripts/test-mekhq-checkpoint-prototype-fixture.ps1
+./scripts/test-mekhq-checkpoint-edge-fixtures.ps1
 ```
 
 The helper detects gzip compression by magic bytes, parses the save XML with structured XML APIs, and writes JSON or Markdown to stdout. It does not write to the MekHQ save. JSON is the primary output for later bridge automation; Markdown is a quick human checkpoint. Field mappings and unsupported areas are documented in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`.
@@ -131,6 +133,8 @@ The save-summary fixture test uses committed sanitized XML plus a temp-generated
 The checkpoint fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.fixture.json`, copied from the MegaMek workspace sanitized checkpoint fixture. It checks the draft `mekhq-read-only-checkpoint` top-level shape, value/evidence/method-backed/source-owner envelopes, representative campaign, finance, personnel, unit, contract, scenario, report, market, warning, unsupported-field, and no-stable-market-selector boundaries.
 
 The prototype-output fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.prototype-output.fixture.json`, a sanitized compact excerpt from the MegaMek workspace jar-backed prototype exporter run against a copied disposable `The Learning Ropes` save. It preserves observed counts and representative method-backed values while sanitizing the input path, person names, long maintenance/report text, and local scratch paths. This fixture is experimental adapter coverage, not a production MekHQ exporter contract.
+
+The edge-case fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.edge-cases.fixture.json`, a fake sparse checkpoint with empty personnel/unit/scenario arrays, shallow contract terms, unknown finance/location values, warning-heavy logistics/report sections, a unit-market offer with no stable selector and no final price, and unsupported entries that distinguish automation blockers from FYI gaps. It is a committed sanitized fixture only, not production exporter output.
 
 ## MekHQ Campaign Bootstrap
 
@@ -169,4 +173,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper smoke tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper smoke tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
