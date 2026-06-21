@@ -64,4 +64,10 @@ git status --short --branch
 
 ## Open Questions
 
-- Whether contract examples should be strict JSON snippets or schema-like field lists with JSON examples.
+- Resolved for issue `#72`: use schema-like field lists plus strict JSON examples.
+
+## Completion
+
+- Completed in issue `#72`.
+- Added `docs/current/MECHANIC_CONTRACT_SCHEMA.md`.
+- Next dependency issue is `#82`, the BattleTech source precedence and conflict policy.
