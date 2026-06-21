@@ -84,7 +84,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Experimental prototype output may be consumed for adapter tests, but not as a production MekHQ export contract.
   - Market offers remain display/opportunity data only until stable source-confirmed identifiers exist.
 - Child issues:
-  1. Open issue `#85`: add checkpoint adapter tests using the sanitized MekHQ fixture.
+  1. Done issue `#85`: added checkpoint adapter tests using the sanitized MekHQ fixture.
   2. Open issue `#86`: add checkpoint adapter tests using disposable-save prototype output.
   3. Open issue `#87`: define the MEK-RPG consumed-field mapping for MekHQ checkpoint exports.
   4. Open issue `#88`: define GM-facing surfacing for checkpoint warnings and unsupported fields.

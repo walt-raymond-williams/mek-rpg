@@ -54,6 +54,7 @@ Get-ChildItem -Recurse -File docs/current,docs/templates,.github/ISSUE_TEMPLATE
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
 ./scripts/test-summarize-mekhq-save.ps1
+./scripts/test-mekhq-checkpoint-fixture.ps1
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
 ./scripts/test-bootstrap-mekhq-campaign.ps1
@@ -69,6 +70,8 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 `test-bootstrap-mekhq-campaign.ps1` uses the sanitized minimal MekHQ summary fixture and disposable campaign folders to check bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership/no-writeback language, active pointer preservation, and cleanup.
 
 `test-summarize-mekhq-save.ps1` uses committed sanitized XML and a temp-generated gzip copy to check `summarize-mekhq-save.py` JSON/Markdown output shape, warnings, unsupported fields, missing-section behavior, and read-only fixture handling.
+
+`test-mekhq-checkpoint-fixture.ps1` uses the committed sanitized `mekhq-read-only-checkpoint` fixture to check the draft checkpoint top-level shape, value/evidence/method-backed/source-owner envelopes, representative hard-ledger sections, report buckets, market warnings, unsupported fields, and the no-stable-market-selector automation boundary.
 
 `test-validate-campaign-state.ps1` uses a disposable temp repository fixture to check `validate-campaign-state.ps1` positive and negative behavior without mutating the live active campaign pointer.
 
@@ -90,7 +93,7 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 
 `test-mekhq-context-packet.ps1` uses a disposable MekHQ-linked campaign fixture to check context packet bridge metadata, unresolved pending actions, manual-intent labeling, stale-memory avoidance, rules/tactical handoff source references, protected-source/no-writeback boundaries, and read-only behavior.
 
-`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
+`test-all.ps1` runs all deterministic local regression and unit-style checks that are safe for normal repository verification. It currently wraps `test-mekhq-pending-workflow.ps1`, `test-bootstrap-mekhq-campaign.ps1`, `test-summarize-mekhq-save.ps1`, `test-mekhq-checkpoint-fixture.ps1`, `test-validate-campaign-state.ps1`, `test-validate-mekhq-pending-actions.ps1`, `test-validate-rules-indexes.ps1`, `test-report-rules-coverage.ps1`, `test-route-rules-prompt.ps1`, `test-build-gm-context-packet.ps1`, `test-archive-campaign-session.ps1`, `test-gm-context-regressions.ps1`, and `test-mekhq-context-packet.ps1`.
 
 ## Verify Protected Source Is Not Staged
 

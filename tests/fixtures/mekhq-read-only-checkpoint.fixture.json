@@ -1,0 +1,598 @@
+{
+  "bridge_metadata": {
+    "schema_name": "mekhq-read-only-checkpoint",
+    "schema_version": "0.1",
+    "producer": "sanitized-fixture",
+    "producer_version": "0.1",
+    "mekhq_version": "0.51.00",
+    "exported_at": "3025-07-21T18:30:00Z",
+    "input_path": "SANITIZED:/fixtures/fictional-lancers-30250721.cpnx.gz",
+    "save_timestamp": "3025-07-21T18:10:00Z",
+    "save_size_bytes": 1843200,
+    "gzip": true,
+    "read_only": true,
+    "checkpoint_id": "fixture-30250721-fictional-lancers",
+    "evidence": "Confirmed from MekHQ export",
+    "warnings": [
+      "Sanitized fixture only; not produced from a real user campaign save.",
+      "Contains fake IDs, names, prices, and report lines for MEK-RPG adapter testing."
+    ]
+  },
+  "campaign": {
+    "id": {
+      "value": "11111111-2222-4333-8444-555555555555",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "name": {
+      "value": "Fictional Lancers",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getName()",
+      "warnings": []
+    },
+    "date": {
+      "value": "3025-07-21",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getLocalDate()",
+      "warnings": []
+    },
+    "start_date": {
+      "value": "3025-06-01",
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "faction": {
+      "value": "MERC",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getFaction()",
+      "warnings": []
+    },
+    "gm_mode": {
+      "value": false,
+      "evidence": "Serialized fact",
+      "method_backed": false,
+      "source_owner": "Campaign#writeToXML(...)",
+      "warnings": []
+    },
+    "location": {
+      "current_system_id": {
+        "value": "galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": []
+      },
+      "current_system_name": {
+        "value": "Galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": []
+      },
+      "current_location": {
+        "value": "Galatea High Orbit",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentLocation()",
+        "warnings": []
+      },
+      "travel_state": {
+        "value": "In system, not in transit",
+        "evidence": "Needs MekHQ inspection",
+        "method_backed": "Unknown",
+        "source_owner": "Location/LocationNode",
+        "warnings": [
+          "Route/base semantics need disposable-save validation before automation use."
+        ]
+      }
+    }
+  },
+  "finances": {
+    "balance": {
+      "value": 12485000,
+      "currency": "C-bills",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getBalance()",
+      "warnings": []
+    },
+    "loan_balance": {
+      "value": 2500000,
+      "currency": "C-bills",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getLoanBalance()",
+      "warnings": []
+    },
+    "has_active_loans": {
+      "value": true,
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#hasActiveLoans()",
+      "warnings": []
+    },
+    "recent_transactions": [
+      {
+        "id": "finance-fixture-0001",
+        "date": "3025-07-20",
+        "category": "Contract payment",
+        "amount": 450000,
+        "currency": "C-bills",
+        "evidence": "Serialized fact",
+        "method_backed": false,
+        "source_owner": "Finances#writeToXML(...)",
+        "warnings": []
+      }
+    ]
+  },
+  "personnel": [
+    {
+      "id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeee0001",
+      "display_name": "Captain Mara Voss",
+      "full_title": "Captain Mara Voss",
+      "rank": {
+        "raw_code": "CAPTAIN",
+        "label": "Captain",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getRankName()"
+      },
+      "primary_role": {
+        "raw_code": "MEKWARRIOR",
+        "label": "MekWarrior",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getPrimaryRoleDesc()"
+      },
+      "secondary_role": {
+        "raw_code": "NONE",
+        "label": "None",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getSecondaryRoleDesc()"
+      },
+      "status": {
+        "raw_code": "ACTIVE",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getStatus()"
+      },
+      "unit_id": "bbbbbbbb-cccc-4ddd-8eee-ffffffff0001",
+      "fatigue": {
+        "value": 1,
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getFatigueDirect()"
+      },
+      "hits": {
+        "value": 0,
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getHits()"
+      },
+      "salary": {
+        "value": 4500,
+        "currency": "C-bills",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getSalary(Campaign)"
+      },
+      "injuries": [],
+      "skills": [
+        {
+          "name": "Gunnery",
+          "value": 3,
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "Person skill methods"
+        },
+        {
+          "name": "Piloting",
+          "value": 4,
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "Person skill methods"
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "units": [
+    {
+      "id": "bbbbbbbb-cccc-4ddd-8eee-ffffffff0001",
+      "display_name": "Shadow Hawk SHD-2H Sentinel One",
+      "entity": {
+        "chassis": "Shadow Hawk",
+        "model": "SHD-2H",
+        "type": "BattleMech",
+        "weight_tons": 55,
+        "source_owner": "Unit#getEntity()"
+      },
+      "status": {
+        "raw_code": "ACTIVE",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getStatus()"
+      },
+      "scenario_id": 4102,
+      "crew": [
+        {
+          "person_id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeee0001",
+          "slot": "pilot",
+          "display_name": "Captain Mara Voss",
+          "evidence": "Serialized fact",
+          "method_backed": false,
+          "source_owner": "Unit#getCrew()"
+        }
+      ],
+      "tech_id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeee0002",
+      "engineer_id": null,
+      "damage_state": {
+        "value": "Light Damage",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getDamageState()",
+        "warnings": [
+          "Exact armor, internal, critical-slot, ammo, and heat condition are outside this compact fixture."
+        ]
+      },
+      "repair_summary": {
+        "parts_needed_count": 1,
+        "parts_needing_service_count": 2,
+        "under_repair": false,
+        "last_maintenance_report": "Right torso armor patched; actuator inspection pending.",
+        "source_owner": "Unit#getPartsNeeded(); Unit#getPartsNeedingService(...); Unit#isUnderRepair(); Unit#getLastMaintenanceReport()"
+      },
+      "transport": {
+        "ship_transport": [
+          {
+            "transport_id": "bbbbbbbb-cccc-4ddd-8eee-ffffffff00aa",
+            "display_name": "Union DropShip Fixture",
+            "bay_type": "Mek bay",
+            "evidence": "Needs MekHQ inspection",
+            "method_backed": "Unknown",
+            "source_owner": "Unit transport assignment methods"
+          }
+        ],
+        "tactical_transport": [],
+        "tow_transport": [],
+        "warnings": [
+          "Validate exact transport assignment semantics against disposable saves before treating as authoritative."
+        ]
+      },
+      "warnings": []
+    }
+  ],
+  "contracts": [
+    {
+      "id": 301,
+      "display_name": "Training Cadre Rotation",
+      "type": "Contract",
+      "status": {
+        "raw_code": "ACTIVE",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Mission#getStatus()"
+      },
+      "system_id": "galatea",
+      "system_name": "Galatea",
+      "employer": "Galatean Training Command",
+      "enemy": "Pirate Raiders",
+      "start_date": "3025-07-01",
+      "end_date": "3025-09-30",
+      "terms": {
+        "advance": "20%",
+        "transport_comp": "50%",
+        "command_rights": "House liaison",
+        "salvage_pct": "40%",
+        "support": "Battle loss compensation enabled",
+        "source_owner": "Contract getters"
+      },
+      "scenario_ids": [
+        4102
+      ],
+      "warnings": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": 4102,
+      "mission_id": 301,
+      "display_name": "Checkpoint Sweep",
+      "status": {
+        "raw_code": "CURRENT",
+        "label": "Current",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Scenario#getStatus()"
+      },
+      "date": "3025-07-22",
+      "report": {
+        "text": "Sanitized scenario report: patrol contact expected near a supply checkpoint.",
+        "sanitized": true,
+        "source_owner": "Scenario#getReport()"
+      },
+      "player_force": {
+        "formation_id": "fixture-lance-alpha",
+        "source_owner": "Scenario#getForces(Campaign)"
+      },
+      "bot_forces": [
+        {
+          "name": "Pirate Raider Lance",
+          "unit_count": 4,
+          "evidence": "Serialized fact",
+          "method_backed": false,
+          "source_owner": "Scenario#getBotForces()"
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "repairs_and_logistics": {
+    "shopping_list": [
+      {
+        "id": "fixture-shopping-0001",
+        "display_name": "Medium Laser replacement",
+        "quantity": 1,
+        "evidence": "Serialized fact",
+        "method_backed": false,
+        "source_owner": "ShoppingList#writeToXML(...)",
+        "warnings": [
+          "Shopping-list presence is procurement pressure, not proof that the part exists in inventory."
+        ]
+      }
+    ],
+    "repair_work": [
+      {
+        "unit_id": "bbbbbbbb-cccc-4ddd-8eee-ffffffff0001",
+        "display_name": "Right torso armor patch follow-up",
+        "assigned_tech_id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeee0002",
+        "minutes_left": 90,
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getTargetFor(...); Unit repair work methods",
+        "warnings": []
+      }
+    ],
+    "parts_pressure": [
+      {
+        "unit_id": "bbbbbbbb-cccc-4ddd-8eee-ffffffff0001",
+        "parts_needed_count": 1,
+        "parts_needing_service_count": 2,
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getPartsNeeded(); Unit#getPartsNeedingService(...)",
+        "warnings": []
+      }
+    ],
+    "cargo": {
+      "used_tons": 42.5,
+      "capacity_tons": 120.0,
+      "evidence": "Needs MekHQ inspection",
+      "method_backed": "Unknown",
+      "source_owner": "CargoStatistics#getCargoTonnage(...)",
+      "warnings": [
+        "CargoStatistics has source-noted validation concerns around DropShip assignments; validate against disposable saves."
+      ]
+    },
+    "transport_bays": {
+      "mek_bays_used": 1,
+      "mek_bays_capacity": 12,
+      "evidence": "Needs MekHQ inspection",
+      "method_backed": "Unknown",
+      "source_owner": "HangarStatistics",
+      "warnings": [
+        "Bay occupancy should be checked against MekHQ UI before MEK-RPG treats it as exact."
+      ]
+    },
+    "warnings": [
+      "Repair and logistics entries are read-only checkpoint facts, not executable repair commands."
+    ]
+  },
+  "markets": {
+    "unit_offers": [
+      {
+        "id": null,
+        "stable_selector_available": false,
+        "display_name": "Phoenix Hawk PXH-1",
+        "market_type": "OPEN",
+        "unit_type": "Mek",
+        "unit_name": "Phoenix Hawk PXH-1",
+        "percent": 95,
+        "transit_duration_days": 14,
+        "final_price": {
+          "value": 3847500,
+          "currency": "C-bills",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "UnitMarketOffer#getPrice()"
+        },
+        "entity": {
+          "type": "BattleMech",
+          "source_owner": "UnitMarketOffer#getEntity()"
+        },
+        "guard_fields": [
+          "market_type",
+          "unit_type",
+          "unit_name",
+          "percent",
+          "transit_duration_days"
+        ],
+        "warnings": [
+          "UnitMarketOffer#writeToXML(...) does not expose a source-confirmed unique offer UUID.",
+          "Duplicate-looking offers require human selection in MekHQ until a stable selector exists."
+        ]
+      },
+      {
+        "id": null,
+        "stable_selector_available": false,
+        "display_name": "Phoenix Hawk PXH-1",
+        "market_type": "OPEN",
+        "unit_type": "Mek",
+        "unit_name": "Phoenix Hawk PXH-1",
+        "percent": 95,
+        "transit_duration_days": 21,
+        "final_price": {
+          "value": 3847500,
+          "currency": "C-bills",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "UnitMarketOffer#getPrice()"
+        },
+        "entity": {
+          "type": "BattleMech",
+          "source_owner": "UnitMarketOffer#getEntity()"
+        },
+        "guard_fields": [
+          "market_type",
+          "unit_type",
+          "unit_name",
+          "percent",
+          "transit_duration_days"
+        ],
+        "warnings": [
+          "Same display name and price as another fixture offer; selector safety must not rely on row index or display name."
+        ]
+      }
+    ],
+    "personnel_applicants": [
+      {
+        "id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeee0003",
+        "display_name": "Tech Elias Ward",
+        "full_title": "Tech Elias Ward",
+        "primary_role": {
+          "raw_code": "MECH_TECH",
+          "label": "Mek Tech",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "Person#getPrimaryRoleDesc()"
+        },
+        "market_membership": {
+          "is_market_applicant": true,
+          "source_owner": "PersonnelMarket#getPersonnel()"
+        },
+        "hire_preconditions": {
+          "value": "Unsupported",
+          "evidence": "Unsupported",
+          "warnings": [
+            "Hiring remains manual/UI-driven until a later source-backed write command exists."
+          ]
+        },
+        "warnings": []
+      }
+    ],
+    "contract_offers": [
+      {
+        "id": 402,
+        "display_name": "Escort Duty on New Avalon",
+        "type": "Contract",
+        "status": {
+          "raw_code": "PROPOSED",
+          "label": "Proposed",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "Mission#getStatus()"
+        },
+        "employer": "Federated Suns Liaison",
+        "start_date": "3025-08-15",
+        "end_date": "3025-11-15",
+        "market_membership": {
+          "is_contract_offer": true,
+          "source_owner": "AbstractContractMarket#getContracts()"
+        },
+        "prompt_policy": {
+          "value": "Unsupported",
+          "evidence": "Unsupported",
+          "warnings": [
+            "AtB/StratCon accept/decline prompts are not part of this read-only schema."
+          ]
+        },
+        "guard_fields": [
+          "id",
+          "display_name",
+          "employer",
+          "start_date",
+          "end_date",
+          "status"
+        ],
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      "Market entries are read-only opportunities and must not be treated as purchase, hire, or accept commands."
+    ]
+  },
+  "reports": {
+    "current": [
+      {
+        "category": "current",
+        "text": "Sanitized report line: convoy escort briefing added to the command log.",
+        "date": "3025-07-21",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentReport()",
+        "contains_html": false,
+        "warnings": []
+      }
+    ],
+    "skill": [],
+    "technical": [
+      {
+        "category": "technical",
+        "text": "Sanitized report line: Sentinel One has one repair task waiting for parts.",
+        "date": "3025-07-21",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getTechnicalReport()",
+        "contains_html": false,
+        "warnings": []
+      }
+    ],
+    "finances": [],
+    "acquisitions": [],
+    "medical": [],
+    "personnel": [],
+    "battle": [],
+    "politics": [],
+    "aggregate": [],
+    "warnings": [
+      "Report text is sanitized fixture text and contains no raw MekHQ XML or copied rulebook text."
+    ]
+  },
+  "unsupported": [
+    {
+      "area": "markets.unit_offers",
+      "field": "stable_offer_id",
+      "reason": "UnitMarketOffer#writeToXML(...) does not expose a unique offer UUID in the current source-backed contract.",
+      "evidence": "Unsupported",
+      "recommended_owner": "MekHQ exporter or future source change",
+      "blocks_automation": true
+    },
+    {
+      "area": "repairs_and_logistics.cargo",
+      "field": "exact_cargo_pressure",
+      "reason": "Cargo and transport pressure need disposable-save/UI validation before being treated as exact.",
+      "evidence": "Needs MekHQ inspection",
+      "recommended_owner": "MekHQ exporter validation pass",
+      "blocks_automation": false
+    },
+    {
+      "area": "write_commands",
+      "field": "all",
+      "reason": "This checkpoint fixture is read-only and intentionally contains no command execution payload.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future explicit write-command issue, if approved",
+      "blocks_automation": true
+    }
+  ]
+}
