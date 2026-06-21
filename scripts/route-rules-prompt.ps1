@@ -241,6 +241,7 @@ $matches = foreach ($row in $routerRows) {
 $ranked = @($matches | Sort-Object @{ Expression = "score"; Descending = $true }, @{ Expression = "router_line"; Descending = $false } | Select-Object -First $Top)
 $report = [pscustomobject]@{
     prompt = $Prompt
+    mode = "rules_lookup"
     note = "Route helper only. Read the routed summaries and GM procedures before making a ruling; do not answer from this helper alone."
     source_boundary = "Uses committed indexes and manifest metadata only; protected source text and PDFs are not read."
     candidates = $ranked
@@ -253,6 +254,7 @@ if ($Format -eq "json") {
 
 Write-Host "Rules route helper"
 Write-Host "Prompt: $Prompt"
+Write-Host "Mode: rules_lookup"
 Write-Host "Note: Route helper only. Read the routed summaries and GM procedures before making a ruling."
 Write-Host "Source boundary: committed indexes and manifest metadata only; protected source text and PDFs are not read."
 

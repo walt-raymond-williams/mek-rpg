@@ -1,0 +1,154 @@
+{
+  "schema": "mek-rpg.rules-route-golden-prompts.v1",
+  "description": "Golden prompt fixtures for route helper metadata checks. Expected routes assert committed router behavior, not final rules answers.",
+  "cases": [
+    {
+      "id": "simple-check",
+      "prompt": "Resolve a simple action check under pressure",
+      "top": 5,
+      "expected_path": "rules/core/action-checks.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF page 40",
+      "expect_warnings": false
+    },
+    {
+      "id": "opposed-check",
+      "prompt": "Two characters are sneaking past guards and resisting each other",
+      "top": 5,
+      "expected_path": "rules/core/opposed-actions.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 41-42",
+      "expect_warnings": false
+    },
+    {
+      "id": "edge-use",
+      "prompt": "Can I spend Edge after a bad roll?",
+      "top": 8,
+      "expected_path": "rules/core/edge.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 44-45",
+      "expect_warnings": false
+    },
+    {
+      "id": "initiative",
+      "prompt": "Who acts first for personal combat initiative?",
+      "top": 5,
+      "expected_path": "rules/personal-combat/initiative.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 166-168",
+      "expect_warnings": false
+    },
+    {
+      "id": "ranged-attack",
+      "prompt": "Can I shoot a pistol from cover?",
+      "top": 8,
+      "expected_path": "rules/personal-combat/ranged-attacks.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 173-176",
+      "expect_warnings": false
+    },
+    {
+      "id": "melee-attack",
+      "prompt": "Can I punch someone in melee combat?",
+      "top": 5,
+      "expected_path": "rules/personal-combat/melee-attacks.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 177-180",
+      "expect_warnings": false
+    },
+    {
+      "id": "damage-wounds",
+      "prompt": "How do damage and wounds work after a hit?",
+      "top": 8,
+      "expected_path": "rules/personal-combat/damage.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 179-184",
+      "expect_warnings": false
+    },
+    {
+      "id": "healing-recovery",
+      "prompt": "How does medical healing and recovery work?",
+      "top": 5,
+      "expected_path": "rules/personal-combat/recovery.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 194-197",
+      "expect_warnings": false
+    },
+    {
+      "id": "equipment-use",
+      "prompt": "Can I buy and use a toolkit to repair gear?",
+      "top": 5,
+      "expected_path": "rules/equipment/personal-gear.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 308-315",
+      "expect_warnings": false
+    },
+    {
+      "id": "campaign-consequence",
+      "prompt": "What campaign consequences should we record after a mission?",
+      "top": 5,
+      "expected_path": "rules/campaign/overview.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 108-137",
+      "expect_warnings": false
+    },
+    {
+      "id": "vehicle-piloting",
+      "prompt": "How do I pilot a vehicle through a risky skid?",
+      "top": 8,
+      "expected_path": "rules/vehicles-and-mechs/piloting.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 142-154",
+      "expect_warnings": false
+    },
+    {
+      "id": "tactical-handoff",
+      "prompt": "This BattleMech fight needs heat and hex movement",
+      "top": 5,
+      "expected_path": "gm/switch-to-classic-battletech.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Unknown",
+      "expected_source_pages_contains": "Unknown",
+      "expect_warnings": true,
+      "expected_warning_contains": "No page-reference entry found."
+    },
+    {
+      "id": "ambiguous-rule",
+      "prompt": "GM ruling temporary ruling source authority optional rules",
+      "top": 5,
+      "expected_path": "gm/rules-adjudication-posture.md",
+      "expected_status": "source-reviewed-routing-aid",
+      "expected_page_reference_status": "Source-reviewed GM procedure",
+      "expected_source_pages_contains": "A Time of War PDF page 35",
+      "expect_warnings": false
+    },
+    {
+      "id": "missing-rule",
+      "prompt": "How do I resolve quantum hacking magic?",
+      "top": 5,
+      "expect_no_candidates": true
+    },
+    {
+      "id": "source-review-gap",
+      "prompt": "Where are record sheet reference tables?",
+      "top": 8,
+      "expected_path": "indexes/page-reference-index.md",
+      "expected_status": "Unknown",
+      "expected_page_reference_status": "Unknown",
+      "expected_source_pages_contains": "Unknown",
+      "expect_warnings": true,
+      "expected_warning_contains": "No manifest entry found for routed file."
+    }
+  ]
+}

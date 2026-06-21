@@ -23,7 +23,7 @@
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
-- `test-route-rules-prompt.ps1`: smoke-tests the rules route helper text and JSON output.
+- `test-route-rules-prompt.ps1`: tests the rules route helper text/JSON output plus golden prompt fixtures for common RPG procedures, missing routes, tactical handoff, and source-review gaps.
 - `test-archive-campaign-session.ps1`: runs disposable campaign-save coverage for the session archive helper's confirmation, preview, archive, reset, validation, and cleanup behavior.
 - `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-gm-context-regressions.ps1`: runs disposable context-packet regression scenarios for active campaign selection, memory layering, structured-state precedence, rules routing, missing-file warnings, protected-source boundaries, and read-only behavior.
@@ -113,6 +113,8 @@ The rules coverage reporter groups manifest entries by subsystem and status. Tex
 
 The route helper uses deterministic keyword scoring against `indexes/task-router.md`, then annotates routed files with manifest statuses and page-reference warnings. It is not rules authority and says so in the output; read the routed summaries or GM procedures before making a ruling.
 
+`test-route-rules-prompt.ps1` uses `tests/fixtures/rules-route-golden-prompts.fixture.json` to check common route behavior for simple checks, opposed checks, Edge use, initiative, ranged and melee attacks, damage/wounds, recovery, equipment use, campaign consequences, vehicle piloting, tactical handoff, ambiguous rulings, missing rules, and source-review gaps.
+
 ## MekHQ Save Summaries
 
 ```powershell
@@ -173,4 +175,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper smoke tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.

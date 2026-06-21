@@ -46,7 +46,7 @@ $suites = @(
         Path = Join-Path $repoRoot "scripts\test-report-rules-coverage.ps1"
     },
     @{
-        Name = "Rules route helper smoke tests"
+        Name = "Rules route helper golden fixture tests"
         Path = Join-Path $repoRoot "scripts\test-route-rules-prompt.ps1"
     },
     @{

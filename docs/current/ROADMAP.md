@@ -61,7 +61,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
 - Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
 - Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
-- Issue `#70`: ruling safety and deterministic mechanics maturation planning is complete; child issues `#71`-`#83` remain open in dependency order.
+- Issue `#70`: ruling safety and deterministic mechanics maturation planning is complete; child issues `#71`-`#83` continue in dependency order.
 
 ## Ready For Issue Candidates
 
@@ -117,7 +117,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   1. Done issue `#71`: created the deterministic mechanics catalog.
   2. Done issue `#72`: defined the standard mechanic JSON contract.
   3. Done issue `#82`: defined BattleTech source precedence and conflict policy.
-  4. Open issue `#74`: Add golden route tests for common RPG procedures.
+  4. Done issue `#74`: added golden route tests for common RPG procedures.
   5. Open issue `#80`: Add ruling authority gate.
   6. Open issue `#73`: Audit existing scripts against mechanic contract.
   7. Open issue `#81`: Add page-reference and source-offset integrity checks.
@@ -132,14 +132,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   2. Done in issue `#71`: catalog candidate procedures and ownership boundaries.
   3. Done in issue `#72`: define the standard JSON contract, including an authority envelope, before resolver prototypes.
   4. Done in issue `#82`: define source precedence before authority behavior and route fixtures.
-  5. Add the ruling authority gate before broad resolver use.
-  6. Audit existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
-  7. Add page-reference/source-offset checks to reduce stale citation risk.
-  8. Prototype the basic check, then opposed check.
-  9. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
-  10. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
-  11. Prototype RPG-scale personal-combat checkpointing only after state proposals and authority behavior are explicit.
-  12. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
+  5. Done in issue `#74`: added fixture-driven route tests before broad resolver use.
+  6. Add the ruling authority gate before broad resolver use.
+  7. Audit existing scripts so infrastructure, authority gates, and mechanic helpers stay distinct.
+  8. Add page-reference/source-offset checks to reduce stale citation risk.
+  9. Prototype the basic check, then opposed check.
+  10. Define state-change proposals before any helper is allowed to emit campaign update suggestions.
+  11. Add golden ruling scenarios for end-to-end retrieval, citation, failure, and state-proposal behavior.
+  12. Prototype RPG-scale personal-combat checkpointing only after state proposals and authority behavior are explicit.
+  13. Evaluate library, CLI, local service, or dashboard migration only after repeated contract use and fixture coverage.
 - Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, failure behavior, and uncertainty labels.
 
 ### MekHQ bridge primitives follow-up queue
