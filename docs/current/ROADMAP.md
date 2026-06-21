@@ -41,11 +41,11 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-None.
+Issue `#35`: define a pending MekHQ application checklist workflow before GM context packet design consumes MekHQ-linked pending actions.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Open MekHQ bridge issue `#25`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
+- None currently unissued. Open MekHQ bridge issues `#25` and `#35`, plus GM context architecture issues `#30`-`#34`, are the active staged exploration paths.
 
 ## Open Issues
 
@@ -64,6 +64,7 @@ None.
   - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
   - Done in issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
   - Done in issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
+  - Issue `#35`: define the pending MekHQ application checklist workflow so RPG-side ledger intents have a concrete manual-application path before context packet work consumes them.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
 ### Dependency Order
@@ -72,7 +73,8 @@ None.
 2. Done in issue `#29`: `docs/current/MEKHQ_LINKED_PLAY_LOOP.md` defines the one-day play loop and writeback boundaries so later bootstrap work does not imply unsafe direct MekHQ writes.
 3. Done in issue `#27`: `scripts/summarize-mekhq-save.py` builds the read-only save summary helper using the issue `#26` field priorities. Representative disposable saves under `C:\Users\waltr\Documents\megamek-workspace\` verified plain and gzip parsing; no purchased A Time of War source is involved.
 4. Done in issue `#28`: `scripts/bootstrap-mekhq-campaign.py` uses the mapping, read-only summary output, and play/writeback boundaries to generate a MEK-RPG campaign folder without overwriting existing saves.
-5. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
+5. Issue `#35` defines the pending MekHQ application checklist workflow for manual UI application, re-import confirmation, and unresolved ledger-intent tracking.
+6. The epic issue `#25` stays open until the staged bridge proves useful or is deliberately abandoned.
 
 ### Not Yet Promoted
 
@@ -99,11 +101,12 @@ None.
 
 ### GM Context Dependency Order
 
-1. Issue `#31` defines the packet layers, authority order, source files, and mode differences.
-2. Issue `#32` defines checkpoint triggers and how campaign-local files divide recent log, compressed summary, structured state, hooks, rules gaps, and corrected facts.
-3. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
-4. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
-5. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
+1. Issue `#35` defines pending MekHQ application item handling first, so MekHQ-linked context packets have a concrete pending-action source.
+2. Issue `#31` defines the packet layers, authority order, source files, and mode differences.
+3. Issue `#32` defines checkpoint triggers and how campaign-local files divide recent log, compressed summary, structured state, hooks, rules gaps, and corrected facts.
+4. Issue `#33` builds a deterministic helper that reports or assembles packet inputs without inventing facts or interpreting rules.
+5. Issue `#34` validates continuity, rules routing, structured-state precedence, stale-memory avoidance, and MekHQ ownership boundaries against repeatable scenarios.
+6. The epic issue `#30` stays open until the context-packet workflow is documented, usable in play, and validated enough to become normal GM procedure.
 
 ## Done
 

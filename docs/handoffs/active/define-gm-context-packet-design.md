@@ -5,7 +5,7 @@
 - GitHub issue: `#31` Define GM context packet design
 - Roadmap entry: GM context architecture epic
 - Mode: Project development
-- Priority: Current / next handoff
+- Priority: Next after issue `#35`
 
 ## Goal
 
@@ -41,6 +41,8 @@ Task-specific context:
 
 Issue `#26`, `#27`, `#28`, and `#29` are complete. MekHQ ownership terms can be treated as established for this design, but direct MekHQ save writes remain out of scope.
 
+Issue `#35` should run first. The context packet design should consume the pending MekHQ application workflow from issue `#35` rather than inventing its own pending-action layer.
+
 ## Expected Output
 
 - A new durable design document, recommended path: `docs/current/GM_CONTEXT_PACKET_DESIGN.md`.
@@ -50,6 +52,7 @@ Issue `#26`, `#27`, `#28`, and `#29` are complete. MekHQ ownership terms can be 
   - file or index inputs for each layer
   - freshness expectations and stale-context failure modes
   - differences between play mode, rules lookup mode, and MekHQ-linked play
+  - how pending MekHQ application items enter MekHQ-linked play context, after issue `#35`
   - source and copyright boundaries
   - what later issue `#33` should implement in a deterministic helper
 - Update related docs only if the design changes the live play start procedure or issue sequencing.

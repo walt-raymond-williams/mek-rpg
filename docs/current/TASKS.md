@@ -2,10 +2,11 @@
 
 ## Now
 
-- Issue `#31`: define GM context packet design, with active handoff `docs/handoffs/active/define-gm-context-packet-design.md`.
+- Issue `#35`: define pending MekHQ application checklist workflow, with active handoff `docs/handoffs/active/define-pending-mekhq-application-checklist.md`.
 
 ## Next
 
+- Issue `#31`: define GM context packet design after issue `#35` defines how pending MekHQ application items are represented in campaign context.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
