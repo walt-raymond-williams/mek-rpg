@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` establishes field priorities; representative saves exist in `C:\Users\waltr\Documents\megamek-workspace\`.
+- Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` establishes field priorities; handoff at `docs/handoffs/active/prototype-read-only-mekhq-save-summary-helper.md`; representative saves exist in `C:\Users\waltr\Documents\megamek-workspace\`.
 - Issue `#31`: define GM context packet design after the current MekHQ ownership mapping pass, so play context can explicitly layer instructions, active campaign state, rules routes, recent events, summaries, retrieved memories, and optional MekHQ facts.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
 

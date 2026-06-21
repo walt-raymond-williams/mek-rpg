@@ -60,7 +60,7 @@ None.
 - Initial child issues:
   - Issue `#26`: define MekHQ bridge data model and campaign-folder mapping.
   - Done in issue `#29`: define MekHQ-linked one-day play loop and writeback boundaries before campaign bootstrap implies write behavior.
-  - Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities.
+  - Issue `#27`: prototype read-only MekHQ save summary helper after issue `#26` sets field priorities; handoff at `docs/handoffs/active/prototype-read-only-mekhq-save-summary-helper.md`.
   - Issue `#28`: prototype MekHQ campaign bootstrap into a MEK-RPG save folder after mapping, summary input, and play/writeback boundaries are clear.
 - Deferred until source-backed confidence improves: direct MekHQ save writes, headless day advancement, automatic purchase/contract/repair writeback, and any broad changes to MekHQ internals.
 
