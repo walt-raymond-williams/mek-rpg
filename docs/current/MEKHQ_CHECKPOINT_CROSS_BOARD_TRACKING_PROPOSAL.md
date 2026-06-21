@@ -72,11 +72,13 @@ Use these phrases in cross-board comments:
 
 ## Feedback To Send Back
 
-Send this summary back to the MegaMek workspace:
+Detailed consumed-field decisions now live in `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md`. Send this summary back to the MegaMek workspace:
 
 - The current top-level shape is acceptable for MEK-RPG adapter experiments.
 - Keep `evidence`, `source_owner`, `method_backed`, `warnings`, and `unsupported`; MEK-RPG wants these trust-boundary fields preserved.
-- MEK-RPG near-term priorities are unit condition, personnel, contracts, reports/warnings, and campaign/finance basics.
+- MEK-RPG near-term priorities are method-backed campaign/date/location, finance balance, personnel role/status/condition, unit status/condition/repair summary, active contract terms, scenario status, and sanitized reports.
+- Replace object-string prototype values, such as `current_location`, with stable display/id fields before hardening the schema.
+- Deepen active contract-term extraction through `Contract` getters before treating contract fields as schema-stable.
 - Market offers should remain display/opportunity data only until stable source-confirmed identifiers exist.
 - MEK-RPG will validate the shape through issues `#85` through `#89`; issue `#87` is the main dependency for field naming/grouping feedback.
 - Recommended sequence: MEK-RPG adapter tests first, MegaMek exporter hardening second, and only then consider moving the exporter into MekHQ source.

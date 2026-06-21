@@ -115,6 +115,8 @@ No adapter should write to `.cpnx`, `.cpnx.gz`, MekHQ XML, or raw MekHQ save pay
 
 ## Follow-Up
 
+Issue `#87` adds `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md` as the MEK-RPG consumed-field map for future adapter and exporter-hardening decisions.
+
 Create a focused adapter implementation issue after the MegaMek workspace provides either:
 
 - a draft MekHQ-owned checkpoint export JSON shape, or

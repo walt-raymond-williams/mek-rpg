@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#87`: define the MEK-RPG consumed-field mapping for MekHQ checkpoint exports.
 - Issue `#88`: define GM-facing surfacing for checkpoint warnings and unsupported fields.
 - Issue `#89`: add checkpoint fixture edge cases for adapter robustness.
 - Issue `#70`: plan the ruling safety and deterministic mechanics maturation track, confirming child issue dependency order and boundaries before resolver implementation.
@@ -41,6 +40,7 @@
 
 ## Done
 
+- Issue `#87` implemented: added `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md` to classify checkpoint export fields as hard checkpoint facts, cautious context, GM-facing context, evidence/diagnostic only, blocked/unsafe, or ignored for now; documented required trust-boundary fields, market/logistics/write-command blockers, adapter implications, and MegaMek schema-hardening feedback; linked the map from checkpoint contract and cross-board tracking docs.
 - Issue `#86` implemented: added a sanitized compact fixture excerpt from the MegaMek workspace jar-backed checkpoint prototype output against a disposable `The Learning Ropes` save, added `scripts/test-mekhq-checkpoint-prototype-fixture.ps1` to validate prototype metadata, observed counts, method-backed sample values, warning/unsupported preservation, sanitized local paths, and the experimental/non-production boundary, wired it into `scripts/test-all.ps1`, and documented the command.
 - Issue `#85` implemented: copied the sanitized `mekhq-read-only-checkpoint` fixture into `tests/fixtures/`, added `scripts/test-mekhq-checkpoint-fixture.ps1` to validate the checkpoint top-level shape, value/evidence/method-backed/source-owner envelopes, representative hard-ledger sections, report buckets, market warnings, unsupported fields, and no-stable-market-selector boundary, wired it into `scripts/test-all.ps1`, and documented the command.
 - Issue `#65` implemented: added `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md` to define MekHQ-linked PC/NPC ownership boundaries, reusable linked-person entry shapes, expansion rules, import refresh behavior, discrepancy handling, and an explicit documentation-only/no-code decision; updated bootstrap/data-model/campaign template docs and archived the handoff.
