@@ -2,11 +2,10 @@
 
 ## Now
 
-- None currently active after recording the expanded MekHQ live API completion memo and creating issue `#110`.
+- None currently active after completing issue `#111`.
 
 ## Next
 
-- Issue `#111`: plan controlled MekHQ command API integration. Update the old read-only/manual-only bridge posture so future work can use explicit MekHQ-owned commands with guard fields, approval, and live reread verification. Handoff: `docs/handoffs/active/controlled-mekhq-command-api-111.md`.
 - Issue `#110`: consume the expanded local MekHQ live API state shape in MEK-RPG fixtures, adapter mappings, dashboard/context summaries, and tests. Use `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` and `docs/handoffs/active/live-api-expanded-state-consumption.md`.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
@@ -28,6 +27,7 @@
 
 ## Done
 
+- Issue `#111` completed: selected `advanceDayOnce` / `POST /advance-day` as the first controlled MekHQ command candidate, documented `GET /campaign/commands` as the read-only readiness layer, defined current request guards/statuses/limitations, named the live reread verification contract and issue `#110` fields needed for post-command confirmation, updated old read-only/manual-only wording, and archived the handoff.
 - Strategy update started: created issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` to reframe future MekHQ integration around explicit MekHQ-owned command APIs instead of permanent read-only/manual-only operation.
 - Tracking update completed: recorded the MegaMek/MekHQ expanded live API completion memo in `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`, created GitHub issue `#110`, and added active handoff `docs/handoffs/active/live-api-expanded-state-consumption.md` so future MEK-RPG adapter/fixture/dashboard work can consume the local expanded API shape while preserving read-only and no-writeback boundaries.
 - Issue `#109` completed: refreshed `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md` into a handoff-ready MegaMek/MekHQ producer request package using issue `#107` adapter evidence; linked the concrete gaps for source-confirmed dirty/unsaved state, sparse human-readable location labels, structured unsupported entries, stable repair/acquisition work ids, display-only market selector future-readiness, and richer finance/personnel/unit/contract/scenario/logistics/report context; updated related audit/response/cross-board docs; archived the active handoff.

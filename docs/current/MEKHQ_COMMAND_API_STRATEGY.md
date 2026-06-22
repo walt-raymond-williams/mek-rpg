@@ -2,9 +2,22 @@
 
 Date: 2026-06-22
 
-Status: planning baseline for issue `#111`.
+Status: issue `#111` command-side planning baseline.
 
 Purpose: update MEK-RPG's MekHQ integration posture from permanent read-only/manual UI caution to controlled MekHQ-owned command integration.
+
+## Current Producer Evidence
+
+`Confirmed from local MegaMek/MekHQ workspace`: the local source branch `codex/mekhq-advance-day-control-api` now exposes command readiness and one guarded command candidate:
+
+- `GET /campaign/commands`: read-only readiness and selector discovery endpoint.
+- `POST /advance-day`: legacy guarded prototype for `advanceDayOnce`.
+- Source commit `e19740b110`: adds `GET /campaign/commands`.
+- Earlier source commits `9046a8075e` and `17207baa90`: added and hardened the local advance-day command prototype.
+
+`GET /campaign/commands` reports `advanceDayOnce` as the only currently available mutating command. It reports status-note, funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save commands as blocked with machine-readable reason codes. Unit-market purchase remains blocked because unit-market offers lack a source-confirmed stable offer selector.
+
+This issue does not authorize MEK-RPG to call a real campaign command automatically. Real command execution still requires the user to run source-built MekHQ with the local control API enabled, confirm the loaded campaign baseline, and approve any campaign-significant mutation.
 
 ## Posture Update
 
@@ -23,16 +36,17 @@ The boundary is no longer "never mutate MekHQ." The boundary is "never perform h
 
 A safe MekHQ command workflow should follow this loop:
 
-1. Read live state from MekHQ.
-2. Select a command with stable target ids or selectors.
-3. Capture baseline guards: campaign id, campaign date, state revision/snapshot id, target id, display name, relevant price/status/counts, and any prompt-sensitive fields.
-4. Run dry-run or preflight if the endpoint supports it.
-5. Present the proposed MekHQ mutation to the user or GM when the action is campaign-significant.
-6. Execute the MekHQ-owned command only after approval or an explicit automation policy.
-7. Re-read live state.
-8. Verify the expected state change from MekHQ's new state, not from MEK-RPG intent text.
-9. Record RPG narrative context and the confirmed hard-ledger result separately.
-10. Record discrepancies as blocked reconciliation items instead of guessing.
+1. Read live state from MekHQ with `GET /campaign/state`, including `bridge_metadata`.
+2. Read `GET /campaign/commands` to confirm the command is available and to discover safe selectors.
+3. Select a command with stable target ids or selectors.
+4. Capture baseline guards: campaign id, campaign date, state revision/snapshot id, target id, display name, relevant price/status/counts, and any prompt-sensitive fields.
+5. Run dry-run or preflight if the endpoint supports it.
+6. Present the proposed MekHQ mutation to the user or GM when the action is campaign-significant.
+7. Execute the MekHQ-owned command only after approval or an explicit automation policy.
+8. Re-read live state.
+9. Verify the expected state change from MekHQ's new state, not from MEK-RPG intent text.
+10. Record RPG narrative context and the confirmed hard-ledger result separately.
+11. Record discrepancies as blocked reconciliation items instead of guessing.
 
 ## Command Envelope
 
@@ -79,15 +93,78 @@ Future command adapters should preserve this shape, even if the exact JSON varie
 
 ### Advance Day
 
-This is the best first command candidate because the campaign date and daily processing are central to MekHQ-linked play, and the user reports the MegaMek workspace already exposed or can expose the ability to advance the campaign by one day.
+This is the selected first command candidate for MEK-RPG issue `#111`.
+
+It is the best first command because campaign date and daily processing are central to MekHQ-linked play, and the local MegaMek/MekHQ workspace already exposes the guarded prototype command.
+
+Current local endpoint:
+
+```http
+POST /advance-day
+```
+
+Current command name:
+
+```text
+advanceDayOnce
+```
+
+Current request guards:
+
+- `command`: must be `advanceDayOnce`.
+- `expectedDate`: required ISO MekHQ campaign date.
+- `expectedCampaignId` or `expectedCampaignName`: at least one required; prefer id when the live API provides it.
+- `dismissAdvanceDayNags`: optional; defaults to true in the current prototype and only suppresses the known advance-day nag sequence.
+- `saveAfterSuccess`: explicit; defaults false.
+- `savePath`: required only when `saveAfterSuccess` is true.
+
+Current response statuses:
+
+- `advanced`: `Campaign#newDay()` returned true and the loaded campaign date advanced exactly one day.
+- `blocked`: the command was already running, MekHQ blocked/canceled day advancement, or the date did not advance exactly one day.
+- `failed`: the command threw or failed on the Swing event dispatch thread.
+- `refused`: preflight failed, such as no loaded campaign, wrong expected date, wrong campaign identity, or invalid save request.
+
+Current limitations:
+
+- No dry-run support.
+- The legacy endpoint does not yet use the full common command envelope, command version, idempotency key, or expected state revision.
+- Save-after-success is supported but should be tested only against disposable saves before real use.
+- Prompt handling is limited to the known advance-day nag suppression path; arbitrary dialogs must not be auto-answered.
+- `visibleDialogs` is only a final snapshot unless future producer work tracks dialogs during the command.
 
 Useful acceptance criteria:
 
-- dry-run or preflight reports prompts/blockers if daily processing would need user interaction
+- `GET /campaign/commands` reports `advanceDayOnce` as available for the loaded campaign
+- preflight refuses mismatched campaign id/name/date before mutation
 - execute advances exactly one loaded campaign day through MekHQ-owned code
-- command refuses when baseline campaign id/date/state revision does not match
+- command refuses when baseline campaign id/date does not match; future command-envelope work should add expected state revision
+- command result reports before/after date, campaign id/name, whether daily nags were suppressed, final visible dialog count, and save attempt status
 - post-command live state shows the new date, report changes, finances, repairs, market changes, travel, contract deadlines, and personnel/unit effects where exposed
 - MEK-RPG records the RPG scene context and confirmed MekHQ result after reread
+
+MEK-RPG-side verification contract:
+
+1. Before command: capture `GET /campaign/state` with `bridge_metadata`, `campaign`, `finances`, `personnel`, `units`, `contracts`, `scenarios`, `repairs_and_logistics`, `markets`, `reports`, and `unsupported` when available.
+2. Before command: capture `GET /campaign/commands` and confirm `advanceDayOnce` status is `available`.
+3. Execute only with the exact expected campaign id/name and date from the live state/readiness responses.
+4. After command: re-read `GET /campaign/state` with `bridge_metadata` and operational sections.
+5. Treat the result as verified only when the reread campaign id still matches, the date is exactly one day later, and no blocker/warning indicates unresolved daily processing.
+6. Update MEK-RPG campaign files only after verification, preserving MekHQ as hard ledger authority.
+
+Issue `#110` should preserve or expose these post-command verification fields from the expanded live state shape:
+
+- `bridge_metadata.state_revision` and `bridge_metadata.snapshot_id`
+- `campaign.id`, `campaign.name`, `campaign.date`
+- current system/location/travel fields
+- finance balance, loan/default warnings, and recent finance report summaries
+- personnel availability, assignment, fatigue, hits, injury, salary, and leadership markers
+- unit availability, repair, transport, and scenario assignment summaries
+- active contract dates/deadlines, payment/salvage/rental summaries, and scenario links
+- scenario status/objective/tactical-result summaries
+- repair/logistics pressure, shopping/acquisition rows, cargo/transport warnings
+- report buckets/counts and recent report rows
+- structured `unsupported` entries that block automation or verification
 
 ### Market Purchase Or Asset Acquisition
 
@@ -132,6 +209,8 @@ When MEK-RPG needs a new mutation capability, create a producer request that ask
 - post-command result metadata
 - live state fields sufficient to verify success after reread
 - disposable validation fixtures or smoke commands
+
+No new producer request is needed for the first command candidate because local producer work already exposes `POST /advance-day` and `GET /campaign/commands`. MEK-RPG should instead track consumer-side readiness, fixture capture, and live disposable-campaign smoke validation as follow-up work.
 
 ## Non-Goals
 

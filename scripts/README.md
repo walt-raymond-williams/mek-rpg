@@ -173,6 +173,7 @@ When MekHQ is open and the read-only local API is available, active loaded campa
 
 ```powershell
 Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported' -TimeoutSec 30 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands' -TimeoutSec 10 | ConvertTo-Json -Depth 12
 python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign
 python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --refresh-existing --viewpoint-name "Exact MekHQ Name"
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
@@ -187,6 +188,8 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 ./scripts/test-mekhq-live-api-fixtures.ps1
 ```
 
+`GET /campaign/commands` is read-only command readiness and selector discovery from the local MekHQ control API. It does not mutate the campaign. If it reports `advanceDayOnce` as available, the corresponding local prototype is `POST /advance-day`; do not execute that command from MEK-RPG unless the user explicitly approves it for the currently loaded campaign, the request includes current campaign/date guards, and a post-command `GET /campaign/state` reread verifies the result.
+
 The helper detects gzip compression by magic bytes, parses the save XML with structured XML APIs, and writes JSON or Markdown to stdout. It does not write to the MekHQ save. JSON is the primary output for later bridge automation; Markdown is a quick human checkpoint. Field mappings and unsupported areas are documented in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`.
 
 The save-summary fixture test uses committed sanitized XML plus a temp-generated gzip copy. It checks JSON top-level keys, representative campaign, finance, personnel, unit, contract, scenario, market, warning, and unsupported-field values; runs a Markdown smoke test; verifies sparse missing-section XML does not crash; and confirms the committed fixture is not mutated.
@@ -197,7 +200,7 @@ The prototype-output fixture test uses `tests/fixtures/mekhq-read-only-checkpoin
 
 The edge-case fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.edge-cases.fixture.json`, a fake sparse checkpoint with empty personnel/unit/scenario arrays, shallow contract terms, unknown finance/location values, warning-heavy logistics/report sections, a unit-market offer with no stable selector and no final price, and unsupported entries that distinguish automation blockers from FYI gaps. It is a committed sanitized fixture only, not production exporter output.
 
-The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, and `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json` copied from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts.
+The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, and `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json` copied from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts. The producer workspace also has `mekhq-live-campaign-commands.fixture.json` for command readiness; MEK-RPG issue `#110` should decide whether to import that fixture into local tests.
 
 The live API campaign-load adapter consumes captured sanitized `GET /campaign/state` JSON with `bridge_metadata`. It verifies `api_mode: local-read-only-live-context` and `read_only: true`, refuses raw `.cpnx`, `.cpnx.gz`, and XML inputs, creates a campaign folder from `campaigns/_template/` or refreshes generated context files with `--refresh-existing`, writes `mekhq-bridge.md` and `mekhq-api-gaps.md`, and leaves `campaign-state/active-campaign.md` unchanged. Missing or unsupported live API fields are recorded as API gaps and producer-change-request inputs instead of triggering save parsing.
 

@@ -5,7 +5,7 @@
 - GitHub issue: `#111`
 - Roadmap entry: Controlled MekHQ command API integration
 - Mode: Project development / cross-workspace coordination
-- Priority: Next, after or alongside expanded live state consumption in issue `#110`
+- Priority: Completed and archived
 
 ## Goal
 
@@ -29,7 +29,7 @@ Read these first:
 
 ## Expected Output
 
-- Choose the first command candidate to request or prototype from MEK-RPG's side. Current best candidate is day advancement because the user reports the producer side has or can expose it.
+- Choose the first command candidate to request or prototype from MEK-RPG's side. Current selected candidate is day advancement because the local producer side exposes `GET /campaign/commands` and the legacy guarded `POST /advance-day` prototype.
 - Define the command request/response and verification contract for that first candidate.
 - Identify the live API fields issue `#110` must expose or preserve for preflight and post-command verification.
 - Update any remaining docs that imply read-only/manual-only operation is the permanent end state.
@@ -72,13 +72,21 @@ gh issue view 111 --comments
 
 ## Acceptance Criteria
 
-- First command candidate is selected and justified.
-- Command envelope includes baseline guard fields, target selectors, dry-run/preflight behavior, approval behavior, execution result, and live reread verification.
-- Any producer request clearly asks for one narrow MekHQ-owned command.
+- First command candidate is selected and justified: `advanceDayOnce` / `POST /advance-day`.
+- Command envelope includes baseline guard fields, target selectors/readiness, dry-run/preflight behavior, approval behavior, execution result, and live reread verification.
+- No new producer request is needed for the first command because local producer work already exposes `GET /campaign/commands` and `POST /advance-day`.
 - Relevant docs no longer imply read-only/manual UI is the permanent endpoint.
 - Verification is run or blockers are recorded.
 
+## Completion Notes
+
+- Updated `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` with producer evidence, current `POST /advance-day` request/response behavior, current limitations, and the MEK-RPG-side reread verification contract.
+- Updated live API tracking and producer request/response memos to distinguish read-only state payloads from command readiness and explicit command endpoints.
+- Updated command docs in `docs/current/KNOWN_COMMANDS.md` and `scripts/README.md`.
+- Updated roadmap and task state for issue `#111`.
+- No raw source files, MekHQ saves, protected A Time of War text, or cross-repository files were edited.
+
 ## Open Questions
 
-- Is the already-exposed day-advance API available in the local MegaMek/MekHQ source branch MEK-RPG can call today, and what is its exact endpoint/guard behavior?
+- The already-exposed day-advance API is available in the local MegaMek/MekHQ source branch as `POST /advance-day` with command `advanceDayOnce`, expected date, expected campaign id/name, optional daily nag suppression, and opt-in save-after-success. MEK-RPG still needs a consumer-side command adapter or manual smoke-test workflow before routine use.
 - Should issue `#111` split into child issues for `advance_day`, `market_purchase`, and `contract_accept_decline`, or keep the first pass focused only on day advancement?

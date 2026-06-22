@@ -37,9 +37,9 @@ These gaps are inputs for MegaMek/MekHQ producer work, not permission for MEK-RP
 
 ## Requested API Principle
 
-If MekHQ memory or the saved campaign contains a value that MEK-RPG needs for active campaign context, expose it through the read-only live API with provenance instead of expecting MEK-RPG to parse the save.
+If MekHQ memory or the saved campaign contains a value that MEK-RPG needs for active campaign context, expose it through the read-only live state API with provenance instead of expecting MEK-RPG to parse the save.
 
-The API should remain read-only, bound to localhost, disabled by default unless explicitly enabled, and free of write/action surfaces.
+The state API should remain read-only, bound to localhost, disabled by default unless explicitly enabled, and free of write/action surfaces. Separate command-readiness or command endpoints may exist under the local control API, but they need their own guard, approval, prompt-policy, and verification contract rather than being inferred from state payloads.
 
 ## Requested Fields
 
@@ -142,6 +142,7 @@ MEK-RPG can avoid active-save parsing if `GET /campaign/state` provides these ar
 ## Acceptance Criteria For Producer Work
 
 - `GET /campaign/summary` and `GET /campaign/state` expose enough identity, date, location, roster, unit, contract/scenario, logistics, report, warning, and unsupported data for MEK-RPG to create or refresh a campaign context without opening a raw save file.
+- `GET /campaign/commands` or an equivalent readiness endpoint can expose command availability and safe selectors without mutating the loaded campaign.
 - Sectioned `GET /campaign/state?sections=...` requests preserve `bridge_metadata` when requested, and docs/examples tell consumers to include it for validation.
 - Current location/system are human-readable and stable enough for table context.
 - Method-backed values identify their source owner where practical.
@@ -150,13 +151,17 @@ MEK-RPG can avoid active-save parsing if `GET /campaign/state` provides these ar
 
 ## Non-Goals
 
+For the read-only state API, this request still excludes mutation surfaces:
+
 - No market purchase API.
 - No personnel hiring/firing API.
 - No contract accept/decline API.
 - No repair execution or assignment API.
 - No tactical result application API.
-- No save/writeback command.
+- No save/writeback command in the state API.
 - No direct XML/save mutation.
+
+Issue `#111` separately defines MEK-RPG's controlled command posture for explicit MekHQ-owned command endpoints. The first command candidate is day advancement through the local `POST /advance-day` prototype plus post-command live reread verification.
 
 ## Suggested Producer-Side Tickets
 
@@ -200,7 +205,9 @@ This MEK-RPG package is ready to copy, link, or summarize into the MegaMek/MekHQ
 
 Date: 2026-06-22
 
-The MegaMek/MekHQ workspace reports that the requested local live API expansion is complete on branch `codex/mekhq-advance-day-control-api` in commits `dc214d946d`, `d38a500960`, `495b58faef`, and `911a338788`. The completed work covers hardened metadata/location behavior, deeper finance/personnel/unit/contract/scenario/logistics/report/market state, and explicit automation guards.
+The MegaMek/MekHQ workspace reports that the requested local live API expansion is complete on branch `codex/mekhq-advance-day-control-api` in commits `dc214d946d`, `d38a500960`, `495b58faef`, and `911a338788`. The completed read-only state work covers hardened metadata/location behavior, deeper finance/personnel/unit/contract/scenario/logistics/report/market state, and explicit automation guards.
+
+The same local source branch later added `GET /campaign/commands` in commit `e19740b110`. That endpoint is read-only command readiness and selector discovery. It reports `advanceDayOnce` as available through the legacy `POST /advance-day` command prototype and reports other command classes as blocked with reason codes. MEK-RPG issue `#111` owns the consumer-side command strategy and verification plan.
 
 Source publication to upstream `MegaMek/mekhq` remains blocked by repository permissions, but MEK-RPG can use the local source-built MekHQ and the producer fixtures for consumer validation. MEK-RPG follow-up issue `#110` tracks fixture refresh, adapter/dashboard/context consumption, and tests for the expanded shape. See `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`.
 
