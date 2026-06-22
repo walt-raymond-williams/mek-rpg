@@ -29,6 +29,16 @@ Use this summary when medicines, performance enhancers, narcotics, poisons, toxi
 7. For narcotics or performance enhancers, track active effects, crash/side effects, addiction checks, Compulsion trait consequences, and recovery requirements only from source-supported procedure.
 8. Record medical state, remaining doses, legality, addiction risk, treatment plan, and unresolved source checks in campaign files.
 
+## Live Play Procedure
+
+1. Establish fictional stakes first: accidental exposure, medical treatment, creature venom, deliberate poisoning, contraband, performance enhancer, withdrawal, or chemical-war hazard.
+2. Name the vector and protection before rolling. Sealed gear, filter masks, full-body clothing, vehicles, and ordinary armor do not protect against the same threats.
+3. If the substance has a known source entry, use its cited private table values for strength, duration, damage, AP, addiction, treatment, and legality. If it is fictional or newly created, pause for source lookup rather than inventing chemistry.
+4. For poison or venom, resolve whether it enters the body, make the appropriate resistance check from the source procedure, and turn ongoing harm into a visible clock.
+5. For treatment, distinguish a true antidote from broad stabilization. Use MedTech, facility access, suitable kits, and follow-up care as the main play levers.
+6. For narcotics and performance enhancers, make the short-term benefit, side effect, legal risk, and addiction check trigger explicit before use.
+7. For addiction or withdrawal arcs, record the substance, Compulsion or recovery consequence, treatment requirement, and table-consent boundaries in campaign notes.
+
 ## Practical GM Guidance
 
 - Keep this procedural and fictional. The summary is for game outcomes, not real chemistry or medical instructions.
@@ -62,4 +72,4 @@ Use this summary when medicines, performance enhancers, narcotics, poisons, toxi
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact sample drugs, poisons, vectors, strengths, durations, AP/BD values, addiction values, creation tables, and treatment modifiers remain private source lookups.
+Draft play-facing summary upgraded in issue `#93`. Exact sample drugs, poisons, vectors, strengths, durations, AP/BD values, addiction values, creation tables, treatment modifiers, and real-world medical/toxicology advice remain out of the committed summary.

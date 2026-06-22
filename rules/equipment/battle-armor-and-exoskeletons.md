@@ -30,6 +30,15 @@ Use this summary when a character wears, obtains, dons, exits, fights near, or r
 6. If exact movement, weapons, armor conversion, manipulator effects, or suit damage matters, use the source or tactical tool.
 7. After use, update `assets.md`, `pcs.md`, or `npcs.md` with suit location, condition, owner, authorization, damage, ammunition, power, and unresolved lookups.
 
+## Live Play Procedure
+
+1. Frame the suit as a scarce military or industrial asset before resolving the action. State who owns it, who may wear it, and what support crew or authorization is nearby.
+2. Ask whether the scene is about access, readiness, personal combat, or tactical combat. Access and readiness stay in RPG play; vehicle-scale attacks, armor locations, and mounted weapons usually hand off.
+3. For a scramble or boarding scene, decide whether the suit is already ready, partly ready, or stored. Use the cited source pages for exact donning or emergency-egress timing if minutes or combat turns matter.
+4. For infantry-scale threats, resolve the character's check normally and treat the suit as a major equipment fact. Use source lookup for converted movement, mounted-weapon damage, manipulator limits, and BAR when they change the result.
+5. For vehicle, BattleMech, battle armor, aerospace, or tactical-unit opposition, stop and prepare a Classic BattleTech, MegaMek, MekHQ, or tactical-source handoff.
+6. After the scene, record suit custody, damage, expended ammunition or power, repair needs, legal exposure, and any pending MekHQ ledger intent.
+
 ## Practical GM Guidance
 
 - Battle armor is a force multiplier and a logistics object. Track who owns it, who can legally wear it, who can maintain it, and what faction notices it.
@@ -65,4 +74,4 @@ Use this summary when a character wears, obtains, dons, exits, fights near, or r
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact suit statistics, armor conversion, weapons, manipulators, costs, movement, and tactical rules remain private source or external tactical-tool lookups.
+Draft play-facing summary upgraded in issue `#93`. Exact suit statistics, armor conversion, weapons, manipulators, costs, movement, donning time values, and tactical rules remain private source or external tactical-tool lookups.

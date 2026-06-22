@@ -28,6 +28,15 @@ Use this summary when a character buys, borrows, fuels, records, drives, rides i
 6. If the vehicle enters combat or tactical movement, decide whether the scene stays as one RPG check or hands off to tactical rules.
 7. Update campaign files after use: damage, location, fuel/readiness, impound risk, ownership question, passengers, cargo, and repair needs.
 
+## Live Play Procedure
+
+1. Define the job the vehicle must do: get the team across town, cross wilderness, haul cargo, evacuate wounded, blend in, flee pursuit, or persist as a campaign asset.
+2. Pick a broad class and access route before looking up a named model. Use the exact vehicle table only when passenger count, cargo, armor, speed, cost, or availability changes a real decision.
+3. Decide whether fuel is ordinary background, a readiness clock, or a hard logistics problem. Routine local travel usually needs no accounting; remote missions, hostile worlds, and convoys may need source lookup.
+4. For chase, travel, or risky driving scenes, resolve with RPG skills unless armor, weapons, facing, tactical movement, or unit damage becomes central.
+5. If the vehicle becomes a tactical unit, hand off to Classic BattleTech, MegaMek, MekHQ, or the relevant tactical source and bring back only campaign consequences afterward.
+6. For persistent vehicles, record owner, title ambiguity, location, fuel/readiness, cargo, passengers, damage, maintenance, permits, and whether MekHQ owns the hard ledger fact.
+
 ## Practical GM Guidance
 
 - Personal vehicles are more than equipment rows. They create mobility, exposure, legal visibility, maintenance needs, and logistical choices.
@@ -61,4 +70,4 @@ Use this summary when a character buys, borrows, fuels, records, drives, rides i
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact vehicle entries, prices, fuel values, armor, speed, range, cargo, and equipment ratings remain private source or external tool lookups.
+Draft play-facing summary upgraded in issue `#93`. Exact vehicle entries, prices, fuel values, armor, speed, range, cargo, crew/passenger ratings, and equipment ratings remain private source or external tool lookups.

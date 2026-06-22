@@ -28,6 +28,16 @@ Use this summary when lost limbs, sensory replacements, organ replacements, clon
 6. If a replacement is damaged, use the source's BAR/damage handling and note whether the character suffers fatigue, ordinary damage, disability, or replacement destruction.
 7. For elective myomer or Enhanced Imaging implants, verify surgery, recovery, addiction/dependency, future medical penalties, tactical benefits, and long-term deterioration before approving.
 
+## Live Play Procedure
+
+1. Start from the injury or elective request. Name the affected body part, current trait consequence, and whether the player is trying to restore function, conceal damage, or gain an enhancement.
+2. Confirm consent and campaign tone for surgery, disability, addiction, and body modification before making the option central to play.
+3. Choose the broad replacement path: simple removable prosthetic, advanced/bionic replacement, cloned/grafted replacement, elective myomer implant, or Enhanced Imaging implant.
+4. Use the cited source pages for exact trait offset, BAR, surgery requirements, downtime, cost, availability, and side effects. Do not improvise table values.
+5. During recovery, track facility access, medical supervision, physical therapy, debt or patron obligation, and whether the character is mission-ready at reduced capability.
+6. If the replacement is damaged, confiscated, removed, or medically complicated, treat it as both an equipment problem and an injury consequence. Route repair or surgery through medical gear and injury recovery.
+7. For Enhanced Imaging or other tactical-facing implants, prepare the benefit and drawback in a tactical handoff packet instead of inventing combat modifiers during play.
+
 ## Practical GM Guidance
 
 - Treat prosthetics as injury aftermath, not a casual shopping upgrade. They can restore function, create debt, require therapy, and change how a character is perceived.
@@ -60,4 +70,4 @@ Use this summary when lost limbs, sensory replacements, organ replacements, clon
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact costs, BAR values, trait offsets, surgical modifiers, recovery durations, implant table entries, and Enhanced Imaging tactical effects remain private source or tactical-tool lookups.
+Draft play-facing summary upgraded in issue `#93`. Exact costs, BAR values, trait offsets, surgical modifiers, recovery durations, implant table entries, addiction/dependency values, and Enhanced Imaging tactical effects remain private source or tactical-tool lookups.

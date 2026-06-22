@@ -93,6 +93,46 @@
       "expect_warnings": false
     },
     {
+      "id": "battle-armor-scramble",
+      "prompt": "A PC has to scramble into powered armor during a boarding alarm",
+      "top": 8,
+      "expected_path": "rules/equipment/battle-armor-and-exoskeletons.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 300-302",
+      "expect_warnings": false
+    },
+    {
+      "id": "prosthetic-readiness",
+      "prompt": "A lost arm replacement affects the next mission readiness",
+      "top": 8,
+      "expected_path": "rules/equipment/prosthetics-and-implants.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 316-320",
+      "expect_warnings": false
+    },
+    {
+      "id": "poison-treatment",
+      "prompt": "A predator venom needs field treatment without the proper antidote",
+      "top": 8,
+      "expected_path": "rules/equipment/drugs-and-poisons.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 319-323",
+      "expect_warnings": false
+    },
+    {
+      "id": "vehicle-fuel-logistics",
+      "prompt": "The crew buys a utility truck and needs fuel for a remote trip",
+      "top": 8,
+      "expected_path": "rules/equipment/personal-vehicles.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 323-327",
+      "expect_warnings": false
+    },
+    {
       "id": "planetary-hazard",
       "prompt": "The squad crosses deep snow in a blizzard with poor visibility",
       "top": 8,

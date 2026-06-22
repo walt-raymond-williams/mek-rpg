@@ -533,7 +533,7 @@ rules:
       - tactical.vehicle-actions
       - tactical.damage-traits
       - gm.switch-to-classic-battletech
-    status: source-reviewed-routing-aid
+    status: draft
   - id: equipment.prosthetics-implants
     title: Prosthetics And Implants
     subsystem: equipment
@@ -548,7 +548,7 @@ rules:
       - character.traits
       - tactical.heat-pilot-abilities
       - vehicles.mechwarrior-skills
-    status: source-reviewed-routing-aid
+    status: draft
   - id: equipment.drugs-poisons
     title: Drugs And Poisons
     subsystem: equipment
@@ -563,7 +563,7 @@ rules:
       - special.diseases
       - special.creatures
       - campaign.injuries-recovery
-    status: source-reviewed-routing-aid
+    status: draft
   - id: equipment.personal-vehicles
     title: Personal Vehicles And Fuel
     subsystem: equipment
@@ -577,7 +577,7 @@ rules:
       - equipment.acquire-use
       - tactical.vehicle-actions
       - tactical.damage-traits
-    status: source-reviewed-routing-aid
+    status: draft
   - id: special.planetary-conditions
     title: Planetary Conditions
     subsystem: special-case-rules

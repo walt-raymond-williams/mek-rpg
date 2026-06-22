@@ -79,3 +79,15 @@ git status --short --branch
 ## Open Questions
 
 - Which of these areas should become common-play summaries now, and which should remain source lookup until the table actually needs them?
+
+## Completion Notes
+
+- Completed in issue `#93`.
+- Decision: all four scoped equipment-detail files now have enough source-reviewed procedure to become `draft` play-facing summaries:
+  - `rules/equipment/battle-armor-and-exoskeletons.md`
+  - `rules/equipment/prosthetics-and-implants.md`
+  - `rules/equipment/drugs-and-poisons.md`
+  - `rules/equipment/personal-vehicles.md`
+- Added `docs/current/SPECIAL_EQUIPMENT_SOURCE_REVIEW_VALIDATION.md` with validation scenarios for powered-armor readiness, lost-limb replacement, venom treatment, combat-drug use, and local vehicle/fuel logistics.
+- Updated `indexes/page-reference-index.md`, `indexes/manifest.yaml`, `indexes/rules-map.md`, `source/atow-chapter-section-map.md`, route fixtures, coverage reporting, `docs/current/TASKS.md`, and `docs/current/ROADMAP.md`.
+- Exact equipment rows, costs, values, drug/poison statistics, fuel values, suit/vehicle stats, and tactical effects remain private source or external-tool lookup.
