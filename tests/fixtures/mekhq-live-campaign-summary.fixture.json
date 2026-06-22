@@ -1,0 +1,41 @@
+{
+  "status": "ready",
+  "campaignId": "11111111-2222-3333-4444-555555555555",
+  "campaignName": "Example Live Campaign",
+  "campaignDate": "3025-04-09",
+  "mekhqVersion": "0.51.01-SNAPSHOT",
+  "apiSchemaVersion": "0.1",
+  "apiMode": "local-read-only-live-context",
+  "readOnly": true,
+  "currentSystem": "Galatea",
+  "currentLocation": "Galatea",
+  "dirtyState": {
+    "value": "Unknown",
+    "evidence": "Unknown",
+    "method_backed": false,
+    "source_owner": "Unknown",
+    "warnings": [
+      "Dirty/unsaved state is not source-confirmed in this V1 endpoint."
+    ]
+  },
+  "stateRevision": "live-11111111-2222-3333-4444-555555555555-3025-04-09-2026-06-22T16:00:00Z",
+  "snapshotId": "live-11111111-2222-3333-4444-555555555555-3025-04-09-2026-06-22T16:00:00Z",
+  "warnings": [
+    {
+      "area": "dirty_state",
+      "message": "No source-confirmed dirty/unsaved campaign flag is exposed by this V1 local API pass.",
+      "evidence": "Unknown",
+      "source_owner": "MekHQ GUI save-state tracking"
+    }
+  ],
+  "unsupported": [
+    {
+      "area": "bridge_metadata.dirty_state",
+      "field": "unsaved_changes",
+      "reason": "No source-confirmed dirty/unsaved campaign flag was found in the initial source pass.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ source inspection",
+      "blocks_automation": false
+    }
+  ]
+}

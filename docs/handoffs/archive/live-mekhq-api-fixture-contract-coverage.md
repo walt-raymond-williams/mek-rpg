@@ -86,3 +86,13 @@ If a focused test script is added, run it directly before `test-all -Quick`.
 
 - Should local fixture files be exact copies of the producer fixtures or trimmed derived excerpts?
 - Should live API fixture validation extend existing checkpoint fixture tests or use a separate focused script?
+
+## Completion Notes
+
+- Used exact sanitized fixture copies from the MegaMek workspace producer templates.
+- Added a separate focused fixture test script: `scripts/test-mekhq-live-api-fixtures.ps1`.
+- Wired the new suite into `scripts/test-all.ps1 -Quick` and command docs.
+- Updated durable contracts so live API JSON is classified as live context by default, distinct from durable save/import checkpoint facts.
+- Verification passed:
+  - `./scripts/test-mekhq-live-api-fixtures.ps1`
+  - `./scripts/test-all.ps1 -Quick`

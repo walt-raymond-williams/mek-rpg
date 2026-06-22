@@ -8,6 +8,8 @@ Purpose: define how MEK-RPG should consume a future MekHQ-owned read-only checkp
 
 MEK-RPG should define its desired consumer contract now, but MekHQ should own any future source-backed exporter that loads campaign state through MekHQ code and emits derived values through MekHQ methods.
 
+Live MekHQ local-control API JSON is a related but distinct input class. It should use the same top-level grouping and trust envelopes where practical, but it is a live context refresh, not a durable checkpoint/import record by default. A live payload becomes durable MEK-RPG campaign state only after a saved checkpoint/import confirms it, the user explicitly approves recording it, or a future controlled adapter flow defines that promotion.
+
 The current `scripts/summarize-mekhq-save.py` output remains useful for:
 
 - bootstrapping disposable or personal MEK-RPG campaign folders from explicit saved MekHQ files
@@ -40,7 +42,7 @@ Recommended evidence labels:
 
 ## Preferred Export Shape
 
-The top-level shape should stay close to the current helper so existing bootstrap and context tooling can adapt gradually:
+The top-level shape should stay close to the current helper so existing bootstrap and context tooling can adapt gradually. The live local-control API state endpoint also uses this grouping so adapters can share validation and warning behavior while keeping durability separate:
 
 ```json
 {
@@ -59,6 +61,8 @@ The top-level shape should stay close to the current helper so existing bootstra
 ```
 
 `reports` is the main new top-level area recommended for a MekHQ-owned export. The current helper has warnings and unsupported fields but does not classify daily report alerts as a reliable separate feed.
+
+For live API payloads, `bridge_metadata.api_mode` should identify `local-read-only-live-context`, `read_only` must remain true, and `state_revision` or `snapshot_id` should be preserved as live freshness metadata. `checkpoint_id` may be `Unknown`; consumers must not treat that as a saved import checkpoint.
 
 Each complex object should include:
 
@@ -91,7 +95,7 @@ Each complex object should include:
 
 ## Adapter Plan
 
-When a MekHQ-owned checkpoint export becomes available, MEK-RPG should add a small adapter layer before changing bootstrap or play workflows:
+When a MekHQ-owned checkpoint export or live API payload becomes available, MEK-RPG should add a small adapter layer before changing bootstrap or play workflows:
 
 1. Accept an explicit JSON file path produced by either the current Python helper or the MekHQ-owned exporter.
 2. Detect producer and schema version from `bridge_metadata`.
@@ -100,8 +104,11 @@ When a MekHQ-owned checkpoint export becomes available, MEK-RPG should add a sma
 5. Prefer MekHQ-exported method-backed values over Python-helper inferred values when both are present.
 6. Refuse to silently coerce missing stable ids for contract-market offers, unit-market offers, repair work items, or personnel applicants into automation-ready selectors.
 7. Keep current helper fixtures as fallback coverage and add separate fixture coverage for the MekHQ export shape once a sample exists.
+8. Treat live API payloads as live context unless a saved/imported checkpoint or explicit user approval promotes selected values into durable MEK-RPG memory.
 
 No adapter should write to `.cpnx`, `.cpnx.gz`, MekHQ XML, or raw MekHQ save payloads.
+
+Live API adapters also must not call write/action endpoints, create pending MekHQ actions from market or repair data, or infer that unsaved GUI state is durable campaign truth.
 
 ## Bootstrap Expectations
 
@@ -116,6 +123,8 @@ No adapter should write to `.cpnx`, `.cpnx.gz`, MekHQ XML, or raw MekHQ save pay
 ## Follow-Up
 
 Issue `#87` adds `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md` as the MEK-RPG consumed-field map for future adapter and exporter-hardening decisions.
+
+Issue `#105` added sanitized live API fixtures under `tests/fixtures/` and `scripts/test-mekhq-live-api-fixtures.ps1` so summary, full state, warning-heavy, trust-envelope, read-only, unsupported, and sanitation behavior can be validated without a running MekHQ GUI.
 
 Create a focused adapter implementation issue after the MegaMek workspace provides either:
 

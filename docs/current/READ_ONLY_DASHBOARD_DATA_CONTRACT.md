@@ -38,6 +38,8 @@ Parameter intent:
 - `IncludeExcerpts`: include short Markdown excerpts from campaign files. Default should emit headings, metadata, and source links only.
 - `MekHqSummaryJson`: optional path to an already-sanitized output from `scripts/summarize-mekhq-save.py --format json`. The adapter may validate and summarize it, but must never open a raw MekHQ save.
 
+Future live API adapter work may add an explicit sanitized live API JSON parameter. That input must remain a live context layer by default, separate from saved checkpoint/import facts, and must preserve read-only proof, `api_mode`, `state_revision` or `snapshot_id`, dirty-state warnings, and unsupported entries.
+
 ## Input Resolution
 
 ### Required Inputs
@@ -98,6 +100,19 @@ Rules:
 - Do not read the original save path from `bridge_metadata.input_path`.
 - Do not open adjacent `.cpnx`, `.cpnx.gz`, XML, log, or cache files.
 - Do not treat pending or proposed MEK-RPG facts as confirmed MekHQ ledger facts.
+
+### Optional Live MekHQ API Input
+
+Issue `#103` may extend the adapter to accept explicit sanitized JSON captured from the live MekHQ local-control API.
+
+Rules:
+
+- Accept only an explicit JSON path or future local API capture path defined by that issue.
+- Treat `api_mode: local-read-only-live-context` as live context, not a durable import checkpoint.
+- Preserve `state_revision`, `snapshot_id`, dirty-state warning/unsupported entries, method-backed trust envelopes, and read-only proof.
+- Do not promote live values into campaign files without saved/import confirmation, explicit user approval, or a future controlled promotion flow.
+- Do not call the live API, require a MekHQ GUI, or follow raw save paths from this contract issue.
+- Do not create write controls or pending MekHQ actions from market, repair, personnel, contract, or tactical fields.
 
 ## Output Envelope
 
@@ -314,7 +329,7 @@ Do not calculate salvage, repair costs, unit condition, fuel, cargo, or tactical
 
 ### MekHQ Bridge
 
-Include only when `mekhq-bridge.md` or sanitized summary JSON is present.
+Include only when `mekhq-bridge.md`, sanitized summary JSON, or future sanitized live API JSON is present.
 
 Include:
 
@@ -329,6 +344,7 @@ Never:
 - open raw save paths
 - inspect files adjacent to a summary JSON
 - treat pending MEK-RPG actions as imported facts
+- treat live API values as durable imported checkpoint facts by default
 
 ### Pending MekHQ Actions
 
@@ -405,6 +421,7 @@ Recommended fixtures:
 - malformed pending actions
 - sanitized MekHQ summary JSON from `tests/fixtures/mekhq-summary-minimal.json`
 - summary JSON with a raw save `input_path` that must not be followed
+- sanitized live API summary/state/warning-heavy JSON from `tests/fixtures/mekhq-live-campaign-*.fixture.json` for future live context adapter behavior
 
 ## Implementation Follow-Up
 

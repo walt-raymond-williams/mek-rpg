@@ -86,7 +86,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Sanitized fixture examples exist under `../megamek-workspace/docs/templates/`.
   - No user-assisted running MekHQ campaign smoke test has been performed yet.
 - Child issues:
-  1. Open issue `#105`: add live MekHQ API fixture and contract coverage. Handoff: `docs/handoffs/active/live-mekhq-api-fixture-contract-coverage.md`.
+  1. Done issue `#105`: added live MekHQ API fixture and contract coverage.
   2. Open issue `#103`: prototype live MekHQ API JSON adapter consumption after issue `#105` lands.
   3. Blocked issue `#104`: manual smoke test live MekHQ API with a disposable campaign.
 - Dependency order:

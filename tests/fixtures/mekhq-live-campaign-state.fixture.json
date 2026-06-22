@@ -1,0 +1,235 @@
+{
+  "bridge_metadata": {
+    "schema_name": "mekhq-live-campaign-state",
+    "schema_version": "0.1",
+    "producer": "mekhq-local-control-api",
+    "producer_version": "0.51.01-SNAPSHOT",
+    "mekhq_version": "0.51.01-SNAPSHOT",
+    "exported_at": "2026-06-22T16:00:00Z",
+    "api_mode": "local-read-only-live-context",
+    "read_only": true,
+    "checkpoint_id": "Unknown",
+    "state_revision": "live-11111111-2222-3333-4444-555555555555-3025-04-09-2026-06-22T16:00:00Z",
+    "snapshot_id": "live-11111111-2222-3333-4444-555555555555-3025-04-09-2026-06-22T16:00:00Z",
+    "dirty_state": {
+      "value": "Unknown",
+      "evidence": "Unknown",
+      "method_backed": false,
+      "source_owner": "Unknown",
+      "warnings": [
+        "Dirty/unsaved state is not source-confirmed in this V1 endpoint."
+      ]
+    },
+    "evidence": "Confirmed from MekHQ export",
+    "warnings": [],
+    "supported_sections": [
+      "bridge_metadata",
+      "campaign",
+      "finances",
+      "personnel",
+      "units",
+      "contracts",
+      "scenarios",
+      "repairs_and_logistics",
+      "markets",
+      "reports",
+      "unsupported"
+    ]
+  },
+  "campaign": {
+    "id": {
+      "value": "11111111-2222-3333-4444-555555555555",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getId()",
+      "warnings": []
+    },
+    "name": {
+      "value": "Example Live Campaign",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getName()",
+      "warnings": []
+    },
+    "date": {
+      "value": "3025-04-09",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getLocalDate()",
+      "warnings": []
+    },
+    "faction": {
+      "value": {
+        "short_name": "MER",
+        "full_name": "Mercenary"
+      },
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Campaign#getFaction()",
+      "warnings": []
+    },
+    "location": {
+      "current_system_id": {
+        "value": "galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": []
+      },
+      "current_system_name": {
+        "value": "Galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem()",
+        "warnings": []
+      }
+    }
+  },
+  "finances": {
+    "balance": {
+      "value": "2,500,000 C-bills",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getBalance()",
+      "warnings": [],
+      "currency": "C-bills"
+    },
+    "loan_balance": {
+      "value": "0 C-bills",
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getLoanBalance()",
+      "warnings": [],
+      "currency": "C-bills"
+    },
+    "has_active_loans": {
+      "value": false,
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#hasActiveLoans()",
+      "warnings": []
+    },
+    "recent_transactions": []
+  },
+  "personnel": [
+    {
+      "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+      "display_name": "Example Pilot",
+      "rank": {
+        "raw_code": "Sergeant",
+        "label": "Sergeant",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getRankName()",
+        "warnings": []
+      },
+      "primary_role": {
+        "raw_code": "MechWarrior",
+        "label": "MechWarrior",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getPrimaryRoleDesc()",
+        "warnings": []
+      },
+      "status": {
+        "raw_code": "ACTIVE",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getStatus()",
+        "warnings": []
+      },
+      "unit_id": "bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+      "fatigue": {
+        "value": 0,
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getFatigueDirect()",
+        "warnings": []
+      },
+      "hits": {
+        "value": 0,
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Person#getHits()",
+        "warnings": []
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+      "display_name": "Example PXH-1 Phoenix Hawk",
+      "entity": {
+        "chassis": "Phoenix Hawk",
+        "model": "PXH-1",
+        "type": "Mek",
+        "weight_tons": 45.0,
+        "source_owner": "Unit#getEntity()"
+      },
+      "status": {
+        "raw_code": "Undamaged",
+        "label": "Undamaged",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getStatus()",
+        "warnings": []
+      },
+      "crew": [
+        "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+      ],
+      "damage_state": {
+        "value": "Undamaged",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getDamageState()",
+        "warnings": []
+      }
+    }
+  ],
+  "contracts": [],
+  "scenarios": [],
+  "repairs_and_logistics": {
+    "repair_pressure": {
+      "value": {
+        "parts_needed_count": 0,
+        "parts_needing_service_count": 0,
+        "units_under_repair_count": 0
+      },
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Unit repair summary methods",
+      "warnings": []
+    },
+    "warnings": [
+      "Repair pressure is an aggregate summary, not a complete work queue."
+    ]
+  },
+  "reports": {
+    "current": [
+      {
+        "category": "current",
+        "text": "Example sanitized report line.",
+        "date": "3025-04-09",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentReport()",
+        "contains_html": false,
+        "warnings": []
+      }
+    ],
+    "warnings": [
+      "Report lines are sanitized by stripping HTML tags and truncating long lines."
+    ]
+  },
+  "unsupported": [
+    {
+      "area": "bridge_metadata.dirty_state",
+      "field": "unsaved_changes",
+      "reason": "No source-confirmed dirty/unsaved campaign flag was found in the initial source pass.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ source inspection",
+      "blocks_automation": false
+    }
+  ]
+}

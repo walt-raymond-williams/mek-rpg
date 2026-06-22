@@ -25,6 +25,8 @@ No top-level rename or removal is requested from the current draft schema. MEK-R
 
 These fields are not decorative. MEK-RPG uses them to decide whether a value can enter campaign state, should appear only as GM context, needs manual confirmation, or must block automation.
 
+Live MekHQ local-control API payloads are now a supported fixture shape for consumer testing, but their default category is `Live context`, not `Consumed hard checkpoint`. Live API values can be displayed for freshness and GM prep, and method-backed values may be strong evidence, but they should not overwrite durable MEK-RPG campaign files unless a saved/imported checkpoint confirms them, the user explicitly approves the record, or a later adapter issue defines a controlled promotion path.
+
 ## Consumption Categories
 
 Use these categories when writing adapters, tests, or feedback to the MegaMek workspace:
@@ -37,12 +39,14 @@ Use these categories when writing adapters, tests, or feedback to the MegaMek wo
 | `Evidence/diagnostic only` | Helps debug adapter trust or exporter gaps. | Preserve in bridge metadata, warnings, or diagnostics; do not expose as player-facing facts by default. |
 | `Blocked/unsafe` | Missing stable selector, write-side action, or ambiguous method semantics. | Block automation and require manual MekHQ/UI confirmation or future source-backed issue. |
 | `Ignored for now` | Not currently used by MEK-RPG but harmless to preserve. | Keep if producer owns it; adapter may pass through or omit from campaign-facing output. |
+| `Live context` | Method-backed read-only data from the running MekHQ GUI/API that has not been confirmed by a saved checkpoint/import. | Surface in GM context and diagnostics with `api_mode`, `state_revision`, dirty-state warnings, and unsupported entries; do not treat as durable campaign memory by default. |
 
 ## Field Map
 
 | Export area | Fields | Category | Consumer use | Schema feedback |
 | --- | --- | --- | --- | --- |
 | `bridge_metadata` | `schema_name`, `schema_version`, `producer`, `producer_version`, `mekhq_version`, `exported_at`, `save_timestamp`, `save_size_bytes`, `gzip`, `read_only`, `checkpoint_id`, `warnings` | Consumed hard checkpoint for metadata; evidence/diagnostic for producer details | Store in `mekhq-bridge.md` or adapter diagnostics so future imports can be reconciled to a specific checkpoint. | Keep all fields. Add stable `checkpoint_id` whenever possible. Sanitize or allow adapter sanitization of local `input_path` before commit. |
+| live `bridge_metadata.api_mode`, `state_revision`, `snapshot_id`, `dirty_state` | Live local-control API freshness and dirty-state diagnostics | Live context and evidence/diagnostic only | Use to label the payload as a live refresh and warn when unsaved/dirty-state knowledge is unknown. Do not use `state_revision` as a saved checkpoint id. | Keep `api_mode: local-read-only-live-context`, read-only proof, and dirty-state unsupported/warning entries mandatory until MekHQ exposes a source-confirmed dirty flag. |
 | `bridge_metadata.input_path` | Local save path | Evidence/diagnostic only | Useful during local debugging but should not be committed unsanitized in fixtures or campaign-facing summaries. | Keep optional; producer may emit it, but fixtures/docs should sanitize it. |
 | `campaign.id` | Campaign id when available | Consumed hard checkpoint | Preserve as MekHQ campaign cross-reference if non-`Unknown`. | Keep envelope and warning when absent. |
 | `campaign.name`, `campaign.date`, `campaign.faction` | Campaign identity and linked date | Consumed hard checkpoint | Use for pre-session checkpoint context and MekHQ-linked campaign date. | Keep method-backed envelopes. Date/name/faction are high-priority adapter fields. |
@@ -115,10 +119,14 @@ Near-term MEK-RPG adapters should:
 
 - accept explicit JSON paths only
 - detect producer/schema version from `bridge_metadata`
+- distinguish live API payloads from saved/imported checkpoint payloads using `api_mode`, schema name, and checkpoint metadata
 - preserve full MekHQ ids rather than generating MEK-RPG ids from them
 - carry trust metadata into bridge/context diagnostics
 - fail closed or warn when blocked/unsafe fields are missing or ambiguous
+- keep live API values in GM context unless saved/imported checkpoint confirmation or explicit user approval promotes them
 - treat market/report/logistics details as GM context unless this map says they are hard checkpoint facts
 - avoid writing campaign files automatically from market offers, repair work, or pending action-like data without a separate issue and saved re-import confirmation
 
 This map does not authorize production exporter assumptions. It is consumer-side feedback for issues `#84` through `#89` and should be revisited after MegaMek hardens exporter output.
+
+Issue `#105` adds fixture-backed validation for the live API summary, full state, and warning-heavy payload shapes. Those tests cover read-only metadata, method-backed envelopes, unknown dirty-state handling, unsupported blockers, no raw save/source path leakage, and no fixture mutation.

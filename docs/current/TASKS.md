@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#105`: add live MekHQ API fixture and contract coverage from the MegaMek workspace prototype. Handoff: `docs/handoffs/active/live-mekhq-api-fixture-contract-coverage.md`.
 - Issue `#103`: prototype live MekHQ API JSON adapter consumption after issue `#105` lands.
 
 ## Backlog
@@ -29,6 +28,7 @@
 
 ## Done
 
+- Issue `#105` implemented: copied sanitized live MekHQ local-control API summary, state, and warning-heavy fixtures from the MegaMek workspace prototype; added `scripts/test-mekhq-live-api-fixtures.ps1`; wired it into `scripts/test-all.ps1 -Quick`; documented the command; updated contracts to classify live API JSON as live context rather than durable checkpoint/import state; verification passed with the focused live API fixture suite and `./scripts/test-all.ps1 -Quick`.
 - Issue `#101` implemented: added `scripts/export-dashboard-data.ps1` as a read-only `dashboard-data/v1` JSON adapter; added fixture-backed `scripts/test-export-dashboard-data.ps1`; wired it into `scripts/test-all.ps1`; documented commands; the adapter reports active/explicit selection, source panels, health, authority labels, warnings/errors, protected-source/raw-save exclusions, validator/context-helper output, and optional sanitized MekHQ summary metadata without mutating campaign files.
 - Issue `#100` implemented: measured full `scripts/test-all.ps1` runtime at about 254 seconds and identified the route-helper and ruling-authority suites as the largest contributors; added `docs/current/TEST_RUNNER_RUNTIME_DIAGNOSTIC.md`; updated `scripts/test-all.ps1` with per-suite timing, `-Quick`, and `-ListSuites`; documented quick/full verification guidance in command docs.
 - Issue `#99` implemented: rehearsed the MekHQ-linked workflow using committed fixtures, context-packet tests, checkpoint warning/unsupported-field coverage, and the existing `mekhq-pending-playtest` validation save; added `docs/current/MEKHQ_LINKED_WORKFLOW_REHEARSAL.md`; confirmed pending actions remain manual-action intents, read-only checkpoint behavior is covered, the existing issue `#37` saved re-import has no unresolved pending items, and no new MekHQ UI/writeback action was performed.

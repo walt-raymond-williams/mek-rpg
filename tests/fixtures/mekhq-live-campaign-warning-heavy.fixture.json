@@ -1,0 +1,81 @@
+{
+  "status": "ready",
+  "bridge_metadata": {
+    "schema_name": "mekhq-live-campaign-state",
+    "schema_version": "0.1",
+    "api_mode": "local-read-only-live-context",
+    "read_only": true,
+    "dirty_state": {
+      "value": "Unknown",
+      "evidence": "Unknown",
+      "method_backed": false,
+      "source_owner": "Unknown",
+      "warnings": [
+        "Dirty/unsaved state is not source-confirmed in this V1 endpoint."
+      ]
+    },
+    "warnings": [
+      {
+        "area": "dirty_state",
+        "message": "No source-confirmed dirty/unsaved campaign flag is exposed by this V1 local API pass.",
+        "evidence": "Unknown",
+        "source_owner": "MekHQ GUI save-state tracking"
+      }
+    ]
+  },
+  "markets": {
+    "unit_offers": [],
+    "personnel_applicants": [],
+    "contract_offers": [],
+    "warnings": [
+      "Market data is intentionally omitted from V1 except for unsupported automation-blocking entries."
+    ]
+  },
+  "repairs_and_logistics": {
+    "repair_pressure": {
+      "value": {
+        "parts_needed_count": 3,
+        "parts_needing_service_count": 5,
+        "units_under_repair_count": 1
+      },
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Unit repair summary methods",
+      "warnings": []
+    },
+    "cargo": {
+      "warnings": [
+        "Cargo and transport capacity summaries need a narrower source-backed pass before automation-adjacent use."
+      ]
+    },
+    "warnings": [
+      "Repair pressure is an aggregate summary, not a complete work queue."
+    ]
+  },
+  "unsupported": [
+    {
+      "area": "bridge_metadata.dirty_state",
+      "field": "unsaved_changes",
+      "reason": "No source-confirmed dirty/unsaved campaign flag was found in the initial source pass.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ source inspection",
+      "blocks_automation": false
+    },
+    {
+      "area": "markets",
+      "field": "stable_offer_selectors",
+      "reason": "Markets are display-only in V1; no stable source-confirmed offer selectors are exposed.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ exporter or source change",
+      "blocks_automation": true
+    },
+    {
+      "area": "repairs_and_logistics",
+      "field": "stable_repair_work_ids",
+      "reason": "Stable IPartWork/IAcquisitionWork selectors are not exposed by this V1 read-only endpoint.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ exporter work",
+      "blocks_automation": true
+    }
+  ]
+}
