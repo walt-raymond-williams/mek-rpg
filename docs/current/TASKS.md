@@ -7,7 +7,6 @@
 ## Next
 
 - Issue `#97`: run a live GM playtest checkpoint using current workflow tools.
-- Issue `#98`: run character creation and PC sheet validation.
 - Issue `#99`: rehearse the MekHQ-linked workflow checkpoint when user-assisted MekHQ UI validation is available.
 - Issue `#100`: diagnose and improve full test runner runtime.
 
@@ -28,6 +27,7 @@
 
 ## Done
 
+- Issue `#98` implemented: ran a committed-summary character creation and PC sheet shape review; added `docs/current/CHARACTER_CREATION_PC_SHEET_RUNTHROUGH.md`; expanded `campaigns/_template/pcs.md` with identity, creation status, attributes, traits, skills, combat/readiness, inventory/assets, biography hooks, and open-question fields; deferred a deterministic character-output validator until real completed PC sheets exist.
 - Issue `#96` implemented: ran scenario-based lookup validation for the issue `#91`-`#94` rules expansion; added `docs/current/LATEST_RULES_LOOKUP_RUNTHROUGH_VALIDATION.md`; verified provisional authority for advancement/rewards, special hazards, creatures, diseases, battle armor readiness, prosthetics/implants, poison treatment, and personal vehicle fuel logistics; confirmed exact battle armor stat/cost prompts remain source-lookup-required and full BattleMech tactical resolution remains external-authority-required; tightened router wording for training-downtime and battle armor suit stat/cost prompts.
 - Issue `#90` completed: coordinated the next rules/source-review expansion wave and closed child issues `#91`-`#94`; roadmap, tasks, validation reports, indexes, summaries, fixtures, and handoffs now reflect the completed wave.
 - Issue `#94` implemented: validated next-wave rules lookup and authority behavior for issues `#91`-`#93`; added `docs/current/NEXT_WAVE_RULES_AUTHORITY_VALIDATION.md`; extended authority-gate tests for advancement/rewards, special hazards, battle armor readiness, poison treatment, exact equipment lookup, and tactical battle armor; adjusted `scripts/check-ruling-authority.ps1` so campaign context paths do not block draft-summary rulings and related tactical files do not force handoff unless tactical precision is requested; updated ruling scenarios, command docs, and archived the handoff.

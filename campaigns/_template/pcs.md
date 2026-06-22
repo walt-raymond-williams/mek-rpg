@@ -4,16 +4,67 @@
 
 ### TBD
 
+#### Identity And Concept
+
 - Player:
 - Concept:
+- Campaign role:
+- Affiliation or home:
+- Creation method:
+- Creation status:
+
+#### Attributes
+
+- Strength:
+- Body:
+- Reflexes:
+- Dexterity:
+- Intelligence:
+- Willpower:
+- Charisma:
+- Edge:
+- XP stored toward attributes:
+
+#### Traits
+
+- Active traits:
+- Incomplete or stored-XP traits:
+- Trait descriptors:
+- Trait page references:
+- Opposed-trait or cleanup notes:
+
+#### Skills
+
+- Active skills and subskills:
+- Specialties:
+- Linked attributes / TN / complexity notes:
+- XP stored toward skills:
+- Skill page references:
+
+#### Combat And Readiness
+
 - Current location:
 - Current condition:
-- Key skills or approaches:
-- Edge or limited resources:
+- Fatigue / stun / bleeding / unconscious:
+- Movement or combat data:
 - Armor and important gear:
+- Ready weapons:
+
+#### Inventory And Assets
+
+- Important carried gear:
 - Assets controlled:
+- Vehicle or unit links:
+
+#### Biography And Campaign Hooks
+
 - Goals:
 - Relationships:
+- Debts, promises, enemies, or obligations:
+- Background hooks:
+
+#### Open Questions
+
 - Open sheet questions:
 
 ## MekHQ-Linked PC Template
