@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#101`: prototype the read-only dashboard data adapter from the completed dashboard data contract. This is agent-ready and does not require manual testing.
+- None currently queued for autonomous work. Issues `#95` and `#97` remain blocked on human/manual playtest involvement.
 
 ## Backlog
 
@@ -15,7 +15,7 @@
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; keep the validator, coverage reporter, and route helper from issues `#46`-`#51` synchronized with future summary work.
-- Future read-only MEK-RPG web dashboard UI implementation should wait until issue `#101` creates a read-only JSON adapter following `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`.
+- Future read-only MEK-RPG web dashboard UI implementation can start from `scripts/export-dashboard-data.ps1` and `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`, but should keep the adapter's read-only/protected-source/MekHQ-save boundaries intact.
 - Richer DropShip and unit asset sheet work is tracked in issue `#54` after transport ownership/source coverage issues `#52` and `#53`.
 - Repeat manual validation/playtest checkpoints after adding major playable layers; the current checkpoint wave is tracked by issues `#95`-`#100`.
 
@@ -26,6 +26,7 @@
 
 ## Done
 
+- Issue `#101` implemented: added `scripts/export-dashboard-data.ps1` as a read-only `dashboard-data/v1` JSON adapter; added fixture-backed `scripts/test-export-dashboard-data.ps1`; wired it into `scripts/test-all.ps1`; documented commands; the adapter reports active/explicit selection, source panels, health, authority labels, warnings/errors, protected-source/raw-save exclusions, validator/context-helper output, and optional sanitized MekHQ summary metadata without mutating campaign files.
 - Issue `#100` implemented: measured full `scripts/test-all.ps1` runtime at about 254 seconds and identified the route-helper and ruling-authority suites as the largest contributors; added `docs/current/TEST_RUNNER_RUNTIME_DIAGNOSTIC.md`; updated `scripts/test-all.ps1` with per-suite timing, `-Quick`, and `-ListSuites`; documented quick/full verification guidance in command docs.
 - Issue `#99` implemented: rehearsed the MekHQ-linked workflow using committed fixtures, context-packet tests, checkpoint warning/unsupported-field coverage, and the existing `mekhq-pending-playtest` validation save; added `docs/current/MEKHQ_LINKED_WORKFLOW_REHEARSAL.md`; confirmed pending actions remain manual-action intents, read-only checkpoint behavior is covered, the existing issue `#37` saved re-import has no unresolved pending items, and no new MekHQ UI/writeback action was performed.
 - Issue `#98` implemented: ran a committed-summary character creation and PC sheet shape review; added `docs/current/CHARACTER_CREATION_PC_SHEET_RUNTHROUGH.md`; expanded `campaigns/_template/pcs.md` with identity, creation status, attributes, traits, skills, combat/readiness, inventory/assets, biography hooks, and open-question fields; deferred a deterministic character-output validator until real completed PC sheets exist.

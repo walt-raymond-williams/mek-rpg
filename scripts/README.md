@@ -13,6 +13,7 @@
 - `resolve-opposed-check.ps1`: JSON-in/JSON-out prototype for `core.opposed_check` that consumes actor/defender inputs, an authority envelope, and fixed or random `2d6` rolls for both sides; it reports comparative margins or refuses unsafe authority without mutating state.
 - `checkpoint-personal-combat.ps1`: JSON-in/JSON-out prototype for `combat.personal_checkpoint` that tracks RPG-scale personal combat checkpoint state, emits state-change proposals through the agreed schema, and refuses scenes that require tactical handoff.
 - `build-gm-context-packet.ps1`: reports the ordered GM context packet source files for the active or explicit campaign without interpreting rules, summarizing scenes, or mutating campaign files.
+- `export-dashboard-data.ps1`: emits read-only `dashboard-data/v1` JSON for an explicit or active campaign, including source records, health, panels, warnings, protected-source exclusions, and optional sanitized MekHQ summary metadata.
 - `archive-campaign-session.ps1`: appends an exact copy of a campaign `session-log.md` into campaign-local `previous-sessions.md`, with explicit confirmation, optional reset, and temp backups.
 - `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
@@ -32,6 +33,7 @@
 - `test-resolve-basic-check.ps1`: tests the basic check resolver success, source-lookup refusal, citation/warning preservation, and no-hidden-mutation behavior.
 - `test-resolve-opposed-check.ps1`: tests the opposed check resolver success, tied-margin handling, source-lookup refusal, citation/warning preservation, and no-hidden-mutation behavior.
 - `test-checkpoint-personal-combat.ps1`: tests the personal-combat checkpoint prototype, state proposal schema output, tactical handoff refusal, and no-hidden-mutation behavior.
+- `test-export-dashboard-data.ps1`: uses a disposable campaign fixture to check `dashboard-data/v1` output, explicit and active campaign selection, protected-source/raw-save exclusion, sanitized MekHQ summary handling, missing/invalid campaign failures, and no mutation of campaign files or the active pointer.
 - `test-archive-campaign-session.ps1`: runs disposable campaign-save coverage for the session archive helper's confirmation, preview, archive, reset, validation, and cleanup behavior.
 - `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-gm-context-regressions.ps1`: runs disposable context-packet regression scenarios for active campaign selection, memory layering, structured-state precedence, rules routing, missing-file warnings, protected-source boundaries, and read-only behavior.
@@ -47,10 +49,14 @@
 ./scripts/validate-campaign-state.ps1 -StrictActive
 ./scripts/build-gm-context-packet.ps1
 ./scripts/build-gm-context-packet.ps1 isekai-atlas-field -RunValidators
+./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field
+./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field -IncludeExcerpts
+./scripts/export-dashboard-data.ps1 -CampaignId mekhq-pending-playtest -MekHqSummaryJson tests/fixtures/mekhq-summary-minimal.json
 ./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ArchiveTitle "Session 3 - Depot Escape"
 ./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ResetSessionLog -ArchiveTitle "Session 3 - Depot Escape"
 ./scripts/archive-campaign-session.ps1 -UseActive -ConfirmArchive -WhatIf
 ./scripts/test-build-gm-context-packet.ps1
+./scripts/test-export-dashboard-data.ps1
 ./scripts/test-archive-campaign-session.ps1
 ./scripts/test-gm-context-regressions.ps1
 ./scripts/test-mekhq-context-packet.ps1
@@ -92,6 +98,20 @@ The context packet helper reads `campaign-state/active-campaign.md` unless a cam
 Use `-RunValidators` to append output from `validate-campaign-state.ps1` and `validate-mekhq-pending-actions.ps1 -ReportUnresolved`. Validator failures are reported as warnings inside the packet report so the user can inspect the source problem directly.
 
 `docs/current/GM_CONTEXT_REGRESSION_SCENARIOS.md` records the manual and scripted scenario set for continuity, rules routing, state ownership, tactical handoff, and MekHQ boundary checks. `test-gm-context-regressions.ps1` covers the deterministic scenarios that can be verified without live play judgment. `test-mekhq-context-packet.ps1` adds MekHQ-linked packet coverage using fixture bridge metadata and unresolved pending actions.
+
+## Dashboard Data Adapter
+
+```powershell
+./scripts/export-dashboard-data.ps1
+./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field
+./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field -IncludeExcerpts
+./scripts/export-dashboard-data.ps1 -CampaignId mekhq-pending-playtest -MekHqSummaryJson tests/fixtures/mekhq-summary-minimal.json
+./scripts/test-export-dashboard-data.ps1
+```
+
+The dashboard adapter emits UTF-8 JSON with `schema_version: dashboard-data/v1`. It resolves the active campaign pointer or an explicit campaign id, inventories standard campaign files as source records, reports health and protected-source exclusions, includes read-only validator/context-helper output as labeled tool output, and summarizes optional sanitized MekHQ summary JSON without following raw save paths. It does not write files, select campaigns, run git actions, read protected source paths, read raw MekHQ saves, interpret rules, or apply pending MekHQ actions.
+
+`test-export-dashboard-data.ps1` uses a disposable campaign folder to check explicit and active campaign selection, required panels, sanitized MekHQ summary metadata, missing/invalid campaign failures, raw save rejection, protected-source exclusion labels, and no mutation of campaign files, pending actions, or the active pointer.
 
 ## Dice Rolls
 
@@ -202,4 +222,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, opposed check resolver fixture tests, personal-combat checkpoint fixture tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction. It prints per-suite timing so slow checks are visible. The full runner can take several minutes because route-helper and authority-gate golden fixtures parse routing metadata repeatedly. Use `-Quick` for routine non-rules close-out and full `test-all.ps1` when routing, manifest, page-reference, rules-summary, route-helper, or authority-gate behavior changes.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, opposed check resolver fixture tests, personal-combat checkpoint fixture tests, GM context packet helper coverage, read-only dashboard data adapter coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction. It prints per-suite timing so slow checks are visible. The full runner can take several minutes because route-helper, authority-gate, and dashboard adapter fixture suites invoke several helper scripts. Use `-Quick` for routine non-rules/non-dashboard close-out and full `test-all.ps1` when routing, manifest, page-reference, rules-summary, route-helper, authority-gate, or dashboard adapter behavior changes.

@@ -89,6 +89,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "Read-only dashboard data adapter coverage"
+        Path = Join-Path $repoRoot "scripts\test-export-dashboard-data.ps1"
+        Quick = $false
+    },
+    @{
         Name = "Campaign session archive helper coverage"
         Path = Join-Path $repoRoot "scripts\test-archive-campaign-session.ps1"
         Quick = $true
@@ -183,7 +188,7 @@ if ($failures.Count -gt 0) {
 }
 
 if ($Quick) {
-    Write-Host "Quick deterministic MEK-RPG test suites passed. Run ./scripts/test-all.ps1 for full rules-route and authority-gate coverage."
+    Write-Host "Quick deterministic MEK-RPG test suites passed. Run ./scripts/test-all.ps1 for full rules-route, authority-gate, and dashboard adapter coverage."
 }
 else {
     Write-Host "All deterministic MEK-RPG test suites passed."
