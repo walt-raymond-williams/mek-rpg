@@ -197,9 +197,9 @@ Two response details are especially important for replacing save parsing:
 
 ## MEK-RPG Consumer Follow-Up
 
-MEK-RPG should add a first-class live API campaign-load adapter rather than routing live play setup through the old save-summary parser.
+MEK-RPG added a first-class live API campaign-load adapter in issue `#107` rather than routing live play setup through the old save-summary parser.
 
-That adapter should:
+That adapter:
 
 - accept captured live API JSON from `GET /campaign/state`
 - verify `bridge_metadata.read_only` and `api_mode`
@@ -207,6 +207,8 @@ That adapter should:
 - preserve live-context versus durable-checkpoint status
 - never require or follow a raw MekHQ save path when the live API is available
 - surface missing fields as API gaps/change requests
+
+Issue `#109` refreshed the producer-facing change request package from that adapter work. The confirmed request set is in `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`; the short version is source-confirmed dirty/unsaved state, stable human-readable location labels, structured unsupported entries, stable repair/acquisition work ids, display-only market selectors only when safe, and richer operational fields for finance, personnel, units, contracts, scenarios, logistics, and reports.
 
 Related planning and producer-request documents:
 

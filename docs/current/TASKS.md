@@ -2,11 +2,11 @@
 
 ## Now
 
-- None currently active after issue `#107` live API campaign-load adapter implementation.
+- None currently active after issue `#109` producer change-request package refresh.
 
 ## Next
 
-- Issue `#109`: keep the MegaMek/MekHQ live API producer change request package current as adapter use and issue `#97` playtest identify missing fields.
+- Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
@@ -23,12 +23,12 @@
 ## Blocked
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
-- Issue `#97`: live GM playtest checkpoint using current workflow tools. Deferred until issue `#109` has captured any producer-side MegaMek/MekHQ API gaps discovered by the adapter work. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Done
 
+- Issue `#109` completed: refreshed `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md` into a handoff-ready MegaMek/MekHQ producer request package using issue `#107` adapter evidence; linked the concrete gaps for source-confirmed dirty/unsaved state, sparse human-readable location labels, structured unsupported entries, stable repair/acquisition work ids, display-only market selector future-readiness, and richer finance/personnel/unit/contract/scenario/logistics/report context; updated related audit/response/cross-board docs; archived the active handoff.
 - Issue `#107` implemented: added `scripts/sync-mekhq-live-campaign.py` to create or refresh campaign-local context from captured read-only MekHQ `GET /campaign/state` JSON with `bridge_metadata`; the adapter verifies `local-read-only-live-context` and `read_only: true`, rejects raw save/XML paths, preserves live-context-only status in generated notes, writes `mekhq-bridge.md` and `mekhq-api-gaps.md`, surfaces missing/unsupported API fields as producer gaps, leaves `campaign-state/active-campaign.md` unchanged, and is covered by `scripts/test-sync-mekhq-live-campaign.ps1` plus `./scripts/test-all.ps1 -Quick`.
-- Issue `#108` audited roadmap/task/workflow planning for live MekHQ API-first campaign loading versus save parsing. Added `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`, `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`, archived handoff `docs/handoffs/archive/live-api-save-parser-roadmap-audit-108.md`, and active handoff `docs/handoffs/active/live-api-producer-change-request-109.md`; roadmap now orders the next steps as producer-gap package, live API campaign-load adapter, then blind/live playtest.
+- Issue `#108` audited roadmap/task/workflow planning for live MekHQ API-first campaign loading versus save parsing. Added `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`, `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`, archived handoff `docs/handoffs/archive/live-api-save-parser-roadmap-audit-108.md`, and created the issue `#109` handoff that now lives at `docs/handoffs/archive/live-api-producer-change-request-109.md`; roadmap now orders the next steps as producer-gap package, live API campaign-load adapter, then blind/live playtest.
 - Issue `#106` resolved the live MekHQ API full-state metadata envelope mismatch: producer source already supports `bridge_metadata`; the issue `#104` smoke command had omitted it from an explicit section list. A corrected live request including `bridge_metadata` was accepted by `scripts/export-dashboard-data.ps1 -MekHqLiveApiJson` as `live-context` with no read-only-proof error; docs now tell future smoke tests to omit `sections` or include `bridge_metadata`.
 - Issue `#102` completed the live MekHQ campaign-state API consumer epic: live fixtures and contract tests exist, dashboard adapter consumption exists, manual smoke testing passed for summary and state endpoints, and issue `#106` reconciled the section-list metadata envelope gap.
 - Issue `#104` manually smoke-tested the live MekHQ API against a disposable `The Learning Ropes-test.cpnx` campaign loaded in MekHQ: summary and state endpoints responded from `127.0.0.1:32180`, no MekHQ save prompt or write side effect was observed by the user, existing fixture tests passed, the dashboard adapter accepted live summary JSON, and the first explicit full-state section request exposed a metadata-envelope gap later resolved in issue `#106`.

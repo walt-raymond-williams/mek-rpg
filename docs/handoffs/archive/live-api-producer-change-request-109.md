@@ -5,7 +5,7 @@
 - GitHub issue: `#109` Package live MekHQ API producer change requests
 - Roadmap entry: live MekHQ API producer change-request package
 - Mode: Project development / cross-workspace coordination
-- Priority: Next / can proceed alongside issue `#107`
+- Priority: Completed / archived after issue `#109`
 
 ## Goal
 
@@ -26,9 +26,9 @@ Read these first:
 
 ## Expected Output
 
-- Keep `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md` current as issue `#107` discovers concrete missing fields.
-- Ensure requested producer changes are framed as API additions or schema improvements, not MEK-RPG-side save parsing workarounds.
-- Provide clear suggested producer-side tickets, acceptance criteria, and non-goals.
+- Completed: kept `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md` current with issue `#107` adapter evidence.
+- Completed: requested producer changes are framed as API additions or schema improvements, not MEK-RPG-side save parsing workarounds.
+- Completed: suggested producer-side tickets, acceptance criteria, and non-goals are grouped in the request package.
 
 ## Files And Areas
 
@@ -69,4 +69,8 @@ gh issue view 109
 
 ## Open Questions
 
-- Which MegaMek/MekHQ team workflow should receive this package first: a copied memo, a linked issue comment, or a repository-local handoff in the MegaMek workspace?
+- Remaining user/team choice: which MegaMek/MekHQ team workflow should receive this package first: a copied memo, a linked issue comment, or a repository-local handoff in the MegaMek workspace?
+
+## Completion Notes
+
+Issue `#109` completed the MEK-RPG-local package. The handoff-ready request lives in `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`. The concrete adapter-confirmed producer gaps are source-confirmed dirty/unsaved state, sparse human-readable location labels, structured unsupported entries, stable repair/acquisition work ids, display-only market selector future-readiness, and richer operational finance/personnel/unit/contract/scenario/logistics/report context. No MegaMek workspace edits were made.

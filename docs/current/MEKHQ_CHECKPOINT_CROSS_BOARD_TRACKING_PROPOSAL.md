@@ -74,13 +74,14 @@ Use these phrases in cross-board comments:
 
 ## Feedback To Send Back
 
-Live API producer requests now live in `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`. The short version:
+Live API producer requests live in `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`; issue `#109` refreshed that package after the issue `#107` adapter work. The short version:
 
 - Active loaded campaign setup should use `GET /campaign/summary` and `GET /campaign/state`, not save parsing.
 - If data exists in the save or live MekHQ memory and MEK-RPG needs it for active campaign context, expose it through the read-only live API with provenance.
 - Prioritize human-readable current system/location, method-backed finances, personnel availability/injury/fatigue, unit condition/repair/cargo context, active contract/scenario fixtures, repair/logistics pressure, categorized reports, and structured unsupported entries.
 - Keep markets display-only unless stable selectors, guard fields, prompt policy, and command semantics are intentionally designed later.
 - Keep write/action APIs out of the read-only live-state request.
+- The package is handoff-ready for the MegaMek/MekHQ workflow; MEK-RPG should still not edit the MegaMek workspace directly from this repository.
 
 Detailed consumed-field decisions now live in `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md`. Send this summary back to the MegaMek workspace:
 

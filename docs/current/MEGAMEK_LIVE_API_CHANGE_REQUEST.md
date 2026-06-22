@@ -2,7 +2,7 @@
 
 Date: 2026-06-22
 
-Status: MEK-RPG request package for issue `#109`.
+Status: handoff-ready MEK-RPG request package completed for issue `#109`.
 
 Audience: MegaMek / MekHQ workspace team.
 
@@ -12,7 +12,28 @@ Purpose: request live API coverage that lets MEK-RPG load and refresh an active 
 
 MEK-RPG previously used a read-only save parser as a bridge prototype. That parser is still useful for offline fallback, sanitized fixtures, and debugging serialized-vs-live differences. It should not be the normal source for a campaign that is already loaded in MekHQ with the local read-only API available.
 
-During issue `#97`, MEK-RPG initially parsed a save path even though the live API was available. That was the wrong workflow. The live API correctly identified the loaded campaign system as `Galatea`, while the save-summary bootstrap carried stale or less useful location context. The fix on the MEK-RPG side is issue `#107`: add a first-class live API campaign-load adapter. This change request captures the producer-side fields that make that adapter reliable.
+During issue `#97`, MEK-RPG initially parsed a save path even though the live API was available. That was the wrong workflow. The live API correctly identified the loaded campaign system as `Galatea`, while the save-summary bootstrap carried stale or less useful location context. Issue `#107` added the MEK-RPG-side fix: `scripts/sync-mekhq-live-campaign.py`, a first-class live API campaign-load adapter. This change request captures the producer-side fields that make that adapter reliable.
+
+## Current MEK-RPG Consumer Evidence
+
+Issue `#107` implemented and tested the live adapter against sanitized `GET /campaign/state` fixtures. The adapter now:
+
+- accepts captured live API JSON only when `bridge_metadata.api_mode` is `local-read-only-live-context` and `bridge_metadata.read_only` is `true`
+- rejects `.cpnx`, `.cpnx.gz`, and XML inputs for the active live campaign-load path
+- creates or refreshes MEK-RPG campaign context from live API sections
+- writes `mekhq-bridge.md` with the live trust envelope and live-context-only boundary
+- writes `mekhq-api-gaps.md` with missing or unsupported producer fields
+- leaves `campaign-state/active-campaign.md` unchanged
+
+The adapter did not reveal a new need for MEK-RPG to parse active saves. It did confirm these producer-side gaps should stay visible as API/schema requests:
+
+- dirty or unsaved campaign state is still `Unknown` and not source-confirmed in V1
+- sparse state payloads can lack a human-readable current system/location label
+- markets remain display-only because stable offer selectors and automation guard fields are not exposed
+- repair/logistics output has aggregate pressure, but not stable repair/acquisition work item ids or full queues
+- richer finance, contract, scenario, personnel, unit, cargo, and report context remains useful as play expands
+
+These gaps are inputs for MegaMek/MekHQ producer work, not permission for MEK-RPG to route around the live API by parsing active save files.
 
 ## Requested API Principle
 
@@ -141,14 +162,25 @@ MEK-RPG can avoid active-save parsing if `GET /campaign/state` provides these ar
 
 These are suggestions for the MegaMek/MekHQ board, not MEK-RPG-owned implementation work:
 
-- Deepen live API campaign location and travel fields.
-- Expose method-backed finance balance, debt/loan status, and finance warnings.
-- Deepen personnel availability, injury, fatigue, role, rank, salary/pay, and market membership fields.
+### Immediate Adapter-Proven Requests
+
+- Expose source-confirmed dirty/unsaved campaign state, or keep the current `Unknown` value with a structured unsupported entry that clearly identifies the missing MekHQ source owner.
+- Ensure every full or sparse campaign state response can include stable, human-readable current system and location labels when campaign data exists.
+- Preserve `bridge_metadata` in documentation/examples for every consumer validation request; selected-section examples should include `bridge_metadata` explicitly.
+- Keep unsupported entries structured with `area`, `field`, `reason`, `evidence`, `recommended_owner`, and `blocks_automation`.
+
+### Near-Term Playtest Requests
+
+- Expose method-backed finance balance, debt/loan status, recent transaction summaries, and finance warnings.
+- Deepen personnel availability, injury, fatigue, role, rank, salary/pay, commander marker, and market/applicant membership fields.
 - Deepen unit condition, crew/tech links, repair summary, transport/cargo, and scenario assignment fields.
-- Add active-contract and scenario-rich live API fixtures.
-- Deepen repair/logistics queues and warning fields.
+- Add active-contract and scenario-rich live API fixtures so MEK-RPG can validate non-empty operational campaign context.
+- Deepen repair/logistics queues, stable work item ids, assigned techs, time remaining, parts pressure, acquisition pressure, and warning fields.
 - Improve report categorization and compact report summaries.
-- Keep unsupported entries structured and automation-blocker aware.
+
+### Future-Readiness Only
+
+- Investigate stable market offer selectors and duplicate-safe guard fields, but keep `automation_ready: false` unless command semantics, prompts, and saved/import confirmation are intentionally designed later.
 
 ## MEK-RPG Consumer Links
 
@@ -157,6 +189,12 @@ These are suggestions for the MegaMek/MekHQ board, not MEK-RPG-owned implementat
 - Live API adapter issue: `#107`
 - Roadmap audit issue: `#108`
 - Change request package issue: `#109`
+- Adapter implementation: `scripts/sync-mekhq-live-campaign.py`
+- Adapter coverage: `scripts/test-sync-mekhq-live-campaign.ps1`
+
+## Handoff Status
+
+This MEK-RPG package is ready to copy, link, or summarize into the MegaMek/MekHQ workflow. The recommended first producer-side action is to create or update one MegaMek/MekHQ issue for the immediate adapter-proven requests, then split deeper personnel/unit/contract/logistics/report work into separate producer tickets if the team wants narrower implementation units.
 
 ## Boundary
 

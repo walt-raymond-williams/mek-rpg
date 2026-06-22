@@ -2,7 +2,7 @@
 
 Date: 2026-06-22
 
-Status: issue `#108` planning audit.
+Status: issue `#108` planning audit, refreshed during issue `#109`.
 
 Purpose: align MEK-RPG planning around the live MekHQ API as the normal source for an active loaded campaign, and keep raw save parsing as an explicit offline, legacy, fixture, or debugging fallback.
 
@@ -28,7 +28,7 @@ If the live API lacks data that is available in the save file or live MekHQ memo
 
 It is not the normal workflow for a loaded MekHQ campaign.
 
-`scripts/bootstrap-mekhq-campaign.py` remains a one-time campaign folder creator from normalized summary-like JSON. Issue `#107` should add the live API campaign-load adapter so active loaded campaigns can create or refresh MEK-RPG context directly from the API payload rather than through save-summary parser output.
+`scripts/bootstrap-mekhq-campaign.py` remains a one-time campaign folder creator from normalized summary-like JSON. Issue `#107` added `scripts/sync-mekhq-live-campaign.py`, the live API campaign-load adapter, so active loaded campaigns can create or refresh MEK-RPG context directly from the API payload rather than through save-summary parser output.
 
 ## Known Coverage Comparison
 
@@ -51,19 +51,19 @@ It is not the normal workflow for a loaded MekHQ campaign.
 
 Recommended near-term order:
 
-1. Issue `#108`: complete this roadmap/API-first audit.
-2. Issue `#109`: keep a producer-facing change request package for any API gaps discovered here or during adapter work.
-3. Issue `#107`: implement the MEK-RPG live API campaign-load adapter with gap surfacing.
-4. Issue `#97`: resume the blind/live GM playtest after active campaign loading no longer depends on save parsing.
+1. Done issue `#108`: completed this roadmap/API-first audit.
+2. Done issue `#107`: implemented the MEK-RPG live API campaign-load adapter with gap surfacing.
+3. Done issue `#109`: refreshed the producer-facing change request package with adapter-confirmed gaps.
+4. Next issue `#97`: resume the blind/live GM playtest using the live API adapter path.
 
-Issue `#109` can proceed in parallel as a memo/handoff package and should be updated if issue `#107` finds new API gaps.
+Issue `#109` captured the concrete API gaps found during adapter work: source-confirmed dirty/unsaved state, sparse human-readable location labels, stable market selectors as future-readiness metadata, stable repair/acquisition work ids, and richer operational context for finance, personnel, units, contracts, scenarios, logistics, and reports.
 
 ## Producer Change Request Owner
 
 The MegaMek/MekHQ-facing request package lives in:
 
 - `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`
-- `docs/handoffs/active/live-api-producer-change-request-109.md`
+- `docs/handoffs/archive/live-api-producer-change-request-109.md`
 
 Those documents are project-local requests. They do not authorize edits, commits, issue creation, or roadmap changes in the MegaMek workspace.
 
