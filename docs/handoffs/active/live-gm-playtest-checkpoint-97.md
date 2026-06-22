@@ -5,7 +5,7 @@
 - GitHub issue: `#97` Run live GM playtest checkpoint using current workflow tools
 - Roadmap entry: Repeat manual validation/playtest checkpoints after adding major playable layers
 - Mode: Play mode with project-development close-out
-- Priority: User-gated / blocked
+- Priority: User-gated / active
 
 ## Goal
 
@@ -31,6 +31,12 @@ Task-specific context:
 - `scripts/check-ruling-authority.ps1`
 - `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md`
 - `docs/current/RULING_AUTHORITY_GATE.md`
+
+Active playtest campaign:
+
+- `campaigns/the-learning-ropes/`
+- MekHQ source context: loaded read-only live API campaign `The Learning Ropes`, date `3025-04-08`, system `Galatea`, campaign id `ea0d334a-1582-459a-9084-b349f0baca5a`.
+- Treat live MekHQ data as read-only context. Do not write to MekHQ, `.cpnx`, `.cpnx.gz`, XML saves, or other repositories.
 
 ## Expected Output
 
@@ -68,7 +74,7 @@ Use this checklist outside the new gameplay agent session. The goal is to test o
 - Confirm this repository is clean with `git status --short --branch`.
 - Confirm issue `#97` is open and no longer blocked.
 - Optionally run `./scripts/validate-campaign-state.ps1 -StrictActive` yourself before the session.
-- Decide whether you want to use the active campaign as-is or steer the scene with a natural table prompt.
+- Use `campaigns/the-learning-ropes/` as the active campaign unless the user deliberately switches it before the playtest.
 - Do not ask the new gameplay agent to read this handoff, update GitHub issues, or run project-development close-out at session start.
 
 ### Prompt To Give The Gameplay Agent
@@ -110,7 +116,7 @@ Let's continue the active MEK RPG campaign with a short scene that involves a me
 ## Constraints
 
 - This issue requires live user participation for a meaningful playtest.
-- It is labeled `user-task` and `blocked`; autonomous agents should skip it unless the user is present and explicitly asks to run the playtest.
+- It is labeled `user-task`; autonomous agents should skip it unless the user is present and explicitly asks to run the playtest.
 - Load exactly one active campaign save folder.
 - Do not resolve tactical BattleTech combat inside MEK-RPG; hand off to Classic BattleTech, MegaMek, or MekHQ when tactical detail matters.
 

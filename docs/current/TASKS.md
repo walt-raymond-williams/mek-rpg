@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#97`: live GM playtest checkpoint using current workflow tools. User intends to run this as a blind/new-agent playtest: handle project-management setup manually, then ask the new agent for ordinary gameplay without naming the issue.
+- Issue `#97`: live GM playtest checkpoint using current workflow tools. User intends to run this as a blind/new-agent playtest: handle project-management setup manually, then ask the new agent for ordinary gameplay without naming the issue. Active campaign is now `campaigns/the-learning-ropes/`, a MekHQ-linked playtest save based on the loaded read-only MekHQ campaign `The Learning Ropes`.
 
 ## Next
 
