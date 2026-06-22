@@ -73,3 +73,11 @@ git status --short --branch
 ## Open Questions
 
 - If only issue `#91` is completed before this runs, should validation stay narrow or wait for `#92` and `#93`?
+
+## Completion Notes
+
+- Completed in issue `#94` after issues `#91`, `#92`, and `#93` landed.
+- Added `docs/current/NEXT_WAVE_RULES_AUTHORITY_VALIDATION.md`.
+- Extended `scripts/test-check-ruling-authority.ps1` to verify next-wave provisional authority, exact equipment source-lookup boundaries, and tactical battle armor handoff behavior.
+- Updated `scripts/check-ruling-authority.ps1` so campaign context paths do not block draft-summary rulings and related tactical handoff files do not force external authority unless the prompt asks for tactical precision or hard-ledger authority.
+- Updated `docs/current/RULING_AUTHORITY_GATE.md`, `docs/current/RULING_REGRESSION_SCENARIOS.md`, `docs/current/KNOWN_COMMANDS.md`, `scripts/README.md`, `docs/current/TASKS.md`, and `docs/current/ROADMAP.md`.

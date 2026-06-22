@@ -27,8 +27,8 @@
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
-- `test-route-rules-prompt.ps1`: tests the rules route helper text/JSON output plus golden prompt fixtures for common RPG procedures, missing routes, tactical handoff, and source-review gaps.
-- `test-check-ruling-authority.ps1`: tests the ruling authority gate across live route prompts and disposable status fixtures for draft, source-reviewed-routing-aid, mapped-only, partial-draft, source-lookup-only, needs-source-review, missing metadata, tactical handoff, and missing routes.
+- `test-route-rules-prompt.ps1`: tests the rules route helper text/JSON output plus golden prompt fixtures for common RPG procedures, next-wave advancement/rewards, special hazards, special equipment, missing routes, tactical handoff, and source-review gaps.
+- `test-check-ruling-authority.ps1`: tests the ruling authority gate across live route prompts and disposable status fixtures for draft, next-wave provisional routes, exact table/source-lookup prompts, source-reviewed-routing-aid, mapped-only, partial-draft, source-lookup-only, needs-source-review, missing metadata, tactical handoff, and missing routes.
 - `test-resolve-basic-check.ps1`: tests the basic check resolver success, source-lookup refusal, citation/warning preservation, and no-hidden-mutation behavior.
 - `test-resolve-opposed-check.ps1`: tests the opposed check resolver success, tied-margin handling, source-lookup refusal, citation/warning preservation, and no-hidden-mutation behavior.
 - `test-checkpoint-personal-combat.ps1`: tests the personal-combat checkpoint prototype, state proposal schema output, tactical handoff refusal, and no-hidden-mutation behavior.
@@ -130,7 +130,7 @@ The rules coverage reporter groups manifest entries by subsystem and status. Tex
 
 The route helper uses deterministic keyword scoring against `indexes/task-router.md`, then annotates routed files with manifest statuses and page-reference warnings. It is not rules authority and says so in the output; read the routed summaries or GM procedures before making a ruling.
 
-`test-route-rules-prompt.ps1` uses `tests/fixtures/rules-route-golden-prompts.fixture.json` to check common route behavior for simple checks, opposed checks, Edge use, initiative, ranged and melee attacks, damage/wounds, recovery, equipment use, campaign consequences, vehicle piloting, tactical handoff, ambiguous rulings, missing rules, and source-review gaps.
+`test-route-rules-prompt.ps1` uses `tests/fixtures/rules-route-golden-prompts.fixture.json` to check common route behavior for simple checks, opposed checks, Edge use, initiative, ranged and melee attacks, damage/wounds, recovery, equipment use, campaign consequences, advancement/rewards, special hazards, special equipment, vehicle piloting, tactical handoff, ambiguous rulings, missing rules, and source-review gaps.
 
 The ruling authority gate consumes route-helper output and evaluates the primary candidate. It returns an authority envelope for later helpers: `authoritative`, `provisional`, `source_lookup_required`, `external_authority_required`, `cannot_adjudicate`, or `blocked_missing_route`. It reports routed files, manifest ids/statuses, page-reference text, warnings, required next action, and source-boundary proof; it never answers the rule.
 

@@ -144,7 +144,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Next rules/source-review expansion wave
 
-- Status: Open
+- Status: Done
 - Epic issue: `#90`
 - Mode: Source processing / project development
 - Controlling plan: `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`
@@ -158,12 +158,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   1. Done issue `#91`: source-reviewed GM advancement and rewards coverage, with validation in `docs/current/ADVANCEMENT_REWARDS_SOURCE_REVIEW_VALIDATION.md`.
   2. Done issue `#92`: upgraded special-case rules routing aids for live play, with validation in `docs/current/SPECIAL_CASE_RULES_SOURCE_REVIEW_VALIDATION.md`.
   3. Done issue `#93`: upgraded special equipment routing aids for live play, with validation in `docs/current/SPECIAL_EQUIPMENT_SOURCE_REVIEW_VALIDATION.md`.
-  4. Open issue `#94`: validate next-wave rules lookup and authority behavior, with handoff `docs/handoffs/active/validate-next-wave-rules-lookup-authority.md`.
+  4. Done issue `#94`: validated next-wave rules lookup and authority behavior, with validation in `docs/current/NEXT_WAVE_RULES_AUTHORITY_VALIDATION.md`.
 - Dependency order:
   1. Done in issue `#91`: resolved the explicit partial-draft mapped target by adding `rules/campaign/advancement-and-rewards.md`.
   2. Done in issue `#92`: upgraded special-case environmental, creature, and disease summaries.
   3. Done in issue `#93`: upgraded battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel.
-  4. Finish with issue `#94` after the source-review children land, so route/ruling validation reflects the final authority labels.
+  4. Done in issue `#94`: route/ruling validation reflects the final authority labels for issues `#91`-`#93`.
 - Boundary: this wave permits explicit source-processing for scoped page ranges only. Do not commit protected raw source, copied tables, catalog lists, stat blocks, record-sheet text, adventure text, or long lore passages. Use paraphrase, page references, route guidance, uncertainty labels, and source-lookup-only boundaries where appropriate.
 
 ### MekHQ bridge primitives follow-up queue

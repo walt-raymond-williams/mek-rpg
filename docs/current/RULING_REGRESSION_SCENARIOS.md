@@ -484,6 +484,110 @@ Manual pass checks:
 - The response labels pending actions as intents/checklists.
 - It does not imply direct MekHQ save or XML writeback.
 
+## RUL-014 Advancement And Rewards
+
+Starting state:
+
+- A session, downtime period, promotion, or mission aftermath just ended.
+
+User command:
+
+```text
+How much XP should I award after session feedback, and what do we record for salary and rank?
+```
+
+Expected lookup behavior:
+
+- Route to `rules/campaign/advancement-and-rewards.md`, with related advancement and campaign summaries as needed.
+- Authority gate status should be `provisional`.
+- Exact XP, salary, bonus, expense, rank, power, and aging table values remain source lookup unless already supplied by the user.
+
+Expected citation behavior:
+
+- Cite the advancement/rewards summary and page references.
+
+Expected state-change behavior:
+
+- Propose session-log, PC advancement, rank/status, and asset or pending MekHQ intent updates as separate approval-gated changes.
+
+Expected failure behavior:
+
+- Return `source_lookup_required` for exact table values not committed in the summary.
+
+Manual pass checks:
+
+- Campaign context files in the route do not cause `cannot_adjudicate` when draft summaries are present.
+- The response does not invent award tables or salary values.
+
+## RUL-015 Special Hazards And Illness
+
+Starting state:
+
+- A live scene involves terrain, weather, atmosphere, a creature, venom, disease, quarantine, or inoculation.
+
+User command:
+
+```text
+The squad crosses deep snow in a blizzard, then a local predator's venom creates a quarantine scare.
+```
+
+Expected lookup behavior:
+
+- Route to the relevant `rules/special/` summaries and `rules/equipment/drugs-and-poisons.md` when venom or treatment matters.
+- Authority gate status should be `provisional` for procedure prompts.
+
+Expected citation behavior:
+
+- Cite the special-case summaries and their source page references.
+
+Expected state-change behavior:
+
+- Propose mission clocks, medical conditions, asset/equipment damage, or quarantine notes only through state-change proposals.
+
+Expected failure behavior:
+
+- Exact environmental modifiers, creature stats, venom values, disease tables, and treatment values require private source lookup.
+
+Manual pass checks:
+
+- The response uses clocks and visible stakes without copying tables.
+- Real-world medical or survival advice stays out of scope.
+
+## RUL-016 Special Equipment Authority
+
+Starting state:
+
+- A character uses battle armor, a prosthetic or implant, a drug/poison, or a personal vehicle/fuel asset.
+
+User command:
+
+```text
+A PC scrambles into powered armor while another PC needs field treatment for venom and the crew's utility truck is low on fuel.
+```
+
+Expected lookup behavior:
+
+- Route to `rules/equipment/battle-armor-and-exoskeletons.md`, `rules/equipment/drugs-and-poisons.md`, and `rules/equipment/personal-vehicles.md` as applicable.
+- Authority gate status should be `provisional` for RPG-scale readiness, treatment, and logistics.
+
+Expected citation behavior:
+
+- Cite the equipment summaries and page references.
+
+Expected state-change behavior:
+
+- Propose suit readiness, medical condition, drug/poison clock, vehicle asset, fuel readiness, and MekHQ pending intents separately.
+
+Expected failure behavior:
+
+- Exact suit stats, prosthetic/implant values, drug/poison values, vehicle entries, fuel values, and tactical battle armor combat require source lookup or external tactical authority.
+- Battle armor hex movement, mounted weapons, heat, full tactical turns, or MekHQ hard-ledger facts should return `external_authority_required`.
+
+Manual pass checks:
+
+- Battle armor readiness is not forced into tactical handoff unless tactical precision matters.
+- Exact equipment table requests are not answered from committed summaries.
+
 ## Future Script Harness Notes
 
 A future scripted harness can use these scenarios by checking:

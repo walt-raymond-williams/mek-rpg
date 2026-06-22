@@ -36,6 +36,7 @@ The helper calls `scripts/route-rules-prompt.ps1`, evaluates the primary route c
 - source-boundary proof that protected source text and PDFs were not read
 - external-authority details when tactical or hard-ledger ownership applies
 - failure mode and required next action
+- campaign context paths may appear in routed files without manifest metadata; they are context sources, not rule authorities, and do not block draft-summary rulings by themselves
 
 ## Decision Rules
 
@@ -45,8 +46,8 @@ Decision order:
 
 1. No candidates become `blocked_missing_route`.
 2. Table-heavy or source-review cues, plus statuses such as `mapped-only`, `partial-draft`, `source-lookup-only`, `needs-source-review`, or `TBD`, become `source_lookup_required`.
-3. Tactical handoff paths and hard-ledger cues become `external_authority_required`.
-4. Missing primary-route metadata becomes `cannot_adjudicate`.
+3. Tactical precision and hard-ledger cues become `external_authority_required`; related tactical files alone do not force a handoff when the prompt is about RPG-scale readiness or consequences.
+4. Missing primary-route metadata becomes `cannot_adjudicate`, except for campaign context paths such as `campaign-state/active-campaign.md` or `campaigns/<campaign-id>/...`.
 5. Source precedence, source conflict, and GM adjudication posture routes become `authoritative` for authority-selection only.
 6. Draft summary routes become `provisional`.
 

@@ -62,6 +62,15 @@ function Test-InfrastructurePath {
     )
 }
 
+function Test-ContextPath {
+    param([string]$Path)
+
+    return (
+        $Path -eq "campaign-state/active-campaign.md" -or
+        $Path -like "campaigns/<campaign-id>/*"
+    )
+}
+
 function Get-AuthorityDecision {
     param(
         [object]$RouteReport,
@@ -119,7 +128,6 @@ function Get-AuthorityDecision {
         $lowerPrompt -match 'source precedence|which source wins|authority gate|ruling authority'
     )
     $externalCue = (
-        ($paths | Where-Object { Test-ExternalPath -Path $_ }).Count -gt 0 -or
         $lowerPrompt -match 'battlemech fight|hex movement|full tactical|tactical combat|mekhq ledger|hard ledger'
     )
     $sourceStatusCue = (
@@ -130,7 +138,8 @@ function Get-AuthorityDecision {
         $files | Where-Object {
             @($_.manifest_ids).Count -eq 0 -and
             $_.page_reference_status -eq "Unknown" -and
-            -not (Test-InfrastructurePath -Path $_.path)
+            -not (Test-InfrastructurePath -Path $_.path) -and
+            -not (Test-ContextPath -Path $_.path)
         }
     )
 

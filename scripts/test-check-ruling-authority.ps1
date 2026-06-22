@@ -122,10 +122,33 @@ Assert-True -Condition ($provisional.status -eq "provisional") -Message "Draft s
 Assert-True -Condition (@($provisional.routed_files).path -contains "rules/personal-combat/ranged-attacks.md") -Message "Provisional route includes ranged attack summary."
 Assert-True -Condition (($provisional.warnings | ForEach-Object { $_.code }) -contains "draft-summary") -Message "Provisional route carries draft warning."
 
+$advancementRewards = Invoke-GateJson -Prompt "How much XP should I award after session feedback?"
+Assert-True -Condition ($advancementRewards.status -eq "provisional") -Message "Next-wave advancement reward route is provisional."
+Assert-True -Condition (@($advancementRewards.routed_files).path -contains "rules/campaign/advancement-and-rewards.md") -Message "Advancement reward route includes the next-wave summary."
+Assert-True -Condition (($advancementRewards.warnings | ForEach-Object { $_.code }) -contains "draft-summary") -Message "Advancement reward route carries draft warning."
+
+$specialHazard = Invoke-GateJson -Prompt "The squad crosses deep snow in a blizzard with poor visibility"
+Assert-True -Condition ($specialHazard.status -eq "provisional") -Message "Next-wave special hazard prompt remains provisional."
+
+$battleArmorReadiness = Invoke-GateJson -Prompt "A PC has to scramble into powered armor during a boarding alarm"
+Assert-True -Condition ($battleArmorReadiness.status -eq "provisional") -Message "Battle armor readiness prompt stays provisional instead of forcing tactical handoff."
+Assert-True -Condition (@($battleArmorReadiness.routed_files).path -contains "rules/equipment/battle-armor-and-exoskeletons.md") -Message "Battle armor readiness route includes the next-wave equipment summary."
+
+$poisonTreatment = Invoke-GateJson -Prompt "A predator venom needs field treatment without the proper antidote"
+Assert-True -Condition ($poisonTreatment.status -eq "provisional") -Message "Next-wave poison treatment prompt is provisional."
+Assert-True -Condition (@($poisonTreatment.routed_files).path -contains "rules/equipment/drugs-and-poisons.md") -Message "Poison treatment route includes the next-wave equipment summary."
+
+$exactEquipment = Invoke-GateJson -Prompt "What is the exact stat and table value for this battle armor suit?"
+Assert-True -Condition ($exactEquipment.status -eq "source_lookup_required") -Message "Exact next-wave equipment values still require source lookup."
+Assert-True -Condition ($exactEquipment.failure_mode -eq "source_lookup_required") -Message "Exact equipment prompt reports source lookup failure mode."
+
 $external = Invoke-GateJson -Prompt "This BattleMech fight needs heat and hex movement"
 Assert-True -Condition ($external.status -eq "external_authority_required") -Message "Tactical prompt requires external authority."
 Assert-True -Condition ($null -ne $external.external_authority) -Message "External authority details are reported."
 Assert-True -Condition (($external.warnings | ForEach-Object { $_.code }) -contains "external-authority") -Message "External route carries blocker warning."
+
+$battleArmorTactical = Invoke-GateJson -Prompt "This battle armor fight needs hex movement and mounted weapons"
+Assert-True -Condition ($battleArmorTactical.status -eq "external_authority_required") -Message "Battle armor tactical precision still requires external authority."
 
 $missing = Invoke-GateJson -Prompt "How do I resolve quantum hacking magic?"
 Assert-True -Condition ($missing.status -eq "blocked_missing_route") -Message "Missing route is blocked."
