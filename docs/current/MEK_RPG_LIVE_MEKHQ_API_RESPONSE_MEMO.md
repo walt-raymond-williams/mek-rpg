@@ -179,3 +179,28 @@ Consumer validation outcome:
 Follow-up:
 
 - Track the full-state metadata mismatch in issue `#106` before treating real full-state live API responses as validated MEK-RPG dashboard/context input.
+
+## Full-State Metadata Follow-Up
+
+Date: 2026-06-22
+
+Issue: `#106`
+
+Resolution: no producer code change was needed. `Confirmed from source`: `LocalCampaignStateExporter` supports `bridge_metadata` and includes it by default when state sections are omitted. The issue `#104` smoke-test command explicitly requested selected sections but omitted `bridge_metadata`, so the response was section data without the metadata envelope.
+
+Corrected smoke-test command:
+
+```powershell
+Invoke-RestMethod -Method Get `
+  -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,reports,unsupported' `
+  -TimeoutSec 30 |
+  ConvertTo-Json -Depth 12
+```
+
+Validation result:
+
+- The live full-state payload with `bridge_metadata` included `schema_name: mekhq-live-campaign-state`, schema version `0.1`, API mode `local-read-only-live-context`, `read_only: true`, live `state_revision`/`snapshot_id`, dirty-state `Unknown`, warning metadata, supported sections, and the requested campaign sections.
+- `scripts/export-dashboard-data.ps1 -MekHqLiveApiJson <real-state-json>` accepted the corrected real full-state payload as `live-context` with no `live-api-not-read-only` error.
+- Existing committed fixture tests still cover the expected state shape with `bridge_metadata`.
+
+Future state-section smoke tests should either omit `sections` entirely to request all supported sections or explicitly include `bridge_metadata` whenever the payload is meant for MEK-RPG dashboard/context validation.
