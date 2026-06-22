@@ -214,8 +214,29 @@ Related planning and producer-request documents:
 
 - API-first coverage audit: `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`
 - MegaMek/MekHQ-facing change request: `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`
+- Expanded local API tracking: `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`
 - MEK-RPG adapter issue: `#107`
 - Producer package issue: `#109`
+- Expanded consumer follow-up issue: `#110`
+
+## Producer Expansion Completion
+
+Date: 2026-06-22
+
+Follow-up issue: `#110`
+
+The MegaMek/MekHQ workspace reported that the requested live API expansion is complete locally on branch `codex/mekhq-advance-day-control-api`.
+
+Completed local source commits:
+
+- `dc214d946d` (`Harden live campaign state metadata`)
+- `d38a500960` (`Deepen live campaign personnel unit finance state`)
+- `495b58faef` (`Deepen live campaign contract scenario state`)
+- `911a338788` (`Deepen live campaign logistics market reports`)
+
+Workspace docs and fixtures are pushed in MegaMek workspace commit `41aef57`, and the durable producer note is `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md`.
+
+MEK-RPG can use the local source-built MekHQ for validation even though pushing the source branch to upstream `MegaMek/mekhq` is blocked by repository permissions. The next MEK-RPG-side work is issue `#110`: refresh fixtures, adapter mappings, dashboard/context summaries, and focused tests against the expanded read-only shape while preserving live-context-not-durable and no-writeback boundaries.
 
 ## Manual Smoke Test Result
 

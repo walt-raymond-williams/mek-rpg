@@ -2,7 +2,7 @@
 
 Date: 2026-06-22
 
-Status: handoff-ready MEK-RPG request package completed for issue `#109`.
+Status: handoff-ready MEK-RPG request package completed for issue `#109`; producer-side expansion reported complete locally and MEK-RPG consumer follow-up tracked in issue `#110`.
 
 Audience: MegaMek / MekHQ workspace team.
 
@@ -195,6 +195,14 @@ These are suggestions for the MegaMek/MekHQ board, not MEK-RPG-owned implementat
 ## Handoff Status
 
 This MEK-RPG package is ready to copy, link, or summarize into the MegaMek/MekHQ workflow. The recommended first producer-side action is to create or update one MegaMek/MekHQ issue for the immediate adapter-proven requests, then split deeper personnel/unit/contract/logistics/report work into separate producer tickets if the team wants narrower implementation units.
+
+## Producer Completion Update
+
+Date: 2026-06-22
+
+The MegaMek/MekHQ workspace reports that the requested local live API expansion is complete on branch `codex/mekhq-advance-day-control-api` in commits `dc214d946d`, `d38a500960`, `495b58faef`, and `911a338788`. The completed work covers hardened metadata/location behavior, deeper finance/personnel/unit/contract/scenario/logistics/report/market state, and explicit automation guards.
+
+Source publication to upstream `MegaMek/mekhq` remains blocked by repository permissions, but MEK-RPG can use the local source-built MekHQ and the producer fixtures for consumer validation. MEK-RPG follow-up issue `#110` tracks fixture refresh, adapter/dashboard/context consumption, and tests for the expanded shape. See `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`.
 
 ## Boundary
 
