@@ -4,11 +4,29 @@ Status: issue `#28` prototype; legacy/offline fallback for live MekHQ campaign l
 
 Purpose: create a playable MEK-RPG `campaigns/<campaign-id>/` save folder from read-only MekHQ bridge JSON, while keeping MekHQ hard ledger facts separate from MEK-RPG narrative overlays.
 
-If the user has MekHQ open and the local read-only live API is available, use the live API workflow first. Do not parse the loaded campaign's `.cpnx`, `.cpnx.gz`, or XML save as the normal campaign-load path. Missing live API fields should become API gap notes or change requests.
+If the user has MekHQ open and the local read-only live API is available, use `scripts/sync-mekhq-live-campaign.py` first. Do not parse the loaded campaign's `.cpnx`, `.cpnx.gz`, or XML save as the normal campaign-load path. Missing live API fields should become API gap notes or change requests.
 
-Live API and future checkpoint exports should follow the consumer contract in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`. Add a small adapter that consumes live API JSON directly before changing active campaign-load behavior.
+Live API and future checkpoint exports should follow the consumer contract in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`.
 
-## Helper
+## Live API Campaign Load
+
+Script:
+
+```powershell
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported' -TimeoutSec 30 | ConvertTo-Json -Depth 12
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --refresh-existing
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --embedded-pc-name "RPG Protagonist"
+```
+
+The live adapter consumes captured sanitized `GET /campaign/state` JSON with `bridge_metadata`. It verifies `bridge_metadata.api_mode: local-read-only-live-context` and `bridge_metadata.read_only: true` before using the payload. It rejects `.cpnx`, `.cpnx.gz`, and XML paths, copies `campaigns/_template/` for new campaign folders, refreshes generated context files only when `--refresh-existing` is supplied, and leaves `campaign-state/active-campaign.md` unchanged.
+
+The generated `mekhq-bridge.md` records the live API trust envelope, snapshot/revision data, counts, cross-references, ownership boundary, and live-context-only status. The generated `mekhq-api-gaps.md` records missing or unsupported fields as producer-side change request inputs rather than parser fallback reasons.
+
+Live API data is not a durable MEK-RPG checkpoint by itself. Promote live values to durable memory only through a save/import checkpoint, explicit user approval, or a future controlled promotion flow.
+
+## Offline Summary Helper
 
 Script:
 
@@ -19,9 +37,9 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --embedded-pc-name "RPG Protagonist"
 ```
 
-The helper consumes only the summary JSON. It does not open, edit, or write a MekHQ `.cpnx`, `.cpnx.gz`, or XML save. The summary may come from the current MEK-RPG fallback parser for offline/disposable use or, after adapter work, from a MekHQ-owned read-only checkpoint export normalized to the same top-level sections.
+The helper consumes only the summary JSON. It does not open, edit, or write a MekHQ `.cpnx`, `.cpnx.gz`, or XML save. The summary may come from the current MEK-RPG fallback parser for offline/disposable use or from a MekHQ-owned read-only checkpoint export normalized to the same top-level sections.
 
-For active loaded MekHQ campaigns, prefer `GET /campaign/summary` and `GET /campaign/state` over `summarize-mekhq-save.py`. Use `summarize-mekhq-save.py` only when the live API is unavailable or the user explicitly chooses offline save inspection.
+For active loaded MekHQ campaigns, prefer `GET /campaign/summary`, `GET /campaign/state`, and `sync-mekhq-live-campaign.py` over `summarize-mekhq-save.py`. Use `summarize-mekhq-save.py` only when the live API is unavailable or the user explicitly chooses offline save inspection.
 
 ## Behavior
 

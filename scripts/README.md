@@ -18,7 +18,8 @@
 - `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
 - `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary for offline/fallback, fixture, legacy, or debugging use.
-- `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from normalized summary JSON output; active loaded MekHQ campaigns should use the live API-first adapter planned in issue `#107`.
+- `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from normalized summary JSON output; active loaded MekHQ campaigns should use `sync-mekhq-live-campaign.py` instead.
+- `sync-mekhq-live-campaign.py`: creates or refreshes MEK-RPG campaign context files from captured read-only MekHQ `GET /campaign/state` JSON with `bridge_metadata`, preserving live-context status and surfacing API gaps without parsing raw saves.
 - `test-mekhq-pending-workflow.ps1`: runs disposable regression checks for MekHQ pending-action bootstrap, validation, no-writeback boundaries, and protected-source guards.
 - `test-bootstrap-mekhq-campaign.ps1`: runs fixture coverage for bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership language, and cleanup.
 - `test-summarize-mekhq-save.ps1`: runs sanitized XML and generated gzip fixture coverage for save-summary JSON/Markdown output and read-only behavior.
@@ -26,6 +27,7 @@
 - `test-mekhq-checkpoint-prototype-fixture.ps1`: runs fixture coverage for a sanitized compact excerpt of jar-backed prototype output from a disposable MekHQ save.
 - `test-mekhq-checkpoint-edge-fixtures.ps1`: runs edge-case fixture coverage for sparse, warning-heavy, unsupported, and missing optional checkpoint export data.
 - `test-mekhq-live-api-fixtures.ps1`: runs fixture coverage for sanitized live MekHQ local-control API summary, state, and warning-heavy payloads without calling a running MekHQ instance.
+- `test-sync-mekhq-live-campaign.ps1`: runs fixture coverage for the live API campaign-load adapter, including read-only proof, raw-save rejection, create/refresh behavior, live-context notes, API gap surfacing, and active-pointer preservation.
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
@@ -54,11 +56,14 @@
 ./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field -IncludeExcerpts
 ./scripts/export-dashboard-data.ps1 -CampaignId mekhq-pending-playtest -MekHqSummaryJson tests/fixtures/mekhq-summary-minimal.json
 ./scripts/export-dashboard-data.ps1 -CampaignId mekhq-pending-playtest -MekHqLiveApiJson tests/fixtures/mekhq-live-campaign-state.fixture.json
+python ./scripts/sync-mekhq-live-campaign.py --live-state tests/fixtures/mekhq-live-campaign-state.fixture.json --campaign-id my-linked-campaign
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --refresh-existing
 ./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ArchiveTitle "Session 3 - Depot Escape"
 ./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ResetSessionLog -ArchiveTitle "Session 3 - Depot Escape"
 ./scripts/archive-campaign-session.ps1 -UseActive -ConfirmArchive -WhatIf
 ./scripts/test-build-gm-context-packet.ps1
 ./scripts/test-export-dashboard-data.ps1
+./scripts/test-sync-mekhq-live-campaign.ps1
 ./scripts/test-archive-campaign-session.ps1
 ./scripts/test-gm-context-regressions.ps1
 ./scripts/test-mekhq-context-packet.ps1
@@ -167,10 +172,14 @@ The personal-combat checkpoint prototype follows the same top-level helper contr
 When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /campaign/summary` and `GET /campaign/state` including `bridge_metadata`. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work.
 
 ```powershell
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported' -TimeoutSec 30 | ConvertTo-Json -Depth 12
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign
+python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --refresh-existing --viewpoint-name "Exact MekHQ Name"
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx.gz" --format markdown
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --viewpoint-person-id 12345
+./scripts/test-sync-mekhq-live-campaign.ps1
 ./scripts/test-summarize-mekhq-save.ps1
 ./scripts/test-mekhq-checkpoint-fixture.ps1
 ./scripts/test-mekhq-checkpoint-prototype-fixture.ps1
@@ -190,9 +199,11 @@ The edge-case fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.edge-
 
 The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, and `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json` copied from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts.
 
+The live API campaign-load adapter consumes captured sanitized `GET /campaign/state` JSON with `bridge_metadata`. It verifies `api_mode: local-read-only-live-context` and `read_only: true`, refuses raw `.cpnx`, `.cpnx.gz`, and XML inputs, creates a campaign folder from `campaigns/_template/` or refreshes generated context files with `--refresh-existing`, writes `mekhq-bridge.md` and `mekhq-api-gaps.md`, and leaves `campaign-state/active-campaign.md` unchanged. Missing or unsupported live API fields are recorded as API gaps and producer-change-request inputs instead of triggering save parsing.
+
 ## MekHQ Campaign Bootstrap
 
-This bootstrap path consumes normalized summary JSON and is not the normal active loaded-campaign path when the live API is available. Issue `#107` owns the direct live API campaign-load adapter.
+This bootstrap path consumes normalized summary JSON and is not the normal active loaded-campaign path when the live API is available. Use `sync-mekhq-live-campaign.py` for the direct live API campaign-load adapter.
 
 ```powershell
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json > .\mekhq-summary.json
@@ -231,4 +242,4 @@ The pending-action validator checks item headings, required checklist fields, al
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, live API fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, opposed check resolver fixture tests, personal-combat checkpoint fixture tests, GM context packet helper coverage, read-only dashboard data adapter coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction. It prints per-suite timing so slow checks are visible. The full runner can take several minutes because route-helper, authority-gate, and dashboard adapter fixture suites invoke several helper scripts. Use `-Quick` for routine non-rules/non-dashboard close-out and full `test-all.ps1` when routing, manifest, page-reference, rules-summary, route-helper, authority-gate, or dashboard adapter behavior changes.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, live API fixture coverage, live API campaign sync coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, opposed check resolver fixture tests, personal-combat checkpoint fixture tests, GM context packet helper coverage, read-only dashboard data adapter coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction. It prints per-suite timing so slow checks are visible. The full runner can take several minutes because route-helper, authority-gate, and dashboard adapter fixture suites invoke several helper scripts. Use `-Quick` for routine non-rules/non-dashboard close-out and full `test-all.ps1` when routing, manifest, page-reference, rules-summary, route-helper, authority-gate, or dashboard adapter behavior changes.

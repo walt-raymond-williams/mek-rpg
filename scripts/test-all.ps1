@@ -44,6 +44,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "MekHQ live API campaign sync coverage"
+        Path = Join-Path $repoRoot "scripts\test-sync-mekhq-live-campaign.ps1"
+        Quick = $true
+    },
+    @{
         Name = "Campaign-state validator coverage"
         Path = Join-Path $repoRoot "scripts\test-validate-campaign-state.ps1"
         Quick = $true
