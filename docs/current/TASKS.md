@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#96`: run the manual latest-rules lookup run-through after issues `#91`-`#94`.
 - Issue `#97`: run a live GM playtest checkpoint using current workflow tools.
 - Issue `#98`: run character creation and PC sheet validation.
 - Issue `#99`: rehearse the MekHQ-linked workflow checkpoint when user-assisted MekHQ UI validation is available.
@@ -29,6 +28,7 @@
 
 ## Done
 
+- Issue `#96` implemented: ran scenario-based lookup validation for the issue `#91`-`#94` rules expansion; added `docs/current/LATEST_RULES_LOOKUP_RUNTHROUGH_VALIDATION.md`; verified provisional authority for advancement/rewards, special hazards, creatures, diseases, battle armor readiness, prosthetics/implants, poison treatment, and personal vehicle fuel logistics; confirmed exact battle armor stat/cost prompts remain source-lookup-required and full BattleMech tactical resolution remains external-authority-required; tightened router wording for training-downtime and battle armor suit stat/cost prompts.
 - Issue `#90` completed: coordinated the next rules/source-review expansion wave and closed child issues `#91`-`#94`; roadmap, tasks, validation reports, indexes, summaries, fixtures, and handoffs now reflect the completed wave.
 - Issue `#94` implemented: validated next-wave rules lookup and authority behavior for issues `#91`-`#93`; added `docs/current/NEXT_WAVE_RULES_AUTHORITY_VALIDATION.md`; extended authority-gate tests for advancement/rewards, special hazards, battle armor readiness, poison treatment, exact equipment lookup, and tactical battle armor; adjusted `scripts/check-ruling-authority.ps1` so campaign context paths do not block draft-summary rulings and related tactical files do not force handoff unless tactical precision is requested; updated ruling scenarios, command docs, and archived the handoff.
 - Issue `#93` implemented: upgraded battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel from source-reviewed routing aids to draft play-facing summaries; added live procedures for suit readiness, tactical boundaries, injury replacement recovery, implant consequences, poison treatment, addiction-sensitive handling, vehicle asset recording, and fuel logistics; updated manifest/page-reference status, route fixtures, coverage reporting, validation notes, and source-map status while preserving exact equipment catalogs, values, stat blocks, fuel tables, drug/poison values, and tactical effects as private source or external-tool lookup.

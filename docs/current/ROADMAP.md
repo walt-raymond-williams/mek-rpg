@@ -78,13 +78,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - The roadmap already requires repeated manual validation/playtest after major playable layers.
   - A recent `./scripts/test-all.ps1` run exceeded a 120-second agent timeout, which should be diagnosed as a workflow usability problem even if individual tests are not failing.
 - Child issues:
-  1. Open issue `#96`: manual latest-rules lookup run-through after issues `#91`-`#94`.
+  1. Done issue `#96`: manual latest-rules lookup run-through after issues `#91`-`#94`.
   2. Open issue `#97`: run a live GM playtest checkpoint using current workflow tools.
   3. Open issue `#98`: character creation and PC sheet run-through.
   4. Open issue `#99`: MekHQ-linked workflow rehearsal checkpoint.
   5. Open issue `#100`: diagnose and improve full test runner runtime.
 - Dependency order:
-  1. Start with issue `#96` to validate the new rules and authority layer in isolation.
+  1. Done in issue `#96`: validated the new rules and authority layer in isolation.
   2. Use issue `#97` to exercise the rules, GM context packet, state-save loop, and mechanic helpers together in play.
   3. Use issue `#98` to determine whether real PC sheet work justifies a character-output validator or sheet-schema issue.
   4. Use issue `#99` when user-assisted MekHQ UI validation is available, preserving the read-only boundary.
