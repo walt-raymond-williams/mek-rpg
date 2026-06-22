@@ -3,7 +3,8 @@ param(
     [string]$RepoRoot,
     [switch]$IncludePrivate,
     [switch]$IncludeExcerpts,
-    [string]$MekHqSummaryJson
+    [string]$MekHqSummaryJson,
+    [string]$MekHqLiveApiJson
 )
 
 $ErrorActionPreference = "Stop"
@@ -372,6 +373,120 @@ function Get-MekHqSummaryPanelItem {
     }
 }
 
+function Get-MekHqLiveApiPanelItem {
+    param([string]$LiveApiPath)
+
+    if (-not $LiveApiPath) {
+        return $null
+    }
+
+    $resolvedLiveApiPath = $null
+    try {
+        $resolvedLiveApiPath = (Resolve-Path -LiteralPath $LiveApiPath).Path
+    }
+    catch {
+        Add-DashboardError -Code "missing-live-api-json" -Message "MekHQ live API JSON not found." -Path $LiveApiPath
+        return $null
+    }
+
+    if ($resolvedLiveApiPath -match '\.(cpnx|gz|xml)$') {
+        Add-DashboardError -Code "raw-save-rejected" -Message "MekHQ live API dashboard input must be sanitized JSON, not a raw save or XML file." -Path $LiveApiPath
+        return $null
+    }
+
+    try {
+        $liveApi = (Get-Content -LiteralPath $resolvedLiveApiPath -Raw) | ConvertFrom-Json
+    }
+    catch {
+        Add-DashboardError -Code "invalid-live-api-json" -Message "MekHQ live API JSON could not be parsed." -Path $LiveApiPath
+        return $null
+    }
+
+    $metadata = $liveApi.bridge_metadata
+    $payloadKind = "state"
+    $apiMode = $null
+    $readOnly = $null
+    $schemaName = $null
+    $schemaVersion = $null
+    $stateRevision = $null
+    $snapshotId = $null
+    $dirtyState = $null
+    $warnings = @()
+    $unsupported = @()
+    $campaignName = $null
+    $campaignDate = $null
+    $campaignId = $null
+
+    if ($liveApi.PSObject.Properties.Name -contains "apiMode") {
+        $payloadKind = "summary"
+        $apiMode = $liveApi.apiMode
+        $readOnly = $liveApi.readOnly
+        $schemaVersion = $liveApi.apiSchemaVersion
+        $stateRevision = $liveApi.stateRevision
+        $snapshotId = $liveApi.snapshotId
+        $dirtyState = $liveApi.dirtyState
+        $warnings = @($liveApi.warnings)
+        $unsupported = @($liveApi.unsupported)
+        $campaignName = $liveApi.campaignName
+        $campaignDate = $liveApi.campaignDate
+        $campaignId = $liveApi.campaignId
+    }
+    elseif ($metadata) {
+        $apiMode = $metadata.api_mode
+        $readOnly = $metadata.read_only
+        $schemaName = $metadata.schema_name
+        $schemaVersion = $metadata.schema_version
+        $stateRevision = $metadata.state_revision
+        $snapshotId = $metadata.snapshot_id
+        $dirtyState = $metadata.dirty_state
+        $warnings = @($metadata.warnings)
+        $unsupported = @($liveApi.unsupported)
+
+        if ($liveApi.campaign) {
+            $campaignName = $liveApi.campaign.name.value
+            $campaignDate = $liveApi.campaign.date.value
+            $campaignId = $liveApi.campaign.id.value
+        }
+    }
+
+    if ($apiMode -ne "local-read-only-live-context") {
+        Add-DashboardWarning -Code "live-api-mode-unexpected" -Message "MekHQ live API JSON does not declare local-read-only-live-context api mode." -Path (Format-RelativePath $resolvedLiveApiPath)
+    }
+
+    if ($readOnly -ne $true) {
+        Add-DashboardError -Code "live-api-not-read-only" -Message "MekHQ live API JSON does not preserve read-only proof." -Path (Format-RelativePath $resolvedLiveApiPath)
+    }
+
+    Add-DashboardWarning -Code "live-api-context-not-durable" -Message "MekHQ live API JSON is live context only; saved checkpoint import or explicit user approval is required before promoting values into durable campaign memory." -Path (Format-RelativePath $resolvedLiveApiPath)
+
+    [pscustomobject]@{
+        id = "mekhq-live-api-json"
+        label = "Sanitized MekHQ live API JSON"
+        kind = "mekhq-live-api"
+        status = "live-context"
+        source_path = Format-RelativePath $resolvedLiveApiPath
+        evidence = "Confirmed from explicit sanitized live API JSON input"
+        payload_kind = $payloadKind
+        schema_name = $schemaName
+        schema_version = $schemaVersion
+        api_mode = $apiMode
+        read_only = $readOnly
+        campaign_id = $campaignId
+        campaign_name = $campaignName
+        campaign_date = $campaignDate
+        state_revision = $stateRevision
+        snapshot_id = $snapshotId
+        dirty_state = $dirtyState
+        warnings = @($warnings)
+        unsupported = @($unsupported)
+        live_context_not_durable = $true
+        durable_promotion_policy = "Saved checkpoint import, explicit user approval, or future controlled promotion flow required."
+        raw_input_path_followed = $false
+        raw_input_path_policy = "Live API JSON is read directly from the explicit path only; embedded paths or adjacent raw saves are never opened by this adapter."
+        write_controls_enabled = $false
+    }
+}
+
 $script:RepoRootResolved = if ($RepoRoot) {
     (Resolve-Path -LiteralPath $RepoRoot).Path
 }
@@ -443,9 +558,10 @@ foreach ($tool in $toolOutputs) {
 }
 
 $missingFiles = @($campaignSources | Where-Object { -not $_.exists } | ForEach-Object { $_.path })
-$healthStatus = if ($script:Errors.Count -gt 0) { "error" } elseif ($script:Warnings.Count -gt 0 -or $missingFiles.Count -gt 0) { "warn" } else { "ok" }
 $mekHqBridgeSource = if ($campaignRelativePath) { New-SourceRecord -RelativePath "$campaignRelativePath/mekhq-bridge.md" -Role "mekhq bridge" -Required $false } else { $null }
 $mekHqSummaryItem = Get-MekHqSummaryPanelItem -SummaryPath $MekHqSummaryJson
+$mekHqLiveApiItem = Get-MekHqLiveApiPanelItem -LiveApiPath $MekHqLiveApiJson
+$healthStatus = if ($script:Errors.Count -gt 0) { "error" } elseif ($script:Warnings.Count -gt 0 -or $missingFiles.Count -gt 0) { "warn" } else { "ok" }
 
 $panels = [ordered]@{
     active_campaign = New-Panel -Title "Active Campaign" -Sources @(
@@ -480,7 +596,17 @@ $panels = [ordered]@{
         if ($mekHqBridgeSource) { $mekHqBridgeSource }
         New-SourceRecord -RelativePath "docs/current/MEKHQ_BRIDGE_DATA_MODEL.md" -Role "bridge data model" -Required $false
         New-SourceRecord -RelativePath "docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md" -Role "warning policy" -Required $false
-    ) -Items @($mekHqSummaryItem | Where-Object { $_ })
+    ) -Items @(
+        $mekHqSummaryItem | Where-Object { $_ }
+        $mekHqLiveApiItem | Where-Object { $_ }
+    ) -Warnings @(
+        if ($mekHqLiveApiItem) {
+            [pscustomobject]@{
+                code = "live-context-not-durable"
+                message = "Live MekHQ API values are context only until saved/imported checkpoint confirmation or explicit user approval."
+            }
+        }
+    )
     pending_mekhq_actions = New-Panel -Title "Pending MekHQ Actions" -Sources @(
         $campaignSources | Where-Object { $_.path -match '/pending-mekhq-actions\.md$' }
         New-SourceRecord -RelativePath "docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md" -Role "pending workflow" -Required $false
@@ -537,6 +663,7 @@ $report = [pscustomobject]@{
         structured_campaign_files = "authoritative for MEK-RPG RPG memory"
         mekhq_bridge = "authoritative for imported hard ledger summaries when present"
         pending_mekhq_actions = "manual intents until saved MekHQ import confirms them"
+        mekhq_live_api = "read-only live context; not durable campaign memory without saved checkpoint confirmation or explicit user approval"
         rules = "route to committed summaries and indexes; no raw source display"
         dashboard = "read-only inspection output; not a source of truth"
     }

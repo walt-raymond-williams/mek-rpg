@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#103`: prototype live MekHQ API JSON adapter consumption after issue `#105` lands.
+- None currently queued for autonomous project-development work after issue `#103`; issue `#104` remains user-assisted/manual.
 
 ## Backlog
 
@@ -28,6 +28,7 @@
 
 ## Done
 
+- Issue `#103` implemented: extended `scripts/export-dashboard-data.ps1` with `-MekHqLiveApiJson` for explicit sanitized live MekHQ local-control API JSON; live summary, full state, and warning-heavy payloads now appear in the MekHQ bridge panel as `live-context` items with read-only proof, dirty-state/unsupported preservation, no write controls, no embedded/raw path following, and no durable checkpoint promotion; expanded dashboard adapter tests for all three live fixtures and raw-save rejection; documented the command and live-context boundary; full `./scripts/test-all.ps1` passed.
 - Issue `#105` implemented: copied sanitized live MekHQ local-control API summary, state, and warning-heavy fixtures from the MegaMek workspace prototype; added `scripts/test-mekhq-live-api-fixtures.ps1`; wired it into `scripts/test-all.ps1 -Quick`; documented the command; updated contracts to classify live API JSON as live context rather than durable checkpoint/import state; verification passed with the focused live API fixture suite and `./scripts/test-all.ps1 -Quick`.
 - Issue `#101` implemented: added `scripts/export-dashboard-data.ps1` as a read-only `dashboard-data/v1` JSON adapter; added fixture-backed `scripts/test-export-dashboard-data.ps1`; wired it into `scripts/test-all.ps1`; documented commands; the adapter reports active/explicit selection, source panels, health, authority labels, warnings/errors, protected-source/raw-save exclusions, validator/context-helper output, and optional sanitized MekHQ summary metadata without mutating campaign files.
 - Issue `#100` implemented: measured full `scripts/test-all.ps1` runtime at about 254 seconds and identified the route-helper and ruling-authority suites as the largest contributors; added `docs/current/TEST_RUNNER_RUNTIME_DIAGNOSTIC.md`; updated `scripts/test-all.ps1` with per-suite timing, `-Quick`, and `-ListSuites`; documented quick/full verification guidance in command docs.

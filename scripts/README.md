@@ -53,6 +53,7 @@
 ./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field
 ./scripts/export-dashboard-data.ps1 -CampaignId isekai-atlas-field -IncludeExcerpts
 ./scripts/export-dashboard-data.ps1 -CampaignId mekhq-pending-playtest -MekHqSummaryJson tests/fixtures/mekhq-summary-minimal.json
+./scripts/export-dashboard-data.ps1 -CampaignId mekhq-pending-playtest -MekHqLiveApiJson tests/fixtures/mekhq-live-campaign-state.fixture.json
 ./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ArchiveTitle "Session 3 - Depot Escape"
 ./scripts/archive-campaign-session.ps1 my-campaign -ConfirmArchive -ResetSessionLog -ArchiveTitle "Session 3 - Depot Escape"
 ./scripts/archive-campaign-session.ps1 -UseActive -ConfirmArchive -WhatIf
@@ -110,9 +111,9 @@ Use `-RunValidators` to append output from `validate-campaign-state.ps1` and `va
 ./scripts/test-export-dashboard-data.ps1
 ```
 
-The dashboard adapter emits UTF-8 JSON with `schema_version: dashboard-data/v1`. It resolves the active campaign pointer or an explicit campaign id, inventories standard campaign files as source records, reports health and protected-source exclusions, includes read-only validator/context-helper output as labeled tool output, and summarizes optional sanitized MekHQ summary JSON without following raw save paths. It does not write files, select campaigns, run git actions, read protected source paths, read raw MekHQ saves, interpret rules, or apply pending MekHQ actions.
+The dashboard adapter emits UTF-8 JSON with `schema_version: dashboard-data/v1`. It resolves the active campaign pointer or an explicit campaign id, inventories standard campaign files as source records, reports health and protected-source exclusions, includes read-only validator/context-helper output as labeled tool output, summarizes optional sanitized MekHQ summary JSON without following raw save paths, and summarizes optional sanitized MekHQ live API JSON as live context rather than durable checkpoint/import fact. It does not write files, select campaigns, run git actions, read protected source paths, read raw MekHQ saves, call a live MekHQ API, interpret rules, or apply pending MekHQ actions.
 
-`test-export-dashboard-data.ps1` uses a disposable campaign folder to check explicit and active campaign selection, required panels, sanitized MekHQ summary metadata, missing/invalid campaign failures, raw save rejection, protected-source exclusion labels, and no mutation of campaign files, pending actions, or the active pointer.
+`test-export-dashboard-data.ps1` uses a disposable campaign folder to check explicit and active campaign selection, required panels, sanitized MekHQ summary metadata, sanitized live API summary/state/warning-heavy metadata, live-context-not-durable labeling, missing/invalid campaign failures, raw save rejection, protected-source exclusion labels, and no mutation of campaign files, pending actions, or the active pointer.
 
 ## Dice Rolls
 

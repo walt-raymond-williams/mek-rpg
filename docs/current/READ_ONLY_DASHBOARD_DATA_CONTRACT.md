@@ -25,7 +25,7 @@ The adapter must read committed MEK-RPG campaign files and optional already-sani
 Recommended first command shape:
 
 ```powershell
-./scripts/export-dashboard-data.ps1 [-CampaignId <id>] [-RepoRoot <path>] [-IncludePrivate] [-IncludeExcerpts] [-MekHqSummaryJson <path>]
+./scripts/export-dashboard-data.ps1 [-CampaignId <id>] [-RepoRoot <path>] [-IncludePrivate] [-IncludeExcerpts] [-MekHqSummaryJson <path>] [-MekHqLiveApiJson <path>]
 ```
 
 The script name is a proposal, not an implementation in this issue.
@@ -37,8 +37,7 @@ Parameter intent:
 - `IncludePrivate`: allow safety/tone excerpts and GM-secret excerpts. Default should redact or link only.
 - `IncludeExcerpts`: include short Markdown excerpts from campaign files. Default should emit headings, metadata, and source links only.
 - `MekHqSummaryJson`: optional path to an already-sanitized output from `scripts/summarize-mekhq-save.py --format json`. The adapter may validate and summarize it, but must never open a raw MekHQ save.
-
-Future live API adapter work may add an explicit sanitized live API JSON parameter. That input must remain a live context layer by default, separate from saved checkpoint/import facts, and must preserve read-only proof, `api_mode`, `state_revision` or `snapshot_id`, dirty-state warnings, and unsupported entries.
+- `MekHqLiveApiJson`: optional path to already-sanitized JSON captured from the MekHQ local-control live API. The adapter treats it as live context by default, separate from saved checkpoint/import facts, and preserves read-only proof, `api_mode`, `state_revision` or `snapshot_id`, dirty-state warnings, and unsupported entries.
 
 ## Input Resolution
 
@@ -103,15 +102,15 @@ Rules:
 
 ### Optional Live MekHQ API Input
 
-Issue `#103` may extend the adapter to accept explicit sanitized JSON captured from the live MekHQ local-control API.
+The adapter may accept explicit sanitized JSON captured from the live MekHQ local-control API through `-MekHqLiveApiJson`.
 
 Rules:
 
-- Accept only an explicit JSON path or future local API capture path defined by that issue.
+- Accept only an explicit JSON path.
 - Treat `api_mode: local-read-only-live-context` as live context, not a durable import checkpoint.
 - Preserve `state_revision`, `snapshot_id`, dirty-state warning/unsupported entries, method-backed trust envelopes, and read-only proof.
 - Do not promote live values into campaign files without saved/import confirmation, explicit user approval, or a future controlled promotion flow.
-- Do not call the live API, require a MekHQ GUI, or follow raw save paths from this contract issue.
+- Do not call the live API, require a MekHQ GUI, or follow raw save paths.
 - Do not create write controls or pending MekHQ actions from market, repair, personnel, contract, or tactical fields.
 
 ## Output Envelope
@@ -421,7 +420,7 @@ Recommended fixtures:
 - malformed pending actions
 - sanitized MekHQ summary JSON from `tests/fixtures/mekhq-summary-minimal.json`
 - summary JSON with a raw save `input_path` that must not be followed
-- sanitized live API summary/state/warning-heavy JSON from `tests/fixtures/mekhq-live-campaign-*.fixture.json` for future live context adapter behavior
+- sanitized live API summary/state/warning-heavy JSON from `tests/fixtures/mekhq-live-campaign-*.fixture.json` for live context adapter behavior
 
 ## Implementation Follow-Up
 
