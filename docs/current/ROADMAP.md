@@ -60,10 +60,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Active Work
 
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion, with child issues `#96`-`#100`.
+- Issue `#101`: prototype the read-only dashboard data adapter from the completed issue `#57` contract.
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- The one currently identified unblocked dashboard follow-up has been issued as `#101`. Do not create dashboard UI issues until the read-only JSON adapter exists and has fixture coverage.
 
 ## Issue Tracks
 
@@ -282,17 +284,19 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Read-only dashboard and session tooling queue
 
-- Status: Done
+- Status: Active
 - Mode: Project development / design and automation
 - Goal: test whether read-only visibility tooling is worth building, define a safe data contract before UI implementation, and add a conservative session archive helper when safe.
 - Child issues:
   - Done in issue `#56`: evaluate read-only MEK-RPG dashboard boundaries.
   - Done in issue `#57`: design read-only dashboard data adapter contract after issue `#56` recommended proceeding.
   - Done in issue `#58`: add campaign-local session archive helper.
+  - Open issue `#101`: prototype `scripts/export-dashboard-data.ps1` as the first read-only JSON adapter.
 - Dependency order:
   1. Done in issue `#56`: dashboard scope and exclusions are documented.
   2. Done in issue `#57`: data ownership and serialization are defined before any frontend exists.
   3. Done in issue `#58`: session archive automation stays conservative with live campaign logs.
+  4. Use issue `#101` to implement the adapter contract before any UI, local HTTP wrapper, or rendering work.
 - Boundary: no dashboard write controls, live movement controls, Sunnytown-derived gameplay surface, direct MekHQ writeback, protected source display, or raw MekHQ save reads in the dashboard layer.
 - Decision: issue `#56` recommends campaign state audit and GM context inspection as the first dashboard value, and issue `#57` defines a file/CLI JSON contract before any UI or local HTTP wrapper exists.
 

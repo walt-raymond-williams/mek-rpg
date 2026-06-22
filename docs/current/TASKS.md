@@ -2,12 +2,12 @@
 
 ## Now
 
-- Issue `#95`: coordinate the manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion.
+- None currently in progress.
 
 ## Next
 
-- Issue `#97`: run a live GM playtest checkpoint using current workflow tools.
 - Issue `#100`: diagnose and improve full test runner runtime.
+- Issue `#101`: prototype the read-only dashboard data adapter from the completed dashboard data contract. This is agent-ready and does not require manual testing.
 
 ## Backlog
 
@@ -16,13 +16,14 @@
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
 - Use direct-to-`master` for small coherent tasks in this private repo; use feature branches for broad, risky, or multi-issue work that needs review as a unit.
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; keep the validator, coverage reporter, and route helper from issues `#46`-`#51` synchronized with future summary work.
-- Future read-only MEK-RPG web dashboard implementation should start with a read-only JSON adapter following `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`, before any Sunnytown-derived UI or write controls.
+- Future read-only MEK-RPG web dashboard UI implementation should wait until issue `#101` creates a read-only JSON adapter following `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`.
 - Richer DropShip and unit asset sheet work is tracked in issue `#54` after transport ownership/source coverage issues `#52` and `#53`.
 - Repeat manual validation/playtest checkpoints after adding major playable layers; the current checkpoint wave is tracked by issues `#95`-`#100`.
 
 ## Blocked
 
-- None.
+- Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
+- Issue `#97`: live GM playtest checkpoint. Requires user presence for play/manual feedback and should be skipped by autonomous agents.
 
 ## Done
 
