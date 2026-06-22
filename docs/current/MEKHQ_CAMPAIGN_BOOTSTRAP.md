@@ -1,10 +1,12 @@
 # MekHQ Campaign Bootstrap
 
-Status: issue `#28` prototype.
+Status: issue `#28` prototype; legacy/offline fallback for live MekHQ campaign loading.
 
-Purpose: create a playable MEK-RPG `campaigns/<campaign-id>/` save folder from the JSON output of `scripts/summarize-mekhq-save.py`, while keeping MekHQ hard ledger facts separate from MEK-RPG narrative overlays.
+Purpose: create a playable MEK-RPG `campaigns/<campaign-id>/` save folder from read-only MekHQ bridge JSON, while keeping MekHQ hard ledger facts separate from MEK-RPG narrative overlays.
 
-Future checkpoint exports should follow the consumer contract in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`. If MekHQ later provides a source-backed read-only export, add a small adapter that normalizes that export into the existing summary shape before changing bootstrap behavior.
+If the user has MekHQ open and the local read-only live API is available, use the live API workflow first. Do not parse the loaded campaign's `.cpnx`, `.cpnx.gz`, or XML save as the normal campaign-load path. Missing live API fields should become API gap notes or change requests.
+
+Live API and future checkpoint exports should follow the consumer contract in `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md`. Add a small adapter that consumes live API JSON directly before changing active campaign-load behavior.
 
 ## Helper
 
@@ -17,7 +19,9 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --campaign-id my-linked-campaign --embedded-pc-name "RPG Protagonist"
 ```
 
-The helper consumes only the summary JSON. It does not open, edit, or write a MekHQ `.cpnx`, `.cpnx.gz`, or XML save. The summary may come from the current MEK-RPG fallback parser or, after adapter work, from a MekHQ-owned read-only checkpoint export normalized to the same top-level sections.
+The helper consumes only the summary JSON. It does not open, edit, or write a MekHQ `.cpnx`, `.cpnx.gz`, or XML save. The summary may come from the current MEK-RPG fallback parser for offline/disposable use or, after adapter work, from a MekHQ-owned read-only checkpoint export normalized to the same top-level sections.
+
+For active loaded MekHQ campaigns, prefer `GET /campaign/summary` and `GET /campaign/state` over `summarize-mekhq-save.py`. Use `summarize-mekhq-save.py` only when the live API is unavailable or the user explicitly chooses offline save inspection.
 
 ## Behavior
 
@@ -71,3 +75,5 @@ Generated Markdown should not invent exact MekHQ ledger values. Missing hard fac
 ## Verification
 
 Issue `#28` verification used disposable sister-workspace MekHQ saves and generated throwaway campaign folders that were removed before commit. No raw MekHQ save payloads, protected A Time of War source text, PDFs, or extracted source text are committed by this workflow.
+
+Issue `#97` exposed the need to demote this parser-first workflow for live play setup: the loaded campaign was available through the live API, and the API reported a more accurate current system than the file-summary bootstrap. Future live campaign-load work should use the API payload and record missing API fields instead of parsing the save.

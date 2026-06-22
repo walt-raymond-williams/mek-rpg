@@ -11,6 +11,7 @@
 ## Backlog
 
 - Issue `#102`: live MekHQ campaign-state API consumer epic. Use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` as the producer status memo.
+- Issue `#107`: add a MEK-RPG live API campaign-load adapter so active MekHQ campaign setup consumes `GET /campaign/state` directly and records API gaps instead of routing through `summarize-mekhq-save.py`.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.

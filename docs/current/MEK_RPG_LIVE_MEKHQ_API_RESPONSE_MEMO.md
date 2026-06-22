@@ -156,6 +156,58 @@ MEK-RPG can then add an adapter layer that accepts live API JSON alongside the e
 
 MEK-RPG wants the live API, but as read-only live context first. Preserve the checkpoint grouping, preserve trust envelopes, include snapshot/dirty-state metadata, keep markets display-only, and do not promote live values into durable MEK-RPG campaign state without save/import confirmation or explicit user approval.
 
+## Campaign Load Workflow Correction
+
+Date: 2026-06-22
+
+Issue: `#97`
+
+When a user has MekHQ open and provides the active loaded campaign context, MEK-RPG should treat the live API as the primary source for campaign loading and refresh. It should not parse the `.cpnx`, `.cpnx.gz`, or XML save as the normal path.
+
+Correct workflow:
+
+1. Query `GET /campaign/summary` to confirm MekHQ is ready, read-only, and serving the expected loaded campaign.
+2. Query `GET /campaign/state` without `sections`, or include `bridge_metadata` explicitly when selecting sections.
+3. Build or refresh MEK-RPG campaign context from the live API payload.
+4. If the live API lacks fields needed for safe campaign context, record those as API gaps or producer change requests.
+5. Use raw save parsing only as an explicit offline/legacy fallback, fixture-generation aid, or debugging path when the user knowingly requests that path.
+
+This correction exists because the issue `#97` setup initially used `scripts/summarize-mekhq-save.py` despite the live API being available. That created an avoidable stale-field risk: the file-summary bootstrap recorded `Canopus IV`, while the live API correctly reported `Galatea` for the loaded campaign. Live API data should win for active loaded-campaign context.
+
+## API Additions That Would Remove Save Parsing From Campaign Load
+
+MEK-RPG can avoid direct save parsing for active campaign loading if the live API response provides these fields with method-backed trust envelopes where appropriate:
+
+- `bridge_metadata`: schema name/version, MekHQ version, API mode, read-only proof, snapshot/state revision, dirty-state/unsaved-state indicator, supported sections, warnings, unsupported entries.
+- `campaign`: id, name, date, start date, faction, current system id/name, current location display name, travel state, and a table-safe location label. Avoid Java object `toString()` values such as `mekhq.campaign.CurrentLocation@...` as the only location representation.
+- `finances`: method-backed balance, loan/debt status, recent transaction summaries, financial warnings, and source-owner details.
+- `personnel`: stable person ids, display names/full titles, ranks, roles, assignments, availability/status, fatigue, hits/injuries where available, salary/pay context, commander/leadership markers, and market/applicant membership when relevant.
+- `units`: stable unit ids, display names, chassis/model/type/weight, status, crew links, tech/engineer links, damage state, repair summary, transport/cargo association or warning, and scenario assignment.
+- `contracts`: active contract ids, names, status, employer/enemy, locations, dates/deadlines, terms summary, salvage/payment summary, and scenario links.
+- `scenarios`: stable scenario ids, linked contract ids, status, date, participating units when available, objectives/report summary, and tactical-result pointers.
+- `repairs_and_logistics`: repair queues, parts/shopping/acquisition pressure, work item ids when available, assigned techs, minutes/time remaining where safe, and warnings for unsupported logistics areas.
+- `markets`: display-only unit, personnel, and contract market entries with stable ids/selectors when available, prices only when method-backed, duplicate-safe guard fields, and explicit `automation_ready: false` unless the producer can guarantee command semantics.
+- `reports`: sanitized, categorized report buckets plus compact summaries and warning metadata.
+- `unsupported`: structured area/field/reason/recommended-owner entries so MEK-RPG records gaps instead of falling back to save parsing or inventing facts.
+
+Two response details are especially important for replacing save parsing:
+
+- Include a stable, human-readable current location/system summary in the live state response.
+- Include enough roster/unit/market/contract identity and count information that `bootstrap-mekhq-campaign.py` or its successor can create a campaign folder directly from the API JSON without first normalizing through `summarize-mekhq-save.py`.
+
+## MEK-RPG Consumer Follow-Up
+
+MEK-RPG should add a first-class live API campaign-load adapter rather than routing live play setup through the old save-summary parser.
+
+That adapter should:
+
+- accept captured live API JSON from `GET /campaign/state`
+- verify `bridge_metadata.read_only` and `api_mode`
+- create or refresh campaign-local bridge/context files from API sections
+- preserve live-context versus durable-checkpoint status
+- never require or follow a raw MekHQ save path when the live API is available
+- surface missing fields as API gaps/change requests
+
 ## Manual Smoke Test Result
 
 Date: 2026-06-22
