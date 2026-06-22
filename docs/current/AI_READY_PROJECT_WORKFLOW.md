@@ -68,6 +68,14 @@ Use `docs/current/ROADMAP.md` for durable planning and issue candidates. Use Git
 
 Before starting project development work, move or note the task in `Now`. When it completes, move it to `Done` and record issue, commit, and verification details when available.
 
+## Repository Boundary
+
+Agents working in this project should change only this repository unless the user explicitly asks them to modify another repository. Related workspaces, source checkouts, sister projects, and external repositories are separate ownership boundaries even when they live nearby on disk and even when their docs or source explain the current task.
+
+When this project discovers that another repository probably needs a change, create a project-local memo, change-request document, GitHub issue, or handoff instead of editing the other repository directly. The request should capture the evidence, requested change, suggested owner, affected files or commands, verification already performed, and any risks or blockers. The other repository's own maintainers or agents should decide whether to apply the change under that repository's workflow.
+
+Reading another repository for evidence is acceptable when the task requires it. Writing, staging, committing, pushing, opening or closing issues, or updating roadmaps in another repository requires explicit user instruction for that repository.
+
 ## Automation Strategy
 
 Use scripts for deterministic campaign-state lifecycle, repository validation, routing support, and arithmetic work. Keep the LLM responsible for judgment-heavy work: GM narration, player-facing scene flow, rules interpretation from summaries, provisional rulings, source paraphrase, and deciding what matters in context.

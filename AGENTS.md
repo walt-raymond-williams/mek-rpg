@@ -107,6 +107,8 @@ Rules lookup mode should usually not edit files during play. If a gap is found, 
 - Keep commits small and logical.
 - Reference issue numbers in commit messages when practical.
 - Do not fail local setup if GitHub is not connected; record the blocker.
+- Only make repository changes inside this project unless the user explicitly asks you to modify another repository. If work here reveals needed changes in another repository or workspace, create a memo, change-request document, GitHub issue, or handoff in this project instead of editing that other repository directly.
+- Cross-repository coordination should describe the observed evidence, requested change, suggested owner, affected files or commands, and any verification already performed. The other repository's own agents or maintainers should decide whether and how to apply it.
 - If the user asks to use `$resolve-github-issues`, run the autonomous issue-resolution loop from the named skill and continue across context compactions by recovering state from GitHub Issues, active handoffs, `docs/current/ROADMAP.md`, `docs/current/TASKS.md`, git status, and pushed commits rather than chat memory alone.
 
 Project-development close-out:
