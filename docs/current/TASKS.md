@@ -6,10 +6,12 @@
 
 ## Next
 
-- None currently queued for autonomous work. Issues `#95` and `#97` remain blocked on human/manual playtest involvement.
+- Issue `#105`: add live MekHQ API fixture and contract coverage from the MegaMek workspace prototype. Handoff: `docs/handoffs/active/live-mekhq-api-fixture-contract-coverage.md`.
+- Issue `#103`: prototype live MekHQ API JSON adapter consumption after issue `#105` lands.
 
 ## Backlog
 
+- Issue `#102`: live MekHQ campaign-state API consumer epic. Use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` as the producer status memo.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
@@ -23,6 +25,7 @@
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
 - Issue `#97`: live GM playtest checkpoint. Requires user presence for play/manual feedback and should be skipped by autonomous agents.
+- Issue `#104`: manual smoke test for the live MekHQ API with a disposable campaign. Requires user-assisted MekHQ GUI launch from the source branch and should stay blocked until the user is available.
 
 ## Done
 
