@@ -77,4 +77,12 @@ git status --short --branch
 
 ## Open Questions
 
-- Should advancement/rewards become a new standalone summary or be folded into the existing advancement, XP, and power/rank summaries?
+- Resolved in issue `#91`: advancement/rewards became the standalone summary `rules/campaign/advancement-and-rewards.md`, while `rules/campaign/advancement.md`, `rules/character-creation/xp-advancement.md`, and `rules/campaign/power-rank-and-title.md` remain adjacent/related summaries.
+
+## Completion Notes
+
+- Added `rules/campaign/advancement-and-rewards.md` as the source-reviewed draft owner for rewards, XP feedback, advancement, aging, training, downtime XP, wealth/property, salary, bonuses, expenses, rank, and power.
+- Promoted `campaign.advancement-rewards` from the manifest's `mapped_rules` partial-draft section into the committed `rules` section with `draft` status.
+- Added route fixtures for reward feedback, Advanced Skill downtime training, and salary/rank rewards.
+- Recorded validation in `docs/current/ADVANCEMENT_REWARDS_SOURCE_REVIEW_VALIDATION.md`.
+- Verification: `./scripts/validate-rules-indexes.ps1`, `./scripts/test-route-rules-prompt.ps1`, `./scripts/test-report-rules-coverage.ps1`, and `./scripts/test-all.ps1` passed.

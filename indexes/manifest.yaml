@@ -632,6 +632,7 @@ rules:
       printed: [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 192, 193, 194, 195, 330, 331, 332, 333, 334, 335, 336, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
     related:
       - campaign.advancement
+      - campaign.advancement-rewards
       - campaign.contracts
       - campaign.transport-large-assets
       - campaign.contacts
@@ -656,6 +657,21 @@ rules:
       - character.xp-advancement
       - character.skills
       - character.traits
+    status: draft
+  - id: campaign.advancement-rewards
+    title: Advancement And Rewards
+    subsystem: campaign
+    summary: rules/campaign/advancement-and-rewards.md
+    source_pages:
+      pdf: [87, 88, 89, 90, 91, 92, 332, 333, 334, 335, 336, 337, 338, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+      printed: [85, 86, 87, 88, 89, 90, 330, 331, 332, 333, 334, 335, 336, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
+    related:
+      - campaign.advancement
+      - character.xp-advancement
+      - campaign.downtime-readiness
+      - campaign.contracts
+      - campaign.reputation
+      - campaign.power-rank-title
     status: draft
   - id: campaign.contracts
     title: Contracts And Mission Aftermath
@@ -1011,6 +1027,7 @@ rules:
       printed: [349, 350, 351, 352, 353, 354, 355, 356, 357, 358]
     related:
       - campaign.advancement
+      - campaign.advancement-rewards
       - campaign.reputation
       - campaign.contacts
       - campaign.downtime-readiness
@@ -1057,17 +1074,6 @@ rules:
       - campaign.reputation
     status: source-reviewed-routing-aid
 mapped_rules:
-  - id: campaign.advancement-rewards
-    title: Advancement And Rewards
-    subsystem: campaign
-    candidate: rules/campaign/advancement-and-rewards.md
-    source_pages:
-      pdf: [332, 333, 334, 335, 336, 337, 338]
-      printed: [330, 331, 332, 333, 334, 335, 336]
-    related:
-      - campaign.advancement
-      - character.xp-advancement
-    status: partial-draft
   - id: back.record-sheets-tables
     title: Record Sheets And Reference Tables
     subsystem: back-matter

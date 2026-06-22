@@ -12,7 +12,7 @@ $validationReports = @{
     "personal-combat" = @("docs/current/PERSONAL_COMBAT_LOOKUP_VALIDATION.md", "docs/current/DRAFT_COVERAGE_AND_HELPER_VALIDATION.md")
     "equipment" = @("docs/current/DRAFT_COVERAGE_AND_HELPER_VALIDATION.md")
     "character-creation" = @("docs/current/CHARACTER_CREATION_LOOKUP_VALIDATION.md")
-    "campaign" = @("docs/current/CAMPAIGN_CONSEQUENCE_LOOKUP_VALIDATION.md")
+    "campaign" = @("docs/current/CAMPAIGN_CONSEQUENCE_LOOKUP_VALIDATION.md", "docs/current/ADVANCEMENT_REWARDS_SOURCE_REVIEW_VALIDATION.md")
     "vehicles-and-mechs" = @("docs/current/VEHICLE_MECHWARRIOR_BRIDGE_VALIDATION.md")
 }
 

@@ -26,6 +26,7 @@ Use this file to map summary files and topics to A Time of War page references a
 | Character skills, skill fields, linked attributes, target numbers, complexity, subskills, specialties, tiered skills, and training | `rules/character-creation/skills.md` | A Time of War PDF pages 84-92, 142-161, and 335-336 / printed pages 82-90, 140-159, and 333-334 | Draft |
 | Skill catalog routing, subskills, specialties, linked attributes, TN/complexity, tiered skills, and source page guide | `rules/skills/skill-catalog-map.md` | A Time of War PDF pages 142-161 / printed pages 140-159 | Source-reviewed routing aid |
 | XP awards, post-creation advancement, training, downtime, age, salary, rank, and power routing | `rules/character-creation/xp-advancement.md` | A Time of War PDF pages 50-53, 87-92, and 332-338 / printed pages 48-51, 85-90, and 330-336 | Draft |
+| GM rewards, feedback sessions, XP awards, aging, training, downtime XP, wealth/property, salary, bonuses, expenses, rank, and power | `rules/campaign/advancement-and-rewards.md` | A Time of War PDF pages 87-92, 332-338, and 351-360 / printed pages 85-90, 330-336, and 349-358 | Draft |
 | Personal combat overview and turn flow | `rules/personal-combat/overview.md` | A Time of War PDF pages 166-167 / printed pages 164-165 | Draft |
 | Personal combat initiative | `rules/personal-combat/initiative.md` | A Time of War PDF pages 166-168 / printed pages 164-166 | Draft |
 | Personal combat action and movement | `rules/personal-combat/action-and-movement.md` | A Time of War PDF pages 168-172 / printed pages 166-170 | Draft |
@@ -82,5 +83,4 @@ These entries come from `source/atow-chapter-section-map.md`. They are source-lo
 
 | Topic | Candidate output or route | Source pages | Status |
 | --- | --- | --- | --- |
-| GM rewards, advancement, aging, training, wealth/property, rank, and power | `rules/campaign/advancement.md` or `rules/campaign/advancement-and-rewards.md` | A Time of War PDF pages 332-338 / printed pages 330-336 | Partially covered; table-heavy source review target |
 | Back-matter record sheets and reference tables | Source lookup only | A Time of War PDF pages 403-409 / printed pages 401-407 | Source lookup only; do not summarize tables wholesale |

@@ -3,11 +3,10 @@
 ## Now
 
 - Issue `#90` is the active coordination epic for the next rules/source-review expansion wave.
+- Issue `#92`: upgrade special-case rules routing aids for live play. Use `docs/handoffs/active/upgrade-special-case-rules-routing-aids.md`.
 
 ## Next
 
-- Issue `#91`: source-review GM advancement and rewards coverage. Use `docs/handoffs/active/source-review-gm-advancement-rewards.md`.
-- Issue `#92`: upgrade special-case rules routing aids for live play. Use `docs/handoffs/active/upgrade-special-case-rules-routing-aids.md`.
 - Issue `#93`: upgrade special equipment routing aids for live play. Use `docs/handoffs/active/upgrade-special-equipment-routing-aids.md`.
 - Issue `#94`: validate next-wave rules lookup and authority behavior after the source-review children land. Use `docs/handoffs/active/validate-next-wave-rules-lookup-authority.md`.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, and validation work.
@@ -29,6 +28,7 @@
 
 ## Done
 
+- Issue `#91` implemented: added `rules/campaign/advancement-and-rewards.md` as the source-reviewed draft owner for GM rewards, end-of-session feedback, XP awards, advancement, aging, training, downtime XP, salary, bonuses, expenses, wealth/property, rank, and power; promoted `campaign.advancement-rewards` from partial-draft mapped target to draft manifest entry; updated router, page references, rules map, subsystem index, route fixtures, validation notes, and source-map status while preserving exact tables and values as private source lookup.
 - Issue `#79` implemented: added `docs/current/CORE_INTERFACE_MIGRATION_EVALUATION.md` comparing continued PowerShell scripts, TypeScript library/CLI, Python library/CLI, Go CLI/service, and local HTTP service; recommended no service migration yet and defined promotion criteria around stable JSON contracts, authority-gate behavior, fixture coverage, real play use, source authority, no hidden mutation, clean integration, shared-logic pressure, and real consumer demand.
 - Issue `#83` implemented: added `docs/current/RULING_REGRESSION_SCENARIOS.md` as manual golden ruling scenarios for simple skill checks, opposed checks, Edge, initiative, ranged attacks, damage, piloting/control, equipment lookup, ambiguous lookup, source conflict, missing routes/page references, campaign persistence, and salvage/repair/cost workflows; each scenario records expected lookup, citation, state proposal, and failure behavior.
 - Issue `#77` implemented: added `scripts/checkpoint-personal-combat.ps1`, `scripts/test-checkpoint-personal-combat.ps1`, and personal-combat checkpoint fixtures to prototype `combat.personal_checkpoint` with RPG-scale turn/phase/checkpoint tracking, tactical handoff refusal, schema-shaped state-change proposals, citations/warnings, and no-hidden-mutation proof.

@@ -103,6 +103,36 @@
       "expect_warnings": false
     },
     {
+      "id": "advancement-rewards",
+      "prompt": "How much XP should I award after the session feedback?",
+      "top": 8,
+      "expected_path": "rules/campaign/advancement-and-rewards.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 87-92",
+      "expect_warnings": false
+    },
+    {
+      "id": "training-downtime",
+      "prompt": "A character wants to train an Advanced Skill during downtime",
+      "top": 8,
+      "expected_path": "rules/campaign/advancement-and-rewards.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 87-92",
+      "expect_warnings": false
+    },
+    {
+      "id": "salary-rank-reward",
+      "prompt": "The crew earned a promotion, salary change, and mission bonus",
+      "top": 8,
+      "expected_path": "rules/campaign/advancement-and-rewards.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 87-92",
+      "expect_warnings": false
+    },
+    {
       "id": "vehicle-piloting",
       "prompt": "How do I pilot a vehicle through a risky skid?",
       "top": 8,
