@@ -2,7 +2,7 @@
 
 ## Now
 
-- None currently in progress.
+- Issue `#97`: live GM playtest checkpoint using current workflow tools. User intends to run this in a new agent session; use `docs/handoffs/active/live-gm-playtest-checkpoint-97.md` as the launch checklist.
 
 ## Next
 
@@ -23,7 +23,6 @@
 ## Blocked
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
-- Issue `#97`: live GM playtest checkpoint. Requires user presence for play/manual feedback and should be skipped by autonomous agents.
 
 ## Done
 

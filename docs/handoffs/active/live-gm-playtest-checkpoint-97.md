@@ -59,6 +59,45 @@ git status --short --branch
 ./scripts/validate-campaign-state.ps1 -StrictActive
 ```
 
+## Manual Launch Checklist
+
+Use this checklist in the new agent session.
+
+### Start
+
+- Confirm the user is present and explicitly wants to run issue `#97`.
+- Read `AGENTS.md`, this handoff, `docs/current/TASKS.md`, `gm/session-procedure.md`, `gm/scene-loop.md`, `gm/roll-policy.md`, and `gm/state-save-checklist.md`.
+- Run `git status --short --branch` and note any unrelated dirty files without reverting them.
+- Run `./scripts/validate-campaign-state.ps1 -StrictActive`.
+- Run `./scripts/build-gm-context-packet.ps1` and use its output to load exactly one active campaign save.
+
+### Choose The Test Scene
+
+- Ask the user which campaign and scene to use if the active campaign context does not make that obvious.
+- Prefer a short scene with one concrete uncertainty, one NPC or environmental pressure, and one possible persistent state consequence.
+- Avoid full tactical BattleTech combat; if hex positioning, armor locations, heat, weapon ranges, or detailed unit state matters, record a tactical handoff instead.
+
+### Exercise The Tools
+
+- Perform at least one rules lookup that starts from `indexes/task-router.md`.
+- Run or consult `scripts/check-ruling-authority.ps1` for at least one meaningful ruling/authority decision.
+- Use a deterministic helper such as a basic/opposed check resolver only if the scene naturally calls for it.
+- Ask for rolls only when failure matters.
+
+### Save And Review
+
+- Decide whether a persistent state save is needed using `gm/state-save-checklist.md`.
+- If persistent state changes, update the active campaign save folder, usually `session-log.md`, `current-state.md`, `rules-gaps.md`, or `playtest-notes.md`.
+- Capture bugs, friction, awkward state proposals, missing rules, or follow-up ideas in campaign-local notes or GitHub issues.
+- Run reasonable verification, at minimum `./scripts/validate-campaign-state.ps1 -StrictActive`; use `./scripts/test-all.ps1 -Quick` if project files changed beyond campaign notes.
+
+### Close Out
+
+- Update `docs/current/TASKS.md` and `docs/current/ROADMAP.md` with the result.
+- If issue `#97` is complete, close it with a summary of scene tested, tools exercised, state changes, verification, and follow-ups.
+- Reconcile issue `#95` after `#97` is complete or explicitly deferred.
+- Commit and push completed repository changes unless the user explicitly says not to.
+
 ## Constraints
 
 - This issue requires live user participation for a meaningful playtest.
