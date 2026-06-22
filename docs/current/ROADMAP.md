@@ -11,8 +11,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Campaign play now uses `campaign-state/active-campaign.md` plus exactly one selected `campaigns/<campaign-id>/` save folder. Legacy flat `campaign-state/` files remain historical prototype records.
 - Helper scripts now cover creating campaign saves from `campaigns/_template/`, validating campaign-state structure, and rolling simple live-play dice expressions.
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
-- MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save.
-- MekHQ campaign bootstrap now creates a MEK-RPG campaign folder from read-only summary JSON, adds a campaign-local `mekhq-bridge.md`, and preserves the read-only MekHQ ownership boundary.
+- MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save; this is now an offline, legacy, fixture, or debugging fallback when the live API is unavailable or explicitly requested.
+- Active loaded MekHQ campaign setup should use the read-only live API first. Issue `#107` will add the MEK-RPG campaign-load adapter, issue `#108` audited the roadmap and save-parser fallback boundary, and issue `#109` tracks the producer-facing API change request package.
 - MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
@@ -49,7 +49,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Rules lookup infrastructure now has completed glossary source review and aliases (`#46`), placeholder page-reference expansion (`#47`), manifest status normalization (`#48`), rules index validation (`#49`), rules coverage reporting (`#50`), and a rules route helper prototype (`#51`).
 - The DropShip/large-asset gap from the Galatea playtest now has source-coverage mapping in issue `#52`, a narrowed transport/large-asset campaign procedure in issue `#53`, a Markdown-native asset sheet schema in issue `#54`, and tactical encounter handoff checklist support in issue `#55`.
 - The read-only dashboard idea now has a boundary evaluation in issue `#56`, a read-only data adapter contract in issue `#57`, and the first `dashboard-data/v1` adapter prototype in issue `#101`; any future UI must sit on that contract and adapter boundary. Campaign session archive helper work was implemented in issue `#58`.
-- The MegaMek workspace now has a local MekHQ source prototype for read-only live campaign-state endpoints, documented in `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md`. MEK-RPG issue `#102` completed consumer-side fixture, adapter, smoke-test, and selected-section metadata follow-up while preserving the live-context-not-durable boundary.
+- The MegaMek workspace now has a local MekHQ source prototype for read-only live campaign-state endpoints, documented in `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md`. MEK-RPG issue `#102` completed consumer-side fixture, adapter, smoke-test, and selected-section metadata follow-up while preserving the live-context-not-durable boundary. Issue `#108` added the API-first planning audit, issue `#109` tracks the producer-facing change request package, and issue `#107` is the next MEK-RPG adapter step before resuming the issue `#97` blind playtest.
 - The next rules source-review expansion wave is now tracked under epic issue `#59`, with executable child issues `#60`-`#64` and active handoffs.
 - MegaMek workspace bridge-primitives feedback has been consumed under epic issue `#66`, with child issues `#67`-`#69` completing read-only checkpoint export consumption, headless day-advance risk documentation, and gated contract-market accept/decline probe planning.
 - Issue `#67` added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract and gap map for a future MekHQ-owned read-only checkpoint export; the current Python helper remains a read-only prototype/fallback.
@@ -60,14 +60,39 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-- Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion, with child issues `#96`-`#100`.
+- Issue `#107`: add the MEK-RPG live API campaign-load adapter so active MekHQ campaign setup consumes `GET /campaign/state` directly and records API gaps instead of routing through `summarize-mekhq-save.py`.
+- Issue `#109`: maintain the project-local MegaMek/MekHQ live API change request package for fields the adapter or playtest needs from the producer side.
+- Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion, with open child issue `#97`. Resume the blind/live playtest after issue `#107` removes the active-load dependency on save parsing.
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`; live API-first campaign-load follow-up is issued as `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
 
 ## Issue Tracks
+
+### Live API-first campaign loading and producer gap tracking
+
+- Status: Active
+- Issues: `#107`, `#108`, and `#109`
+- Mode: Project development / cross-workspace coordination
+- Audit memo: `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`
+- Producer request package: `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`
+- Goal: make live API data the normal source for active loaded MekHQ campaign setup and treat raw save parsing as an explicit offline, legacy, fixture, or debugging fallback.
+- Key decisions:
+  - A user-provided save path may identify the campaign for the human, but if MekHQ is open and serving the read-only API, `GET /campaign/summary` and `GET /campaign/state` are the campaign-load sources.
+  - Missing live API fields become API gaps or producer change requests. They should not cause routine active-load workflows to parse `.cpnx`, `.cpnx.gz`, or XML saves.
+  - The live API is still live context by default. Durable MEK-RPG memory needs saved/imported confirmation, explicit user approval, or a future controlled promotion flow.
+- Child issues:
+  1. Done issue `#108`: audit roadmap/task/workflow plans for API-first loading versus save parsing.
+  2. Open issue `#109`: maintain the MegaMek/MekHQ-facing change request package for needed live API fields.
+  3. Open issue `#107`: implement the MEK-RPG live API campaign-load adapter.
+- Dependency order:
+  1. Done in issue `#108`: align planning and name the API gaps/change-request path.
+  2. Use issue `#109` to carry producer-facing requested API additions; update it as issue `#107` discovers concrete missing fields.
+  3. Use issue `#107` to build or refresh campaign-local bridge/context files directly from live API JSON and surface missing fields as gaps.
+  4. Resume issue `#97` after issue `#107` so the blind playtest exercises the intended active-load path.
+- Boundary: do not edit the MegaMek workspace from this repo. Create project-local memos, handoffs, issue comments, or change requests for producer-side needs.
 
 ### Live MekHQ campaign-state API consumer follow-up
 

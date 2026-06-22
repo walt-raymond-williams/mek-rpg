@@ -17,8 +17,8 @@
 - `archive-campaign-session.ps1`: appends an exact copy of a campaign `session-log.md` into campaign-local `previous-sessions.md`, with explicit confirmation, optional reset, and temp backups.
 - `validate-mekhq-pending-actions.ps1`: validates `pending-mekhq-actions.md` item ids, allowed status/type/priority values, required fields, and unresolved pending-intent reporting.
 - `roll-dice.ps1`: rolls simple expressions such as `2d6`, `2d6+2`, and `2d6-1` for live play.
-- `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary.
-- `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from `summarize-mekhq-save.py` JSON output.
+- `summarize-mekhq-save.py`: reads a MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML save and emits a read-only MEK-RPG bridge summary for offline/fallback, fixture, legacy, or debugging use.
+- `bootstrap-mekhq-campaign.py`: creates a MEK-RPG campaign save folder from normalized summary JSON output; active loaded MekHQ campaigns should use the live API-first adapter planned in issue `#107`.
 - `test-mekhq-pending-workflow.ps1`: runs disposable regression checks for MekHQ pending-action bootstrap, validation, no-writeback boundaries, and protected-source guards.
 - `test-bootstrap-mekhq-campaign.ps1`: runs fixture coverage for bootstrap campaign id validation, overwrite refusal, viewpoint selection, generated headings, ownership language, and cleanup.
 - `test-summarize-mekhq-save.ps1`: runs sanitized XML and generated gzip fixture coverage for save-summary JSON/Markdown output and read-only behavior.
@@ -162,7 +162,9 @@ The opposed check resolver follows the same contract for `mechanic_id: core.oppo
 
 The personal-combat checkpoint prototype follows the same top-level helper contract for `mechanic_id: combat.personal_checkpoint`. It accepts explicit personal-scale checkpoint state for setup, initiative, action, end, or closeout phases, reports turn/phase/active actor/initiative/effects/action tracking, emits only schema-shaped state-change proposals, and returns `external_authority_required` when BattleTech/MegaMek/MekHQ tactical detail is needed.
 
-## MekHQ Save Summaries
+## MekHQ Live API And Save Summary Fallbacks
+
+When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /campaign/summary` and `GET /campaign/state` including `bridge_metadata`. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work.
 
 ```powershell
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
@@ -189,6 +191,8 @@ The edge-case fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.edge-
 The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, and `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json` copied from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts.
 
 ## MekHQ Campaign Bootstrap
+
+This bootstrap path consumes normalized summary JSON and is not the normal active loaded-campaign path when the live API is available. Issue `#107` owns the direct live API campaign-load adapter.
 
 ```powershell
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json > .\mekhq-summary.json

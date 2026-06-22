@@ -2,16 +2,17 @@
 
 ## Now
 
-- Issue `#97`: live GM playtest checkpoint using current workflow tools. User intends to run this as a blind/new-agent playtest: handle project-management setup manually, then ask the new agent for ordinary gameplay without naming the issue. Active campaign is now `campaigns/the-learning-ropes/`, a MekHQ-linked playtest save based on the loaded read-only MekHQ campaign `The Learning Ropes`.
+- None currently active after the issue `#108` roadmap/API-first audit pass.
 
 ## Next
 
-- None currently queued for autonomous project-development work after issue `#106`.
+- Issue `#107`: add a MEK-RPG live API campaign-load adapter so active MekHQ campaign setup consumes `GET /campaign/state` directly and records API gaps instead of routing through `summarize-mekhq-save.py`.
+- Issue `#109`: keep the MegaMek/MekHQ live API producer change request package current as issue `#107` identifies missing fields.
+- Issue `#97`: live GM playtest checkpoint using current workflow tools. Resume this blind/new-agent playtest after issue `#107` so active campaign loading exercises the intended live API path. Active campaign is `campaigns/the-learning-ropes/`, a MekHQ-linked playtest save based on the loaded read-only MekHQ campaign `The Learning Ropes`.
 
 ## Backlog
 
 - Issue `#102`: live MekHQ campaign-state API consumer epic. Use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` as the producer status memo.
-- Issue `#107`: add a MEK-RPG live API campaign-load adapter so active MekHQ campaign setup consumes `GET /campaign/state` directly and records API gaps instead of routing through `summarize-mekhq-save.py`.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
@@ -27,6 +28,7 @@
 
 ## Done
 
+- Issue `#108` audited roadmap/task/workflow planning for live MekHQ API-first campaign loading versus save parsing. Added `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`, `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`, archived handoff `docs/handoffs/archive/live-api-save-parser-roadmap-audit-108.md`, and active handoff `docs/handoffs/active/live-api-producer-change-request-109.md`; roadmap now orders the next steps as producer-gap package, live API campaign-load adapter, then blind/live playtest.
 - Issue `#106` resolved the live MekHQ API full-state metadata envelope mismatch: producer source already supports `bridge_metadata`; the issue `#104` smoke command had omitted it from an explicit section list. A corrected live request including `bridge_metadata` was accepted by `scripts/export-dashboard-data.ps1 -MekHqLiveApiJson` as `live-context` with no read-only-proof error; docs now tell future smoke tests to omit `sections` or include `bridge_metadata`.
 - Issue `#102` completed the live MekHQ campaign-state API consumer epic: live fixtures and contract tests exist, dashboard adapter consumption exists, manual smoke testing passed for summary and state endpoints, and issue `#106` reconciled the section-list metadata envelope gap.
 - Issue `#104` manually smoke-tested the live MekHQ API against a disposable `The Learning Ropes-test.cpnx` campaign loaded in MekHQ: summary and state endpoints responded from `127.0.0.1:32180`, no MekHQ save prompt or write side effect was observed by the user, existing fixture tests passed, the dashboard adapter accepted live summary JSON, and the first explicit full-state section request exposed a metadata-envelope gap later resolved in issue `#106`.

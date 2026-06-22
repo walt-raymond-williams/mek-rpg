@@ -4,6 +4,8 @@ Status: issue `#27` prototype.
 
 Purpose: document the first read-only helper for summarizing MekHQ `.cpnx`, `.cpnx.gz`, or plain campaign XML saves into MEK-RPG bridge facts.
 
+For active loaded MekHQ campaigns, use the read-only live API first. This helper is an offline, legacy, fixture-generation, or debugging fallback when the live API is unavailable or explicitly requested. If the live API lacks a field that this helper can see in the save, record an API gap or producer change request rather than making parser output the normal active-load path.
+
 For future MekHQ-owned checkpoint export consumption, use `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the preferred consumer contract and gap map. This helper remains a read-only prototype/fallback, not the long-term authority for values that should be produced by MekHQ methods.
 
 ## Helper

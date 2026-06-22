@@ -5,7 +5,7 @@
 - GitHub issue: `#97` Run live GM playtest checkpoint using current workflow tools
 - Roadmap entry: Repeat manual validation/playtest checkpoints after adding major playable layers
 - Mode: Play mode with project-development close-out
-- Priority: User-gated / active
+- Priority: User-gated / defer until issue `#107` live API campaign-load adapter is complete or explicitly waived by the user
 
 ## Goal
 
@@ -37,6 +37,7 @@ Active playtest campaign:
 - `campaigns/the-learning-ropes/`
 - MekHQ source context: loaded read-only live API campaign `The Learning Ropes`, date `3025-04-08`, system `Galatea`, campaign id `ea0d334a-1582-459a-9084-b349f0baca5a`.
 - Treat live MekHQ data as read-only context. Do not write to MekHQ, `.cpnx`, `.cpnx.gz`, XML saves, or other repositories.
+- Do not parse the active MekHQ save as the normal load path when the live API is available. Issue `#107` should provide the direct live API campaign-load adapter; until then, a blind playtest risks exercising the wrong workflow.
 
 ## Expected Output
 
@@ -73,6 +74,7 @@ Use this checklist outside the new gameplay agent session. The goal is to test o
 
 - Confirm this repository is clean with `git status --short --branch`.
 - Confirm issue `#97` is open and no longer blocked.
+- Confirm issue `#107` is complete, or explicitly decide to run the playtest despite the known live API campaign-load adapter gap.
 - Optionally run `./scripts/validate-campaign-state.ps1 -StrictActive` yourself before the session.
 - Use `campaigns/the-learning-ropes/` as the active campaign unless the user deliberately switches it before the playtest.
 - Do not ask the new gameplay agent to read this handoff, update GitHub issues, or run project-development close-out at session start.

@@ -208,6 +208,13 @@ That adapter should:
 - never require or follow a raw MekHQ save path when the live API is available
 - surface missing fields as API gaps/change requests
 
+Related planning and producer-request documents:
+
+- API-first coverage audit: `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`
+- MegaMek/MekHQ-facing change request: `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`
+- MEK-RPG adapter issue: `#107`
+- Producer package issue: `#109`
+
 ## Manual Smoke Test Result
 
 Date: 2026-06-22

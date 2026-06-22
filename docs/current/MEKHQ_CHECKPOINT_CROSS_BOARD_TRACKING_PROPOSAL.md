@@ -14,6 +14,8 @@ Use both boards, but keep ownership explicit:
 - MegaMek issues track producer-side work: exporter schema hardening, repeatable exporter smoke tests, deeper MekHQ method extraction, stable market identifiers, and possible movement into MekHQ source.
 - Cross-board dependencies should be comments and linked issue references, not duplicated work descriptions that drift apart.
 
+For live API work, use the same ownership pattern. MEK-RPG issues track consumer adapters, fixture validation, workflow docs, and gap surfacing. MegaMek/MekHQ issues track producer-side endpoint fields, source-backed extraction, schema hardening, and live API fixtures. MEK-RPG should create project-local memos and handoffs when it wants producer work; it should not edit the MegaMek workspace directly.
+
 MEK-RPG does not need MegaMek confirmation before creating its own consumer-side issues. MegaMek confirmation is needed before assigning work to them, declaring their schema frozen, requesting field removals/renames as accepted requirements, or creating issues in their repo that imply producer-side commitment.
 
 ## MEK-RPG Issue Queue
@@ -71,6 +73,14 @@ Use these phrases in cross-board comments:
 - `Read-only only`: the issue must not include day advancement, market purchases, hiring, repairs, contract accept/decline, tactical result application, or direct save/XML mutation.
 
 ## Feedback To Send Back
+
+Live API producer requests now live in `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`. The short version:
+
+- Active loaded campaign setup should use `GET /campaign/summary` and `GET /campaign/state`, not save parsing.
+- If data exists in the save or live MekHQ memory and MEK-RPG needs it for active campaign context, expose it through the read-only live API with provenance.
+- Prioritize human-readable current system/location, method-backed finances, personnel availability/injury/fatigue, unit condition/repair/cargo context, active contract/scenario fixtures, repair/logistics pressure, categorized reports, and structured unsupported entries.
+- Keep markets display-only unless stable selectors, guard fields, prompt policy, and command semantics are intentionally designed later.
+- Keep write/action APIs out of the read-only live-state request.
 
 Detailed consumed-field decisions now live in `docs/current/MEKHQ_CHECKPOINT_CONSUMED_FIELD_MAPPING.md`. Send this summary back to the MegaMek workspace:
 
