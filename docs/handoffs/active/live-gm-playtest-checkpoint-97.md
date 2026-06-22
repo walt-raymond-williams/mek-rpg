@@ -59,42 +59,51 @@ git status --short --branch
 ./scripts/validate-campaign-state.ps1 -StrictActive
 ```
 
-## Manual Launch Checklist
+## Blind Playtest Checklist
 
-Use this checklist in the new agent session.
+Use this checklist outside the new gameplay agent session. The goal is to test ordinary play behavior, so do not tell the gameplay agent about issue `#97`, this handoff, or the acceptance criteria unless the test has ended and you are doing close-out.
 
-### Start
+### Manual Prep Before Starting The New Agent
 
-- Confirm the user is present and explicitly wants to run issue `#97`.
-- Read `AGENTS.md`, this handoff, `docs/current/TASKS.md`, `gm/session-procedure.md`, `gm/scene-loop.md`, `gm/roll-policy.md`, and `gm/state-save-checklist.md`.
-- Run `git status --short --branch` and note any unrelated dirty files without reverting them.
+- Confirm this repository is clean with `git status --short --branch`.
+- Confirm issue `#97` is open and no longer blocked.
+- Optionally run `./scripts/validate-campaign-state.ps1 -StrictActive` yourself before the session.
+- Decide whether you want to use the active campaign as-is or steer the scene with a natural table prompt.
+- Do not ask the new gameplay agent to read this handoff, update GitHub issues, or run project-development close-out at session start.
+
+### Prompt To Give The Gameplay Agent
+
+Use an ordinary play prompt, such as:
+
+```text
+Let's continue the active MEK RPG campaign. Load the active campaign state and run the next short scene.
+```
+
+If you want a slightly more directed scene without exposing the test, use a natural prompt like:
+
+```text
+Let's continue the active MEK RPG campaign with a short scene that involves a meaningful uncertain action and could change the campaign state.
+```
+
+### What To Watch For During Play
+
+- Did the agent load exactly one active campaign save without being told the test details?
+- Did it use the GM flow docs naturally?
+- Did it perform rules lookup from project summaries rather than memory when a rule mattered?
+- Did it identify ruling authority or uncertainty instead of overclaiming?
+- Did it ask for rolls only when failure mattered?
+- Did it avoid full tactical BattleTech resolution inside MEK-RPG?
+- Did it propose or make appropriate campaign-state updates when persistent facts changed?
+- Did it capture rules gaps, workflow friction, or follow-up needs somewhere durable?
+
+### Manual Close-Out After The Session
+
+- Save the chat transcript or summarize the observed behavior before details fade.
+- Check changed files with `git status --short --branch`.
 - Run `./scripts/validate-campaign-state.ps1 -StrictActive`.
-- Run `./scripts/build-gm-context-packet.ps1` and use its output to load exactly one active campaign save.
-
-### Choose The Test Scene
-
-- Ask the user which campaign and scene to use if the active campaign context does not make that obvious.
-- Prefer a short scene with one concrete uncertainty, one NPC or environmental pressure, and one possible persistent state consequence.
-- Avoid full tactical BattleTech combat; if hex positioning, armor locations, heat, weapon ranges, or detailed unit state matters, record a tactical handoff instead.
-
-### Exercise The Tools
-
-- Perform at least one rules lookup that starts from `indexes/task-router.md`.
-- Run or consult `scripts/check-ruling-authority.ps1` for at least one meaningful ruling/authority decision.
-- Use a deterministic helper such as a basic/opposed check resolver only if the scene naturally calls for it.
-- Ask for rolls only when failure matters.
-
-### Save And Review
-
-- Decide whether a persistent state save is needed using `gm/state-save-checklist.md`.
-- If persistent state changes, update the active campaign save folder, usually `session-log.md`, `current-state.md`, `rules-gaps.md`, or `playtest-notes.md`.
-- Capture bugs, friction, awkward state proposals, missing rules, or follow-up ideas in campaign-local notes or GitHub issues.
-- Run reasonable verification, at minimum `./scripts/validate-campaign-state.ps1 -StrictActive`; use `./scripts/test-all.ps1 -Quick` if project files changed beyond campaign notes.
-
-### Close Out
-
-- Update `docs/current/TASKS.md` and `docs/current/ROADMAP.md` with the result.
-- If issue `#97` is complete, close it with a summary of scene tested, tools exercised, state changes, verification, and follow-ups.
+- If project files changed beyond campaign notes, run `./scripts/test-all.ps1 -Quick` or record why it was not run.
+- Update this issue, `docs/current/TASKS.md`, and `docs/current/ROADMAP.md` with the result.
+- Close issue `#97` only if the play checkpoint actually exercised rules lookup or authority behavior and state-save/checkpoint behavior was exercised or explicitly found unnecessary.
 - Reconcile issue `#95` after `#97` is complete or explicitly deferred.
 - Commit and push completed repository changes unless the user explicitly says not to.
 

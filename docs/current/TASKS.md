@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#97`: live GM playtest checkpoint using current workflow tools. User intends to run this in a new agent session; use `docs/handoffs/active/live-gm-playtest-checkpoint-97.md` as the launch checklist.
+- Issue `#97`: live GM playtest checkpoint using current workflow tools. User intends to run this as a blind/new-agent playtest: handle project-management setup manually, then ask the new agent for ordinary gameplay without naming the issue.
 
 ## Next
 
