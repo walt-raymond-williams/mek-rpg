@@ -8,7 +8,6 @@
 
 - Issue `#107`: add a MEK-RPG live API campaign-load adapter so active MekHQ campaign setup consumes `GET /campaign/state` directly and records API gaps instead of routing through `summarize-mekhq-save.py`.
 - Issue `#109`: keep the MegaMek/MekHQ live API producer change request package current as issue `#107` identifies missing fields.
-- Issue `#97`: live GM playtest checkpoint using current workflow tools. Resume this blind/new-agent playtest after issue `#107` so active campaign loading exercises the intended live API path. Active campaign is `campaigns/the-learning-ropes/`, a MekHQ-linked playtest save based on the loaded read-only MekHQ campaign `The Learning Ropes`.
 
 ## Backlog
 
@@ -25,6 +24,7 @@
 ## Blocked
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
+- Issue `#97`: live GM playtest checkpoint using current workflow tools. Deferred until issue `#107` is complete, and until issue `#109` has captured any producer-side MegaMek/MekHQ API gaps discovered by the adapter work. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Done
 

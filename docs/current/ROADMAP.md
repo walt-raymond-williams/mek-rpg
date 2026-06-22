@@ -62,7 +62,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - Issue `#107`: add the MEK-RPG live API campaign-load adapter so active MekHQ campaign setup consumes `GET /campaign/state` directly and records API gaps instead of routing through `summarize-mekhq-save.py`.
 - Issue `#109`: maintain the project-local MegaMek/MekHQ live API change request package for fields the adapter or playtest needs from the producer side.
-- Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion, with open child issue `#97`. Resume the blind/live playtest after issue `#107` removes the active-load dependency on save parsing.
+- Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion is blocked/deferred while issue `#97` waits on issue `#107` and producer-gap tracking in issue `#109`.
 
 ## Ready For Issue Candidates
 
@@ -91,7 +91,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   1. Done in issue `#108`: align planning and name the API gaps/change-request path.
   2. Use issue `#109` to carry producer-facing requested API additions; update it as issue `#107` discovers concrete missing fields.
   3. Use issue `#107` to build or refresh campaign-local bridge/context files directly from live API JSON and surface missing fields as gaps.
-  4. Resume issue `#97` after issue `#107` so the blind playtest exercises the intended active-load path.
+  4. Resume issue `#97` after issue `#107`, with issue `#109` updated for any producer-side gaps, so the blind playtest exercises the intended active-load path.
 - Boundary: do not edit the MegaMek workspace from this repo. Create project-local memos, handoffs, issue comments, or change requests for producer-side needs.
 
 ### Live MekHQ campaign-state API consumer follow-up
@@ -123,7 +123,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Manual validation and playtest checkpoint after rules expansion
 
-- Status: Active
+- Status: Blocked / deferred until live API campaign-load adapter work is complete
 - Epic issue: `#95`
 - Mode: Project development / manual validation, with play-mode checkpoints where needed
 - Goal: pressure-test the now-expanded rules, authority, GM workflow, character-creation, MekHQ-linked workflow, and deterministic verification layers before starting another broad source-review or feature wave.
@@ -139,7 +139,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   5. Done issue `#100`: diagnose and improve full test runner runtime.
 - Dependency order:
   1. Done in issue `#96`: validated the new rules and authority layer in isolation.
-  2. Use issue `#97` to exercise the rules, GM context packet, state-save loop, and mechanic helpers together in play.
+  2. Deferred issue `#97`: exercise the rules, GM context packet, state-save loop, and mechanic helpers together in play only after issue `#107` is complete and issue `#109` has captured any producer-side API gaps.
   3. Done in issue `#98`: determined that real PC sheets are still needed before a character-output validator is worth adding; the campaign PC template now has a clearer sheet shape.
   4. Done in issue `#99`: rehearsed the read-only and pending-intent workflow with committed fixtures and the existing issue `#37` re-import record; no new MekHQ UI action was performed.
   5. Done in issue `#100`: measured full runner runtime, added timing output, added `-Quick` for routine non-rules close-out, and documented when full route/authority verification is still required.
