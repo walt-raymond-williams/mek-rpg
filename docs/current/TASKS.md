@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#90` is the active coordination epic for the next rules/source-review expansion wave.
+- No active project-development issue. Use GitHub Issues and `docs/current/ROADMAP.md` to select the next work item.
 
 ## Next
 
@@ -25,6 +25,7 @@
 
 ## Done
 
+- Issue `#90` completed: coordinated the next rules/source-review expansion wave and closed child issues `#91`-`#94`; roadmap, tasks, validation reports, indexes, summaries, fixtures, and handoffs now reflect the completed wave.
 - Issue `#94` implemented: validated next-wave rules lookup and authority behavior for issues `#91`-`#93`; added `docs/current/NEXT_WAVE_RULES_AUTHORITY_VALIDATION.md`; extended authority-gate tests for advancement/rewards, special hazards, battle armor readiness, poison treatment, exact equipment lookup, and tactical battle armor; adjusted `scripts/check-ruling-authority.ps1` so campaign context paths do not block draft-summary rulings and related tactical files do not force handoff unless tactical precision is requested; updated ruling scenarios, command docs, and archived the handoff.
 - Issue `#93` implemented: upgraded battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel from source-reviewed routing aids to draft play-facing summaries; added live procedures for suit readiness, tactical boundaries, injury replacement recovery, implant consequences, poison treatment, addiction-sensitive handling, vehicle asset recording, and fuel logistics; updated manifest/page-reference status, route fixtures, coverage reporting, validation notes, and source-map status while preserving exact equipment catalogs, values, stat blocks, fuel tables, drug/poison values, and tactical effects as private source or external-tool lookup.
 - Issue `#92` implemented: upgraded special-case rules coverage for planetary conditions, creatures, and diseases from source-reviewed routing aids to draft play-facing summaries; added live procedures for layered environmental hazards, suit breach/exposure risk, creature motive and personal-combat flow, creature training, venom routing, disease prevention, quarantine clocks, and illness recovery; updated manifest/page-reference status, route fixtures, coverage reporting, validation notes, and source-map status while preserving exact environmental modifiers, creature stats, venom values, disease tables, and treatment values as private source lookup.

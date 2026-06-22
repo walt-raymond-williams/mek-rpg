@@ -69,3 +69,15 @@ gh issue list --state open --limit 100
 ## Open Questions
 
 - If source review shows the planned scope is too broad, split follow-up issues rather than expanding a child issue indefinitely.
+
+## Completion Notes
+
+- Completed after child issues `#91`, `#92`, `#93`, and `#94` were committed, pushed, and closed.
+- Wave outputs:
+  - `rules/campaign/advancement-and-rewards.md`
+  - `docs/current/ADVANCEMENT_REWARDS_SOURCE_REVIEW_VALIDATION.md`
+  - `docs/current/SPECIAL_CASE_RULES_SOURCE_REVIEW_VALIDATION.md`
+  - `docs/current/SPECIAL_EQUIPMENT_SOURCE_REVIEW_VALIDATION.md`
+  - `docs/current/NEXT_WAVE_RULES_AUTHORITY_VALIDATION.md`
+- Planning state now records the wave as done in `docs/current/ROADMAP.md` and `docs/current/TASKS.md`.
+- Protected raw source paths remained ignored and unstaged throughout the wave.
