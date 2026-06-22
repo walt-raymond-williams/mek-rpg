@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#100`: diagnose and improve full test runner runtime.
 - Issue `#101`: prototype the read-only dashboard data adapter from the completed dashboard data contract. This is agent-ready and does not require manual testing.
 
 ## Backlog
@@ -27,6 +26,7 @@
 
 ## Done
 
+- Issue `#100` implemented: measured full `scripts/test-all.ps1` runtime at about 254 seconds and identified the route-helper and ruling-authority suites as the largest contributors; added `docs/current/TEST_RUNNER_RUNTIME_DIAGNOSTIC.md`; updated `scripts/test-all.ps1` with per-suite timing, `-Quick`, and `-ListSuites`; documented quick/full verification guidance in command docs.
 - Issue `#99` implemented: rehearsed the MekHQ-linked workflow using committed fixtures, context-packet tests, checkpoint warning/unsupported-field coverage, and the existing `mekhq-pending-playtest` validation save; added `docs/current/MEKHQ_LINKED_WORKFLOW_REHEARSAL.md`; confirmed pending actions remain manual-action intents, read-only checkpoint behavior is covered, the existing issue `#37` saved re-import has no unresolved pending items, and no new MekHQ UI/writeback action was performed.
 - Issue `#98` implemented: ran a committed-summary character creation and PC sheet shape review; added `docs/current/CHARACTER_CREATION_PC_SHEET_RUNTHROUGH.md`; expanded `campaigns/_template/pcs.md` with identity, creation status, attributes, traits, skills, combat/readiness, inventory/assets, biography hooks, and open-question fields; deferred a deterministic character-output validator until real completed PC sheets exist.
 - Issue `#96` implemented: ran scenario-based lookup validation for the issue `#91`-`#94` rules expansion; added `docs/current/LATEST_RULES_LOOKUP_RUNTHROUGH_VALIDATION.md`; verified provisional authority for advancement/rewards, special hazards, creatures, diseases, battle armor readiness, prosthetics/implants, poison treatment, and personal vehicle fuel logistics; confirmed exact battle armor stat/cost prompts remain source-lookup-required and full BattleMech tactical resolution remains external-authority-required; tightened router wording for training-downtime and battle armor suit stat/cost prompts.

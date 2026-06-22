@@ -84,13 +84,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   2. Open issue `#97`: run a live GM playtest checkpoint using current workflow tools.
   3. Done issue `#98`: character creation and PC sheet run-through.
   4. Done issue `#99`: MekHQ-linked workflow rehearsal checkpoint.
-  5. Open issue `#100`: diagnose and improve full test runner runtime.
+  5. Done issue `#100`: diagnose and improve full test runner runtime.
 - Dependency order:
   1. Done in issue `#96`: validated the new rules and authority layer in isolation.
   2. Use issue `#97` to exercise the rules, GM context packet, state-save loop, and mechanic helpers together in play.
   3. Done in issue `#98`: determined that real PC sheets are still needed before a character-output validator is worth adding; the campaign PC template now has a clearer sheet shape.
   4. Done in issue `#99`: rehearsed the read-only and pending-intent workflow with committed fixtures and the existing issue `#37` re-import record; no new MekHQ UI action was performed.
-  5. Use issue `#100` whenever verification runtime blocks routine close-out or before the next large automation wave.
+  5. Done in issue `#100`: measured full runner runtime, added timing output, added `-Quick` for routine non-rules close-out, and documented when full route/authority verification is still required.
 - Boundary: do not perform new PDF/source processing as part of this validation wave unless a child issue explicitly enters Source processing mode with user authorization. Do not add MekHQ write automation, direct save/XML mutation, or tactical BattleTech resolution to MEK-RPG during this wave.
 
 ### MekHQ checkpoint export adapter experiments

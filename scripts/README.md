@@ -36,7 +36,7 @@
 - `test-validate-mekhq-pending-actions.ps1`: runs fixture coverage for the pending MekHQ action validator.
 - `test-gm-context-regressions.ps1`: runs disposable context-packet regression scenarios for active campaign selection, memory layering, structured-state precedence, rules routing, missing-file warnings, protected-source boundaries, and read-only behavior.
 - `test-mekhq-context-packet.ps1`: runs disposable MekHQ-linked context packet scenarios for bridge metadata, unresolved pending actions, pending-intent labeling, stale-memory avoidance, tactical handoff routing, protected-source/no-writeback boundaries, and read-only behavior.
-- `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification.
+- `test-all.ps1`: runs all deterministic local regression and unit-style checks that are safe for normal repository verification, prints per-suite timing, supports `-Quick` for routine non-rules close-out, and supports `-ListSuites`.
 
 ## Campaign Saves
 
@@ -194,10 +194,12 @@ The bootstrap fixture test uses `tests/fixtures/mekhq-summary-minimal.json` and 
 ./scripts/test-validate-mekhq-pending-actions.ps1
 ./scripts/test-mekhq-pending-workflow.ps1
 ./scripts/test-all.ps1
+./scripts/test-all.ps1 -Quick
+./scripts/test-all.ps1 -ListSuites
 ```
 
 The pending-action validator checks item headings, required checklist fields, allowed lifecycle statuses, allowed action types, allowed priorities, date shapes, duplicate ids, and unresolved pending intents. `-ReportUnresolved` lists unresolved manual-action checklists for day-advance review and explicitly labels them as pending intents, not confirmed hard ledger facts.
 
 The regression script uses `tests/fixtures/mekhq-summary-minimal.json` to bootstrap disposable `campaigns/mekhq-pending-regression-*` folders, checks that `pending-mekhq-actions.md` remains the pending queue owner, verifies `mekhq-bridge.md` points pending work to that file, confirms the campaign validator catches a missing pending-actions file, checks no direct MekHQ save/XML writeback is implied by the workflow docs, verifies protected source ignore rules, and removes disposable output before exit.
 
-`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, opposed check resolver fixture tests, personal-combat checkpoint fixture tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction.
+`test-all.ps1` is the top-level deterministic runner. It currently wraps the MekHQ pending workflow regression, bootstrap fixture coverage, save-summary fixture coverage, checkpoint export fixture coverage, checkpoint prototype-output fixture coverage, checkpoint edge-case fixture coverage, campaign-state validator coverage, pending-action validator coverage, rules index validator coverage, rules coverage reporter smoke tests, rules route helper golden fixture tests, ruling authority gate fixture tests, basic check resolver fixture tests, opposed check resolver fixture tests, personal-combat checkpoint fixture tests, GM context packet helper coverage, campaign session archive helper coverage, GM context regression scenarios, and MekHQ-linked context packet scenarios. It does not require real MekHQ saves, protected source files, network access, or user interaction. It prints per-suite timing so slow checks are visible. The full runner can take several minutes because route-helper and authority-gate golden fixtures parse routing metadata repeatedly. Use `-Quick` for routine non-rules close-out and full `test-all.ps1` when routing, manifest, page-reference, rules-summary, route-helper, or authority-gate behavior changes.
