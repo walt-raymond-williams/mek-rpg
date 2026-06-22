@@ -2,11 +2,15 @@
 
 ## Now
 
-- No active project-development issue. Use GitHub Issues and `docs/current/ROADMAP.md` to select the next work item.
+- Issue `#95`: coordinate the manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion.
 
 ## Next
 
-- Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, and validation work.
+- Issue `#96`: run the manual latest-rules lookup run-through after issues `#91`-`#94`.
+- Issue `#97`: run a live GM playtest checkpoint using current workflow tools.
+- Issue `#98`: run character creation and PC sheet validation.
+- Issue `#99`: rehearse the MekHQ-linked workflow checkpoint when user-assisted MekHQ UI validation is available.
+- Issue `#100`: diagnose and improve full test runner runtime.
 
 ## Backlog
 
@@ -17,7 +21,7 @@
 - Expand `indexes/task-router.md`, `indexes/page-reference-index.md`, and `indexes/manifest.yaml` as verified summaries are added; keep the validator, coverage reporter, and route helper from issues `#46`-`#51` synchronized with future summary work.
 - Future read-only MEK-RPG web dashboard implementation should start with a read-only JSON adapter following `docs/current/READ_ONLY_DASHBOARD_DATA_CONTRACT.md`, before any Sunnytown-derived UI or write controls.
 - Richer DropShip and unit asset sheet work is tracked in issue `#54` after transport ownership/source coverage issues `#52` and `#53`.
-- Repeat manual validation/playtest checkpoints after adding major playable layers.
+- Repeat manual validation/playtest checkpoints after adding major playable layers; the current checkpoint wave is tracked by issues `#95`-`#100`.
 
 ## Blocked
 

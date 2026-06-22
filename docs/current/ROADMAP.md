@@ -16,7 +16,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
-- Manual validation/playtest checkpoints should recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions.
+- Manual validation/playtest checkpoints recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions. The current checkpoint wave is tracked under epic issue `#95`.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
 
@@ -55,17 +55,41 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#69` added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the gated future-write plan for contract-market accept/decline; no write automation is authorized until stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation exist.
 - The MegaMek workspace checkpoint export review memo was completed as MEK-RPG issue `#84`, with child issues `#85`-`#89` covering adapter tests, prototype-output tests, consumed-field mapping, GM-facing diagnostics, and fixture edge cases. Cross-board dependency guidance lives in `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md`.
 - Deterministic mechanics maturation is complete under epic issue `#70`, with child issues `#71`-`#83` covering the mechanics catalog, JSON contract, existing-script audit, route/ruling fixtures, authority gate, resolver prototypes, state-change proposal schema, source-precedence policy, source-offset checks, and later library/service migration evaluation.
-- The next rules/source-review expansion wave is open under epic issue `#90`, with child issues `#91`-`#94` covering GM advancement/rewards, special-case rules, special equipment routing aids, and lookup/authority validation.
+- The next rules/source-review expansion wave completed under epic issue `#90`, with child issues `#91`-`#94` covering GM advancement/rewards, special-case rules, special equipment routing aids, and lookup/authority validation.
 
 ## Active Work
 
-- Issue `#90`: next rules/source-review expansion wave is active, with executable child issues `#91`-`#94` and active handoffs under `docs/handoffs/active/`.
+- Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion, with child issues `#96`-`#100`.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. The next rules/source-review expansion wave is issued as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Issue Tracks
+
+### Manual validation and playtest checkpoint after rules expansion
+
+- Status: Active
+- Epic issue: `#95`
+- Mode: Project development / manual validation, with play-mode checkpoints where needed
+- Goal: pressure-test the now-expanded rules, authority, GM workflow, character-creation, MekHQ-linked workflow, and deterministic verification layers before starting another broad source-review or feature wave.
+- Starting context:
+  - Issues `#91`-`#94` upgraded advancement/rewards, special-case hazards, special equipment, and next-wave authority behavior.
+  - The roadmap already requires repeated manual validation/playtest after major playable layers.
+  - A recent `./scripts/test-all.ps1` run exceeded a 120-second agent timeout, which should be diagnosed as a workflow usability problem even if individual tests are not failing.
+- Child issues:
+  1. Open issue `#96`: manual latest-rules lookup run-through after issues `#91`-`#94`.
+  2. Open issue `#97`: run a live GM playtest checkpoint using current workflow tools.
+  3. Open issue `#98`: character creation and PC sheet run-through.
+  4. Open issue `#99`: MekHQ-linked workflow rehearsal checkpoint.
+  5. Open issue `#100`: diagnose and improve full test runner runtime.
+- Dependency order:
+  1. Start with issue `#96` to validate the new rules and authority layer in isolation.
+  2. Use issue `#97` to exercise the rules, GM context packet, state-save loop, and mechanic helpers together in play.
+  3. Use issue `#98` to determine whether real PC sheet work justifies a character-output validator or sheet-schema issue.
+  4. Use issue `#99` when user-assisted MekHQ UI validation is available, preserving the read-only boundary.
+  5. Use issue `#100` whenever verification runtime blocks routine close-out or before the next large automation wave.
+- Boundary: do not perform new PDF/source processing as part of this validation wave unless a child issue explicitly enters Source processing mode with user authorization. Do not add MekHQ write automation, direct save/XML mutation, or tactical BattleTech resolution to MEK-RPG during this wave.
 
 ### MekHQ checkpoint export adapter experiments
 
