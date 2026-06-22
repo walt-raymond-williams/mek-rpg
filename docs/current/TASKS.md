@@ -2,11 +2,15 @@
 
 ## Now
 
-- No open GitHub issue is currently selected.
+- Issue `#90` is the active coordination epic for the next rules/source-review expansion wave.
 
 ## Next
 
-- Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for future extraction, mapping, summaries, routing, and validation work.
+- Issue `#91`: source-review GM advancement and rewards coverage. Use `docs/handoffs/active/source-review-gm-advancement-rewards.md`.
+- Issue `#92`: upgrade special-case rules routing aids for live play. Use `docs/handoffs/active/upgrade-special-case-rules-routing-aids.md`.
+- Issue `#93`: upgrade special equipment routing aids for live play. Use `docs/handoffs/active/upgrade-special-equipment-routing-aids.md`.
+- Issue `#94`: validate next-wave rules lookup and authority behavior after the source-review children land. Use `docs/handoffs/active/validate-next-wave-rules-lookup-authority.md`.
+- Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, and validation work.
 
 ## Backlog
 

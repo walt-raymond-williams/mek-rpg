@@ -54,18 +54,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#67` added `docs/current/MEKHQ_READ_ONLY_CHECKPOINT_EXPORT_CONTRACT.md` as the MEK-RPG-side consumer contract and gap map for a future MekHQ-owned read-only checkpoint export; the current Python helper remains a read-only prototype/fallback.
 - Issue `#69` added `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the gated future-write plan for contract-market accept/decline; no write automation is authorized until stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation exist.
 - The MegaMek workspace checkpoint export review memo was completed as MEK-RPG issue `#84`, with child issues `#85`-`#89` covering adapter tests, prototype-output tests, consumed-field mapping, GM-facing diagnostics, and fixture edge cases. Cross-board dependency guidance lives in `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md`.
-- Deterministic mechanics maturation is now tracked under epic issue `#70`, with child issues `#71`-`#79` covering the mechanics catalog, JSON contract, existing-script audit, golden route tests, resolver prototypes, state-change proposal schema, and later library/service migration evaluation.
+- Deterministic mechanics maturation is complete under epic issue `#70`, with child issues `#71`-`#83` covering the mechanics catalog, JSON contract, existing-script audit, route/ruling fixtures, authority gate, resolver prototypes, state-change proposal schema, source-precedence policy, source-offset checks, and later library/service migration evaluation.
+- The next rules/source-review expansion wave is open under epic issue `#90`, with child issues `#91`-`#94` covering GM advancement/rewards, special-case rules, special equipment routing aids, and lookup/authority validation.
 
 ## Active Work
 
-- Issue `#59`: next rules source-review expansion wave tracks the open child issue queue for remaining high-value mapped-only and partial-draft rule areas.
-- Issue `#65`: MekHQ personnel-to-PC/NPC sheet workflow tracks richer use of parsed MekHQ roster/personnel data in campaign-local character records.
-- Issue `#66`: completed MekHQ bridge primitives follow-up queue from the MegaMek workspace assessment; child issues `#67`-`#69` are done.
-- Issue `#70`: ruling safety and deterministic mechanics maturation planning is complete; child issues `#71`-`#83` continue in dependency order.
+- Issue `#90`: next rules/source-review expansion wave is active, with executable child issues `#91`-`#94` and active handoffs under `docs/handoffs/active/`.
 
 ## Ready For Issue Candidates
 
-- None currently unissued. Checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is issued as `#70`-`#83`; rules source-review expansion is issued as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued. The next rules/source-review expansion wave is issued as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, dashboard/session tooling issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 
 ## Issue Tracks
 
@@ -98,7 +96,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Ruling safety and deterministic mechanics maturation
 
-- Status: Planning complete; child queue open
+- Status: Complete
 - Planning epic issue: `#70`
 - Mode: Project development / rules-assistant automation planning
 - Goal: preserve source-aware agent adjudication while adding enforceable ruling authority checks and deterministic helpers for stable, repeatable mechanics.
@@ -144,6 +142,28 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   14. Done in issue `#79`: deferred library/service migration and defined promotion criteria.
 - Boundary: do not implement broad mechanic resolvers as part of roadmap setup; do not commit protected source text, copied tables, stat blocks, or raw extracted PDF text; do not let deterministic scripts silently mutate campaign state; preserve source/page citation metadata, manifest authority/status warnings, failure behavior, and uncertainty labels.
 
+### Next rules/source-review expansion wave
+
+- Status: Open
+- Epic issue: `#90`
+- Mode: Source processing / project development
+- Controlling plan: `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md`
+- Goal: use the now-solid routing, source-authority, validation, and deterministic-helper infrastructure to deepen remaining high-value rules coverage for live GM play.
+- Starting scope:
+  - `campaign.advancement-rewards` remains a partial-draft/mapped target around GM rewards, advancement, aging, training, wealth/property, rank, and power.
+  - Several source-reviewed routing aids are useful but may still be thin for live play: special-case hazards, creatures, diseases, battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel.
+  - Back-matter record sheets and reference tables remain source-lookup-only and should not be summarized wholesale.
+- Child issues:
+  1. Open issue `#91`: source-review GM advancement and rewards coverage, with handoff `docs/handoffs/active/source-review-gm-advancement-rewards.md`.
+  2. Open issue `#92`: upgrade special-case rules routing aids for live play, with handoff `docs/handoffs/active/upgrade-special-case-rules-routing-aids.md`.
+  3. Open issue `#93`: upgrade special equipment routing aids for live play, with handoff `docs/handoffs/active/upgrade-special-equipment-routing-aids.md`.
+  4. Open issue `#94`: validate next-wave rules lookup and authority behavior, with handoff `docs/handoffs/active/validate-next-wave-rules-lookup-authority.md`.
+- Dependency order:
+  1. Start with issue `#91`; it resolves the only currently explicit partial-draft mapped target.
+  2. Then work issue `#92` and issue `#93`; they may run independently because they touch separate rules areas.
+  3. Finish with issue `#94` after the source-review children land, so route/ruling validation reflects the final authority labels.
+- Boundary: this wave permits explicit source-processing for scoped page ranges only. Do not commit protected raw source, copied tables, catalog lists, stat blocks, record-sheet text, adventure text, or long lore passages. Use paraphrase, page references, route guidance, uncertainty labels, and source-lookup-only boundaries where appropriate.
+
 ### MekHQ bridge primitives follow-up queue
 
 - Status: Done
@@ -177,7 +197,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Outcome: documentation-only first pass in `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md`; bootstrap remains a sparse one-time campaign creation helper, while a future personnel refresh/merge helper should wait for real play pressure and focused fixture coverage.
 - Boundary: do not invent full A Time of War stats from MekHQ role/rank fields, do not write to MekHQ saves or raw XML, and do not commit raw MekHQ payloads.
 
-### Next rules source-review expansion wave
+### Previous rules source-review expansion wave
 
 - Status: Done
 - Epic issue: `#59`
