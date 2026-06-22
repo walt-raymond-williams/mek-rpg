@@ -1,14 +1,14 @@
 # MekHQ Contract Market Probe Plan
 
-Status: issue `#69` future write-side validation plan.
+Status: issue `#69` future write-side validation plan, updated by issue `#111` command API strategy.
 
-Purpose: define the narrow conditions under which MEK-RPG could later ask the MegaMek workspace to prototype a MekHQ-owned contract-market accept/decline command. This is planning only; it does not authorize write automation.
+Purpose: define the narrow conditions under which MEK-RPG could ask the MegaMek workspace to prototype a MekHQ-owned contract-market accept/decline command.
 
 ## Decision
 
-The first possible write-side bridge probe is contract-market accept/decline by stable contract offer id, but only after MekHQ-side source work confirms selectors, prompt policy, side effects, and saved re-import confirmation fields.
+Contract-market accept/decline remains a good write-side bridge probe by stable contract offer id, after MekHQ-side source work confirms selectors, prompt policy, side effects, and post-command verification fields.
 
-Manual MekHQ UI accept/decline, save, and read-only re-import remains the current supported workflow. MEK-RPG must not implement direct `.cpnx`, `.cpnx.gz`, or XML edits, a broad `apply-pending-action` command, or headless day advancement.
+Manual MekHQ UI accept/decline, save, and read-only re-import remains a valid fallback workflow. The mature target is an explicit MekHQ-owned command endpoint with dry-run/preflight, stable guard fields, prompt policy, command result metadata, and live reread verification. MEK-RPG must not implement direct `.cpnx`, `.cpnx.gz`, or XML edits or a broad `apply-pending-action` command.
 
 ## Preconditions
 
@@ -20,7 +20,7 @@ Do not create an implementation issue until all of these are true:
 - AtB and StratCon prompt/dialog behavior is mapped, including start prompts, employer liaison or opponent generation, faction-standing messages, facility rental prompts, and any contract automation prompts.
 - A noninteractive prompt policy exists: refuse by default unless every required prompt has an explicit safe default or the command is scoped to no-prompt offers only.
 - Disposable MekHQ save validation is available before any real campaign use.
-- Saved re-import fields can prove success or failure without trusting MEK-RPG Markdown alone.
+- Live reread or saved re-import fields can prove success or failure without trusting MEK-RPG Markdown alone.
 
 ## Pending Action Shape
 
@@ -122,8 +122,8 @@ Acceptance criteria:
 
 ## Non-Goals
 
-- No MEK-RPG-side write command.
+- No MEK-RPG-side raw save/XML write command.
 - No direct save/XML editing.
 - No broad `apply-pending-action` bridge.
-- No purchase/sale, hiring, repair/logistics, tactical-result, finance, or day-advance automation.
+- No unrelated purchase/sale, hiring, repair/logistics, tactical-result, finance, or day-advance automation in this specific contract probe.
 - No real campaign use before disposable validation and saved re-import confirmation.

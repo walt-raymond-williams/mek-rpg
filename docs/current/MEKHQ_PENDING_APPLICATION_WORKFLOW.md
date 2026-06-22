@@ -1,8 +1,8 @@
 # MekHQ Pending Application Workflow
 
-Status: issue `#35` design note.
+Status: issue `#35` design note, updated by issue `#111` command API strategy.
 
-Purpose: define how MEK-RPG records RPG-side outcomes that may need manual MekHQ application before they become hard ledger facts.
+Purpose: define how MEK-RPG records RPG-side outcomes that may need MekHQ application before they become hard ledger facts.
 
 ## Core Decision
 
@@ -12,7 +12,7 @@ Use a dedicated campaign-local file:
 campaigns/<campaign-id>/pending-mekhq-actions.md
 ```
 
-This file owns the pending MekHQ application queue. It is a checklist and audit trail, not a MekHQ save, import artifact, or source of final ledger truth.
+This file owns the pending MekHQ application queue. It is a checklist, command-proposal queue, and audit trail, not a MekHQ save, import artifact, or source of final ledger truth.
 
 Use the normal campaign files for the narrative cause and consequence:
 
@@ -27,15 +27,17 @@ When a normal campaign file mentions a pending hard ledger change, it should lin
 
 ## Authority Boundary
 
-MekHQ remains authoritative for hard ledger facts until all three conditions are true:
+MekHQ remains authoritative for hard ledger facts. Early workflow used all three conditions below:
 
 1. The user applies the change in MekHQ through the UI or a future source-backed safe path.
 2. The user saves the MekHQ campaign.
 3. MEK-RPG imports or summarizes the saved MekHQ state and confirms the result.
 
-For day advancement, use the MekHQ UI as the current safe application path. The source-backed bridge assessment found that MekHQ's new-day processing reaches GUI state and can trigger prompts or events, so headless day advancement must stay blocked until MekHQ source work provides a safe command boundary and prompt policy.
+Issue `#111` updates the mature target: a future source-backed safe path can be an explicit MekHQ-owned command API, not only manual UI. Once such a command exists, confirmation can come from a live API reread that proves the MekHQ-owned state changed as expected. A saved import remains useful as a durable checkpoint or fallback, but it is not the only possible confirmation path for command-backed workflows.
 
-Until then, the pending item is an intent, request, or checklist. It is not final campaign funds, final unit condition, final contract status, final personnel availability, final salvage, final repair state, or final campaign date.
+For day advancement, the old safe path was the MekHQ UI because earlier source assessment found new-day processing could reach GUI state and prompts. If the MegaMek/MekHQ workspace exposes a safe advance-day command with prompt policy, baseline guards, and reread verification, MEK-RPG should treat that as an intended command integration candidate rather than a forbidden direction.
+
+Until MekHQ confirms the command or manual action, the pending item is an intent, request, command proposal, or checklist. It is not final campaign funds, final unit condition, final contract status, final personnel availability, final salvage, final repair state, or final campaign date.
 
 MEK-RPG remains authoritative for RPG memory: scenes, conversations, relationships, promises, secrets, hooks, A Time of War overlays, session logs, table rulings, safety/tone, and narrative uncertainty.
 
@@ -55,12 +57,19 @@ Each pending item should use this checklist shape:
 - Source files: `session-log.md`, `assets.md`, `missions.md`
 - MekHQ target ids: campaign `Unknown`; person `Unknown`; unit `Unknown`; contract `Unknown`; scenario `Unknown`
 - Current imported baseline: value from the last MekHQ import, or `Unknown`
-- Proposed MekHQ action: concise manual action the user should perform in MekHQ
+- Proposed MekHQ action: concise manual UI action or source-backed command the user/agent should perform through MekHQ
 - Manual application checklist:
   - Open the linked MekHQ campaign save named in `mekhq-bridge.md`.
   - Confirm the current MekHQ date/save matches the latest imported baseline.
   - Apply the action in the MekHQ UI.
   - Save the MekHQ campaign.
+- Command application checklist:
+  - Confirm the live MekHQ API campaign id/date/state revision matches the pending baseline.
+  - Run dry-run/preflight if the command supports it.
+  - Confirm target ids/selectors and guard fields.
+  - Get user approval for campaign-significant changes unless an explicit automation policy exists.
+  - Execute the MekHQ-owned command.
+  - Re-read live MekHQ state and verify expected fields.
 - Confirmation needed from next import: exact field or summary that should prove the action happened
 - Affected campaign files after import: `assets.md`, `missions.md`, `current-state.md`
 - Blockers or discrepancy notes: None
@@ -75,9 +84,13 @@ Keep entries concise. Do not paste raw MekHQ XML, raw save payloads, purchased r
 
 `queued`: The table committed the hard ledger intent and it should be applied in MekHQ before the relevant deadline, usually before day advancement.
 
-`user-applied-in-mekhq`: The user reports that the action was applied in the MekHQ UI and the campaign was saved, but MEK-RPG has not imported the saved result yet.
+`user-applied-in-mekhq`: The user reports that the action was applied in the MekHQ UI and the campaign was saved, but MEK-RPG has not imported or reread the result yet.
+
+`command-executed-in-mekhq`: A MekHQ-owned command endpoint reports that it executed, but MEK-RPG has not yet verified the result by live reread or saved import.
 
 `imported`: A later MekHQ import appears to show the expected hard ledger result. Review affected campaign files before marking resolved.
+
+`live-verified`: A post-command live API reread appears to show the expected hard ledger result. Review affected campaign files before marking resolved.
 
 `resolved`: The imported hard fact has been reconciled into the campaign files, RPG memory is updated, and no further pending action remains.
 
@@ -103,22 +116,22 @@ Do not create pending MekHQ items for MEK-RPG-only memory unless it is expected 
 
 Before asking the user to advance a MekHQ day, review `pending-mekhq-actions.md`:
 
-1. List all `queued`, `blocked`, and `user-applied-in-mekhq` items.
+1. List all `queued`, `blocked`, `user-applied-in-mekhq`, and `command-executed-in-mekhq` items.
 2. Identify any item with priority `before-day-advance`.
 3. Separate items into manual MekHQ UI actions, artifact handoffs, future automation candidates, MEK-RPG-only memory, and abandoned ideas.
-4. Ask the user to apply required MekHQ UI actions before day advancement.
+4. Ask the user to apply required MekHQ UI actions or approve available MekHQ-owned commands before day advancement.
 5. If the user skips an item, mark it `blocked`, `deferred`, or `abandoned` with the reason.
-6. After the user saves MekHQ, run the read-only summary/import workflow before treating ledger results as final.
+6. After UI save or command execution, reread live MekHQ state or run the saved summary/import workflow before treating ledger results as final.
 
-Do not advance `current-state.md` to the next MekHQ date unless the saved MekHQ import confirms the date.
+Do not advance `current-state.md` to the next MekHQ date unless live reread or saved MekHQ import confirms the date.
 
 ## Re-Import Reconciliation
 
-After a saved MekHQ import:
+After a saved MekHQ import or post-command live reread:
 
 1. Compare the import metadata in `mekhq-bridge.md` to the pending item baseline.
 2. For each `user-applied-in-mekhq` item, inspect the confirmation field or imported summary.
-3. If the result matches, mark the item `imported`, then update affected campaign files and mark it `resolved`.
+3. If the result matches, mark the item `imported` or `live-verified`, then update affected campaign files and mark it `resolved`.
 4. If the result partially matches, leave it `blocked` with discrepancy notes and preserve MekHQ as the hard ledger authority.
 5. If the result is absent because the helper does not expose the needed field, mark it `blocked` with `Needs MekHQ inspection` or `Unsupported helper field`.
 6. Keep the RPG-side scene memory even when the hard ledger result differs, unless the table explicitly retcons the scene.
@@ -135,7 +148,7 @@ Personnel: record target person/applicant id, hire/fire/assign/rank/injury/avail
 
 Tactical outcomes: record the tactical tool or table result to apply, scenario id, units/personnel affected, and confirmation needed for damage, casualties, salvage, prisoners, kill credit, and scenario result.
 
-Day advancement: record all prerequisites, actions to complete first, and confirmation needed for MekHQ date, travel, deadlines, market refreshes, repairs, payroll, and daily report effects. Do not describe the pending action as headless or automatic; the user advances the day in the MekHQ UI unless a later MekHQ-owned command has resolved GUI and prompt dependencies.
+Day advancement: record all prerequisites, actions to complete first, and confirmation needed for MekHQ date, travel, deadlines, market refreshes, repairs, payroll, and daily report effects. The user advances the day in the MekHQ UI unless a MekHQ-owned command has resolved GUI and prompt dependencies; once that command exists, it is an intended integration path.
 
 ## Context Packet Use
 
@@ -151,13 +164,14 @@ The packet must label unresolved pending items as intents or manual-action check
 
 No MegaMek workspace request is created by this issue. The current workflow deliberately uses manual MekHQ UI application plus saved re-import confirmation, and the possible MekHQ-side needs are still broad: safe APIs, supported import/export artifacts, command helpers, and source-backed write paths.
 
-Create a focused MegaMek workspace request later when repeated pending items show a concrete need, such as "apply a purchase from a checklist artifact", "export contract market offers with stable IDs", or "provide a supported command for personnel assignment." Issue `#69` defines a gated contract-market accept/decline probe plan, but it remains blocked on stable offer IDs, prompt policy, disposable validation, and saved re-import confirmation. Until then, MEK-RPG should not imply that direct writeback is available or safe.
+Create a focused MegaMek workspace request when a concrete command need appears, such as "advance the campaign one day with prompt policy", "apply a purchase from a checklist artifact", "export contract market offers with stable IDs", or "provide a supported command for personnel assignment." Issue `#111` defines the general command API strategy. Issue `#69` defines a gated contract-market accept/decline probe plan, but it should be read as an early candidate under the broader command strategy rather than as a permanent warning against write APIs.
 
 ## Unsafe Current Behaviors
 
 Do not:
 
 - write to `.cpnx`, `.cpnx.gz`, MekHQ XML, or raw MekHQ save payloads
+- execute a MekHQ command from stale baseline state or ambiguous selectors
 - apply hard ledger facts only by editing MEK-RPG Markdown
 - invent exact funds, unit state, repair duration, contract status, personnel availability, or tactical outcomes when the MekHQ import is missing or unsupported
 - commit raw MekHQ saves, protected A Time of War source text, purchased PDFs, extracted source text, secrets, copied tables, or copied rulebook text

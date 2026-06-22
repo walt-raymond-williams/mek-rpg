@@ -1,17 +1,17 @@
 # State Change Proposal Schema
 
-Status: issue `#78` baseline.
+Status: issue `#78` baseline, updated by issue `#111` command API strategy.
 
-Purpose: define how deterministic helpers can propose campaign state changes without editing campaign files, applying MekHQ actions, or treating unresolved hard-ledger intents as confirmed facts.
+Purpose: define how deterministic helpers can propose campaign state changes without hidden edits, ambiguous MekHQ actions, or treating unresolved hard-ledger intents as confirmed facts.
 
 This schema extends `docs/current/MECHANIC_CONTRACT_SCHEMA.md` field `proposed_state_changes`. A helper may return zero or more proposal objects. Another agent step or the user must review and apply accepted proposals.
 
 ## Core Rules
 
-- Helpers never mutate campaign files directly.
+- Deterministic mechanic helpers never mutate campaign files directly.
 - Every proposal is inspectable, approval-gated, and tied to evidence.
 - MEK-RPG memory proposals and MekHQ hard-ledger intents are different authority classes.
-- Pending MekHQ actions are not confirmed ledger facts until the user applies them in MekHQ, saves, and MEK-RPG imports the saved result.
+- Pending MekHQ actions are not confirmed ledger facts until MekHQ applies them through the UI or a source-backed command and MEK-RPG verifies the result through live reread or saved import.
 - Exact funds, repairs, injuries, tactical outcomes, equipment stats, market results, and table values must come from committed summaries, supplied inputs, saved imports, or user confirmation; helpers must not invent them.
 - Proposals may be emitted as JSON. A human-facing Markdown checklist is allowed, but it must preserve the same fields.
 
@@ -84,7 +84,7 @@ This schema extends `docs/current/MECHANIC_CONTRACT_SCHEMA.md` field `proposed_s
 | `authority` | yes | Source and authority status behind the proposal. |
 | `approval` | yes | Required review and application step. |
 | `mekhq_boundary` | yes | Whether the proposal touches MekHQ-owned ledger facts. |
-| `no_hidden_mutation` | yes | Proof that the helper did not edit files or MekHQ. |
+| `no_hidden_mutation` | yes | Proof that the helper did not perform hidden file or MekHQ mutation. Command adapters should instead report explicit command attempts and verification. |
 | `unresolved_questions` | yes | Questions that must be answered before approval or application. |
 
 ## Status Values
@@ -92,15 +92,17 @@ This schema extends `docs/current/MECHANIC_CONTRACT_SCHEMA.md` field `proposed_s
 - `proposed`: emitted by a helper or agent for review.
 - `accepted`: user or agent approved the proposal for application.
 - `applied`: the target campaign file was edited after review.
-- `queued`: accepted MekHQ hard-ledger intent waiting for manual MekHQ application.
+- `queued`: accepted MekHQ hard-ledger intent waiting for manual UI application or source-backed command execution.
 - `user_applied_in_mekhq`: user reports applying the change in MekHQ and saving.
+- `command_executed_in_mekhq`: a MekHQ-owned command endpoint reports execution, pending live reread or saved import confirmation.
+- `live_verified`: post-command live API state appears to confirm the hard-ledger result.
 - `import_confirmed`: saved MekHQ import appears to confirm the hard-ledger result.
 - `resolved`: proposal or pending item is fully reconciled.
 - `rejected`: reviewer decided not to apply it.
 - `blocked`: cannot be applied or confirmed yet.
 - `superseded`: replaced by a newer proposal or correction.
 
-Use `accepted`, `applied`, and `resolved` for MEK-RPG memory. Use `queued`, `user_applied_in_mekhq`, `import_confirmed`, and `resolved` for MekHQ hard-ledger workflows.
+Use `accepted`, `applied`, and `resolved` for MEK-RPG memory. Use `queued`, `user_applied_in_mekhq`, `command_executed_in_mekhq`, `live_verified`, `import_confirmed`, and `resolved` for MekHQ hard-ledger workflows.
 
 ## Change Classes
 
@@ -110,7 +112,7 @@ Use for MEK-RPG-owned campaign memory: scenes, conditions, relationships, promis
 
 ### `mekhq_pending_intent`
 
-Use when a scene creates a possible or committed change to MekHQ-owned facts such as funds, unit condition, contracts, repair queues, markets, personnel availability, tactical outcomes, salvage, or day advancement. The proposal may create or update an item in `pending-mekhq-actions.md`; it must not claim the ledger changed.
+Use when a scene creates a possible or committed change to MekHQ-owned facts such as funds, unit condition, contracts, repair queues, markets, personnel availability, tactical outcomes, salvage, or day advancement. The proposal may create or update an item in `pending-mekhq-actions.md`; it must not claim the ledger changed until MekHQ UI application or a source-backed command is verified.
 
 ### `workflow_note`
 
@@ -134,7 +136,7 @@ Use for rules gaps, playtest friction, source-review needs, safety/tone notes, o
 | `rules_gap` | `rules-gaps.md` | Missing, provisional, or source-review-needed rule. |
 | `playtest_note` | `playtest-notes.md` | Workflow friction, helper limitation, usability observation. |
 | `safety_tone` | `safety-and-tone.md` | Player preference, child/co-player constraint, tone boundary. |
-| `pending_mekhq_action` | `pending-mekhq-actions.md` | Manual MekHQ UI intent requiring later saved import confirmation. |
+| `pending_mekhq_action` | `pending-mekhq-actions.md` | MekHQ UI intent or command proposal requiring later live reread or saved import confirmation. |
 
 ## Target Object
 
@@ -239,7 +241,7 @@ For project-development helpers, `requires_approval` should stay `true` unless t
 }
 ```
 
-If `affects_mekhq_hard_ledger` is true, the proposal must target `pending-mekhq-actions.md` or reference an existing pending id. It may also propose RPG memory notes for the narrative cause, but those notes must say the ledger result is pending until confirmed by saved import.
+If `affects_mekhq_hard_ledger` is true, the proposal must target `pending-mekhq-actions.md` or reference an existing pending id. It may also propose RPG memory notes for the narrative cause, but those notes must say the ledger result is pending until confirmed by live reread or saved import.
 
 ## No-Hidden-Mutation Proof
 
@@ -577,7 +579,7 @@ The Markdown wrapper is only a view. The JSON object remains the canonical helpe
 1. Read each proposal summary, target, evidence, authority, warnings, and unresolved questions.
 2. Reject or block any proposal with insufficient authority, missing target, invented exact value, protected-source dependency, or unclear MekHQ boundary.
 3. For accepted MEK-RPG memory proposals, edit the target campaign file deliberately and keep the diff inspectable.
-4. For accepted MekHQ hard-ledger intents, add or update `pending-mekhq-actions.md`; do not update final ledger facts until saved import confirmation exists.
+4. For accepted MekHQ hard-ledger intents, add or update `pending-mekhq-actions.md`; do not update final ledger facts until live reread or saved import confirmation exists.
 5. After application, record the proposal id or pending item id in `session-log.md` when useful.
 6. Keep `no_hidden_mutation` proof from the helper result in logs or test fixtures when debugging helper behavior.
 
@@ -589,7 +591,7 @@ Before applying a proposal, confirm:
 - change class matches the authority owner
 - evidence names the source mechanic, route, user confirmation, import, or GM ruling
 - provisional authority stays labeled provisional
-- pending MekHQ actions are not described as final facts
+- pending MekHQ actions are not described as final facts before live reread or saved import confirmation
 - exact numeric/table values are supplied or marked `Unknown`
 - protected source paths and raw MekHQ saves are not write targets
 - application step says who or what applies the change

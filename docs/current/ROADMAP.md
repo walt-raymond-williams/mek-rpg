@@ -13,6 +13,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save; this is now an offline, legacy, fixture, or debugging fallback when the live API is unavailable or explicitly requested.
 - Active loaded MekHQ campaign setup should use the read-only live API first. Issue `#107` added the MEK-RPG campaign-load adapter, issue `#108` audited the roadmap and save-parser fallback boundary, issue `#109` completed the handoff-ready producer-facing API change request package, and issue `#110` tracks MEK-RPG consumption of the expanded local MekHQ live API shape.
+- The MekHQ integration posture is moving beyond permanent read-only/manual-only operation. Issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` define controlled MekHQ-owned command integration: explicit commands, stable selectors, guard fields, approval where needed, and live reread verification, while still forbidding raw save/XML mutation and hidden writes.
 - MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
@@ -60,16 +61,32 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
+- Issue `#111`: plan controlled MekHQ command API integration and update older read-only/manual-only bridge assumptions.
 - Issue `#110`: consume the expanded local MekHQ live API state shape in fixtures, adapters, dashboard/context summaries, and tests.
 - Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption now issued as `#110`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption now issued as `#110`; controlled MekHQ command API planning is issued as `#111`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
 
 ## Issue Tracks
+
+### Controlled MekHQ command API integration
+
+- Status: Planning
+- Issue: `#111`
+- Strategy memo: `docs/current/MEKHQ_COMMAND_API_STRATEGY.md`
+- Handoff: `docs/handoffs/active/controlled-mekhq-command-api-111.md`
+- Mode: Project development / cross-workspace coordination
+- Goal: move from permanent read-only/manual-only MekHQ integration to explicit MekHQ-owned command APIs where the command surface is narrow, source-backed, guarded, and verified by live reread.
+- Key decisions:
+  - MEK-RPG still must not edit raw `.cpnx`, `.cpnx.gz`, XML, or save payloads directly.
+  - Read-only live API state remains the context and verification layer.
+  - Mutation is allowed when performed by a MekHQ-owned command endpoint with stable selectors, baseline guards, prompt policy, approval behavior, command result metadata, and post-command verification.
+  - The first likely command candidate is day advancement, followed by market purchase/asset acquisition or contract accept/decline once stable selectors and prompt policy exist.
+- Relationship to issue `#110`: the expanded read-only state surface from `#110` should provide the preflight and post-command verification fields needed by future command adapters.
 
 ### Live API-first campaign loading and producer gap tracking
 
