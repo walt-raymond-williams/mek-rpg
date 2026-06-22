@@ -61,7 +61,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 ## Active Work
 
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion, with child issues `#96`-`#100`.
-- Issue `#102`: live MekHQ campaign-state API consumer epic, with child issues `#103`-`#105`.
+- Issue `#102`: live MekHQ campaign-state API consumer epic, with child issues `#103`-`#105` complete and follow-up issue `#106` opened for the real full-state metadata envelope mismatch found during issue `#104`.
 
 ## Ready For Issue Candidates
 
@@ -84,11 +84,13 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Endpoints: `GET /campaign/summary` and `GET /campaign/state?sections=...`
   - API remains disabled by default, bound to `127.0.0.1`, and read-only.
   - Sanitized fixture examples exist under `../megamek-workspace/docs/templates/`.
-  - No user-assisted running MekHQ campaign smoke test has been performed yet.
+  - User-assisted running MekHQ campaign smoke test was performed in issue `#104` against a disposable `The Learning Ropes-test.cpnx` campaign.
 - Child issues:
   1. Done issue `#105`: added live MekHQ API fixture and contract coverage.
   2. Done issue `#103`: prototyped live MekHQ API JSON adapter consumption in the read-only dashboard data adapter.
-  3. Blocked issue `#104`: manual smoke test live MekHQ API with a disposable campaign.
+  3. Done issue `#104`: manual smoke test live MekHQ API with a disposable campaign.
+- Follow-up needed:
+  - Issue `#106`: real `GET /campaign/state?...` responses returned the expected live section groups, but lacked the top-level `bridge_metadata` object that MEK-RPG's fixture contract and dashboard adapter expect for schema, read-only proof, snapshot/revision, dirty-state, warnings, and supported-section metadata.
 - Dependency order:
   1. Use issue `#105` to import or derive sanitized fixtures and update consumer contracts without requiring a running MekHQ GUI.
   2. Use issue `#103` to extend read-only dashboard/context adapter behavior to accept explicit sanitized live API JSON as live context.

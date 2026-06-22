@@ -6,7 +6,7 @@
 
 ## Next
 
-- None currently queued for autonomous project-development work after issue `#103`; issue `#104` remains user-assisted/manual.
+- Issue `#106`: reconcile the live MekHQ API full-state metadata envelope mismatch found during issue `#104`; real state endpoint responds with section data but lacks the top-level `bridge_metadata` expected by MEK-RPG's live-state contract.
 
 ## Backlog
 
@@ -24,10 +24,10 @@
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
 - Issue `#97`: live GM playtest checkpoint. Requires user presence for play/manual feedback and should be skipped by autonomous agents.
-- Issue `#104`: manual smoke test for the live MekHQ API with a disposable campaign. Requires user-assisted MekHQ GUI launch from the source branch and should stay blocked until the user is available.
 
 ## Done
 
+- Issue `#104` manually smoke-tested the live MekHQ API against a disposable `The Learning Ropes-test.cpnx` campaign loaded in MekHQ: summary and state endpoints responded from `127.0.0.1:32180`, no MekHQ save prompt or write side effect was observed by the user, existing fixture tests passed, the dashboard adapter accepted live summary JSON, and a full-state contract mismatch was found because the real state payload lacks the expected top-level `bridge_metadata` read-only/schema/snapshot envelope.
 - Issue `#103` implemented: extended `scripts/export-dashboard-data.ps1` with `-MekHqLiveApiJson` for explicit sanitized live MekHQ local-control API JSON; live summary, full state, and warning-heavy payloads now appear in the MekHQ bridge panel as `live-context` items with read-only proof, dirty-state/unsupported preservation, no write controls, no embedded/raw path following, and no durable checkpoint promotion; expanded dashboard adapter tests for all three live fixtures and raw-save rejection; documented the command and live-context boundary; full `./scripts/test-all.ps1` passed.
 - Issue `#105` implemented: copied sanitized live MekHQ local-control API summary, state, and warning-heavy fixtures from the MegaMek workspace prototype; added `scripts/test-mekhq-live-api-fixtures.ps1`; wired it into `scripts/test-all.ps1 -Quick`; documented the command; updated contracts to classify live API JSON as live context rather than durable checkpoint/import state; verification passed with the focused live API fixture suite and `./scripts/test-all.ps1 -Quick`.
 - Issue `#101` implemented: added `scripts/export-dashboard-data.ps1` as a read-only `dashboard-data/v1` JSON adapter; added fixture-backed `scripts/test-export-dashboard-data.ps1`; wired it into `scripts/test-all.ps1`; documented commands; the adapter reports active/explicit selection, source panels, health, authority labels, warnings/errors, protected-source/raw-save exclusions, validator/context-helper output, and optional sanitized MekHQ summary metadata without mutating campaign files.

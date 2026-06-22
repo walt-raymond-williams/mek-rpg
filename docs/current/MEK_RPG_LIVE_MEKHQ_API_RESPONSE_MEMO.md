@@ -156,3 +156,26 @@ MEK-RPG can then add an adapter layer that accepts live API JSON alongside the e
 
 MEK-RPG wants the live API, but as read-only live context first. Preserve the checkpoint grouping, preserve trust envelopes, include snapshot/dirty-state metadata, keep markets display-only, and do not promote live values into durable MEK-RPG campaign state without save/import confirmation or explicit user approval.
 
+## Manual Smoke Test Result
+
+Date: 2026-06-22
+
+Issue: `#104`
+
+Test campaign: disposable `The Learning Ropes-test.cpnx` loaded in MekHQ from the local MegaMek workspace.
+
+Observed endpoint behavior:
+
+- `GET /campaign/summary` returned `status: ready`, campaign `The Learning Ropes`, date `3025-04-08`, MekHQ version `0.51.01`, schema version `0.1`, `apiMode: local-read-only-live-context`, `readOnly: true`, current system `Galatea`, a live `stateRevision`/`snapshotId`, dirty state `Unknown`, one dirty-state warning, and one unsupported dirty-state entry.
+- `GET /campaign/state?sections=campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,reports,unsupported` returned live section data for campaign, finances, personnel, units, contracts, scenarios, repairs/logistics, reports, and unsupported entries. The tested campaign response included 191 personnel, 32 units, 0 contracts, 0 scenarios, 3 current report lines, 1 recent report line, and 2 unsupported entries.
+- The user observed no MekHQ save prompt, dirty-state prompt, auto-save, or other visible write/save side effect after the read-only GET requests.
+
+Consumer validation outcome:
+
+- Existing committed live API fixture tests passed.
+- The MEK-RPG dashboard adapter accepted the live summary JSON as read-only live context.
+- The live full-state JSON did not include the expected top-level `bridge_metadata` object, so the dashboard adapter could not confirm `schema_name`, `schema_version`, `api_mode`, `read_only`, `state_revision`, `snapshot_id`, or dirty-state metadata from the full-state payload. The adapter correctly rejected that state payload as missing read-only proof.
+
+Follow-up:
+
+- Track the full-state metadata mismatch in issue `#106` before treating real full-state live API responses as validated MEK-RPG dashboard/context input.
