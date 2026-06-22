@@ -28,6 +28,16 @@ Use this summary when illness, failed inoculation, alien disease, medical mainte
 6. If an Attribute reaches zero or below, use the core zero-attribute effect routing and mark any permanent effect as source-reviewed before altering the sheet.
 7. Track recovery and mission consequences in `pcs.md`, `npcs.md`, `current-state.md`, `missions.md`, and `hooks.md`.
 
+## Live Play Procedure
+
+1. Choose the disease's table purpose before choosing mechanics: travel logistics, quarantine pressure, mystery investigation, a race for treatment, local ecology, or long-term consequence.
+2. Decide prevention first. If the characters had access to military, employer, ship, spaceport, or clinic inoculation, resolve that before springing symptoms.
+3. If symptoms matter, choose or roll symptom, frequency, and severity privately. Commit only a paraphrased effect and source reference to campaign notes.
+4. Convert the illness into clocks the table can act on: next symptom interval, recovery-check cadence, treatment search, quarantine deadline, mission delay, or worsening Attribute/trait consequence.
+5. Resolve treatment with MedTech, medical kit/facility access, and the source recovery procedure. Do not invent medication bonuses or cure availability.
+6. After successful recovery, track natural recovery of disease-caused losses separately from zero-attribute or permanent consequences, which may require XP, therapy, or special treatment.
+7. If the disease affects public safety, record the social fallout: quarantine order, port denial, employer pressure, local stigma, or faction investigation.
+
 ## Practical GM Guidance
 
 - Disease is usually optional. It works best when it creates choices: find a doctor, buy time, quarantine, pursue a cure, abandon a route, or risk a mission while sick.
@@ -43,6 +53,9 @@ Use this summary when illness, failed inoculation, alien disease, medical mainte
 - Clan phenotype can affect illness recovery checks; verify exact application in the source.
 - Asymptomatic or delayed illness can be a plot hook, but record uncertainty and avoid retroactive gotchas that remove player agency.
 - A disease can affect traits such as vision, hearing, paralysis, or compulsions; update the sheet only after source lookup and table consent where appropriate.
+- Random disease tables are inspiration and procedure, not a mandate to surprise the party. Choose results when a specific story or medical clock is better than randomness.
+- Attribute and trait losses can cascade into derived stats, skill links, movement, damage capacity, and social consequences. Recalculate only the fields that matter now, then record the unresolved cleanup.
+- Fatal disease should have a visible path to care, cure, containment, or informed risk unless the table explicitly wants bleak medical stakes.
 
 ## Related Files
 
@@ -60,4 +73,4 @@ Use this summary when illness, failed inoculation, alien disease, medical mainte
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact disease tables, symptoms, frequency/severity results, medication values, and examples remain private source lookups.
+Draft play-facing summary upgraded in issue `#92`. Exact disease tables, symptoms, frequency/severity results, treatment values, medication values, and examples remain private source lookups.

@@ -28,6 +28,16 @@ Use this summary when animals, alien fauna, mounts, pack animals, guard animals,
 6. Resolve creature combat through personal combat unless vehicle-scale or tactical rules are clearly required.
 7. If venom, disease, infection, or severe injury occurs, route to `rules/equipment/drugs-and-poisons.md`, `rules/special/diseases.md`, and recovery summaries.
 
+## Live Play Procedure
+
+1. Start with behavior, not stats. Decide whether the creature wants food, territory, safety, young, obedience to a handler, escape, or curiosity.
+2. Give the players an approach window unless the creature is already in ambush: observe, back away, distract, use Animal Handling, climb, throw food, form up, or prepare weapons.
+3. If the encounter becomes mechanical, inspect the creature source entry or choose a similar entry as a template. Record only the needed play facts in campaign notes.
+4. Use creature skills for creature actions. Common checks are AniMelee for attacks, Perception for noticing PCs, Tracking for following prey, and Animal Handling for PC interaction or training.
+5. In combat, use personal combat flow. Apply the listed creature attack damage, natural armor, movement mode, injury/consciousness behavior, and venom or special attack only after source lookup.
+6. End the scene when the creature's motive changes. Most creatures flee, retreat to young, obey a handler, or disengage when badly hurt unless the source or scene says otherwise.
+7. Save consequences: bite or venom treatment clock, damaged gear, dead or captured animal, angered local ecology, trained mount progress, local warning, or new plot hook.
+
 ## Practical GM Guidance
 
 - Most animals avoid needless fights. A predator, guard animal, or territorial beast should still have a reason to risk injury.
@@ -43,6 +53,9 @@ Use this summary when animals, alien fauna, mounts, pack animals, guard animals,
 - Some creatures can be domesticated, trained, or used as mounts; the exact creature notes remain source lookup.
 - A creature table entry may be a template for similar fauna, but record any substitutions as a GM ruling.
 - Alien creatures can be a disease, venom, or ecological problem even when they are not combat threats.
+- Training a creature is downtime work, not instant obedience. Use Animal Handling in place of Training and keep the required time, XP gain, and target skill tied to the source procedure.
+- Venom and poison attacks are equipment/drug rules after the hit. Do not improvise duration, damage, or expiration values.
+- Large creatures can push the scene toward tactical scale if they threaten vehicles, BattleMechs, buildings, or mounted weapons. Hand off when tactical damage, unit facing, or vehicle-scale movement matters.
 
 ## Related Files
 
@@ -61,4 +74,4 @@ Use this summary when animals, alien fauna, mounts, pack animals, guard animals,
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact creature statistics, species descriptions, venom values, and table notes remain private source lookups.
+Draft play-facing summary upgraded in issue `#92`. Exact creature statistics, species descriptions, venom values, table notes, and creature catalog entries remain private source lookups.

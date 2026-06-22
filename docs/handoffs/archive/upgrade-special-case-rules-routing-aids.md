@@ -76,4 +76,12 @@ git status --short --branch
 
 ## Open Questions
 
-- Are these summaries intended to become authoritative enough for common play, or should they stay as routing aids until a campaign actually stresses them?
+- Resolved in issue `#92`: `rules/special/planetary-conditions.md`, `rules/special/creatures.md`, and `rules/special/diseases.md` were upgraded to `draft` play-facing summaries for common live use, while exact table/catalog values remain private source lookup.
+
+## Completion Notes
+
+- Added live-play procedures for layered environmental hazards, tactical handoff triggers, suit breach/exposure clocks, creature motive and combat flow, creature training, venom routing, disease prevention, quarantine clocks, and illness recovery.
+- Updated manifest and page-reference statuses for the three special-case summaries from `source-reviewed-routing-aid` to `draft`.
+- Added route fixtures for planetary hazards, creature venom, and disease quarantine prompts.
+- Recorded validation in `docs/current/SPECIAL_CASE_RULES_SOURCE_REVIEW_VALIDATION.md`.
+- Verification planned/completed for close-out: `./scripts/validate-rules-indexes.ps1`, `./scripts/test-route-rules-prompt.ps1`, `./scripts/test-report-rules-coverage.ps1`, and `./scripts/test-all.ps1`.

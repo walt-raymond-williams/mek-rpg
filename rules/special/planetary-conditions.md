@@ -35,6 +35,15 @@ Use this summary when terrain, weather, gravity, atmosphere, vacuum, or other en
 6. Track continuing hazards at the End Phase or scene clock: fire, heat/cold, vacuum, taint, smoke, water current, disease exposure, or structural collapse.
 7. Record persistent consequences in the active campaign save: injury, gear damage, lost supplies, delayed arrival, damaged vehicle, exposed position, or follow-up medical care.
 
+## Live Play Procedure
+
+1. Name the scene hazard in plain language: "deep snow and whiteout," "thin ice over a river," "deadly tainted atmosphere," "unstable slope," or "vacuum suit breach risk."
+2. Choose one primary pressure and one secondary pressure. Examples: movement cost plus RFL check, visibility penalty plus exposure clock, Swimming check plus current displacement, or suit integrity plus oxygen clock.
+3. Tell the players the visible risk before the roll. If a hazard can trap, knock down, injure, expose, displace, or breach gear, say so before they commit.
+4. Use the source pages for exact roll modifiers, movement multipliers, damage ratings, and duration values. Do not estimate table values from memory.
+5. If the hazard affects a BattleMech, vehicle, aerospace unit, terrain hex, building CF, tactical movement point, or tactical attack modifier, pause and use the tactical handoff.
+6. If a character survives but the consequence persists, record the ongoing clock: exposure, fatigue, contaminated gear, damaged suit, trapped-in-rubble rescue, lost route, or delayed extraction.
+
 ## Practical GM Guidance
 
 - Stack only the environmental pressures that matter to the decision. A blizzard may imply cold, wind, snow, visibility, fatigue, and navigation risk, but not every subrule needs a live roll.
@@ -50,6 +59,9 @@ Use this summary when terrain, weather, gravity, atmosphere, vacuum, or other en
 - Water can be cover, movement terrain, drowning pressure, current, diving, or vehicle terrain depending on depth and equipment.
 - Vacuum and deadly taints require sealed protection. Ordinary clothing or partial masks are not enough unless the source says they are.
 - Extreme heat/cold and magma are not just movement terrain; they can create continuous damage or fatigue/exposure clocks.
+- Fragile terrain is not always obvious. Give players Perception, scouting, sensor, local-guide, or map-reading opportunities when hidden weak ice, magma crust, unstable slopes, or geysers would otherwise feel arbitrary.
+- High/low gravity affects movement, encumbrance, fatigue, STR/RFL actions, and long-term acclimation differently. Treat long-term gravity changes as campaign-state proposals, not quick penalties scribbled onto a sheet.
+- Tainted atmosphere and vacuum are gear-integrity problems as much as environmental problems. Track whether protection is sealed, breached, supplied, powered, repaired, or abandoned.
 
 ## Related Files
 
@@ -69,4 +81,4 @@ Use this summary when terrain, weather, gravity, atmosphere, vacuum, or other en
 
 ## Status
 
-Source-reviewed routing aid for issue `#63`. Exact terrain/weather modifiers, movement costs, atmospheric values, tactical effects, and Total Warfare/Tactical Operations/Strategic Operations procedures remain source or tool lookups.
+Draft play-facing summary upgraded in issue `#92`. Exact terrain/weather modifiers, movement costs, atmospheric values, damage ratings, tactical effects, and Total Warfare/Tactical Operations/Strategic Operations procedures remain source or tool lookups.

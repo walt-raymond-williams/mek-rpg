@@ -93,6 +93,36 @@
       "expect_warnings": false
     },
     {
+      "id": "planetary-hazard",
+      "prompt": "The squad crosses deep snow in a blizzard with poor visibility",
+      "top": 8,
+      "expected_path": "rules/special/planetary-conditions.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 232-240",
+      "expect_warnings": false
+    },
+    {
+      "id": "creature-venom",
+      "prompt": "A predator ambushes the patrol and has venom",
+      "top": 8,
+      "expected_path": "rules/special/creatures.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 240-247",
+      "expect_warnings": false
+    },
+    {
+      "id": "disease-quarantine",
+      "prompt": "A new-world illness creates a quarantine clock",
+      "top": 8,
+      "expected_path": "rules/special/diseases.md",
+      "expected_status": "draft",
+      "expected_page_reference_status": "Draft",
+      "expected_source_pages_contains": "A Time of War PDF pages 247-251",
+      "expect_warnings": false
+    },
+    {
       "id": "campaign-consequence",
       "prompt": "What campaign consequences should we record after a mission?",
       "top": 5,

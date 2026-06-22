@@ -22,7 +22,7 @@ indexes:
       - vehicles.overview
       - equipment.acquire-use
       - core.action-checks
-    status: source-reviewed-routing-aid
+    status: draft
 
 rules:
   - id: core.action-checks
@@ -216,7 +216,7 @@ rules:
       - vehicles.overview
       - campaign.contacts
       - campaign.reputation
-    status: source-reviewed-routing-aid
+    status: draft
   - id: character.skills
     title: Character Skills
     subsystem: character-creation
@@ -247,7 +247,7 @@ rules:
       - vehicles.piloting
       - vehicles.gunnery
       - vehicles.mechwarrior-skills
-    status: source-reviewed-routing-aid
+    status: draft
   - id: character.xp-advancement
     title: XP Advancement
     subsystem: character-creation
@@ -593,7 +593,7 @@ rules:
       - equipment.power-misc-health
       - tactical.vehicle-actions
       - gm.switch-to-classic-battletech
-    status: source-reviewed-routing-aid
+    status: draft
   - id: special.creatures
     title: Creatures
     subsystem: special-case-rules
@@ -608,7 +608,7 @@ rules:
       - combat.healing-recovery
       - equipment.drugs-poisons
       - special.diseases
-    status: source-reviewed-routing-aid
+    status: draft
   - id: special.diseases
     title: Diseases
     subsystem: special-case-rules
@@ -622,7 +622,7 @@ rules:
       - equipment.drugs-poisons
       - campaign.injuries-recovery
       - campaign.downtime-readiness
-    status: source-reviewed-routing-aid
+    status: draft
   - id: campaign.overview
     title: Campaign Consequences Overview
     subsystem: campaign

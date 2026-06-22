@@ -151,17 +151,18 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Goal: use the now-solid routing, source-authority, validation, and deterministic-helper infrastructure to deepen remaining high-value rules coverage for live GM play.
 - Starting scope:
   - Issue `#91` promoted `campaign.advancement-rewards` from partial-draft/mapped target to a committed draft summary around GM rewards, advancement, aging, training, downtime XP, wealth/property, salary, bonuses, expenses, rank, and power.
-  - Several source-reviewed routing aids are useful but may still be thin for live play: special-case hazards, creatures, diseases, battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel.
+  - Issue `#92` upgraded the special-case hazards, creatures, and diseases files from source-reviewed routing aids to draft play-facing summaries. Several equipment routing aids may still be thin for live play: battle armor/exoskeletons, prosthetics/implants, drugs/poisons, and personal vehicles/fuel.
   - Back-matter record sheets and reference tables remain source-lookup-only and should not be summarized wholesale.
 - Child issues:
   1. Done issue `#91`: source-reviewed GM advancement and rewards coverage, with validation in `docs/current/ADVANCEMENT_REWARDS_SOURCE_REVIEW_VALIDATION.md`.
-  2. Open issue `#92`: upgrade special-case rules routing aids for live play, with handoff `docs/handoffs/active/upgrade-special-case-rules-routing-aids.md`.
+  2. Done issue `#92`: upgraded special-case rules routing aids for live play, with validation in `docs/current/SPECIAL_CASE_RULES_SOURCE_REVIEW_VALIDATION.md`.
   3. Open issue `#93`: upgrade special equipment routing aids for live play, with handoff `docs/handoffs/active/upgrade-special-equipment-routing-aids.md`.
   4. Open issue `#94`: validate next-wave rules lookup and authority behavior, with handoff `docs/handoffs/active/validate-next-wave-rules-lookup-authority.md`.
 - Dependency order:
   1. Done in issue `#91`: resolved the explicit partial-draft mapped target by adding `rules/campaign/advancement-and-rewards.md`.
-  2. Then work issue `#92` and issue `#93`; they may run independently because they touch separate rules areas.
-  3. Finish with issue `#94` after the source-review children land, so route/ruling validation reflects the final authority labels.
+  2. Done in issue `#92`: upgraded special-case environmental, creature, and disease summaries.
+  3. Then work issue `#93`; it touches separate equipment routes.
+  4. Finish with issue `#94` after the source-review children land, so route/ruling validation reflects the final authority labels.
 - Boundary: this wave permits explicit source-processing for scoped page ranges only. Do not commit protected raw source, copied tables, catalog lists, stat blocks, record-sheet text, adventure text, or long lore passages. Use paraphrase, page references, route guidance, uncertainty labels, and source-lookup-only boundaries where appropriate.
 
 ### MekHQ bridge primitives follow-up queue

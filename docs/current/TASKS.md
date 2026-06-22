@@ -3,11 +3,10 @@
 ## Now
 
 - Issue `#90` is the active coordination epic for the next rules/source-review expansion wave.
-- Issue `#92`: upgrade special-case rules routing aids for live play. Use `docs/handoffs/active/upgrade-special-case-rules-routing-aids.md`.
+- Issue `#93`: upgrade special equipment routing aids for live play. Use `docs/handoffs/active/upgrade-special-equipment-routing-aids.md`.
 
 ## Next
 
-- Issue `#93`: upgrade special equipment routing aids for live play. Use `docs/handoffs/active/upgrade-special-equipment-routing-aids.md`.
 - Issue `#94`: validate next-wave rules lookup and authority behavior after the source-review children land. Use `docs/handoffs/active/validate-next-wave-rules-lookup-authority.md`.
 - Use `docs/current/PDF_TO_RULES_PIPELINE_PLAN.md` as the controlling plan for extraction, mapping, summaries, routing, and validation work.
 
@@ -28,6 +27,7 @@
 
 ## Done
 
+- Issue `#92` implemented: upgraded special-case rules coverage for planetary conditions, creatures, and diseases from source-reviewed routing aids to draft play-facing summaries; added live procedures for layered environmental hazards, suit breach/exposure risk, creature motive and personal-combat flow, creature training, venom routing, disease prevention, quarantine clocks, and illness recovery; updated manifest/page-reference status, route fixtures, coverage reporting, validation notes, and source-map status while preserving exact environmental modifiers, creature stats, venom values, disease tables, and treatment values as private source lookup.
 - Issue `#91` implemented: added `rules/campaign/advancement-and-rewards.md` as the source-reviewed draft owner for GM rewards, end-of-session feedback, XP awards, advancement, aging, training, downtime XP, salary, bonuses, expenses, wealth/property, rank, and power; promoted `campaign.advancement-rewards` from partial-draft mapped target to draft manifest entry; updated router, page references, rules map, subsystem index, route fixtures, validation notes, and source-map status while preserving exact tables and values as private source lookup.
 - Issue `#79` implemented: added `docs/current/CORE_INTERFACE_MIGRATION_EVALUATION.md` comparing continued PowerShell scripts, TypeScript library/CLI, Python library/CLI, Go CLI/service, and local HTTP service; recommended no service migration yet and defined promotion criteria around stable JSON contracts, authority-gate behavior, fixture coverage, real play use, source authority, no hidden mutation, clean integration, shared-logic pressure, and real consumer demand.
 - Issue `#83` implemented: added `docs/current/RULING_REGRESSION_SCENARIOS.md` as manual golden ruling scenarios for simple skill checks, opposed checks, Edge, initiative, ranged attacks, damage, piloting/control, equipment lookup, ambiguous lookup, source conflict, missing routes/page references, campaign persistence, and salvage/repair/cost workflows; each scenario records expected lookup, citation, state proposal, and failure behavior.
