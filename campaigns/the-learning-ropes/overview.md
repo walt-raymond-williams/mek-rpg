@@ -4,19 +4,19 @@ Campaign name: The Learning Ropes
 
 Campaign id: the-learning-ropes
 
-Status: MekHQ-linked issue #97 blind playtest draft
+Status: MekHQ-linked live API context
 
-Canon status: MekHQ read-only live context plus MEK-RPG overlays
+Canon status: MekHQ live context plus MEK-RPG overlays
 
 Setting seed: `campaign-state/setting-basics.md`
 
 ## Table Frame
 
 - Era: Needs user decision
-- Starting date: 3025-04-08 (Confirmed from MekHQ import)
-- Starting region: Galatea (Confirmed from MekHQ live API)
-- Player unit concept: Imported MekHQ campaign force; refine for table play.
-- Viewpoint character: Michelle Moreno "Double-M" (Selected first MekHQ commander flag.)
+- Starting date: 3025-07-24 (Confirmed from MekHQ live API; live context only)
+- Starting region: Galatea (Confirmed from MekHQ live API; live context only)
+- Player unit concept: Active loaded MekHQ campaign force; refine for table play.
+- Viewpoint character: Dr Martin Ito (Selected first active and available MekHQ live API personnel record.)
 - Tone: Needs user decision
 - Canon strictness: Guided canon until decided
 - Tactical handoff: use Classic BattleTech, MegaMek, or MekHQ when hex-scale unit combat matters.
@@ -24,15 +24,15 @@ Setting seed: `campaign-state/setting-basics.md`
 ## MekHQ Link
 
 - Bridge file: `mekhq-bridge.md`
+- API gap file: `mekhq-api-gaps.md`
 - MekHQ campaign id: `ea0d334a-1582-459a-9084-b349f0baca5a`
-- Source save path: `SANITIZED: active MekHQ campaign save path supplied by user for issue #97 bootstrap`
-- Live API confirmation: `2026-06-22`, `local-read-only-live-context`; campaign `The Learning Ropes`, date `3025-04-08`, system `Galatea`, read-only `true`.
-- Last import timestamp: `2026-06-22T18:27:19.046436+00:00`
+- Live API status: read-only `true`, mode `local-read-only-live-context`
+- Live API snapshot: `live-ea0d334a-1582-459a-9084-b349f0baca5a-3025-07-24-2026-06-23T14:39:59.574217600Z`
 - Ownership boundary: MekHQ owns hard logistics, calendar, rosters, finances, contracts, scenarios, markets, repairs, and tactical ledger state. MEK-RPG owns scenes, A Time of War overlays, relationships, promises, secrets, hooks, and session memory.
 
 ## Resume Summary
 
-Begin play inside the imported MekHQ campaign day. Confirm the viewpoint character and immediate scene focus before running RPG scenes.
+Begin play inside the active loaded MekHQ campaign day. Treat the API payload as live context until a save/import checkpoint, explicit user approval, or a future controlled promotion flow makes a value durable.
 
 ## Open Setup Questions
 

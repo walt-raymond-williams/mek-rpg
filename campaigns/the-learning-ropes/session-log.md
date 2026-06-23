@@ -2,17 +2,17 @@
 
 ## Active Or Most Recent Session
 
-Date: 2026-06-22
+Date: 2026-06-23
 
-Mode: MekHQ-linked pre-session bootstrap
+Mode: MekHQ-linked live API context load
 
 Player characters:
 
-- Michelle Moreno "Double-M" (initial viewpoint; confirm before play)
+- Dr Martin Ito (initial viewpoint; confirm before play)
 
 ## Summary
 
-Generated this campaign save from a read-only MekHQ summary import. No RPG scene has been played yet.
+Generated or refreshed this campaign save from a read-only MekHQ live API state payload. No RPG scene has been played yet.
 
 ## Important Rolls
 
@@ -20,8 +20,7 @@ Generated this campaign save from a read-only MekHQ summary import. No RPG scene
 
 ## State Changes
 
-- Created campaign-local MekHQ bridge note and generated stubs for current state, viewpoint PC, NPCs, assets, missions, relationships, hooks, locations, and factions.
-- Set as the active issue #97 blind playtest campaign after the live MekHQ API confirmed loaded campaign `The Learning Ropes`, date `3025-04-08`, system `Galatea`, read-only mode.
+- Created or refreshed campaign-local MekHQ live API bridge/context notes.
 
 ## Rewards And Costs
 
@@ -30,8 +29,8 @@ Generated this campaign save from a read-only MekHQ summary import. No RPG scene
 ## Rules Gaps
 
 - A Time of War sheet details for the selected viewpoint remain TBD.
-- MekHQ-owned ledger changes must be applied in MekHQ and re-imported before becoming hard facts.
+- MekHQ-owned ledger changes must be applied in MekHQ and confirmed before becoming hard facts.
 
 ## Next Session
 
-- Continue ordinary play from the active campaign without naming issue #97 to the gameplay agent.
+- Confirm the viewpoint and choose the first scene inside the active MekHQ day.

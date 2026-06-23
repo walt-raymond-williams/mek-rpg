@@ -7,13 +7,15 @@ $campaignsRoot = Join-Path $repoRoot "campaigns"
 $stateFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-state.fixture.json"
 $warningFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-warning-heavy.fixture.json"
 $rawFixturePath = Join-Path ([System.IO.Path]::GetTempPath()) "mek-rpg-live-sync-raw-save.cpnx"
+$kiaFixturePath = Join-Path ([System.IO.Path]::GetTempPath()) "mek-rpg-live-sync-kia-viewpoint.json"
 $compiledAdapterPath = Join-Path ([System.IO.Path]::GetTempPath()) "mek-rpg-sync-mekhq-live-campaign.pyc"
 $activePointerPath = Join-Path $repoRoot "campaign-state\active-campaign.md"
 
 $campaignIds = @(
     "mekhq-live-sync-test-create",
     "mekhq-live-sync-test-refresh",
-    "mekhq-live-sync-test-existing"
+    "mekhq-live-sync-test-existing",
+    "mekhq-live-sync-test-kia"
 )
 
 function Write-Step {
@@ -100,7 +102,7 @@ function Remove-TestCampaigns {
 }
 
 function Remove-TempFiles {
-    foreach ($path in @($compiledAdapterPath, $rawFixturePath)) {
+    foreach ($path in @($compiledAdapterPath, $rawFixturePath, $kiaFixturePath)) {
         if (Test-Path -LiteralPath $path) {
             Remove-Item -LiteralPath $path -Force
         }
@@ -175,6 +177,7 @@ try {
     Assert-FileContains (Join-Path $createPath "overview.md") "MekHQ-linked live API context" "Overview records live API status."
     Assert-FileContains (Join-Path $createPath "current-state.md") "Live API data is not a durable checkpoint" "Current state preserves live-context boundary."
     Assert-FileContains (Join-Path $createPath "pcs.md") "Example Pilot" "Selected live API viewpoint is written."
+    Assert-FileContains (Join-Path $createPath "pcs.md") "MekHQ playability: available for live viewpoint scenes" "Playable viewpoint is marked available."
     Assert-FileContains (Join-Path $createPath "assets.md") "Example PXH-1 Phoenix Hawk" "Live API unit is written."
     Assert-FileContains (Join-Path $createPath "assets.md") "Availability/deployability" "Live API unit availability is surfaced."
     Assert-FileContains (Join-Path $createPath "assets.md") "Parts/shopping pressure" "Expanded logistics pressure is surfaced."
@@ -210,6 +213,24 @@ try {
     Assert-FileContains (Join-Path $refreshPath "mekhq-api-gaps.md") "campaign.location.current_system_name" "Missing location is surfaced as an API gap."
     Assert-FileContains (Join-Path $refreshPath "mekhq-api-gaps.md") "stable_offer_selectors" "Automation-blocking unsupported market selector gap is surfaced."
     Assert-FileContains (Join-Path $refreshPath "mekhq-api-gaps.md") "Blocks automation: true" "Automation-blocking gaps keep severity."
+
+    Write-Step "Checking unavailable MekHQ viewpoint guardrails."
+    $kiaState = Get-Content -LiteralPath $stateFixturePath -Raw | ConvertFrom-Json
+    $kiaState.personnel[0].status.raw_code = "KIA"
+    $kiaState.personnel[0].status.label = "Killed in Action"
+    $kiaState.personnel[0] | Add-Member -NotePropertyName "availability" -NotePropertyValue ([pscustomobject]@{
+        value = $false
+        evidence = "Confirmed from MekHQ export"
+        method_backed = $true
+        source_owner = "Person#getStatus().isActive()"
+        warnings = @()
+    }) -Force
+    $kiaState | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $kiaFixturePath -Encoding UTF8
+    Invoke-LiveSync "mekhq-live-sync-test-kia" $kiaFixturePath @() "Live API campaign create with unavailable viewpoint"
+    $kiaPath = Join-Path $campaignsRoot "mekhq-live-sync-test-kia"
+    Assert-FileContains (Join-Path $kiaPath "current-state.md") "No active live viewpoint is selected" "Current state refuses to present KIA personnel as active viewpoint."
+    Assert-FileContains (Join-Path $kiaPath "current-state.md") "do not frame them as living or available" "Current state includes explicit KIA narration guard."
+    Assert-FileContains (Join-Path $kiaPath "pcs.md") "MekHQ playability: unavailable for live viewpoint scenes" "PC sheet marks unavailable viewpoint."
 
     Write-Step "Checking active campaign pointer was not edited."
     $activeAfter = if (Test-Path -LiteralPath $activePointerPath -PathType Leaf) {

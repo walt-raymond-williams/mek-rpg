@@ -131,6 +131,45 @@ def label(raw: Any, default: str = "Unknown") -> str:
     return text(raw, default)
 
 
+def bool_value(raw: Any, default: bool | None = None) -> bool | None:
+    value = raw_value(raw, default)
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        lowered = value.strip().lower()
+        if lowered in {"true", "yes", "available", "active"}:
+            return True
+        if lowered in {"false", "no", "unavailable", "inactive"}:
+            return False
+    return default
+
+
+def person_is_playable(person: dict[str, Any]) -> bool:
+    status = label(person.get("status")).lower()
+    availability = bool_value(person.get("availability"), None)
+    return status == "active" and availability is not False
+
+
+def build_viewpoint(person: dict[str, Any], reason: str) -> dict[str, Any]:
+    status = label(person.get("status"))
+    availability = bool_value(person.get("availability"), None)
+    playable = person_is_playable(person)
+    return {
+        "kind": "mekhq_person",
+        "display_name": text(person.get("display_name")),
+        "mekhq_person_id": text(person.get("id") or person.get("mekhq_person_id")),
+        "person": person,
+        "reason": reason,
+        "source": EVIDENCE_LIVE,
+        "mekhq_status": status,
+        "mekhq_available": availability,
+        "playable": playable,
+        "play_guard": ""
+        if playable
+        else f"MekHQ marks this person as {status}; do not frame them as living or available except for flashback, memorial, or administrative record scenes.",
+    }
+
+
 def slugify(value: str, fallback: str) -> str:
     result = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
     return result or fallback
@@ -140,7 +179,7 @@ def display_path(path: Path) -> str:
     try:
         return path.relative_to(repo_root()).as_posix()
     except ValueError:
-        return str(path)
+        return "External captured live API JSON (not committed)"
 
 
 def live_evidence(raw: Any) -> str:
@@ -187,6 +226,10 @@ def choose_viewpoint(
             "mekhq_person_id": "None",
             "reason": "Embedded A Time of War PC requested; not linked to MekHQ personnel yet.",
             "source": EVIDENCE_UNKNOWN,
+            "mekhq_status": "Unlinked",
+            "mekhq_available": None,
+            "playable": True,
+            "play_guard": "",
         }
 
     personnel = state.get("personnel", [])
@@ -196,40 +239,24 @@ def choose_viewpoint(
     if person_id:
         for person in personnel:
             if text(person.get("id") or person.get("mekhq_person_id")) == person_id:
-                return {
-                    "kind": "mekhq_person",
-                    "display_name": text(person.get("display_name")),
-                    "mekhq_person_id": person_id,
-                    "person": person,
-                    "reason": "Matched requested MekHQ live API personnel id.",
-                    "source": EVIDENCE_LIVE,
-                }
+                return build_viewpoint(person, "Matched requested MekHQ live API personnel id.")
         raise ValueError(f"No MekHQ live API personnel found for id: {person_id}")
 
     if viewpoint_name:
         target = viewpoint_name.lower()
         for person in personnel:
             if text(person.get("display_name")).lower() == target:
-                return {
-                    "kind": "mekhq_person",
-                    "display_name": text(person.get("display_name")),
-                    "mekhq_person_id": text(person.get("id") or person.get("mekhq_person_id")),
-                    "person": person,
-                    "reason": "Matched requested MekHQ live API personnel display name.",
-                    "source": EVIDENCE_LIVE,
-                }
+                return build_viewpoint(person, "Matched requested MekHQ live API personnel display name.")
         raise ValueError(f"No MekHQ live API personnel found with display name: {viewpoint_name}")
 
     if personnel:
-        person = personnel[0]
-        return {
-            "kind": "mekhq_person",
-            "display_name": text(person.get("display_name")),
-            "mekhq_person_id": text(person.get("id") or person.get("mekhq_person_id")),
-            "person": person,
-            "reason": "Selected first MekHQ live API personnel record.",
-            "source": EVIDENCE_LIVE,
-        }
+        for person in personnel:
+            if person_is_playable(person):
+                return build_viewpoint(person, "Selected first active and available MekHQ live API personnel record.")
+        return build_viewpoint(
+            personnel[0],
+            "No active and available MekHQ personnel were found; retained the first personnel record for audit context only.",
+        )
 
     return {
         "kind": "embedded_pc",
@@ -237,6 +264,10 @@ def choose_viewpoint(
         "mekhq_person_id": "None",
         "reason": "No MekHQ live API personnel records were available.",
         "source": EVIDENCE_UNKNOWN,
+        "mekhq_status": "Unlinked",
+        "mekhq_available": None,
+        "playable": True,
+        "play_guard": "",
     }
 
 
@@ -331,6 +362,18 @@ Begin play inside the active loaded MekHQ campaign day. Treat the API payload as
 
 
 def render_current_state(state: dict[str, Any], viewpoint: dict[str, Any]) -> str:
+    if viewpoint.get("playable", True):
+        current_party = (
+            f"- {viewpoint['display_name']} - viewpoint character; MekHQ person id `{viewpoint['mekhq_person_id']}`; "
+            f"MekHQ status `{viewpoint.get('mekhq_status', 'Unknown')}`; availability `{text(viewpoint.get('mekhq_available'))}`; RPG details sparse/TBD."
+        )
+    else:
+        current_party = (
+            "- No active live viewpoint is selected from MekHQ personnel.\n"
+            f"- Unavailable reference: {viewpoint['display_name']} (`{viewpoint['mekhq_person_id']}`); "
+            f"MekHQ status `{viewpoint.get('mekhq_status', 'Unknown')}`; availability `{text(viewpoint.get('mekhq_available'))}`. "
+            f"{viewpoint.get('play_guard')}"
+        )
     return f"""# Current State
 
 Current date: {campaign_date(state)} ({EVIDENCE_LIVE}; MekHQ-owned; live context only)
@@ -345,7 +388,7 @@ Next prompt: Pick a scene focus: command briefing, contract decision, personnel 
 
 ## Current Party
 
-- {viewpoint["display_name"]} - viewpoint character; MekHQ person id `{viewpoint["mekhq_person_id"]}`; RPG details sparse/TBD.
+{current_party}
 
 ## Current Mission
 
@@ -360,6 +403,8 @@ See `missions.md`.
 
 def render_pcs(viewpoint: dict[str, Any]) -> str:
     person = viewpoint.get("person", {}) if isinstance(viewpoint.get("person"), dict) else {}
+    playability = "available for live viewpoint scenes" if viewpoint.get("playable", True) else "unavailable for live viewpoint scenes"
+    guard = viewpoint.get("play_guard") or "None."
     return f"""# Player Characters
 
 ## Initial Viewpoint
@@ -371,6 +416,8 @@ def render_pcs(viewpoint: dict[str, Any]) -> str:
 - MekHQ person id: `{viewpoint["mekhq_person_id"]}`
 - MekHQ role/rank: {label(person.get("primary_role") or person.get("role"))} / {label(person.get("rank"))} ({viewpoint["source"]})
 - MekHQ status: {label(person.get("status"))}
+- MekHQ playability: {playability}
+- Play guard: {guard}
 - Linked unit id: `{text(person.get("unit_id"))}`
 - Current condition: fatigue `{text(person.get("fatigue"))}`, hits `{text(person.get("hits"))}`; A Time of War condition TBD.
 - Key skills or approaches: TBD
