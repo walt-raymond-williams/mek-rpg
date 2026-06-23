@@ -13,8 +13,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Campaign-state lifecycle automation has a first validator for active campaign selection, template structure, and campaign save completeness.
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save; this is now an offline, legacy, fixture, or debugging fallback when the live API is unavailable or explicitly requested.
 - Active loaded MekHQ campaign setup should use the read-only live API first. Issue `#107` added the MEK-RPG campaign-load adapter, issue `#108` audited the roadmap and save-parser fallback boundary, issue `#109` completed the handoff-ready producer-facing API change request package, and issue `#110` consumed the expanded local MekHQ live API shape in MEK-RPG fixtures, adapters, dashboard summaries, and tests.
-- The MekHQ integration posture is moving beyond permanent read-only/manual-only operation. Issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` define controlled MekHQ-owned command integration: explicit commands, stable selectors, guard fields, approval where needed, and live reread verification, while still forbidding raw save/XML mutation and hidden writes.
-- MekHQ-linked campaign saves now use `pending-mekhq-actions.md` for RPG-side hard ledger intents that need manual MekHQ UI application and saved re-import confirmation.
+- The MekHQ integration posture is moving beyond permanent read-only/manual-only operation. Issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` define controlled MekHQ-owned command integration: explicit commands, stable selectors, guard fields, approval where needed, and live reread verification, while still forbidding raw save/XML mutation and hidden writes. Issue `#112` tracks updating play guidance now that the local MegaMek/MekHQ workspace exposes guarded contract acceptance.
+- MekHQ-linked campaign saves still use `pending-mekhq-actions.md` for unresolved hard-ledger intents, but the role is shifting from manual-only UI checklists toward command proposals, command results, and verification records whenever a MekHQ-owned command endpoint exists.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
 - Manual validation/playtest checkpoints recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions. The current checkpoint wave is tracked under epic issue `#95`.
@@ -66,7 +66,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Ready For Issue Candidates
 
-- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption complete as `#110`; controlled MekHQ command API planning is complete as `#111`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
+- None currently unissued for the immediate checkpoint wave. Manual validation and playtest work is issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption complete as `#110`; controlled MekHQ command API planning is complete as `#111`; command-write guidance follow-up is open as `#112`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
 
 ## Issue Tracks
@@ -75,6 +75,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 - Status: Complete
 - Issue: `#111`
+- Follow-up: `#112`
 - Strategy memo: `docs/current/MEKHQ_COMMAND_API_STRATEGY.md`
 - Handoff: `docs/handoffs/archive/controlled-mekhq-command-api-111.md`
 - Mode: Project development / cross-workspace coordination
@@ -84,7 +85,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - Read-only live API state remains the context and verification layer.
   - Mutation is allowed when performed by a MekHQ-owned command endpoint with stable selectors, baseline guards, prompt policy, approval behavior, command result metadata, and post-command verification.
   - The first selected command candidate is day advancement: `GET /campaign/commands` reports `advanceDayOnce` available and the local legacy prototype is `POST /advance-day`.
-  - Later candidates remain market purchase/asset acquisition or contract accept/decline once stable selectors and prompt policy exist.
+  - Latest producer evidence from the MegaMek workspace also reports `POST /campaign/command/contracts/accept` in local source commit `0451eb53d4`, with readiness test coverage in `51dbfbe645`; MEK-RPG issue `#112` owns consumer-side guidance and fixture updates.
+  - Later candidates remain market purchase/asset acquisition, personnel changes, repair/procurement, and other hard-ledger commands once stable selectors and prompt policy exist.
 - Relationship to issue `#110`: the expanded read-only state surface now provides better preflight and post-command verification context for future command adapters.
 
 ### Live API-first campaign loading and producer gap tracking

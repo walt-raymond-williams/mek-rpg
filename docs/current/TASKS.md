@@ -6,7 +6,7 @@
 
 ## Next
 
-- None selected after issue `#97`; create or select follow-up issues from the playtest findings.
+- Issue `#112`: update MEK-RPG guidance and tooling so supported MekHQ hard-ledger actions use guarded command APIs, starting with `contracts.accept` for contract selection.
 
 ## Backlog
 
@@ -26,6 +26,7 @@
 
 ## Done
 
+- Follow-up created: issue `#112` captures the stale read-only/manual-only guidance discovered during the `the-learning-ropes` bridge playtest and records the current MegaMek-side evidence for `POST /campaign/command/contracts/accept`.
 - Issue `#110` completed: refreshed MEK-RPG live MekHQ API fixtures from the expanded local producer shape, added command-readiness fixture coverage, expanded fixture/adapter/dashboard tests for finance, personnel, unit, contract, scenario, logistics, market, report, and command-readiness fields, surfaced richer read-only context through `scripts/sync-mekhq-live-campaign.py` and `scripts/export-dashboard-data.ps1`, preserved live-context-not-durable and no-writeback boundaries, and archived the handoff.
 - Issue `#111` completed: selected `advanceDayOnce` / `POST /advance-day` as the first controlled MekHQ command candidate, documented `GET /campaign/commands` as the read-only readiness layer, defined current request guards/statuses/limitations, named the live reread verification contract and issue `#110` fields needed for post-command confirmation, updated old read-only/manual-only wording, and archived the handoff.
 - Strategy update started: created issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` to reframe future MekHQ integration around explicit MekHQ-owned command APIs instead of permanent read-only/manual-only operation.
