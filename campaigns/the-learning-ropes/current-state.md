@@ -1,6 +1,6 @@
 # Current State
 
-Current date: 3025-07-24 (Confirmed from MekHQ live API; MekHQ-owned; live context only)
+Current date: 3025-04-08 (Confirmed from MekHQ live API; MekHQ-owned; live context only)
 
 Current location: Galatea (Confirmed from MekHQ live API; MekHQ-owned; live context only)
 
@@ -12,7 +12,7 @@ Next prompt: Pick a scene focus: command briefing, contract decision, personnel 
 
 ## Current Party
 
-- Dr Martin Ito - viewpoint character; MekHQ person id `085a1bb4-dba8-47ed-8bfb-c0b5fc625db1`; MekHQ status `Active`; availability `true`; RPG details sparse/TBD.
+- Michelle "Double-M" Moreno - viewpoint character; MekHQ person id `fd15b53b-14fa-4c36-ae9a-111c3ccd27ec`; MekHQ status `Active`; availability `true`; RPG details sparse/TBD.
 
 ## Current Mission
 
@@ -20,5 +20,5 @@ See `missions.md`.
 
 ## State Since Last Session
 
-- Campaign context refreshed from MekHQ live API at `2026-06-23T14:40:01.151909+00:00`.
+- Campaign context refreshed from MekHQ live API at `2026-06-23T15:17:19.944925+00:00`.
 - Live API data is not a durable checkpoint by itself; do not advance the campaign date here unless MekHQ confirms it or the user explicitly approves recording it.

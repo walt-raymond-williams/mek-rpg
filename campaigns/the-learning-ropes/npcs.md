@@ -4,12 +4,12 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 
 ## Live API Personnel
 
-### Michelle "Double-M" Moreno
+### Dr Martin Ito
 
-- MekHQ person id: `fd15b53b-14fa-4c36-ae9a-111c3ccd27ec`
-- Role/rank/status: MekWarrior / Captain / Killed in Action (Confirmed from MekHQ live API)
+- MekHQ person id: `085a1bb4-dba8-47ed-8bfb-c0b5fc625db1`
+- Role/rank/status: Admin/Command / Major / Active (Confirmed from MekHQ live API)
 - Linked unit id: `Unknown`
-- Fatigue/hits: 7 / 0
+- Fatigue/hits: 0 / 0
 - Current attitude toward PCs: Sparse/TBD
 - Wants: Sparse/TBD
 - Knows: Sparse/TBD
@@ -45,7 +45,7 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 - MekHQ person id: `f70d34cf-23ad-4f53-824a-6de935cc6ead`
 - Role/rank/status: MekWarrior / Recruit / Active (Confirmed from MekHQ live API)
 - Linked unit id: `b7ffea69-ceaf-4155-8e17-d2e0702352e5`
-- Fatigue/hits: 1 / 0
+- Fatigue/hits: 0 / 0
 - Current attitude toward PCs: Sparse/TBD
 - Wants: Sparse/TBD
 - Knows: Sparse/TBD
@@ -57,7 +57,7 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 - MekHQ person id: `6aeb2eee-b03c-4419-8a92-3dc2d4b6a879`
 - Role/rank/status: MekWarrior / Recruit / Active (Confirmed from MekHQ live API)
 - Linked unit id: `66763236-66f0-451e-a273-6cb740b76a5a`
-- Fatigue/hits: 3 / 0
+- Fatigue/hits: 0 / 0
 - Current attitude toward PCs: Sparse/TBD
 - Wants: Sparse/TBD
 - Knows: Sparse/TBD
@@ -79,9 +79,9 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 ### Ryuzaburo Ine
 
 - MekHQ person id: `c8b9a5a1-53ff-4dbe-b779-ca264aaef0fa`
-- Role/rank/status: MekWarrior / Recruit / Killed in Action (Confirmed from MekHQ live API)
-- Linked unit id: `Unknown`
-- Fatigue/hits: 7 / 0
+- Role/rank/status: MekWarrior / Recruit / Active (Confirmed from MekHQ live API)
+- Linked unit id: `9899788b-fe00-4595-912b-fe46526a7003`
+- Fatigue/hits: 0 / 0
 - Current attitude toward PCs: Sparse/TBD
 - Wants: Sparse/TBD
 - Knows: Sparse/TBD
@@ -141,7 +141,7 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 - MekHQ person id: `61341db6-bae6-448c-8910-63dca277f515`
 - Role/rank/status: MekWarrior / Recruit / Active (Confirmed from MekHQ live API)
 - Linked unit id: `21d83f0a-a3c9-435c-a6eb-d6043ddde12f`
-- Fatigue/hits: 4 / 0
+- Fatigue/hits: 0 / 0
 - Current attitude toward PCs: Sparse/TBD
 - Wants: Sparse/TBD
 - Knows: Sparse/TBD
@@ -244,4 +244,4 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 - Secrets or uncertainty: Sparse/TBD; MEK-RPG overlay only
 - Current status: Live MekHQ roster context
 
-- Additional live API personnel not expanded here: 156. See `mekhq-bridge.md`.
+- Additional live API personnel not expanded here: 85. See `mekhq-bridge.md`.

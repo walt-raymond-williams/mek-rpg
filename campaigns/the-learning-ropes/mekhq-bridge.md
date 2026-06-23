@@ -6,13 +6,13 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - MEK-RPG campaign id: `the-learning-ropes`
 - Live API state JSON: `External captured live API JSON (not committed)`
-- Adapter timestamp: `2026-06-23T14:40:01.156912+00:00`
+- Adapter timestamp: `2026-06-23T15:17:19.944925+00:00`
 - Schema: `mekhq-live-campaign-state` version `0.1`
 - API mode: `local-read-only-live-context`
 - Read-only proof: `true`
 - MekHQ version: `0.51.01`
-- State revision: `live-ea0d334a-1582-459a-9084-b349f0baca5a-3025-07-24-2026-06-23T14:39:59.574217600Z`
-- Snapshot id: `live-ea0d334a-1582-459a-9084-b349f0baca5a-3025-07-24-2026-06-23T14:39:59.574217600Z`
+- State revision: `live-ea0d334a-1582-459a-9084-b349f0baca5a-3025-04-08-2026-06-23T15:17:19.278119Z`
+- Snapshot id: `live-ea0d334a-1582-459a-9084-b349f0baca5a-3025-04-08-2026-06-23T15:17:19.278119Z`
 - Dirty state: Unknown
 
 ## Ownership Boundary
@@ -26,19 +26,19 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - MekHQ campaign id: `ea0d334a-1582-459a-9084-b349f0baca5a`
 - Name: The Learning Ropes
-- Date: 3025-07-24
+- Date: 3025-04-08
 - Location: Galatea
-- Funds: 95,669,054 C-Bill
-- Viewpoint: Dr Martin Ito (`085a1bb4-dba8-47ed-8bfb-c0b5fc625db1`), Selected first active and available MekHQ live API personnel record.
+- Funds: 90,938,250 C-Bill
+- Viewpoint: Michelle "Double-M" Moreno (`fd15b53b-14fa-4c36-ae9a-111c3ccd27ec`), Selected first active and available MekHQ live API personnel record.
 
 ## Counts
 
-- Personnel: 177
-- Units: 32
-- Contracts: 1
-- Scenarios: 2
-- Market unit/personnel/contract offers: 48 / 0 / 0
-- Current report lines: 2
+- Personnel: 106
+- Units: 25
+- Contracts: 0
+- Scenarios: 0
+- Market unit/personnel/contract offers: 37 / 30 / 1
+- Current report lines: 3
 
 ## Cross-References
 
@@ -69,6 +69,7 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - `21d83f0a-a3c9-435c-a6eb-d6043ddde12f` -> `griffin-grf-1n`: Griffin GRF-1N
 - `6fd0fcca-cf52-4a7b-b459-ef54ecd00d62` -> `locust-lct-1e`: Locust LCT-1E
+- `9899788b-fe00-4595-912b-fe46526a7003` -> `centurion-cn9-a`: Centurion CN9-A
 - `b7ffea69-ceaf-4155-8e17-d2e0702352e5` -> `flea-fle-4`: Flea FLE-4
 - `4653009b-0108-465c-bad3-cc19c3cb742c` -> `crab-crb-20`: Crab CRB-20
 - `66763236-66f0-451e-a273-6cb740b76a5a` -> `trebuchet-tbt-5n`: Trebuchet TBT-5N
@@ -84,13 +85,12 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 - `43cba584-04f9-4cad-8315-9369b49b3292` -> `grasshopper-ghr-5h`: Grasshopper GHR-5H
 - `23744290-3886-4ffd-916e-23c34e9c1abf` -> `stalker-stk-4p`: Stalker STK-4P
 - `eb6d60a7-d9ac-4f08-b1fc-af447f1c6ca8` -> `stalker-stk-4p-2`: Stalker STK-4P #2
+- `fc819fbb-9314-49ae-9fcf-0474af6f7a72` -> `crusader-crd-3r`: Crusader CRD-3R
 - `3ee49cdb-890c-4773-b410-4271b929bcda` -> `mash-truck-small`: MASH Truck (Small)
-- `88e2dc23-d38e-4c3d-a5d8-c3660ac8d941` -> `sherpa-armored-truck-mobile-canteen`: Sherpa Armored Truck (Mobile Canteen)
-- `2195feb9-a327-474d-9b8d-b9b5d823899c` -> `battlemech-recovery-vehicle`: BattleMech Recovery Vehicle
 
 ### Contracts
 
-- `1` -> `3025-fwl-castrovia-objective-raid`: 3025 - FWL - Castrovia Objective Raid
+- None reported by the live API.
 
 ## Warnings
 

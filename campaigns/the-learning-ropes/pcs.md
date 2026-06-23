@@ -2,16 +2,16 @@
 
 ## Initial Viewpoint
 
-### Dr Martin Ito
+### Michelle "Double-M" Moreno
 
 - Player: TBD
 - Concept: Initial MekHQ-linked viewpoint; refine as commander, pilot, tech chief, negotiator, or embedded A Time of War PC.
-- MekHQ person id: `085a1bb4-dba8-47ed-8bfb-c0b5fc625db1`
-- MekHQ role/rank: Admin/Command / Major (Confirmed from MekHQ live API)
+- MekHQ person id: `fd15b53b-14fa-4c36-ae9a-111c3ccd27ec`
+- MekHQ role/rank: MekWarrior / Captain (Confirmed from MekHQ live API)
 - MekHQ status: Active
 - MekHQ playability: available for live viewpoint scenes
 - Play guard: None.
-- Linked unit id: `Unknown`
+- Linked unit id: `4653009b-0108-465c-bad3-cc19c3cb742c`
 - Current condition: fatigue `0`, hits `0`; A Time of War condition TBD.
 - Key skills or approaches: TBD
 - Edge or limited resources: TBD

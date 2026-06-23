@@ -2,7 +2,7 @@
 
 This file records missing, unsupported, or automation-blocking live API fields found during the latest campaign context refresh. These are producer-side change request inputs, not permission to parse the active save as a workaround.
 
-Last checked: 2026-06-23T14:40:01.157303+00:00
+Last checked: 2026-06-23T15:17:19.944925+00:00
 
 ## Gaps
 

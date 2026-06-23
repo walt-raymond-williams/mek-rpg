@@ -8,7 +8,7 @@ Mode: MekHQ-linked live API context load
 
 Player characters:
 
-- Dr Martin Ito (initial viewpoint; confirm before play)
+- Michelle "Double-M" Moreno (initial viewpoint; confirm before play)
 
 ## Summary
 
