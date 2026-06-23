@@ -812,7 +812,9 @@ Generated or refreshed this campaign save from a read-only MekHQ live API state 
 def render_pending_mekhq_actions() -> str:
     return """# Pending MekHQ Actions
 
-Use this file for hard ledger intents created during MekHQ-linked RPG play. A pending item is not final until the user applies it in MekHQ, saves or confirms the MekHQ campaign, and MEK-RPG records the confirmed result.
+Use this file for hard ledger intents created during MekHQ-linked RPG play. For supported MekHQ command endpoints, record the command proposal, dry-run, execution, and verification here. For unsupported or unavailable endpoints, record the manual MekHQ fallback checklist here.
+
+A pending item is not final until MekHQ applies it through a supported command or manual UI action and MEK-RPG verifies the result by live reread or saved import.
 
 See `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` for the full schema and lifecycle.
 

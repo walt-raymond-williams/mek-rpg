@@ -20,6 +20,11 @@ Confirmed by MegaMek/MekHQ workspace memo:
   - `911a338788` (`Deepen live campaign logistics market reports`)
   - `e19740b110` (`Expose command readiness endpoint`)
   - `4429d99ea2` (`Add guarded status note command`)
+  - `32366b64a0` (`Add guarded personnel status command`)
+  - `ef6ef99ef9` (`Add guarded personnel fatigue command`)
+  - `78890ba458` (`Add guarded unit market purchase command`)
+  - `0451eb53d4` (`Add guarded contract accept command`)
+  - `51dbfbe645` (`Add local control API readiness tests`)
 - MegaMek workspace documentation/fixture commit: `41aef57`.
 - MegaMek workspace issues `#39`, `#40`, `#41`, `#42`, and epic `#38` are closed.
 
@@ -44,7 +49,7 @@ The read-only live state API remains:
 - source-owned inside the running MekHQ GUI app
 - a freshness layer over loaded campaigns, not a save-file parser or writeback path
 
-The same local control service also now exposes `GET /campaign/commands` as a read-only command-readiness endpoint. That endpoint does not mutate the loaded campaign; it tells MEK-RPG which commands are available or blocked and which selectors are safe enough to consider for future command envelopes.
+The same local control service also now exposes `GET /campaign/commands` as a read-only command-readiness endpoint. That endpoint does not mutate the loaded campaign; it tells MEK-RPG which commands are available or blocked and which selectors are safe enough for guarded command envelopes. Mutating command endpoints are separate MekHQ-owned `POST` calls and must still use baseline guards, prompt policy, dry-run/preflight where available, approval policy, and post-command live reread verification.
 
 The source commits are currently local because pushing to upstream `MegaMek/mekhq` is blocked by repository permissions. MEK-RPG can still consume the expanded shape from the local source-built MekHQ during validation. A writable fork or upstream collaboration path is needed before treating the source branch as shareable outside the local workspace.
 
@@ -62,27 +67,29 @@ The producer memo reports these completed additions:
 
 ## Command Readiness Status
 
-The producer memo reports that `GET /campaign/commands` is available locally. It reports:
+The producer memo reports that `GET /campaign/commands` is available locally. Earlier MEK-RPG fixtures captured only the first rows; current local source can report:
 
 - `advanceDayOnce` as available through the legacy `POST /advance-day` prototype.
 - `campaign.status_note` as available through the guarded `POST /campaign/command/status-note` endpoint with dry-run support.
+- `personnel.status` as available when target personnel guards satisfy the command rules.
+- `personnel.fatigue` as available when fatigue rules and target guards satisfy the command rules.
+- `markets.unit_offers.purchase` as available when the producer exposes a unique live-session unit-market selector for the current state.
+- `contracts.accept` as available when at least one current contract-market offer has valid selector and guard facts, through `POST /campaign/command/contracts/accept`.
 - campaign, person, unit, applicant, and contract ids as candidate selectors where source-backed ids exist.
-- unit-market purchase as blocked with `stable_offer_selector_missing`.
-- funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save as blocked with machine-readable reason codes.
+- funds adjustment, broad medical/prosthetic treatment, personnel hire/fire, repair/procurement, standalone save, and command families without safe selectors as blocked with machine-readable reason codes.
 
 `POST /advance-day` is the first MEK-RPG command candidate for issue `#111`, but MEK-RPG should not call it against a real campaign without explicit user approval, current live baseline checks, and post-command live reread verification.
 
 ## Still Unsupported Or Blocked
 
-- market purchase
+- market purchase without a safe command-readiness selector
 - personnel hire/fire
-- contract accept/decline
+- contract decline
 - market refresh or negotiation
 - repair execution
 - repair assignment
 - shopping-list purchase or priority mutation
 - standalone save/writeback
-- stable market offer selectors
 - stable repair work ids
 
 MEK-RPG consumers must keep these as display-only or unsupported context. Do not create executable MekHQ commands from these fields unless a later issue explicitly defines a safe command envelope and the readiness endpoint reports the command as available. Pending manual-intent items remain allowed when play needs a human-applied MekHQ action.

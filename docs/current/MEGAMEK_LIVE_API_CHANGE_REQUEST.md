@@ -151,17 +151,17 @@ MEK-RPG can avoid active-save parsing if `GET /campaign/state` provides these ar
 
 ## Non-Goals
 
-For the read-only state API, this request still excludes mutation surfaces:
+For the read-only state API, this request still excludes mutation surfaces. Supported mutation belongs in separate guarded command endpoints discovered through `GET /campaign/commands`, not in `GET /campaign/state`:
 
 - No market purchase API.
 - No personnel hiring/firing API.
-- No contract accept/decline API.
+- No contract accept/decline API in the state endpoint.
 - No repair execution or assignment API.
 - No tactical result application API.
 - No save/writeback command in the state API.
 - No direct XML/save mutation.
 
-Issue `#111` separately defines MEK-RPG's controlled command posture for explicit MekHQ-owned command endpoints. The first command candidate is day advancement through the local `POST /advance-day` prototype plus post-command live reread verification.
+Issue `#111` separately defines MEK-RPG's controlled command posture for explicit MekHQ-owned command endpoints. Issue `#112` updates MEK-RPG guidance for locally implemented `contracts.accept` through `POST /campaign/command/contracts/accept` plus post-command live reread verification.
 
 ## Suggested Producer-Side Tickets
 

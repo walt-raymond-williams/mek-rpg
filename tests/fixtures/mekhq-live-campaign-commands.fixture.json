@@ -69,7 +69,32 @@
         "display_name": "Sanitized Security Duty",
         "status": "PROPOSED",
         "employer": "Sanitized Employer",
+        "enemy_code": "OPFOR",
+        "enemy_name": "Sanitized Opposition",
+        "contract_type": "SECURITY_DUTY",
         "start_date": "3025-05-01",
+        "end_date": "3025-08-01",
+        "system_id": "sanitized-system",
+        "system_name": "Sanitized System",
+        "length_months": 3,
+        "advance_amount": "100000",
+        "transport_amount": "0",
+        "monthly_payout": "250000",
+        "total_amount": "850000",
+        "estimated_total_profit": "250000",
+        "transport_comp": 50,
+        "salvage_pct": 50,
+        "straight_support": 50,
+        "battle_loss_comp": 50,
+        "command_rights": "LIAISON",
+        "supported_prompt_choices": {
+          "confirmationPolicy": "accept_known_contract_challenge",
+          "informationalPromptPolicy": "acknowledge_known_informational",
+          "travelPolicy": "decline_travel_automation",
+          "mothballPolicy": "decline_mothballing",
+          "rentalPolicy": "decline_all_rentals",
+          "unknownPromptPolicy": "refuse"
+        },
         "source_owner": "Campaign#getContractMarket().getContracts(); Mission#getId()"
       }
     ],
@@ -128,6 +153,40 @@
       "save_after_success_supported": true,
       "prompt_policy": "refuse_if_prompt",
       "requires_command_envelope": true
+    },
+    {
+      "command": "contracts.accept",
+      "endpoint": "/campaign/command/contracts/accept",
+      "method": "POST",
+      "status": "available",
+      "reason_code": "implemented",
+      "reason": "Guarded contract accept command can accept one current contract-market offer through MekHQ-owned contract acceptance logic when guard facts and explicit prompt choices match.",
+      "safe_selectors_available": true,
+      "required_selectors": [
+        "campaign.id",
+        "campaign.date",
+        "state_revision",
+        "contract_id",
+        "expected_name",
+        "expected_employer",
+        "expected_dates",
+        "expected_location",
+        "expected_payment_terms",
+        "expected_campaign_balance",
+        "expected_market_offer_count",
+        "expected_active_mission_count"
+      ],
+      "dry_run_supported": true,
+      "save_after_success_supported": true,
+      "prompt_policy": "explicit_known_choices",
+      "requires_command_envelope": true,
+      "verification_fields": [
+        "market_offer_removed",
+        "new_mission_id",
+        "active_mission_count",
+        "balance_delta",
+        "report_count_delta"
+      ]
     },
     {
       "command": "markets.unit_offers.purchase",

@@ -2,22 +2,31 @@
 
 Date: 2026-06-22
 
-Status: issue `#111` command-side planning baseline.
+Status: issue `#112` command-write guidance update.
 
 Purpose: update MEK-RPG's MekHQ integration posture from permanent read-only/manual UI caution to controlled MekHQ-owned command integration.
 
 ## Current Producer Evidence
 
-`Confirmed from local MegaMek/MekHQ workspace`: the local source branch `codex/mekhq-advance-day-control-api` now exposes command readiness and one guarded command candidate:
+`Confirmed from local MegaMek/MekHQ workspace`: the local source branch `codex/mekhq-advance-day-control-api` now exposes command readiness and several guarded command candidates:
 
 - `GET /campaign/commands`: read-only readiness and selector discovery endpoint.
 - `POST /advance-day`: legacy guarded prototype for `advanceDayOnce`.
 - `POST /campaign/command/status-note`: guarded status-note/report command with dry-run support.
+- `POST /campaign/command/personnel/status`: guarded personnel status command.
+- `POST /campaign/command/personnel/fatigue`: guarded personnel fatigue command.
+- `POST /campaign/command/markets/unit-offers/purchase`: guarded unit-market purchase command when readiness exposes a unique live-session selector.
+- `POST /campaign/command/contracts/accept`: guarded contract-market accept command when readiness exposes an acceptable contract offer.
 - Source commit `e19740b110`: adds `GET /campaign/commands`.
 - Source commit `4429d99ea2`: adds `POST /campaign/command/status-note`.
+- Source commit `32366b64a0`: adds `POST /campaign/command/personnel/status`.
+- Source commit `ef6ef99ef9`: adds `POST /campaign/command/personnel/fatigue`.
+- Source commit `78890ba458`: adds `POST /campaign/command/markets/unit-offers/purchase`.
+- Source commit `0451eb53d4`: adds `POST /campaign/command/contracts/accept`.
+- Source commit `51dbfbe645`: adds local control API readiness and failure-isolation tests.
 - Earlier source commits `9046a8075e` and `17207baa90`: added and hardened the local advance-day command prototype.
 
-`GET /campaign/commands` reports `advanceDayOnce` and `campaign.status_note` as currently available command candidates. It reports funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save commands as blocked with machine-readable reason codes. Unit-market purchase remains blocked because unit-market offers lack a source-confirmed stable offer selector.
+`GET /campaign/commands` reports command availability from the loaded campaign. It can report `advanceDayOnce`, `campaign.status_note`, `personnel.status`, `personnel.fatigue`, `markets.unit_offers.purchase`, and `contracts.accept` as available when their selectors and guard facts are safe for the current state. It still reports unsupported or unsafe command families such as funds adjustment, broad medical/prosthetic treatment, personnel hire/fire, repair/procurement execution, and standalone save/writeback as blocked with machine-readable reason codes.
 
 This issue does not authorize MEK-RPG to call a real campaign command automatically. Real command execution still requires the user to run source-built MekHQ with the local control API enabled, confirm the loaded campaign baseline, and approve any campaign-significant mutation.
 
@@ -180,9 +189,51 @@ Useful acceptance criteria:
 - execute purchases through MekHQ-owned logic
 - post-command reread confirms funds, market removal, asset addition, cargo/transport implications, and reports
 
-### Contract Accept/Decline
+### Contract Accept
 
-This remains a strong candidate, but it can be prompt-heavy. Use `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md` as the starting point and revise it under this command strategy.
+This is now implemented locally for accepting one current contract-market offer when readiness reports `contracts.accept` as available.
+
+Current local endpoint:
+
+```http
+POST /campaign/command/contracts/accept
+```
+
+Current command name:
+
+```text
+contracts.accept
+```
+
+Current request expectations:
+
+- `GET /campaign/commands` must expose `contracts.accept` as available and include the selected `selectors.contract_market_offers[]` entry.
+- Use the offer's source contract id, the readiness `state_revision`, current campaign id/name/date, and guard facts copied from MekHQ readiness/state output.
+- Run the endpoint first with `dryRun=true`.
+- Use `promptPolicy=explicit_known_choices` and explicit acceptance options for known prompt branches.
+- Use a fresh idempotency key for the final apply request.
+- Keep `saveAfterSuccess=false` unless the user explicitly requests a MekHQ save.
+
+Current response behavior:
+
+- Dry-run reports the selected offer and intended side effects without mutation.
+- Apply mode credits advance and transport payments through MekHQ's finance path, inserts the mission, calls MekHQ contract acceptance logic, removes the offer from the market, can append a `GENERAL` MEK-RPG audit report, and returns the new mission id.
+- The command refuses stale campaign/date/state guards, mismatched offer guard facts, unsupported or unknown prompt choices, visible dialogs at start, invalid JSON/envelope fields, or ambiguous target state.
+
+MEK-RPG-side contract-selection flow:
+
+1. Read `GET /campaign/state` for current live context and verification fields.
+2. Read `GET /campaign/commands` and confirm `contracts.accept` is available.
+3. Select the intended offer by `contract_id` from readiness selectors, not by display name alone.
+4. Build the guarded request from readiness/state facts and run `dryRun=true`.
+5. Present the dry-run target and side effects when the action is campaign-significant.
+6. Execute with the same guard facts after user approval or documented automation policy.
+7. Re-read live state and verify the offer is gone or consumed, the active mission/contract exists, expected finance/report effects appear where exposed, and campaign identity still matches.
+8. Update `pending-mekhq-actions.md`, `missions.md`, `assets.md`, `hooks.md`, and `session-log.md` from the verified MekHQ result.
+
+Manual MekHQ UI acceptance remains the fallback only when `contracts.accept` is unavailable, blocked, refused for unsupported prompt policy, or cannot be verified from live state/saved import.
+
+Declining a contract remains a separate future command need; do not simulate a decline by editing MEK-RPG Markdown or raw MekHQ saves.
 
 ### Repair Assignment Or Execution
 
@@ -212,7 +263,7 @@ When MEK-RPG needs a new mutation capability, create a producer request that ask
 - live state fields sufficient to verify success after reread
 - disposable validation fixtures or smoke commands
 
-No new producer request is needed for the first command candidate because local producer work already exposes `POST /advance-day` and `GET /campaign/commands`. MEK-RPG should instead track consumer-side readiness, fixture capture, and live disposable-campaign smoke validation as follow-up work.
+No new producer request is needed for `advanceDayOnce`, `campaign.status_note`, `personnel.status`, `personnel.fatigue`, `markets.unit_offers.purchase`, or `contracts.accept` because local producer work already exposes those command rows/endpoints when their current selectors are safe. MEK-RPG should instead track consumer-side readiness, fixture capture, live disposable-campaign smoke validation, and play guidance for supported commands. Create producer requests only for still-missing command families or for refusal reasons encountered during real play.
 
 ## Non-Goals
 
@@ -224,6 +275,6 @@ No new producer request is needed for the first command candidate because local 
 
 ## Planning Impact
 
-Issue `#111` owns the first planning pass for this strategy. It should update older docs that describe manual UI or read-only-only behavior as the permanent workflow.
+Issue `#111` owns the first planning pass for this strategy. Issue `#112` updates older docs that describe manual UI or read-only-only behavior as the permanent workflow now that `contracts.accept` is implemented locally.
 
 Issue `#110` remains the expanded read-only state consumption pass. It should preserve the live state surface that command adapters will use for preflight and post-command verification.

@@ -57,18 +57,18 @@ For `GET /campaign/state`, the first useful sections are:
 
 ## Fields To Keep Out Of V1 State Payloads
 
-Please omit write/action surfaces from the read-only state API payloads:
+Please omit write/action surfaces from the read-only state API payloads. Supported mutation belongs in explicit command endpoints discovered through `GET /campaign/commands`, not in state payload rows:
 
 - market purchases
 - personnel hiring
-- contract accept/decline
+- contract accept/decline in state payloads
 - repair execution or assignment
 - tactical result application
 - save/writeback commands
 
-Markets can appear in V1 only as display-only opportunity context. They should not imply stable selectors or automation readiness unless MegaMek can provide source-confirmed stable ids, guard fields, prompt policy, and confirmation semantics.
+Markets can appear in V1 state only as display-only opportunity context. They should not imply stable selectors or automation readiness unless command readiness provides source-confirmed stable ids or live-session selectors, guard fields, prompt policy, and confirmation semantics.
 
-Separate local control command endpoints are acceptable when they are explicitly command-shaped, disabled by default, loopback-only, MekHQ-owned, guarded, approval-aware, and verified by live reread. They should not be hidden inside `GET /campaign/state` output.
+Separate local control command endpoints are acceptable when they are explicitly command-shaped, disabled by default, loopback-only, MekHQ-owned, guarded, approval-aware, and verified by live reread. `contracts.accept` is now implemented locally as one such endpoint. Command behavior should not be hidden inside `GET /campaign/state` output.
 
 ## Trust Envelope Preference
 

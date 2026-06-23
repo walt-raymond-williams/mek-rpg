@@ -21,13 +21,13 @@ Last checked: 2026-06-23T15:17:19.944925+00:00
   - Reason: This V1 endpoint does not expose repair execution, repair assignment, shopping-list purchase, or shopping-list priority mutation commands.
   - Recommended owner: Future MekHQ command API design
   - Blocks automation: true
-- `stable_offer_selectors`
+- `stable_unit_market_offer_selectors`
   - Area: markets
-  - Reason: Markets are display-only in V1; no stable source-confirmed offer selectors are exposed.
-  - Recommended owner: Future MekHQ exporter or source change
+  - Reason: The campaign-local bridge note was generated before the latest command-readiness updates; use `GET /campaign/commands` for current command selectors instead of this stale bridge gap list. Unit-market selector availability depends on the current readiness row.
+  - Recommended owner: MekHQ command readiness reread
   - Blocks automation: true
 - `market_mutation_commands`
   - Area: markets
-  - Reason: This V1 endpoint does not expose unit purchase, personnel hire/fire, contract accept/decline, market refresh, negotiation, or save/writeback commands.
-  - Recommended owner: Future MekHQ command API design
+  - Reason: This generated bridge note predates local guarded commands such as `contracts.accept` and `markets.unit_offers.purchase`. Reread `GET /campaign/commands`; only unavailable, blocked, or refused market actions should remain producer gaps.
+  - Recommended owner: MekHQ command readiness reread
   - Blocks automation: true

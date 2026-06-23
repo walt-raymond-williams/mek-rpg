@@ -299,7 +299,7 @@ if ($campaignPath) {
 Write-SectionHeader "Authority Notes"
 Write-Output "- Structured campaign files override stale narrative summaries."
 Write-Output "- Rules answers must start at committed summaries and indexes, not model memory or raw source text."
-Write-Output "- Pending MekHQ actions are manual-action intents until a saved MekHQ import confirms them."
+Write-Output "- Pending MekHQ actions are command proposals, command results, or manual fallback checklists until live reread or saved import confirms them."
 Write-Output "- This helper never reads source/atow-pdf/, source/atow-text/, or raw MekHQ save payloads."
 
 Write-SectionHeader "Current Scene State"

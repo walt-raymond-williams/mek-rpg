@@ -30,7 +30,7 @@ The helper creates the folder only when it does not already exist and does not c
 - `relationships.md`: trust, leverage, promises, grudges, loyalty, and obligations.
 - `missions.md`: active, paused, and completed missions.
 - `hooks.md`: unresolved questions, threats, opportunities, and next-session prompts.
-- `pending-mekhq-actions.md`: campaign-local queue for MekHQ-linked hard ledger intents that must be applied manually in MekHQ and confirmed by a later import.
+- `pending-mekhq-actions.md`: campaign-local queue and audit trail for MekHQ-linked hard ledger intents, guarded command proposals/results, manual fallbacks, and verification records.
 - `session-log.md`: active or most recent session notes and close-out summary.
 - `previous-sessions.md`: completed-session archive used to preserve durable outcomes after `session-log.md` rolls forward.
 - `rules-gaps.md`: missing or uncertain rules found during this campaign.
@@ -57,4 +57,4 @@ For MekHQ-linked campaigns, use `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md`
 
 ## MekHQ-Linked Pending Actions
 
-For MekHQ-linked campaigns, record proposed purchases, sales, contract decisions, repairs, personnel changes, tactical outcomes, day advancement, and other hard ledger intents in `pending-mekhq-actions.md`. These items are not final facts until the user applies them in MekHQ, saves the MekHQ campaign, and MEK-RPG imports the saved result. Keep narrative causes and consequences in the normal campaign files and cross-reference the pending item id.
+For MekHQ-linked campaigns, record proposed purchases, sales, contract decisions, repairs, personnel changes, tactical outcomes, day advancement, and other hard ledger intents in `pending-mekhq-actions.md`. When `GET /campaign/commands` reports a supported command, use that guarded MekHQ command with dry-run/preflight, approval policy, execution, live reread, and reconciliation. When no supported command exists or it refuses, keep a manual MekHQ fallback checklist or producer-request blocker. These items are not final facts until a MekHQ live reread or saved import verifies the result. Keep narrative causes and consequences in the normal campaign files and cross-reference the pending item id.

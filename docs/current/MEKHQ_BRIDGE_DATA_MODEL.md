@@ -147,8 +147,8 @@ These are explicitly out of scope for issue `#26` and the first read-only bridge
 
 - Writing to `.cpnx`, `.cpnx.gz`, or MekHQ XML saves.
 - Direct XML edits for purchases, hiring, contracts, repairs, day advancement, personnel assignment, or scenario resolution.
-- Headless MekHQ day advancement.
-- Automatic MekHQ purchases, contract acceptance, repair changes, market refreshes, or personnel changes.
+- Headless or hidden MekHQ day advancement outside a supported command endpoint with guards, approval policy, and live verification.
+- Automatic MekHQ purchases, contract acceptance, repair changes, market refreshes, or personnel changes from bridge/checkpoint data alone. Supported MekHQ-owned command endpoints discovered through `GET /campaign/commands` are a later layer, not part of this first read-only bridge.
 - Replacing MekHQ's force, finance, repair, salvage, scenario, or market logic with MEK-RPG Markdown.
 - Replacing MEK-RPG's A Time of War character sheets, scene memory, hooks, relationships, session logs, or safety/tone notes with MekHQ fields.
 - Parsing real MekHQ saves as part of this design note beyond tiny examples required by issue `#27`.

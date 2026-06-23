@@ -2,7 +2,7 @@
 
 Use this file for campaign money, ships, vehicles, BattleMechs, cargo, property, permits, debts, contracts, repairs, and other durable resources.
 
-For richer vehicle, DropShip, and unit entries, follow `docs/current/ASSET_SHEET_SCHEMA.md`. Keep hard facts, evidence labels, and narrative overlays separate. In MekHQ-linked campaigns, MekHQ owns exact funds, unit state, repairs, markets, rosters, cargo, contracts, and tactical ledger changes; record pending intents here or in `pending-mekhq-actions.md` until a saved import confirms them.
+For richer vehicle, DropShip, and unit entries, follow `docs/current/ASSET_SHEET_SCHEMA.md`. Keep hard facts, evidence labels, and narrative overlays separate. In MekHQ-linked campaigns, MekHQ owns exact funds, unit state, repairs, markets, rosters, cargo, contracts, and tactical ledger changes; record pending intents here or in `pending-mekhq-actions.md` until a live reread or saved import verifies them.
 
 ## Funds And Ledger Summary
 

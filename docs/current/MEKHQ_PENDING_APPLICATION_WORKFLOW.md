@@ -48,7 +48,7 @@ Each pending item should use this checklist shape:
 ```markdown
 ### mekhq-pending-YYYY-MM-DD-NNN: Short title
 
-- Status: proposed | queued | user-applied-in-mekhq | imported | resolved | blocked | abandoned
+- Status: proposed | queued | user-applied-in-mekhq | command-executed-in-mekhq | imported | live-verified | resolved | blocked | abandoned
 - Type: purchase-sale | contract | repair-logistics | personnel | injury-availability | tactical-outcome | day-advancement | finance | other
 - Priority: before-day-advance | before-next-scene | end-of-session | optional | deferred
 - Created: YYYY-MM-DD
@@ -82,7 +82,7 @@ Keep entries concise. Do not paste raw MekHQ XML, raw save payloads, purchased r
 
 `proposed`: A scene produced a possible hard ledger change, but the table has not committed to applying it in MekHQ.
 
-`queued`: The table committed the hard ledger intent and it should be applied in MekHQ before the relevant deadline, usually before day advancement.
+`queued`: The table committed the hard ledger intent and it should be applied in MekHQ before the relevant deadline, usually before day advancement. If `GET /campaign/commands` reports a supported command for the action, the next step is command dry-run/preflight rather than manual UI by default.
 
 `user-applied-in-mekhq`: The user reports that the action was applied in the MekHQ UI and the campaign was saved, but MEK-RPG has not imported or reread the result yet.
 
@@ -140,7 +140,7 @@ After a saved MekHQ import or post-command live reread:
 
 Purchases and sales: record the intended unit/item, seller, negotiated narrative result, price if known from MekHQ UI, and confirmation needed for funds, market removal, asset arrival, cargo, and transit.
 
-Contracts: record accept/decline/resolve intent, employer, target contract id, player-facing terms, and confirmation needed for contract status, deadline, scenario generation, payment, and salvage. For future contract-market accept/decline command planning, use `docs/current/MEKHQ_CONTRACT_MARKET_PROBE_PLAN.md`; until its preconditions are satisfied, contract decisions remain manual MekHQ UI actions plus saved re-import confirmation.
+Contracts: record accept/decline/resolve intent, employer, target contract id, player-facing terms, and confirmation needed for contract status, deadline, scenario generation, payment, and salvage. When `GET /campaign/commands` reports `contracts.accept` available for the selected offer, contract acceptance should use the guarded `POST /campaign/command/contracts/accept` flow: copy selector and guard facts from readiness/state, dry-run first, execute only after approval or documented automation policy, then live-reread and reconcile. Manual MekHQ UI acceptance is the fallback when the command is unavailable, blocked, refused, or not verifiable. Contract decline remains a future command need unless MekHQ readiness later exposes it.
 
 Repairs and logistics: record target unit or part, desired repair or queue change, technician/part implications, and confirmation needed for queue state, part use, completion, and availability.
 
@@ -158,13 +158,13 @@ For MekHQ-linked play, a GM context packet should include:
 - all unresolved `pending-mekhq-actions.md` items with statuses other than `resolved` or `abandoned`
 - linked narrative context from `session-log.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `factions.md`, and `hooks.md` as needed
 
-The packet must label unresolved pending items as intents or manual-action checklists, not confirmed hard facts.
+The packet must label unresolved pending items as intents, command proposals/results, or manual fallback checklists, not confirmed hard facts.
 
 ## MekHQ-Side Request Decision
 
-No MegaMek workspace request is created by this issue. The current workflow deliberately uses manual MekHQ UI application plus saved re-import confirmation, and the possible MekHQ-side needs are still broad: safe APIs, supported import/export artifacts, command helpers, and source-backed write paths.
+No broad MegaMek workspace request is created by this workflow. For supported endpoints, MEK-RPG should use readiness plus guarded command calls. For unsupported or refused actions, create focused producer requests only when the missing capability is concrete enough to specify selectors, guard fields, prompt policy, refusal behavior, result metadata, and verification fields.
 
-Create a focused MegaMek workspace request when a concrete command need appears, such as "advance the campaign one day with prompt policy", "apply a purchase from a checklist artifact", "export contract market offers with stable IDs", or "provide a supported command for personnel assignment." Issue `#111` defines the general command API strategy. Issue `#69` defines a gated contract-market accept/decline probe plan, but it should be read as an early candidate under the broader command strategy rather than as a permanent warning against write APIs.
+Create a focused MegaMek workspace request when a concrete command need appears, such as "decline one contract-market offer with guard fields", "apply a repair assignment by stable work id", or "provide a supported command for personnel hiring." Issue `#111` defines the general command API strategy. Issue `#69` is historical context for the contract-market probe; `contracts.accept` has since been implemented locally, while contract decline remains future work.
 
 ## Unsafe Current Behaviors
 

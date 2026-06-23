@@ -10,7 +10,7 @@ MekHQ is authoritative for hard ledger facts: campaign date, day advancement, tr
 
 MEK-RPG is authoritative for RPG memory: A Time of War character overlays, scene framing, conversations, relationships, secrets, promises, hooks, player-facing mission stakes, session logs, table rulings, safety/tone notes, and narrative uncertainty around MekHQ objects until the table commits a hard ledger outcome.
 
-Hard ledger changes created during play must be recorded as pending MekHQ application items until the user applies them in MekHQ, saves the MekHQ campaign, and MEK-RPG imports or summarizes the saved result.
+Hard ledger changes created during play must be recorded as pending MekHQ application items until MekHQ applies them through a supported guarded command or manual UI action and MEK-RPG verifies the result by live reread or saved import.
 
 ## Requirement Status Terms
 
@@ -64,19 +64,21 @@ Hard ledger changes created during play must be recorded as pending MekHQ applic
 
 `REQ-MEKHQ-ATOW-016`: Any play result that may alter MekHQ-owned facts must create or update a concise item in `pending-mekhq-actions.md` instead of being treated as a final ledger fact.
 
-`REQ-MEKHQ-ATOW-017`: Pending items must use stable item IDs, lifecycle status, type, priority, source scene, source files, target IDs, imported baseline, proposed action, manual checklist, confirmation field, affected files, blockers, and resolution notes.
+`REQ-MEKHQ-ATOW-017`: Pending items must use stable item IDs, lifecycle status, type, priority, source scene, source files, target IDs, imported or live baseline, proposed action, manual checklist, command checklist, confirmation field, affected files, blockers, and resolution notes.
 
-`REQ-MEKHQ-ATOW-018`: Pending item lifecycle must distinguish `proposed`, `queued`, `user-applied-in-mekhq`, `imported`, `resolved`, `blocked`, and `abandoned`.
+`REQ-MEKHQ-ATOW-018`: Pending item lifecycle must distinguish `proposed`, `queued`, `user-applied-in-mekhq`, `command-executed-in-mekhq`, `imported`, `live-verified`, `resolved`, `blocked`, and `abandoned`.
 
-`REQ-MEKHQ-ATOW-019`: Normal campaign files may link to pending item IDs, but must label unresolved items as intents or manual-action checklists, not confirmed hard facts.
+`REQ-MEKHQ-ATOW-019`: Normal campaign files may link to pending item IDs, but must label unresolved items as intents, command proposals/results, or manual-action checklists, not confirmed hard facts.
 
-### Manual MekHQ Application And Re-Import
+`REQ-MEKHQ-ATOW-019A`: When `GET /campaign/commands` reports a supported command for a committed hard ledger action, the GM workflow should prefer the guarded command flow: readiness, selector/guard capture, dry-run or preflight, approval policy, execution, live reread verification, and reconciliation. Manual UI remains the fallback for unavailable, blocked, refused, or unverifiable commands.
 
-`REQ-MEKHQ-ATOW-020`: Manual hard ledger application requires the user to open the linked MekHQ campaign, confirm the expected baseline, apply the change in the MekHQ UI, and save the MekHQ campaign.
+### MekHQ Command Or Manual Application And Reconciliation
 
-`REQ-MEKHQ-ATOW-021`: MEK-RPG must summarize or import the saved MekHQ campaign before treating manually applied hard ledger outcomes as final.
+`REQ-MEKHQ-ATOW-020`: Manual hard ledger application requires the user to open the linked MekHQ campaign, confirm the expected baseline, apply the change in the MekHQ UI, and save the MekHQ campaign. Command-backed hard ledger application requires current readiness, baseline guards, dry-run/preflight where available, approval or documented automation policy, command execution through MekHQ-owned code, and live reread verification.
 
-`REQ-MEKHQ-ATOW-022`: Re-import reconciliation must compare the latest import against pending item confirmation fields, mark matches as imported/resolved, and leave partial, absent, or contradictory results blocked with discrepancy notes.
+`REQ-MEKHQ-ATOW-021`: MEK-RPG must summarize or import the saved MekHQ campaign before treating manually applied hard ledger outcomes as final. For command-backed outcomes, a live reread can verify the result when it exposes enough fields; saved import remains a durable checkpoint or fallback.
+
+`REQ-MEKHQ-ATOW-022`: Reconciliation must compare the latest live reread or saved import against pending item confirmation fields, mark matches as live-verified/imported/resolved, and leave partial, absent, or contradictory results blocked with discrepancy notes.
 
 `REQ-MEKHQ-ATOW-023`: MEK-RPG must preserve RPG-side scene memory when a hard ledger result differs, unless the table explicitly retcons the scene.
 
@@ -122,11 +124,12 @@ Hard ledger changes created during play must be recorded as pending MekHQ applic
 | `REQ-MEKHQ-ATOW-014` | Linked play loop, state-save checklist, GM context design, and `scripts/test-mekhq-context-packet.ps1` authority-boundary checks | Automated | Scene-by-scene save quality remains a playtest concern. |
 | `REQ-MEKHQ-ATOW-015` | State-save checklist | Manual | Keep as playtest save-discipline evidence unless repeated drift justifies a future scenario test. |
 | `REQ-MEKHQ-ATOW-016` | Pending workflow doc; pending regression checks generated owner file; `scripts/validate-mekhq-pending-actions.ps1` validates pending entries | Automated | Keep structural validation in `scripts/test-all.ps1`. |
-| `REQ-MEKHQ-ATOW-017` | `scripts/validate-mekhq-pending-actions.ps1` and `scripts/test-validate-mekhq-pending-actions.ps1` validate required fields and accepted values | Automated | Expand if the pending item schema changes. |
+| `REQ-MEKHQ-ATOW-017` | `scripts/validate-mekhq-pending-actions.ps1` and `scripts/test-validate-mekhq-pending-actions.ps1` validate required fields and accepted values, including command and manual checklist fields | Automated | Expand if the pending item schema changes. |
 | `REQ-MEKHQ-ATOW-018` | Pending-action validator fixture coverage checks all lifecycle statuses that can be validated deterministically | Automated | Transition judgment still belongs in manual playtest notes. |
 | `REQ-MEKHQ-ATOW-019` | Pending workflow context packet notes; pending-action validator; `scripts/test-mekhq-context-packet.ps1` checks unresolved item labeling | Automated | None current. |
-| `REQ-MEKHQ-ATOW-020` | Pending workflow manual checklist | Manual | Issue `#37` manual playtest should validate real UI application steps. |
-| `REQ-MEKHQ-ATOW-021` | Pending workflow authority boundary; issue `#42` covers helper fixtures | Manual | Issue `#37` should validate saved re-import confirmation with a real MekHQ UI step. |
+| `REQ-MEKHQ-ATOW-019A` | `docs/current/MEKHQ_COMMAND_API_STRATEGY.md`, linked play loop, pending workflow, and command-readiness fixture checks document command-first supported-action behavior | Automated/Procedure | Live command smoke testing still needs a running source-built MekHQ instance and explicit user approval for real mutation. |
+| `REQ-MEKHQ-ATOW-020` | Pending workflow manual and command checklists | Manual/Procedure | Issue `#37` validated real UI application; guarded command execution needs future disposable live smoke evidence. |
+| `REQ-MEKHQ-ATOW-021` | Pending workflow authority boundary; issue `#42` covers helper fixtures; live command strategy covers reread verification | Manual/Procedure | Verify specific commands with live reread or saved import before treating real campaign outcomes as final. |
 | `REQ-MEKHQ-ATOW-022` | Pending workflow reconciliation procedure; pending-action validator checks structure; context packet scenarios keep unresolved items visible | Automated | Actual re-import match judgment remains part of issue `#37`. |
 | `REQ-MEKHQ-ATOW-023` | Pending workflow reconciliation notes | Manual | Keep as playtest/context scenario expectation unless repeated failures justify a new issue. |
 | `REQ-MEKHQ-ATOW-024` | `gm/switch-to-classic-battletech.md`; `gm/tactical-encounter-handoff-checklist.md`; linked play loop | Procedure | Issue `#55` added an explicit switch trigger and handoff checklist; tactical resolution still belongs to Classic BattleTech, MegaMek, or MekHQ. |

@@ -1,6 +1,8 @@
 # Pending MekHQ Actions
 
-Use this file for hard ledger intents created during MekHQ-linked RPG play. A pending item is not final until the user applies it in MekHQ, saves the MekHQ campaign, and MEK-RPG imports the saved result.
+Use this file for hard ledger intents created during MekHQ-linked RPG play. For supported MekHQ command endpoints, record the command proposal, dry-run, execution, and verification here. For unsupported or unavailable endpoints, record the manual MekHQ fallback checklist here.
+
+A pending item is not final until MekHQ applies it through a supported command or manual UI action and MEK-RPG verifies the result by live reread or saved import.
 
 See `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` for the full schema and lifecycle.
 
@@ -27,6 +29,9 @@ See `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` for the full schema and
   - Confirm the current MekHQ date/save matches the imported baseline date `3025-07-24`.
   - Advance MekHQ by one day through the MekHQ UI.
   - Save the MekHQ campaign.
+- Command application checklist:
+  - Historical item resolved before the command-first workflow; no command was executed.
+  - Future day-advance use should check `GET /campaign/commands` for `advanceDayOnce`, guard the campaign/date, get approval, execute through MekHQ-owned code, and verify by live reread.
 - Confirmation needed from next import: MekHQ campaign date should be `3025-07-25`; import metadata should point to the same source save path.
 - Affected campaign files after import: `current-state.md`, `mekhq-bridge.md`, `session-log.md`
 - Blockers or discrepancy notes: None

@@ -254,6 +254,16 @@ try {
     Assert-True ($null -ne $statusNoteCommand) "Command-readiness fixture includes status-note command."
     Assert-True ($statusNoteCommand.status -eq "available") "Status-note command is reported available in the producer fixture."
     Assert-True ($statusNoteCommand.dry_run_supported -eq $true) "Status-note command supports dry-run."
+    $contractAcceptCommand = $commands.command_readiness | Where-Object { $_.command -eq "contracts.accept" } | Select-Object -First 1
+    Assert-True ($null -ne $contractAcceptCommand) "Command-readiness fixture includes contract accept command."
+    Assert-True ($contractAcceptCommand.status -eq "available") "Contract accept command is reported available in the producer fixture."
+    Assert-True ($contractAcceptCommand.endpoint -eq "/campaign/command/contracts/accept") "Contract accept endpoint is preserved."
+    Assert-True ($contractAcceptCommand.dry_run_supported -eq $true) "Contract accept command supports dry-run."
+    Assert-True ($contractAcceptCommand.prompt_policy -eq "explicit_known_choices") "Contract accept command requires explicit known prompt choices."
+    Assert-True ($contractAcceptCommand.required_selectors -contains "contract_id") "Contract accept required selectors include contract id."
+    Assert-True ($contractAcceptCommand.required_selectors -contains "state_revision") "Contract accept required selectors include state revision."
+    Assert-True ($commands.selectors.contract_market_offers.Count -ge 1) "Command-readiness fixture includes contract selector candidates."
+    Assert-True ($commands.selectors.contract_market_offers[0].supported_prompt_choices.unknownPromptPolicy -eq "refuse") "Contract selector preserves unknown-prompt refusal policy."
     $unitPurchaseCommand = $commands.command_readiness | Where-Object { $_.command -eq "markets.unit_offers.purchase" } | Select-Object -First 1
     Assert-True ($null -ne $unitPurchaseCommand) "Command-readiness fixture includes unit-market purchase command row."
     Assert-True ($unitPurchaseCommand.status -eq "blocked") "Unit-market purchase remains blocked."

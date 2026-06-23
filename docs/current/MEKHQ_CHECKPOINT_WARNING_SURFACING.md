@@ -96,4 +96,4 @@ Adapters should preserve the full raw warning object in diagnostics, but campaig
 
 ## Boundaries
 
-This policy does not authorize write automation, direct save/XML mutation, market selectors, day advancement, repair execution, hiring, contract accept/decline, or tactical-result application. It only defines how to show checkpoint uncertainty safely.
+This policy does not authorize write automation from checkpoint/state rows, direct save/XML mutation, market selectors, day advancement, repair execution, hiring, contract accept/decline, or tactical-result application. Supported mutation must come from explicit command readiness plus guarded MekHQ command endpoints, such as `contracts.accept` when available. This document only defines how to show checkpoint uncertainty safely.

@@ -85,7 +85,7 @@ function New-PendingItemText {
     return @"
 # Pending MekHQ Actions
 
-Use this file for MekHQ-linked campaigns when RPG play creates a possible hard ledger change that must be applied manually in MekHQ before it becomes final.
+Use this file for MekHQ-linked campaigns when RPG play creates a possible hard ledger change. Supported commands become command proposals/results; unsupported commands use manual fallback checklists until verified.
 
 ## Open Items
 
@@ -106,6 +106,11 @@ Use this file for MekHQ-linked campaigns when RPG play creates a possible hard l
   - Confirm the current MekHQ date/save matches the latest imported baseline.
   - Apply the tactical outcome in the MekHQ UI.
   - Save the MekHQ campaign.
+- Command application checklist:
+  - Confirm `GET /campaign/commands` reports the requested command available.
+  - Run dry-run/preflight if the command supports it.
+  - Execute only after approval or documented automation policy.
+  - Re-read live MekHQ state and verify expected fields.
 - Confirmation needed from next import: scenario `scenario-3` resolved and unit damage/salvage reflected in summary.
 - Affected campaign files after import: `assets.md`, `missions.md`, `current-state.md`
 - Blockers or discrepancy notes: Needs saved MekHQ import before this becomes a final ledger fact.
@@ -160,9 +165,9 @@ No direct MekHQ save or XML writeback is authorized.
     Assert-True ($packet.Contains('Checkpoint warning surfacing policy: `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md` [OK]')) "Packet includes checkpoint warning surfacing policy."
     Assert-True ($packet -match "mekhq-pending-2026-06-21-045") "Packet validator output reports unresolved pending item id."
 
-    Write-Step "MEKHQ-CTX-002 pending actions stay labeled as intents/manual checklists."
-    Assert-True ($packet -match "These are manual-action checklists, not confirmed hard ledger facts") "Pending validator preserves manual-intent label."
-    Assert-True ($packet -match "Pending MekHQ actions are manual-action intents") "Packet authority notes preserve pending-intent boundary."
+    Write-Step "MEKHQ-CTX-002 pending actions stay labeled as intents, command records, or manual fallbacks."
+    Assert-True ($packet -match "These are command proposals, command results, or manual-action checklists, not confirmed hard ledger facts") "Pending validator preserves pending-intent label."
+    Assert-True ($packet -match "Pending MekHQ actions are command proposals, command results, or manual fallback checklists") "Packet authority notes preserve pending-intent boundary."
 
     Write-Step "MEKHQ-CTX-003 structured campaign state outranks stale summaries."
     Assert-True ($packet -match "Structured campaign files override stale narrative summaries") "Packet preserves structured-state precedence."

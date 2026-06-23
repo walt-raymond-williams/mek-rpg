@@ -6,6 +6,7 @@
 - Roadmap entry: Controlled MekHQ command API integration
 - Mode: Project development
 - Priority: High; this corrects live-play GM behavior after stale guidance caused a manual pending item for a supported contract command.
+- Status: Completed on 2026-06-23; archived after commit.
 
 ## Goal
 
@@ -102,6 +103,13 @@ rg -n "contracts/accept|contracts.accept|acceptContract" ..\megamek-workspace\ex
 
 ## Open Questions
 
-- Does the current running source-built MekHQ instance expose `contracts.accept` in `GET /campaign/commands`, or do MEK-RPG tests need to use a documented fixture until a live smoke is available?
-- Should contract selection be allowed after one dry-run plus user approval in play mode, or should every live contract command require a separate explicit confirmation until the automation policy matures?
-- Should `pending-mekhq-actions.md` keep the old name, or should future work introduce a more general `mekhq-command-actions.md` while keeping backward compatibility?
+- Live smoke of `contracts.accept` against a running source-built MekHQ instance was not performed in this issue; fixture and source-doc evidence were used.
+- Current guidance requires dry-run/preflight plus user approval or documented automation policy before campaign-significant command execution.
+- `pending-mekhq-actions.md` remains the backward-compatible owner file, now covering command proposals/results and manual fallback checklists.
+
+## Completion Notes
+
+- Updated command strategy, live API tracking, linked play loop, pending workflow, context packet design, checkpoint/read-only boundary docs, campaign README/template, GM procedure/checklist, scripts, tests, and sanitized command-readiness fixture.
+- Reconciled `campaigns/the-learning-ropes/` Free Worlds League contract acceptance from a manual-only item into a guarded `contracts.accept` command proposal.
+- Expanded pending-action lifecycle to include `command-executed-in-mekhq` and `live-verified`.
+- Verification passed: focused MekHQ pending workflow, pending validator, live API fixture, context packet, bootstrap suites; `git diff --check`; protected source ignore checks; `./scripts/test-all.ps1 -Quick`.

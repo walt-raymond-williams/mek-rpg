@@ -7,7 +7,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$allowedStatuses = @("proposed", "queued", "user-applied-in-mekhq", "imported", "resolved", "blocked", "abandoned")
+$allowedStatuses = @("proposed", "queued", "user-applied-in-mekhq", "command-executed-in-mekhq", "imported", "live-verified", "resolved", "blocked", "abandoned")
 $allowedTypes = @("purchase-sale", "contract", "repair-logistics", "personnel", "injury-availability", "tactical-outcome", "day-advancement", "finance", "other")
 $allowedPriorities = @("before-day-advance", "before-next-scene", "end-of-session", "optional", "deferred")
 $requiredFields = @(
@@ -22,6 +22,7 @@ $requiredFields = @(
     "Current imported baseline",
     "Proposed MekHQ action",
     "Manual application checklist",
+    "Command application checklist",
     "Confirmation needed from next import",
     "Affected campaign files after import",
     "Blockers or discrepancy notes",
@@ -30,7 +31,7 @@ $requiredFields = @(
 
 $script:ErrorCount = 0
 $script:WarningCount = 0
-$unresolvedStatuses = @("proposed", "queued", "user-applied-in-mekhq", "imported", "blocked")
+$unresolvedStatuses = @("proposed", "queued", "user-applied-in-mekhq", "command-executed-in-mekhq", "imported", "live-verified", "blocked")
 
 function Write-Ok {
     param([string]$Message)
@@ -115,7 +116,8 @@ foreach ($item in $items) {
             continue
         }
 
-        if ($field -ne "Manual application checklist" -and [string]::IsNullOrWhiteSpace([string]$item.Fields[$field])) {
+        $listContainerFields = @("Manual application checklist", "Command application checklist")
+        if ($listContainerFields -notcontains $field -and [string]::IsNullOrWhiteSpace([string]$item.Fields[$field])) {
             Write-Fail "$($item.Id) required field is empty: $field"
         }
     }
@@ -153,7 +155,7 @@ Write-Host "Summary: $script:ErrorCount error(s), $script:WarningCount warning(s
 if ($ReportUnresolved) {
     Write-Host ""
     Write-Host "Unresolved pending intents for day-advance review"
-    Write-Host "These are manual-action checklists, not confirmed hard ledger facts."
+    Write-Host "These are command proposals, command results, or manual-action checklists, not confirmed hard ledger facts."
 
     if ($unresolvedItems.Count -eq 0) {
         Write-Host "- None."

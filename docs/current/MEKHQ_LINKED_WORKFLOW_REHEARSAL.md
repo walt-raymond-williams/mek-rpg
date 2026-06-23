@@ -25,7 +25,7 @@
 
 - The read-only import/checkpoint path is covered by committed sanitized fixtures and explicit read-only checks.
 - The GM context packet includes MekHQ bridge metadata, pending MekHQ intents, pending workflow docs, and checkpoint warning policy for MekHQ-linked saves.
-- Pending actions are labeled as manual-action intents, not confirmed hard ledger facts.
+- Pending actions are labeled as command proposals/results or manual fallback intents, not confirmed hard ledger facts.
 - The existing `mekhq-pending-playtest` save validates cleanly and has no unresolved pending items.
 - The `mekhq-pending-playtest` bridge records the prior issue `#37` manual UI validation: the user advanced MekHQ one day, saved, and a read-only re-import confirmed date `3025-07-25`.
 - Current warnings remain appropriate: exact funds, final market prices, exact unit damage state, transport capacity/cargo pressure, and daily report classification require MekHQ UI, MekHQ-owned exporter support, or manual inspection before precise use.
@@ -39,4 +39,3 @@ Any future hard ledger rehearsal that asks to advance a day, buy or sell, accept
 ## Result
 
 The current MekHQ-linked workflow is ready for ordinary read-only GM checkpoint use and pending-intent tracking. It is not a writeback workflow. No follow-up issue is needed from this rehearsal; existing docs already preserve the unsupported field and future exporter boundaries.
-

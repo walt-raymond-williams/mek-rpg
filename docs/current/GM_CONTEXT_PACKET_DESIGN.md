@@ -17,13 +17,13 @@ When packet layers disagree, prefer the highest-authority current layer and reco
 3. `Mode procedure`: the relevant play, rules lookup, project-development, or source-processing procedure.
 4. `Structured campaign state`: active campaign pointer plus current campaign save files.
 5. `MekHQ hard ledger import`: for MekHQ-linked campaigns, latest `mekhq-bridge.md` and imported hard facts.
-6. `Pending MekHQ intents`: unresolved `pending-mekhq-actions.md` items, always labeled as manual-action intents rather than confirmed facts.
+6. `Pending MekHQ intents`: unresolved `pending-mekhq-actions.md` items, labeled as command proposals, command results awaiting verification, or manual fallback checklists rather than confirmed facts.
 7. `Rules routes and summaries`: `indexes/task-router.md`, routed paraphrased summaries, and page-reference indexes when summaries are insufficient.
 8. `Recent event record`: current `session-log.md` and immediate scene notes.
 9. `Durable narrative memory`: `previous-sessions.md`, relationships, hooks, NPC motives, faction posture, and older summaries.
 10. `Open gaps and warnings`: `rules-gaps.md`, `playtest-notes.md`, helper warnings, unsupported fields, and bridge discrepancies.
 
-This order means structured campaign files override stale narrative summaries. MekHQ imported facts override MEK-RPG guesses for hard ledger fields. Pending MekHQ actions never override imported hard facts until a saved MekHQ re-import confirms them.
+This order means structured campaign files override stale narrative summaries. MekHQ imported or live-verified facts override MEK-RPG guesses for hard ledger fields. Pending MekHQ actions never override confirmed hard facts until a MekHQ live reread or saved import verifies them.
 
 ## Packet Layers
 
@@ -135,11 +135,11 @@ Inputs:
 Purpose:
 
 - surface proposed, queued, user-applied, imported, or blocked hard ledger intents
-- remind the GM which items need manual MekHQ UI application, saved re-import, or discrepancy resolution
+- remind the GM which items need guarded command dry-run/execution, live reread verification, manual MekHQ UI application, saved re-import, or discrepancy resolution
 
 Authority:
 
-- unresolved items are manual-action checklists or intents
+- unresolved items are command proposals, command results awaiting verification, manual-action checklists, or intents
 - they are not confirmed funds, roster changes, repairs, contracts, scenario outcomes, salvage, unit damage, or campaign dates
 
 Failure modes:
@@ -258,7 +258,7 @@ Use play mode plus:
 - date and hard-ledger discrepancy checks
 - tactical handoff triggers
 
-Every pending item must be labeled as an intent or manual checklist. MekHQ remains authoritative until the user applies the change, saves MekHQ, and MEK-RPG imports the result.
+Every pending item must be labeled as an intent, command proposal/result, or manual checklist. MekHQ remains authoritative until a supported command plus live reread or a manual UI action plus saved import confirms the result.
 
 ### Project Development Mode
 

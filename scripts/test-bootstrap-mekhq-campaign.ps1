@@ -163,7 +163,8 @@ try {
     Assert-FileContains (Join-Path $idPath "pcs.md") "Mira Voss" "Viewpoint by id writes selected character."
     Assert-FileContains (Join-Path $idPath "overview.md") "Matched requested MekHQ personnel id" "Overview records id-selection reason."
     Assert-FileContains (Join-Path $idPath "mekhq-bridge.md") "Do not write to .*\.cpnx.*\.cpnx\.gz.*MekHQ XML.*raw MekHQ save payloads" "Bridge preserves no-writeback language."
-    Assert-FileContains (Join-Path $idPath "pending-mekhq-actions.md") "applies it in MekHQ, saves the MekHQ campaign, and MEK-RPG imports" "Pending file preserves manual apply/save/re-import boundary."
+    Assert-FileContains (Join-Path $idPath "pending-mekhq-actions.md") "supported MekHQ command endpoints" "Pending file preserves command proposal guidance."
+    Assert-FileContains (Join-Path $idPath "pending-mekhq-actions.md") "manual MekHQ fallback checklist" "Pending file preserves manual fallback guidance."
 
     Write-Step "Checking viewpoint selection by exact display name."
     Invoke-Bootstrap "mekhq-bootstrap-test-name" @("--viewpoint-name", "Avery Holt") "Bootstrap by exact viewpoint name"

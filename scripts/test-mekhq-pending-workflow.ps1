@@ -124,7 +124,8 @@ try {
 
     Write-Step "Checking generated pending workflow files."
     Assert-FileContains $pendingPath "hard ledger intents" "Pending actions file uses pending workflow language."
-    Assert-FileContains $pendingPath "applies it in MekHQ, saves the MekHQ campaign, and MEK-RPG imports" "Pending actions file requires manual apply, save, and re-import."
+    Assert-FileContains $pendingPath "supported MekHQ command endpoints" "Pending actions file includes command-backed workflow guidance."
+    Assert-FileContains $pendingPath "manual MekHQ fallback checklist" "Pending actions file preserves manual fallback guidance."
     Assert-FileContains $bridgePath "pending-mekhq-actions\.md" "Bridge file points pending work to pending-mekhq-actions.md."
     Assert-FileContains $bridgePath "Do not write to .*\.cpnx.*\.cpnx\.gz.*MekHQ XML.*raw MekHQ save payloads" "Bridge file preserves no direct MekHQ save or XML writeback boundary."
 

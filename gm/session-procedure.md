@@ -8,7 +8,7 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
 2. If no active campaign is selected, ask which campaign save folder to load or whether to create one from `campaigns/_template/`.
 3. Review `campaign-state/setting-basics.md` for table canon, open user choices, and the canon policy.
 4. Assemble a GM context packet using `docs/current/GM_CONTEXT_PACKET_DESIGN.md`: load the active campaign's structured state, recent session log, relevant durable memory, rules gaps, and safety/tone notes without blending authority layers.
-5. For MekHQ-linked campaigns, include `mekhq-bridge.md` and unresolved `pending-mekhq-actions.md` items as manual-action intents, not confirmed hard ledger facts.
+5. For MekHQ-linked campaigns, include `mekhq-bridge.md` and unresolved `pending-mekhq-actions.md` items as command proposals, command results awaiting verification, or manual fallback intents, not confirmed hard ledger facts.
 6. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
 7. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
 
@@ -28,7 +28,7 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
 5. If the committed summaries are insufficient, use `gm/rules-adjudication-posture.md`; make a provisional ruling only when needed to keep play moving, then record the gap in the active campaign folder's `rules-gaps.md`.
 6. Track important choices, injuries, equipment losses, faction reactions, relationship changes, location changes, asset changes, promises, rewards, costs, and new table canon.
 7. Keep playtest-only facts separate from table canon unless the user explicitly promotes them.
-8. For MekHQ-linked campaigns, write hard ledger intents to `pending-mekhq-actions.md` instead of treating them as final funds, roster, contract, repair, scenario, or date facts.
+8. For MekHQ-linked campaigns, check `GET /campaign/commands` before routing a committed hard ledger action to a manual fallback. If a supported guarded command is available, use dry-run/preflight, approval policy, execution, live reread, and reconciliation. If no supported command is available or it refuses, write the intent to `pending-mekhq-actions.md` as a manual fallback or blocked producer request instead of treating it as final funds, roster, contract, repair, scenario, or date fact.
 
 ## After Play
 

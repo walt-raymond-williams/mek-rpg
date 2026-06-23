@@ -14,7 +14,7 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 8. Update `assets.md` for money, vehicles, DropShips, equipment, cargo, contracts, permits, debts, liens, repairs, evidence labels, MekHQ references, and tactical handoff notes.
 9. Update `relationships.md` for trust, leverage, grudges, loyalty, favors, promises, or family/crew ties.
 10. Update `missions.md` and `hooks.md` for resolved objectives, active threats, opportunities, deadlines, and tactical handoff triggers.
-11. For MekHQ-linked campaigns, update `pending-mekhq-actions.md` for any hard ledger intent that needs manual MekHQ application and later import confirmation.
+11. For MekHQ-linked campaigns, update `pending-mekhq-actions.md` for any hard ledger intent that needs guarded command execution, live reread verification, manual MekHQ application, or later import confirmation.
 12. Update `rules-gaps.md` or `playtest-notes.md` for missing rules, provisional rulings, awkward save steps, or workflow bugs.
 13. Update `safety-and-tone.md` when a child/co-player preference, tone boundary, or agency constraint matters for future play.
 
@@ -36,7 +36,7 @@ Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` for the full ownership policy. St
 
 - Put the corrected fact in the highest-authority owner file first.
 - Mark old archive text as `Corrected`, `Superseded`, `Retconned`, or `Needs review` when keeping it would otherwise mislead a future GM.
-- Do not treat a pending MekHQ action as a confirmed hard ledger fact until a saved MekHQ import confirms it.
+- Do not treat a pending MekHQ action as a confirmed hard ledger fact until a MekHQ live reread or saved import verifies it.
 - Preserve RPG-side scene memory when a later hard ledger result differs, unless the table explicitly retcons the scene.
 
 ## Consequence Routes
@@ -49,7 +49,7 @@ Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` for the full ownership policy. St
 - Downtime, repair/acquisition prep, training time, travel, and mission readiness: read `rules/campaign/downtime-and-readiness.md`; update `current-state.md`, `pcs.md`, `assets.md`, `missions.md`, and `hooks.md`.
 - Transport acquisition, DropShip/large-asset control, title questions, liens, permits, inspection defects, remote locks, fuel/readiness, and crew access: read `rules/campaign/transport-and-large-assets.md`; update `assets.md`, `missions.md`, `factions.md`, `relationships.md`, and `hooks.md`.
 - Vehicles, BattleMechs, battle armor, aerospace assets, pilot/gunnery notes, crew roles, fuel, damage, and tactical handoff assumptions: read `rules/vehicles-and-mechs/overview.md`, `gm/switch-to-classic-battletech.md`, and `gm/tactical-encounter-handoff-checklist.md`; update `assets.md`, `pcs.md`, `missions.md`, and `hooks.md`.
-- MekHQ-linked purchases, contracts, repairs, personnel changes, tactical outcomes, funds, and day advancement: update `pending-mekhq-actions.md` first; update hard ledger summaries only after a saved MekHQ import confirms them.
+- MekHQ-linked purchases, contracts, repairs, personnel changes, tactical outcomes, funds, and day advancement: use a supported guarded MekHQ command when readiness exposes one; otherwise update `pending-mekhq-actions.md` as a manual fallback or producer-request blocker. Update hard ledger summaries only after live reread or saved import verifies them.
 
 ## Close-Out Questions
 
