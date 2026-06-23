@@ -15,9 +15,9 @@
       "value": "Unknown",
       "evidence": "Unknown",
       "method_backed": false,
-      "source_owner": "Unknown",
+      "source_owner": "MekHQ GUI save-state tracking",
       "warnings": [
-        "Dirty/unsaved state is not source-confirmed in this V1 endpoint."
+        "Dirty/unsaved state is not source-confirmed in this V1 endpoint; consumers should treat live responses as snapshots, not save-clean guarantees."
       ]
     },
     "evidence": "Confirmed from MekHQ export",
@@ -82,6 +82,48 @@
         "method_backed": true,
         "source_owner": "Campaign#getCurrentSystem()",
         "warnings": []
+      },
+      "current_location": {
+        "value": "Galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentLocation(); AbstractLocation travel-state methods",
+        "warnings": []
+      },
+      "current_location_display_name": {
+        "value": "Galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentLocation(); AbstractLocation travel-state methods",
+        "warnings": []
+      },
+      "table_safe_location_label": {
+        "value": "Galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentSystem(); Campaign#getCurrentLocation(); AbstractLocation travel-state methods",
+        "warnings": []
+      },
+      "current_planet_name": {
+        "value": "Galatea",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Campaign#getCurrentLocation().getPlanet()",
+        "warnings": []
+      },
+      "travel_state": {
+        "value": {
+          "is_in_transit": false,
+          "is_on_planet": true,
+          "is_at_jump_point": false,
+          "is_jump_zenith": true,
+          "percentage_transit": 1.0,
+          "transit_time_days": 0.0
+        },
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "AbstractLocation travel-state methods",
+        "warnings": []
       }
     }
   },
@@ -109,7 +151,16 @@
       "source_owner": "Finances#hasActiveLoans()",
       "warnings": []
     },
-    "recent_transactions": []
+    "loan_defaults": {
+      "value": 0,
+      "evidence": "Confirmed from MekHQ export",
+      "method_backed": true,
+      "source_owner": "Finances#getLoanDefaults()",
+      "warnings": []
+    },
+    "active_loans": [],
+    "recent_transactions": [],
+    "financial_warnings": []
   },
   "personnel": [
     {
@@ -140,6 +191,14 @@
         "warnings": []
       },
       "unit_id": "bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+      "assignments": {
+        "unit_id": "bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+        "deployed": false,
+        "employed": true,
+        "joined_campaign": "3025-01-01",
+        "recruitment_date": "3025-01-01",
+        "source_owner": "Person#getUnit(); Person#isDeployed(); Person#isEmployed(); Person#getJoinedCampaign(); Person#getRecruitment()"
+      },
       "fatigue": {
         "value": 0,
         "evidence": "Confirmed from MekHQ export",
@@ -153,6 +212,33 @@
         "method_backed": true,
         "source_owner": "Person#getHits()",
         "warnings": []
+      },
+      "injury_summary": {
+        "hits": 0,
+        "total_injury_count": 0,
+        "non_permanent_injury_count": 0,
+        "permanent_injury_count": 0,
+        "prosthetic_injury_count": 0,
+        "active_injury_type_count": 0,
+        "total_injury_severity": 0,
+        "non_permanent_injury_severity": 0,
+        "source_owner": "Person injury summary methods",
+        "warnings": [
+          "Full injury objects and recovery timelines are deferred until a narrower medical export pass."
+        ]
+      },
+      "leadership": {
+        "flagged_commander": true,
+        "effective_commander": true,
+        "second_in_command": false,
+        "founder": true,
+        "rank_numeric": 5,
+        "source_owner": "Person leadership flags; Campaign#getCommander(); Person#getRankNumeric()"
+      },
+      "market_membership": {
+        "is_current_personnel": true,
+        "is_personnel_market_applicant": false,
+        "source_owner": "Campaign#getAllPersonnel()"
       }
     }
   ],
@@ -175,25 +261,256 @@
         "source_owner": "Unit#getStatus()",
         "warnings": []
       },
+      "availability": {
+        "available": true,
+        "serviceable": true,
+        "deployed": false,
+        "mothballed": false,
+        "mothballing": false,
+        "deployable": true,
+        "deployment_blocker": "None",
+        "source_owner": "Unit availability/deployment methods"
+      },
       "crew": [
         "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
       ],
+      "commander_id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+      "maintenance_site": {
+        "raw_code": "0",
+        "label": "Maintenance: Field Workshop",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Unit#getSite(); Unit#getCurrentSiteName()",
+        "warnings": []
+      },
       "damage_state": {
         "value": "Undamaged",
         "evidence": "Confirmed from MekHQ export",
         "method_backed": true,
         "source_owner": "Unit#getDamageState()",
         "warnings": []
+      },
+      "transport": {
+        "assignments": [
+          {
+            "transport_type": "SHIP_TRANSPORT",
+            "has_assignment": true,
+            "transport_unit_id": "cccccccc-dddd-eeee-ffff-000000000000",
+            "transport_unit_name": "Example Leopard",
+            "transporter_type": "MEK_BAY",
+            "transported_in_bay": true,
+            "source_owner": "Unit#getTransportAssignment(CampaignTransportType)"
+          }
+        ],
+        "carried_units": [
+          {
+            "transport_type": "SHIP_TRANSPORT",
+            "count": 0,
+            "unit_ids": [],
+            "source_owner": "Unit#getTransportedUnits(CampaignTransportType)"
+          }
+        ],
+        "warnings": [
+          "Transport output is read-only context; it does not expose loading, unloading, or reassignment commands."
+        ]
       }
     }
   ],
-  "contracts": [],
-  "scenarios": [],
+  "contracts": [
+    {
+      "id": 1,
+      "display_name": "Example Security Contract",
+      "type": "Contract",
+      "status": {
+        "raw_code": "ACTIVE",
+        "label": "Active",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Mission#getStatus()",
+        "warnings": []
+      },
+      "system_id": "galatea",
+      "system_name": "Galatea",
+      "warnings": [],
+      "description": "Example sanitized contract description.",
+      "employer": "Example Employer",
+      "enemy": "Unknown",
+      "start_date": "3025-04-01",
+      "end_date": "3025-07-01",
+      "length_months": 3,
+      "months_left": 2,
+      "active_on_campaign_date": true,
+      "travel_days": 0,
+      "terms": {
+        "advance_pct": 25,
+        "advance_amount": "250,000 C-bills",
+        "monthly_payout": "1,000,000 C-bills",
+        "transport_comp": "Full Transport",
+        "command_rights": "Independent",
+        "salvage_pct": "50%",
+        "straight_support": "Battle Loss Compensation",
+        "support_amount": "100,000 C-bills",
+        "source_owner": "Contract getters"
+      },
+      "payment_summary": {
+        "base_amount": "3,000,000 C-bills",
+        "total_amount": "3,000,000 C-bills",
+        "total_amount_plus_fees": "2,850,000 C-bills",
+        "total_amount_plus_fees_and_bonuses": "3,100,000 C-bills",
+        "monthly_payout": "1,000,000 C-bills",
+        "total_monthly_payout": "1,000,000 C-bills",
+        "advance_amount": "250,000 C-bills",
+        "total_advance_amount": "250,000 C-bills",
+        "fee_amount": "150,000 C-bills",
+        "overhead_amount": "50,000 C-bills",
+        "support_amount": "100,000 C-bills",
+        "transit_amount": "0 C-bills",
+        "transport_amount": "0 C-bills",
+        "signing_bonus_amount": "250,000 C-bills",
+        "estimated_total_profit": "1,500,000 C-bills",
+        "source_owner": "Contract payment getters"
+      },
+      "salvage_summary": {
+        "salvage_pct": 50,
+        "salvage_pct_label": "50%",
+        "current_salvage_pct": 50,
+        "salvage_exchange": false,
+        "salvaged_by_unit": "0 C-bills",
+        "salvaged_by_employer": "0 C-bills",
+        "battle_loss_comp": "50%",
+        "shares_percent": 0,
+        "source_owner": "Contract salvage and battle-loss getters"
+      },
+      "rental_summary": {
+        "hospital_beds": 0,
+        "kitchens": 0,
+        "holding_cells": 0,
+        "source_owner": "Contract rental getters"
+      },
+      "scenario_ids": [
+        101
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": 101,
+      "mission_id": 1,
+      "display_name": "Example Convoy Intercept",
+      "description": "Example sanitized scenario description.",
+      "status": {
+        "raw_code": "CURRENT",
+        "label": "Current",
+        "evidence": "Confirmed from MekHQ export",
+        "method_backed": true,
+        "source_owner": "Scenario#getStatus()",
+        "warnings": []
+      },
+      "date": "3025-04-09",
+      "linked_scenario_id": -1,
+      "stratcon_scenario_type": "Patrol",
+      "crisis": false,
+      "cloaked": false,
+      "map": {
+        "board_type": "Ground",
+        "map": "Generated",
+        "using_fixed_map": false,
+        "map_size_x": 32,
+        "map_size_y": 34,
+        "starting_position": 0,
+        "source_owner": "Scenario map getters"
+      },
+      "planetary_conditions": {
+        "light": "Daylight",
+        "weather": "Clear",
+        "wind": "Calm",
+        "fog": "None",
+        "atmosphere": "Standard",
+        "temperature": 25,
+        "gravity": 1.0,
+        "emi": "None",
+        "blowing_sand": "None",
+        "source_owner": "Scenario planetary condition getters"
+      },
+      "report": {
+        "text": "Example sanitized pre-resolution report.",
+        "sanitized": true,
+        "source_owner": "Scenario#getReport()"
+      },
+      "player_force": {
+        "formation_id": 0,
+        "force_ids": [
+          12
+        ],
+        "individual_unit_ids": [
+          "bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
+        ],
+        "all_unit_ids": [
+          "bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
+        ],
+        "source_owner": "Scenario#getForces(Campaign)"
+      },
+      "salvage_assignments": {
+        "formation_ids": [],
+        "tech_ids": [],
+        "source_owner": "Scenario#getSalvageFormations(); Scenario#getSalvageTechs()"
+      },
+      "objectives": [
+        {
+          "criterion": "Preserve",
+          "description": "Keep the convoy alive.",
+          "short_label": "Preserve 75%",
+          "amount_type": "Percentage",
+          "percentage": 75,
+          "fixed_amount": "Unknown",
+          "destination_edge": "NONE",
+          "time_limit_type": "None",
+          "time_limit": "Unknown",
+          "associated_force_names": [
+            "Convoy"
+          ],
+          "associated_unit_ids": [],
+          "success_effects": [
+            "ScenarioVictory"
+          ],
+          "failure_effects": [
+            "ScenarioDefeat"
+          ],
+          "details": [],
+          "source_owner": "ScenarioObjective getters"
+        }
+      ],
+      "bot_forces": [
+        {
+          "name": "Example Raiders",
+          "team": 1,
+          "template_name": "Example Template",
+          "fixed_entity_count": 2,
+          "full_entity_count": 2,
+          "total_bv": 1800,
+          "traitor_person_count": 0,
+          "source_owner": "BotForce getters"
+        }
+      ],
+      "bot_force_stubs": [],
+      "tactical_result": {
+        "status": "Current",
+        "has_report": true,
+        "report_source_owner": "Scenario#getReport()",
+        "warnings": [
+          "This is read-only scenario context; tactical result application remains out of scope."
+        ]
+      },
+      "warnings": []
+    }
+  ],
   "repairs_and_logistics": {
     "repair_pressure": {
       "value": {
         "parts_needed_count": 0,
         "parts_needing_service_count": 0,
+        "units_needing_parts_count": 0,
+        "units_needing_service_count": 0,
         "units_under_repair_count": 0
       },
       "evidence": "Confirmed from MekHQ export",
@@ -201,11 +518,126 @@
       "source_owner": "Unit repair summary methods",
       "warnings": []
     },
+    "repair_queue": [],
+    "parts_pressure": {
+      "shopping_list_item_count": 1,
+      "shopping_list_part_item_count": 1,
+      "shopping_list_unit_item_count": 0,
+      "total_buy_cost": "10,000 C-bills",
+      "source_owner": "Campaign#getShoppingList(); ShoppingList summary methods",
+      "warnings": [
+        "Shopping list rows are read-only display rows; they are not stable procurement command selectors."
+      ]
+    },
+    "shopping_list": [
+      {
+        "display_name": "Medium Laser",
+        "name": "Medium Laser",
+        "description": "Replacement weapon",
+        "extra_description": "",
+        "bonus": "",
+        "quantity": 1,
+        "total_quantity": 1,
+        "days_to_wait": 2,
+        "buy_cost": "10,000 C-bills",
+        "total_buy_cost": "10,000 C-bills",
+        "tech_base": {
+          "raw": "ALL",
+          "display": "All",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "IAcquisitionWork#getTechBase()",
+          "warnings": []
+        },
+        "availability": {
+          "raw": "C",
+          "display": "C",
+          "evidence": "Confirmed from MekHQ export",
+          "method_backed": true,
+          "source_owner": "IAcquisitionWork#getAvailability()",
+          "warnings": []
+        },
+        "unit_id": "Unknown",
+        "bulk_acquisition": false,
+        "source_owner": "Campaign#getShoppingList(); IAcquisitionWork getters",
+        "warnings": [
+          "Display-only shopping-list row; no stable acquisition selector or purchase command is exposed."
+        ]
+      }
+    ],
+    "cargo": {
+      "units_with_transport_assignment_count": 0,
+      "carried_unit_reference_count": 0,
+      "source_owner": "Unit#getTransportAssignment(); Unit#getTransportedUnits()",
+      "warnings": [
+        "Cargo output summarizes transport relationships only; capacity math and load/unload commands are not exposed in V1."
+      ]
+    },
+    "transport_bays": {
+      "assigned_unit_counts_by_transport_type": {},
+      "carried_unit_counts_by_transport_type": {},
+      "source_owner": "CampaignTransportType; Unit transport assignment methods",
+      "warnings": [
+        "Transport bay output is display-only and does not validate bay capacity or expose reassignment commands."
+      ]
+    },
+    "automation_guard": {
+      "read_only": true,
+      "repair_execution_supported": false,
+      "repair_assignment_supported": false,
+      "procurement_execution_supported": false,
+      "stable_repair_work_ids_available": false,
+      "stable_acquisition_selectors_available": false
+    },
     "warnings": [
-      "Repair pressure is an aggregate summary, not a complete work queue."
+      "Repair and procurement output is display-only context, not a complete work-order command queue."
+    ]
+  },
+  "markets": {
+    "display_only": true,
+    "automation_ready": false,
+    "guard_fields": {
+      "stable_selector_required_for_commands": true,
+      "stable_offer_selectors_available": false,
+      "duplicate_safe_selection_available": false,
+      "purchase_hire_accept_commands_available": false,
+      "save_writeback_available": false
+    },
+    "summary": {
+      "unit_market_method": "Disabled",
+      "unit_offer_count": 0,
+      "personnel_market_style": "Personnel Market Disabled",
+      "personnel_applicant_count": 0,
+      "contract_market_method": "None",
+      "contract_offer_count": 0,
+      "source_owner": "Campaign market getter methods"
+    },
+    "unit_offers": [],
+    "personnel_applicants": [],
+    "contract_offers": [],
+    "warnings": [
+      "Market rows are display-only. Consumers must not treat list position, display name, or object content as a durable command selector."
     ]
   },
   "reports": {
+    "metadata": {
+      "report_limit_per_category": 12,
+      "campaign_date": "3025-04-09",
+      "sanitization": "HTML tags stripped and long lines truncated.",
+      "categories": {
+        "current": 1,
+        "skill": 0,
+        "technical": 0,
+        "finances": 0,
+        "acquisitions": 0,
+        "medical": 0,
+        "personnel": 0,
+        "battle": 0,
+        "politics": 0,
+        "aggregate": 1
+      },
+      "source_owner": "Campaign report getter methods"
+    },
     "current": [
       {
         "category": "current",
@@ -226,10 +658,42 @@
     {
       "area": "bridge_metadata.dirty_state",
       "field": "unsaved_changes",
-      "reason": "No source-confirmed dirty/unsaved campaign flag was found in the initial source pass.",
+      "reason": "Source search found editor-local unsaved state, but no campaign-wide dirty/unsaved flag exposed for the loaded MekHQ campaign.",
       "evidence": "Unsupported",
-      "recommended_owner": "Future MekHQ source inspection",
+      "recommended_owner": "MekHQ GUI save-state tracking",
       "blocks_automation": false
+    },
+    {
+      "area": "markets",
+      "field": "stable_offer_selectors",
+      "reason": "Markets are display-only in V1; no stable source-confirmed offer selectors are exposed.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ exporter or source change",
+      "blocks_automation": true
+    },
+    {
+      "area": "markets",
+      "field": "market_mutation_commands",
+      "reason": "This V1 endpoint does not expose unit purchase, personnel hire/fire, contract accept/decline, market refresh, negotiation, or save/writeback commands.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ command API design",
+      "blocks_automation": true
+    },
+    {
+      "area": "repairs_and_logistics",
+      "field": "stable_repair_work_ids",
+      "reason": "Stable IPartWork/IAcquisitionWork selectors are not exposed by this V1 read-only endpoint.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ exporter work",
+      "blocks_automation": true
+    },
+    {
+      "area": "repairs_and_logistics",
+      "field": "repair_or_procurement_commands",
+      "reason": "This V1 endpoint does not expose repair execution, repair assignment, shopping-list purchase, or shopping-list priority mutation commands.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ command API design",
+      "blocks_automation": true
     }
   ]
 }

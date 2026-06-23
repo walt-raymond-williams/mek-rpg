@@ -1,5 +1,7 @@
 # Agent Handoff
 
+Status: Completed and archived for issue `#110`.
+
 ## Issue
 
 - GitHub issue: `#110`
@@ -84,15 +86,17 @@ Get-Content -Raw ..\megamek-workspace\docs\templates\mekhq-live-campaign-state.f
 
 ## Acceptance Criteria
 
-- Expanded producer fixtures or disposable captures parse with `ConvertFrom-Json`.
+- Expanded producer fixtures parse with `ConvertFrom-Json`.
 - MEK-RPG fixtures reflect the expanded local API shape without real campaign secrets or local save paths.
 - Focused live API fixture tests pass.
-- Live campaign sync tests pass, or blockers are recorded with exact missing fields.
-- Dashboard/context tests are updated if their behavior changes.
+- Live campaign sync tests pass.
+- Dashboard/context tests are updated for the new compact summaries.
 - Remaining producer gaps are recorded as gaps, not filled by active-save parsing.
 - `git status --short --branch` is clean after commit and push, except for explicitly reported unrelated files.
 
-## Open Questions
+## Completion Notes
 
-- Should issue `#110` be completed before resuming issue `#97`, or can it run after a first playtest pass using the current adapter shape?
-- Should MEK-RPG add a manual smoke capture command for the expanded API, or continue relying on the producer fixtures until the next source-built MekHQ run?
+- Added `tests/fixtures/mekhq-live-campaign-commands.fixture.json` and refreshed the expanded summary/state/warning-heavy fixtures.
+- Expanded live API fixture, sync, and dashboard export tests around finance, personnel, units, contracts, scenarios, logistics, markets, reports, and read-only command readiness.
+- Surfaced richer read-only live context in generated campaign files and compact dashboard data without promoting live values to durable MEK-RPG campaign state.
+- Verification passed with `./scripts/test-all.ps1 -Quick`.

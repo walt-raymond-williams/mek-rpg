@@ -2,7 +2,7 @@
 
 Date: 2026-06-22
 
-Status: producer-side expansion complete locally; MEK-RPG consumer follow-up tracked in issue `#110`.
+Status: producer-side expansion complete locally; MEK-RPG consumer follow-up completed in issue `#110`.
 
 Purpose: preserve the MegaMek/MekHQ live API expansion memo in MEK-RPG planning so future adapter, fixture, dashboard, and playtest work can consume the expanded read-only state shape without relying on chat history.
 
@@ -19,6 +19,7 @@ Confirmed by MegaMek/MekHQ workspace memo:
   - `495b58faef` (`Deepen live campaign contract scenario state`)
   - `911a338788` (`Deepen live campaign logistics market reports`)
   - `e19740b110` (`Expose command readiness endpoint`)
+  - `4429d99ea2` (`Add guarded status note command`)
 - MegaMek workspace documentation/fixture commit: `41aef57`.
 - MegaMek workspace issues `#39`, `#40`, `#41`, `#42`, and epic `#38` are closed.
 
@@ -64,9 +65,10 @@ The producer memo reports these completed additions:
 The producer memo reports that `GET /campaign/commands` is available locally. It reports:
 
 - `advanceDayOnce` as available through the legacy `POST /advance-day` prototype.
+- `campaign.status_note` as available through the guarded `POST /campaign/command/status-note` endpoint with dry-run support.
 - campaign, person, unit, applicant, and contract ids as candidate selectors where source-backed ids exist.
 - unit-market purchase as blocked with `stable_offer_selector_missing`.
-- status-note, funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save as blocked with machine-readable reason codes.
+- funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save as blocked with machine-readable reason codes.
 
 `POST /advance-day` is the first MEK-RPG command candidate for issue `#111`, but MEK-RPG should not call it against a real campaign without explicit user approval, current live baseline checks, and post-command live reread verification.
 
@@ -95,13 +97,14 @@ The MegaMek/MekHQ workspace reports:
 
 ## MEK-RPG Follow-Up
 
-Issue `#110` tracks the MEK-RPG-side consumption pass:
+Issue `#110` completed the MEK-RPG-side consumption pass:
 
-- refresh or add sanitized fixtures from the expanded API shape
-- update live API adapter mappings where the new fields should appear in campaign-local context
-- update dashboard/context consumption where useful
-- preserve live-context-not-durable behavior
-- preserve command-readiness context while keeping blocked commands and unstable selectors non-executable
-- record remaining producer gaps instead of parsing active save files
+- refreshed sanitized fixtures from the expanded API shape
+- updated live API adapter mappings where the new fields should appear in campaign-local context
+- updated dashboard/context consumption for compact read-only counts, warnings, market guards, logistics guards, and report metadata
+- preserved live-context-not-durable behavior
+- preserved command-readiness context while keeping blocked commands and unstable selectors non-executable
+- consumed the command-readiness fixture as read-only context, including available `advanceDayOnce` and `campaign.status_note` rows, without adding automatic command execution
+- recorded remaining producer gaps instead of parsing active save files
 
-This follow-up is useful for issue `#97` playtest readiness, but it does not have to block ordinary live context refresh if the current adapter still parses the existing fixture shape.
+This follow-up improves issue `#97` playtest readiness without authorizing MekHQ write automation.

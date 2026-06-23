@@ -327,6 +327,16 @@ function Invoke-ToolOutput {
     }
 }
 
+function Get-ArrayCount {
+    param([object]$Value)
+
+    if ($null -eq $Value) {
+        return 0
+    }
+
+    return @($Value).Count
+}
+
 function Get-MekHqSummaryPanelItem {
     param([string]$SummaryPath)
 
@@ -416,6 +426,11 @@ function Get-MekHqLiveApiPanelItem {
     $campaignName = $null
     $campaignDate = $null
     $campaignId = $null
+    $liveCounts = $null
+    $financeWarnings = @()
+    $marketGuard = $null
+    $logisticsSummary = $null
+    $reportMetadata = $null
 
     if ($liveApi.PSObject.Properties.Name -contains "apiMode") {
         $payloadKind = "summary"
@@ -447,6 +462,35 @@ function Get-MekHqLiveApiPanelItem {
             $campaignDate = $liveApi.campaign.date.value
             $campaignId = $liveApi.campaign.id.value
         }
+
+        $liveCounts = [pscustomobject]@{
+            personnel = Get-ArrayCount $liveApi.personnel
+            units = Get-ArrayCount $liveApi.units
+            contracts = Get-ArrayCount $liveApi.contracts
+            scenarios = Get-ArrayCount $liveApi.scenarios
+            unit_market_offers = Get-ArrayCount $liveApi.markets.unit_offers
+            personnel_applicants = Get-ArrayCount $liveApi.markets.personnel_applicants
+            contract_offers = Get-ArrayCount $liveApi.markets.contract_offers
+            current_reports = Get-ArrayCount $liveApi.reports.current
+        }
+        $financeWarnings = @($liveApi.finances.financial_warnings)
+        $marketGuard = if ($liveApi.markets) {
+            [pscustomobject]@{
+                display_only = $liveApi.markets.display_only
+                automation_ready = $liveApi.markets.automation_ready
+                guard_fields = $liveApi.markets.guard_fields
+                warnings = @($liveApi.markets.warnings)
+            }
+        } else { $null }
+        $logisticsSummary = if ($liveApi.repairs_and_logistics) {
+            [pscustomobject]@{
+                repair_pressure = $liveApi.repairs_and_logistics.repair_pressure
+                parts_pressure = $liveApi.repairs_and_logistics.parts_pressure
+                automation_guard = $liveApi.repairs_and_logistics.automation_guard
+                warnings = @($liveApi.repairs_and_logistics.warnings)
+            }
+        } else { $null }
+        $reportMetadata = $liveApi.reports.metadata
     }
 
     if ($apiMode -ne "local-read-only-live-context") {
@@ -477,6 +521,11 @@ function Get-MekHqLiveApiPanelItem {
         state_revision = $stateRevision
         snapshot_id = $snapshotId
         dirty_state = $dirtyState
+        live_counts = $liveCounts
+        finance_warnings = @($financeWarnings)
+        market_guard = $marketGuard
+        logistics_summary = $logisticsSummary
+        report_metadata = $reportMetadata
         warnings = @($warnings)
         unsupported = @($unsupported)
         live_context_not_durable = $true

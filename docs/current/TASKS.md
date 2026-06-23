@@ -2,16 +2,15 @@
 
 ## Now
 
-- None currently active after completing issue `#111`.
+- Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Next
 
-- Issue `#110`: consume the expanded local MekHQ live API state shape in MEK-RPG fixtures, adapter mappings, dashboard/context summaries, and tests. Use `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` and `docs/handoffs/active/live-api-expanded-state-consumption.md`.
-- Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
+- None selected after issue `#97`; create or select follow-up issues from the playtest findings.
 
 ## Backlog
 
-- Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for issue `#110`.
+- Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
 - If the `Atlas Field` campaign reaches actual BattleMech movement or combat, use `gm/tactical-encounter-handoff-checklist.md` as the starting point for preparing a MegaMek, MekHQ, or Classic BattleTech encounter from the campaign save.
@@ -27,9 +26,10 @@
 
 ## Done
 
+- Issue `#110` completed: refreshed MEK-RPG live MekHQ API fixtures from the expanded local producer shape, added command-readiness fixture coverage, expanded fixture/adapter/dashboard tests for finance, personnel, unit, contract, scenario, logistics, market, report, and command-readiness fields, surfaced richer read-only context through `scripts/sync-mekhq-live-campaign.py` and `scripts/export-dashboard-data.ps1`, preserved live-context-not-durable and no-writeback boundaries, and archived the handoff.
 - Issue `#111` completed: selected `advanceDayOnce` / `POST /advance-day` as the first controlled MekHQ command candidate, documented `GET /campaign/commands` as the read-only readiness layer, defined current request guards/statuses/limitations, named the live reread verification contract and issue `#110` fields needed for post-command confirmation, updated old read-only/manual-only wording, and archived the handoff.
 - Strategy update started: created issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` to reframe future MekHQ integration around explicit MekHQ-owned command APIs instead of permanent read-only/manual-only operation.
-- Tracking update completed: recorded the MegaMek/MekHQ expanded live API completion memo in `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`, created GitHub issue `#110`, and added active handoff `docs/handoffs/active/live-api-expanded-state-consumption.md` so future MEK-RPG adapter/fixture/dashboard work can consume the local expanded API shape while preserving read-only and no-writeback boundaries.
+- Tracking update completed: recorded the MegaMek/MekHQ expanded live API completion memo in `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`, created GitHub issue `#110`, and added the handoff now archived at `docs/handoffs/archive/live-api-expanded-state-consumption-110.md` so future MEK-RPG adapter/fixture/dashboard work could consume the local expanded API shape while preserving read-only and no-writeback boundaries.
 - Issue `#109` completed: refreshed `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md` into a handoff-ready MegaMek/MekHQ producer request package using issue `#107` adapter evidence; linked the concrete gaps for source-confirmed dirty/unsaved state, sparse human-readable location labels, structured unsupported entries, stable repair/acquisition work ids, display-only market selector future-readiness, and richer finance/personnel/unit/contract/scenario/logistics/report context; updated related audit/response/cross-board docs; archived the active handoff.
 - Issue `#107` implemented: added `scripts/sync-mekhq-live-campaign.py` to create or refresh campaign-local context from captured read-only MekHQ `GET /campaign/state` JSON with `bridge_metadata`; the adapter verifies `local-read-only-live-context` and `read_only: true`, rejects raw save/XML paths, preserves live-context-only status in generated notes, writes `mekhq-bridge.md` and `mekhq-api-gaps.md`, surfaces missing/unsupported API fields as producer gaps, leaves `campaign-state/active-campaign.md` unchanged, and is covered by `scripts/test-sync-mekhq-live-campaign.ps1` plus `./scripts/test-all.ps1 -Quick`.
 - Issue `#108` audited roadmap/task/workflow planning for live MekHQ API-first campaign loading versus save parsing. Added `docs/current/MEKHQ_LIVE_API_SAVE_COVERAGE_AUDIT.md`, `docs/current/MEGAMEK_LIVE_API_CHANGE_REQUEST.md`, archived handoff `docs/handoffs/archive/live-api-save-parser-roadmap-audit-108.md`, and created the issue `#109` handoff that now lives at `docs/handoffs/archive/live-api-producer-change-request-109.md`; roadmap now orders the next steps as producer-gap package, live API campaign-load adapter, then blind/live playtest.

@@ -13,9 +13,9 @@
     "value": "Unknown",
     "evidence": "Unknown",
     "method_backed": false,
-    "source_owner": "Unknown",
+    "source_owner": "MekHQ GUI save-state tracking",
     "warnings": [
-      "Dirty/unsaved state is not source-confirmed in this V1 endpoint."
+      "Dirty/unsaved state is not source-confirmed in this V1 endpoint; consumers should treat live responses as snapshots, not save-clean guarantees."
     ]
   },
   "stateRevision": "live-11111111-2222-3333-4444-555555555555-3025-04-09-2026-06-22T16:00:00Z",
@@ -32,9 +32,9 @@
     {
       "area": "bridge_metadata.dirty_state",
       "field": "unsaved_changes",
-      "reason": "No source-confirmed dirty/unsaved campaign flag was found in the initial source pass.",
+      "reason": "Source search found editor-local unsaved state, but no campaign-wide dirty/unsaved flag exposed for the loaded MekHQ campaign.",
       "evidence": "Unsupported",
-      "recommended_owner": "Future MekHQ source inspection",
+      "recommended_owner": "MekHQ GUI save-state tracking",
       "blocks_automation": false
     }
   ]

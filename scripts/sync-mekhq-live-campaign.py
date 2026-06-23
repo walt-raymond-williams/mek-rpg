@@ -82,6 +82,49 @@ def text(raw: Any, default: str = "Unknown") -> str:
     return str(raw)
 
 
+def display_name(item: Any, default: str = "Unknown") -> str:
+    if isinstance(item, dict):
+        return text(item.get("display_name") or item.get("name") or item.get("label") or item.get("value"), default)
+    return text(item, default)
+
+
+def summarize_value(raw: Any, keys: list[str] | None = None, default: str = "Unknown") -> str:
+    value = raw_value(raw, default)
+    if value is None:
+        return default
+    if isinstance(value, dict):
+        selected_keys = keys or [
+            key
+            for key in value.keys()
+            if key not in {"source_owner", "warnings", "evidence", "method_backed"}
+        ]
+        parts: list[str] = []
+        for key in selected_keys:
+            if key not in value:
+                continue
+            item = value.get(key)
+            if isinstance(item, (dict, list)):
+                rendered = display_name(item)
+            else:
+                rendered = text(item)
+            if rendered != "Unknown":
+                parts.append(f"{key.replace('_', ' ')}: {rendered}")
+        return "; ".join(parts) if parts else default
+    if isinstance(value, list):
+        if not value:
+            return default
+        rendered_items = [display_name(item) for item in value[:5]]
+        suffix = f"; +{len(value) - 5} more" if len(value) > 5 else ""
+        return "; ".join(rendered_items) + suffix
+    return text(value, default)
+
+
+def count_items(raw: Any) -> int:
+    if isinstance(raw, list):
+        return len(raw)
+    return 0
+
+
 def label(raw: Any, default: str = "Unknown") -> str:
     if isinstance(raw, dict):
         return text(raw.get("label") or raw.get("value") or raw.get("raw_code"), default)
@@ -381,6 +424,8 @@ def render_npcs(state: dict[str, Any], viewpoint: dict[str, Any]) -> str:
 
 
 def render_assets(state: dict[str, Any]) -> str:
+    finances = state.get("finances", {}) if isinstance(state.get("finances"), dict) else {}
+    logistics = state.get("repairs_and_logistics", {}) if isinstance(state.get("repairs_and_logistics"), dict) else {}
     lines = [
         "# Assets",
         "",
@@ -389,8 +434,10 @@ def render_assets(state: dict[str, Any]) -> str:
         "## Finances",
         "",
         f"- Funds: {funds_text(state)} ({EVIDENCE_LIVE}; live context only)",
-        f"- Active loans: {text(state.get('finances', {}).get('has_active_loans') if isinstance(state.get('finances'), dict) else None)}",
-        f"- Loan balance: {text(state.get('finances', {}).get('loan_balance') if isinstance(state.get('finances'), dict) else None)}",
+        f"- Active loans: {text(finances.get('has_active_loans'))}",
+        f"- Loan balance: {text(finances.get('loan_balance'))}",
+        f"- Loan defaults: {summarize_value(finances.get('loan_defaults'), ['defaulted_loan_count', 'overdue_loan_count'])}",
+        f"- Finance warnings: {summarize_value(finances.get('financial_warnings'))}",
         "",
         "## Live API Units",
         "",
@@ -400,16 +447,21 @@ def render_assets(state: dict[str, Any]) -> str:
         lines.append("- None reported by the live API.")
     for unit in units[:MAX_LIST_ITEMS]:
         entity = unit.get("entity", {}) if isinstance(unit.get("entity"), dict) else {}
+        availability = unit.get("availability", {}) if isinstance(unit.get("availability"), dict) else {}
+        transport = unit.get("transport", {}) if isinstance(unit.get("transport"), dict) else {}
         lines.extend(
             [
-                f"### {text(unit.get('display_name'))}",
+                f"### {display_name(unit)}",
                 "",
                 f"- MekHQ unit id: `{text(unit.get('id') or unit.get('mekhq_unit_id'))}`",
                 f"- Type: {text(entity.get('type'))}",
                 f"- Chassis/model/weight: {text(entity.get('chassis'))} / {text(entity.get('model'))} / {text(entity.get('weight_tons'))}",
                 f"- Status: {label(unit.get('status'))} ({EVIDENCE_LIVE})",
+                f"- Availability/deployability: available `{text(availability.get('available'))}`, deployable `{text(availability.get('deployable'))}`, deployed `{text(availability.get('deployed'))}`",
                 f"- Crew links: {text(unit.get('crew'))}",
+                f"- Commander/maintenance: commander `{text(unit.get('commander_id'))}`, maintenance site `{text(unit.get('maintenance_site'))}`",
                 f"- Damage state: {text(unit.get('damage_state'))}",
+                f"- Transport: assigned `{text(transport.get('transport_id'))}`, carried units `{summarize_value(transport.get('carried_unit_ids'))}`",
                 "- Legal status: Unknown unless established by MekHQ or play.",
                 "- Narrative overlay: Sparse/TBD",
                 "- Tactical handoff notes: Use MekHQ/MegaMek/Classic BattleTech for exact unit state, movement, heat, armor, weapons, ammo, damage, repair, and salvage.",
@@ -418,14 +470,21 @@ def render_assets(state: dict[str, Any]) -> str:
         )
     if len(units) > MAX_LIST_ITEMS:
         lines.append(f"- Additional live API units not expanded here: {len(units) - MAX_LIST_ITEMS}. See `mekhq-bridge.md`.")
-    logistics = state.get("repairs_and_logistics", {}) if isinstance(state.get("repairs_and_logistics"), dict) else {}
+    parts_pressure = logistics.get("parts_pressure", {}) if isinstance(logistics.get("parts_pressure"), dict) else {}
+    shopping_list = logistics.get("shopping_list", []) if isinstance(logistics.get("shopping_list"), list) else []
+    cargo = logistics.get("cargo", {}) if isinstance(logistics.get("cargo"), dict) else {}
+    automation_guard = logistics.get("automation_guard", {}) if isinstance(logistics.get("automation_guard"), dict) else {}
     lines.extend(
         [
             "",
             "## Repairs And Logistics",
             "",
-            f"- Repair pressure: {text(logistics.get('repair_pressure'))}",
-            f"- Warnings: {text(logistics.get('warnings'))}",
+            f"- Repair pressure: {summarize_value(logistics.get('repair_pressure'), ['parts_needed_count', 'parts_needing_service_count', 'units_needing_parts_count', 'units_needing_service_count', 'units_under_repair_count'])}",
+            f"- Parts/shopping pressure: {summarize_value(parts_pressure, ['shopping_list_item_count', 'shopping_list_part_item_count', 'total_buy_cost'])}",
+            f"- Shopping list sample: {summarize_value(shopping_list)}",
+            f"- Cargo/transport warnings: {summarize_value(cargo.get('warnings'))}",
+            f"- Automation guard: repair execution `{text(automation_guard.get('repair_execution_supported'))}`, procurement execution `{text(automation_guard.get('procurement_execution_supported'))}`, stable work ids `{text(automation_guard.get('stable_repair_work_ids_available'))}`",
+            f"- Warnings: {summarize_value(logistics.get('warnings'))}",
             "- Pending MekHQ application: None yet; create item ids in `pending-mekhq-actions.md`.",
         ]
     )
@@ -445,15 +504,27 @@ def render_missions(state: dict[str, Any]) -> str:
     ]
     if contracts:
         first = contracts[0]
+        terms = first.get("terms", {}) if isinstance(first.get("terms"), dict) else {}
+        payment = first.get("payment_summary", {}) if isinstance(first.get("payment_summary"), dict) else {}
+        salvage = first.get("salvage_summary", {}) if isinstance(first.get("salvage_summary"), dict) else {}
+        rental = first.get("rental_summary", {}) if isinstance(first.get("rental_summary"), dict) else {}
         lines.extend(
             [
-                f"Mission name: {text(first.get('name'))}",
+                f"Mission name: {display_name(first)}",
                 "",
                 f"Status: {label(first.get('status'))} ({EVIDENCE_LIVE}; live context only)",
                 "",
-                "Objective: Needs table-facing briefing.",
+                f"Description: {text(first.get('description'))}",
                 "",
-                f"Stakes: Employer `{text(first.get('employer'))}`, deadline `{text(first.get('deadline'))}`, system `{text(first.get('system_id'))}`.",
+                f"Dates: start `{text(first.get('start_date'))}`, end `{text(first.get('end_date'))}`, months left `{text(first.get('months_left'))}`, travel days `{text(first.get('travel_days'))}`.",
+                "",
+                f"Stakes: employer `{text(first.get('employer'))}`, enemy `{text(first.get('enemy'))}`, system `{text(first.get('system_name') or first.get('system_id'))}`.",
+                "",
+                f"Terms: {summarize_value(terms, ['advance_pct', 'advance_amount', 'monthly_payout', 'transport_comp', 'command_rights', 'salvage_pct', 'straight_support'])}.",
+                "",
+                f"Payment summary: {summarize_value(payment, ['total_amount', 'monthly_payout', 'advance_amount', 'estimated_total_profit'])}.",
+                "",
+                f"Salvage/rental summary: {summarize_value(salvage, ['salvage_pct_label', 'battle_loss_comp'])}; rentals {summarize_value(rental, ['hospital_beds', 'kitchens', 'holding_cells'])}.",
             ]
         )
     else:
@@ -470,7 +541,16 @@ def render_missions(state: dict[str, Any]) -> str:
     if not scenarios:
         lines.append("- None reported by the live API.")
     for scenario in scenarios[:MAX_LIST_ITEMS]:
-        lines.append(f"- `{text(scenario.get('id') or scenario.get('mekhq_scenario_id'))}` {text(scenario.get('name'))}: status {label(scenario.get('status'))}, date {text(scenario.get('date'))}.")
+        objective_summary = ""
+        objectives = scenario.get("objectives") if isinstance(scenario.get("objectives"), list) else []
+        if objectives:
+            objective_summary = f"; first objective {text(objectives[0].get('short_label') or objectives[0].get('description'))}"
+        lines.append(
+            f"- `{text(scenario.get('id') or scenario.get('mekhq_scenario_id'))}` {display_name(scenario)}: "
+            f"status {label(scenario.get('status'))}, date {text(scenario.get('date'))}, "
+            f"type {text(scenario.get('stratcon_scenario_type'))}, map {summarize_value(scenario.get('map'), ['board_type', 'map', 'map_size_x', 'map_size_y'])}"
+            f"{objective_summary}."
+        )
     lines.extend(["", "## Completed Missions", "", "- None recorded in MEK-RPG yet."])
     return "\n".join(lines).rstrip() + "\n"
 
@@ -498,6 +578,8 @@ def render_locations(state: dict[str, Any]) -> str:
 def render_hooks(state: dict[str, Any]) -> str:
     lines = ["# Hooks", "", "## Active Hooks", ""]
     markets = state.get("markets", {}) if isinstance(state.get("markets"), dict) else {}
+    logistics = state.get("repairs_and_logistics", {}) if isinstance(state.get("repairs_and_logistics"), dict) else {}
+    reports = state.get("reports", {}) if isinstance(state.get("reports"), dict) else {}
     unit_offers = markets.get("unit_offers") or markets.get("unit_market_offers") or []
     personnel = markets.get("personnel_applicants") or markets.get("personnel_market_applicants") or []
     contracts = markets.get("contract_offers") or markets.get("contract_market_offers") or []
@@ -509,6 +591,14 @@ def render_hooks(state: dict[str, Any]) -> str:
         lines.append(f"- Contract review: {text(offer.get('name'))}, employer `{text(offer.get('employer'))}`.")
     if len(lines) == 4:
         lines.append("- Choose a personnel, contract, logistics, repair, or embedded PC scene from the live campaign state.")
+    market_summary = markets.get("summary", {}) if isinstance(markets.get("summary"), dict) else {}
+    lines.extend(
+        [
+            f"- Market posture: display-only `{text(markets.get('display_only'))}`, automation-ready `{text(markets.get('automation_ready'))}`, unit offers `{text(market_summary.get('unit_offer_count'))}`, personnel applicants `{text(market_summary.get('personnel_applicant_count'))}`, contract offers `{text(market_summary.get('contract_offer_count'))}`.",
+            f"- Shopping pressure: {summarize_value(logistics.get('parts_pressure'), ['shopping_list_item_count', 'total_buy_cost'])}.",
+            f"- Report pressure: {summarize_value(reports.get('metadata', {}).get('categories') if isinstance(reports.get('metadata'), dict) else None)}.",
+        ]
+    )
     lines.extend(
         [
             "",
@@ -569,6 +659,8 @@ def render_mekhq_bridge(campaign_id: str, state: dict[str, Any], viewpoint: dict
         f"- Units: {len(units)}",
         f"- Contracts: {len(contracts)}",
         f"- Scenarios: {len(state.get('scenarios', [])) if isinstance(state.get('scenarios'), list) else 0}",
+        f"- Market unit/personnel/contract offers: {count_items(state.get('markets', {}).get('unit_offers') if isinstance(state.get('markets'), dict) else None)} / {count_items(state.get('markets', {}).get('personnel_applicants') if isinstance(state.get('markets'), dict) else None)} / {count_items(state.get('markets', {}).get('contract_offers') if isinstance(state.get('markets'), dict) else None)}",
+        f"- Current report lines: {count_items(state.get('reports', {}).get('current') if isinstance(state.get('reports'), dict) else None)}",
         "",
         "## Cross-References",
         "",
@@ -588,8 +680,8 @@ def render_mekhq_bridge(campaign_id: str, state: dict[str, Any], viewpoint: dict
         lines.append("- None reported by the live API.")
     lines.extend(["", "### Contracts", ""])
     for contract in contracts[:MAX_LIST_ITEMS]:
-        slug = slugify(text(contract.get("name")), "contract")
-        lines.append(f"- `{text(contract.get('id') or contract.get('mekhq_contract_id'))}` -> `{slug}`: {text(contract.get('name'))}")
+        slug = slugify(display_name(contract), "contract")
+        lines.append(f"- `{text(contract.get('id') or contract.get('mekhq_contract_id'))}` -> `{slug}`: {display_name(contract)}")
     if not contracts:
         lines.append("- None reported by the live API.")
     lines.extend(["", "## Warnings", ""])

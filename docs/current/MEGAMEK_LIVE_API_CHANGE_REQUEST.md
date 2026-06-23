@@ -207,7 +207,7 @@ Date: 2026-06-22
 
 The MegaMek/MekHQ workspace reports that the requested local live API expansion is complete on branch `codex/mekhq-advance-day-control-api` in commits `dc214d946d`, `d38a500960`, `495b58faef`, and `911a338788`. The completed read-only state work covers hardened metadata/location behavior, deeper finance/personnel/unit/contract/scenario/logistics/report/market state, and explicit automation guards.
 
-The same local source branch later added `GET /campaign/commands` in commit `e19740b110`. That endpoint is read-only command readiness and selector discovery. It reports `advanceDayOnce` as available through the legacy `POST /advance-day` command prototype and reports other command classes as blocked with reason codes. MEK-RPG issue `#111` owns the consumer-side command strategy and verification plan.
+The same local source branch later added `GET /campaign/commands` in commit `e19740b110`. That endpoint is read-only command readiness and selector discovery. It reports `advanceDayOnce` as available through the legacy `POST /advance-day` command prototype. Commit `4429d99ea2` also adds guarded `campaign.status_note` support through `POST /campaign/command/status-note`. Other command classes remain blocked unless the readiness endpoint reports them available. MEK-RPG issue `#111` owns the consumer-side command strategy and verification plan.
 
 Source publication to upstream `MegaMek/mekhq` remains blocked by repository permissions, but MEK-RPG can use the local source-built MekHQ and the producer fixtures for consumer validation. MEK-RPG follow-up issue `#110` tracks fixture refresh, adapter/dashboard/context consumption, and tests for the expanded shape. See `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md`.
 

@@ -12,10 +12,12 @@ Purpose: update MEK-RPG's MekHQ integration posture from permanent read-only/man
 
 - `GET /campaign/commands`: read-only readiness and selector discovery endpoint.
 - `POST /advance-day`: legacy guarded prototype for `advanceDayOnce`.
+- `POST /campaign/command/status-note`: guarded status-note/report command with dry-run support.
 - Source commit `e19740b110`: adds `GET /campaign/commands`.
+- Source commit `4429d99ea2`: adds `POST /campaign/command/status-note`.
 - Earlier source commits `9046a8075e` and `17207baa90`: added and hardened the local advance-day command prototype.
 
-`GET /campaign/commands` reports `advanceDayOnce` as the only currently available mutating command. It reports status-note, funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save commands as blocked with machine-readable reason codes. Unit-market purchase remains blocked because unit-market offers lack a source-confirmed stable offer selector.
+`GET /campaign/commands` reports `advanceDayOnce` and `campaign.status_note` as currently available command candidates. It reports funds adjustment, personnel status, medical treatment, contract acceptance, personnel hire, unit purchase, repair/procurement, and standalone save commands as blocked with machine-readable reason codes. Unit-market purchase remains blocked because unit-market offers lack a source-confirmed stable offer selector.
 
 This issue does not authorize MEK-RPG to call a real campaign command automatically. Real command execution still requires the user to run source-built MekHQ with the local control API enabled, confirm the loaded campaign baseline, and approve any campaign-significant mutation.
 

@@ -116,6 +116,15 @@ try {
     Assert-True ($liveStateItem.campaign_date -eq "3025-04-09") "Live API state campaign date is summarized"
     Assert-True ($liveStateItem.state_revision -like "live-*") "Live API state preserves live revision"
     Assert-True ($liveStateItem.dirty_state.value -eq "Unknown") "Live API state preserves dirty-state unknown"
+    Assert-True ($liveStateItem.live_counts.personnel -eq 1) "Live API state summarizes personnel count"
+    Assert-True ($liveStateItem.live_counts.units -eq 1) "Live API state summarizes unit count"
+    Assert-True ($liveStateItem.live_counts.contracts -eq 1) "Live API state summarizes contract count"
+    Assert-True ($liveStateItem.live_counts.scenarios -eq 1) "Live API state summarizes scenario count"
+    Assert-True ($liveStateItem.live_counts.current_reports -eq 1) "Live API state summarizes current report count"
+    Assert-True ($liveStateItem.market_guard.display_only -eq $true) "Live API state preserves display-only market guard"
+    Assert-True ($liveStateItem.market_guard.automation_ready -eq $false) "Live API state preserves market automation guard"
+    Assert-True ($liveStateItem.logistics_summary.automation_guard.repair_execution_supported -eq $false) "Live API state preserves repair execution guard"
+    Assert-True ($liveStateItem.report_metadata.categories.current -eq 1) "Live API state preserves report category counts"
     Assert-True (@($liveStateItem.unsupported).Count -ge 1) "Live API state preserves unsupported entries"
     Assert-HashMapUnchanged -Before $beforeHashes
 

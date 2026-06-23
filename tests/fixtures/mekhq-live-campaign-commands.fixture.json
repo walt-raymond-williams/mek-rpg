@@ -1,0 +1,155 @@
+{
+  "status": "ready",
+  "schema_name": "mekhq-live-campaign-commands",
+  "schema_version": "0.1",
+  "producer": "mekhq-local-control-api",
+  "producer_version": "0.51.00-SNAPSHOT",
+  "api_mode": "local-command-readiness",
+  "read_only": true,
+  "exported_at": "2026-06-22T23:30:00Z",
+  "campaign": {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "name": "Sanitized Example Campaign",
+    "date": "3025-04-09",
+    "source_owner": "Campaign#getId(); Campaign#getName(); Campaign#getLocalDate()"
+  },
+  "state_revision": "commands-00000000-0000-0000-0000-000000000001-3025-04-09-2026-06-22T23:30:00Z",
+  "selector_policy": {
+    "campaign_selectors": "Campaign id and date are stable enough for live-session guards.",
+    "person_selectors": "Person UUIDs are safe selectors when paired with expected name/status guards.",
+    "unit_selectors": "Unit UUIDs are safe selectors when paired with expected name/status guards.",
+    "contract_selectors": "Contract ids are exposed as candidate selectors with expected term guards.",
+    "personnel_market_selectors": "Applicant Person UUIDs are exposed as candidate selectors while hire commands remain blocked.",
+    "unit_market_selectors": "Unit-market offers have no stable source-confirmed selector; display rows must not drive purchases.",
+    "repair_selectors": "Repair and acquisition work rows have no stable source-confirmed command selector in this pass.",
+    "durability": "Selectors are live-session command candidates unless a command row states otherwise."
+  },
+  "selectors": {
+    "campaign": {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "name": "Sanitized Example Campaign",
+      "date": "3025-04-09",
+      "source_owner": "Campaign#getId(); Campaign#getName(); Campaign#getLocalDate()"
+    },
+    "current_personnel": [
+      {
+        "selector_type": "person_id",
+        "id": "10000000-0000-0000-0000-000000000001",
+        "display_name": "Alex Example",
+        "status": "ACTIVE",
+        "unit_id": "20000000-0000-0000-0000-000000000001",
+        "source_owner": "Campaign#getAllPersonnel(); Person#getId()"
+      }
+    ],
+    "current_units": [
+      {
+        "selector_type": "unit_id",
+        "id": "20000000-0000-0000-0000-000000000001",
+        "display_name": "Example Locust LCT-1V",
+        "status": "Active",
+        "scenario_id": -1,
+        "source_owner": "Campaign#getUnits(); Unit#getId()"
+      }
+    ],
+    "personnel_market_applicants": [
+      {
+        "selector_type": "person_id",
+        "id": "10000000-0000-0000-0000-000000000099",
+        "display_name": "Rin Applicant",
+        "status": "ACTIVE",
+        "unit_id": "Unknown",
+        "source_owner": "NewPersonnelMarket#getCurrentApplicants(); Person#getId()",
+        "market_membership": "personnel_market_applicant"
+      }
+    ],
+    "contract_market_offers": [
+      {
+        "selector_type": "contract_id",
+        "id": 42,
+        "display_name": "Sanitized Security Duty",
+        "status": "PROPOSED",
+        "employer": "Sanitized Employer",
+        "start_date": "3025-05-01",
+        "source_owner": "Campaign#getContractMarket().getContracts(); Mission#getId()"
+      }
+    ],
+    "unit_market_offers": {
+      "safe_selectors_available": false,
+      "reason_code": "stable_offer_selector_missing",
+      "offer_count": 3,
+      "source_owner": "UnitMarketOffer#writeToXML()",
+      "warnings": [
+        "Unit-market offers serialize market, unit type, unit name, percent, and transit duration, but no unique stable offer id."
+      ]
+    },
+    "repairs_and_procurement": {
+      "safe_selectors_available": false,
+      "reason_code": "stable_work_selector_missing",
+      "source_owner": "Campaign#getShoppingList(); Unit repair work getters",
+      "warnings": [
+        "Repair and procurement rows remain display-only until stable work ids and prompt-safe command workflows are designed."
+      ]
+    }
+  },
+  "command_readiness": [
+    {
+      "command": "advanceDayOnce",
+      "endpoint": "/advance-day",
+      "method": "POST",
+      "status": "available",
+      "reason_code": "legacy_command_available",
+      "reason": "Existing guarded prototype command can advance the loaded campaign exactly one day.",
+      "safe_selectors_available": true,
+      "required_selectors": [
+        "campaign.id",
+        "campaign.name",
+        "campaign.date"
+      ],
+      "dry_run_supported": false,
+      "save_after_success_supported": true,
+      "prompt_policy": "dismiss_advance_day_nags",
+      "requires_command_envelope": false
+    },
+    {
+      "command": "campaign.status_note",
+      "endpoint": "/campaign/command/status-note",
+      "method": "POST",
+      "status": "available",
+      "reason_code": "implemented",
+      "reason": "Guarded status-note command can append a plain-text MEK-RPG audit note to the campaign general report.",
+      "safe_selectors_available": true,
+      "required_selectors": [
+        "campaign.id",
+        "campaign.date",
+        "idempotency_key",
+        "note_text"
+      ],
+      "dry_run_supported": true,
+      "save_after_success_supported": true,
+      "prompt_policy": "refuse_if_prompt",
+      "requires_command_envelope": true
+    },
+    {
+      "command": "markets.unit_offers.purchase",
+      "endpoint": "/campaign/command/markets/unit-offers/purchase",
+      "method": "POST",
+      "status": "blocked",
+      "reason_code": "stable_offer_selector_missing",
+      "reason": "Unit-market purchase is blocked because offers lack a source-confirmed stable selector.",
+      "safe_selectors_available": false,
+      "required_selectors": [
+        "stable_offer_selector",
+        "expected_unit",
+        "expected_price"
+      ],
+      "dry_run_supported": true,
+      "save_after_success_supported": false,
+      "prompt_policy": "refuse_if_prompt",
+      "requires_command_envelope": true
+    }
+  ],
+  "warnings": [
+    "This endpoint reports command availability only; it does not mutate the loaded campaign.",
+    "Safe selectors still require command-specific guard fields before any future mutating endpoint applies."
+  ]
+}

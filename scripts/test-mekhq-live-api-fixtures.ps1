@@ -6,6 +6,7 @@ $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $summaryFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-summary.fixture.json"
 $stateFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-state.fixture.json"
 $warningFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-warning-heavy.fixture.json"
+$commandsFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-commands.fixture.json"
 
 function Write-Step {
     param([string]$Message)
@@ -61,24 +62,28 @@ function Assert-NoLocalPathLeak {
 Push-Location $repoRoot
 try {
     Write-Step "Checking live API fixture presence, JSON syntax, and sanitation."
-    foreach ($path in @($summaryFixturePath, $stateFixturePath, $warningFixturePath)) {
+    foreach ($path in @($summaryFixturePath, $stateFixturePath, $warningFixturePath, $commandsFixturePath)) {
         Assert-True (Test-Path -LiteralPath $path -PathType Leaf) "Fixture exists: $([System.IO.Path]::GetFileName($path))"
     }
 
     $summaryHashBefore = (Get-FileHash -LiteralPath $summaryFixturePath -Algorithm SHA256).Hash
     $stateHashBefore = (Get-FileHash -LiteralPath $stateFixturePath -Algorithm SHA256).Hash
     $warningHashBefore = (Get-FileHash -LiteralPath $warningFixturePath -Algorithm SHA256).Hash
+    $commandsHashBefore = (Get-FileHash -LiteralPath $commandsFixturePath -Algorithm SHA256).Hash
 
     $summaryText = Get-Content -LiteralPath $summaryFixturePath -Raw
     $stateText = Get-Content -LiteralPath $stateFixturePath -Raw
     $warningText = Get-Content -LiteralPath $warningFixturePath -Raw
+    $commandsText = Get-Content -LiteralPath $commandsFixturePath -Raw
     $summary = $summaryText | ConvertFrom-Json
     $state = $stateText | ConvertFrom-Json
     $warning = $warningText | ConvertFrom-Json
+    $commands = $commandsText | ConvertFrom-Json
 
     Assert-NoLocalPathLeak $summaryText "Summary fixture"
     Assert-NoLocalPathLeak $stateText "State fixture"
     Assert-NoLocalPathLeak $warningText "Warning-heavy fixture"
+    Assert-NoLocalPathLeak $commandsText "Command-readiness fixture"
 
     Write-Step "Checking summary endpoint shape and live-context metadata."
     foreach ($key in @(
@@ -120,6 +125,7 @@ try {
         "contracts",
         "scenarios",
         "repairs_and_logistics",
+        "markets",
         "reports",
         "unsupported"
     )) {
@@ -153,16 +159,53 @@ try {
     $person = $state.personnel[0]
     Assert-True ($person.display_name -eq "Example Pilot") "Personnel display name sample is parsed."
     Assert-True ($person.primary_role.method_backed -eq $true) "Personnel primary role is method-backed."
+    Assert-HasProperty $person "assignments" "Personnel includes assignment context."
+    Assert-HasProperty $person "injury_summary" "Personnel includes injury summary."
+    Assert-HasProperty $person "leadership" "Personnel includes leadership markers."
+    Assert-HasProperty $person "market_membership" "Personnel includes market membership context."
     Assert-ValueEnvelope $person.fatigue "Personnel fatigue"
     Assert-ValueEnvelope $person.hits "Personnel hits"
 
     Assert-True ($state.units.Count -ge 1) "State fixture includes representative units."
     $unit = $state.units[0]
     Assert-True ($unit.entity.type -eq "Mek") "Unit entity type sample is parsed."
+    Assert-HasProperty $unit "availability" "Unit includes availability/deployability context."
+    Assert-HasProperty $unit "commander_id" "Unit includes commander id."
+    Assert-HasProperty $unit "maintenance_site" "Unit includes maintenance site."
+    Assert-HasProperty $unit "transport" "Unit includes transport context."
     Assert-True ($unit.crew -contains $person.id) "Unit crew links to the representative personnel id."
     Assert-ValueEnvelope $unit.damage_state "Unit damage state"
 
+    Assert-True ($state.contracts.Count -ge 1) "State fixture includes representative contracts."
+    $contract = $state.contracts[0]
+    Assert-True ($contract.display_name -eq "Example Security Contract") "Contract display name sample is parsed."
+    Assert-HasProperty $contract "payment_summary" "Contract includes payment summary."
+    Assert-HasProperty $contract "salvage_summary" "Contract includes salvage summary."
+    Assert-HasProperty $contract "rental_summary" "Contract includes rental summary."
+    Assert-True ($contract.scenario_ids -contains 101) "Contract links to representative scenario."
+
+    Assert-True ($state.scenarios.Count -ge 1) "State fixture includes representative scenarios."
+    $scenario = $state.scenarios[0]
+    Assert-True ($scenario.display_name -eq "Example Convoy Intercept") "Scenario display name sample is parsed."
+    Assert-HasProperty $scenario "map" "Scenario includes map summary."
+    Assert-HasProperty $scenario "planetary_conditions" "Scenario includes planetary conditions."
+    Assert-HasProperty $scenario "objectives" "Scenario includes objectives."
+    Assert-HasProperty $scenario "tactical_result" "Scenario includes tactical-result context."
+
+    Assert-HasProperty $state.repairs_and_logistics "repair_queue" "Logistics includes display-only repair queue."
+    Assert-HasProperty $state.repairs_and_logistics "shopping_list" "Logistics includes display-only shopping list."
+    Assert-HasProperty $state.repairs_and_logistics "cargo" "Logistics includes cargo summary."
+    Assert-HasProperty $state.repairs_and_logistics "automation_guard" "Logistics includes automation guard."
+    Assert-True ($state.repairs_and_logistics.automation_guard.repair_execution_supported -eq $false) "Repair execution remains unsupported."
+    Assert-True ($state.repairs_and_logistics.automation_guard.stable_repair_work_ids_available -eq $false) "Stable repair work ids remain unavailable."
+
+    Assert-True ($state.markets.display_only -eq $true) "Markets remain display-only."
+    Assert-True ($state.markets.automation_ready -eq $false) "Markets are not automation-ready."
+    Assert-True ($state.markets.guard_fields.stable_offer_selectors_available -eq $false) "Market stable offer selectors remain unavailable."
+
     Assert-True ($state.reports.current.Count -ge 1) "State fixture includes sanitized current report lines."
+    Assert-HasProperty $state.reports "metadata" "Reports include metadata counts."
+    Assert-True ($state.reports.metadata.categories.current -ge 1) "Report metadata counts current reports."
     Assert-True ($state.reports.current[0].contains_html -eq $false) "Report line declares no HTML."
     Assert-True ($state.repairs_and_logistics.warnings.Count -ge 1) "Repair/logistics aggregate warning is preserved."
 
@@ -196,13 +239,36 @@ try {
     Assert-True ($null -ne $repairUnsupported) "Warning-heavy fixture records stable repair-work id unsupported entry."
     Assert-True ($repairUnsupported.blocks_automation -eq $true) "Stable repair-work id gap blocks automation."
 
+    Write-Step "Checking command-readiness fixture and blocked command behavior."
+    Assert-True ($commands.status -eq "ready") "Command-readiness fixture status is ready."
+    Assert-True ($commands.schema_name -eq "mekhq-live-campaign-commands") "Command-readiness fixture declares schema name."
+    Assert-True ($commands.api_mode -eq "local-command-readiness") "Command-readiness fixture declares command-readiness API mode."
+    Assert-True ($commands.read_only -eq $true) "Command-readiness fixture is read-only."
+    Assert-HasProperty $commands "selector_policy" "Command-readiness fixture includes selector policy."
+    Assert-HasProperty $commands "selectors" "Command-readiness fixture includes selector candidates."
+    $advanceCommand = $commands.command_readiness | Where-Object { $_.command -eq "advanceDayOnce" } | Select-Object -First 1
+    Assert-True ($null -ne $advanceCommand) "Command-readiness fixture includes advanceDayOnce."
+    Assert-True ($advanceCommand.status -eq "available") "advanceDayOnce is reported available."
+    Assert-True ($advanceCommand.endpoint -eq "/advance-day") "advanceDayOnce endpoint is preserved."
+    $statusNoteCommand = $commands.command_readiness | Where-Object { $_.command -eq "campaign.status_note" } | Select-Object -First 1
+    Assert-True ($null -ne $statusNoteCommand) "Command-readiness fixture includes status-note command."
+    Assert-True ($statusNoteCommand.status -eq "available") "Status-note command is reported available in the producer fixture."
+    Assert-True ($statusNoteCommand.dry_run_supported -eq $true) "Status-note command supports dry-run."
+    $unitPurchaseCommand = $commands.command_readiness | Where-Object { $_.command -eq "markets.unit_offers.purchase" } | Select-Object -First 1
+    Assert-True ($null -ne $unitPurchaseCommand) "Command-readiness fixture includes unit-market purchase command row."
+    Assert-True ($unitPurchaseCommand.status -eq "blocked") "Unit-market purchase remains blocked."
+    Assert-True ($unitPurchaseCommand.reason_code -eq "stable_offer_selector_missing") "Unit-market purchase blocker is stable selector absence."
+    Assert-True ($commands.selectors.unit_market_offers.safe_selectors_available -eq $false) "Unit-market selectors remain unavailable."
+
     Write-Step "Checking read-only fixture behavior."
     $summaryHashAfter = (Get-FileHash -LiteralPath $summaryFixturePath -Algorithm SHA256).Hash
     $stateHashAfter = (Get-FileHash -LiteralPath $stateFixturePath -Algorithm SHA256).Hash
     $warningHashAfter = (Get-FileHash -LiteralPath $warningFixturePath -Algorithm SHA256).Hash
+    $commandsHashAfter = (Get-FileHash -LiteralPath $commandsFixturePath -Algorithm SHA256).Hash
     Assert-True ($summaryHashBefore -eq $summaryHashAfter) "Summary fixture hash is unchanged after parsing."
     Assert-True ($stateHashBefore -eq $stateHashAfter) "State fixture hash is unchanged after parsing."
     Assert-True ($warningHashBefore -eq $warningHashAfter) "Warning-heavy fixture hash is unchanged after parsing."
+    Assert-True ($commandsHashBefore -eq $commandsHashAfter) "Command-readiness fixture hash is unchanged after parsing."
 }
 finally {
     Pop-Location

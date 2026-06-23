@@ -9,9 +9,9 @@
       "value": "Unknown",
       "evidence": "Unknown",
       "method_backed": false,
-      "source_owner": "Unknown",
+      "source_owner": "MekHQ GUI save-state tracking",
       "warnings": [
-        "Dirty/unsaved state is not source-confirmed in this V1 endpoint."
+        "Dirty/unsaved state is not source-confirmed in this V1 endpoint; consumers should treat live responses as snapshots, not save-clean guarantees."
       ]
     },
     "warnings": [
@@ -24,11 +24,29 @@
     ]
   },
   "markets": {
+    "display_only": true,
+    "automation_ready": false,
+    "guard_fields": {
+      "stable_selector_required_for_commands": true,
+      "stable_offer_selectors_available": false,
+      "duplicate_safe_selection_available": false,
+      "purchase_hire_accept_commands_available": false,
+      "save_writeback_available": false
+    },
+    "summary": {
+      "unit_market_method": "AtB Monthly",
+      "unit_offer_count": 2,
+      "personnel_market_style": "MekHQ",
+      "personnel_applicant_count": 1,
+      "contract_market_method": "CamOps",
+      "contract_offer_count": 1,
+      "source_owner": "Campaign market getter methods"
+    },
     "unit_offers": [],
     "personnel_applicants": [],
     "contract_offers": [],
     "warnings": [
-      "Market data is intentionally omitted from V1 except for unsupported automation-blocking entries."
+      "Market rows are display-only. Consumers must not treat list position, display name, or object content as a durable command selector."
     ]
   },
   "repairs_and_logistics": {
@@ -36,6 +54,8 @@
       "value": {
         "parts_needed_count": 3,
         "parts_needing_service_count": 5,
+        "units_needing_parts_count": 2,
+        "units_needing_service_count": 2,
         "units_under_repair_count": 1
       },
       "evidence": "Confirmed from MekHQ export",
@@ -43,22 +63,68 @@
       "source_owner": "Unit repair summary methods",
       "warnings": []
     },
-    "cargo": {
+    "repair_queue": [
+      {
+        "unit_id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        "display_name": "Example Damaged Locust",
+        "under_repair": true,
+        "parts_needed_count": 1,
+        "parts_needing_service_count": 2,
+        "tech_id": "Unknown",
+        "engineer_id": "Unknown",
+        "last_maintenance_report": "Example sanitized maintenance warning.",
+        "source_owner": "Unit repair summary methods",
+        "warnings": [
+          "No stable repair work selector or execute/assign command is exposed for this row."
+        ]
+      }
+    ],
+    "parts_pressure": {
+      "shopping_list_item_count": 2,
+      "shopping_list_part_item_count": 2,
+      "shopping_list_unit_item_count": 0,
+      "total_buy_cost": "42,000 C-bills",
+      "source_owner": "Campaign#getShoppingList(); ShoppingList summary methods",
       "warnings": [
-        "Cargo and transport capacity summaries need a narrower source-backed pass before automation-adjacent use."
+        "Shopping list rows are read-only display rows; they are not stable procurement command selectors."
       ]
     },
+    "shopping_list": [],
+    "cargo": {
+      "units_with_transport_assignment_count": 1,
+      "carried_unit_reference_count": 0,
+      "source_owner": "Unit#getTransportAssignment(); Unit#getTransportedUnits()",
+      "warnings": [
+        "Cargo output summarizes transport relationships only; capacity math and load/unload commands are not exposed in V1."
+      ]
+    },
+    "transport_bays": {
+      "assigned_unit_counts_by_transport_type": {},
+      "carried_unit_counts_by_transport_type": {},
+      "source_owner": "CampaignTransportType; Unit transport assignment methods",
+      "warnings": [
+        "Transport bay output is display-only and does not validate bay capacity or expose reassignment commands."
+      ]
+    },
+    "automation_guard": {
+      "read_only": true,
+      "repair_execution_supported": false,
+      "repair_assignment_supported": false,
+      "procurement_execution_supported": false,
+      "stable_repair_work_ids_available": false,
+      "stable_acquisition_selectors_available": false
+    },
     "warnings": [
-      "Repair pressure is an aggregate summary, not a complete work queue."
+      "Repair and procurement output is display-only context, not a complete work-order command queue."
     ]
   },
   "unsupported": [
     {
       "area": "bridge_metadata.dirty_state",
       "field": "unsaved_changes",
-      "reason": "No source-confirmed dirty/unsaved campaign flag was found in the initial source pass.",
+      "reason": "Source search found editor-local unsaved state, but no campaign-wide dirty/unsaved flag exposed for the loaded MekHQ campaign.",
       "evidence": "Unsupported",
-      "recommended_owner": "Future MekHQ source inspection",
+      "recommended_owner": "MekHQ GUI save-state tracking",
       "blocks_automation": false
     },
     {
@@ -70,11 +136,27 @@
       "blocks_automation": true
     },
     {
+      "area": "markets",
+      "field": "market_mutation_commands",
+      "reason": "This V1 endpoint does not expose unit purchase, personnel hire/fire, contract accept/decline, market refresh, negotiation, or save/writeback commands.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ command API design",
+      "blocks_automation": true
+    },
+    {
       "area": "repairs_and_logistics",
       "field": "stable_repair_work_ids",
       "reason": "Stable IPartWork/IAcquisitionWork selectors are not exposed by this V1 read-only endpoint.",
       "evidence": "Unsupported",
       "recommended_owner": "Future MekHQ exporter work",
+      "blocks_automation": true
+    },
+    {
+      "area": "repairs_and_logistics",
+      "field": "repair_or_procurement_commands",
+      "reason": "This V1 endpoint does not expose repair execution, repair assignment, shopping-list purchase, or shopping-list priority mutation commands.",
+      "evidence": "Unsupported",
+      "recommended_owner": "Future MekHQ command API design",
       "blocks_automation": true
     }
   ]

@@ -236,6 +236,7 @@ Completed local source commits:
 - `495b58faef` (`Deepen live campaign contract scenario state`)
 - `911a338788` (`Deepen live campaign logistics market reports`)
 - `e19740b110` (`Expose command readiness endpoint`)
+- `4429d99ea2` (`Add guarded status note command`)
 
 Workspace docs and fixtures are pushed in MegaMek workspace commit `41aef57`, and the durable producer note is `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md`.
 
@@ -245,7 +246,7 @@ The added command-readiness endpoint is:
 GET /campaign/commands
 ```
 
-It is read-only and reports command availability plus selector policy. It currently reports `advanceDayOnce` as available through the legacy `POST /advance-day` prototype and reports other command families as blocked. MEK-RPG issue `#111` treats day advancement as the first controlled command candidate, with live state reread required before updating durable MEK-RPG campaign files.
+It is read-only and reports command availability plus selector policy. It currently reports `advanceDayOnce` as available through the legacy `POST /advance-day` prototype and `campaign.status_note` as available through `POST /campaign/command/status-note`; other command families remain blocked unless the readiness row says otherwise. MEK-RPG issue `#111` treats day advancement as the first controlled command candidate, with live state reread required before updating durable MEK-RPG campaign files.
 
 MEK-RPG can use the local source-built MekHQ for validation even though pushing the source branch to upstream `MegaMek/mekhq` is blocked by repository permissions. The next MEK-RPG-side work is issue `#110`: refresh fixtures, adapter mappings, dashboard/context summaries, and focused tests against the expanded read-only shape while preserving live-context-not-durable and no-writeback boundaries.
 

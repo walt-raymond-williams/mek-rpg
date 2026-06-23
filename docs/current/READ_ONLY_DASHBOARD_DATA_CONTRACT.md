@@ -109,6 +109,7 @@ Rules:
 - Accept only an explicit JSON path.
 - Treat `api_mode: local-read-only-live-context` as live context, not a durable import checkpoint.
 - Preserve `state_revision`, `snapshot_id`, dirty-state warning/unsupported entries, method-backed trust envelopes, and read-only proof.
+- For expanded state payloads, expose compact read-only summaries such as personnel/unit/contract/scenario/report counts, finance warnings, market guard fields, logistics guard fields, and report metadata so dashboards do not have to inspect raw nested payloads for common context.
 - Do not promote live values into campaign files without saved/import confirmation, explicit user approval, or a future controlled promotion flow.
 - Do not call the live API, require a MekHQ GUI, or follow raw save paths.
 - Do not create write controls or pending MekHQ actions from market, repair, personnel, contract, or tactical fields.
@@ -421,6 +422,7 @@ Recommended fixtures:
 - sanitized MekHQ summary JSON from `tests/fixtures/mekhq-summary-minimal.json`
 - summary JSON with a raw save `input_path` that must not be followed
 - sanitized live API summary/state/warning-heavy JSON from `tests/fixtures/mekhq-live-campaign-*.fixture.json` for live context adapter behavior
+- sanitized command-readiness JSON from `tests/fixtures/mekhq-live-campaign-commands.fixture.json`; this is read-only readiness context and must not enable dashboard write controls by itself
 
 ## Implementation Follow-Up
 
