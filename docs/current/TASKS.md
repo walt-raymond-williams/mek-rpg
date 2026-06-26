@@ -6,11 +6,13 @@
 
 ## Next
 
+- Issue `#118`: study `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_CONTRACT.md` and align MEK-RPG read, command, play, adapter, fixture, and gap-reporting processes with the current live MekHQ API contract.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
+- Issue `#118`: live MekHQ API contract alignment follow-up. Use the MegaMek/MekHQ consumer-facing contract as the source for `/status`, `/campaign/pending-deployments`, command-readiness selector behavior, guarded command envelopes, dry-run/save/prompt policy, partial-response handling, and timeout recommendations; update MEK-RPG docs/scripts/tests without editing the MegaMek workspace.
 - Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues are `#116` static audit, `#115` startup SOP, `#117` gap reporting, and `#114` validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
