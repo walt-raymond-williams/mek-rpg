@@ -7,6 +7,7 @@ $summaryFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-su
 $stateFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-state.fixture.json"
 $warningFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-warning-heavy.fixture.json"
 $commandsFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-campaign-commands.fixture.json"
+$pendingDeploymentsFixturePath = Join-Path $repoRoot "tests\fixtures\mekhq-live-pending-deployments.fixture.json"
 
 function Write-Step {
     param([string]$Message)
@@ -62,7 +63,7 @@ function Assert-NoLocalPathLeak {
 Push-Location $repoRoot
 try {
     Write-Step "Checking live API fixture presence, JSON syntax, and sanitation."
-    foreach ($path in @($summaryFixturePath, $stateFixturePath, $warningFixturePath, $commandsFixturePath)) {
+    foreach ($path in @($summaryFixturePath, $stateFixturePath, $warningFixturePath, $commandsFixturePath, $pendingDeploymentsFixturePath)) {
         Assert-True (Test-Path -LiteralPath $path -PathType Leaf) "Fixture exists: $([System.IO.Path]::GetFileName($path))"
     }
 
@@ -70,20 +71,24 @@ try {
     $stateHashBefore = (Get-FileHash -LiteralPath $stateFixturePath -Algorithm SHA256).Hash
     $warningHashBefore = (Get-FileHash -LiteralPath $warningFixturePath -Algorithm SHA256).Hash
     $commandsHashBefore = (Get-FileHash -LiteralPath $commandsFixturePath -Algorithm SHA256).Hash
+    $pendingDeploymentsHashBefore = (Get-FileHash -LiteralPath $pendingDeploymentsFixturePath -Algorithm SHA256).Hash
 
     $summaryText = Get-Content -LiteralPath $summaryFixturePath -Raw
     $stateText = Get-Content -LiteralPath $stateFixturePath -Raw
     $warningText = Get-Content -LiteralPath $warningFixturePath -Raw
     $commandsText = Get-Content -LiteralPath $commandsFixturePath -Raw
+    $pendingDeploymentsText = Get-Content -LiteralPath $pendingDeploymentsFixturePath -Raw
     $summary = $summaryText | ConvertFrom-Json
     $state = $stateText | ConvertFrom-Json
     $warning = $warningText | ConvertFrom-Json
     $commands = $commandsText | ConvertFrom-Json
+    $pendingDeployments = $pendingDeploymentsText | ConvertFrom-Json
 
     Assert-NoLocalPathLeak $summaryText "Summary fixture"
     Assert-NoLocalPathLeak $stateText "State fixture"
     Assert-NoLocalPathLeak $warningText "Warning-heavy fixture"
     Assert-NoLocalPathLeak $commandsText "Command-readiness fixture"
+    Assert-NoLocalPathLeak $pendingDeploymentsText "Pending-deployments fixture"
 
     Write-Step "Checking summary endpoint shape and live-context metadata."
     foreach ($key in @(
@@ -114,6 +119,22 @@ try {
     Assert-True ($summary.unsupported.Count -ge 1) "Summary preserves unsupported entries."
     Assert-True ($summary.stateRevision -like "live-*") "Summary has a live state revision."
     Assert-True ($summary.snapshotId -eq $summary.stateRevision) "Summary snapshot id matches the state revision fixture value."
+
+    Write-Step "Checking pending-deployments endpoint shape and viewpoint commitment lookup."
+    Assert-True ($pendingDeployments.schema_name -eq "mekhq-live-pending-deployments") "Pending-deployments fixture declares schema name."
+    Assert-True ($pendingDeployments.read_only -eq $true) "Pending-deployments fixture is read-only."
+    Assert-True ($pendingDeployments.state_revision -like "live-*") "Pending-deployments fixture has a live state revision."
+    Assert-True ($pendingDeployments.pending_scenario_count -eq 2) "Pending-deployments fixture reports pending scenario count."
+    Assert-True ($pendingDeployments.pending_scenarios.Count -eq 2) "Pending-deployments fixture includes scenario rows."
+    $assignedScenario = $pendingDeployments.pending_scenarios | Where-Object { $_.assigned_unit_count -gt 0 } | Select-Object -First 1
+    Assert-True ($null -ne $assignedScenario) "Pending-deployments fixture includes an assigned scenario."
+    Assert-True ($assignedScenario.assigned_personnel_ids -contains "00000000-0000-0000-0000-000000000266") "Assigned scenario preserves personnel commitment ids."
+    Assert-True ($pendingDeployments.viewpoint_person.lookup_supported -eq $true) "Viewpoint-person lookup is supported."
+    Assert-True ($pendingDeployments.viewpoint_person.query.person_name -eq "Moreno") "Viewpoint-person fixture preserves the person-name query."
+    Assert-True ($pendingDeployments.viewpoint_person.commitment_count -eq 1) "Viewpoint-person lookup reports one commitment."
+    Assert-True ($pendingDeployments.viewpoint_person.commitments[0].scenario_id -eq 66) "Viewpoint-person commitment links to the assigned scenario."
+    Assert-True ($pendingDeployments.supported_lookup.ui_selected_person -eq $false) "Pending-deployments fixture records unsupported UI-selected-person lookup."
+    Assert-True ($pendingDeployments.endpoint_timing.endpoint -eq "/campaign/pending-deployments") "Pending-deployments fixture records endpoint timing."
 
     Write-Step "Checking full state endpoint checkpoint-group shape."
     foreach ($key in @(
@@ -275,10 +296,12 @@ try {
     $stateHashAfter = (Get-FileHash -LiteralPath $stateFixturePath -Algorithm SHA256).Hash
     $warningHashAfter = (Get-FileHash -LiteralPath $warningFixturePath -Algorithm SHA256).Hash
     $commandsHashAfter = (Get-FileHash -LiteralPath $commandsFixturePath -Algorithm SHA256).Hash
+    $pendingDeploymentsHashAfter = (Get-FileHash -LiteralPath $pendingDeploymentsFixturePath -Algorithm SHA256).Hash
     Assert-True ($summaryHashBefore -eq $summaryHashAfter) "Summary fixture hash is unchanged after parsing."
     Assert-True ($stateHashBefore -eq $stateHashAfter) "State fixture hash is unchanged after parsing."
     Assert-True ($warningHashBefore -eq $warningHashAfter) "Warning-heavy fixture hash is unchanged after parsing."
     Assert-True ($commandsHashBefore -eq $commandsHashAfter) "Command-readiness fixture hash is unchanged after parsing."
+    Assert-True ($pendingDeploymentsHashBefore -eq $pendingDeploymentsHashAfter) "Pending-deployments fixture hash is unchanged after parsing."
 }
 finally {
     Pop-Location

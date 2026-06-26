@@ -31,14 +31,15 @@ Before running a MekHQ-linked scene:
 
 1. Load `campaign-state/active-campaign.md` and exactly one `campaigns/<campaign-id>/` folder.
 2. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files, saved checkpoints, or save-derived summaries as current.
-3. If MekHQ is open and the read-only local API is available, query `GET /campaign/summary` and `GET /campaign/state` with `bridge_metadata` first. The live API is the normal active-campaign refresh path.
-4. Also query `GET /campaign/commands` for read-only command readiness and selector discovery. This does not authorize mutation by itself; it prevents routing a supported hard-ledger action to a stale manual fallback.
-5. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
-6. Confirm the last live API snapshot or imported MekHQ metadata: API mode/read-only proof, snapshot/state revision, import timestamp when present, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
-7. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
-8. Check `pending-mekhq-actions.md` for unresolved command proposals, command results awaiting verification, and manual MekHQ fallback items before framing new ledger-sensitive scenes.
-9. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
-10. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
+3. If MekHQ is open and the read-only local API is available, query `GET /status`, `GET /campaign/summary`, and `GET /campaign/state` with `bridge_metadata` first. The live API is the normal active-campaign refresh path.
+4. Query `GET /campaign/pending-deployments` when the next scene depends on current scenarios, deployment assignments, or a viewpoint person's commitment. Use `personId` or `personName` for viewpoint lookup because the API does not expose the selected MekHQ UI person.
+5. Also query `GET /campaign/commands` for read-only command readiness and selector discovery. This does not authorize mutation by itself; it prevents routing a supported hard-ledger action to a stale manual fallback. Request `selectorDetail=full` only when entering a specific command workflow that needs expensive selectors or guard facts.
+6. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
+7. Confirm the last live API snapshot or imported MekHQ metadata: API mode/read-only proof, snapshot/state revision, import timestamp when present, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
+8. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
+9. Check `pending-mekhq-actions.md` for unresolved command proposals, command results awaiting verification, and manual MekHQ fallback items before framing new ledger-sensitive scenes.
+10. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
+11. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
 
 The checkpoint should make the ownership visible: "MekHQ date and ledger are current through this saved import; MEK-RPG is about to run scenes inside that day."
 
@@ -48,7 +49,7 @@ If the live API is unavailable, the checkpoint should say which fallback was cho
 
 Do not parse the active `.cpnx`, `.cpnx.gz`, or XML save as the routine loading step when the live API is available. If the API lacks a field needed for play setup, capture that as an API gap or producer change request.
 
-Use `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` for playtest gaps. Record the needed data, attempted endpoint or section, missing field, fallback used, and the desired read shape before continuing with a stale, unknown, or user-confirmed workaround.
+Use `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` for playtest gaps. Record the needed data, attempted endpoint or section, missing field, fallback used, and the desired read shape before continuing with a stale, unknown, or user-confirmed workaround. If a sectioned `/campaign/state` response is partial, record which requested section failed and continue only with the affected facts labeled as incomplete.
 
 ### 2. In-Day Scene Handling
 
@@ -89,7 +90,7 @@ At the end of a MekHQ-linked play day:
 
 1. Review all unresolved items in `pending-mekhq-actions.md`, plus any linked narrative context from `session-log.md`, `assets.md`, `missions.md`, `pcs.md`, and `hooks.md`.
 2. Split them into supported MekHQ commands, manual MekHQ UI actions, artifact handoffs, producer-request candidates, and MEK-RPG-only memory.
-3. For supported commands, query `GET /campaign/commands`, run dry-run/preflight where available, execute only after approval or documented automation policy, and reread live state.
+3. For supported commands, query `GET /campaign/commands`; if readiness says selectors are deferred, request `GET /campaign/commands?selectorDetail=full` only for the command workflow being entered. Build the request from readiness selectors and guard facts, use a fresh idempotency key for apply calls, run dry-run/preflight for high-value actions, execute only after approval or documented automation policy, and reread live state.
 4. For manual UI actions, ask the user to apply the current hard ledger actions in MekHQ when the campaign must advance or the ledger must change.
 5. The user saves the MekHQ campaign after manual actions or save-requested commands when a durable saved checkpoint is needed.
 6. MEK-RPG verifies the hard outcome by live reread or saved import before treating it as final.
@@ -133,7 +134,7 @@ If the injury is personal-scale only, save it in `pcs.md` or `npcs.md`. If it af
 
 MEK-RPG may run employer meetings, negotiations, clause interpretation, hidden-principal reveals, moral pressure, and reputation scenes. MekHQ owns accepted contracts, contract terms as ledger objects, scenario generation, deadlines, payments, salvage rights, and completion status when a MekHQ contract is used.
 
-Record uncommitted choices as `Pending MekHQ contract decision` entries in `pending-mekhq-actions.md`. When the player chooses to accept a contract and `GET /campaign/commands` reports `contracts.accept` available, use `POST /campaign/command/contracts/accept` with readiness/state guard facts, dry-run first, explicit known-choice prompt policy, approval, execution, and live reread verification. If the command is unavailable, blocked, refused, or unverifiable, fall back to manual MekHQ UI acceptance plus saved import. Contract decline remains manual/future-command until MekHQ readiness exposes a supported decline command. After verification, update `missions.md`, `assets.md`, `factions.md`, `relationships.md`, and `hooks.md`.
+Record uncommitted choices as `Pending MekHQ contract decision` entries in `pending-mekhq-actions.md`. When the player chooses to accept a contract and `GET /campaign/commands` reports `contracts.accept` available, use `POST /campaign/command/contracts/accept` with readiness/state guard facts, `expectedStateRevision`, a fresh `idempotencyKey`, dry-run first, explicit known-choice prompt policy, approval, execution, and live reread verification. Keep `saveAfterSuccess=false` unless the user explicitly requests a MekHQ save and supplies the needed save path. If the command is unavailable, blocked, refused, or unverifiable, fall back to manual MekHQ UI acceptance plus saved import. Contract decline remains manual/future-command until MekHQ readiness exposes a supported decline command. After verification, update `missions.md`, `assets.md`, `factions.md`, `relationships.md`, and `hooks.md`.
 
 ### Repairs, Parts, And Personnel Changes
 

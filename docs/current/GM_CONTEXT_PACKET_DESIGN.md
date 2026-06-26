@@ -112,6 +112,7 @@ Inputs for MekHQ-linked campaigns:
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md`
 - captured `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands` context when MekHQ is open
+- captured `GET /status` and `GET /campaign/pending-deployments` context when startup health, loaded-campaign identity, current scenario/deployment, or viewpoint-person commitment matters
 - generated output from `scripts/sync-mekhq-live-campaign.py` for active loaded MekHQ campaigns
 - latest output from `scripts/summarize-mekhq-save.py` when explicitly imported
 
@@ -259,6 +260,7 @@ Use play mode plus:
 
 - `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`
 - live `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands` context when MekHQ is open
+- live `GET /status` and `GET /campaign/pending-deployments` context when health, loaded-campaign identity, current deployment, or viewpoint-person commitment matters
 - latest `mekhq-bridge.md`
 - latest `mekhq-api-gaps.md` when present
 - unresolved `pending-mekhq-actions.md`

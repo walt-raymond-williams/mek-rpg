@@ -47,17 +47,19 @@ The boundary is no longer "never mutate MekHQ." The boundary is "never perform h
 
 A safe MekHQ command workflow should follow this loop:
 
-1. Read live state from MekHQ with `GET /campaign/state`, including `bridge_metadata`.
-2. Read `GET /campaign/commands` to confirm the command is available and to discover safe selectors.
-3. Select a command with stable target ids or selectors.
-4. Capture baseline guards: campaign id, campaign date, state revision/snapshot id, target id, display name, relevant price/status/counts, and any prompt-sensitive fields.
-5. Run dry-run or preflight if the endpoint supports it.
-6. Present the proposed MekHQ mutation to the user or GM when the action is campaign-significant.
-7. Execute the MekHQ-owned command only after approval or an explicit automation policy.
-8. Re-read live state.
-9. Verify the expected state change from MekHQ's new state, not from MEK-RPG intent text.
-10. Record RPG narrative context and the confirmed hard-ledger result separately.
-11. Record discrepancies as blocked reconciliation items instead of guessing.
+1. Read `GET /status` to confirm the local control server and loaded-campaign identity.
+2. Read live state from MekHQ with `GET /campaign/state`, including `bridge_metadata`. Use narrowed `sections=` when possible and surface partial responses, warnings, unsupported entries, and collector failures.
+3. Read `GET /campaign/commands` to confirm the command is available and to discover safe selectors. If readiness reports `selector_generation_deferred`, retry with `selectorDetail=full` only when entering that specific command workflow.
+4. Select a command with stable target ids or selectors from readiness output, not display names, row indexes, or MEK-RPG-computed hashes.
+5. Capture baseline guards: campaign id, campaign date, state revision/snapshot id, target id, display name, relevant price/status/counts, and any prompt-sensitive fields.
+6. Use the guarded command envelope when the endpoint requires it: command name, command version, idempotency key, expected campaign id/name, expected date, expected state revision, target selectors, expected target facts, prompt policy, client audit context, `dryRun`, and explicit `saveAfterSuccess` choice.
+7. Run dry-run or preflight first for high-value actions and any endpoint that supports it.
+8. Present the proposed MekHQ mutation to the user or GM when the action is campaign-significant.
+9. Execute the MekHQ-owned command only after approval or an explicit automation policy.
+10. Re-read live state.
+11. Verify the expected state change from MekHQ's new state, not from MEK-RPG intent text.
+12. Record RPG narrative context and the confirmed hard-ledger result separately.
+13. Record discrepancies as blocked reconciliation items instead of guessing.
 
 ## Command Envelope
 
@@ -99,6 +101,8 @@ Future command adapters should preserve this shape, even if the exact JSON varie
   }
 }
 ```
+
+The actual producer envelope uses fields such as `command`, `commandVersion`, `idempotencyKey`, `expectedCampaignId`, `expectedDate`, `expectedStateRevision`, `dryRun`, `promptPolicy`, `saveAfterSuccess`, `savePath`, and `clientContext`. Keep `saveAfterSuccess` false unless the user explicitly asks for a MekHQ save; failed, refused, blocked, and dry-run commands must not save.
 
 ## First Good Command Candidates
 
@@ -222,8 +226,8 @@ Current response behavior:
 
 MEK-RPG-side contract-selection flow:
 
-1. Read `GET /campaign/state` for current live context and verification fields.
-2. Read `GET /campaign/commands` and confirm `contracts.accept` is available.
+1. Read `GET /status`, then `GET /campaign/state` for current live context and verification fields.
+2. Read `GET /campaign/commands`; request `selectorDetail=full` only if the default readiness response defers the contract selector details needed for acceptance.
 3. Select the intended offer by `contract_id` from readiness selectors, not by display name alone.
 4. Build the guarded request from readiness/state facts and run `dryRun=true`.
 5. Present the dry-run target and side effects when the action is campaign-significant.

@@ -3,16 +3,15 @@
 ## Now
 
 - Issue `#117`: finish wiring the MekHQ playtest API gap reporting workflow under parent epic `#113`.
+- Issue `#118`: completing live MekHQ API contract alignment close-out.
 
 ## Next
 
-- Issue `#118`: study `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_CONTRACT.md` and align MEK-RPG read, command, play, adapter, fixture, and gap-reporting processes with the current live MekHQ API contract.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
-- Issue `#118`: live MekHQ API contract alignment follow-up. Use the MegaMek/MekHQ consumer-facing contract as the source for `/status`, `/campaign/pending-deployments`, command-readiness selector behavior, guarded command envelopes, dry-run/save/prompt policy, partial-response handling, and timeout recommendations; update MEK-RPG docs/scripts/tests without editing the MegaMek workspace.
 - Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues are `#116` static audit, `#115` startup SOP, `#117` gap reporting, and `#114` validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
@@ -30,6 +29,7 @@
 
 ## Done
 
+- Issue `#118` completed: aligned MEK-RPG play startup, linked-play, GM context, command strategy, and command documentation with the live MekHQ API contract; added `/status`, `/campaign/pending-deployments`, timeout, partial-response, selector-detail, guarded command envelope, idempotency, prompt policy, and opt-in save guidance; added a sanitized pending-deployments fixture with live API fixture test coverage; archived the handoff; verified with the focused live API fixture suite, `git diff --check`, and protected-source ignore checks. No live MekHQ instance was queried, and the MegaMek workspace was read but not edited.
 - Issue `#115` completed: added `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`; linked the decision tree from `AGENTS.md`, `gm/session-procedure.md`, `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `docs/current/GM_CONTEXT_PACKET_DESIGN.md`, `scripts/README.md`, and `docs/current/KNOWN_COMMANDS.md`; made startup branches explicit for API available, API missing or ambiguous data, API unavailable, and explicit offline/debug save inspection; added repeatable command examples for `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands`; archived the handoff; verified with the SOP search, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick`. No live MekHQ instance was queried.
 - Issue `#116` completed: added `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`; audited AGENTS, GM/session guidance, current MekHQ docs, script docs, live sync/export/bootstrap/save-summary helpers, and relevant tests; confirmed active live-play startup is API-first and save parsing remains offline/legacy/fixture/debug fallback only; corrected child issue mappings in roadmap/tasks/handoffs; tightened GM context packet MekHQ bridge inputs; archived the audit handoff; verified with the static search, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick`.
 - Issue `#112` completed: updated MekHQ-linked play, pending-action, context-packet, command strategy, fixture, and campaign guidance so supported hard-ledger actions use guarded MekHQ command endpoints when readiness exposes them; added `contracts.accept` command-readiness fixture/test coverage; expanded pending-action lifecycle/schema for command execution and live verification; reconciled the `the-learning-ropes` Free Worlds League acceptance item into a guarded `contracts.accept` command proposal; verified with focused suites, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick`.

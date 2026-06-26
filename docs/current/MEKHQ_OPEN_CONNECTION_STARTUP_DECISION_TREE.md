@@ -10,11 +10,15 @@ Use this decision tree before treating any imported `mekhq-bridge.md`, generated
 
 When MekHQ is open, attempt these read-only calls before play:
 
-1. `GET /campaign/summary`
-2. `GET /campaign/state` with `bridge_metadata`
-3. `GET /campaign/commands`
+1. `GET /status`
+2. `GET /campaign/summary`
+3. `GET /campaign/state` with `bridge_metadata`
+4. `GET /campaign/pending-deployments` when the scene depends on current scenario, deployment, unit, or viewpoint-person commitment.
+5. `GET /campaign/commands`
 
-`GET /campaign/summary` confirms that the local API is serving a loaded campaign. `GET /campaign/state` with `bridge_metadata` provides the live context and trust envelope. `GET /campaign/commands` reports read-only command readiness and safe selector discovery; it does not authorize mutation by itself.
+`GET /status` confirms that the local control server is reachable and reports the loaded-campaign identity snapshot. `GET /campaign/summary` provides fast compact context. `GET /campaign/state` with `bridge_metadata` provides the live context and trust envelope. `GET /campaign/pending-deployments` is the purpose-built read for current scenario and personnel commitment lookup; use `personId` or `personName` when the viewpoint character matters because the API does not expose the currently selected MekHQ UI person. `GET /campaign/commands` reports read-only command readiness and safe selector discovery; it does not authorize mutation by itself.
+
+Use short timeouts for `/status`, `/campaign/summary`, and `/campaign/pending-deployments`; use a longer timeout for narrowed `/campaign/state` reads. Surface `response_status`, `partial_response`, warnings, unsupported entries, collector failures, and timeout results to the GM instead of treating missing fields as complete data.
 
 ## Branches
 
@@ -24,6 +28,7 @@ When MekHQ is open, attempt these read-only calls before play:
 - Treat live values as live context, not durable MEK-RPG memory, until saved/imported confirmation, explicit user approval, or a future controlled promotion flow.
 - Use `scripts/sync-mekhq-live-campaign.py` when campaign-local generated context files need to be created or refreshed from captured `GET /campaign/state` JSON.
 - Check `GET /campaign/commands` before routing hard-ledger actions to manual fallback.
+- Request `GET /campaign/commands?selectorDetail=full` only when entering a specific command workflow that needs expensive selectors or guard facts.
 
 ### Branch B: API Available But Missing Or Ambiguous Data
 
@@ -52,6 +57,7 @@ When MekHQ is open, attempt these read-only calls before play:
 - Do not use parser output to bypass missing live API fields.
 - Do not treat generated campaign-local bridge notes as fresher than the open MekHQ API.
 - Do not run mutating command endpoints from stale or parser-derived baseline state.
+- Do not build commands from display-only state rows, display names, row indexes, or MEK-RPG-computed hashes. Build them from `GET /campaign/commands` readiness rows and selectors.
 - Do not update final hard ledger facts in MEK-RPG without supported command execution plus live reread, manual MekHQ application plus saved/imported confirmation, or explicit user-approved provisional labeling.
 
 ## Startup Summary Line

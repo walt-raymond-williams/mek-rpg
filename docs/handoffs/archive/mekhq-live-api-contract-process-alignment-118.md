@@ -11,6 +11,15 @@
 
 Study the current consumer-facing live MekHQ API contract from the MegaMek workspace and update MEK-RPG's durable procedures, docs, scripts, fixtures, and tests so live play and command workflows use the API correctly.
 
+## Completion Notes
+
+- Completed issue `#118` contract alignment in MEK-RPG.
+- Updated startup/play guidance to begin with `/status`, use `/campaign/pending-deployments` for current scenario and viewpoint-person commitment lookup, include `bridge_metadata` in selected state reads, and surface partial responses, warnings, unsupported entries, collector failures, and timeouts.
+- Updated command guidance to build workflows from `/campaign/commands`, request `selectorDetail=full` only when entering command workflows that need deferred selectors, use guarded command envelopes with state revision, idempotency key, prompt policy, client audit context, dry-run/preflight for high-value actions, and opt-in `saveAfterSuccess`.
+- Added `tests/fixtures/mekhq-live-pending-deployments.fixture.json` and expanded `scripts/test-mekhq-live-api-fixtures.ps1` coverage.
+- Live MekHQ smoke checks were not run; this was a static contract-consumption pass.
+- The MegaMek workspace contract and fixture were read for evidence; that workspace was not edited.
+
 ## Required Context
 
 Read these first:

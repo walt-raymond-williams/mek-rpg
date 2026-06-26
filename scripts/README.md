@@ -26,7 +26,7 @@
 - `test-mekhq-checkpoint-fixture.ps1`: runs fixture coverage for the sanitized MekHQ read-only checkpoint export shape and trust-boundary metadata.
 - `test-mekhq-checkpoint-prototype-fixture.ps1`: runs fixture coverage for a sanitized compact excerpt of jar-backed prototype output from a disposable MekHQ save.
 - `test-mekhq-checkpoint-edge-fixtures.ps1`: runs edge-case fixture coverage for sparse, warning-heavy, unsupported, and missing optional checkpoint export data.
-- `test-mekhq-live-api-fixtures.ps1`: runs fixture coverage for sanitized live MekHQ local-control API summary, state, and warning-heavy payloads without calling a running MekHQ instance.
+- `test-mekhq-live-api-fixtures.ps1`: runs fixture coverage for sanitized live MekHQ local-control API summary, state, pending-deployments, command-readiness, and warning-heavy payloads without calling a running MekHQ instance.
 - `test-sync-mekhq-live-campaign.ps1`: runs fixture coverage for the live API campaign-load adapter, including read-only proof, raw-save rejection, create/refresh behavior, live-context notes, API gap surfacing, and active-pointer preservation.
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
@@ -169,12 +169,16 @@ The personal-combat checkpoint prototype follows the same top-level helper contr
 
 ## MekHQ Live API And Save Summary Fallbacks
 
-When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /campaign/summary`, `GET /campaign/state` including `bridge_metadata`, and `GET /campaign/commands`. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files or save-derived summaries as current. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work, and record that fallback.
+When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /status`, `GET /campaign/summary`, `GET /campaign/state` including `bridge_metadata`, `GET /campaign/pending-deployments` when current scenario/person commitment matters, and `GET /campaign/commands`. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files or save-derived summaries as current. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work, and record that fallback.
 
 ```powershell
-Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/summary' -TimeoutSec 10 | ConvertTo-Json -Depth 12
-Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported' -TimeoutSec 30 | ConvertTo-Json -Depth 12
-Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands' -TimeoutSec 10 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/status' -TimeoutSec 5 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/summary' -TimeoutSec 15 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/pending-deployments' -TimeoutSec 15 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/pending-deployments?personName=Moreno' -TimeoutSec 15 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported' -TimeoutSec 45 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands' -TimeoutSec 20 | ConvertTo-Json -Depth 12
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands?selectorDetail=full' -TimeoutSec 60 | ConvertTo-Json -Depth 20
 python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign
 python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign --refresh-existing --viewpoint-name "Exact MekHQ Name"
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json
@@ -189,7 +193,7 @@ python ./scripts/bootstrap-mekhq-campaign.py --summary .\mekhq-summary.json --ca
 ./scripts/test-mekhq-live-api-fixtures.ps1
 ```
 
-`GET /campaign/commands` is read-only command readiness and selector discovery from the local MekHQ control API. It does not mutate the campaign. If it reports a command as available, use the matching guarded `POST` endpoint only with current campaign/date/state guards, dry-run/preflight where supported, explicit approval or documented automation policy, and a post-command `GET /campaign/state` reread that verifies the result. Current local command candidates include `advanceDayOnce` via `POST /advance-day`, `campaign.status_note`, and `contracts.accept` via `POST /campaign/command/contracts/accept` when readiness exposes a safe contract selector.
+`GET /campaign/commands` is read-only command readiness and selector discovery from the local MekHQ control API. It does not mutate the campaign. Request `selectorDetail=full` only when entering a specific command workflow that needs expensive selectors. If readiness reports a command as available, use the matching guarded `POST` endpoint only with current campaign/date/state guards, readiness selectors, command-specific expected facts, dry-run/preflight where supported, explicit prompt policy, fresh idempotency keys for apply calls, explicit approval or documented automation policy, opt-in `saveAfterSuccess`, and a post-command `GET /campaign/state` reread that verifies the result. Current local command candidates include `advanceDayOnce` via `POST /advance-day`, `campaign.status_note`, `personnel.status`, `personnel.fatigue`, `markets.unit_offers.purchase`, and `contracts.accept` via `POST /campaign/command/contracts/accept` when readiness exposes safe selectors and available command rows.
 
 The helper detects gzip compression by magic bytes, parses the save XML with structured XML APIs, and writes JSON or Markdown to stdout. It does not write to the MekHQ save. JSON is the primary output for later bridge automation; Markdown is a quick human checkpoint. Field mappings and unsupported areas are documented in `docs/current/MEKHQ_SAVE_SUMMARY_HELPER.md`.
 
@@ -201,7 +205,7 @@ The prototype-output fixture test uses `tests/fixtures/mekhq-read-only-checkpoin
 
 The edge-case fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.edge-cases.fixture.json`, a fake sparse checkpoint with empty personnel/unit/scenario arrays, shallow contract terms, unknown finance/location values, warning-heavy logistics/report sections, a unit-market offer with no stable selector and no final price, and unsupported entries that distinguish automation blockers from FYI gaps. It is a committed sanitized fixture only, not production exporter output.
 
-The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json`, and `tests/fixtures/mekhq-live-campaign-commands.fixture.json` copied or derived from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, command-readiness shape, `contracts.accept` readiness, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts.
+The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json`, `tests/fixtures/mekhq-live-campaign-commands.fixture.json`, and `tests/fixtures/mekhq-live-pending-deployments.fixture.json` copied or derived from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, pending-deployment and viewpoint-person commitment lookup, command-readiness shape, `contracts.accept` readiness, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts.
 
 The live API campaign-load adapter consumes captured sanitized `GET /campaign/state` JSON with `bridge_metadata`. It verifies `api_mode: local-read-only-live-context` and `read_only: true`, refuses raw `.cpnx`, `.cpnx.gz`, and XML inputs, creates a campaign folder from `campaigns/_template/` or refreshes generated context files with `--refresh-existing`, writes `mekhq-bridge.md` and `mekhq-api-gaps.md`, and leaves `campaign-state/active-campaign.md` unchanged. Missing or unsupported live API fields are recorded as API gaps and producer-change-request inputs instead of triggering save parsing.
 

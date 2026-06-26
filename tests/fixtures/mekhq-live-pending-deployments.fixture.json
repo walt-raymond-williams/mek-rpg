@@ -1,0 +1,142 @@
+{
+  "schema_name": "mekhq-live-pending-deployments",
+  "schema_version": "0.1",
+  "campaign_id": "00000000-0000-0000-0000-000000000036",
+  "campaign_name": "Sanitized Demo Campaign",
+  "campaign_date": "3025-04-08",
+  "state_revision": "live-00000000-0000-0000-0000-000000000036-3025-04-08-2026-06-26T12:00:00Z",
+  "read_only": true,
+  "pending_scenario_count": 2,
+  "pending_scenarios": [
+    {
+      "id": 66,
+      "mission_id": 6,
+      "display_name": "Tank-base defense",
+      "description": "Defend a friendly armor depot.",
+      "date": "3025-04-09",
+      "status": {
+        "raw": "CURRENT",
+        "label": "Current",
+        "source_owner": "Scenario#getStatus()"
+      },
+      "stratcon_scenario_type": "HOSTILE_FACILITY",
+      "force_ids": [
+        7
+      ],
+      "individual_unit_ids": [],
+      "all_unit_ids": [
+        "00000000-0000-0000-0000-000000000166"
+      ],
+      "assigned_units": [
+        {
+          "unit_id": "00000000-0000-0000-0000-000000000166",
+          "display_name": "Sanitized SHD-2H",
+          "unit_status": {
+            "raw": "Active",
+            "label": "Active",
+            "source_owner": "Unit#getStatus()"
+          },
+          "unit_scenario_id": 66,
+          "scenario_id_matches": true,
+          "formation_id": 7,
+          "formation_name": "First Lance",
+          "commander_id": "00000000-0000-0000-0000-000000000266",
+          "crew": [
+            {
+              "person_id": "00000000-0000-0000-0000-000000000266",
+              "display_name": "Michelle Moreno",
+              "primary_role": {
+                "raw": "Pilot",
+                "label": "Pilot",
+                "source_owner": "Person#getPrimaryRoleDesc()"
+              },
+              "secondary_role": {
+                "raw": "None",
+                "label": "None",
+                "source_owner": "Person#getSecondaryRoleDesc()"
+              },
+              "status": {
+                "raw": "ACTIVE",
+                "label": "Active",
+                "source_owner": "Person#getStatus()"
+              },
+              "source_owner": "Unit#getCrew(); Person summary getters"
+            }
+          ],
+          "source_owner": "Campaign#getUnit(UUID); Unit#getCrew(); Unit#getScenarioId()"
+        }
+      ],
+      "assigned_unit_count": 1,
+      "assigned_personnel_ids": [
+        "00000000-0000-0000-0000-000000000266"
+      ],
+      "source_owner": "Scenario#getStatus(); Scenario#getForces(Campaign); Unit#getCrew()"
+    },
+    {
+      "id": 67,
+      "mission_id": 6,
+      "display_name": "Insurgency sweep",
+      "description": "Clear hostile cells from the outskirts.",
+      "date": "3025-04-10",
+      "status": {
+        "raw": "CURRENT",
+        "label": "Current",
+        "source_owner": "Scenario#getStatus()"
+      },
+      "stratcon_scenario_type": "RIOT",
+      "force_ids": [],
+      "individual_unit_ids": [],
+      "all_unit_ids": [],
+      "assigned_units": [],
+      "assigned_unit_count": 0,
+      "assigned_personnel_ids": [],
+      "source_owner": "Scenario#getStatus(); Scenario#getForces(Campaign); Unit#getCrew()"
+    }
+  ],
+  "viewpoint_person": {
+    "lookup_requested": true,
+    "lookup_supported": true,
+    "query": {
+      "person_id": "Unknown",
+      "person_name": "Moreno"
+    },
+    "commitment_count": 1,
+    "commitments": [
+      {
+        "scenario_id": 66,
+        "scenario_name": "Tank-base defense",
+        "scenario_date": "3025-04-09",
+        "unit_id": "00000000-0000-0000-0000-000000000166",
+        "unit_name": "Sanitized SHD-2H",
+        "person_id": "00000000-0000-0000-0000-000000000266",
+        "person_name": "Michelle Moreno",
+        "source_owner": "Scenario assigned unit plus Unit#getCrew()"
+      }
+    ],
+    "source_owner": "Scenario assigned unit plus Unit#getCrew()"
+  },
+  "supported_lookup": {
+    "person_id_query": true,
+    "person_name_query": true,
+    "ui_selected_person": false,
+    "source_owner": "Campaign scenario/unit/crew model"
+  },
+  "warnings": [
+    "Personnel commitments are source-confirmed only when a pending scenario references a player unit whose current Unit#getCrew() includes that person."
+  ],
+  "unsupported": [],
+  "collector_timing": [
+    {
+      "collector": "pending_deployments",
+      "elapsed_ms": 2,
+      "source_owner": "LocalCampaignStateExporter#pendingDeployments()",
+      "warning_threshold_ms": 1000,
+      "status": "complete"
+    }
+  ],
+  "endpoint_timing": {
+    "endpoint": "/campaign/pending-deployments",
+    "elapsed_ms": 3,
+    "source_owner": "LocalControlService"
+  }
+}
