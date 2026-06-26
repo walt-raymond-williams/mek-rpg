@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#119`: add a guarded MekHQ command smoke helper so MEK-RPG can build and validate dry-run command envelopes, especially structured `clientContext`, without ad hoc JSON during live play.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
@@ -29,6 +28,7 @@
 
 ## Done
 
+- Issue `#119` completed: added `scripts/build-mekhq-status-note-command.ps1` to build and validate guarded `campaign.status_note` dry-run envelopes with structured `clientContext`, campaign/date guards, idempotency key, prompt refusal, UTF-8 request output, and non-saving defaults; added fixture-backed helper tests, wired them into `test-all.ps1 -Quick`, and documented the command in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`; verified with the focused helper suite and `./scripts/test-all.ps1 -Quick`.
 - Live API smoke follow-up recorded: added `docs/current/MEKHQ_LIVE_API_SMOKE_FOLLOWUP_2026_06_26.md` after verifying the running MekHQ API against the issue `#118` process. Reads and `selectorDetail=full` passed; `campaign.status_note` dry-run passed after using exact structured `clientContext`; issue `#119` now tracks adding a deterministic guarded-command smoke helper.
 - Issue `#118` completed: aligned MEK-RPG play startup, linked-play, GM context, command strategy, and command documentation with the live MekHQ API contract; added `/status`, `/campaign/pending-deployments`, timeout, partial-response, selector-detail, guarded command envelope, idempotency, prompt policy, and opt-in save guidance; added a sanitized pending-deployments fixture with live API fixture test coverage; archived the handoff; verified with the focused live API fixture suite, `git diff --check`, and protected-source ignore checks. No live MekHQ instance was queried, and the MegaMek workspace was read but not edited.
 - Issue `#115` completed: added `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`; linked the decision tree from `AGENTS.md`, `gm/session-procedure.md`, `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `docs/current/GM_CONTEXT_PACKET_DESIGN.md`, `scripts/README.md`, and `docs/current/KNOWN_COMMANDS.md`; made startup branches explicit for API available, API missing or ambiguous data, API unavailable, and explicit offline/debug save inspection; added repeatable command examples for `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands`; archived the handoff; verified with the SOP search, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick`. No live MekHQ instance was queried.
