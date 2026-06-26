@@ -14,7 +14,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save; this is now an offline, legacy, fixture, or debugging fallback when the live API is unavailable or explicitly requested.
 - Active loaded MekHQ campaign setup should use the read-only live API first. Issue `#107` added the MEK-RPG campaign-load adapter, issue `#108` audited the roadmap and save-parser fallback boundary, issue `#109` completed the handoff-ready producer-facing API change request package, and issue `#110` consumed the expanded local MekHQ live API shape in MEK-RPG fixtures, adapters, dashboard summaries, and tests.
 - The MekHQ integration posture has moved beyond permanent read-only/manual-only operation. Issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` define controlled MekHQ-owned command integration: explicit commands, stable selectors, guard fields, approval where needed, and live reread verification, while still forbidding raw save/XML mutation and hidden writes. Issue `#112` updated play guidance now that the local MegaMek/MekHQ workspace exposes guarded contract acceptance.
-- Issue `#113` now tracks MekHQ API-first playtest hardening after user reports that play sessions still try to read the MekHQ save instead of the API. The standard posture is: use the open MekHQ local API connection for live context, keep save parsing as explicit offline/legacy/fixture/debug fallback, and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`. Issue `#116` added the static access-path audit report in `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md` and is complete.
+- Issue `#113` now tracks MekHQ API-first playtest hardening after user reports that play sessions still try to read the MekHQ save instead of the API. The standard posture is: use the open MekHQ local API connection for live context, keep save parsing as explicit offline/legacy/fixture/debug fallback, and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`. Issue `#116` added the static access-path audit report in `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`; issue `#115` added the open-connection startup decision tree in `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`; both are complete.
 - MekHQ-linked campaign saves still use `pending-mekhq-actions.md` for unresolved hard-ledger intents, but supported commands now use command proposals, command results, and verification records. Manual UI checklists are fallback records for unsupported, unavailable, blocked, refused, or unverifiable actions.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
@@ -62,7 +62,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-- Issue `#113`: MekHQ API-first playtest hardening epic. Issue `#116` static access-path audit is complete; remaining child issues `#115`, `#117`, and `#114` cover open-connection startup hardening, gap-report workflow, and API-first playtest validation.
+- Issue `#113`: MekHQ API-first playtest hardening epic. Issues `#116` static access-path audit and `#115` open-connection startup hardening are complete; remaining child issues `#117` and `#114` cover gap-report workflow and API-first playtest validation.
 - Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
 
@@ -89,7 +89,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - `docs/handoffs/active/mekhq-api-first-playtest-hardening-113.md`
   - `docs/handoffs/archive/mekhq-api-first-access-audit-116.md`
   - `docs/handoffs/active/mekhq-api-gap-reporting-115.md`
-  - `docs/handoffs/active/mekhq-open-connection-sop-116.md`
+  - `docs/handoffs/archive/mekhq-open-connection-sop-115.md`
   - `docs/handoffs/active/mekhq-api-first-playtest-117.md`
 - Mode: Project development / playtest workflow hardening
 - Goal: make MekHQ-linked play use the open MekHQ local API connection as the normal source of live campaign context, prevent routine active-save parsing during play, and capture missing read coverage immediately as API gaps.
@@ -100,7 +100,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - This epic is read-focused. Command/write notes can be recorded where relevant, but new mutation support belongs to the controlled command API track.
 - Child issues:
   1. Done `#116`: audited live-play MekHQ API-first access paths and stale save-parser references.
-  2. `#115`: harden MekHQ open-connection-first play startup and fallback decision tree.
+  2. Done `#115`: hardened MekHQ open-connection-first play startup and fallback decision tree.
   3. `#117`: add and wire the MekHQ playtest API gap reporting workflow.
   4. `#114`: validate the API-first MekHQ playtest workflow and record any missing reads.
 - Boundary: do not edit raw `.cpnx`, `.cpnx.gz`, XML, or MekHQ save payloads. Do not edit the MegaMek workspace from this repository; create project-local change requests for producer gaps.

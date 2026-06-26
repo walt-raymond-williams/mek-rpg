@@ -169,9 +169,10 @@ The personal-combat checkpoint prototype follows the same top-level helper contr
 
 ## MekHQ Live API And Save Summary Fallbacks
 
-When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /campaign/summary` and `GET /campaign/state` including `bridge_metadata`. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work.
+When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /campaign/summary`, `GET /campaign/state` including `bridge_metadata`, and `GET /campaign/commands`. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files or save-derived summaries as current. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work, and record that fallback.
 
 ```powershell
+Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/summary' -TimeoutSec 10 | ConvertTo-Json -Depth 12
 Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported' -TimeoutSec 30 | ConvertTo-Json -Depth 12
 Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands' -TimeoutSec 10 | ConvertTo-Json -Depth 12
 python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-state.json --campaign-id my-linked-campaign

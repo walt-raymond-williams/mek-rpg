@@ -6,6 +6,7 @@
 - Roadmap entry: MekHQ API-first playtest hardening
 - Mode: Project development
 - Priority: High
+- Status: Completed 2026-06-26
 
 ## Goal
 
@@ -28,6 +29,15 @@ Read these first:
 - Clear fallback decision tree for API available, API unavailable, and explicit offline save inspection.
 - Any helper/checklist improvements needed to make API-first startup hard to miss.
 - Verification that docs no longer imply save-first live play.
+
+## Completion Notes
+
+- Added `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`.
+- Linked the decision tree from `AGENTS.md`, `gm/session-procedure.md`, `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `docs/current/GM_CONTEXT_PACKET_DESIGN.md`, `scripts/README.md`, and `docs/current/KNOWN_COMMANDS.md`.
+- Made startup branches explicit for API available and sufficient, API available but missing/ambiguous data, API unavailable, and explicit offline/debug save inspection.
+- Added repeatable command examples for `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands`.
+- Verification: SOP search, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick` passed.
+- Live smoke validation was not run because this issue did not require a live MekHQ instance.
 
 ## Files And Areas
 

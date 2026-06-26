@@ -257,13 +257,16 @@ Do not include raw A Time of War source text.
 
 Use play mode plus:
 
+- `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`
+- live `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands` context when MekHQ is open
 - latest `mekhq-bridge.md`
+- latest `mekhq-api-gaps.md` when present
 - unresolved `pending-mekhq-actions.md`
 - helper warnings and unsupported fields
 - date and hard-ledger discrepancy checks
 - tactical handoff triggers
 
-Every pending item must be labeled as an intent, command proposal/result, or manual checklist. MekHQ remains authoritative until a supported command plus live reread or a manual UI action plus saved import confirms the result.
+Every pending item must be labeled as an intent, command proposal/result, or manual checklist. MekHQ remains authoritative until a supported command plus live reread or a manual UI action plus saved import confirms the result. If the live API is unavailable, the packet must label MekHQ-owned facts as stale or explicitly offline/debug-derived.
 
 ### Project Development Mode
 

@@ -30,18 +30,21 @@ MEK-RPG may propose or queue a ledger change. When `GET /campaign/commands` repo
 Before running a MekHQ-linked scene:
 
 1. Load `campaign-state/active-campaign.md` and exactly one `campaigns/<campaign-id>/` folder.
-2. If MekHQ is open and the read-only local API is available, query `GET /campaign/summary` and `GET /campaign/state` first. The live API is the normal active-campaign refresh path.
-3. Also query `GET /campaign/commands` for read-only command readiness and selector discovery. This does not authorize mutation by itself; it prevents routing a supported hard-ledger action to a stale manual fallback.
-4. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
-5. Confirm the last live API snapshot or imported MekHQ metadata: API mode/read-only proof, snapshot/state revision, import timestamp when present, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
-6. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
-7. Check `pending-mekhq-actions.md` for unresolved command proposals, command results awaiting verification, and manual MekHQ fallback items before framing new ledger-sensitive scenes.
-8. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
-9. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
+2. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files, saved checkpoints, or save-derived summaries as current.
+3. If MekHQ is open and the read-only local API is available, query `GET /campaign/summary` and `GET /campaign/state` with `bridge_metadata` first. The live API is the normal active-campaign refresh path.
+4. Also query `GET /campaign/commands` for read-only command readiness and selector discovery. This does not authorize mutation by itself; it prevents routing a supported hard-ledger action to a stale manual fallback.
+5. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
+6. Confirm the last live API snapshot or imported MekHQ metadata: API mode/read-only proof, snapshot/state revision, import timestamp when present, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
+7. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
+8. Check `pending-mekhq-actions.md` for unresolved command proposals, command results awaiting verification, and manual MekHQ fallback items before framing new ledger-sensitive scenes.
+9. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
+10. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
 
 The checkpoint should make the ownership visible: "MekHQ date and ledger are current through this saved import; MEK-RPG is about to run scenes inside that day."
 
 If the live API is available, the checkpoint should instead say: "MekHQ date and ledger are current through this live API snapshot; MEK-RPG is about to run scenes inside that day. Hard ledger changes require supported MekHQ command execution plus live verification, or manual MekHQ application plus saved/imported confirmation."
+
+If the live API is unavailable, the checkpoint should say which fallback was chosen: pause, stale campaign-local snapshot, or explicit offline/debug save inspection. Do not let a stale bridge note masquerade as current live MekHQ context.
 
 Do not parse the active `.cpnx`, `.cpnx.gz`, or XML save as the routine loading step when the live API is available. If the API lacks a field needed for play setup, capture that as an API gap or producer change request.
 
