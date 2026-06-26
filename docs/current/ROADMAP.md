@@ -76,13 +76,40 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Complete: issue `#119` followed the live issue `#118` smoke by adding a MEK-RPG helper/test path for guarded command envelope construction and validation.
 - The immediate checkpoint wave remains issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption complete as `#110`; controlled MekHQ command API planning is complete as `#111`; command-write guidance follow-up is complete as `#112`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
+- Issued: rich PC/NPC character records for play are tracked by epic issue `#120`, with child issues `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination.
 - Future issue candidate: improve RPG game-mode prose quality. Define concise style prompts or GM narration guidance for scene framing, character description, dialogue texture, and tone control so play output is more vivid without bloating context or overriding rules/campaign-state authority. Status: needs fill-out later.
-- Future issue candidate: design automatic character-sheet capture during play. Any character who enters the narrative should get a durable PC/NPC sheet or stub immediately, with known identity, role, relationship, visible traits, campaign notes, and fields aligned to what MekHQ can expose for personnel where applicable. Status: needs fill-out later.
-- Future issue candidate: coordinate with the MegaMek/MekHQ workspace on richer personnel and character-detail API exposure. Identify which MechHQ-visible details are missing from the live API, what selectors and schemas MEK-RPG needs, and whether those fields should be queryable for player-facing or GM-facing character lookup. Status: needs fill-out later.
 - Future issue candidate: evaluate whether an MCP-style interface should replace, wrap, or complement the current MekHQ live API and script strategy for game-mode information access. Compare standardization, discoverability, query ergonomics, local-control safety, and implementation cost before changing the current working approach. Status: needs fill-out later.
 - Note: create GitHub Issues for the above future candidates later; do not open them until the scope and acceptance criteria are filled out.
 
 ## Issue Tracks
+
+### Rich PC/NPC character records for play
+
+- Status: Issued
+- Epic issue: `#120`
+- Child issues: `#121`, `#122`, `#123`, `#124`, and `#125`
+- Handoffs:
+  - `docs/handoffs/active/rich-character-records-epic-120.md`
+  - `docs/handoffs/active/rich-character-record-schema-121.md`
+  - `docs/handoffs/active/rich-character-record-templates-workflow-122.md`
+  - `docs/handoffs/active/rich-character-record-play-capture-123.md`
+  - `docs/handoffs/active/rich-character-record-validator-124.md`
+  - `docs/handoffs/active/rich-character-record-mekhq-api-needs-125.md`
+- Mode: Project development
+- Goal: make concrete PC/NPC records a first-class play aid by combining A Time of War sheet categories with LLM-usable roleplaying context: personality, past history, tendencies, preferences, motives, relationships, secrets or uncertainty, speech and behavior cues, and portrayal notes.
+- Starting point:
+  - `rules/core/character-record-basics.md` defines the source-reviewed character-record categories without reproducing the source sheet.
+  - `docs/current/CHARACTER_CREATION_PC_SHEET_RUNTHROUGH.md` found that the current sheet shape is usable, but real PC sheets are needed before deterministic validation is worthwhile.
+  - `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md` defines the boundary between MekHQ-owned roster facts and MEK-RPG-owned A Time of War overlays, motives, relationships, secrets, scene memory, and sheet gaps.
+  - `campaigns/_template/pcs.md` and `campaigns/_template/npcs.md` are the initial template targets.
+- Child issues:
+  1. `#121`: design the canonical rich PC/NPC record schema and ownership model.
+  2. `#122`: update campaign templates and GM workflow docs to use the rich record model.
+  3. `#123`: define play-mode capture and update triggers so characters become durable records without slowing scenes.
+  4. `#124`: prototype a focused rich character-record validator, or record why it remains premature.
+  5. `#125`: coordinate MekHQ personnel and character-detail API needs from the MEK-RPG side.
+- Boundary: do not infer A Time of War stats from narrative role, MekHQ rank, or personality. Do not copy the source character sheet layout, source sample characters, tables, trait catalogs, skill catalogs, purchased PDFs, raw extracted text, or raw MekHQ payloads. Do not edit the MegaMek workspace from this repository; create project-local change requests for producer gaps.
+- Dependency order: start with `#121`; `#122` and `#123` depend on the schema; `#124` depends on schema/template stability and may be blocked until fixture expectations are clear; `#125` can start after or alongside `#121` if it preserves the ownership boundary.
 
 ### MekHQ API-first playtest hardening
 
