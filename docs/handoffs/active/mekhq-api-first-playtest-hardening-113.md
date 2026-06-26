@@ -67,7 +67,7 @@ rg -n "summarize-mekhq-save|cpnx|campaign/state|campaign/summary|GET /campaign/c
 
 ## Acceptance Criteria
 
-- Child issues `#114`, `#115`, `#116`, and `#117` remain linked from the epic.
+- Child issues `#116`, `#115`, `#117`, and `#114` remain linked from the epic.
 - `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` is the required read-gap sink for MekHQ-linked play.
 - Play-mode startup uses live API first when MekHQ is open.
 - Missing live API reads become report entries or producer change requests, not silent active-save parsing.
@@ -75,4 +75,4 @@ rg -n "summarize-mekhq-save|cpnx|campaign/state|campaign/summary|GET /campaign/c
 
 ## Open Questions
 
-- Which child story should run first after the initial roadmap/report setup: static audit `#114` or startup SOP hardening `#116`?
+- Static audit is GitHub issue `#116`; startup SOP hardening is GitHub issue `#115`.

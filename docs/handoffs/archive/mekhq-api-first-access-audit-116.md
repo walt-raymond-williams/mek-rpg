@@ -2,10 +2,11 @@
 
 ## Issue
 
-- GitHub issue: `#114`
+- GitHub issue: `#116`
 - Roadmap entry: MekHQ API-first playtest hardening
 - Mode: Project development
 - Priority: High
+- Status: Completed 2026-06-26
 
 ## Goal
 
@@ -28,6 +29,15 @@ Read these first:
 - Static audit report under `docs/current/`.
 - Targeted doc/script/test fixes for stale live-play references.
 - Any new API gaps recorded in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
+
+## Completion Notes
+
+- Added `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`.
+- Confirmed current play startup guidance is API-first and raw active-save parsing is not the normal live-play path.
+- Preserved save parsing for explicit offline, legacy, fixture, or debugging fallback.
+- Corrected child issue number mappings in roadmap, task board, and handoffs.
+- Tightened `docs/current/GM_CONTEXT_PACKET_DESIGN.md` so live API snapshot/gap context is a first-class MekHQ bridge input.
+- Verification: static audit search, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick` passed.
 
 ## Files And Areas
 

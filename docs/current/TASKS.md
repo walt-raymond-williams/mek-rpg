@@ -2,19 +2,17 @@
 
 ## Now
 
-- Issue `#113`: MekHQ API-first playtest hardening epic. Initial setup created the playtest API gap report and child story issues; continue with static audit issue `#114` or startup SOP hardening issue `#116`.
+- Issue `#115`: harden open-connection-first play startup and fallback decision tree under parent epic `#113`.
 
 ## Next
 
-- Issue `#114`: audit live-play MekHQ API-first access paths and stale save-parser references.
-- Issue `#115`: finish wiring the MekHQ playtest API gap reporting workflow.
-- Issue `#116`: harden open-connection-first play startup and fallback decision tree.
-- Issue `#117`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
+- Issue `#117`: finish wiring the MekHQ playtest API gap reporting workflow.
+- Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
-- Issue `#113`: parent epic for MekHQ API-first playtest hardening; keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
+- Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues are `#116` static audit, `#115` startup SOP, `#117` gap reporting, and `#114` validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
@@ -31,6 +29,7 @@
 
 ## Done
 
+- Issue `#116` completed: added `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`; audited AGENTS, GM/session guidance, current MekHQ docs, script docs, live sync/export/bootstrap/save-summary helpers, and relevant tests; confirmed active live-play startup is API-first and save parsing remains offline/legacy/fixture/debug fallback only; corrected child issue mappings in roadmap/tasks/handoffs; tightened GM context packet MekHQ bridge inputs; archived the audit handoff; verified with the static search, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick`.
 - Issue `#112` completed: updated MekHQ-linked play, pending-action, context-packet, command strategy, fixture, and campaign guidance so supported hard-ledger actions use guarded MekHQ command endpoints when readiness exposes them; added `contracts.accept` command-readiness fixture/test coverage; expanded pending-action lifecycle/schema for command execution and live verification; reconciled the `the-learning-ropes` Free Worlds League acceptance item into a guarded `contracts.accept` command proposal; verified with focused suites, `git diff --check`, protected-source ignore checks, and `./scripts/test-all.ps1 -Quick`.
 - Follow-up created: issue `#112` captures the stale read-only/manual-only guidance discovered during the `the-learning-ropes` bridge playtest and records the current MegaMek-side evidence for `POST /campaign/command/contracts/accept`.
 - Issue `#110` completed: refreshed MEK-RPG live MekHQ API fixtures from the expanded local producer shape, added command-readiness fixture coverage, expanded fixture/adapter/dashboard tests for finance, personnel, unit, contract, scenario, logistics, market, report, and command-readiness fields, surfaced richer read-only context through `scripts/sync-mekhq-live-campaign.py` and `scripts/export-dashboard-data.ps1`, preserved live-context-not-durable and no-writeback boundaries, and archived the handoff.

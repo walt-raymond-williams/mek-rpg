@@ -2,7 +2,7 @@
 
 ## Issue
 
-- GitHub issue: `#117`
+- GitHub issue: `#114`
 - Roadmap entry: MekHQ API-first playtest hardening
 - Mode: Project development / playtest validation
 - Priority: High, user-gated for live MekHQ validation

@@ -106,20 +106,25 @@ Failure modes:
 Inputs for MekHQ-linked campaigns:
 
 - `mekhq-bridge.md`
+- `mekhq-api-gaps.md` when present
 - `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md`
+- captured `GET /campaign/summary`, `GET /campaign/state` with `bridge_metadata`, and `GET /campaign/commands` context when MekHQ is open
+- generated output from `scripts/sync-mekhq-live-campaign.py` for active loaded MekHQ campaigns
 - latest output from `scripts/summarize-mekhq-save.py` when explicitly imported
 
 Purpose:
 
 - identify MekHQ-owned hard facts: date, day advancement, finances, rosters, unit condition, repairs, contracts, markets, scenarios, tactical outcomes, logistics, and bridge warnings
+- prefer live API snapshot context for active loaded MekHQ campaigns when available
 - preserve imported IDs and unsupported-field notes
 - classify checkpoint warnings and unsupported fields as blockers, manual-inspection items, caution notes, or FYI diagnostics before surfacing them to the GM
 
 Failure modes:
 
+- parsing an active MekHQ save as the routine live-play refresh path while the live API is available
 - advancing the MEK-RPG date independently of MekHQ
 - inventing exact funds, repair times, market prices, contract state, unit condition, or personnel availability
 - implying direct `.cpnx`, `.cpnx.gz`, XML, or raw save writeback
