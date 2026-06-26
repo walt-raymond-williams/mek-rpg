@@ -8,10 +8,12 @@ Purpose: align MEK-RPG planning around the live MekHQ API as the normal source f
 
 ## Decision
 
-When MekHQ is open and the read-only local API is available, MEK-RPG should load and refresh campaign context from:
+When MekHQ is open and the local API is available, MEK-RPG should run `scripts/fetch-mekhq-live-api.ps1` and load or refresh campaign context from the captured JSON files:
 
-1. `GET /campaign/summary`
-2. `GET /campaign/state`, either without `sections` or with `bridge_metadata` explicitly included
+1. `mekhq-summary.json`, captured from `GET /campaign/summary`
+2. `mekhq-state.json`, captured from `GET /campaign/state` with `bridge_metadata` explicitly included
+3. `mekhq-commands.json`, captured from `GET /campaign/commands`
+4. `mekhq-pending-deployments.json` when current scenario/deployment commitment matters
 
 MEK-RPG should not parse the active `.cpnx`, `.cpnx.gz`, or XML save merely because the user supplied a save path. A save path may identify the campaign for the human, but the loaded live API payload is the source to verify active campaign identity, date, location, roster counts, ledger context, warnings, and unsupported fields.
 

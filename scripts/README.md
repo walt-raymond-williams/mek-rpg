@@ -176,7 +176,7 @@ The personal-combat checkpoint prototype follows the same top-level helper contr
 
 ## MekHQ Live API And Save Summary Fallbacks
 
-When MekHQ is open and the read-only local API is available, active loaded campaign setup should start with `GET /status`, `GET /campaign/summary`, `GET /campaign/state` including `bridge_metadata`, `GET /campaign/pending-deployments` when current scenario/person commitment matters, and `GET /campaign/commands`. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files or save-derived summaries as current. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work, and record that fallback.
+When MekHQ is open and the local API is available, active loaded campaign setup should start with `fetch-mekhq-live-api.ps1`. The helper captures `GET /status`, `GET /campaign/summary`, `GET /campaign/state` including `bridge_metadata`, `GET /campaign/pending-deployments` when current scenario/person commitment matters, and `GET /campaign/commands` into known JSON files. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files or save-derived summaries as current. Use save parsing only when the live API is unavailable or explicitly requested for offline, fixture, legacy, or debugging work, and record that fallback.
 
 ```powershell
 Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/status' -TimeoutSec 5 | ConvertTo-Json -Depth 12

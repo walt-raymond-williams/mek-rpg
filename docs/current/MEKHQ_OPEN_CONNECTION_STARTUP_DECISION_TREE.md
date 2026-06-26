@@ -6,15 +6,25 @@ Purpose: make MekHQ-linked play start from the open MekHQ local API connection w
 
 Use this decision tree before treating any imported `mekhq-bridge.md`, generated campaign-local notes, saved checkpoint, or save-derived summary as current MekHQ-owned context.
 
-## Required First Reads
+## Required First Capture
 
-When MekHQ is open, attempt these read-only calls before play:
+When MekHQ is open, use the read helper before play:
+
+```powershell
+./scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture
+```
+
+Add `-PendingDeploymentsPersonId` or `-PendingDeploymentsPersonName` when the scene depends on a viewpoint person's scenario/deployment commitment. Add `-SelectorDetailFull` only when entering a command workflow that needs expensive selectors or guard facts.
+
+The helper captures these read-only calls into known JSON files:
 
 1. `GET /status`
 2. `GET /campaign/summary`
 3. `GET /campaign/state` with `bridge_metadata`
 4. `GET /campaign/pending-deployments` when the scene depends on current scenario, deployment, unit, or viewpoint-person commitment.
 5. `GET /campaign/commands`
+
+The standard files are `mekhq-status.json`, `mekhq-summary.json`, `mekhq-state.json`, `mekhq-commands.json`, `mekhq-pending-deployments.json`, optional selector/viewpoint files, and `mekhq-live-api-capture-manifest.json`.
 
 `GET /status` confirms that the local control server is reachable and reports the loaded-campaign identity snapshot. `GET /campaign/summary` provides fast compact context. `GET /campaign/state` with `bridge_metadata` provides the live context and trust envelope. `GET /campaign/pending-deployments` is the purpose-built read for current scenario and personnel commitment lookup; use `personId` or `personName` when the viewpoint character matters because the API does not expose the currently selected MekHQ UI person. `GET /campaign/commands` reports read-only command readiness and safe selector discovery; it does not authorize mutation by itself.
 
@@ -26,9 +36,9 @@ Use short timeouts for `/status`, `/campaign/summary`, and `/campaign/pending-de
 
 - Use the live API snapshot as current MekHQ-owned context for the session.
 - Treat live values as live context, not durable MEK-RPG memory, until saved/imported confirmation, explicit user approval, or a future controlled promotion flow.
-- Use `scripts/sync-mekhq-live-campaign.py` when campaign-local generated context files need to be created or refreshed from captured `GET /campaign/state` JSON.
-- Check `GET /campaign/commands` before routing hard-ledger actions to manual fallback.
-- Request `GET /campaign/commands?selectorDetail=full` only when entering a specific command workflow that needs expensive selectors or guard facts.
+- Use `scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-api-capture\mekhq-state.json` when campaign-local generated context files need to be created or refreshed from captured state JSON.
+- Check captured `mekhq-commands.json` before routing hard-ledger actions to manual fallback.
+- Rerun `scripts/fetch-mekhq-live-api.ps1 -SelectorDetailFull` only when entering a specific command workflow that needs expensive selectors or guard facts.
 
 ### Branch B: API Available But Missing Or Ambiguous Data
 

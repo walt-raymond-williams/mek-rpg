@@ -6,13 +6,14 @@ Purpose: capture every place where MekHQ-linked RPG play needs live MekHQ data t
 
 ## Operating Rule
 
-When MekHQ is open, MEK-RPG play should use the live local API first:
+When MekHQ is open, MEK-RPG play should use `scripts/fetch-mekhq-live-api.ps1` first. The helper captures the live local API into known JSON files:
 
 1. `GET /campaign/summary` for loaded campaign identity and compact status.
 2. `GET /campaign/state` with `bridge_metadata` for live read context.
 3. `GET /campaign/commands` for read-only command readiness and safe selector discovery.
+4. `GET /campaign/pending-deployments` for current scenario/deployment and viewpoint-person commitment lookup.
 
-If a needed read is not available through those API surfaces, record the gap here. Raw save parsing remains an explicit offline, legacy, fixture, or debugging fallback only. A user-supplied save path may identify the campaign for the human, but it should not become the normal active-play data source while the live API is available.
+If a needed read is not available through those API surfaces or the capture manifest records a required-read failure, record the gap here. Raw save parsing remains an explicit offline, legacy, fixture, or debugging fallback only. A user-supplied save path may identify the campaign for the human, but it should not become the normal active-play data source while the live API is available.
 
 ## Entry Schema
 
