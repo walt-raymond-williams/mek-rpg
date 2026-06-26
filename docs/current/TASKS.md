@@ -2,14 +2,19 @@
 
 ## Now
 
-- Issue `#112`: update MEK-RPG guidance and tooling so supported MekHQ hard-ledger actions use guarded command APIs, starting with `contracts.accept` for contract selection.
+- Issue `#113`: MekHQ API-first playtest hardening epic. Initial setup created the playtest API gap report and child story issues; continue with static audit issue `#114` or startup SOP hardening issue `#116`.
 
 ## Next
 
+- Issue `#114`: audit live-play MekHQ API-first access paths and stale save-parser references.
+- Issue `#115`: finish wiring the MekHQ playtest API gap reporting workflow.
+- Issue `#116`: harden open-connection-first play startup and fallback decision tree.
+- Issue `#117`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
+- Issue `#113`: parent epic for MekHQ API-first playtest hardening; keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
