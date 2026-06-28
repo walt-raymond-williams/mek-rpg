@@ -15,9 +15,10 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
 9. Do not parse the active `.cpnx`, `.cpnx.gz`, XML, or raw MekHQ save as the routine context source during live play.
 10. Review `campaign-state/setting-basics.md` for table canon, open user choices, and the canon policy.
 11. Assemble a GM context packet using `docs/current/GM_CONTEXT_PACKET_DESIGN.md`: load the active campaign's structured state, recent session log, relevant durable memory, rules gaps, and safety/tone notes without blending authority layers.
-12. For MekHQ-linked campaigns, include live API snapshot context when available, `mekhq-bridge.md`, `mekhq-api-gaps.md` when present, and unresolved `pending-mekhq-actions.md` items as command proposals, command results awaiting verification, or manual fallback intents, not confirmed hard ledger facts.
-13. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
-14. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
+12. If the active campaign names a narrative tone profile, read `gm/narrative-tone-profiles.md` and apply the profile to narration, NPC dialogue, command voice, and consequence framing.
+13. For MekHQ-linked campaigns, include live API snapshot context when available, `mekhq-bridge.md`, `mekhq-api-gaps.md` when present, and unresolved `pending-mekhq-actions.md` items as command proposals, command results awaiting verification, or manual fallback intents, not confirmed hard ledger facts.
+14. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
+15. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
 
 ## During Play
 

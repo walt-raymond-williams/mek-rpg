@@ -21,6 +21,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
 - Manual validation/playtest checkpoints recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions. The current checkpoint wave is tracked under epic issue `#95`.
+- Issue `#126` added durable tone controls for RPG narration and command dialogue. Sharpe's Strikers now uses a rough mercenary military profile with BattleTech mercenary realism and outlaw-country fatalism as supporting flavors, so future play should avoid corporate/HR-style leadership voice.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
 
@@ -77,11 +78,25 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The immediate checkpoint wave remains issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption complete as `#110`; controlled MekHQ command API planning is complete as `#111`; command-write guidance follow-up is complete as `#112`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
 - Issued: rich PC/NPC character records for play are tracked by epic issue `#120`, with child issues `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination.
-- Future issue candidate: improve RPG game-mode prose quality. Define concise style prompts or GM narration guidance for scene framing, character description, dialogue texture, and tone control so play output is more vivid without bloating context or overriding rules/campaign-state authority. Status: needs fill-out later.
+- Complete: issue `#126` improved RPG game-mode prose quality by adding reusable narrative tone profiles and active Sharpe's Strikers command-voice settings.
 - Future issue candidate: evaluate whether an MCP-style interface should replace, wrap, or complement the current MekHQ live API and script strategy for game-mode information access. Compare standardization, discoverability, query ergonomics, local-control safety, and implementation cost before changing the current working approach. Status: needs fill-out later.
 - Note: create GitHub Issues for the above future candidates later; do not open them until the scope and acceptance criteria are filled out.
 
 ## Issue Tracks
+
+### Improve RPG narration and mercenary command tone
+
+- Status: Done
+- Issue: `#126`
+- Handoff: `docs/handoffs/archive/mercenary-command-tone-126.md`
+- Mode: Project development
+- Goal: make live RPG narration and command dialogue less corporate by adding durable tone controls for rough mercenary military voice, with Sharpe's Strikers as the first campaign using the profile.
+- Output:
+  - `gm/narrative-tone-profiles.md` defines tone controls, anti-corporate dialogue rules, rough mercenary military voice, Sharpe-like military adventure, outlaw-country fatalism, and BattleTech mercenary realism.
+  - `gm/session-procedure.md`, `gm/gm-style.md`, and `gm/README.md` now route live play through the active campaign tone profile when one is named.
+  - `campaigns/_template/safety-and-tone.md` records the tone-profile field for future campaigns.
+  - `campaigns/sharpes-strikers/safety-and-tone.md` records the confirmed user preference for gritty mercenary military voice, military lingo, rowdy soldier behavior, natural profanity, and anti-HR command dialogue.
+- Boundary: tone guidance is original procedural direction. Do not copy song lyrics, BattleTech fiction text, rulebook text, or raw source material.
 
 ### Rich PC/NPC character records for play
 

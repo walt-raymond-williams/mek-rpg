@@ -5,8 +5,11 @@ Use this file to remember player preferences and child/co-player constraints.
 ## Table Tone
 
 - Tone: Needs user decision
+- Narrative tone profile: Needs user decision; see `gm/narrative-tone-profiles.md`
 - Violence detail level: Needs user decision
 - Kid-friendly mode: Needs user decision
+- Profanity level: Needs user decision
+- Humor style: Needs user decision
 
 ## Child Or Co-Player Guidance
 

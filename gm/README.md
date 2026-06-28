@@ -6,4 +6,6 @@ For campaign assumptions, start with `campaign-state/setting-basics.md` before i
 
 For resumable play, start with `gm/session-procedure.md` and `campaign-state/active-campaign.md`. Load one campaign save folder under `campaigns/`, then use `gm/state-save-checklist.md` after meaningful play.
 
+For deliberate narration and dialogue tone, use the active campaign's `safety-and-tone.md` together with `gm/narrative-tone-profiles.md`.
+
 For tactical combat, use `gm/switch-to-classic-battletech.md` to decide when RPG mode should stop, then use `gm/tactical-encounter-handoff-checklist.md` and `gm/encounter-template.md` to prepare a Classic BattleTech, MegaMek, or MekHQ encounter without implementing tactical rules in MEK-RPG.
