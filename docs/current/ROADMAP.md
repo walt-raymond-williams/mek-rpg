@@ -23,6 +23,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Regression coverage for the full MekHQ-linked A Time of War workflow is complete for deterministic agent-executable checks under epic issue `#38`; issue `#37` completed the manual UI apply/save/re-import validation checkpoint.
 - Manual validation/playtest checkpoints recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions. The current checkpoint wave is tracked under epic issue `#95`.
 - Issue `#126` added durable tone controls for RPG narration and command dialogue. Sharpe's Strikers now uses a rough mercenary military profile with BattleTech mercenary realism and outlaw-country fatalism as supporting flavors, so future play should avoid corporate/HR-style leadership voice.
+- Issue `#127` now tracks the Profession Capability System epic. It keeps MekHQ authoritative for personnel and campaign state while MEK RPG adds profession profiles, action permissions, dice/reveal gates, and safe LLM prompt assembly. Child issues `#128`-`#138` cover profile schema, initial profiles, lookup, action registry, dice/reveal design, Pre-Mission Intel Check, hidden-data boundaries, tests, prompt/context assembly, handoff maintenance, and roadmap updates.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
 
@@ -71,6 +72,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#119`: complete; added deterministic guarded-command smoke helper for MekHQ command envelopes, starting with safe `campaign.status_note` dry-run.
 - Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
+- Issue `#127`: Profession Capability System epic is open for planned implementation after this scaffold. Start with child issue `#128` unless the user asks for a different slice.
 
 ## Ready For Issue Candidates
 
@@ -81,10 +83,26 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
 - Issued: rich PC/NPC character records for play are tracked by epic issue `#120`, with child issues `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination.
 - Complete: issue `#126` improved RPG game-mode prose quality by adding reusable narrative tone profiles and active Sharpe's Strikers command-voice settings.
+- Issued: Profession Capability System is tracked by epic issue `#127`, with child issues `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` tests/spec plan for gated reveal, `#136` LLM prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Use `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, and `docs/handoffs/active/profession-capability-system-epic.md` as the start point.
 - Future issue candidate: evaluate whether an MCP-style interface should replace, wrap, or complement the current MekHQ live API and script strategy for game-mode information access. Compare standardization, discoverability, query ergonomics, local-control safety, and implementation cost before changing the current working approach. Status: needs fill-out later.
 - Note: create GitHub Issues for the above future candidates later; do not open them until the scope and acceptance criteria are filled out.
 
 ## Issue Tracks
+
+### Profession Capability System
+
+- Status: Issued.
+- Epic issue: `#127`.
+- Child issues: `#128`, `#129`, `#130`, `#131`, `#132`, `#133`, `#134`, `#135`, `#136`, `#137`, and `#138`.
+- Handoff: `docs/handoffs/active/profession-capability-system-epic.md`.
+- Design docs: `docs/current/PROFESSION_CAPABILITY_SYSTEM.md` and `docs/current/PRE_MISSION_INTEL_CHECK.md`.
+- Profiles: `rules/professions/`.
+- First action spec: `rules/actions/pre-mission-intel-check.md`.
+- Mode: Project development.
+- Goal: use MekHQ personnel roles/jobs as RPG-capable professions without replacing MekHQ as the source of truth for personnel and campaign state.
+- First target action: Pre-Mission Intel Check, which filters scenario intelligence through profession permissions, dice rolls, and reveal levels before generating an in-universe report.
+- Boundary: raw hidden scenario data and character knowledge are separate. The LLM may write the report, but deterministic rules must choose the reveal level first.
+- Next step: issue `#128`, then `#129` and the lookup/action-registry design issues.
 
 ### Improve RPG narration and mercenary command tone
 
