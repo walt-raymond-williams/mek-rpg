@@ -6,12 +6,14 @@
 
 ## Next
 
+- Issue `#140`: define the MekHQ live API query view contract under parent epic `#139`.
 - Issue `#128`: add the profession profile schema/template for the Profession Capability System under parent epic `#127`.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
+- Issue `#139`: MekHQ live API query/context views epic. Child issues are `#140` contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, and `#145` validation/final tracking. Goal: keep raw live API captures ignored while giving agents compact deterministic views of MekHQ-owned live context.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, strengthen existing issues and handoffs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
 - Issue `#127`: Profession Capability System epic. Child issues are `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` reveal-gating tests/spec plan, `#136` prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Start with issue `#128` when the user prioritizes this epic.
 - Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues are `#116` static audit, `#115` startup SOP, `#117` gap reporting, and `#114` validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.

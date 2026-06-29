@@ -17,6 +17,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#113` now tracks MekHQ API-first playtest hardening after user reports that play sessions still try to read the MekHQ save instead of the API. The standard posture is: use the open MekHQ local API connection for live context, keep save parsing as explicit offline/legacy/fixture/debug fallback, and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`. Issue `#116` added the static access-path audit report in `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`; issue `#115` added the open-connection startup decision tree in `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`; both are complete.
 - Issue `#118` completed MEK-RPG alignment with the current consumer-facing live MekHQ API contract in `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_CONTRACT.md`, including `/status`, `/campaign/pending-deployments`, command-readiness selectors, guarded command envelopes, dry-run/save/prompt behavior, partial-response handling, and timeout expectations. The follow-up read boundary is now `scripts/fetch-mekhq-live-api.ps1`, which captures those reads into known JSON files for downstream scripts.
 - Live issue `#118` smoke verification is recorded in `docs/current/MEKHQ_LIVE_API_SMOKE_FOLLOWUP_2026_06_26.md`. It confirmed the read endpoints, selector-detail workflow, and `campaign.status_note` dry-run path; issue `#119` added the MEK-RPG guarded-command helper so status-note dry-run envelopes are built and validated safely instead of by hand.
+- Issue `#139` now tracks MekHQ live API query/context views. Raw `mekhq-live-api-capture*/` JSON remains ignored local evidence; the new track will define and implement compact deterministic views so agents can consume current MekHQ-owned facts without parsing multi-megabyte raw captures during play. Child issues `#140`-`#145` cover the contract, helper core, play-context view, focused operational views, GM workflow integration, and validation/final tracking.
 - Live Sharpe's Strikers play exposed a month-boundary prompt during guarded day advancement: MekHQ asked to award personnel advancement after the month tick. This should become a dedicated month-tick and prompt-resolution epic so MEK-RPG can inspect month-boundary daily-processing events from API responses, surface them to the GM, and react safely instead of stalling on opaque UI prompts.
 - MekHQ-linked campaign saves still use `pending-mekhq-actions.md` for unresolved hard-ledger intents, but supported commands now use command proposals, command results, and verification records. Manual UI checklists are fallback records for unsupported, unavailable, blocked, refused, or unverifiable actions.
 - MekHQ pending workflow verification now has automated structural regression coverage from issue `#36` and human-in-the-loop MekHQ UI validation from issue `#37`.
@@ -73,6 +74,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
 - Issue `#127`: Profession Capability System epic is open for planned implementation after this scaffold. Start with child issue `#128` unless the user asks for a different slice.
+- Issue `#139`: MekHQ live API query/context views epic is open for planned implementation. Start with issue `#140` unless the user prioritizes another slice.
 
 ## Ready For Issue Candidates
 
@@ -84,10 +86,37 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issued: rich PC/NPC character records for play are tracked by epic issue `#120`, with child issues `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination.
 - Complete: issue `#126` improved RPG game-mode prose quality by adding reusable narrative tone profiles and active Sharpe's Strikers command-voice settings.
 - Issued: Profession Capability System is tracked by epic issue `#127`, with child issues `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` tests/spec plan for gated reveal, `#136` LLM prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Use `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, and `docs/handoffs/active/profession-capability-system-epic.md` as the start point.
+- Issued: MekHQ live API query/context views are tracked by epic issue `#139`, with child issues `#140` query view contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, and `#145` validation/final tracking. Use `docs/handoffs/active/mekhq-live-api-query-views-epic.md` as the start point.
 - Future issue candidate: evaluate whether an MCP-style interface should replace, wrap, or complement the current MekHQ live API and script strategy for game-mode information access. Compare standardization, discoverability, query ergonomics, local-control safety, and implementation cost before changing the current working approach. Status: needs fill-out later.
 - Note: create GitHub Issues for the above future candidates later; do not open them until the scope and acceptance criteria are filled out.
 
 ## Issue Tracks
+
+### MekHQ live API query/context views
+
+- Status: Issued.
+- Epic issue: `#139`.
+- Child issues: `#140`, `#141`, `#142`, `#143`, `#144`, and `#145`.
+- Handoffs:
+  - `docs/handoffs/active/mekhq-live-api-query-views-epic.md`
+  - `docs/handoffs/active/mekhq-live-api-query-view-contract.md`
+  - `docs/handoffs/active/mekhq-live-api-query-helper-core.md`
+  - `docs/handoffs/active/mekhq-live-api-play-context-view.md`
+  - `docs/handoffs/active/mekhq-live-api-focused-views.md`
+  - `docs/handoffs/active/mekhq-live-api-query-gm-workflow.md`
+  - `docs/handoffs/active/mekhq-live-api-query-validation.md`
+- Mode: Project development.
+- Goal: treat ignored MekHQ live API capture JSON as local raw evidence and provide compact deterministic views that agents can read during play without scanning full raw payloads.
+- Boundary: raw `mekhq-live-api-capture*/` files remain ignored and unstaged. Query helpers should extract facts, counts, warnings, and uncertainty; they should not choose tactics, scene outcomes, or hidden MekHQ state. Missing data belongs in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` or a producer change request.
+- Planned order:
+  1. `#140`: define the query view contract, output modes, evidence labels, fixture strategy, and privacy boundary.
+  2. `#141`: implement the helper core for loading capture files, validating manifest/read-only proof, and emitting basic compact output.
+  3. `#142`: add a compact play-context view for scene startup.
+  4. `#143`: add focused operational views for pending scenarios/deployments, person commitment, unit readiness, repair pressure, reports, command readiness, and API gaps.
+  5. `#144`: wire the query views into GM workflow and context packet docs.
+  6. `#145`: validate the workflow, clean up handoffs, and recommend the next task.
+- Handoff rule: each child issue must review and update the next child handoff before close-out so newly created docs, scripts, command examples, output fields, and caveats are carried forward.
+- Next step: issue `#140`.
 
 ### Profession Capability System
 
