@@ -32,6 +32,7 @@
 - `test-fetch-mekhq-live-api.ps1`: runs fake-server HTTP coverage for the live API fetch helper, including successful captures, optional full selectors, viewpoint pending-deployments lookup, manifest output, UTF-8 JSON, and required-read failure reporting.
 - `test-build-mekhq-status-note-command.ps1`: runs fixture coverage for the guarded status-note command helper, including valid envelope creation, UTF-8 request output, malformed `clientContext` refusal, and missing guard refusal.
 - `test-sync-mekhq-live-campaign.ps1`: runs fixture coverage for the live API campaign-load adapter, including read-only proof, raw-save rejection, create/refresh behavior, live-context notes, API gap surfacing, and active-pointer preservation.
+- `test-mekhq-api-gap-reporting.ps1`: checks that play startup, linked-play, helper docs, and the report schema keep missing live API reads routed to `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` instead of active-save parsing.
 - `test-validate-campaign-state.ps1`: runs disposable positive and negative coverage for the campaign-state validator.
 - `test-validate-rules-indexes.ps1`: runs disposable positive and negative coverage for the rules index validator.
 - `test-report-rules-coverage.ps1`: smoke-tests the rules coverage reporter text and JSON output.
@@ -71,6 +72,7 @@ python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-api-captu
 ./scripts/test-build-gm-context-packet.ps1
 ./scripts/test-export-dashboard-data.ps1
 ./scripts/test-sync-mekhq-live-campaign.ps1
+./scripts/test-mekhq-api-gap-reporting.ps1
 ./scripts/test-archive-campaign-session.ps1
 ./scripts/test-gm-context-regressions.ps1
 ./scripts/test-mekhq-context-packet.ps1
@@ -224,6 +226,8 @@ The edge-case fixture test uses `tests/fixtures/mekhq-read-only-checkpoint.edge-
 The live API fixture test uses `tests/fixtures/mekhq-live-campaign-summary.fixture.json`, `tests/fixtures/mekhq-live-campaign-state.fixture.json`, `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json`, `tests/fixtures/mekhq-live-campaign-commands.fixture.json`, and `tests/fixtures/mekhq-live-pending-deployments.fixture.json` copied or derived from the MegaMek workspace live local-control API prototype. It checks summary/state/warning-heavy shapes, pending-deployment and viewpoint-person commitment lookup, command-readiness shape, `contracts.accept` readiness, live-context metadata, method-backed trust envelopes, dirty-state unknown handling, read-only proof, unsupported/blocking entries, sanitation boundaries, and fixture no-mutation behavior. These fixtures are fake sanitized live-context examples, not durable checkpoint imports and not real campaign facts.
 
 The live API campaign-load adapter consumes captured sanitized `GET /campaign/state` JSON with `bridge_metadata`. It verifies `api_mode: local-read-only-live-context` and `read_only: true`, refuses raw `.cpnx`, `.cpnx.gz`, and XML inputs, creates a campaign folder from `campaigns/_template/` or refreshes generated context files with `--refresh-existing`, writes `mekhq-bridge.md` and `mekhq-api-gaps.md`, and leaves `campaign-state/active-campaign.md` unchanged. Missing or unsupported live API fields are recorded as API gaps and producer-change-request inputs instead of triggering save parsing.
+
+`test-mekhq-api-gap-reporting.ps1` is a documentation regression check for issue `#117`. It verifies the repeatable entry schema in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`, the play startup and during-play instructions in `AGENTS.md` and `gm/session-procedure.md`, the linked-play and startup-decision-tree references, and the helper documentation that labels save parsing as offline/fallback/debug behavior.
 
 ## MekHQ Campaign Bootstrap
 

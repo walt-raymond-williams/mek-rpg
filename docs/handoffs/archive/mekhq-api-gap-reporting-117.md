@@ -28,6 +28,14 @@ Read these first:
 - Play-mode docs and helper docs point to the report.
 - Tests or grep-style verification protect the report reference where practical.
 
+## Completion Notes
+
+- Added `scripts/test-mekhq-api-gap-reporting.ps1` to verify the report schema and the play/helper documentation references.
+- Wired the check into `scripts/test-all.ps1 -Quick`.
+- Updated command documentation in `scripts/README.md` and `docs/current/KNOWN_COMMANDS.md`.
+- Marked `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` as wired for story issue `#117`.
+- Existing report entries remain open producer/API gaps for later follow-up.
+
 ## Files And Areas
 
 Likely files to read or edit:

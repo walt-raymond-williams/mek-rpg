@@ -59,6 +59,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "MekHQ API gap reporting workflow coverage"
+        Path = Join-Path $repoRoot "scripts\test-mekhq-api-gap-reporting.ps1"
+        Quick = $true
+    },
+    @{
         Name = "Campaign-state validator coverage"
         Path = Join-Path $repoRoot "scripts\test-validate-campaign-state.ps1"
         Quick = $true

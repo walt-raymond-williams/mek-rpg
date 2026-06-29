@@ -85,6 +85,7 @@ Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands?sel
 ./scripts/build-mekhq-status-note-command.ps1 -StatusJson .\mekhq-status.json -CommandReadinessJson .\mekhq-commands.json -OutputFile .\status-note-dry-run.json -NoteText "MEK-RPG smoke note" -Actor "codex" -SceneId "session-log-2026-06-26" -ActionId "status-note-smoke-001" -Reason "Validate guarded command envelope." -InvokeDryRun  # explicitly POST the dry-run request file
 ./scripts/build-mekhq-status-note-command.ps1 -StatusJson .\mekhq-live-api-capture\mekhq-status.json -CommandReadinessJson .\mekhq-live-api-capture\mekhq-commands.json -OutputFile .\mekhq-live-api-capture\status-note-dry-run.json -NoteText "MEK-RPG smoke note" -Actor "codex" -SceneId "session-log-2026-06-26" -ActionId "status-note-smoke-001" -Reason "Validate guarded command envelope."  # build from captured API files
 ./scripts/test-sync-mekhq-live-campaign.ps1
+./scripts/test-mekhq-api-gap-reporting.ps1
 ./scripts/test-fetch-mekhq-live-api.ps1
 ./scripts/test-build-mekhq-status-note-command.ps1
 python ./scripts/summarize-mekhq-save.py "C:\path\to\campaign.cpnx" --format json  # offline/fallback only
@@ -123,6 +124,8 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 `test-fetch-mekhq-live-api.ps1` starts a fake local MekHQ API server and verifies `fetch-mekhq-live-api.ps1` captures status, summary, state, command readiness, optional full selectors, pending deployments, viewpoint deployment lookup, UTF-8 JSON output, error JSON, and the capture manifest without requiring a running MekHQ GUI.
 
 `test-sync-mekhq-live-campaign.ps1` uses sanitized live API fixtures and disposable campaign folders to check `sync-mekhq-live-campaign.py` compilation, read-only proof, raw-save/XML rejection, invalid id rejection, create and explicit refresh behavior, live-context wording, `mekhq-api-gaps.md` output, unsupported automation blockers, repo-relative fixture paths, active pointer preservation, and cleanup.
+
+`test-mekhq-api-gap-reporting.ps1` checks that `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` has the expected repeatable schema and that play startup, linked-play, startup-decision-tree, and helper docs route missing live API reads to the gap report instead of active-save parsing.
 
 `test-validate-campaign-state.ps1` uses a disposable temp repository fixture to check `validate-campaign-state.ps1` positive and negative behavior without mutating the live active campaign pointer.
 

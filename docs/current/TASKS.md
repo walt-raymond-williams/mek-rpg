@@ -2,7 +2,7 @@
 
 ## Now
 
-- Issue `#117`: finish wiring the MekHQ playtest API gap reporting workflow under parent epic `#113`.
+- None.
 
 ## Next
 
@@ -16,7 +16,7 @@
 - Issue `#139`: MekHQ live API query/context views epic. Child issues are `#140` contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, and `#145` validation/final tracking. Goal: keep raw live API captures ignored while giving agents compact deterministic views of MekHQ-owned live context.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, strengthen existing issues and handoffs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
 - Issue `#127`: Profession Capability System epic. Child issues are `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` reveal-gating tests/spec plan, `#136` prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Start with issue `#128` when the user prioritizes this epic.
-- Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues are `#116` static audit, `#115` startup SOP, `#117` gap reporting, and `#114` validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
+- Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues `#116` static audit, `#115` startup SOP, and `#117` gap reporting are complete; issue `#114` remains for validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#120`: parent epic for rich PC/NPC character records for play; child issues are `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination. Start with issue `#121` after the current MekHQ API-first playtest work unless the user prioritizes character records sooner.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
@@ -34,6 +34,7 @@
 
 ## Done
 
+- Issue `#117` completed: wired the MekHQ playtest API gap reporting workflow with a deterministic documentation regression check in `scripts/test-mekhq-api-gap-reporting.ps1`, added it to `test-all.ps1 -Quick`, documented the command, and marked `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` as the issue `#117` gap-report sink. Existing live playtest entries in the report remain open producer gaps.
 - Profession Capability System scaffold completed: added `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, initial `rules/professions/` stubs, `rules/actions/pre-mission-intel-check.md`, issue plan `issues/profession-capability-system/README.md`, active handoff `docs/handoffs/active/profession-capability-system-epic.md`, GitHub labels `epic`, `profession-system`, `rules`, `docs`, and `tests`, and GitHub issues `#127`-`#138`. This was planning/scaffolding only; the epic remains open.
 - Issue `#126` completed: added `gm/narrative-tone-profiles.md` with reusable tone controls, anti-corporate dialogue rewrites, rough mercenary military voice, Sharpe-like military adventure, outlaw-country fatalism, and BattleTech mercenary realism profiles; wired campaign tone profile loading into GM style/session procedure docs; updated the campaign template and Sharpe's Strikers `safety-and-tone.md` with the confirmed gritty mercenary command voice; archived handoff `docs/handoffs/archive/mercenary-command-tone-126.md`.
 - Completed the MekHQ live API helper documentation pass: active play docs now route MekHQ-open reads through `scripts/fetch-mekhq-live-api.ps1`, downstream consumers use the captured JSON files, direct endpoint examples remain as diagnostics/reference, and raw save/XML parsing remains offline/fallback/debug only.

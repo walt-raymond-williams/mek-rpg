@@ -67,7 +67,7 @@ rg -n "summarize-mekhq-save|cpnx|campaign/state|campaign/summary|GET /campaign/c
 
 ## Acceptance Criteria
 
-- Child issues `#116`, `#115`, `#117`, and `#114` remain linked from the epic.
+- Child issues `#116`, `#115`, `#117`, and `#114` remain linked from the epic. Issues `#116`, `#115`, and `#117` are complete; issue `#114` remains for validation.
 - `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` is the required read-gap sink for MekHQ-linked play.
 - Play-mode startup uses live API first when MekHQ is open.
 - Missing live API reads become report entries or producer change requests, not silent active-save parsing.
