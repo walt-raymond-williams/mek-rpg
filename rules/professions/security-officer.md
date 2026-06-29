@@ -1,9 +1,40 @@
+---
+schema_version: profession-profile/v1
+profession_id: security_officer
+display_name: Security Officer
+status: not_implemented
+aliases:
+  - security officer
+  - security
+  - force protection
+  - provost
+  - counterintelligence
+mekhq_owned_fields:
+  - current job/role
+  - assignment
+  - security duty if exposed
+  - unit location and deployment posture
+  - personnel availability
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions: []
+---
+
 # Security Officer
 
 ## Status
 
 - Profession id: `security_officer`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 
@@ -38,7 +69,7 @@ Not defined yet.
 
 ## Data Access Limits
 
-Does not access hidden scenario data by default. Future counterintelligence actions must define exactly which hidden facts can be surfaced.
+MekHQ-owned personnel, location, assignment, and deployment posture facts remain authoritative. This profile does not access hidden scenario data by default, and future counterintelligence actions must define exactly which hidden facts can be surfaced through a reveal gate.
 
 ## Failure Modes
 

@@ -1,9 +1,40 @@
+---
+schema_version: profession-profile/v1
+profession_id: tech_chief
+display_name: Tech Chief / Mechanic
+status: not_implemented
+aliases:
+  - tech chief
+  - mechanic
+  - technician
+  - astech
+  - chief technician
+mekhq_owned_fields:
+  - current job/role
+  - technician assignment
+  - repair queue or maintenance fields when exposed
+  - unit condition
+  - fatigue, injuries, and availability
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions: []
+---
+
 # Tech Chief / Mechanic
 
 ## Status
 
 - Profession id: `tech_chief`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 

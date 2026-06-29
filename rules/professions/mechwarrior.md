@@ -1,9 +1,41 @@
+---
+schema_version: profession-profile/v1
+profession_id: mechwarrior
+display_name: MechWarrior
+status: not_implemented
+aliases:
+  - mechwarrior
+  - mech warrior
+  - battlemech pilot
+  - mech pilot
+  - pilot
+mekhq_owned_fields:
+  - current job/role
+  - assigned unit
+  - Gunnery/Piloting-like fields where exposed
+  - fatigue, injury, and readiness
+  - scenario deployment assignment
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions:
+  - pre_mission_intel_check: supporting
+---
+
 # MechWarrior
 
 ## Status
 
 - Profession id: `mechwarrior`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 
@@ -38,7 +70,7 @@ Support role only for the first action. A later issue may define pilot-specific 
 
 ## Data Access Limits
 
-Does not gain hidden OpFor data by default. May contextualize filtered facts the owning profession has already earned.
+MekHQ-owned pilot, assignment, unit, fatigue, injury, and readiness facts remain authoritative. This profile does not gain hidden OpFor data by default and may contextualize only filtered facts the owning profession has already earned through an action spec and reveal gate.
 
 ## Failure Modes
 

@@ -1,9 +1,41 @@
+---
+schema_version: profession-profile/v1
+profession_id: aerospace_pilot
+display_name: Aerospace Pilot
+status: not_implemented
+aliases:
+  - aerospace pilot
+  - fighter pilot
+  - aero pilot
+  - aerospace
+  - pilot aerospace
+mekhq_owned_fields:
+  - current job/role
+  - assigned aerospace unit
+  - Gunnery/Piloting-like fields if exposed
+  - fatigue, injury, and readiness
+  - scenario assignment
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions:
+  - pre_mission_intel_check: supporting
+---
+
 # Aerospace Pilot
 
 ## Status
 
 - Profession id: `aerospace_pilot`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 
@@ -38,7 +70,7 @@ Support role only for the first action. May later own air-recon or approach-risk
 
 ## Data Access Limits
 
-Does not gain exact hidden OpFor details by default. May support terrain, approach, or deployment-risk interpretation.
+MekHQ-owned assignment, readiness, and aerospace unit facts remain authoritative. This profile does not gain exact hidden OpFor details by default and may support terrain, approach, or deployment-risk interpretation only through an action spec and reveal gate.
 
 ## Failure Modes
 

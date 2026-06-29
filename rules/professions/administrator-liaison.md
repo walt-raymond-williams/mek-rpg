@@ -1,9 +1,41 @@
+---
+schema_version: profession-profile/v1
+profession_id: administrator_liaison
+display_name: Administrator / Liaison
+status: not_implemented
+aliases:
+  - administrator
+  - liaison
+  - administrator/liaison
+  - admin
+  - contract liaison
+mekhq_owned_fields:
+  - current job/role
+  - assignment
+  - contract metadata
+  - employer/faction relationship if exposed
+  - command or admin position
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions:
+  - pre_mission_intel_check: supporting
+---
+
 # Administrator / Liaison
 
 ## Status
 
 - Profession id: `administrator_liaison`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 

@@ -1,9 +1,42 @@
+---
+schema_version: profession-profile/v1
+profession_id: intelligence_officer
+display_name: Intelligence Officer
+status: not_implemented
+aliases:
+  - intelligence officer
+  - intelligence
+  - intel officer
+  - analyst
+  - intelligence analyst
+mekhq_owned_fields:
+  - personnel id/name
+  - current job/role
+  - assignment
+  - rank/title if exposed
+  - fatigue/injury/readiness constraints
+  - scenario assignment or command relationship
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions:
+  - pre_mission_intel_check: owning
+---
+
 # Intelligence Officer
 
 ## Status
 
 - Profession id: `intelligence_officer`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 
@@ -41,7 +74,7 @@ Use the action's configured roll gate. This profile should usually be the best f
 
 ## Data Access Limits
 
-May access hidden scenario intelligence only through action reveal levels. Raw hidden data must not be exposed directly to the player.
+MekHQ-owned personnel and scenario facts remain authoritative. This profile may access hidden scenario intelligence only through action reveal levels, and raw hidden data must not be exposed directly to the player.
 
 ## Failure Modes
 
@@ -52,7 +85,6 @@ May access hidden scenario intelligence only through action reveal levels. Raw h
 
 ## Not Yet Implemented
 
-- Profile schema.
 - MekHQ job alias mapping.
 - Deterministic roll modifiers.
 - Prompt assembly tests.

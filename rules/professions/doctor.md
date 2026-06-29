@@ -1,9 +1,40 @@
+---
+schema_version: profession-profile/v1
+profession_id: doctor
+display_name: Doctor
+status: not_implemented
+aliases:
+  - doctor
+  - medic
+  - surgeon
+  - medical officer
+  - field medic
+mekhq_owned_fields:
+  - current job/role
+  - medical assignment
+  - patient injury state
+  - fatigue and recovery state
+  - availability
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions: []
+---
+
 # Doctor
 
 ## Status
 
 - Profession id: `doctor`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 

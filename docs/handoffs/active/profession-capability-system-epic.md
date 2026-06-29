@@ -29,10 +29,10 @@ Read these first:
 ## Expected Output
 
 - Keep the epic open until implementation, tests, and validation are complete.
-- Start with schema/template and lookup/action-registry design.
+- Schema/template work is complete in issue `#128`; start remaining work with initial profile content and lookup/action-registry design.
 - Implement Pre-Mission Intel Check only after hidden-data filtering and tests are specified.
 - Keep player-facing outputs in-universe and filtered by reveal level.
-- Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates.
+- Child issues: `#128` schema/template is complete; `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
 
 ## Files And Areas
 
@@ -41,6 +41,7 @@ Likely files to read or edit:
 - `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`
 - `docs/current/PRE_MISSION_INTEL_CHECK.md`
 - `rules/professions/`
+- `scripts/validate-profession-profiles.ps1`
 - `rules/actions/`
 - future script or test files only after a child issue authorizes runtime work
 - `docs/current/ROADMAP.md`
@@ -85,6 +86,6 @@ If runtime work touches rule indexes, also run:
 ## Open Questions
 
 - Which MekHQ API fields will expose stable job/role aliases for lookup?
-- Should profile metadata live in YAML front matter, separate YAML, or both?
+- Resolved for issue `#128`: profile metadata lives in YAML front matter inside Markdown for now.
 - What roll system becomes canonical for non-combat profession actions?
 - How should support professions contribute without bypassing reveal gates?

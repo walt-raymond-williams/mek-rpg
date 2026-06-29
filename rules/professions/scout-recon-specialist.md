@@ -1,9 +1,41 @@
+---
+schema_version: profession-profile/v1
+profession_id: scout_recon_specialist
+display_name: Scout / Recon Specialist
+status: not_implemented
+aliases:
+  - scout
+  - recon specialist
+  - reconnaissance specialist
+  - scout/recon
+  - forward observer
+mekhq_owned_fields:
+  - current job/role
+  - assignment
+  - unit or lance attachment
+  - fatigue/injury/readiness constraints
+  - scenario deployment relationship
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions:
+  - pre_mission_intel_check: owning
+---
+
 # Scout / Recon Specialist
 
 ## Status
 
 - Profession id: `scout_recon_specialist`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 
@@ -38,7 +70,7 @@ Use the action's configured roll gate. Scout/recon results may be stronger for t
 
 ## Data Access Limits
 
-May receive only filtered hidden scenario facts. Exact chassis, pilot skills, or hidden objectives require the action's high reveal levels.
+MekHQ-owned assignment, readiness, and scenario relationship facts remain authoritative. This profile may receive only filtered hidden scenario facts, and exact chassis, pilot skills, or hidden objectives require the action's high reveal levels.
 
 ## Failure Modes
 
@@ -48,7 +80,6 @@ May receive only filtered hidden scenario facts. Exact chassis, pilot skills, or
 
 ## Not Yet Implemented
 
-- Profile schema.
 - MekHQ job alias mapping.
 - Terrain-specific roll modifiers.
 

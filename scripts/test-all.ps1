@@ -84,6 +84,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "Profession profile schema validator coverage"
+        Path = Join-Path $repoRoot "scripts\test-validate-profession-profiles.ps1"
+        Quick = $true
+    },
+    @{
         Name = "Rules route helper golden fixture tests"
         Path = Join-Path $repoRoot "scripts\test-route-rules-prompt.ps1"
         Quick = $false

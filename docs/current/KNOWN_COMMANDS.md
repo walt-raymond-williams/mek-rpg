@@ -53,6 +53,8 @@ python ./scripts/sync-mekhq-live-campaign.py --live-state .\mekhq-live-api-captu
 ./scripts/report-rules-coverage.ps1
 ./scripts/report-rules-coverage.ps1 -Format json
 ./scripts/test-report-rules-coverage.ps1
+./scripts/validate-profession-profiles.ps1
+./scripts/test-validate-profession-profiles.ps1
 ./scripts/route-rules-prompt.ps1 "Can I shoot from cover?"
 ./scripts/route-rules-prompt.ps1 "BattleMech heat and tactical movement" -Format json
 ./scripts/test-route-rules-prompt.ps1
@@ -132,6 +134,8 @@ $summary = ".\mekhq-summary.json"; $json = & python ./scripts/summarize-mekhq-sa
 `validate-rules-indexes.ps1` checks task-router links, rules-map paths, page-reference links, manifest IDs, allowed statuses, related IDs, source-page metadata, the committed `PDF page = printed page + 2` offset assumption, manifest/page-reference page coverage, summary `Source References`, and missing summary files. Mapped-only future summary targets are warnings, not failures. `test-validate-rules-indexes.ps1` uses a disposable fixture to check valid metadata, missing router targets, missing manifest summaries, offset metadata failures, manifest/page-reference mismatches, and missing summary source references.
 
 `report-rules-coverage.ps1` summarizes manifest coverage by subsystem and status using committed metadata only. Default text output is for planning; `-Format json` emits machine-readable output. `test-report-rules-coverage.ps1` smoke-tests both formats.
+
+`validate-profession-profiles.ps1` checks the `rules/professions/` Markdown plus YAML-front-matter schema, excluding README and template files. It requires `profession-profile/v1` metadata, stable ids, required headings, nonempty alias/MekHQ/overlay lists, explicit unfinished-runtime status warnings, and prose that preserves MekHQ-owned fact and reveal-gate boundaries. `test-validate-profession-profiles.ps1` uses disposable positive and negative fixtures.
 
 `route-rules-prompt.ps1` scores a short rules or play prompt against `indexes/task-router.md` and reports candidate route rows, files to read, manifest status, page references, and warnings. It does not answer the rule; read the routed summaries before ruling. `test-route-rules-prompt.ps1` checks text/JSON output and `tests/fixtures/rules-route-golden-prompts.fixture.json` coverage for common RPG procedures, advancement/rewards, special hazards, special equipment, tactical handoff, ambiguous rulings, missing routes, and source-review gaps.
 

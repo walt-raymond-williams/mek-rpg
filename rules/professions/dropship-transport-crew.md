@@ -1,9 +1,40 @@
+---
+schema_version: profession-profile/v1
+profession_id: dropship_transport_crew
+display_name: DropShip / Transport Crew
+status: not_implemented
+aliases:
+  - dropship crew
+  - transport crew
+  - dropship pilot
+  - transport pilot
+  - ship crew
+mekhq_owned_fields:
+  - current job/role
+  - transport assignment
+  - ship or transport asset if exposed
+  - fatigue, injury, and readiness
+  - deployment relationship
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions: []
+---
+
 # DropShip / Transport Crew
 
 ## Status
 
 - Profession id: `dropship_transport_crew`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 

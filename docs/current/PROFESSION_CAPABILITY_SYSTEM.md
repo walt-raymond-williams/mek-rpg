@@ -65,7 +65,15 @@ This first milestone is planning and scaffold only:
 
 Location: `rules/professions/`
 
-Each profile should eventually include:
+Profile format:
+
+- Markdown file with YAML front matter.
+- Schema version: `profession-profile/v1`.
+- Template: `rules/professions/profile-template.md`.
+- Validation: `scripts/validate-profession-profiles.ps1`.
+- Status remains `not_implemented` until runtime lookup, action permission, roll behavior, and prompt assembly are implemented and tested.
+
+Each profile includes:
 
 - Purpose.
 - Typical capabilities.
@@ -159,7 +167,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 
 ## Roadmap
 
-1. Create the profession profile schema/template.
+1. Create the profession profile schema/template. Status: complete in issue `#128`.
 2. Add initial profession profile documents.
 3. Design deterministic profession lookup from MekHQ personnel fields.
 4. Design the action registry and machine-readable action metadata.
@@ -188,7 +196,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 ## Open Questions
 
 - Which MekHQ live API fields will reliably expose personnel job/role, assignment, and current scenario metadata?
-- Should profession profiles use YAML front matter inside Markdown, separate YAML manifests, or both?
+- Resolved for issue `#128`: profession profiles use YAML front matter inside Markdown. A separate manifest may be added later only if lookup tooling needs it.
 - Which core dice model should become canonical for non-combat RPG action checks?
 - How should support roles contribute to a lead actor's roll: flat modifier, advantage-like reroll, separate support reveal, or narrative-only assistance?
 - Which hidden scenario flags can be safely fixture-tested without tying MEK RPG to unstable MekHQ internals?

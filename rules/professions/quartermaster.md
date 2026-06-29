@@ -1,9 +1,40 @@
+---
+schema_version: profession-profile/v1
+profession_id: quartermaster
+display_name: Quartermaster
+status: not_implemented
+aliases:
+  - quartermaster
+  - supply officer
+  - logistics officer
+  - procurement officer
+  - stores officer
+mekhq_owned_fields:
+  - current job/role
+  - warehouse/supply fields when exposed
+  - unit ammo and equipment state
+  - procurement queue
+  - transport capacity if exposed
+mek_rpg_overlay_fields:
+  - purpose
+  - typical capabilities
+  - relevant RPG skills
+  - allowed actions
+  - roll rules
+  - data access limits
+  - failure modes
+  - examples
+  - test expectations
+allowed_actions: []
+---
+
 # Quartermaster
 
 ## Status
 
 - Profession id: `quartermaster`.
-- Status: Planned stub.
+- Status: `not_implemented`.
+- Schema: `profession-profile/v1`.
 
 ## Purpose
 
