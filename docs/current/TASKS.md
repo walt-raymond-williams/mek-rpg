@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#140`: define the MekHQ live API query view contract under parent epic `#139`.
+- Issue `#141`: implement the MekHQ live API query helper core under parent epic `#139`, using `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`.
 - Issue `#128`: add the profession profile schema/template for the Profession Capability System under parent epic `#127`.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
@@ -34,6 +34,7 @@
 
 ## Done
 
+- Issue `#140` completed: added `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md` defining the MekHQ live API query view boundary, Python helper decision, planned `scripts/query-mekhq-live-api.py` command shape, JSON-first output envelope, evidence/uncertainty labels, initial views, fixture/privacy strategy, and validation expectations; updated the `#141` handoff with the resulting implementation contract.
 - Issue `#117` completed: wired the MekHQ playtest API gap reporting workflow with a deterministic documentation regression check in `scripts/test-mekhq-api-gap-reporting.ps1`, added it to `test-all.ps1 -Quick`, documented the command, and marked `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` as the issue `#117` gap-report sink. Existing live playtest entries in the report remain open producer gaps.
 - Profession Capability System scaffold completed: added `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, initial `rules/professions/` stubs, `rules/actions/pre-mission-intel-check.md`, issue plan `issues/profession-capability-system/README.md`, active handoff `docs/handoffs/active/profession-capability-system-epic.md`, GitHub labels `epic`, `profession-system`, `rules`, `docs`, and `tests`, and GitHub issues `#127`-`#138`. This was planning/scaffolding only; the epic remains open.
 - Issue `#126` completed: added `gm/narrative-tone-profiles.md` with reusable tone controls, anti-corporate dialogue rewrites, rough mercenary military voice, Sharpe-like military adventure, outlaw-country fatalism, and BattleTech mercenary realism profiles; wired campaign tone profile loading into GM style/session procedure docs; updated the campaign template and Sharpe's Strikers `safety-and-tone.md` with the confirmed gritty mercenary command voice; archived handoff `docs/handoffs/archive/mercenary-command-tone-126.md`.

@@ -74,7 +74,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
 - Issue `#127`: Profession Capability System epic is open for planned implementation after this scaffold. Start with child issue `#128` unless the user asks for a different slice.
-- Issue `#139`: MekHQ live API query/context views epic is open for planned implementation. Start with issue `#140` unless the user prioritizes another slice.
+- Issue `#139`: MekHQ live API query/context views epic is open for planned implementation. Issue `#140` defined the query view contract in `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`; start with issue `#141` unless the user prioritizes another slice.
 
 ## Ready For Issue Candidates
 
@@ -116,7 +116,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   5. `#144`: wire the query views into GM workflow and context packet docs.
   6. `#145`: validate the workflow, clean up handoffs, and recommend the next task.
 - Handoff rule: each child issue must review and update the next child handoff before close-out so newly created docs, scripts, command examples, output fields, and caveats are carried forward.
-- Next step: issue `#140`.
+- Next step: issue `#141`.
 
 ### Profession Capability System
 

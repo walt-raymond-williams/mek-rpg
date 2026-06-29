@@ -7,6 +7,12 @@
 - Mode: Project development
 - Priority: First child issue under epic `#139`
 
+## Completion
+
+- Status: complete.
+- Contract doc: `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`.
+- Next handoff updated: `docs/handoffs/active/mekhq-live-api-query-helper-core.md`.
+
 ## Goal
 
 Define the contract for compact deterministic views produced from ignored MekHQ live API capture JSON.
