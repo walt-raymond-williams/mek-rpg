@@ -49,6 +49,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "MekHQ live API query helper coverage"
+        Path = Join-Path $repoRoot "scripts\test-query-mekhq-live-api.ps1"
+        Quick = $true
+    },
+    @{
         Name = "MekHQ status-note command helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-mekhq-status-note-command.ps1"
         Quick = $true

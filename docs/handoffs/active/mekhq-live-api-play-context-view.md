@@ -21,7 +21,8 @@ Read these first:
 - `docs/current/TASKS.md`
 - `docs/handoffs/active/mekhq-live-api-query-views-epic.md`
 - Contract doc created by issue `#140`
-- Query helper created by issue `#141`
+- Query helper created by issue `#141`: `scripts/query-mekhq-live-api.py`
+- Query helper test suite: `scripts/test-query-mekhq-live-api.ps1`
 - `gm/session-procedure.md`
 - `docs/current/GM_CONTEXT_PACKET_DESIGN.md`
 
@@ -48,8 +49,23 @@ Useful commands or checks:
 
 ```powershell
 git status --short --branch
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view summary --format json
+python ./scripts/query-mekhq-live-api.py --state-file .\mekhq-live-api-capture\mekhq-state.json --manifest-file .\mekhq-live-api-capture\mekhq-live-api-capture-manifest.json --view summary --format text
+./scripts/test-query-mekhq-live-api.ps1
 ./scripts/test-all.ps1 -Quick
 ```
+
+## Issue `#141` Helper Baseline
+
+- Script: `scripts/query-mekhq-live-api.py`.
+- Implemented view: `--view summary`.
+- Formats: `--format json` and `--format text`; JSON is the primary schema-bearing output.
+- Inputs: `--capture-dir` or explicit files with `--state-file`, `--summary-file`, `--manifest-file`, `--status-file`, `--commands-file`, and `--pending-deployments-file`.
+- Output schema: `schema_version: mek-rpg-mekhq-live-api-query-view/v1` with `view`, `generated_at`, `status`, `source`, `identity`, `facts`, `counts`, `warnings`, `gaps`, and `next_actions`.
+- Summary validation: requires captured `mekhq-state.json`, validates `bridge_metadata.api_mode: local-read-only-live-context` and `bridge_metadata.read_only: true`, reports missing manifest as `partial`, reports failed manifest/error files as gaps, rejects raw `.cpnx`, `.cpnx.gz`, XML, PDF, EPUB, and protected source paths.
+- Exit behavior: `ok` and `partial` return zero; `blocked` and `error` return nonzero.
+- Fixture coverage: `scripts/test-query-mekhq-live-api.ps1` builds disposable capture directories from sanitized fixtures under `tests/fixtures/` and covers valid capture, explicit file inputs, JSON/text output, missing manifest, failed manifest, missing required state, missing read-only proof, wrong API mode, raw-save rejection, and unsupported gap surfacing.
+- Limitations: `play-context` and focused operational views are not implemented yet; issue `#142` should add a new view to the same helper rather than creating a separate command.
 
 ## Constraints
 

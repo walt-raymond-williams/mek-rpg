@@ -6,7 +6,6 @@
 
 ## Next
 
-- Issue `#141`: implement the MekHQ live API query helper core under parent epic `#139`, using `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`.
 - Issue `#129`: add initial profession profile content using the `profession-profile/v1` schema under parent epic `#127`.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
@@ -35,6 +34,7 @@
 ## Done
 
 - Issue `#128` completed: added the `profession-profile/v1` Markdown plus YAML front matter schema, reusable `rules/professions/profile-template.md`, normalized the ten existing profession stubs to the schema with explicit `not_implemented` status and MekHQ-owned/MEK RPG overlay separation, added `scripts/validate-profession-profiles.ps1` with disposable fixture coverage, and wired the focused check into `test-all.ps1 -Quick`.
+- Issue `#141` completed: added `scripts/query-mekhq-live-api.py` with the JSON-first `summary` query view over ignored MekHQ live API captures, explicit capture-directory and file inputs, manifest/campaign identity/read-only proof output, state API-mode/read-only validation, raw save/XML/protected-source path rejection, partial/failed capture gap reporting, and text rendering; added sanitized disposable fixture coverage in `scripts/test-query-mekhq-live-api.ps1`, wired it into `test-all.ps1 -Quick`, documented commands, and updated the issue `#142` play-context handoff with the helper baseline.
 - Issue `#140` completed: added `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md` defining the MekHQ live API query view boundary, Python helper decision, planned `scripts/query-mekhq-live-api.py` command shape, JSON-first output envelope, evidence/uncertainty labels, initial views, fixture/privacy strategy, and validation expectations; updated the `#141` handoff with the resulting implementation contract.
 - Issue `#117` completed: wired the MekHQ playtest API gap reporting workflow with a deterministic documentation regression check in `scripts/test-mekhq-api-gap-reporting.ps1`, added it to `test-all.ps1 -Quick`, documented the command, and marked `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` as the issue `#117` gap-report sink. Existing live playtest entries in the report remain open producer gaps.
 - Profession Capability System scaffold completed: added `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, initial `rules/professions/` stubs, `rules/actions/pre-mission-intel-check.md`, issue plan `issues/profession-capability-system/README.md`, active handoff `docs/handoffs/active/profession-capability-system-epic.md`, GitHub labels `epic`, `profession-system`, `rules`, `docs`, and `tests`, and GitHub issues `#127`-`#138`. This was planning/scaffolding only; the epic remains open.

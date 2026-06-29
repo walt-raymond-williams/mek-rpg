@@ -96,3 +96,15 @@ Before closing, review `docs/handoffs/active/mekhq-live-api-play-context-view.md
 
 - Can existing extraction functions from `sync-mekhq-live-campaign.py` be safely shared, or should this helper start separate and converge later?
 - Should issue `#141` implement text output immediately, or defer text rendering until `#142` once the play-context view exists?
+
+## Completion
+
+- Status: Complete.
+- Script: `scripts/query-mekhq-live-api.py`.
+- Implemented view: `--view summary`.
+- Formats: `--format json` and `--format text`.
+- Inputs: `--capture-dir` plus explicit file arguments for manifest, status, summary, state, commands, and pending deployments.
+- Validation: rejects raw `.cpnx`, `.cpnx.gz`, XML, PDF, EPUB, and protected source paths; requires captured state read-only proof and `local-read-only-live-context`; reports missing manifests as partial and failed captures as gaps.
+- Tests: `scripts/test-query-mekhq-live-api.ps1`, wired into `scripts/test-all.ps1 -Quick`.
+- Docs: `scripts/README.md`, `docs/current/KNOWN_COMMANDS.md`, `docs/current/TASKS.md`.
+- Downstream update: `docs/handoffs/active/mekhq-live-api-play-context-view.md` now records the helper baseline for issue `#142`.

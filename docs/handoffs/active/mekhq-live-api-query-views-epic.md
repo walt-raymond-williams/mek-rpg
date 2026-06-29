@@ -68,9 +68,9 @@ git check-ignore -v mekhq-live-api-capture/mekhq-state.json
 
 ## Child Issues
 
-1. `#140`: define the MekHQ live API query view contract.
-2. `#141`: implement the helper core.
-3. `#142`: add compact play-context view.
+1. `#140`: define the MekHQ live API query view contract. Complete.
+2. `#141`: implement the helper core. Complete; `scripts/query-mekhq-live-api.py` now supports `--view summary` with JSON/text output and fixture coverage.
+3. `#142`: add compact play-context view. Next unblocked child issue.
 4. `#143`: add focused operational views.
 5. `#144`: wire query views into GM workflow.
 6. `#145`: validate query views and finalize tracking.
