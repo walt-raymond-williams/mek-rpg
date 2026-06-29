@@ -168,7 +168,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 ## Roadmap
 
 1. Create the profession profile schema/template. Status: complete in issue `#128`.
-2. Add initial profession profile documents.
+2. Add initial profession profile documents. Status: complete in issue `#129`.
 3. Design deterministic profession lookup from MekHQ personnel fields.
 4. Design the action registry and machine-readable action metadata.
 5. Decide the first dice and reveal-level mapping.
@@ -182,7 +182,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 
 - Epic: `#127` Profession Capability System.
 - `#128`: Add Profession Profile Schema/Template.
-- `#129`: Add Initial Profession Profile Documents.
+- `#129`: Add Initial Profession Profile Documents. Complete.
 - `#130`: Add Profession Lookup Design.
 - `#131`: Add Profession Action Registry Design.
 - `#132`: Add Dice-Roll And Reveal-Level Design.

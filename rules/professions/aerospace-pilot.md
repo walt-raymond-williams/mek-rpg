@@ -9,12 +9,15 @@ aliases:
   - aero pilot
   - aerospace
   - pilot aerospace
+  - air support pilot
+  - Needs API review: exact MekHQ aerospace crew role labels
 mekhq_owned_fields:
   - current job/role
   - assigned aerospace unit
   - Gunnery/Piloting-like fields if exposed
   - fatigue, injury, and readiness
   - scenario assignment
+  - air support or deployment relationship if exposed
 mek_rpg_overlay_fields:
   - purpose
   - typical capabilities
@@ -39,7 +42,7 @@ allowed_actions:
 
 ## Purpose
 
-Handles aerospace operations, approach risk, airspace context, transport escort concerns, and air mission support.
+Handles aerospace operations, approach risk, airspace context, transport escort concerns, and air mission support. MekHQ remains authoritative for aerospace assignment, unit state, skills, fatigue, injury, and readiness.
 
 ## Typical Capabilities
 
@@ -47,6 +50,7 @@ Handles aerospace operations, approach risk, airspace context, transport escort 
 - Support to pre-mission intelligence where aerial observation is relevant.
 - Tactical handoff context for aerospace combat.
 - Evacuation or reinforcement feasibility comments.
+- Warnings about weather, approach corridors, sensor coverage, or air-defense exposure when filtered data permits it.
 
 ## Relevant MekHQ Fields
 
@@ -55,10 +59,12 @@ Handles aerospace operations, approach risk, airspace context, transport escort 
 - Gunnery/Piloting-like fields if exposed
 - fatigue, injury, and readiness
 - scenario assignment
+- air support or deployment relationship if exposed
 
 ## Relevant RPG Skills
 
 - Piloting, Gunnery, navigation, sensors, tactics, or aerospace-specific skills.
+- Needs source review: exact A Time of War aerospace, navigation, and sensors skill names.
 
 ## Allowed Actions
 
@@ -66,27 +72,30 @@ Handles aerospace operations, approach risk, airspace context, transport escort 
 
 ## Roll Rules
 
-Support role only for the first action. May later own air-recon or approach-risk actions.
+Support role only for the first action. May later own air-recon or approach-risk actions. Any support modifier must be defined in the action spec and cannot independently raise reveal level.
 
 ## Data Access Limits
 
-MekHQ-owned assignment, readiness, and aerospace unit facts remain authoritative. This profile does not gain exact hidden OpFor details by default and may support terrain, approach, or deployment-risk interpretation only through an action spec and reveal gate.
+MekHQ-owned assignment, readiness, and aerospace unit facts remain authoritative. This profile does not gain exact hidden OpFor details by default and may support terrain, approach, or deployment-risk interpretation only through an action spec and reveal gate. Full aerospace tactical combat remains outside MEK RPG and should be handed to MegaMek or Classic BattleTech when needed.
 
 ## Failure Modes
 
 - Bad weather or sensor interference.
 - Overfocus on air threat.
 - Misjudged extraction timing.
+- Confuses airspace feasibility with ground tactical safety.
 
 ## Not Yet Implemented
 
 - Air recon action specs.
 - Aerospace tactical boundary docs.
+- Stable MekHQ aerospace role and assignment mapping.
 
 ## Example Prompt/Interaction
 
-The Aerospace Pilot adds that approach vectors are exposed and reinforcements may be delayed.
+The Aerospace Pilot adds that approach vectors are exposed and reinforcements may be delayed, without seeing exact unrevealed enemy unit records.
 
 ## Test Expectations
 
 - Cannot bypass pre-mission intel reveal gates as support.
+- Future tests should confirm aerospace support can add permitted approach-risk context without exposing hidden scenario fields.

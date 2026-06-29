@@ -29,10 +29,10 @@ Read these first:
 ## Expected Output
 
 - Keep the epic open until implementation, tests, and validation are complete.
-- Schema/template work is complete in issue `#128`; start remaining work with initial profile content and lookup/action-registry design.
+- Schema/template work is complete in issue `#128`; initial profile content is complete in issue `#129`; start remaining work with lookup/action-registry design.
 - Implement Pre-Mission Intel Check only after hidden-data filtering and tests are specified.
 - Keep player-facing outputs in-universe and filtered by reveal level.
-- Child issues: `#128` schema/template is complete; `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
+- Child issues: `#128` schema/template and `#129` initial profiles are complete; `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
 
 ## Files And Areas
 
