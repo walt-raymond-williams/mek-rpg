@@ -11,3 +11,4 @@ node_modules/
 dist/
 build/
 tmp/
+mekhq-live-api-capture*/
