@@ -43,9 +43,9 @@ Create a profession capability system that maps MekHQ personnel roles/jobs to ME
 
 ### Acceptance Criteria
 
-- [ ] Profession profile schema/template exists.
-- [ ] Initial profession profiles exist.
-- [ ] Profession lookup design exists.
+- [x] Profession profile schema/template exists.
+- [x] Initial profession profiles exist.
+- [x] Profession lookup design exists.
 - [ ] Action registry design exists.
 - [ ] Dice/reveal-level design exists.
 - [ ] Pre-Mission Intel Check design and implementation are complete.
@@ -207,7 +207,7 @@ Future tests should cover exact match, alias match, unknown job, missing job, an
 
 ### Implementation Notes
 
-If producer changes are needed, create a local change-request memo instead of editing another repository.
+Completed in issue `#130` by `docs/current/PROFESSION_LOOKUP_DESIGN.md`. If producer changes are needed later, create a local change-request memo instead of editing another repository.
 
 ## Issue 5: Add Profession Action Registry Design
 

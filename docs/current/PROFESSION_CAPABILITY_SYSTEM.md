@@ -44,6 +44,7 @@ This first milestone is planning and scaffold only:
 
 - Define the profession profile shape.
 - Add initial stub profiles.
+- Define deterministic profession lookup from MekHQ personnel fields.
 - Define the action registry concept.
 - Define the Pre-Mission Intel Check action.
 - Define reveal-level boundaries for hidden scenario information.
@@ -110,6 +111,8 @@ A later implementation issue should decide whether a machine-readable YAML front
 
 ### Profession Lookup
 
+Design: `docs/current/PROFESSION_LOOKUP_DESIGN.md`.
+
 Lookup should start from MekHQ personnel data:
 
 - current job or role
@@ -118,7 +121,7 @@ Lookup should start from MekHQ personnel data:
 - skills and SPA-like tactical fields when available
 - fatigue, injuries, or availability only as MekHQ-owned constraints
 
-MEK RPG should map MekHQ job/role strings to a profession profile by deterministic aliases. If no match exists, the system should return `unmapped profession` and offer only public/common actions.
+MEK RPG should map MekHQ job/role strings to a profession profile by deterministic aliases. If no match exists, the system should return `unmapped profession` and offer only public/common actions. Current fixture-backed lookup inputs are `personnel[].primary_role.raw_code` and `personnel[].primary_role.label`; rank, leadership flags, assignment, fatigue, and injury fields may add warnings or context but must not grant a profession by themselves.
 
 ### Dice And Reveal Gates
 
@@ -169,7 +172,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 
 1. Create the profession profile schema/template. Status: complete in issue `#128`.
 2. Add initial profession profile documents. Status: complete in issue `#129`.
-3. Design deterministic profession lookup from MekHQ personnel fields.
+3. Design deterministic profession lookup from MekHQ personnel fields. Status: complete in issue `#130`.
 4. Design the action registry and machine-readable action metadata.
 5. Decide the first dice and reveal-level mapping.
 6. Implement Pre-Mission Intel Check as a deterministic, testable slice.
@@ -183,7 +186,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 - Epic: `#127` Profession Capability System.
 - `#128`: Add Profession Profile Schema/Template.
 - `#129`: Add Initial Profession Profile Documents. Complete.
-- `#130`: Add Profession Lookup Design.
+- `#130`: Add Profession Lookup Design. Complete.
 - `#131`: Add Profession Action Registry Design.
 - `#132`: Add Dice-Roll And Reveal-Level Design.
 - `#133`: Add Pre-Mission Intel Check Design.
