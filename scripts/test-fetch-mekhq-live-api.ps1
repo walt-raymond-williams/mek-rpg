@@ -141,6 +141,50 @@ def body_for(path, query):
             "query": query,
             "pending_scenario_count": 1,
         }
+    if path == "/campaign/personnel/detail":
+        return {
+            "schema_name": "mekhq-live-personnel-detail",
+            "api_mode": "local-read-only-live-context",
+            "read_only": True,
+            "campaign_id": "11111111-2222-3333-4444-555555555555",
+            "campaign_name": "Fetch Fixture Campaign",
+            "campaign_date": "3025-04-11",
+            "state_revision": "live-fetch-fixture-3025-04-11",
+            "query": query,
+            "person": {
+                "id": query.get("personId", [""])[0],
+                "display_name": "Fixture Pilot",
+                "identity": {"rank": {"label": "Captain"}},
+                "status": {"primary_role": {"label": "MekWarrior"}, "personnel_status": {"label": "Active"}},
+                "assignment_context": {},
+                "skills": [],
+                "options_and_abilities": {"active_options": []},
+                "awards": {"award_count": 0, "has_awards": False},
+                "logs": {
+                    "metadata": {"limit_per_family": int(query.get("logLimit", ["10"])[0])},
+                    "medical": {
+                        "family": "medical",
+                        "status": "included" if query.get("includeMedical", ["false"])[0] == "true" else "excluded",
+                        "available_count": 1,
+                        "returned_count": 1 if query.get("includeMedical", ["false"])[0] == "true" else 0,
+                        "required_query_flag": "includeMedical=true",
+                    },
+                    "patient": {
+                        "family": "patient",
+                        "status": "excluded",
+                        "available_count": 0,
+                        "returned_count": 0,
+                        "required_query_flag": "includePatient=true",
+                    },
+                },
+                "privacy": {
+                    "medical_included": query.get("includeMedical", ["false"])[0] == "true",
+                    "patient_included": query.get("includePatient", ["false"])[0] == "true",
+                    "default_sensitive_log_families_excluded": ["medical", "patient"],
+                },
+            },
+            "unsupported": [],
+        }
     return None
 
 
@@ -175,7 +219,10 @@ HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
         -OutputDirectory $outputPath `
         -StateSections @("bridge_metadata", "campaign", "unsupported") `
         -SelectorDetailFull `
-        -PendingDeploymentsPersonName "Moreno" 2>&1
+        -PendingDeploymentsPersonName "Moreno" `
+        -PersonnelDetailPersonId "00000000-0000-0000-0000-000000000468" `
+        -IncludePersonnelMedical `
+        -PersonnelDetailLogLimit 7 2>&1
     if ($LASTEXITCODE -ne 0) {
         $captureOutput | ForEach-Object { Write-Host $_ }
         throw "fetch-mekhq-live-api.ps1 failed with exit code $LASTEXITCODE."
@@ -189,6 +236,7 @@ HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
         "mekhq-commands-full.json",
         "mekhq-pending-deployments.json",
         "mekhq-pending-deployments-viewpoint.json",
+        "mekhq-personnel-detail.json",
         "mekhq-live-api-capture-manifest.json"
     )
     foreach ($file in $expectedFiles) {
@@ -201,6 +249,7 @@ HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
     $commands = Get-Content -LiteralPath (Join-Path $outputPath "mekhq-commands.json") -Raw | ConvertFrom-Json
     $commandsFull = Get-Content -LiteralPath (Join-Path $outputPath "mekhq-commands-full.json") -Raw | ConvertFrom-Json
     $pendingViewpoint = Get-Content -LiteralPath (Join-Path $outputPath "mekhq-pending-deployments-viewpoint.json") -Raw | ConvertFrom-Json
+    $personnelDetail = Get-Content -LiteralPath (Join-Path $outputPath "mekhq-personnel-detail.json") -Raw | ConvertFrom-Json
     $manifest = Get-Content -LiteralPath (Join-Path $outputPath "mekhq-live-api-capture-manifest.json") -Raw | ConvertFrom-Json
 
     Assert-True ($status.status -eq "ready") "Status capture preserves ready status."
@@ -210,8 +259,13 @@ HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
     Assert-True ($commands.selector_detail -eq "cheap") "Default command readiness capture is cheap."
     Assert-True ($commandsFull.selector_detail -eq "full") "Full selector command readiness capture is optional and explicit."
     Assert-True ($pendingViewpoint.query.personName[0] -eq "Moreno") "Viewpoint pending-deployments query is captured."
+    Assert-True ($personnelDetail.query.personId[0] -eq "00000000-0000-0000-0000-000000000468") "Personnel detail query is captured by person id."
+    Assert-True ($personnelDetail.query.includeMedical[0] -eq "true") "Sensitive medical log opt-in is explicit."
+    Assert-True ($personnelDetail.query.logLimit[0] -eq "7") "Sensitive log opt-in includes a bounded log limit."
     Assert-True ($manifest.status -eq "captured") "Manifest reports captured status."
     Assert-True (@($manifest.results | Where-Object { $_.status -eq "captured" }).Count -eq $expectedFiles.Count - 1) "Manifest records every endpoint capture."
+    Assert-True ($manifest.personnel_detail_include_medical -eq $true) "Manifest records medical opt-in."
+    Assert-True ($manifest.personnel_detail_log_limit -eq 7) "Manifest records personnel detail log limit."
 
     $statusBytes = [System.IO.File]::ReadAllBytes((Join-Path $outputPath "mekhq-status.json"))
     $hasUtf8Bom = $statusBytes.Length -ge 3 -and $statusBytes[0] -eq 0xEF -and $statusBytes[1] -eq 0xBB -and $statusBytes[2] -eq 0xBF

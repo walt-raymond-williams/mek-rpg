@@ -111,7 +111,7 @@ Inputs for MekHQ-linked campaigns:
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md`
-- `scripts/fetch-mekhq-live-api.ps1` capture output when MekHQ is open: `mekhq-status.json`, `mekhq-summary.json`, `mekhq-state.json`, `mekhq-commands.json`, `mekhq-pending-deployments.json`, optional full-selector/viewpoint files, and `mekhq-live-api-capture-manifest.json`
+- `scripts/fetch-mekhq-live-api.ps1` capture output when MekHQ is open: `mekhq-status.json`, `mekhq-summary.json`, `mekhq-state.json`, `mekhq-commands.json`, `mekhq-pending-deployments.json`, optional full-selector/viewpoint files, optional single-person `mekhq-personnel-detail.json`, and `mekhq-live-api-capture-manifest.json`
 - generated output from `scripts/sync-mekhq-live-campaign.py` for active loaded MekHQ campaigns
 - latest output from `scripts/summarize-mekhq-save.py` when explicitly imported
 
@@ -258,7 +258,7 @@ Do not include raw A Time of War source text.
 Use play mode plus:
 
 - `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`
-- latest `scripts/fetch-mekhq-live-api.ps1` capture output when MekHQ is open, including status, summary, state with `bridge_metadata`, command readiness, pending deployments, optional full selectors, and the capture manifest
+- latest `scripts/fetch-mekhq-live-api.ps1` capture output when MekHQ is open, including status, summary, state with `bridge_metadata`, command readiness, pending deployments, optional full selectors, optional single-person personnel detail, and the capture manifest
 - latest `mekhq-bridge.md`
 - latest `mekhq-api-gaps.md` when present
 - unresolved `pending-mekhq-actions.md`

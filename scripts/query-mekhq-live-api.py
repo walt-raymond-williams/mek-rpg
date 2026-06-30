@@ -32,6 +32,7 @@ STANDARD_FILES = {
     "commands_full": "mekhq-commands-full.json",
     "pending_deployments": "mekhq-pending-deployments.json",
     "pending_deployments_viewpoint": "mekhq-pending-deployments-viewpoint.json",
+    "person_detail": "mekhq-personnel-detail.json",
 }
 
 REJECTED_SUFFIXES = (".cpnx", ".cpnx.gz", ".xml", ".pdf", ".epub")
@@ -152,6 +153,7 @@ def collect_input_paths(args: argparse.Namespace) -> dict[str, Path]:
         "state": normalize_path(args.state_file),
         "commands": normalize_path(args.commands_file),
         "pending_deployments": normalize_path(args.pending_deployments_file),
+        "person_detail": normalize_path(args.person_detail_file),
     }
     for key, path in explicit.items():
         if path is not None:
@@ -367,11 +369,61 @@ def validate_state_proof(state: dict[str, Any]) -> tuple[list[dict[str, Any]], l
     return warnings, gaps, blocked
 
 
+def validate_person_detail_proof(detail: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], bool]:
+    warnings: list[dict[str, Any]] = []
+    gaps: list[dict[str, Any]] = []
+    blocked = False
+    schema_name = detail.get("schema_name")
+    api_mode = detail.get("api_mode")
+    read_only = detail.get("read_only")
+    if schema_name != "mekhq-live-personnel-detail":
+        blocked = True
+        gaps.append(
+            {
+                "area": "personnel_detail",
+                "field": "schema_name",
+                "reason": f"Expected mekhq-live-personnel-detail; got {string_value(schema_name)}.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["person_detail"],
+                "source_path": "$.schema_name",
+                "blocks_view": True,
+            }
+        )
+    if api_mode != API_MODE:
+        blocked = True
+        gaps.append(
+            {
+                "area": "personnel_detail",
+                "field": "api_mode",
+                "reason": f"Expected {API_MODE}; got {string_value(api_mode)}.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["person_detail"],
+                "source_path": "$.api_mode",
+                "blocks_view": True,
+            }
+        )
+    if read_only is not True:
+        blocked = True
+        gaps.append(
+            {
+                "area": "personnel_detail",
+                "field": "read_only",
+                "reason": "Personnel detail capture does not prove read_only is true.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["person_detail"],
+                "source_path": "$.read_only",
+                "blocks_view": True,
+            }
+        )
+    return warnings, gaps, blocked
+
+
 def build_identity(loaded: dict[str, Any]) -> dict[str, Any]:
     identity: dict[str, Any] = {}
     state = loaded.get("state") if isinstance(loaded.get("state"), dict) else None
     summary = loaded.get("summary") if isinstance(loaded.get("summary"), dict) else None
     manifest = loaded.get("manifest") if isinstance(loaded.get("manifest"), dict) else None
+    person_detail = loaded.get("person_detail") if isinstance(loaded.get("person_detail"), dict) else None
 
     if state:
         meta = state.get("bridge_metadata", {}) if isinstance(state.get("bridge_metadata"), dict) else {}
@@ -437,6 +489,24 @@ def build_identity(loaded: dict[str, Any]) -> dict[str, Any]:
                 "mekhq_version": fact(string_value(summary.get("mekhqVersion")), EVIDENCE_LIVE, STANDARD_FILES["summary"], "$.mekhqVersion"),
                 "state_revision": fact(string_value(summary.get("stateRevision")), EVIDENCE_LIVE, STANDARD_FILES["summary"], "$.stateRevision"),
                 "snapshot_id": fact(string_value(summary.get("snapshotId")), EVIDENCE_LIVE, STANDARD_FILES["summary"], "$.snapshotId"),
+            }
+        )
+    elif person_detail:
+        identity.update(
+            {
+                "campaign_id": fact(string_value(person_detail.get("campaign_id")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.campaign_id"),
+                "campaign_name": fact(string_value(person_detail.get("campaign_name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.campaign_name"),
+                "campaign_date": fact(string_value(person_detail.get("campaign_date")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.campaign_date"),
+                "api_mode": fact(string_value(person_detail.get("api_mode")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.api_mode"),
+                "read_only": fact(person_detail.get("read_only") is True, EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.read_only"),
+                "mekhq_version": fact(
+                    string_value(person_detail.get("mekhq_version") or person_detail.get("producer_version")),
+                    EVIDENCE_LIVE,
+                    STANDARD_FILES["person_detail"],
+                    "$.mekhq_version",
+                ),
+                "state_revision": fact(string_value(person_detail.get("state_revision")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.state_revision"),
+                "snapshot_id": fact(string_value(person_detail.get("snapshot_id")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.snapshot_id"),
             }
         )
 
@@ -571,12 +641,211 @@ def summary_view(paths: dict[str, Path], loaded: dict[str, Any]) -> dict[str, An
     }
 
 
+def compact_log_families(logs: dict[str, Any]) -> dict[str, Any]:
+    families: dict[str, Any] = {}
+    for family_name, family in logs.items():
+        if family_name == "metadata" or not isinstance(family, dict):
+            continue
+        families[family_name] = {
+            "status": fact(string_value(family.get("status")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], f"$.person.logs.{family_name}.status"),
+            "entry_count": fact(raw_value(family.get("entry_count"), family.get("available_count", 0)), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], f"$.person.logs.{family_name}"),
+            "returned_count": fact(raw_value(family.get("returned_count"), 0), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], f"$.person.logs.{family_name}.returned_count"),
+        }
+        if family.get("status") == "excluded":
+            families[family_name]["required_query_flag"] = fact(
+                string_value(family.get("required_query_flag")),
+                EVIDENCE_LIVE,
+                STANDARD_FILES["person_detail"],
+                f"$.person.logs.{family_name}.required_query_flag",
+            )
+    return families
+
+
+def person_detail_view(paths: dict[str, Path], loaded: dict[str, Any]) -> dict[str, Any]:
+    warnings: list[dict[str, Any]] = []
+    gaps: list[dict[str, Any]] = []
+    blocked = False
+
+    detail = loaded.get("person_detail")
+    if not isinstance(detail, dict):
+        blocked = True
+        gaps.append(
+            {
+                "area": "capture_file",
+                "field": STANDARD_FILES["person_detail"],
+                "reason": "Person-detail view requires captured GET /campaign/personnel/detail JSON.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["person_detail"],
+                "blocks_view": True,
+            }
+        )
+        detail = None
+    else:
+        detail = as_object(detail, STANDARD_FILES["person_detail"])
+        detail_warnings, detail_gaps, detail_blocked = validate_person_detail_proof(detail)
+        warnings.extend(detail_warnings)
+        gaps.extend(detail_gaps)
+        blocked = blocked or detail_blocked
+        gaps.extend(collect_unsupported_gaps("person_detail", detail))
+
+    manifest = loaded.get("manifest") if isinstance(loaded.get("manifest"), dict) else None
+    manifest_warnings, manifest_gaps = collect_manifest_warnings(manifest)
+    warnings.extend(manifest_warnings)
+    gaps.extend(manifest_gaps)
+    error_warnings, error_gaps = collect_error_file_warnings(loaded)
+    warnings.extend(error_warnings)
+    gaps.extend(error_gaps)
+
+    facts: dict[str, Any] = {}
+    counts: dict[str, Any] = {}
+    if detail:
+        person = detail.get("person", {}) if isinstance(detail.get("person"), dict) else {}
+        identity = person.get("identity", {}) if isinstance(person.get("identity"), dict) else {}
+        status = person.get("status", {}) if isinstance(person.get("status"), dict) else {}
+        assignment = person.get("assignment_context", {}) if isinstance(person.get("assignment_context"), dict) else {}
+        logs = person.get("logs", {}) if isinstance(person.get("logs"), dict) else {}
+        log_metadata = logs.get("metadata", {}) if isinstance(logs.get("metadata"), dict) else {}
+        privacy = person.get("privacy", {}) if isinstance(person.get("privacy"), dict) else {}
+        skills = person.get("skills") if isinstance(person.get("skills"), list) else []
+        options = person.get("options_and_abilities", {}) if isinstance(person.get("options_and_abilities"), dict) else {}
+        active_options = options.get("active_options") if isinstance(options.get("active_options"), list) else []
+        awards = person.get("awards", {}) if isinstance(person.get("awards"), dict) else {}
+
+        log_limit = raw_value(log_metadata.get("limit_per_family"))
+        medical_included = raw_value(privacy.get("medical_included"), False) is True
+        patient_included = raw_value(privacy.get("patient_included"), False) is True
+        if (medical_included or patient_included) and (not isinstance(log_limit, int) or log_limit < 1 or log_limit > 50):
+            blocked = True
+            gaps.append(
+                {
+                    "area": "personnel_detail_privacy",
+                    "field": "logLimit",
+                    "reason": "Sensitive medical/patient log inclusion requires an explicit bounded logLimit from 1 to 50.",
+                    "evidence": EVIDENCE_MISSING,
+                    "source_file": STANDARD_FILES["person_detail"],
+                    "source_path": "$.person.logs.metadata.limit_per_family",
+                    "blocks_view": True,
+                }
+            )
+        if medical_included or patient_included:
+            warnings.append(
+                {
+                    "message": "Personnel detail capture includes sensitive medical or patient logs by explicit opt-in; compact output suppresses raw log entries.",
+                    "evidence": EVIDENCE_LIVE,
+                    "source_file": STANDARD_FILES["person_detail"],
+                    "source_path": "$.person.privacy",
+                }
+            )
+
+        facts = {
+            "person": {
+                "id": fact(string_value(person.get("id")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.id"),
+                "display_name": fact(string_value(person.get("display_name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.display_name"),
+                "full_title": fact(string_value(person.get("full_title")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.full_title"),
+                "callsign": fact(string_value(identity.get("callsign")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.identity.callsign"),
+                "rank": fact(string_value(identity.get("rank")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.identity.rank"),
+                "age": fact(raw_value(identity.get("age"), "Unknown"), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.identity.age"),
+            },
+            "status": {
+                "primary_role": fact(string_value(status.get("primary_role")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.status.primary_role"),
+                "secondary_role": fact(string_value(status.get("secondary_role")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.status.secondary_role"),
+                "personnel_status": fact(string_value(status.get("personnel_status")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.status.personnel_status"),
+                "prisoner_status": fact(string_value(status.get("prisoner_status")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.status.prisoner_status"),
+                "fatigue": fact(status.get("fatigue", {}), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.status.fatigue"),
+                "xp": fact(status.get("xp", {}), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.status.xp"),
+            },
+            "assignment": {
+                "unit_id": fact(string_value(assignment.get("unit_id")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.assignment_context.unit_id"),
+                "unit_name": fact(string_value(assignment.get("unit_name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.assignment_context.unit_name"),
+                "formation_name": fact(string_value(assignment.get("formation_name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.assignment_context.formation_name"),
+            },
+            "skills": [
+                {
+                    "name": fact(string_value(skill.get("name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.skills[]"),
+                    "display_name": fact(string_value(skill.get("display_name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.skills[]"),
+                    "subtype": fact(string_value(skill.get("subtype")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.skills[]"),
+                    "level": fact(raw_value(skill.get("level"), "Unknown"), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.skills[]"),
+                    "final_value": fact(raw_value(skill.get("final_value"), "Unknown"), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.skills[]"),
+                    "roleplay_only": fact(raw_value(skill.get("roleplay_only"), False) is True, EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.skills[]"),
+                }
+                for skill in skills
+                if isinstance(skill, dict)
+            ],
+            "options": [
+                {
+                    "id": fact(string_value(option.get("id")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.options_and_abilities.active_options[]"),
+                    "group": fact(string_value(option.get("group")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.options_and_abilities.active_options[]"),
+                    "display_name": fact(string_value(option.get("display_name")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.options_and_abilities.active_options[]"),
+                    "value": fact(string_value(option.get("value")), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.options_and_abilities.active_options[]"),
+                }
+                for option in active_options
+                if isinstance(option, dict)
+            ],
+            "awards": {
+                "award_count": fact(raw_value(awards.get("award_count"), 0), EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.awards.award_count"),
+                "has_awards": fact(raw_value(awards.get("has_awards"), False) is True, EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.awards.has_awards"),
+            },
+            "log_families": compact_log_families(logs),
+            "privacy": {
+                "medical_included": fact(medical_included, EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.privacy.medical_included"),
+                "patient_included": fact(patient_included, EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.privacy.patient_included"),
+                "default_sensitive_log_families_excluded": fact(
+                    privacy.get("default_sensitive_log_families_excluded", []),
+                    EVIDENCE_LIVE,
+                    STANDARD_FILES["person_detail"],
+                    "$.person.privacy.default_sensitive_log_families_excluded",
+                ),
+                "limit_per_family": fact(log_limit if log_limit is not None else "Unknown", EVIDENCE_LIVE, STANDARD_FILES["person_detail"], "$.person.logs.metadata.limit_per_family"),
+            },
+        }
+        counts = {
+            "skills": fact(len(skills), EVIDENCE_COMPUTED, STANDARD_FILES["person_detail"], "$.person.skills"),
+            "active_options": fact(len(active_options), EVIDENCE_COMPUTED, STANDARD_FILES["person_detail"], "$.person.options_and_abilities.active_options"),
+            "unsupported": fact(count_list(detail.get("unsupported")), EVIDENCE_COMPUTED, STANDARD_FILES["person_detail"], "$.unsupported"),
+            "log_families": fact(len(facts["log_families"]), EVIDENCE_COMPUTED, STANDARD_FILES["person_detail"], "$.person.logs"),
+        }
+
+    output_status = "ok"
+    if blocked:
+        output_status = "blocked"
+    elif manifest_status(manifest) in {"partial", "failed"} or warnings:
+        output_status = "partial"
+
+    next_actions: list[str] = []
+    if detail is None:
+        next_actions.append("Rerun scripts/fetch-mekhq-live-api.ps1 with -PersonnelDetailPersonId <uuid>.")
+    elif facts:
+        privacy_facts = facts.get("privacy", {})
+        if isinstance(privacy_facts, dict):
+            if privacy_facts.get("medical_included", {}).get("value") is False and privacy_facts.get("patient_included", {}).get("value") is False:
+                next_actions.append("Use medical/patient log opt-in only when the scene explicitly needs those sensitive families.")
+    if any(gap.get("evidence") in {EVIDENCE_MISSING, EVIDENCE_FAILED, EVIDENCE_UNSUPPORTED} for gap in gaps):
+        next_actions.append("Review gaps before play; record producer/API gaps when the missing data blocks live character context.")
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "view": "person-detail",
+        "generated_at": utc_now(),
+        "status": output_status,
+        "source": source_info(paths),
+        "identity": build_identity(loaded),
+        "facts": facts,
+        "counts": counts,
+        "warnings": warnings,
+        "gaps": gaps,
+        "next_actions": next_actions,
+    }
+
+
 def build_view(args: argparse.Namespace) -> dict[str, Any]:
     paths = collect_input_paths(args)
     loaded, load_warnings, load_gaps = load_inputs(paths)
-    if args.view != "summary":
-        raise QueryError(f"Unsupported view for issue #141 helper core: {args.view}")
-    output = summary_view(paths, loaded)
+    if args.view == "summary":
+        output = summary_view(paths, loaded)
+    elif args.view == "person-detail":
+        output = person_detail_view(paths, loaded)
+    else:
+        raise QueryError(f"Unsupported view: {args.view}")
     output["warnings"].extend(load_warnings)
     output["gaps"].extend(load_gaps)
     if any(gap.get("blocks_view") for gap in load_gaps):
@@ -604,6 +873,28 @@ def render_text(output: dict[str, Any]) -> str:
         "",
         "Counts:",
     ]
+    if output.get("view") == "person-detail":
+        facts = output.get("facts", {})
+        person = facts.get("person", {}) if isinstance(facts, dict) else {}
+        status = facts.get("status", {}) if isinstance(facts, dict) else {}
+        assignment = facts.get("assignment", {}) if isinstance(facts, dict) else {}
+        privacy = facts.get("privacy", {}) if isinstance(facts, dict) else {}
+
+        def fact_value(group: dict[str, Any], key: str) -> str:
+            item = group.get(key) if isinstance(group, dict) else None
+            if isinstance(item, dict):
+                return string_value(item.get("value"))
+            return "Unknown"
+
+        lines.extend(
+            [
+                f"Person: {fact_value(person, 'display_name')} ({fact_value(person, 'id')})",
+                f"Role/status: {fact_value(status, 'primary_role')} / {fact_value(status, 'personnel_status')}",
+                f"Assignment: {fact_value(assignment, 'unit_name')} / {fact_value(assignment, 'formation_name')}",
+                f"Sensitive logs included: medical={fact_value(privacy, 'medical_included')} patient={fact_value(privacy, 'patient_included')} limit={fact_value(privacy, 'limit_per_family')}",
+                "",
+            ]
+        )
     counts = output.get("counts", {})
     if isinstance(counts, dict) and counts:
         for key, item in counts.items():
@@ -640,7 +931,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--state-file", help="Explicit mekhq-state.json path.")
     parser.add_argument("--commands-file", help="Explicit mekhq-commands.json path.")
     parser.add_argument("--pending-deployments-file", help="Explicit mekhq-pending-deployments.json path.")
-    parser.add_argument("--view", default="summary", choices=["summary"], help="Compact view to emit.")
+    parser.add_argument("--person-detail-file", help="Explicit mekhq-personnel-detail.json path.")
+    parser.add_argument("--view", default="summary", choices=["summary", "person-detail"], help="Compact view to emit.")
     parser.add_argument("--format", default="json", choices=["json", "text"], help="Output format.")
     args = parser.parse_args(argv)
 

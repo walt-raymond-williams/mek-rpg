@@ -77,16 +77,17 @@ Focused tests should be added or updated with the implementation.
 
 ## Acceptance Criteria
 
-- `GET /campaign/personnel/detail?personId=<uuid>` is represented in MEK-RPG tooling or in an implementation-ready contract if the helper architecture changes first.
-- Sanitized personnel detail fixture coverage exists.
-- Compact query/play output can surface useful character/person facts without dumping raw logs.
-- Medical and patient logs are excluded by default and only included through explicit parameters.
-- GM workflow docs tell agents when to request a detail read.
-- Verification is run, or the live endpoint blocker is recorded.
-- No protected raw source or raw live capture is staged.
+- Complete: `scripts/fetch-mekhq-live-api.ps1` supports explicit `GET /campaign/personnel/detail?personId=<uuid>` capture with `-PersonnelDetailPersonId`.
+- Complete: `tests/fixtures/mekhq-live-personnel-detail.fixture.json` provides sanitized fixture coverage.
+- Complete: `scripts/query-mekhq-live-api.py --view person-detail` surfaces compact character/person facts without dumping raw logs.
+- Complete: Medical and patient logs remain excluded by default and require explicit `-IncludePersonnelMedical` or `-IncludePersonnelPatient` with bounded `-PersonnelDetailLogLimit`.
+- Complete: GM workflow docs tell agents when to request a detail read.
+- Complete: Focused verification passed with `python -m py_compile scripts/query-mekhq-live-api.py`, `./scripts/test-fetch-mekhq-live-api.ps1`, and `./scripts/test-query-mekhq-live-api.ps1`.
+- Complete: Quick verification passed with `git diff --check`, `./scripts/test-all.ps1 -Quick`, and protected-source ignore checks.
+- Pending close-out: commit, push, and close issue `#146`.
 
 ## Open Questions
 
-- Should detail reads be captured by `scripts/fetch-mekhq-live-api.ps1` directly, or should the first implementation live in `scripts/query-mekhq-live-api.py` as a focused on-demand query over raw captures?
-- Which compact fields should feed the profession capability lookup versus rich PC/NPC sheets?
-- Should the endpoint support batch detail reads later, or is one explicit `personId` per query enough for the near-term play workflow?
+- Answered: detail reads are captured by `scripts/fetch-mekhq-live-api.ps1` and compacted by `scripts/query-mekhq-live-api.py`.
+- Answered for now: compact fields include identity, status, assignment, skills, options, awards, log-family statuses/counts, and privacy facts. Future rich-sheet work can decide how much to persist in MEK-RPG overlays.
+- Answered for now: one explicit `personId` per query is enough for near-term play workflow; batch reads remain out of scope.

@@ -47,6 +47,7 @@ function New-CaptureFixture {
         [string]$ManifestStatus = "captured",
         [switch]$OmitManifest,
         [switch]$OmitState,
+        [switch]$IncludePersonDetail,
         [switch]$FailedManifest
     )
 
@@ -56,6 +57,9 @@ function New-CaptureFixture {
     Copy-Item -LiteralPath (Join-Path $fixturesRoot "mekhq-live-campaign-summary.fixture.json") -Destination (Join-Path $target "mekhq-summary.json")
     Copy-Item -LiteralPath (Join-Path $fixturesRoot "mekhq-live-campaign-commands.fixture.json") -Destination (Join-Path $target "mekhq-commands.json")
     Copy-Item -LiteralPath (Join-Path $fixturesRoot "mekhq-live-pending-deployments.fixture.json") -Destination (Join-Path $target "mekhq-pending-deployments.json")
+    if ($IncludePersonDetail) {
+        Copy-Item -LiteralPath (Join-Path $fixturesRoot "mekhq-live-personnel-detail.fixture.json") -Destination (Join-Path $target "mekhq-personnel-detail.json")
+    }
     if (-not $OmitState) {
         Copy-Item -LiteralPath (Join-Path $fixturesRoot "mekhq-live-campaign-state.fixture.json") -Destination (Join-Path $target "mekhq-state.json")
     }
@@ -67,6 +71,9 @@ function New-CaptureFixture {
             [pscustomobject]@{ name = "commands"; method = "GET"; path = "/campaign/commands"; output_file = "mekhq-commands.json"; required = $true; status = "captured"; seconds = 0.001; error = $null },
             [pscustomobject]@{ name = "pending_deployments"; method = "GET"; path = "/campaign/pending-deployments"; output_file = "mekhq-pending-deployments.json"; required = $true; status = "captured"; seconds = 0.001; error = $null }
         )
+        if ($IncludePersonDetail) {
+            $results += [pscustomobject]@{ name = "personnel_detail"; method = "GET"; path = "/campaign/personnel/detail?personId=00000000-0000-0000-0000-000000000468"; output_file = "mekhq-personnel-detail.json"; required = $true; status = "captured"; seconds = 0.001; error = $null }
+        }
         if ($FailedManifest) {
             $results[2].status = "failed"
             $results[2].output_file = "mekhq-commands.error.json"
@@ -141,6 +148,64 @@ try {
     }
     Assert-True (($textOutput -join "`n") -match "MekHQ live API query view: summary") "Text output includes summary heading."
     Assert-True (($textOutput -join "`n") -match "Example Live Campaign") "Text output includes campaign name."
+
+    Write-Step "Querying compact personnel detail facts."
+    $personCapture = New-CaptureFixture -Name "person-detail" -IncludePersonDetail
+    $personJson = & python $scriptPath `
+        --person-detail-file (Join-Path $personCapture "mekhq-personnel-detail.json") `
+        --manifest-file (Join-Path $personCapture "mekhq-live-api-capture-manifest.json") `
+        --view person-detail `
+        --format json
+    if ($LASTEXITCODE -ne 0) {
+        $personJson | ForEach-Object { Write-Host $_ }
+        throw "Person-detail query failed with exit code $LASTEXITCODE."
+    }
+    $person = $personJson | ConvertFrom-Json
+    Assert-True ($person.view -eq "person-detail") "Person-detail view is selected."
+    Assert-True ($person.status -eq "ok") "Default person-detail capture reports ok."
+    Assert-True ($person.identity.campaign_name.value -eq "The Learning Ropes") "Person-detail identity can stand alone."
+    Assert-True ($person.facts.person.display_name.value -eq "Michelle Moreno") "Person detail includes compact display name."
+    Assert-True ($person.facts.status.primary_role.value -eq "MekWarrior") "Person detail includes compact role label."
+    Assert-True ($person.counts.skills.value -eq 1) "Person detail counts skills."
+    Assert-True ($person.facts.log_families.medical.status.value -eq "excluded") "Medical logs remain excluded by default."
+    Assert-True ($person.facts.log_families.medical.required_query_flag.value -eq "includeMedical=true") "Medical log opt-in flag is surfaced."
+    Assert-True ($person.facts.privacy.medical_included.value -eq $false) "Privacy facts prove medical logs were not included."
+    Assert-True (-not (($personJson -join "`n") -match "Joined The Learning Ropes")) "Compact person-detail output does not dump raw log entries."
+
+    Write-Step "Checking explicit sensitive log opt-in remains bounded and compact."
+    $optInCapture = New-CaptureFixture -Name "person-detail-opt-in" -IncludePersonDetail
+    $optInPath = Join-Path $optInCapture "mekhq-personnel-detail.json"
+    $optInDetail = Get-Content -LiteralPath $optInPath -Raw | ConvertFrom-Json
+    $optInDetail.person.privacy.medical_included = $true
+    $optInDetail.person.logs.medical.status = "included"
+    $optInDetail.person.logs.medical | Add-Member -MemberType NoteProperty -Name returned_count -Value 1
+    $optInDetail.person.logs.medical | Add-Member -MemberType NoteProperty -Name entries -Value @([pscustomobject]@{ text = "Sensitive fixture medical text should not appear in compact output." })
+    $optInDetail.person.logs.metadata.limit_per_family = 7
+    Write-Utf8Json -Path $optInPath -Value $optInDetail
+    $optInJson = & python $scriptPath --capture-dir $optInCapture --view person-detail --format json
+    if ($LASTEXITCODE -ne 0) {
+        $optInJson | ForEach-Object { Write-Host $_ }
+        throw "Bounded sensitive opt-in query should remain usable."
+    }
+    $optIn = $optInJson | ConvertFrom-Json
+    Assert-True ($optIn.status -eq "partial") "Sensitive opt-in is marked partial with a privacy warning."
+    Assert-True ($optIn.facts.privacy.medical_included.value -eq $true) "Sensitive opt-in fact is explicit."
+    Assert-True ($optIn.facts.privacy.limit_per_family.value -eq 7) "Sensitive opt-in keeps bounded log limit."
+    Assert-True (-not (($optInJson -join "`n") -match "Sensitive fixture medical text")) "Compact output suppresses sensitive raw log text."
+
+    Write-Step "Checking sensitive opt-in without a bounded log limit blocks output."
+    $badOptInCapture = New-CaptureFixture -Name "person-detail-bad-opt-in" -IncludePersonDetail
+    $badOptInPath = Join-Path $badOptInCapture "mekhq-personnel-detail.json"
+    $badOptInDetail = Get-Content -LiteralPath $badOptInPath -Raw | ConvertFrom-Json
+    $badOptInDetail.person.privacy.medical_included = $true
+    $badOptInDetail.person.logs.medical.status = "included"
+    $badOptInDetail.person.logs.metadata.limit_per_family = 0
+    Write-Utf8Json -Path $badOptInPath -Value $badOptInDetail
+    $badOptInJson = & python $scriptPath --capture-dir $badOptInCapture --view person-detail --format json
+    Assert-True ($LASTEXITCODE -ne 0) "Unbounded sensitive opt-in exits non-zero."
+    $badOptIn = $badOptInJson | ConvertFrom-Json
+    Assert-True ($badOptIn.status -eq "blocked") "Unbounded sensitive opt-in reports blocked."
+    Assert-True (@($badOptIn.gaps | Where-Object { $_.field -eq "logLimit" }).Count -eq 1) "Unbounded sensitive opt-in records logLimit gap."
 
     Write-Step "Checking missing manifest reports partial but remains usable."
     $missingManifestCapture = New-CaptureFixture -Name "missing-manifest" -OmitManifest

@@ -18,6 +18,11 @@ param(
     [switch]$SkipPendingDeployments,
     [string]$PendingDeploymentsPersonId,
     [string]$PendingDeploymentsPersonName,
+    [string]$PersonnelDetailPersonId,
+    [switch]$IncludePersonnelMedical,
+    [switch]$IncludePersonnelPatient,
+    [ValidateRange(1, 50)]
+    [int]$PersonnelDetailLogLimit = 10,
     [switch]$ContinueOnError
 )
 
@@ -120,6 +125,7 @@ $timeoutSecondsByName = @{
     commands_full = 60
     pending_deployments = 15
     pending_deployments_viewpoint = 15
+    personnel_detail = 20
 }
 
 $fullOutputDirectory = [System.IO.Path]::GetFullPath($OutputDirectory)
@@ -148,6 +154,22 @@ if (-not [string]::IsNullOrWhiteSpace($PendingDeploymentsPersonId) -or -not [str
     $requests.Add([pscustomobject]@{ Name = "pending_deployments_viewpoint"; Path = "/campaign/pending-deployments$viewpointQuery"; Output = "mekhq-pending-deployments-viewpoint.json"; Required = $true }) | Out-Null
 }
 
+if ($IncludePersonnelMedical -or $IncludePersonnelPatient) {
+    if ([string]::IsNullOrWhiteSpace($PersonnelDetailPersonId)) {
+        throw "Personnel medical or patient log inclusion requires -PersonnelDetailPersonId."
+    }
+}
+
+if (-not [string]::IsNullOrWhiteSpace($PersonnelDetailPersonId)) {
+    $personnelDetailQuery = ConvertTo-QueryString @{
+        personId = $PersonnelDetailPersonId
+        includeMedical = if ($IncludePersonnelMedical) { "true" } else { $null }
+        includePatient = if ($IncludePersonnelPatient) { "true" } else { $null }
+        logLimit = if ($IncludePersonnelMedical -or $IncludePersonnelPatient) { $PersonnelDetailLogLimit } else { $null }
+    }
+    $requests.Add([pscustomobject]@{ Name = "personnel_detail"; Path = "/campaign/personnel/detail$personnelDetailQuery"; Output = "mekhq-personnel-detail.json"; Required = $true }) | Out-Null
+}
+
 $results = [System.Collections.Generic.List[object]]::new()
 
 foreach ($request in $requests) {
@@ -166,6 +188,10 @@ $manifest = [pscustomobject][ordered]@{
     pending_deployments_skipped = [bool]$SkipPendingDeployments
     pending_deployments_person_id = if ([string]::IsNullOrWhiteSpace($PendingDeploymentsPersonId)) { $null } else { $PendingDeploymentsPersonId }
     pending_deployments_person_name = if ([string]::IsNullOrWhiteSpace($PendingDeploymentsPersonName)) { $null } else { $PendingDeploymentsPersonName }
+    personnel_detail_person_id = if ([string]::IsNullOrWhiteSpace($PersonnelDetailPersonId)) { $null } else { $PersonnelDetailPersonId }
+    personnel_detail_include_medical = [bool]$IncludePersonnelMedical
+    personnel_detail_include_patient = [bool]$IncludePersonnelPatient
+    personnel_detail_log_limit = if ($IncludePersonnelMedical -or $IncludePersonnelPatient) { $PersonnelDetailLogLimit } else { $null }
     status = if ($failedRequired.Count -eq 0) { "captured" } elseif ($ContinueOnError) { "partial" } else { "failed" }
     results = @($results)
 }

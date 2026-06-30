@@ -39,6 +39,7 @@ The helper should accept either an explicit capture directory or explicit file p
 - `mekhq-commands-full.json`, optional
 - `mekhq-pending-deployments.json`, unless deliberately skipped
 - `mekhq-pending-deployments-viewpoint.json`, optional
+- `mekhq-personnel-detail.json`, optional explicit single-person detail read from `GET /campaign/personnel/detail?personId=<uuid>`
 - `*.error.json` files produced by failed captures
 
 State-based views must require `mekhq-state.json` with `bridge_metadata.api_mode: local-read-only-live-context` and `bridge_metadata.read_only: true`. Command views must require `mekhq-commands.json`. Pending deployment views should use `mekhq-pending-deployments.json` first and the viewpoint file when present.
@@ -158,6 +159,12 @@ Purpose: answer "what is this person doing or committed to right now?"
 
 Facts: matched MekHQ person id/name, status/availability, assigned unit, linked pending scenario/deployment, fatigue/hits where available, and unknown/multiple-match warnings.
 
+### `person-detail`
+
+Purpose: compact selected-person context for GM play, profession lookup, and future rich character records.
+
+Facts: MekHQ person id/display name/title, rank/callsign/age where available, role/status/prisoner state, fatigue/XP summaries, unit and formation assignment, skill summaries, active option/ability summaries, award count flags, log-family statuses/counts, and privacy facts. The view must not emit raw log entry text. Medical and patient log families remain excluded by default; they may appear only when the capture explicitly used `includeMedical=true` or `includePatient=true` with a bounded `logLimit` from 1 to 50.
+
 ### `unit-readiness`
 
 Purpose: compact force readiness scan.
@@ -197,10 +204,11 @@ Tests should use committed sanitized fixtures under `tests/fixtures/`, not perso
 - `tests/fixtures/mekhq-live-campaign-warning-heavy.fixture.json`
 - `tests/fixtures/mekhq-live-campaign-commands.fixture.json`
 - `tests/fixtures/mekhq-live-pending-deployments.fixture.json`
+- `tests/fixtures/mekhq-live-personnel-detail.fixture.json`
 
 Issue `#141` may add a small fake capture-directory fixture if needed for manifest and multi-file tests. That fixture should contain minimal synthetic JSON, no real player/personnel names unless already sanitized, no local user paths, no save paths except explicit fake rejected-path cases, and no raw MekHQ save/XML payload.
 
-Do not commit `mekhq-live-api-capture*/`, personal campaign captures, raw MekHQ saves, extracted XML, protected A Time of War source text, purchased PDFs, EPUBs, secrets, or long raw payload excerpts.
+Do not commit `mekhq-live-api-capture*/`, personal campaign captures, raw MekHQ saves, extracted XML, protected A Time of War source text, purchased PDFs, EPUBs, secrets, or long raw payload excerpts. Personnel detail fixtures must stay sanitized; compact query outputs should surface log-family status/counts instead of raw log entries, especially for medical and patient families.
 
 ## Validation Expectations
 
@@ -217,6 +225,13 @@ Issue `#141` should add focused tests for:
 - unsupported entries surfaced as gaps
 - deterministic JSON output fields
 
+Issue `#146` added focused tests for:
+
+- explicit personnel detail capture by `personId`
+- default medical and patient log exclusion
+- explicit medical/patient opt-in requiring bounded `logLimit`
+- compact person-detail output that suppresses raw log entry text
+
 Routine close-out for the contract and helper work should include:
 
 ```powershell
@@ -230,4 +245,4 @@ Run focused helper tests after issue `#141` implements them. Full `./scripts/tes
 
 ## Downstream Workflow
 
-Issue `#141` should implement the helper core and the `summary` or equivalent basic metadata view first. Issues `#142` and `#143` should add the play and focused operational views. Issue `#144` should update GM workflow docs so agents normally read compact query output rather than full raw capture JSON during play. Issue `#145` should validate the workflow and clean up tracking.
+Issue `#141` implemented the helper core and `summary` view. Issue `#146` added explicit single-person detail capture plus the `person-detail` compact query view. Issues `#142` and `#143` should add the play and focused operational views. Issue `#144` should update GM workflow docs so agents normally read compact query output rather than full raw capture JSON during play. Issue `#145` should validate the workflow and clean up tracking.

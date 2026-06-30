@@ -8,17 +8,18 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
 2. If no active campaign is selected, ask which campaign save folder to load or whether to create one from `campaigns/_template/`.
 3. For MekHQ-linked campaigns, follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files, saved checkpoints, or save-derived summaries as current.
 4. When MekHQ is open, run `scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture` before play to capture `/status`, `/campaign/summary`, `/campaign/state` with `bridge_metadata`, `/campaign/commands`, and `/campaign/pending-deployments` into known JSON files.
-5. When the scene depends on current operations, deployment assignment, or a viewpoint person's commitment, add `-PendingDeploymentsPersonId` or `-PendingDeploymentsPersonName` to the fetch helper. Add `-SelectorDetailFull` only when entering a command workflow that needs full selectors.
-6. If the API is available and sufficient, use the live API snapshot as current MekHQ-owned context and label it as live context until saved/imported confirmation, explicit user approval, or a future controlled promotion flow makes it durable.
-7. If the API is available but lacks a needed read, returns a partial response for a requested section, or exposes unsupported fields that matter, update `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` immediately and keep the missing fact labeled as `Unknown`, user-confirmed, or stale imported context until the API or user verifies it.
-8. If the API is unavailable, ask whether to pause, proceed from the last campaign-local snapshot with stale-context labels, or explicitly run offline/debug save inspection. Record the chosen fallback.
-9. Do not parse the active `.cpnx`, `.cpnx.gz`, XML, or raw MekHQ save as the routine context source during live play.
-10. Review `campaign-state/setting-basics.md` for table canon, open user choices, and the canon policy.
-11. Assemble a GM context packet using `docs/current/GM_CONTEXT_PACKET_DESIGN.md`: load the active campaign's structured state, recent session log, relevant durable memory, rules gaps, and safety/tone notes without blending authority layers.
-12. If the active campaign names a narrative tone profile, read `gm/narrative-tone-profiles.md` and apply the profile to narration, NPC dialogue, command voice, and consequence framing.
-13. For MekHQ-linked campaigns, include live API snapshot context when available, `mekhq-bridge.md`, `mekhq-api-gaps.md` when present, and unresolved `pending-mekhq-actions.md` items as command proposals, command results awaiting verification, or manual fallback intents, not confirmed hard ledger facts.
-14. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
-15. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
+5. When the scene depends on current operations, deployment assignment, or a viewpoint person's commitment, add `-PendingDeploymentsPersonId` or `-PendingDeploymentsPersonName` to the fetch helper. When the scene needs richer current MekHQ-owned facts for one person, add `-PersonnelDetailPersonId <uuid>` and read the compact `person-detail` query view. Add `-IncludePersonnelMedical`, `-IncludePersonnelPatient`, and a bounded `-PersonnelDetailLogLimit` only when the scene explicitly needs sensitive medical or patient log context.
+6. Add `-SelectorDetailFull` only when entering a command workflow that needs full selectors.
+7. If the API is available and sufficient, use the live API snapshot as current MekHQ-owned context and label it as live context until saved/imported confirmation, explicit user approval, or a future controlled promotion flow makes it durable.
+8. If the API is available but lacks a needed read, returns a partial response for a requested section, or exposes unsupported fields that matter, update `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` immediately and keep the missing fact labeled as `Unknown`, user-confirmed, or stale imported context until the API or user verifies it.
+9. If the API is unavailable, ask whether to pause, proceed from the last campaign-local snapshot with stale-context labels, or explicitly run offline/debug save inspection. Record the chosen fallback.
+10. Do not parse the active `.cpnx`, `.cpnx.gz`, XML, or raw MekHQ save as the routine context source during live play.
+11. Review `campaign-state/setting-basics.md` for table canon, open user choices, and the canon policy.
+12. Assemble a GM context packet using `docs/current/GM_CONTEXT_PACKET_DESIGN.md`: load the active campaign's structured state, recent session log, relevant durable memory, rules gaps, and safety/tone notes without blending authority layers.
+13. If the active campaign names a narrative tone profile, read `gm/narrative-tone-profiles.md` and apply the profile to narration, NPC dialogue, command voice, and consequence framing.
+14. For MekHQ-linked campaigns, include live API snapshot context when available, `mekhq-bridge.md`, `mekhq-api-gaps.md` when present, and unresolved `pending-mekhq-actions.md` items as command proposals, command results awaiting verification, or manual fallback intents, not confirmed hard ledger facts.
+15. Check campaign-local rules gaps and playtest notes so known rough edges do not surprise the table.
+16. Ask for only the open choice needed to run the next scene. If the answer can be deferred, start play.
 
 ## During Play
 

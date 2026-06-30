@@ -1,0 +1,193 @@
+{
+  "schema_name": "mekhq-live-personnel-detail",
+  "schema_version": "0.1",
+  "producer": "mekhq-local-control-api",
+  "producer_version": "0.51.01-SNAPSHOT",
+  "mekhq_version": "0.51.01-SNAPSHOT",
+  "exported_at": "2026-06-30T01:00:00Z",
+  "api_mode": "local-read-only-live-context",
+  "read_only": true,
+  "campaign_id": "00000000-0000-0000-0000-000000000065",
+  "campaign_name": "The Learning Ropes",
+  "campaign_date": "3025-04-08",
+  "state_revision": "live-00000000-0000-0000-0000-000000000065-3025-04-08-example",
+  "snapshot_id": "live-00000000-0000-0000-0000-000000000065-3025-04-08-example",
+  "status": "ready",
+  "status_reason": "person_detail_ready",
+  "person": {
+    "id": "00000000-0000-0000-0000-000000000468",
+    "display_name": "Michelle Moreno",
+    "full_title": "Captain Michelle Moreno",
+    "source_owner": "Person selected-detail getters; PersonViewPanel source map",
+    "identity": {
+      "full_name": "Michelle Moreno",
+      "callsign": "Double-M",
+      "rank": {
+        "value": "Captain",
+        "label": "Captain",
+        "source_owner": "Person#getRankName()"
+      },
+      "gender": {
+        "value": "Unknown",
+        "label": "Unknown",
+        "source_owner": "Person#getGender()"
+      },
+      "age": {
+        "value": 28,
+        "source_owner": "Person#getAge(LocalDate)"
+      },
+      "birth_date": {
+        "value": "Unknown",
+        "source_owner": "Person#getBirthday(int)"
+      },
+      "recruitment_date": {
+        "value": "Unknown",
+        "source_owner": "Person#getRecruitment()"
+      },
+      "biography": {
+        "text": "Unit commander.",
+        "sanitized": true,
+        "source_owner": "Person#getBiography()"
+      }
+    },
+    "status": {
+      "primary_role": {
+        "value": "MEKWARRIOR",
+        "label": "MekWarrior",
+        "source_owner": "Person#getPrimaryRole(); Person#getPrimaryRoleDesc()"
+      },
+      "secondary_role": {
+        "value": "NONE",
+        "label": "None",
+        "source_owner": "Person#getSecondaryRole(); Person#getSecondaryRoleDesc()"
+      },
+      "personnel_status": {
+        "value": "ACTIVE",
+        "label": "Active",
+        "source_owner": "Person#getStatus()"
+      },
+      "prisoner_status": {
+        "value": "FREE",
+        "label": "Free",
+        "source_owner": "Person#getPrisonerStatus()"
+      },
+      "fatigue": {
+        "direct": 0,
+        "adjusted": 0,
+        "permanent": 0,
+        "source_owner": "Person fatigue getters"
+      },
+      "xp": {
+        "current": 12,
+        "total_earned": 20,
+        "source_owner": "Person XP getters"
+      }
+    },
+    "assignment_context": {
+      "unit_id": "Unknown",
+      "unit_name": "Unknown",
+      "formation_name": "Unknown",
+      "source_owner": "Person#getUnit(); Unit assignment getters; Campaign#getFormation(int)"
+    },
+    "skills": [
+      {
+        "name": "Gunnery/Mek",
+        "display_name": "Gunnery/Mek",
+        "subtype": "COMBAT_GUNNERY",
+        "roleplay_only": false,
+        "level": 4,
+        "bonus": 0,
+        "xp_progress": 3,
+        "natural_aptitude": false,
+        "final_value": 4,
+        "experience_level": 2,
+        "source_owner": "Person#getSkills(); Skill getters"
+      }
+    ],
+    "options_and_abilities": {
+      "active_options": [
+        {
+          "id": "example_option_id",
+          "group": "example_group",
+          "group_label": "Example Group",
+          "display_name": "Example Trait",
+          "display_name_with_value": "Example Trait",
+          "value": "true",
+          "source_owner": "PersonnelOptions"
+        }
+      ],
+      "source_owner": "Person#getOptions(); PersonnelOptions option groups"
+    },
+    "awards": {
+      "award_count": 0,
+      "has_awards": false,
+      "has_medals": false,
+      "has_ribbons": false,
+      "has_misc_awards": false,
+      "source_owner": "PersonAwardController summary methods"
+    },
+    "logs": {
+      "metadata": {
+        "limit_per_family": 10,
+        "sort": "date_descending",
+        "sanitization": "HTML tags stripped and descriptions truncated.",
+        "source_owner": "Person log-family getters"
+      },
+      "personal": {
+        "family": "personal",
+        "status": "included",
+        "entry_count": 1,
+        "returned_count": 1,
+        "entries": [
+          {
+            "family": "personal",
+            "date": "3025-04-01",
+            "type": "PERSONAL",
+            "text": "Joined The Learning Ropes",
+            "sanitized": true,
+            "source_owner": "LogEntry"
+          }
+        ]
+      },
+      "medical": {
+        "family": "medical",
+        "status": "excluded",
+        "available_count": 1,
+        "required_query_flag": "includeMedical=true",
+        "reason": "Sensitive log family requires explicit per-person opt-in."
+      },
+      "patient": {
+        "family": "patient",
+        "status": "excluded",
+        "available_count": 0,
+        "required_query_flag": "includePatient=true",
+        "reason": "Sensitive log family requires explicit per-person opt-in."
+      }
+    },
+    "privacy": {
+      "default_sensitive_log_families_excluded": [
+        "medical",
+        "patient"
+      ],
+      "medical_included": false,
+      "patient_included": false,
+      "source_owner": "Person log-family getters"
+    }
+  },
+  "collector_timing": [
+    {
+      "collector": "person_detail",
+      "elapsed_ms": 0,
+      "source_owner": "LocalCampaignStateExporter#personDetail()",
+      "warning_threshold_ms": 1000,
+      "status": "complete"
+    }
+  ],
+  "endpoint_timing": {
+    "endpoint": "/campaign/personnel/detail",
+    "elapsed_ms": 0,
+    "source_owner": "LocalControlService"
+  },
+  "warnings": [],
+  "unsupported": []
+}

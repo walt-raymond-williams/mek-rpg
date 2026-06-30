@@ -74,6 +74,7 @@ git check-ignore -v mekhq-live-api-capture/mekhq-state.json
 4. `#143`: add focused operational views.
 5. `#144`: wire query views into GM workflow.
 6. `#145`: validate query views and finalize tracking.
+7. `#146`: consume personnel detail endpoint. Complete; `scripts/fetch-mekhq-live-api.ps1` supports `-PersonnelDetailPersonId`, optional bounded medical/patient log flags, and writes `mekhq-personnel-detail.json`; `scripts/query-mekhq-live-api.py` supports `--view person-detail` with compact person/status/assignment/skill/option/award/log-family/privacy facts and no raw log entry output.
 
 ## Required Close-Out Step
 
