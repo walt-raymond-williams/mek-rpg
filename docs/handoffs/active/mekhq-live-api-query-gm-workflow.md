@@ -34,6 +34,29 @@ Read these first:
 - Missing-field warnings route to the API gap report.
 - Command docs remain clear that readiness reads do not authorize hidden mutation.
 
+Issue `#143` baseline view names:
+
+- `summary`: capture sanity and loaded-campaign identity.
+- `play-context`: scene-start campaign, finance, deployment, readiness, report, command, warning, and gap context.
+- `pending-deployments`: focused pending scenario/deployment assignments plus explicit Unknown risk-intel gaps.
+- `person-commitment`: focused person commitment lookup by `--person-id` or `--person-name`.
+- `unit-readiness`: focused unit condition, crew, deployment, and pending-commitment scan.
+- `repair-pressure`: focused repair queue, parts pressure, shopping-list pressure, and automation guard scan.
+- `reports`: focused report bucket and compact current report lines.
+- `command-readiness`: focused guarded-command readiness. This is read-only and does not execute commands.
+- `api-gaps`: focused missing, unsupported, failed, or partial capture gap candidates for `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
+- `person-detail`: compact selected-person context without raw log entries.
+
+Recommended play-start order after issue `#143`:
+
+1. Run `./scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture`.
+2. Run `python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view summary --format json`.
+3. Run `python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view play-context --format json`.
+4. Use focused views only for the active question, such as `pending-deployments`, `person-commitment --person-name <name>`, `unit-readiness`, `repair-pressure`, `reports`, `command-readiness`, or `api-gaps`.
+5. Inspect raw capture JSON only for debugging or source-shape investigation, not as the normal play context.
+
+Known warnings to preserve in workflow docs: missing OpFor BV and known enemy units are not zero; missing command selectors are not approval to mutate MekHQ; `selectorDetail=full` should be requested only when entering a specific command workflow; `api-gaps` prints candidates but does not edit the gap report automatically.
+
 ## Files And Areas
 
 Likely files to read or edit:
@@ -53,6 +76,12 @@ Useful commands or checks:
 ```powershell
 git status --short --branch
 rg -n "mekhq-live-api-capture|fetch-mekhq-live-api|query view|play-context" AGENTS.md gm docs/current scripts
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view summary --format json
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view play-context --format json
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view pending-deployments --format json
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view person-commitment --person-name Moreno --format json
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view command-readiness --format json
+python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view api-gaps --format json
 ./scripts/test-all.ps1 -Quick
 ```
 

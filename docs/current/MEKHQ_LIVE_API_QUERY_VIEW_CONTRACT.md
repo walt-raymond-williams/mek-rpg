@@ -245,4 +245,4 @@ Run focused helper tests after issue `#141` implements them. Full `./scripts/tes
 
 ## Downstream Workflow
 
-Issue `#141` implemented the helper core and `summary` view. Issue `#146` added explicit single-person detail capture plus the `person-detail` compact query view. Issues `#142` and `#143` should add the play and focused operational views. Issue `#144` should update GM workflow docs so agents normally read compact query output rather than full raw capture JSON during play. Issue `#145` should validate the workflow and clean up tracking.
+Issue `#141` implemented the helper core and `summary` view. Issue `#146` added explicit single-person detail capture plus the `person-detail` compact query view. Issue `#142` added the compact `play-context` view. Issue `#143` added the focused operational views: `pending-deployments`, `person-commitment`, `unit-readiness`, `repair-pressure`, `reports`, `command-readiness`, and `api-gaps`. Issue `#144` should update GM workflow docs so agents normally read compact query output rather than full raw capture JSON during play. Issue `#145` should validate the workflow and clean up tracking.

@@ -193,6 +193,90 @@ try {
     Assert-True (@($partialPlay.gaps | Where-Object { $_.field -eq "mekhq-pending-deployments.json" }).Count -eq 1) "Missing pending deployments is recorded as a gap."
     Assert-True (@($partialPlay.gaps | Where-Object { $_.field -eq "mekhq-commands.json" }).Count -eq 1) "Missing commands is recorded as a gap."
 
+    Write-Step "Querying focused pending deployment facts."
+    $deployJson = & python $scriptPath --capture-dir $validCapture --view pending-deployments --format json
+    if ($LASTEXITCODE -ne 0) {
+        $deployJson | ForEach-Object { Write-Host $_ }
+        throw "Pending-deployments query failed with exit code $LASTEXITCODE."
+    }
+    $deployments = $deployJson | ConvertFrom-Json
+    Assert-True ($deployments.view -eq "pending-deployments") "Pending-deployments view is selected."
+    Assert-True ($deployments.status -eq "partial") "Pending-deployments view marks missing risk intel as partial."
+    Assert-True ($deployments.counts.pending_scenarios.value -eq 2) "Pending-deployments counts pending scenarios."
+    Assert-True ($deployments.facts.pending_scenarios[0].id.value -eq 66) "Pending-deployments reports scenario ids."
+    Assert-True ($deployments.facts.pending_scenarios[0].assigned_unit_count.value -eq 1) "Pending-deployments reports assignment counts."
+    Assert-True ($deployments.facts.pending_scenarios[0].risk_intel.opfor_total_bv.value -eq "Unknown") "Pending-deployments preserves missing OpFor BV as Unknown."
+    Assert-True (@($deployments.gaps | Where-Object { $_.field -eq "opfor_total_bv" }).Count -ge 1) "Pending-deployments records missing OpFor BV as a gap."
+
+    Write-Step "Querying focused person commitment facts by name."
+    $commitJson = & python $scriptPath --capture-dir $validCapture --view person-commitment --person-name Moreno --format json
+    if ($LASTEXITCODE -ne 0) {
+        $commitJson | ForEach-Object { Write-Host $_ }
+        throw "Person-commitment query failed with exit code $LASTEXITCODE."
+    }
+    $commitment = $commitJson | ConvertFrom-Json
+    Assert-True ($commitment.view -eq "person-commitment") "Person-commitment view is selected."
+    Assert-True ($commitment.status -eq "ok") "Person-commitment view reports ok for a match."
+    Assert-True ($commitment.counts.matches.value -eq 1) "Person-commitment matches one crew member."
+    Assert-True ($commitment.facts.commitments[0].scenario_name.value -eq "Tank-base defense") "Person-commitment reports scenario commitment."
+
+    Write-Step "Querying focused unit readiness facts."
+    $unitJson = & python $scriptPath --capture-dir $validCapture --view unit-readiness --format json
+    if ($LASTEXITCODE -ne 0) {
+        $unitJson | ForEach-Object { Write-Host $_ }
+        throw "Unit-readiness query failed with exit code $LASTEXITCODE."
+    }
+    $unitReadiness = $unitJson | ConvertFrom-Json
+    Assert-True ($unitReadiness.view -eq "unit-readiness") "Unit-readiness view is selected."
+    Assert-True ($unitReadiness.counts.units.value -eq 1) "Unit-readiness counts units."
+    Assert-True ($unitReadiness.counts.deployable.value -eq 1) "Unit-readiness counts deployable units."
+    Assert-True ($unitReadiness.facts.units[0].damage_state.value -eq "Undamaged") "Unit-readiness reports damage state."
+
+    Write-Step "Querying focused repair pressure facts."
+    $repairJson = & python $scriptPath --capture-dir $validCapture --view repair-pressure --format json
+    if ($LASTEXITCODE -ne 0) {
+        $repairJson | ForEach-Object { Write-Host $_ }
+        throw "Repair-pressure query failed with exit code $LASTEXITCODE."
+    }
+    $repair = $repairJson | ConvertFrom-Json
+    Assert-True ($repair.view -eq "repair-pressure") "Repair-pressure view is selected."
+    Assert-True ($repair.facts.repair_pressure.value.parts_needed_count -eq 0) "Repair-pressure reports parts-needed pressure."
+    Assert-True ($repair.counts.shopping_list.value -eq 1) "Repair-pressure reports shopping-list pressure."
+
+    Write-Step "Querying focused reports facts."
+    $reportsJson = & python $scriptPath --capture-dir $validCapture --view reports --format json
+    if ($LASTEXITCODE -ne 0) {
+        $reportsJson | ForEach-Object { Write-Host $_ }
+        throw "Reports query failed with exit code $LASTEXITCODE."
+    }
+    $reports = $reportsJson | ConvertFrom-Json
+    Assert-True ($reports.view -eq "reports") "Reports view is selected."
+    Assert-True ($reports.counts.current.value -eq 1) "Reports view counts current reports."
+    Assert-True ($reports.facts.report_buckets.current[0].text.value -match "sanitized report line") "Reports view includes current report text."
+
+    Write-Step "Querying focused command readiness facts."
+    $commandJson = & python $scriptPath --capture-dir $validCapture --view command-readiness --format json
+    if ($LASTEXITCODE -ne 0) {
+        $commandJson | ForEach-Object { Write-Host $_ }
+        throw "Command-readiness query failed with exit code $LASTEXITCODE."
+    }
+    $commandReadiness = $commandJson | ConvertFrom-Json
+    Assert-True ($commandReadiness.view -eq "command-readiness") "Command-readiness view is selected."
+    Assert-True ($commandReadiness.facts.selector_detail.value -eq "default-cheap-readiness") "Command-readiness identifies cheap default selector mode."
+    Assert-True ($commandReadiness.counts.available.value -ge 1) "Command-readiness counts available commands."
+    Assert-True (@($commandReadiness.facts.commands | Where-Object { $_.command.value -eq "campaign.status_note" -and $_.requires_command_envelope.value -eq $true }).Count -eq 1) "Command-readiness reports envelope-backed command workflow."
+
+    Write-Step "Querying focused API gap facts."
+    $gapJson = & python $scriptPath --capture-dir $validCapture --view api-gaps --format json
+    if ($LASTEXITCODE -ne 0) {
+        $gapJson | ForEach-Object { Write-Host $_ }
+        throw "API-gaps query failed with exit code $LASTEXITCODE."
+    }
+    $apiGaps = $gapJson | ConvertFrom-Json
+    Assert-True ($apiGaps.view -eq "api-gaps") "API-gaps view is selected."
+    Assert-True ($apiGaps.counts.unsupported.value -ge 1) "API-gaps counts unsupported fields."
+    Assert-True ($apiGaps.facts.gap_report_skeleton.value -match "MEKHQ_PLAYTEST_API_GAP_REPORT") "API-gaps points to gap-report schema."
+
     Write-Step "Querying compact personnel detail facts."
     $personCapture = New-CaptureFixture -Name "person-detail" -IncludePersonDetail
     $personJson = & python $scriptPath `
