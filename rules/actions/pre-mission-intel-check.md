@@ -90,6 +90,8 @@ test_expectations:
 
 Allow a qualified character to analyze a generated MekHQ scenario before tactical launch and produce an in-universe intelligence report. Hidden scenario data must be filtered through reveal levels before it reaches player-facing prose.
 
+The action should warn commanders about threat size, quality, unusual danger, and go/no-go risk without exposing raw scenario JSON, exact unit records, or pilot skills below the required reveal level.
+
 ## Input Data
 
 Public:
@@ -130,6 +132,7 @@ Yes. The provisional policy is `margin_2d6_target_number_v1`: roll `2d6`, add ex
 - Exact unit sheets and pilot skills require level 6.
 - Hidden scenario warnings require level 7.
 - Support professions can add context or modifiers only if the future roll design permits it.
+- Denied, support-only, not-implemented, ambiguous, unmapped, or unavailable actor requests must not load hidden scenario data.
 
 ## Failure Modes
 
@@ -142,6 +145,7 @@ Yes. The provisional policy is `margin_2d6_target_number_v1`: roll `2d6`, add ex
 
 - Verify action metadata cross-checks owning and supporting professions against profession profile `allowed_actions`.
 - Verify denied, support-only, or not-implemented requests do not load hidden scenario data.
+- Verify prompt context, not only final prose, excludes unrevealed hidden fields.
 - Verify reveal-level filtering with sanitized scenario fixtures.
 - Verify no exact BV appears below level 5.
 - Verify no exact pilot skill values appear below level 6.

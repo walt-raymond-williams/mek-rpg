@@ -189,11 +189,12 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 3. Design deterministic profession lookup from MekHQ personnel fields. Status: complete in issue `#130`.
 4. Design the action registry and machine-readable action metadata. Status: complete in issue `#131`.
 5. Decide the first dice and reveal-level mapping. Status: complete in issue `#132`.
-6. Implement Pre-Mission Intel Check as a deterministic, testable slice.
-7. Add hidden-data boundary tests.
-8. Add LLM prompt/context assembly guidance and tests.
-9. Validate against a sanitized MekHQ scenario fixture.
-10. Expand profession actions only after the first action proves the pattern.
+6. Finalize Pre-Mission Intel Check design. Status: complete in issue `#133`.
+7. Implement Pre-Mission Intel Check as a deterministic, testable slice.
+8. Add hidden-data boundary tests.
+9. Add LLM prompt/context assembly guidance and tests.
+10. Validate against a sanitized MekHQ scenario fixture.
+11. Expand profession actions only after the first action proves the pattern.
 
 ## GitHub Issue Plan
 
@@ -203,7 +204,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 - `#130`: Add Profession Lookup Design. Complete.
 - `#131`: Add Profession Action Registry Design. Complete.
 - `#132`: Add Dice-Roll And Reveal-Level Design. Complete.
-- `#133`: Add Pre-Mission Intel Check Design.
+- `#133`: Add Pre-Mission Intel Check Design. Complete.
 - `#134`: Define Hidden-Data Access Boundaries.
 - `#135`: Add Tests/Spec Plan For Gated Data Reveal.
 - `#136`: Add LLM Prompt/Context Assembly Design.
