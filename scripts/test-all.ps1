@@ -94,6 +94,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "Rich character record validator coverage"
+        Path = Join-Path $repoRoot "scripts\test-validate-rich-character-records.ps1"
+        Quick = $true
+    },
+    @{
         Name = "Rules route helper golden fixture tests"
         Path = Join-Path $repoRoot "scripts\test-route-rules-prompt.ps1"
         Quick = $false
