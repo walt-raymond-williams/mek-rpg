@@ -14,7 +14,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - MekHQ bridge automation now has a read-only save summary helper that emits JSON or Markdown checkpoint facts from `.cpnx`, `.cpnx.gz`, or plain campaign XML without writing to the MekHQ save; this is now an offline, legacy, fixture, or debugging fallback when the live API is unavailable or explicitly requested.
 - Active loaded MekHQ campaign setup should use the live API first through `scripts/fetch-mekhq-live-api.ps1`, then pass captured JSON such as `mekhq-state.json` to consumer scripts. Issue `#107` added the MEK-RPG campaign-load adapter, issue `#108` audited the roadmap and save-parser fallback boundary, issue `#109` completed the handoff-ready producer-facing API change request package, and issue `#110` consumed the expanded local MekHQ live API shape in MEK-RPG fixtures, adapters, dashboard summaries, and tests.
 - The MekHQ integration posture has moved beyond permanent read-only/manual-only operation. Issue `#111` and `docs/current/MEKHQ_COMMAND_API_STRATEGY.md` define controlled MekHQ-owned command integration: explicit commands, stable selectors, guard fields, approval where needed, and live reread verification, while still forbidding raw save/XML mutation and hidden writes. Issue `#112` updated play guidance now that the local MegaMek/MekHQ workspace exposes guarded contract acceptance.
-- Issue `#113` now tracks MekHQ API-first playtest hardening after user reports that play sessions still try to read the MekHQ save instead of the API. The standard posture is: use the open MekHQ local API connection for live context, keep save parsing as explicit offline/legacy/fixture/debug fallback, and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`. Issue `#116` added the static access-path audit report in `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`; issue `#115` added the open-connection startup decision tree in `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`; issue `#117` wired deterministic gap-report workflow checks. These three child issues are complete.
+- Issue `#113` completed MekHQ API-first playtest hardening after user reports that play sessions still try to read the MekHQ save instead of the API. The standard posture is: use the open MekHQ local API connection for live context, keep save parsing as explicit offline/legacy/fixture/debug fallback, and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`. Issue `#116` added the static access-path audit report in `docs/current/MEKHQ_API_FIRST_ACCESS_AUDIT.md`; issue `#115` added the open-connection startup decision tree in `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`; issue `#117` wired deterministic gap-report workflow checks; issue `#114` recorded fixture-backed validation and live API unavailability in `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`.
 - Issue `#118` completed MEK-RPG alignment with the current consumer-facing live MekHQ API contract in `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_CONTRACT.md`, including `/status`, `/campaign/pending-deployments`, command-readiness selectors, guarded command envelopes, dry-run/save/prompt behavior, partial-response handling, and timeout expectations. The follow-up read boundary is now `scripts/fetch-mekhq-live-api.ps1`, which captures those reads into known JSON files for downstream scripts.
 - Live issue `#118` smoke verification is recorded in `docs/current/MEKHQ_LIVE_API_SMOKE_FOLLOWUP_2026_06_26.md`. It confirmed the read endpoints, selector-detail workflow, and `campaign.status_note` dry-run path; issue `#119` added the MEK-RPG guarded-command helper so status-note dry-run envelopes are built and validated safely instead of by hand.
 - Issue `#139` completed MekHQ live API query/context views. Raw `mekhq-live-api-capture*/` JSON remains ignored local evidence; compact deterministic views now let agents consume current MekHQ-owned facts without parsing multi-megabyte raw captures during play. Child issues `#140`-`#146` covered the contract, helper core, play-context view, focused operational views, GM workflow integration, validation/final tracking, and the personnel detail endpoint. Fixture-backed validation is recorded in `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`; live validation was unavailable because no local MekHQ control server was reachable.
@@ -68,19 +68,19 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ## Active Work
 
-- Issue `#113`: MekHQ API-first playtest hardening epic. Issues `#116` static access-path audit, `#115` open-connection startup hardening, and `#117` gap-report workflow are complete; remaining child issue `#114` covers API-first playtest validation.
+- Issue `#113`: complete. MekHQ API-first playtest hardening now has static access-path audit, open-connection startup hardening, gap-report workflow, and API-first validation/blocker reporting.
 - Issue `#118`: complete; MEK-RPG processes now align with the current MegaMek/MekHQ live API contract before the remaining live playtest validation.
 - Issue `#119`: complete; added deterministic guarded-command smoke helper for MekHQ command envelopes, starting with safe `campaign.status_note` dry-run.
-- Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
+- Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path. User-gated and blocked until the user is present with MekHQ available.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
 - Issue `#127`: Profession Capability System epic remains open after the design/scaffold wave. Child issues `#128` through `#138` are complete; future profession runtime work should be opened as a new scoped issue starting with permission and reveal-filter logic, not by treating the current design docs as executable behavior.
-- Issue `#139`: complete. MekHQ live API query/context views now include the contract, helper core, `summary`, `play-context`, focused operational views, GM workflow integration, validation, and `/campaign/personnel/detail` compact character/person context. Start with issue `#114` unless the user prioritizes another slice.
+- Issue `#139`: complete. MekHQ live API query/context views now include the contract, helper core, `summary`, `play-context`, focused operational views, GM workflow integration, validation, and `/campaign/personnel/detail` compact character/person context.
 
 ## Ready For Issue Candidates
 
-- Issued: MekHQ API-first playtest hardening is tracked by epic issue `#113`, with child issues `#116` static audit, `#115` open-connection-first startup, `#117` API gap reporting workflow, and `#114` API-first playtest validation. Issues `#116`, `#115`, and `#117` are complete; issue `#114` remains for validation.
+- Complete: MekHQ API-first playtest hardening epic issue `#113` and child issues `#116`, `#115`, `#117`, and `#114` are complete. Live validation was unavailable during issue `#114`; fixture-backed validation and the blocker are recorded in `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`.
 - Complete: issue `#119` followed the live issue `#118` smoke by adding a MEK-RPG helper/test path for guarded command envelope construction and validation.
-- Future issue candidate: MekHQ month-tick and prompt-resolution API support. Start by strengthening existing tickets and handoffs under issues `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so month-boundary prompts, advancement awards, generated reports, and blocked command responses are explicitly in scope where relevant; then create a dedicated epic and child issues when the story boundaries below are ready.
+- Future issue candidate: MekHQ month-tick and prompt-resolution API support. Start from the completed tickets and handoffs under issues `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so month-boundary prompts, advancement awards, generated reports, and blocked command responses are explicitly in scope where relevant; then create a dedicated epic and child issues when the story boundaries below are ready.
 - The immediate checkpoint wave remains issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption complete as `#110`; controlled MekHQ command API planning is complete as `#111`; command-write guidance follow-up is complete as `#112`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
 - Issued: rich PC/NPC character records for play are tracked by epic issue `#120`, with child issues `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination.
@@ -115,7 +115,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   6. `#145`: complete; validated the workflow, archived handoffs, and recommended issue `#114` as the next task.
   7. `#146`: complete; added explicit support for `GET /campaign/personnel/detail?personId=<uuid>`, including sanitized fixture coverage and opt-in handling for medical and patient logs.
 - Validation: `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`.
-- Next step: issue `#114`.
+- Next step: use these views during user-present issue `#97` live play, or continue autonomous project work with issue `#121`.
 
 ### Profession Capability System
 
@@ -131,7 +131,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - First target action: Pre-Mission Intel Check, which filters scenario intelligence through profession permissions, dice rolls, and reveal levels before generating an in-universe report.
 - Boundary: raw hidden scenario data and character knowledge are separate. The LLM may write the report, but deterministic rules must choose the reveal level first.
 - Completed child issues: `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action-registry design, `#132` dice-roll/reveal-level design, `#133` Pre-Mission Intel Check design, `#134` hidden-data access boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap update.
-- Next step: open a new runtime implementation issue only when ready to build and test permission/reveal filtering. Until then, keep `pre_mission_intel_check` as design metadata and continue current local priority with MekHQ API-first validation issue `#114`.
+- Next step: open a new runtime implementation issue only when ready to build and test permission/reveal filtering. Until then, keep `pre_mission_intel_check` as design metadata and continue current autonomous priority with rich character record schema issue `#121`.
 
 ### Improve RPG narration and mercenary command tone
 
@@ -177,16 +177,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### MekHQ API-first playtest hardening
 
-- Status: Mostly complete; issue `#114` remains for API-first playtest validation.
+- Status: Complete.
 - Epic issue: `#113`
 - Child issues: `#116`, `#115`, `#117`, and `#114`
 - Report: `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`
 - Handoffs:
-  - `docs/handoffs/active/mekhq-api-first-playtest-hardening-113.md`
+  - `docs/handoffs/archive/mekhq-api-first-playtest-hardening-113.md`
   - `docs/handoffs/archive/mekhq-api-first-access-audit-116.md`
   - `docs/handoffs/archive/mekhq-api-gap-reporting-117.md`
   - `docs/handoffs/archive/mekhq-open-connection-sop-115.md`
-  - `docs/handoffs/active/mekhq-api-first-playtest-117.md`
+  - `docs/handoffs/archive/mekhq-api-first-playtest-117.md`
 - Mode: Project development / playtest workflow hardening
 - Goal: make MekHQ-linked play use the open MekHQ local API connection as the normal source of live campaign context, prevent routine active-save parsing during play, and capture missing read coverage immediately as API gaps.
 - Key decisions:
@@ -198,8 +198,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   1. Done `#116`: audited live-play MekHQ API-first access paths and stale save-parser references.
   2. Done `#115`: hardened MekHQ open-connection-first play startup and fallback decision tree.
   3. Done `#117`: added and wired the MekHQ playtest API gap reporting workflow.
-  4. `#114`: validate the API-first MekHQ playtest workflow and record any missing reads.
+  4. Done `#114`: validated the API-first MekHQ playtest workflow with fixture-backed rehearsal, recorded live API unavailability, and left `#97` as the user-present live play checkpoint.
 - Boundary: do not edit raw `.cpnx`, `.cpnx.gz`, XML, or MekHQ save payloads. Do not edit the MegaMek workspace from this repository; create project-local change requests for producer gaps.
+- Validation: `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`.
 
 ### MekHQ live API contract alignment
 

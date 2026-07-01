@@ -6,15 +6,14 @@
 
 ## Next
 
-- Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
-- Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
+- Issue `#121`: design the canonical rich PC/NPC character record schema and ownership model.
 
 ## Backlog
 
 - Issue `#139`: MekHQ live API query/context views epic is complete. Child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md` and archived handoffs under `docs/handoffs/archive/` for future query-view context.
-- Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, strengthen existing issues and handoffs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
+- Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, use the completed hardening docs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
 - Issue `#127`: Profession Capability System epic. Design/scaffold child issues `#128` through `#138` are complete. Keep the epic open for a future runtime implementation issue that starts with permission and reveal-filter logic using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; do not run Pre-Mission Intel Check as executable until runtime helpers and tests exist.
-- Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues `#116` static audit, `#115` startup SOP, and `#117` gap reporting are complete; issue `#114` remains for validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
+- Issue `#113`: MekHQ API-first playtest hardening epic is complete. Child issues `#116`, `#115`, `#117`, and `#114` are complete; `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md` records the fixture-backed validation and live API unavailability.
 - Issue `#120`: parent epic for rich PC/NPC character records for play; child issues are `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination. Start with issue `#121` after the current MekHQ API-first playtest work unless the user prioritizes character records sooner.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
@@ -29,9 +28,11 @@
 ## Blocked
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
+- Issue `#97`: live GM playtest checkpoint. Blocked for autonomous issue-drain until the user is present and MekHQ local API is available.
 
 ## Done
 
+- Issue `#114` completed: validated the API-first MekHQ playtest workflow with a Branch C live-API-unavailable pass, added `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`, recorded the local API blocker in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`, rehearsed compact query views against sanitized fixtures, archived the `#113` and `#114` handoffs, and left issue `#97` open as the user-present live GM play checkpoint.
 - Issue `#145` completed: validated the MekHQ query/view workflow with fixture-backed tests, recorded live MekHQ unavailability for this pass, confirmed raw capture/protected source ignore boundaries, added `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`, archived the completed query-view handoffs, and recommended issue `#114` as the next local MekHQ workflow validation task.
 - Issue `#144` completed: wired MekHQ compact query views into `gm/session-procedure.md`, `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`, `docs/current/GM_CONTEXT_PACKET_DESIGN.md`, `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `scripts/README.md`, and `docs/current/KNOWN_COMMANDS.md`; documented the fetch-to-query-to-debugging fallback order, focused view selection, gap-report routing, and read-only command-readiness boundary; updated the issue `#145` validation handoff with changed docs, command sequence, and validation expectations.
 - Issue `#143` completed: added focused MekHQ operational query views to `scripts/query-mekhq-live-api.py` for `pending-deployments`, `person-commitment`, `unit-readiness`, `repair-pressure`, `reports`, `command-readiness`, and `api-gaps`; added `--person-id` and `--person-name` lookup arguments; preserved missing OpFor BV/enemy unit intel, unsupported selectors, and absent files as warnings or gaps; expanded `scripts/test-query-mekhq-live-api.ps1` with sanitized fixture coverage for each focused view; documented commands and updated the issue `#144` GM-workflow handoff with view names, command examples, play-start order, and warnings.

@@ -7,6 +7,8 @@
 - Mode: Project development / playtest validation
 - Priority: High, user-gated for live MekHQ validation
 
+Archive note: issue `#114` is complete. Live API validation was blocked because the local control server was unavailable; fixture-backed rehearsal and the blocker are recorded in `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`. Issue `#97` remains open for the user-present live GM play checkpoint.
+
 ## Goal
 
 Validate the API-first MekHQ playtest workflow using a live MekHQ local API when available, or explicitly record the blocker and rehearse with fixtures only if live validation is unavailable.
@@ -63,3 +65,5 @@ Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:32180/campaign/commands' -T
 ## Open Questions
 
 - Should this story close issue `#97` as part of the same playtest pass, or only prepare it?
+
+Answer: issue `#97` stays open. This issue only rehearsed the workflow and recorded live API unavailability; it did not run a user-present play checkpoint.

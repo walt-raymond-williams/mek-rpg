@@ -49,6 +49,19 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-07-01 - Live local API unavailable during API-first validation
+
+- Play context: issue `#114` API-first MekHQ playtest workflow validation.
+- Needed data: live MekHQ campaign availability and current MekHQ-owned context through the local control API before play startup.
+- Attempted API read: `GET /status`, `GET /campaign/summary`, `GET /campaign/state?sections=bridge_metadata,campaign,finances,personnel,units,contracts,scenarios,repairs_and_logistics,markets,reports,unsupported`, and `GET /campaign/commands` at `http://127.0.0.1:32180`.
+- Missing, stale, ambiguous, or unsupported field: all attempted live reads failed with `Unable to connect to the remote server`; no local MekHQ control server was reachable.
+- Why it mattered for play: true live validation cannot prove current MekHQ-owned campaign context without the running local API.
+- Fallback used: fixture-backed rehearsal only; no active save, XML, or raw MekHQ payload was parsed.
+- Expected read shape: reachable local control API responses for `/status`, `/campaign/summary`, sectioned `/campaign/state` with `bridge_metadata`, and `/campaign/commands`.
+- Suggested producer/API change: none from this pass; rerun live validation when MekHQ is open with the local control API enabled.
+- Related issue or handoff: issue `#114`, epic issue `#113`.
+- Status: blocked on user-present live MekHQ session.
+
 ### 2026-06-29 - Active contract reputation impact unavailable
 
 - Play context: `Sharpe's Strikers`, 3025-05-15 Talitha, after `Deep Raid Defense` refused, `Official Challenge` defeated, `Facility Assault` defeated/withdrawn, and during `Recon Evasion`.

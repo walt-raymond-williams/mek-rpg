@@ -7,6 +7,8 @@
 - Mode: Project development / playtest workflow hardening
 - Priority: High
 
+Archive note: epic issue `#113` is complete. Child issues `#116`, `#115`, `#117`, and `#114` are complete; final validation and live API unavailability are recorded in `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`.
+
 ## Goal
 
 Coordinate the epic that makes MekHQ-linked play use the open MekHQ local API connection as the normal source of live campaign context and records read gaps immediately instead of silently parsing active saves.
@@ -67,7 +69,7 @@ rg -n "summarize-mekhq-save|cpnx|campaign/state|campaign/summary|GET /campaign/c
 
 ## Acceptance Criteria
 
-- Child issues `#116`, `#115`, `#117`, and `#114` remain linked from the epic. Issues `#116`, `#115`, and `#117` are complete; issue `#114` remains for validation.
+- Child issues `#116`, `#115`, `#117`, and `#114` remain linked from the epic and are complete.
 - `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` is the required read-gap sink for MekHQ-linked play.
 - Play-mode startup uses live API first when MekHQ is open.
 - Missing live API reads become report entries or producer change requests, not silent active-save parsing.
