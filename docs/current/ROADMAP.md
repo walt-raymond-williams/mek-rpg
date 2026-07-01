@@ -73,7 +73,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#119`: complete; added deterministic guarded-command smoke helper for MekHQ command envelopes, starting with safe `campaign.status_note` dry-run.
 - Issue `#97`: resume the live GM playtest checkpoint using the live MekHQ API adapter path.
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
-- Issue `#127`: Profession Capability System epic is open for planned implementation after this scaffold. Issues `#128`, `#129`, `#130`, `#131`, `#132`, `#133`, `#134`, `#135`, `#136`, and `#137` are complete; start with child issue `#138` unless the user asks for a different slice.
+- Issue `#127`: Profession Capability System epic remains open after the design/scaffold wave. Child issues `#128` through `#138` are complete; future profession runtime work should be opened as a new scoped issue starting with permission and reveal-filter logic, not by treating the current design docs as executable behavior.
 - Issue `#139`: MekHQ live API query/context views epic is open for planned implementation. Issue `#140` defined the query view contract in `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`; issue `#141` added the helper core and summary view; issue `#146` added `/campaign/personnel/detail` capture and compact character/person context. Start with issue `#142` unless the user prioritizes another slice.
 
 ## Ready For Issue Candidates
@@ -122,9 +122,9 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Profession Capability System
 
-- Status: Issued.
+- Status: Design/scaffold wave complete; epic remains open for future runtime implementation.
 - Epic issue: `#127`.
-- Child issues: `#128`, `#129`, `#130`, `#131`, `#132`, `#133`, `#134`, `#135`, `#136`, `#137`, and `#138`.
+- Child issues: `#128`, `#129`, `#130`, `#131`, `#132`, `#133`, `#134`, `#135`, `#136`, `#137`, and `#138`. Complete.
 - Handoff: `docs/handoffs/active/profession-capability-system-epic.md`.
 - Design docs: `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PROFESSION_LOOKUP_DESIGN.md`, `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`, `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`, `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`, `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`, `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`, and `docs/current/PRE_MISSION_INTEL_CHECK.md`.
 - Profiles: `rules/professions/`.
@@ -133,8 +133,8 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Goal: use MekHQ personnel roles/jobs as RPG-capable professions without replacing MekHQ as the source of truth for personnel and campaign state.
 - First target action: Pre-Mission Intel Check, which filters scenario intelligence through profession permissions, dice rolls, and reveal levels before generating an in-universe report.
 - Boundary: raw hidden scenario data and character knowledge are separate. The LLM may write the report, but deterministic rules must choose the reveal level first.
-- Completed child issues: `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action-registry design, `#132` dice-roll/reveal-level design, `#133` Pre-Mission Intel Check design, `#134` hidden-data access boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly design, and `#137` handoff documentation.
-- Next step: issue `#138`, the roadmap update issue.
+- Completed child issues: `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action-registry design, `#132` dice-roll/reveal-level design, `#133` Pre-Mission Intel Check design, `#134` hidden-data access boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap update.
+- Next step: open a new runtime implementation issue only when ready to build and test permission/reveal filtering. Until then, keep `pre_mission_intel_check` as design metadata and continue current local priority with MekHQ query/context view issue `#142`.
 
 ### Improve RPG narration and mercenary command tone
 
