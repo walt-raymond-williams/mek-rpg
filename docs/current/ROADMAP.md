@@ -149,12 +149,12 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Rich PC/NPC character records for play
 
-- Status: Issued
+- Status: In progress; schema child complete.
 - Epic issue: `#120`
 - Child issues: `#121`, `#122`, `#123`, `#124`, and `#125`
 - Handoffs:
   - `docs/handoffs/active/rich-character-records-epic-120.md`
-  - `docs/handoffs/active/rich-character-record-schema-121.md`
+  - `docs/handoffs/archive/rich-character-record-schema-121.md`
   - `docs/handoffs/active/rich-character-record-templates-workflow-122.md`
   - `docs/handoffs/active/rich-character-record-play-capture-123.md`
   - `docs/handoffs/active/rich-character-record-validator-124.md`
@@ -166,14 +166,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - `docs/current/CHARACTER_CREATION_PC_SHEET_RUNTHROUGH.md` found that the current sheet shape is usable, but real PC sheets are needed before deterministic validation is worthwhile.
   - `docs/current/MEKHQ_PERSONNEL_SHEET_WORKFLOW.md` defines the boundary between MekHQ-owned roster facts and MEK-RPG-owned A Time of War overlays, motives, relationships, secrets, scene memory, and sheet gaps.
   - `campaigns/_template/pcs.md` and `campaigns/_template/npcs.md` are the initial template targets.
+  - `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` is the canonical schema and ownership baseline from issue `#121`.
 - Child issues:
-  1. `#121`: design the canonical rich PC/NPC record schema and ownership model.
+  1. `#121`: complete. Designed the canonical rich PC/NPC record schema and ownership model in `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`.
   2. `#122`: update campaign templates and GM workflow docs to use the rich record model.
   3. `#123`: define play-mode capture and update triggers so characters become durable records without slowing scenes.
   4. `#124`: prototype a focused rich character-record validator, or record why it remains premature.
   5. `#125`: coordinate MekHQ personnel and character-detail API needs from the MEK-RPG side.
 - Boundary: do not infer A Time of War stats from narrative role, MekHQ rank, or personality. Do not copy the source character sheet layout, source sample characters, tables, trait catalogs, skill catalogs, purchased PDFs, raw extracted text, or raw MekHQ payloads. Do not edit the MegaMek workspace from this repository; create project-local change requests for producer gaps.
-- Dependency order: start with `#121`; `#122` and `#123` depend on the schema; `#124` depends on schema/template stability and may be blocked until fixture expectations are clear; `#125` can start after or alongside `#121` if it preserves the ownership boundary.
+- Dependency order: proceed to `#122`; `#123` depends on the schema and may follow template updates; `#124` depends on schema/template stability and may be blocked until fixture expectations are clear; `#125` can start after or alongside the template work if it preserves the ownership boundary.
 
 ### MekHQ API-first playtest hardening
 

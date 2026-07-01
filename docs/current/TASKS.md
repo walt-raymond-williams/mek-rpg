@@ -6,11 +6,12 @@
 
 ## Next
 
-- Issue `#121`: design the canonical rich PC/NPC character record schema and ownership model.
+- Issue `#122`: update campaign templates and GM workflow docs to use the rich character record schema from `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`.
 
 ## Backlog
 
 - Issue `#139`: MekHQ live API query/context views epic is complete. Child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md` and archived handoffs under `docs/handoffs/archive/` for future query-view context.
+- Issue `#121`: rich PC/NPC character record schema is complete in `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`; issue `#122` is next.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, use the completed hardening docs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
 - Issue `#127`: Profession Capability System epic. Design/scaffold child issues `#128` through `#138` are complete. Keep the epic open for a future runtime implementation issue that starts with permission and reveal-filter logic using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; do not run Pre-Mission Intel Check as executable until runtime helpers and tests exist.
 - Issue `#113`: MekHQ API-first playtest hardening epic is complete. Child issues `#116`, `#115`, `#117`, and `#114` are complete; `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md` records the fixture-backed validation and live API unavailability.
@@ -32,6 +33,7 @@
 
 ## Done
 
+- Issue `#121` completed: added `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` with the canonical rich PC/NPC record schema, ownership boundaries for A Time of War overlays, MekHQ-owned roster facts, MEK-RPG narrative memory, evidence labels, record sections, MekHQ refresh rules, source boundaries, and the issue `#124` validator-maintenance decision; archived the issue handoff.
 - Issue `#114` completed: validated the API-first MekHQ playtest workflow with a Branch C live-API-unavailable pass, added `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`, recorded the local API blocker in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`, rehearsed compact query views against sanitized fixtures, archived the `#113` and `#114` handoffs, and left issue `#97` open as the user-present live GM play checkpoint.
 - Issue `#145` completed: validated the MekHQ query/view workflow with fixture-backed tests, recorded live MekHQ unavailability for this pass, confirmed raw capture/protected source ignore boundaries, added `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`, archived the completed query-view handoffs, and recommended issue `#114` as the next local MekHQ workflow validation task.
 - Issue `#144` completed: wired MekHQ compact query views into `gm/session-procedure.md`, `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`, `docs/current/GM_CONTEXT_PACKET_DESIGN.md`, `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`, `scripts/README.md`, and `docs/current/KNOWN_COMMANDS.md`; documented the fetch-to-query-to-debugging fallback order, focused view selection, gap-report routing, and read-only command-readiness boundary; updated the issue `#145` validation handoff with changed docs, command sequence, and validation expectations.
