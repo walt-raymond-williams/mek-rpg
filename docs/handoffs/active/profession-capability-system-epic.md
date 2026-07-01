@@ -33,7 +33,7 @@ Read these first:
 - Schema/template work is complete in issue `#128`; initial profile content is complete in issue `#129`; start remaining work with lookup/action-registry design.
 - Implement Pre-Mission Intel Check only after hidden-data filtering and tests are specified.
 - Keep player-facing outputs in-universe and filtered by reveal level.
-- Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, and `#134` hidden-data boundaries are complete; `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
+- Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, and `#135` gated reveal tests/spec plan are complete; `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
 
 ## Files And Areas
 
@@ -45,6 +45,7 @@ Likely files to read or edit:
 - `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`
 - `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`
 - `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`
+- `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`
 - `rules/professions/`
 - `scripts/validate-profession-profiles.ps1`
 - `rules/actions/`
@@ -88,6 +89,7 @@ If runtime work touches rule indexes, also run:
 - Dice and reveal-level design is deterministic and keeps the LLM out of reveal selection. Complete in issue `#132`.
 - Pre-Mission Intel Check design is complete with input categories, reveal filtering, examples, and future test scenarios. Complete in issue `#133`.
 - Hidden-data boundary separates raw adapter payloads, adjudication context, filtered prompt payloads, player-facing reports, and debug traces. Complete in issue `#134`.
+- Gated reveal test/spec plan defines fixture shape, permission cases, reveal-level cases, prompt leak checks, missing-field cases, and quick-suite gating. Complete in issue `#135`.
 - Pre-Mission Intel Check has fixture-backed hidden-data filtering tests before player-facing use.
 - Prompt/context assembly tests prove unrevealed hidden data is absent.
 - Roadmap, task state, issues, and handoffs stay synchronized.
@@ -99,6 +101,7 @@ If runtime work touches rule indexes, also run:
 - Resolved for issue `#132`: use provisional roll policy `margin_2d6_target_number_v1` and reveal map `pre_mission_intel_margin_v1`; target numbers and modifiers must be explicit inputs; support actors add no modifier by default; reveal level is derived from margin before prompt assembly.
 - Resolved for issue `#133`: the Pre-Mission Intel Check design uses the existing `docs/current/PRE_MISSION_INTEL_CHECK.md` as the action design doc, requires permission before hidden-data access, defines public/MekHQ-owned/hidden/derived input categories, and includes future tests for denial, reveal levels, missing fields, and prompt-filter regressions.
 - Resolved for issue `#134`: use `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md` to enforce layer separation, forbidden prompt fields by reveal level, debug/log redaction, fail-closed behavior, sanitized fixture strategy, and allowed/forbidden test matrix.
+- Resolved for issue `#135`: use `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; first automated test should be PowerShell unless the runtime helper is Python, should use sanitized sentinel fixtures, and should join `scripts/test-all.ps1 -Quick` only after deterministic runtime filtering or prompt assembly exists.
 - Remaining API review: complete MekHQ role vocabulary, secondary/staff assignments, and scenario commitment fields need fixture evidence before runtime lookup.
 - Resolved for issue `#128`: profile metadata lives in YAML front matter inside Markdown for now.
 - What roll system becomes canonical for non-combat profession actions?

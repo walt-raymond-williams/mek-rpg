@@ -138,4 +138,4 @@ Future implementation tests should cover:
 
 ## Implementation Notes
 
-Issue `#135` should turn this boundary into a fixture-backed test/spec plan. Issue `#136` should ensure prompt/context assembly consumes only the filtered prompt payload and cannot reach raw hidden data.
+Issue `#135` turned this boundary into the fixture-backed test/spec plan in `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`. Issue `#136` should ensure prompt/context assembly consumes only the filtered prompt payload and cannot reach raw hidden data.
