@@ -6,13 +6,13 @@
 
 ## Next
 
-- Issue `#142`: add compact MekHQ play-context query view under parent epic `#139`.
+- Issue `#143`: add focused MekHQ live API operational query views under parent epic `#139`, starting from the compact `play-context` view.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
 ## Backlog
 
-- Issue `#139`: MekHQ live API query/context views epic. Child issues are `#140` contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, `#145` validation/final tracking, and `#146` personnel detail endpoint consumption. Goal: keep raw live API captures ignored while giving agents compact deterministic views of MekHQ-owned live context.
+- Issue `#139`: MekHQ live API query/context views epic. Child issues are `#140` contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, `#145` validation/final tracking, and `#146` personnel detail endpoint consumption. Issues `#140`, `#141`, `#142`, and `#146` are complete. Goal: keep raw live API captures ignored while giving agents compact deterministic views of MekHQ-owned live context.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, strengthen existing issues and handoffs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
 - Issue `#127`: Profession Capability System epic. Design/scaffold child issues `#128` through `#138` are complete. Keep the epic open for a future runtime implementation issue that starts with permission and reveal-filter logic using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; do not run Pre-Mission Intel Check as executable until runtime helpers and tests exist.
 - Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues `#116` static audit, `#115` startup SOP, and `#117` gap reporting are complete; issue `#114` remains for validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
@@ -33,6 +33,7 @@
 
 ## Done
 
+- Issue `#142` completed: added the compact MekHQ `play-context` query view to `scripts/query-mekhq-live-api.py` with JSON/text scene-start facts for campaign identity, date/location, finances, active contracts, pending/current scenarios, unit and personnel readiness, visible reports, command readiness, source files, warnings, gaps, and next actions; preserved `Unknown`/partial output for absent optional pending-deployments or command captures; added normal, partial, text, and missing-state coverage to `scripts/test-query-mekhq-live-api.ps1`; documented commands and updated the issue `#143` focused-views handoff with the baseline fact families.
 - Issue `#138` completed: synchronized profession roadmap/task closeout after child issues `#128`-`#137`, recorded the design wave as complete while keeping epic `#127` open for future runtime implementation, and moved the next local actionable task back to MekHQ query view issue `#142`.
 - Issue `#137` completed: refreshed `docs/handoffs/active/profession-capability-system-epic.md` with explicit child issue links, current design-doc start points, implementation order, runtime-test gating, active-handoff lifecycle, and resolved issue notes.
 - Issue `#136` completed: added `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md` defining safe prompt inputs, prompt layers, payload shape, in-universe report rules, confidence labels, denied/failure prompts, tests for prompt payload inspection, and pure-transform implementation boundaries.

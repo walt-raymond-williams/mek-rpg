@@ -641,6 +641,264 @@ def summary_view(paths: dict[str, Path], loaded: dict[str, Any]) -> dict[str, An
     }
 
 
+def first_items(value: Any, limit: int = 3) -> list[Any]:
+    return value[:limit] if isinstance(value, list) else []
+
+
+def current_scenarios_from_state(state: dict[str, Any]) -> list[dict[str, Any]]:
+    scenarios = state.get("scenarios")
+    if not isinstance(scenarios, list):
+        return []
+    current: list[dict[str, Any]] = []
+    for scenario in scenarios:
+        if not isinstance(scenario, dict):
+            continue
+        status = scenario.get("status", {}) if isinstance(scenario.get("status"), dict) else {}
+        label = string_value(status.get("label") or status.get("raw_code"), "Unknown").lower()
+        if label in {"current", "active", "pending"}:
+            current.append(scenario)
+    return current or [scenario for scenario in scenarios if isinstance(scenario, dict)][:3]
+
+
+def play_context_view(paths: dict[str, Path], loaded: dict[str, Any]) -> dict[str, Any]:
+    warnings: list[dict[str, Any]] = []
+    gaps: list[dict[str, Any]] = []
+    blocked = False
+
+    state = loaded.get("state")
+    if not isinstance(state, dict):
+        blocked = True
+        gaps.append(
+            {
+                "area": "capture_file",
+                "field": STANDARD_FILES["state"],
+                "reason": "Play-context view requires captured GET /campaign/state JSON.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["state"],
+                "blocks_view": True,
+            }
+        )
+        state = None
+    else:
+        state = as_object(state, STANDARD_FILES["state"])
+        state_warnings, state_gaps, state_blocked = validate_state_proof(state)
+        warnings.extend(state_warnings)
+        gaps.extend(state_gaps)
+        blocked = blocked or state_blocked
+        gaps.extend(collect_unsupported_gaps("state", state))
+
+    manifest = loaded.get("manifest") if isinstance(loaded.get("manifest"), dict) else None
+    manifest_warnings, manifest_gaps = collect_manifest_warnings(manifest)
+    warnings.extend(manifest_warnings)
+    gaps.extend(manifest_gaps)
+    error_warnings, error_gaps = collect_error_file_warnings(loaded)
+    warnings.extend(error_warnings)
+    gaps.extend(error_gaps)
+
+    pending = loaded.get("pending_deployments") if isinstance(loaded.get("pending_deployments"), dict) else None
+    if pending is None:
+        warnings.append(
+            {
+                "message": "Pending deployments capture is missing; scenario commitment context may be incomplete.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["pending_deployments"],
+            }
+        )
+        gaps.append(
+            {
+                "area": "pending_deployments",
+                "field": STANDARD_FILES["pending_deployments"],
+                "reason": "Play-context view can run without pending deployments, but current scenario/personnel commitment may be incomplete.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["pending_deployments"],
+                "blocks_view": False,
+            }
+        )
+    else:
+        gaps.extend(collect_unsupported_gaps("pending_deployments", pending))
+
+    commands = loaded.get("commands") if isinstance(loaded.get("commands"), dict) else None
+    if commands is None:
+        warnings.append(
+            {
+                "message": "Command readiness capture is missing; guarded command availability is unknown.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["commands"],
+            }
+        )
+        gaps.append(
+            {
+                "area": "command_readiness",
+                "field": STANDARD_FILES["commands"],
+                "reason": "Command readiness was not captured.",
+                "evidence": EVIDENCE_MISSING,
+                "source_file": STANDARD_FILES["commands"],
+                "blocks_view": False,
+            }
+        )
+
+    facts: dict[str, Any] = {}
+    counts: dict[str, Any] = {}
+    if state:
+        finances = state.get("finances", {}) if isinstance(state.get("finances"), dict) else {}
+        personnel = state.get("personnel") if isinstance(state.get("personnel"), list) else []
+        units = state.get("units") if isinstance(state.get("units"), list) else []
+        contracts = state.get("contracts") if isinstance(state.get("contracts"), list) else []
+        reports = state.get("reports", {}) if isinstance(state.get("reports"), dict) else {}
+        repair = state.get("repairs_and_logistics", {}) if isinstance(state.get("repairs_and_logistics"), dict) else {}
+        current_reports = reports.get("current") if isinstance(reports.get("current"), list) else []
+        pending_scenarios = pending.get("pending_scenarios") if isinstance(pending, dict) and isinstance(pending.get("pending_scenarios"), list) else []
+        scenarios_for_headline = pending_scenarios or current_scenarios_from_state(state)
+        command_rows = commands.get("command_readiness") if isinstance(commands, dict) and isinstance(commands.get("command_readiness"), list) else []
+
+        active_contracts = [
+            contract
+            for contract in contracts
+            if isinstance(contract, dict)
+            and string_value((contract.get("status") or {}).get("label") if isinstance(contract.get("status"), dict) else contract.get("status"), "").lower()
+            in {"active", "current"}
+        ]
+        deployable_units = [
+            unit
+            for unit in units
+            if isinstance(unit, dict)
+            and isinstance(unit.get("availability"), dict)
+            and unit["availability"].get("deployable") is True
+        ]
+        damaged_units = [
+            unit
+            for unit in units
+            if isinstance(unit, dict)
+            and string_value(unit.get("damage_state"), "Unknown").lower() not in {"undamaged", "unknown", "none"}
+        ]
+        fatigued_people = [
+            person
+            for person in personnel
+            if isinstance(person, dict)
+            and isinstance(person.get("fatigue"), dict)
+            and raw_value(person["fatigue"].get("value"), 0) not in {0, "0", "Unknown", None}
+        ]
+        injured_people = [
+            person
+            for person in personnel
+            if isinstance(person, dict)
+            and isinstance(person.get("hits"), dict)
+            and raw_value(person["hits"].get("value"), 0) not in {0, "0", "Unknown", None}
+        ]
+        available_commands = [row for row in command_rows if isinstance(row, dict) and string_value(row.get("status")).lower() == "available"]
+        blocked_commands = [row for row in command_rows if isinstance(row, dict) and string_value(row.get("status")).lower() == "blocked"]
+        command_count_evidence = EVIDENCE_COMPUTED if commands else EVIDENCE_MISSING
+        available_command_count: int | str = len(available_commands) if commands else "Unknown"
+        blocked_command_count: int | str = len(blocked_commands) if commands else "Unknown"
+
+        facts = {
+            "finance_headline": {
+                "balance": fact(string_value(finances.get("balance")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.finances.balance"),
+                "loan_balance": fact(string_value(finances.get("loan_balance")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.finances.loan_balance"),
+                "has_active_loans": fact(raw_value(finances.get("has_active_loans"), "Unknown"), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.finances.has_active_loans"),
+            },
+            "contract_headline": {
+                "active_count": fact(len(active_contracts), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.contracts"),
+                "active_contracts": [
+                    {
+                        "id": fact(contract.get("id", "Unknown"), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.contracts[]"),
+                        "display_name": fact(string_value(contract.get("display_name")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.contracts[]"),
+                        "employer": fact(string_value(contract.get("employer")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.contracts[]"),
+                        "end_date": fact(string_value(contract.get("end_date")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.contracts[]"),
+                    }
+                    for contract in first_items(active_contracts)
+                    if isinstance(contract, dict)
+                ],
+            },
+            "deployment_headline": {
+                "pending_scenario_count": fact(
+                    raw_value(pending.get("pending_scenario_count"), len(pending_scenarios)) if isinstance(pending, dict) else "Unknown",
+                    EVIDENCE_LIVE if pending else EVIDENCE_MISSING,
+                    STANDARD_FILES["pending_deployments"],
+                    "$.pending_scenario_count",
+                ),
+                "scenarios": [
+                    {
+                        "id": fact(scenario.get("id", "Unknown"), EVIDENCE_LIVE, STANDARD_FILES["pending_deployments"] if pending_scenarios else STANDARD_FILES["state"], "$.pending_scenarios[]" if pending_scenarios else "$.scenarios[]"),
+                        "display_name": fact(string_value(scenario.get("display_name")), EVIDENCE_LIVE, STANDARD_FILES["pending_deployments"] if pending_scenarios else STANDARD_FILES["state"], "$.pending_scenarios[]" if pending_scenarios else "$.scenarios[]"),
+                        "date": fact(string_value(scenario.get("date")), EVIDENCE_LIVE, STANDARD_FILES["pending_deployments"] if pending_scenarios else STANDARD_FILES["state"], "$.pending_scenarios[]" if pending_scenarios else "$.scenarios[]"),
+                        "assigned_unit_count": fact(raw_value(scenario.get("assigned_unit_count"), count_list(scenario.get("all_unit_ids"))), EVIDENCE_LIVE, STANDARD_FILES["pending_deployments"] if pending_scenarios else STANDARD_FILES["state"], "$.pending_scenarios[]" if pending_scenarios else "$.scenarios[]"),
+                    }
+                    for scenario in first_items(scenarios_for_headline)
+                    if isinstance(scenario, dict)
+                ],
+            },
+            "unit_readiness_headline": {
+                "unit_count": fact(len(units), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.units"),
+                "deployable_count": fact(len(deployable_units), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.units[].availability.deployable"),
+                "damaged_count": fact(len(damaged_units), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.units[].damage_state"),
+                "repair_pressure": fact(repair.get("repair_pressure", {}).get("value", "Unknown") if isinstance(repair.get("repair_pressure"), dict) else "Unknown", EVIDENCE_LIVE, STANDARD_FILES["state"], "$.repairs_and_logistics.repair_pressure"),
+            },
+            "personnel_headline": {
+                "personnel_count": fact(len(personnel), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.personnel"),
+                "fatigued_count": fact(len(fatigued_people), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.personnel[].fatigue"),
+                "injured_count": fact(len(injured_people), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.personnel[].hits"),
+            },
+            "reports_headline": {
+                "current_reports": [
+                    {
+                        "date": fact(string_value(report.get("date")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.reports.current[]"),
+                        "text": fact(string_value(report.get("text")), EVIDENCE_LIVE, STANDARD_FILES["state"], "$.reports.current[]"),
+                    }
+                    for report in first_items(current_reports)
+                    if isinstance(report, dict)
+                ],
+                "report_count": fact(count_list(current_reports), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.reports.current"),
+            },
+            "command_headline": {
+                "available_count": fact(available_command_count, command_count_evidence, STANDARD_FILES["commands"], "$.command_readiness[]"),
+                "blocked_count": fact(blocked_command_count, command_count_evidence, STANDARD_FILES["commands"], "$.command_readiness[]"),
+                "available_commands": [
+                    fact(string_value(row.get("command")), EVIDENCE_LIVE, STANDARD_FILES["commands"], "$.command_readiness[]")
+                    for row in first_items(available_commands)
+                    if isinstance(row, dict)
+                ],
+            },
+        }
+        counts = {
+            "personnel": facts["personnel_headline"]["personnel_count"],
+            "units": facts["unit_readiness_headline"]["unit_count"],
+            "active_contracts": facts["contract_headline"]["active_count"],
+            "pending_scenarios": facts["deployment_headline"]["pending_scenario_count"],
+            "current_reports": facts["reports_headline"]["report_count"],
+            "available_commands": facts["command_headline"]["available_count"],
+            "unsupported": fact(count_list(state.get("unsupported")), EVIDENCE_COMPUTED, STANDARD_FILES["state"], "$.unsupported"),
+        }
+
+    status = "ok"
+    if blocked:
+        status = "blocked"
+    elif manifest_status(manifest) in {"partial", "failed"} or warnings:
+        status = "partial"
+
+    next_actions: list[str] = []
+    if any(gap.get("evidence") in {EVIDENCE_MISSING, EVIDENCE_FAILED, EVIDENCE_UNSUPPORTED} for gap in gaps):
+        next_actions.append("Review gaps before play; record producer/API gaps when missing data blocks live scene startup.")
+    if pending is None:
+        next_actions.append("Rerun scripts/fetch-mekhq-live-api.ps1 with pending deployments enabled when scenario/personnel commitment matters.")
+    if commands is None:
+        next_actions.append("Rerun scripts/fetch-mekhq-live-api.ps1 with command readiness capture when guarded MekHQ actions matter.")
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "view": "play-context",
+        "generated_at": utc_now(),
+        "status": status,
+        "source": source_info(paths),
+        "identity": build_identity(loaded),
+        "facts": facts,
+        "counts": counts,
+        "warnings": warnings,
+        "gaps": gaps,
+        "next_actions": next_actions,
+    }
+
+
 def compact_log_families(logs: dict[str, Any]) -> dict[str, Any]:
     families: dict[str, Any] = {}
     for family_name, family in logs.items():
@@ -842,6 +1100,8 @@ def build_view(args: argparse.Namespace) -> dict[str, Any]:
     loaded, load_warnings, load_gaps = load_inputs(paths)
     if args.view == "summary":
         output = summary_view(paths, loaded)
+    elif args.view == "play-context":
+        output = play_context_view(paths, loaded)
     elif args.view == "person-detail":
         output = person_detail_view(paths, loaded)
     else:
@@ -895,6 +1155,28 @@ def render_text(output: dict[str, Any]) -> str:
                 "",
             ]
         )
+    elif output.get("view") == "play-context":
+        facts = output.get("facts", {})
+        finance = facts.get("finance_headline", {}) if isinstance(facts, dict) else {}
+        deployment = facts.get("deployment_headline", {}) if isinstance(facts, dict) else {}
+        readiness = facts.get("unit_readiness_headline", {}) if isinstance(facts, dict) else {}
+        personnel = facts.get("personnel_headline", {}) if isinstance(facts, dict) else {}
+
+        def fact_value(group: dict[str, Any], key: str) -> str:
+            item = group.get(key) if isinstance(group, dict) else None
+            if isinstance(item, dict):
+                return string_value(item.get("value"))
+            return "Unknown"
+
+        lines.extend(
+            [
+                f"Funds: {fact_value(finance, 'balance')} / loans: {fact_value(finance, 'loan_balance')}",
+                f"Pending scenarios: {fact_value(deployment, 'pending_scenario_count')}",
+                f"Units: {fact_value(readiness, 'unit_count')} total, {fact_value(readiness, 'deployable_count')} deployable, {fact_value(readiness, 'damaged_count')} damaged",
+                f"Personnel: {fact_value(personnel, 'personnel_count')} total, {fact_value(personnel, 'fatigued_count')} fatigued, {fact_value(personnel, 'injured_count')} injured",
+                "",
+            ]
+        )
     counts = output.get("counts", {})
     if isinstance(counts, dict) and counts:
         for key, item in counts.items():
@@ -932,7 +1214,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--commands-file", help="Explicit mekhq-commands.json path.")
     parser.add_argument("--pending-deployments-file", help="Explicit mekhq-pending-deployments.json path.")
     parser.add_argument("--person-detail-file", help="Explicit mekhq-personnel-detail.json path.")
-    parser.add_argument("--view", default="summary", choices=["summary", "person-detail"], help="Compact view to emit.")
+    parser.add_argument("--view", default="summary", choices=["summary", "play-context", "person-detail"], help="Compact view to emit.")
     parser.add_argument("--format", default="json", choices=["json", "text"], help="Output format.")
     args = parser.parse_args(argv)
 

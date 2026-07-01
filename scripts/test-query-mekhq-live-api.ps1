@@ -149,6 +149,50 @@ try {
     Assert-True (($textOutput -join "`n") -match "MekHQ live API query view: summary") "Text output includes summary heading."
     Assert-True (($textOutput -join "`n") -match "Example Live Campaign") "Text output includes campaign name."
 
+    Write-Step "Querying compact play-context facts."
+    $playJson = & python $scriptPath --capture-dir $validCapture --view play-context --format json
+    if ($LASTEXITCODE -ne 0) {
+        $playJson | ForEach-Object { Write-Host $_ }
+        throw "Play-context query failed with exit code $LASTEXITCODE."
+    }
+    $play = $playJson | ConvertFrom-Json
+    Assert-True ($play.view -eq "play-context") "Play-context view is selected."
+    Assert-True ($play.status -eq "ok") "Valid play-context capture reports ok."
+    Assert-True ($play.identity.campaign_name.value -eq "Example Live Campaign") "Play-context includes campaign identity."
+    Assert-True ($play.facts.finance_headline.balance.value -eq "2,500,000 C-bills") "Play-context includes finance headline."
+    Assert-True ($play.facts.deployment_headline.pending_scenario_count.value -eq 2) "Play-context includes pending scenario count."
+    Assert-True (@($play.facts.deployment_headline.scenarios).Count -ge 1) "Play-context includes scenario headline rows."
+    Assert-True ($play.facts.unit_readiness_headline.deployable_count.value -eq 1) "Play-context includes unit readiness headline."
+    Assert-True ($play.facts.personnel_headline.personnel_count.value -eq 1) "Play-context includes personnel headline."
+    Assert-True (@($play.facts.reports_headline.current_reports).Count -eq 1) "Play-context includes visible current reports."
+    Assert-True ($play.facts.command_headline.available_count.value -ge 1) "Play-context includes command readiness headline."
+    Assert-True (($play.source.files | ForEach-Object { $_.file }) -contains "mekhq-state.json") "Play-context source files include state capture."
+
+    Write-Step "Rendering play-context text output."
+    $playText = & python $scriptPath --capture-dir $validCapture --view play-context --format text
+    if ($LASTEXITCODE -ne 0) {
+        $playText | ForEach-Object { Write-Host $_ }
+        throw "Play-context text output query failed with exit code $LASTEXITCODE."
+    }
+    Assert-True (($playText -join "`n") -match "MekHQ live API query view: play-context") "Play-context text output includes heading."
+    Assert-True (($playText -join "`n") -match "Pending scenarios: 2") "Play-context text output includes pending scenario headline."
+
+    Write-Step "Checking play-context remains partial without optional pending deployments and commands."
+    $partialPlayCapture = New-CaptureFixture -Name "play-context-partial"
+    Remove-Item -LiteralPath (Join-Path $partialPlayCapture "mekhq-pending-deployments.json") -Force
+    Remove-Item -LiteralPath (Join-Path $partialPlayCapture "mekhq-commands.json") -Force
+    $partialPlayJson = & python $scriptPath --capture-dir $partialPlayCapture --view play-context --format json
+    if ($LASTEXITCODE -ne 0) {
+        $partialPlayJson | ForEach-Object { Write-Host $_ }
+        throw "Partial play-context query should remain usable."
+    }
+    $partialPlay = $partialPlayJson | ConvertFrom-Json
+    Assert-True ($partialPlay.status -eq "partial") "Missing optional play-context captures report partial."
+    Assert-True ($partialPlay.facts.deployment_headline.pending_scenario_count.value -eq "Unknown") "Missing pending deployments preserves Unknown."
+    Assert-True ($partialPlay.facts.command_headline.available_count.value -eq "Unknown") "Missing command readiness preserves Unknown."
+    Assert-True (@($partialPlay.gaps | Where-Object { $_.field -eq "mekhq-pending-deployments.json" }).Count -eq 1) "Missing pending deployments is recorded as a gap."
+    Assert-True (@($partialPlay.gaps | Where-Object { $_.field -eq "mekhq-commands.json" }).Count -eq 1) "Missing commands is recorded as a gap."
+
     Write-Step "Querying compact personnel detail facts."
     $personCapture = New-CaptureFixture -Name "person-detail" -IncludePersonDetail
     $personJson = & python $scriptPath `
@@ -235,6 +279,12 @@ try {
     Assert-True ($LASTEXITCODE -ne 0) "Missing required state exits non-zero."
     $missingState = $missingStateJson | ConvertFrom-Json
     Assert-True ($missingState.status -eq "blocked") "Missing required state reports blocked."
+
+    Write-Step "Checking missing state blocks play-context view."
+    $missingPlayStateJson = & python $scriptPath --capture-dir $missingStateCapture --view play-context --format json
+    Assert-True ($LASTEXITCODE -ne 0) "Missing required state exits non-zero for play-context."
+    $missingPlayState = $missingPlayStateJson | ConvertFrom-Json
+    Assert-True ($missingPlayState.status -eq "blocked") "Missing required state reports blocked for play-context."
 
     Write-Step "Checking missing read-only proof blocks state-based summary view."
     $badProofCapture = New-CaptureFixture -Name "bad-read-only"
