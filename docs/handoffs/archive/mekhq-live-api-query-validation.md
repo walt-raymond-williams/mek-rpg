@@ -21,7 +21,7 @@ Read these first:
 - `docs/current/DOCUMENTATION_WORKFLOW.md`
 - `docs/current/GITHUB_ISSUE_WORKFLOW.md`
 - `docs/current/TASKS.md`
-- `docs/handoffs/active/mekhq-live-api-query-views-epic.md`
+- `docs/handoffs/archive/mekhq-live-api-query-views-epic.md`
 - Contract doc created by issue `#140`
 - Query helper and workflow docs from issues `#141`-`#144`
 
@@ -50,7 +50,7 @@ Issue `#144` changed docs to review during validation:
 - `docs/current/GM_CONTEXT_PACKET_DESIGN.md`
 - `docs/current/MEKHQ_LINKED_PLAY_LOOP.md`
 - `docs/current/KNOWN_COMMANDS.md`
-- `docs/handoffs/active/mekhq-live-api-query-validation.md`
+- `docs/handoffs/archive/mekhq-live-api-query-validation.md`
 
 ## Files And Areas
 
@@ -81,7 +81,7 @@ If live MekHQ is available, also run the documented fetch-plus-query command seq
 - Fixture-backed validation is acceptable if live MekHQ is unavailable, but record that explicitly.
 - Do not commit raw captures.
 - Do not close the epic if child issues remain open or the workflow docs still point agents at raw JSON as the normal path.
-- Do not archive handoffs until issue `#145` verifies whether `#139` can close.
+- Archive handoffs after issue `#145` verifies whether `#139` can close.
 
 ## Required Close-Out Step
 
@@ -99,3 +99,7 @@ Before closing, review `docs/current/TASKS.md`, `docs/current/ROADMAP.md`, and t
 ## Open Questions
 
 - Should a later issue integrate query views directly into `build-gm-context-packet.ps1`?
+
+## Archive Note
+
+Issue `#145` is complete. Fixture-backed validation passed, live MekHQ validation was blocked because the local API was unavailable, and the next recommended task is issue `#114`. See `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`.
