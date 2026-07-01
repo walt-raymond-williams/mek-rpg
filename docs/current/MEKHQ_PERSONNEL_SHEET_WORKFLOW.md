@@ -4,7 +4,9 @@ Status: issue `#65` workflow.
 
 Purpose: define how parsed MekHQ personnel become useful campaign-local `pcs.md` and `npcs.md` entries without inventing A Time of War stats or blurring MekHQ-owned roster facts with MEK-RPG-owned RPG memory.
 
-## Current Parsing Coverage
+## Current Live API And Parsing Coverage
+
+For active MekHQ-linked play, prefer the live API capture and compact query views over save-derived summaries. `scripts/fetch-mekhq-live-api.ps1` can capture an explicit single-person detail read, and `scripts/query-mekhq-live-api.py --view person-detail` emits compact selected-person facts for rich PC/NPC records without dumping raw logs. Use `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md` for the issue `#125` field map and producer-request boundary.
 
 `scripts/summarize-mekhq-save.py` currently emits these personnel fields from the read-only MekHQ summary:
 
@@ -186,7 +188,7 @@ Use this shape for MekHQ-linked NPCs in `npcs.md`.
 Refreshes must preserve MEK-RPG memory while updating MekHQ-owned facts from the latest saved import.
 
 1. Read the current `mekhq-bridge.md` import timestamp and cross-reference entries.
-2. Compare the latest read-only summary or checkpoint export by MekHQ person id.
+2. Compare the latest live query view, read-only summary, or checkpoint export by MekHQ person id.
 3. Update only the `MekHQ-Owned Roster Facts` fields from imported hard facts.
 4. Preserve `MEK-RPG A Time of War Overlay`, `MEK-RPG NPC Overlay`, `RPG Memory`, and `Sheet And Rules Gaps` unless the user explicitly edits or retcons them.
 5. If a linked person is missing from the latest import, mark `Link status: needs confirmation` or `former roster member`; do not delete the entry if it has scene memory.
@@ -211,7 +213,7 @@ Use `mekhq-bridge.md` for technical discrepancies and the relevant PC/NPC entry 
 
 This first pass is documentation-only. Do not update `bootstrap-mekhq-campaign.py` yet.
 
-Reason: bootstrap currently creates sparse starter stubs from one summary snapshot. A richer refresh/merge tool would need stable person ids, merge behavior, deletion rules, discrepancy reporting, and fixture coverage. The workflow should be used manually first, then converted into a focused helper after real MekHQ-linked play proves the fields and merge behavior.
+Reason: bootstrap currently creates sparse starter stubs from one summary snapshot. A richer refresh/merge tool would need stable person ids, live `person-detail` input, merge behavior, deletion rules, discrepancy reporting, and fixture coverage. The workflow should be used manually first, then converted into a focused helper after real MekHQ-linked play proves the fields and merge behavior.
 
 When code changes become justified, prefer a companion helper over expanding bootstrap:
 

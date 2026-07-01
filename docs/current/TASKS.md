@@ -6,11 +6,12 @@
 
 ## Next
 
-- Issue `#125`: coordinate MekHQ personnel and character-detail API needs for rich character records.
+- None.
 
 ## Backlog
 
 - Issue `#139`: MekHQ live API query/context views epic is complete. Child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md` and archived handoffs under `docs/handoffs/archive/` for future query-view context.
+- Issue `#125`: MekHQ personnel and character-detail API needs are complete in `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md`; use it when linking rich PC/NPC records to live MekHQ `person-detail` facts or drafting producer follow-up requests.
 - Issue `#124`: rich character-record validator is complete; `scripts/validate-rich-character-records.ps1` defaults to the template and has disposable fixture coverage in `scripts/test-validate-rich-character-records.ps1`.
 - Issue `#123`: play-mode rich character capture workflow is complete in `gm/character-record-capture.md` and linked from GM/campaign save guidance.
 - Issue `#122`: rich character templates and GM workflow docs are complete; `campaigns/_template/pcs.md`, `campaigns/_template/npcs.md`, `campaigns/README.md`, `gm/state-save-checklist.md`, and `docs/current/GM_CONTEXT_PACKET_DESIGN.md` now link to the schema and capture rich memory/portrayal fields.
@@ -18,7 +19,7 @@
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, use the completed hardening docs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
 - Issue `#127`: Profession Capability System epic. Design/scaffold child issues `#128` through `#138` are complete. Keep the epic open for a future runtime implementation issue that starts with permission and reveal-filter logic using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; do not run Pre-Mission Intel Check as executable until runtime helpers and tests exist.
 - Issue `#113`: MekHQ API-first playtest hardening epic is complete. Child issues `#116`, `#115`, `#117`, and `#114` are complete; `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md` records the fixture-backed validation and live API unavailability.
-- Issue `#120`: parent epic for rich PC/NPC character records for play; child issues are `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination. Start with issue `#121` after the current MekHQ API-first playtest work unless the user prioritizes character records sooner.
+- Issue `#120`: rich PC/NPC character records epic is complete; schema, templates, play capture workflow, focused validator, and MekHQ personnel/API coordination are all in place. Future selected-person refresh helpers or producer tickets should wait for real MekHQ-linked rich records or live play gaps.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
 - Use `docs/current/MEKHQ_CHECKPOINT_CROSS_BOARD_TRACKING_PROPOSAL.md` when coordinating MEK-RPG issue dependencies with MegaMek-side exporter/schema tickets.
 - After real PC sheets, vehicle sheets, structured mission clocks, or richer contract records exist, add focused companion validators instead of expanding the generic campaign-state validator immediately.
@@ -36,6 +37,8 @@
 
 ## Done
 
+- Issue `#120` completed: rich PC/NPC character records for play now have the schema, campaign templates, GM capture workflow, focused validator, MekHQ personnel/API needs memo, archived child handoffs, and a completed epic handoff.
+- Issue `#125` completed: added `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md` to map current live API/person-detail inputs to rich character records, separate MekHQ-owned roster facts from MEK-RPG-only overlays, define producer-side personnel detail asks, link the memo from the personnel workflow and MegaMek live API change request, and archive the handoff.
 - Issue `#124` completed: added focused rich character-record validation for template or explicitly migrated campaign `pcs.md`/`npcs.md` files, with checks for required rich-record headings, supported visibility labels, selected evidence labels, legacy unresolved-marker warnings, protected-source/raw-save markers, disposable fixture tests, quick-suite integration, and command documentation; archived the issue handoff.
 - Issue `#123` completed: added `gm/character-record-capture.md` with session-note, quick-stub, and full-rich-record capture levels; documented update triggers for sheet gaps, motives, relationships, secrets/uncertainty, portrayal cues, MekHQ-linked personnel, and state-change proposals; linked the workflow from scene loop, session procedure, state-save checklist, and campaign save guidance; archived the issue handoff.
 - Issue `#122` completed: updated PC/NPC templates, campaign save guidance, state-save checklist, and GM context packet design so rich character records naturally capture sheet status, MekHQ ownership boundaries, RPG memory, secrets/uncertainty, relationships, speech/behavior cues, portrayal notes, and update history; left existing campaign saves unmigrated by design and archived the issue handoff.

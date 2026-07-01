@@ -178,6 +178,7 @@ These are suggestions for the MegaMek/MekHQ board, not MEK-RPG-owned implementat
 
 - Expose method-backed finance balance, debt/loan status, recent transaction summaries, and finance warnings.
 - Deepen personnel availability, injury, fatigue, role, rank, salary/pay, commander marker, and market/applicant membership fields.
+- Preserve rich-character-friendly personnel detail fields: stable person ids, lifecycle/status labels, assignment and pending-deployment context, source-owned injury/fatigue/healing facts, bounded skill/XP/option/award summaries, privacy-aware log-family metadata, and explicit unknown/unsupported states. MEK-RPG owns RPG motives, secrets, preferences, portrayal notes, and A Time of War legal-build overlays.
 - Deepen unit condition, crew/tech links, repair summary, transport/cargo, and scenario assignment fields.
 - Add active-contract and scenario-rich live API fixtures so MEK-RPG can validate non-empty operational campaign context.
 - Deepen repair/logistics queues, stable work item ids, assigned techs, time remaining, parts pressure, acquisition pressure, and warning fields.
@@ -194,6 +195,7 @@ These are suggestions for the MegaMek/MekHQ board, not MEK-RPG-owned implementat
 - Live API adapter issue: `#107`
 - Roadmap audit issue: `#108`
 - Change request package issue: `#109`
+- Rich character personnel/API needs: `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md`
 - Adapter implementation: `scripts/sync-mekhq-live-campaign.py`
 - Adapter coverage: `scripts/test-sync-mekhq-live-campaign.ps1`
 

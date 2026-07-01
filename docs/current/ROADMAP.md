@@ -83,7 +83,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Future issue candidate: MekHQ month-tick and prompt-resolution API support. Start from the completed tickets and handoffs under issues `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so month-boundary prompts, advancement awards, generated reports, and blocked command responses are explicitly in scope where relevant; then create a dedicated epic and child issues when the story boundaries below are ready.
 - The immediate checkpoint wave remains issued as `#95`-`#100`; live MekHQ API consumer follow-up is complete as `#102`-`#106`, with expanded local API consumption complete as `#110`; controlled MekHQ command API planning is complete as `#111`; command-write guidance follow-up is complete as `#112`; live API-first campaign-load and producer-package follow-up is complete as issues `#107`-`#109`; the next rules/source-review expansion wave is complete as `#90`-`#94`; checkpoint export adapter experiments issues `#84`-`#89` are complete; ruling safety and deterministic mechanics maturation is complete as `#70`-`#83`; the previous rules source-review expansion is complete as `#59`-`#64`; MegaMek bridge-primitives follow-up issues `#66`-`#69` are complete. MekHQ bridge epic issue `#25`, manual MekHQ pending workflow validation issue `#37`, rules/index infrastructure issues `#46`-`#51`, transport/tactical support issues `#52`-`#55`, initial dashboard/session tooling design issues `#56`-`#58`, MekHQ regression coverage issue `#38`, and GM context architecture issue `#30` are complete.
 - The read-only dashboard JSON adapter exists with fixture coverage from issue `#101`. Future dashboard UI issues can build on that adapter, but must preserve the read-only/protected-source/MekHQ-save boundaries.
-- Issued: rich PC/NPC character records for play are tracked by epic issue `#120`, with child issues `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination.
+- Complete: rich PC/NPC character records for play are tracked by epic issue `#120`; child issues `#121` through `#125` are complete.
 - Complete: issue `#126` improved RPG game-mode prose quality by adding reusable narrative tone profiles and active Sharpe's Strikers command-voice settings.
 - Issued: Profession Capability System is tracked by epic issue `#127`, with child issues `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` tests/spec plan for gated reveal, `#136` LLM prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Use `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, and `docs/handoffs/active/profession-capability-system-epic.md` as the start point.
 - Complete: MekHQ live API query/context views epic issue `#139` and child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`, `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`, and archived handoffs under `docs/handoffs/archive/` as the start point.
@@ -149,16 +149,16 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 
 ### Rich PC/NPC character records for play
 
-- Status: In progress; schema child complete.
+- Status: Complete.
 - Epic issue: `#120`
 - Child issues: `#121`, `#122`, `#123`, `#124`, and `#125`
 - Handoffs:
-  - `docs/handoffs/active/rich-character-records-epic-120.md`
+  - `docs/handoffs/archive/rich-character-records-epic-120.md`
   - `docs/handoffs/archive/rich-character-record-schema-121.md`
   - `docs/handoffs/archive/rich-character-record-templates-workflow-122.md`
   - `docs/handoffs/archive/rich-character-record-play-capture-123.md`
   - `docs/handoffs/archive/rich-character-record-validator-124.md`
-  - `docs/handoffs/active/rich-character-record-mekhq-api-needs-125.md`
+  - `docs/handoffs/archive/rich-character-record-mekhq-api-needs-125.md`
 - Mode: Project development
 - Goal: make concrete PC/NPC records a first-class play aid by combining A Time of War sheet categories with LLM-usable roleplaying context: personality, past history, tendencies, preferences, motives, relationships, secrets or uncertainty, speech and behavior cues, and portrayal notes.
 - Starting point:
@@ -169,14 +169,15 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
   - `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` is the canonical schema and ownership baseline from issue `#121`.
   - `gm/character-record-capture.md` is the play-mode capture/update workflow from issue `#123`.
   - `scripts/validate-rich-character-records.ps1` is the focused validator from issue `#124`; it checks template or explicitly migrated campaign record shape without legal-build validation.
+  - `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md` maps current live MekHQ personnel/person-detail facts to rich records and records producer-side API asks from issue `#125`.
 - Child issues:
   1. `#121`: complete. Designed the canonical rich PC/NPC record schema and ownership model in `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`.
   2. `#122`: complete. Updated campaign templates and GM workflow docs to use the rich record model.
   3. `#123`: complete. Defined play-mode capture and update triggers so characters become durable records without slowing scenes.
   4. `#124`: complete. Prototyped a focused rich character-record validator with fixture coverage and command docs.
-  5. `#125`: coordinate MekHQ personnel and character-detail API needs from the MEK-RPG side.
+  5. `#125`: complete. Coordinated MekHQ personnel and character-detail API needs from the MEK-RPG side.
 - Boundary: do not infer A Time of War stats from narrative role, MekHQ rank, or personality. Do not copy the source character sheet layout, source sample characters, tables, trait catalogs, skill catalogs, purchased PDFs, raw extracted text, or raw MekHQ payloads. Do not edit the MegaMek workspace from this repository; create project-local change requests for producer gaps.
-- Dependency order: proceed to `#125`; preserve the ownership boundary between MekHQ-owned roster facts and MEK-RPG-owned A Time of War overlays, motives, secrets, relationships, portrayal notes, and scene memory.
+- Closeout: rich character record schema, templates, play capture workflow, focused validator, and MekHQ API coordination are complete. Future work should wait for real MekHQ-linked rich records or live play gaps before adding a selected-person refresh helper or producer ticket.
 
 ### MekHQ API-first playtest hardening
 
