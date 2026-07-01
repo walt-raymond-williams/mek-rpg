@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#136`: add LLM prompt/context assembly design under parent epic `#127`.
+- Issue `#137`: add handoff documentation for the profession capability system under parent epic `#127`.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
@@ -14,7 +14,7 @@
 
 - Issue `#139`: MekHQ live API query/context views epic. Child issues are `#140` contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, `#145` validation/final tracking, and `#146` personnel detail endpoint consumption. Goal: keep raw live API captures ignored while giving agents compact deterministic views of MekHQ-owned live context.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, strengthen existing issues and handoffs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
-- Issue `#127`: Profession Capability System epic. Child issues are `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` reveal-gating tests/spec plan, `#136` prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Issues `#128`, `#129`, `#130`, `#131`, `#132`, `#133`, `#134`, and `#135` are complete; start with issue `#136` when the user prioritizes this epic.
+- Issue `#127`: Profession Capability System epic. Child issues are `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` reveal-gating tests/spec plan, `#136` prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Issues `#128`, `#129`, `#130`, `#131`, `#132`, `#133`, `#134`, `#135`, and `#136` are complete; start with issue `#137` when the user prioritizes this epic.
 - Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues `#116` static audit, `#115` startup SOP, and `#117` gap reporting are complete; issue `#114` remains for validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#120`: parent epic for rich PC/NPC character records for play; child issues are `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination. Start with issue `#121` after the current MekHQ API-first playtest work unless the user prioritizes character records sooner.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
@@ -33,6 +33,7 @@
 
 ## Done
 
+- Issue `#136` completed: added `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md` defining safe prompt inputs, prompt layers, payload shape, in-universe report rules, confidence labels, denied/failure prompts, tests for prompt payload inspection, and pure-transform implementation boundaries.
 - Issue `#135` completed: added `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md` with fixture shape, sentinel strategy, permission-denial tests, reveal-level tests, prompt payload leak checks, missing/unstable field cases, harness choice, quick-suite integration criteria, and future runtime test definition of done.
 - Issue `#134` completed: added `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md` defining raw/adjudication/filtered-prompt/player/debug layers, hidden-data access order, forbidden prompt fields by reveal level, allowed output matrix, debug/log redaction, fail-closed behavior, sanitized fixture strategy, and a future allowed/forbidden test matrix.
 - Issue `#133` completed: finalized `docs/current/PRE_MISSION_INTEL_CHECK.md` with authority flow, public/MekHQ-owned/hidden/derived input categories, support-role limits, reveal filtering rules, in-universe example outputs, future test scenarios, and implementation readiness gates; tightened the action spec's data-access and prompt-filter expectations.

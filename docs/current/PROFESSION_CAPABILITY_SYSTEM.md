@@ -169,6 +169,7 @@ Hidden data may be read by a MEK RPG adapter only as protected adjudication inpu
 
 Boundary design: `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`.
 Test plan: `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`.
+Prompt/context design: `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`.
 
 1. Load raw scenario/personnel data into an internal context object.
 2. Resolve actor profession and permitted action.
@@ -197,9 +198,10 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 8. Define hidden-data access boundaries. Status: complete in issue `#134`.
 9. Add gated reveal test/spec plan. Status: complete in issue `#135`.
 10. Add hidden-data boundary tests when runtime helpers exist.
-11. Add LLM prompt/context assembly guidance and tests.
-12. Validate against a sanitized MekHQ scenario fixture.
-13. Expand profession actions only after the first action proves the pattern.
+11. Add LLM prompt/context assembly guidance. Status: complete in issue `#136`.
+12. Add LLM prompt/context assembly tests when runtime helpers exist.
+13. Validate against a sanitized MekHQ scenario fixture.
+14. Expand profession actions only after the first action proves the pattern.
 
 ## GitHub Issue Plan
 
@@ -212,7 +214,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 - `#133`: Add Pre-Mission Intel Check Design. Complete.
 - `#134`: Define Hidden-Data Access Boundaries. Complete.
 - `#135`: Add Tests/Spec Plan For Gated Data Reveal. Complete.
-- `#136`: Add LLM Prompt/Context Assembly Design.
+- `#136`: Add LLM Prompt/Context Assembly Design. Complete.
 - `#137`: Add Handoff Documentation.
 - `#138`: Update Roadmap.
 

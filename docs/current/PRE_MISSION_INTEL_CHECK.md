@@ -9,6 +9,7 @@
 - Dice/reveal design: `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`.
 - Hidden-data boundary: `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`.
 - Gated reveal test plan: `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`.
+- Prompt/context assembly: `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`.
 - Implementation status: Not implemented.
 
 ## Purpose
@@ -248,4 +249,4 @@ Future implementation tests should verify:
 
 ## Implementation Readiness
 
-Ready for later implementation only after issue `#136` defines prompt/context assembly and a runtime slice adds the tests planned in `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`. Hidden-data boundaries are defined in `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`, but this action remains design metadata and should not be offered as an executable helper until tests and prompt filtering exist.
+Ready for later implementation only after a runtime slice adds the tests planned in `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`. Hidden-data boundaries and prompt assembly are defined, but this action remains design metadata and should not be offered as an executable helper until tests and prompt filtering exist.

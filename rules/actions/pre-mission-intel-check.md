@@ -75,6 +75,7 @@ test_expectations:
 - Registry design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
 - Dice/reveal design: `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`.
 - Hidden-data boundary: `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`.
+- Prompt/context assembly: `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`.
 
 ## Owning Professions
 
