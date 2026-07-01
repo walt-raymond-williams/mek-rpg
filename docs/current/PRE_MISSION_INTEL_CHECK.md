@@ -7,6 +7,7 @@
 - Action spec: `rules/actions/pre-mission-intel-check.md`.
 - Registry design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
 - Dice/reveal design: `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`.
+- Hidden-data boundary: `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`.
 - Implementation status: Not implemented.
 
 ## Purpose
@@ -246,4 +247,4 @@ Future implementation tests should verify:
 
 ## Implementation Readiness
 
-Ready for later implementation only after issues `#134`, `#135`, and `#136` define hidden-data boundaries, fixture-backed reveal tests, and prompt/context assembly. Until then, this action remains design metadata and should not be offered as an executable helper.
+Ready for later implementation only after issues `#135` and `#136` define fixture-backed reveal tests and prompt/context assembly. Hidden-data boundaries are defined in `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`, but this action remains design metadata and should not be offered as an executable helper until tests and prompt filtering exist.

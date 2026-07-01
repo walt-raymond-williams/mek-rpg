@@ -167,6 +167,8 @@ Keep this configurable until character records, exact skill inputs, and broader 
 
 Hidden data may be read by a MEK RPG adapter only as protected adjudication input. It must not be placed directly into player-facing prompt context. Use this flow instead:
 
+Boundary design: `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md`.
+
 1. Load raw scenario/personnel data into an internal context object.
 2. Resolve actor profession and permitted action.
 3. Roll or adjudicate reveal level.
@@ -191,10 +193,11 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 5. Decide the first dice and reveal-level mapping. Status: complete in issue `#132`.
 6. Finalize Pre-Mission Intel Check design. Status: complete in issue `#133`.
 7. Implement Pre-Mission Intel Check as a deterministic, testable slice.
-8. Add hidden-data boundary tests.
-9. Add LLM prompt/context assembly guidance and tests.
-10. Validate against a sanitized MekHQ scenario fixture.
-11. Expand profession actions only after the first action proves the pattern.
+8. Define hidden-data access boundaries. Status: complete in issue `#134`.
+9. Add hidden-data boundary tests.
+10. Add LLM prompt/context assembly guidance and tests.
+11. Validate against a sanitized MekHQ scenario fixture.
+12. Expand profession actions only after the first action proves the pattern.
 
 ## GitHub Issue Plan
 
@@ -205,7 +208,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 - `#131`: Add Profession Action Registry Design. Complete.
 - `#132`: Add Dice-Roll And Reveal-Level Design. Complete.
 - `#133`: Add Pre-Mission Intel Check Design. Complete.
-- `#134`: Define Hidden-Data Access Boundaries.
+- `#134`: Define Hidden-Data Access Boundaries. Complete.
 - `#135`: Add Tests/Spec Plan For Gated Data Reveal.
 - `#136`: Add LLM Prompt/Context Assembly Design.
 - `#137`: Add Handoff Documentation.
