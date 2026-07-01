@@ -2,7 +2,7 @@
 
 ## Issue
 
-- GitHub issue: `#127`.
+- GitHub issue: `#127` (epic).
 - Roadmap entry: Profession Capability System.
 - Mode: Project development.
 - Priority: Next after current MekHQ API-first playtest hardening unless user reprioritizes.
@@ -33,7 +33,21 @@ Read these first:
 - Schema/template work is complete in issue `#128`; initial profile content is complete in issue `#129`; start remaining work with lookup/action-registry design.
 - Implement Pre-Mission Intel Check only after hidden-data filtering and tests are specified.
 - Keep player-facing outputs in-universe and filtered by reveal level.
-- Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, and `#136` LLM prompt/context assembly are complete; `#137` handoff documentation and `#138` roadmap updates remain.
+- Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, and `#137` handoff documentation are complete; `#138` roadmap updates remain.
+
+## Child Issue Links
+
+- `#128`: Add Profession Profile Schema/Template. Complete.
+- `#129`: Add Initial Profession Profile Documents. Complete.
+- `#130`: Add Profession Lookup Design. Complete.
+- `#131`: Add Profession Action Registry Design. Complete.
+- `#132`: Add Dice-Roll And Reveal-Level Design. Complete.
+- `#133`: Add Pre-Mission Intel Check Design. Complete.
+- `#134`: Define Hidden-Data Access Boundaries. Complete.
+- `#135`: Add Tests/Spec Plan For Gated Data Reveal. Complete.
+- `#136`: Add LLM Prompt/Context Assembly Design. Complete.
+- `#137`: Add Handoff Documentation. Complete.
+- `#138`: Update Roadmap. Remaining closeout item for this planning/design wave.
 
 ## Files And Areas
 
@@ -54,6 +68,15 @@ Likely files to read or edit:
 - `docs/current/ROADMAP.md`
 - `docs/current/TASKS.md`
 - this handoff
+
+## Implementation Order
+
+1. Finish issue `#138` roadmap/task closeout for this design wave.
+2. Leave epic `#127` open unless the user wants to treat this scaffold/design wave as the full epic scope.
+3. Do not implement runtime action execution until a new issue explicitly scopes a helper.
+4. First runtime issue should start with permission and reveal-filter logic, using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`.
+5. Prompt assembly runtime work should consume only filtered payloads from `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`.
+6. Add `scripts/test-profession-gated-reveal.ps1` to `scripts/test-all.ps1 -Quick` only after a deterministic helper exists.
 
 ## Commands
 
@@ -95,6 +118,7 @@ If runtime work touches rule indexes, also run:
 - Pre-Mission Intel Check has fixture-backed hidden-data filtering tests before player-facing use.
 - Prompt/context assembly tests prove unrevealed hidden data is absent.
 - Roadmap, task state, issues, and handoffs stay synchronized.
+- This handoff remains active until epic `#127` closes; archive only when the epic closes.
 
 ## Open Questions
 
@@ -105,6 +129,7 @@ If runtime work touches rule indexes, also run:
 - Resolved for issue `#134`: use `docs/current/PROFESSION_HIDDEN_DATA_BOUNDARIES.md` to enforce layer separation, forbidden prompt fields by reveal level, debug/log redaction, fail-closed behavior, sanitized fixture strategy, and allowed/forbidden test matrix.
 - Resolved for issue `#135`: use `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; first automated test should be PowerShell unless the runtime helper is Python, should use sanitized sentinel fixtures, and should join `scripts/test-all.ps1 -Quick` only after deterministic runtime filtering or prompt assembly exists.
 - Resolved for issue `#136`: use `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`; prompt assembly is a pure transformation from filtered reveal result to safe prompt payload and must not read raw hidden data, roll dice, resolve permissions, or call live MekHQ.
+- Resolved for issue `#137`: this handoff is the single active starting point for the profession epic; child handoffs are unnecessary until a future runtime issue needs narrower execution context.
 - Remaining API review: complete MekHQ role vocabulary, secondary/staff assignments, and scenario commitment fields need fixture evidence before runtime lookup.
 - Resolved for issue `#128`: profile metadata lives in YAML front matter inside Markdown for now.
 - What roll system becomes canonical for non-combat profession actions?
