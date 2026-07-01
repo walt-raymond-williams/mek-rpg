@@ -38,15 +38,17 @@ Use this procedure when the user asks to start, resume, or play a campaign scene
    - BattleMechs, vehicles, facing, heat, armor locations, hex movement, weapon ranges, ammunition, or detailed unit state: `gm/switch-to-classic-battletech.md`.
 5. If the committed summaries are insufficient, use `gm/rules-adjudication-posture.md`; make a provisional ruling only when needed to keep play moving, then record the gap in the active campaign folder's `rules-gaps.md`.
 6. Track important choices, injuries, equipment losses, faction reactions, relationship changes, location changes, asset changes, promises, rewards, costs, and new table canon.
-7. Keep playtest-only facts separate from table canon unless the user explicitly promotes them.
-8. For MekHQ-linked campaigns, use `scripts/fetch-mekhq-live-api.ps1` plus `scripts/query-mekhq-live-api.py` focused views for MekHQ-owned context during the scene when a fresh read is needed. If a needed read is absent or insufficient, record it in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` instead of routing around the API with active-save parsing.
-9. For MekHQ-linked campaigns, use the `command-readiness` query view or a fresh `-SelectorDetailFull` capture before routing a committed hard ledger action to a manual fallback. If a supported guarded command is available, use readiness selectors and guard facts, run dry-run/preflight for high-value actions, require approval or documented automation policy, execute with prompt policy and idempotency safeguards, live reread, and reconcile. If no supported command is available or it refuses, write the intent to `pending-mekhq-actions.md` as a manual fallback or blocked producer request instead of treating it as final funds, roster, contract, repair, scenario, or date fact.
+7. Use `gm/character-record-capture.md` when new or changed PCs/NPCs may need durable memory. During an active scene, capture the smallest useful note first; expand rich records during the scene-end or after-play save pass unless the record is needed immediately.
+8. Keep playtest-only facts separate from table canon unless the user explicitly promotes them.
+9. For MekHQ-linked campaigns, use `scripts/fetch-mekhq-live-api.ps1` plus `scripts/query-mekhq-live-api.py` focused views for MekHQ-owned context during the scene when a fresh read is needed. If a needed read is absent or insufficient, record it in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` instead of routing around the API with active-save parsing.
+10. For MekHQ-linked campaigns, use the `command-readiness` query view or a fresh `-SelectorDetailFull` capture before routing a committed hard ledger action to a manual fallback. If a supported guarded command is available, use readiness selectors and guard facts, run dry-run/preflight for high-value actions, require approval or documented automation policy, execute with prompt policy and idempotency safeguards, live reread, and reconcile. If no supported command is available or it refuses, write the intent to `pending-mekhq-actions.md` as a manual fallback or blocked producer request instead of treating it as final funds, roster, contract, repair, scenario, or date fact.
 
 ## After Play
 
 1. Use `gm/state-save-checklist.md`.
 2. Update the active campaign folder with the scene summary, rolls, state changes, rewards, costs, hooks, rules gaps, playtest notes, and next resume prompt.
 3. Update persistent facts in the active campaign folder: current state, mission status, PCs, NPCs, factions, locations, assets, relationships, hooks, and safety/tone notes.
-4. Add missing-rule or procedure problems to the active campaign folder's `rules-gaps.md` or `playtest-notes.md`.
-5. For MekHQ-linked play, confirm any live API read gaps discovered during play were added to `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
-6. For project-maintenance work, file follow-up GitHub issues only when the user asks or when running an explicit playtest close-out such as issue `#12`.
+4. Use `gm/character-record-capture.md` to move durable character facts from `session-log.md` into `pcs.md`, `npcs.md`, `relationships.md`, or `hooks.md` when needed.
+5. Add missing-rule or procedure problems to the active campaign folder's `rules-gaps.md` or `playtest-notes.md`.
+6. For MekHQ-linked play, confirm any live API read gaps discovered during play were added to `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
+7. For project-maintenance work, file follow-up GitHub issues only when the user asks or when running an explicit playtest close-out such as issue `#12`.

@@ -13,3 +13,5 @@ When a scene depends on setting assumptions, read `campaign-state/setting-basics
 For faction, source authority, temporary rulings, NPC construction, rank/title, or world-orientation questions, route through `indexes/task-router.md` to the relevant universe, campaign, gamemastering, or GM orientation aid before making durable rulings.
 
 End a scene when the objective is resolved, the situation changes location, or a tactical encounter begins.
+
+At scene end, use `gm/character-record-capture.md` to decide whether new or changed PCs/NPCs stay in `session-log.md`, get quick stubs, or need full rich records in `pcs.md` or `npcs.md`.

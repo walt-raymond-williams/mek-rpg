@@ -47,7 +47,7 @@ When a completed `session-log.md` should be preserved wholesale, run `./scripts/
 
 ## Rich Character Records
 
-Use `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` when creating or expanding PCs and important NPCs. The default storage model is still one scan-friendly `pcs.md` and one scan-friendly `npcs.md` per campaign; future per-character files are allowed only when records become too large to scan, and the index file should still point to them.
+Use `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` when creating or expanding PCs and important NPCs. Use `gm/character-record-capture.md` during play to decide whether a person belongs only in `session-log.md`, needs a quick stub, or should be expanded into a full rich record. The default storage model is still one scan-friendly `pcs.md` and one scan-friendly `npcs.md` per campaign; future per-character files are allowed only when records become too large to scan, and the index file should still point to them.
 
 Expand a record when a person becomes a PC or viewpoint, recurs on screen, anchors a relationship, carries a secret or obligation, needs A Time of War rolls, tracks Edge/XP/injuries/gear, or becomes important because MekHQ roster state creates an RPG scene. Leave background names in `session-log.md`, `mekhq-bridge.md`, or roster cross-references until play makes them durable.
 

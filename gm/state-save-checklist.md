@@ -2,6 +2,8 @@
 
 Use this after meaningful play in the active campaign folder from `campaign-state/active-campaign.md`.
 
+Use `gm/character-record-capture.md` when deciding whether a person belongs only in `session-log.md`, needs a quick `pcs.md`/`npcs.md` stub, or should be expanded into a full rich record.
+
 ## Required Save Steps
 
 1. Update `current-state.md` with the exact resume point, current location, current date or in-day time, immediate pressure, current party, and next prompt.
@@ -60,6 +62,7 @@ Ask only what is needed to save cleanly:
 - Did any fact become table canon, or is this playtest-only?
 - Where should play resume next time?
 - Which NPCs, assets, or hooks changed?
+- Which PC/NPC records need quick stubs or full rich-record updates?
 - Did any rule or workflow gap slow play down?
 
 ## Git Note

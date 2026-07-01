@@ -6,11 +6,12 @@
 
 ## Next
 
-- Issue `#123`: define play-mode capture/update triggers for rich character records using the schema and updated templates.
+- Issue `#124`: prototype a focused rich character-record validator, or record why implementation remains premature.
 
 ## Backlog
 
 - Issue `#139`: MekHQ live API query/context views epic is complete. Child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md` and archived handoffs under `docs/handoffs/archive/` for future query-view context.
+- Issue `#123`: play-mode rich character capture workflow is complete in `gm/character-record-capture.md` and linked from GM/campaign save guidance.
 - Issue `#122`: rich character templates and GM workflow docs are complete; `campaigns/_template/pcs.md`, `campaigns/_template/npcs.md`, `campaigns/README.md`, `gm/state-save-checklist.md`, and `docs/current/GM_CONTEXT_PACKET_DESIGN.md` now link to the schema and capture rich memory/portrayal fields.
 - Issue `#121`: rich PC/NPC character record schema is complete in `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`; issue `#122` template/workflow follow-up is also complete.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, use the completed hardening docs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
@@ -34,6 +35,7 @@
 
 ## Done
 
+- Issue `#123` completed: added `gm/character-record-capture.md` with session-note, quick-stub, and full-rich-record capture levels; documented update triggers for sheet gaps, motives, relationships, secrets/uncertainty, portrayal cues, MekHQ-linked personnel, and state-change proposals; linked the workflow from scene loop, session procedure, state-save checklist, and campaign save guidance; archived the issue handoff.
 - Issue `#122` completed: updated PC/NPC templates, campaign save guidance, state-save checklist, and GM context packet design so rich character records naturally capture sheet status, MekHQ ownership boundaries, RPG memory, secrets/uncertainty, relationships, speech/behavior cues, portrayal notes, and update history; left existing campaign saves unmigrated by design and archived the issue handoff.
 - Issue `#121` completed: added `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` with the canonical rich PC/NPC record schema, ownership boundaries for A Time of War overlays, MekHQ-owned roster facts, MEK-RPG narrative memory, evidence labels, record sections, MekHQ refresh rules, source boundaries, and the issue `#124` validator-maintenance decision; archived the issue handoff.
 - Issue `#114` completed: validated the API-first MekHQ playtest workflow with a Branch C live-API-unavailable pass, added `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md`, recorded the local API blocker in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`, rehearsed compact query views against sanitized fixtures, archived the `#113` and `#114` handoffs, and left issue `#97` open as the user-present live GM play checkpoint.
