@@ -18,6 +18,7 @@ Actions use Markdown with YAML front matter. Required fields for the current des
 - `input_data`: public, MekHQ-owned, hidden, and derived data categories.
 - `roll_required`: boolean.
 - `roll_policy`: named policy or `TBD`.
+- `reveal_map_id`: named reveal map when the action maps roll margin or result quality to reveal permissions.
 - `reveal_levels`: ordered reveal labels.
 - `prompt_policy`: named prompt/filtering policy or `TBD`.
 - `failure_modes`: action-specific failure labels.

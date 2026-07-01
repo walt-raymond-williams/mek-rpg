@@ -38,7 +38,8 @@ input_data:
     - pilot_quality_band
     - special_warning_summary
 roll_required: true
-roll_policy: TBD
+roll_policy: margin_2d6_target_number_v1
+reveal_map_id: pre_mission_intel_margin_v1
 reveal_levels:
   - public_briefing_only
   - enemy_count_estimate
@@ -72,6 +73,7 @@ test_expectations:
 - Status: Planned design metadata; runtime execution is not implemented.
 - Parent design: `docs/current/PRE_MISSION_INTEL_CHECK.md`.
 - Registry design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
+- Dice/reveal design: `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`.
 
 ## Owning Professions
 
@@ -109,7 +111,7 @@ Hidden:
 
 ## Roll Required
 
-Yes. The provisional recommendation is a `2d6 >= target number` check with margin of success mapping to reveal level. The final implementation may use a configurable roll policy.
+Yes. The provisional policy is `margin_2d6_target_number_v1`: roll `2d6`, add explicit modifiers, compare final total to an explicit target number, and map margin to reveal level using `pre_mission_intel_margin_v1`. The final implementation may keep this configurable, but the LLM must not choose reveal level.
 
 ## Reveal Levels
 

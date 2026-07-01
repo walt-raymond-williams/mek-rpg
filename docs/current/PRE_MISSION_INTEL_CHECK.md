@@ -6,6 +6,7 @@
 - Parent design: `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`.
 - Action spec: `rules/actions/pre-mission-intel-check.md`.
 - Registry design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
+- Dice/reveal design: `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`.
 - Implementation status: Not implemented.
 
 ## Purpose
@@ -32,6 +33,8 @@ The canonical machine-readable metadata lives in the YAML front matter of `rules
 ```yaml
 action_id: pre_mission_intel_check
 phase: pre_battle
+roll_policy: margin_2d6_target_number_v1
+reveal_map_id: pre_mission_intel_margin_v1
 owning_professions:
   - intelligence_officer
   - scout_recon_specialist
@@ -94,23 +97,23 @@ Level 7: hidden objectives, deployment warnings, special scenario warnings. Reve
 
 ### Option A: BattleTech-Style Target Number
 
-- Roll `2d6 >= target number`.
-- Lower skill values are better where MekHQ-style skill ratings are used.
-- Set base target from action difficulty, then apply profession, support, fatigue, injury, equipment, or time-pressure modifiers.
+- Roll `2d6`, add explicit modifiers, and compare final total to an explicit target number.
+- Target number must come from an approved source such as GM-supplied input, fixture input, a later action default, or a later character-record source.
+- Apply profession, support, fatigue, injury, equipment, or time-pressure modifiers only when supplied explicitly by the action configuration, fixture, GM, or future character-record support.
 - Margin of success determines reveal level.
 
-Example provisional mapping:
+Provisional mapping from `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`:
 
 | Margin | Reveal Level |
 | --- | --- |
-| Failure by 4+ | 0 with misleading or stale risk |
-| Failure by 1-3 | 0 |
-| Success by 0-1 | 1 |
-| Success by 2-3 | 2 |
-| Success by 4-5 | 3 |
-| Success by 6-7 | 4 |
-| Success by 8-9 | 5 |
-| Success by 10+ | 6 or 7, if scenario flags justify it |
+| `margin <= -4` | 0 with stale or misleading-confidence risk |
+| `-3 <= margin <= -1` | 0 |
+| `0 <= margin <= 1` | 1 |
+| `2 <= margin <= 3` | 2 |
+| `4 <= margin <= 5` | 3 |
+| `6 <= margin <= 7` | 4 |
+| `8 <= margin <= 9` | 5 |
+| `margin >= 10` | 6, or 7 only when eligible special-warning flags exist |
 
 ### Option B: Additive Skill Check
 
@@ -122,7 +125,7 @@ This is easier for generic RPG checks, but may fit MekHQ numeric personnel skill
 
 ## Recommendation
 
-Use Option A provisionally for this action because it can map to BattleTech-flavored skill numbers and margin-of-success language. Keep the implementation configurable until the project's core dice mechanics are finalized.
+Use Option A provisionally for this action because it matches the committed core action-resolution summaries and existing resolver prototype shape. Keep the implementation configurable until richer character records and skill mappings are finalized.
 
 ## Prompt Assembly Boundary
 

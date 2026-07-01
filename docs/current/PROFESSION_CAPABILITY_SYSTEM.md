@@ -138,14 +138,17 @@ MEK RPG should map MekHQ job/role strings to a profession profile by determinist
 
 The LLM may write the in-universe report, but it must not decide reveal level by improvisation. Reveal level must be determined by rules, dice, and action configuration before the LLM sees or summarizes hidden facts.
 
-Provisional roll design:
+Design: `docs/current/PROFESSION_DICE_REVEAL_DESIGN.md`.
 
-- Recommended default: BattleTech-style target number, `2d6 >= target number`.
-- Lower skill values are better when using MekHQ-style Gunnery/Piloting-like values.
+Provisional roll policy:
+
+- Policy id: `margin_2d6_target_number_v1`.
+- Roll `2d6`, add explicit modifiers, and compare final total to an explicit target number.
 - Margin of success determines reveal level.
-- Alternative supported design: additive check, `2d6 + modifiers`, with thresholds determining reveal level.
+- The first reveal map is `pre_mission_intel_margin_v1` for `pre_mission_intel_check`.
+- The alternative additive-threshold design is deferred.
 
-Keep this configurable until core dice mechanics are finalized.
+Keep this configurable until character records, exact skill inputs, and broader noncombat profession mechanics are finalized.
 
 ## Initial Profession Set
 
@@ -185,7 +188,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 2. Add initial profession profile documents. Status: complete in issue `#129`.
 3. Design deterministic profession lookup from MekHQ personnel fields. Status: complete in issue `#130`.
 4. Design the action registry and machine-readable action metadata. Status: complete in issue `#131`.
-5. Decide the first dice and reveal-level mapping.
+5. Decide the first dice and reveal-level mapping. Status: complete in issue `#132`.
 6. Implement Pre-Mission Intel Check as a deterministic, testable slice.
 7. Add hidden-data boundary tests.
 8. Add LLM prompt/context assembly guidance and tests.
@@ -199,7 +202,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 - `#129`: Add Initial Profession Profile Documents. Complete.
 - `#130`: Add Profession Lookup Design. Complete.
 - `#131`: Add Profession Action Registry Design. Complete.
-- `#132`: Add Dice-Roll And Reveal-Level Design.
+- `#132`: Add Dice-Roll And Reveal-Level Design. Complete.
 - `#133`: Add Pre-Mission Intel Check Design.
 - `#134`: Define Hidden-Data Access Boundaries.
 - `#135`: Add Tests/Spec Plan For Gated Data Reveal.
