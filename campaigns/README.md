@@ -45,6 +45,14 @@ Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` and `gm/state-save-checklist.md` 
 
 When a completed `session-log.md` should be preserved wholesale, run `./scripts/archive-campaign-session.ps1 <campaign-id> -ConfirmArchive -ArchiveTitle "<title>"`. The helper appends an exact copy to `previous-sessions.md`, creates temp backups, and never invents a summary; use `-WhatIf` to preview and `-ResetSessionLog` only when the active log should roll forward.
 
+## Rich Character Records
+
+Use `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` when creating or expanding PCs and important NPCs. The default storage model is still one scan-friendly `pcs.md` and one scan-friendly `npcs.md` per campaign; future per-character files are allowed only when records become too large to scan, and the index file should still point to them.
+
+Expand a record when a person becomes a PC or viewpoint, recurs on screen, anchors a relationship, carries a secret or obligation, needs A Time of War rolls, tracks Edge/XP/injuries/gear, or becomes important because MekHQ roster state creates an RPG scene. Leave background names in `session-log.md`, `mekhq-bridge.md`, or roster cross-references until play makes them durable.
+
+Keep mechanical sheet facts, MekHQ-owned roster facts, RPG memory, secrets/uncertainty, and portrayal cues in separate labeled sections. Use explicit evidence labels such as `Confirmed by user`, `Confirmed in play`, `Confirmed from MekHQ import`, `Inferred`, `Unknown`, `Needs source lookup`, `Needs user decision`, or `Needs GM ruling`.
+
 ## Vehicle And Unit Assets
 
 Vehicle, BattleMech, battle armor, aerospace, DropShip, property, cargo, contract-right, and transport assets stay in campaign-local `assets.md` until live play proves that dedicated sheets are needed. Use `docs/current/ASSET_SHEET_SCHEMA.md`, `rules/campaign/transport-and-large-assets.md`, and `rules/vehicles-and-mechs/overview.md` to decide what to record: stable slug, category, status, evidence labels, owner/controller, ownership evidence, location, condition, crew or operators, fuel or maintenance constraints, legal status, debt or liens, MekHQ references, tactical handoff notes, and open source/tool lookups.

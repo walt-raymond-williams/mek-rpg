@@ -84,15 +84,18 @@ Inputs:
 - `missions.md`
 - `hooks.md`
 - `safety-and-tone.md`
+- `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` when building or updating rich PC/NPC records
 
 Purpose:
 
 - establish the current scene, player characters, important NPCs, factions, locations, assets, relationships, mission state, hooks, and table boundaries
 - provide the authoritative MEK-RPG state for RPG memory
+- keep rich character records available as structured play inputs: sheet status, motives, relationships, secrets/uncertainty, speech/behavior cues, and portrayal notes
 
 Freshness expectation:
 
 - `current-state.md` and `session-log.md` should describe the latest resume point
+- `pcs.md` and `npcs.md` should preserve current rich character records for important people without treating sparse stubs as full sheets
 - stale summaries should not override these structured files
 
 Failure modes:
@@ -100,6 +103,7 @@ Failure modes:
 - using older narrative summaries to contradict current structured state
 - ignoring safety/tone or child/co-player constraints
 - treating sparse generated MekHQ bootstrap stubs as full A Time of War sheets
+- letting hidden or GM-only character secrets bleed into player-facing summaries
 
 ### 4. MekHQ Bridge Layer
 
@@ -361,7 +365,6 @@ The helper should not generate narrative summaries, choose rules rulings, advanc
 
 ## Follow-Up Boundaries
 
-- Issue `#32` should define memory strata and semantic checkpoint triggers in more detail.
-- Issue `#33` should prototype the deterministic packet helper.
-- Issue `#34` should add regression scenarios for general context behavior after the design is usable.
-- Issue `#45` should add MekHQ-linked context packet scenarios after the helper or equivalent testable assembly exists.
+- Existing memory, packet, and regression-helper issues have defined the baseline packet behavior.
+- Issue `#123` should define play-mode triggers for creating quick stubs, expanding rich records, and updating character memory without slowing scenes.
+- Issue `#124` should decide whether rich character records are stable enough for a focused validator after the template changes from issue `#122`.

@@ -7,8 +7,8 @@ Use this after meaningful play in the active campaign folder from `campaign-stat
 1. Update `current-state.md` with the exact resume point, current location, current date or in-day time, immediate pressure, current party, and next prompt.
 2. Update `session-log.md` with active or most recent session notes: concise summary, important choices, rolls, rulings, consequences, rewards, costs, queued pending item ids, and next-session prompts.
 3. When a session is complete, append durable completed-session material to `previous-sessions.md` before `session-log.md` is reused for the next session. Use `./scripts/archive-campaign-session.ps1 <campaign-id> -ConfirmArchive -ArchiveTitle "<title>"` when an exact-copy archive is useful; add `-ResetSessionLog` only after confirming the active log should be refreshed.
-4. Update `pcs.md` for injuries, fatigue, gear, money, goals, sheet gaps, or player-specific notes.
-5. Update `npcs.md` for new NPCs, current whereabouts, attitude changes, promises, secrets, and last-seen status.
+4. Update `pcs.md` for injuries, fatigue, gear, money, goals, sheet gaps, relationships, secrets/uncertainty, portrayal cues, or player-specific notes. Use `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` when creating or expanding a PC record.
+5. Update `npcs.md` for new or recurring NPCs, current whereabouts, attitude changes, promises, secrets, motives, relationships, portrayal cues, and last-seen status. Use `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` when an NPC needs a durable rich record rather than a session-log mention.
 6. Update `factions.md` for reputation, obligations, hostility, favors, assets, or new faction pressure.
 7. Update `locations.md` for places introduced, current access, hazards, and important contents.
 8. Update `assets.md` for money, vehicles, DropShips, equipment, cargo, contracts, permits, debts, liens, repairs, evidence labels, MekHQ references, and tactical handoff notes.
@@ -26,6 +26,7 @@ Save one or more campaign files when any of these meaning changes occur:
 - a mission is accepted, advanced, paused, failed, completed, or reframed
 - a combat, risky scene, or tactical handoff returns consequences
 - an NPC relationship, promise, secret, debt, favor, loyalty, or faction posture changes
+- a PC or important NPC gains durable goals, motives, fears, preferences, speech/behavior cues, hidden uncertainty, or a recurring scene role
 - injury, recovery, inventory, money, asset, contract, repair, permit, cargo, or readiness state changes
 - a rule gap, provisional ruling, workflow bug, or safety/tone boundary becomes relevant
 - a MekHQ-linked campaign reaches a day boundary, unresolved pending action review, or saved import reconciliation
@@ -46,6 +47,7 @@ Use `docs/current/CAMPAIGN_MEMORY_STRATEGY.md` for the full ownership policy. St
 - Contacts, favors, patrons, and borrowed resources: read `rules/campaign/contacts.md`; update `npcs.md`, `relationships.md`, `factions.md`, and `hooks.md`.
 - Reputation, public standing, faction opinion, scandals, rank/title reactions, and trust changes: read `rules/campaign/reputation.md`; update `factions.md`, `relationships.md`, `missions.md`, and `hooks.md`.
 - Injury recovery, medical care, surgery, lasting wounds, and mission availability: read `rules/campaign/injuries-recovery.md`; update `pcs.md`, `assets.md`, `missions.md`, and `current-state.md`.
+- Character record creation, sheet review, portrayal memory, motives, secrets, and evidence labels: read `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md` and `rules/core/character-record-basics.md`; update `pcs.md`, `npcs.md`, `relationships.md`, and `hooks.md`.
 - Downtime, repair/acquisition prep, training time, travel, and mission readiness: read `rules/campaign/downtime-and-readiness.md`; update `current-state.md`, `pcs.md`, `assets.md`, `missions.md`, and `hooks.md`.
 - Transport acquisition, DropShip/large-asset control, title questions, liens, permits, inspection defects, remote locks, fuel/readiness, and crew access: read `rules/campaign/transport-and-large-assets.md`; update `assets.md`, `missions.md`, `factions.md`, `relationships.md`, and `hooks.md`.
 - Vehicles, BattleMechs, battle armor, aerospace assets, pilot/gunnery notes, crew roles, fuel, damage, and tactical handoff assumptions: read `rules/vehicles-and-mechs/overview.md`, `gm/switch-to-classic-battletech.md`, and `gm/tactical-encounter-handoff-checklist.md`; update `assets.md`, `pcs.md`, `missions.md`, and `hooks.md`.
