@@ -33,13 +33,14 @@ Before running a MekHQ-linked scene:
 2. Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge files, saved checkpoints, or save-derived summaries as current.
 3. If MekHQ is open and the local API is available, run `scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture` first. The live API capture is the normal active-campaign refresh path.
 4. Add `-PendingDeploymentsPersonId` or `-PendingDeploymentsPersonName` when the next scene depends on current scenarios, deployment assignments, or a viewpoint person's commitment.
-5. Use captured `mekhq-commands.json` for read-only command readiness and selector discovery. This does not authorize mutation by itself; it prevents routing a supported hard-ledger action to a stale manual fallback. Rerun the fetch helper with `-SelectorDetailFull` only when entering a specific command workflow that needs expensive selectors or guard facts.
-6. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
-7. Confirm the last live API snapshot or imported MekHQ metadata: API mode/read-only proof, snapshot/state revision, import timestamp when present, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
-8. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
-9. Check `pending-mekhq-actions.md` for unresolved command proposals, command results awaiting verification, and manual MekHQ fallback items before framing new ledger-sensitive scenes.
-10. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
-11. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
+5. Query compact views from the capture before inspecting raw JSON: run `query-mekhq-live-api.py --view summary`, then `--view play-context`, then focused views only as needed.
+6. Use the `command-readiness` query view for read-only command readiness and selector discovery. This does not authorize mutation by itself; it prevents routing a supported hard-ledger action to a stale manual fallback. Rerun the fetch helper with `-SelectorDetailFull` only when entering a specific command workflow that needs expensive selectors or guard facts.
+7. Read `docs/current/MEKHQ_BRIDGE_DATA_MODEL.md` and any campaign-local bridge note if one exists.
+8. Confirm the last live query-view output or imported MekHQ metadata: API mode/read-only proof, snapshot/state revision, import timestamp when present, MekHQ campaign date, location, funds, active contract or scenario, and unsupported fields.
+9. Treat the MekHQ campaign date as the current campaign day. If MEK-RPG's `current-state.md` disagrees, record a bridge discrepancy instead of advancing MEK-RPG independently.
+10. Check `pending-mekhq-actions.md` for unresolved command proposals, command results awaiting verification, and manual MekHQ fallback items before framing new ledger-sensitive scenes.
+11. Check `current-state.md`, `assets.md`, `missions.md`, `pcs.md`, `npcs.md`, `relationships.md`, `hooks.md`, `session-log.md`, `rules-gaps.md`, and `safety-and-tone.md` for the next scene.
+12. Ask only for the missing input needed to start play, such as which MekHQ market offer, contract, repair delay, or character viewpoint is in focus.
 
 The checkpoint should make the ownership visible: "MekHQ date and ledger are current through this saved import; MEK-RPG is about to run scenes inside that day."
 
@@ -47,9 +48,9 @@ If the live API is available, the checkpoint should instead say: "MekHQ date and
 
 If the live API is unavailable, the checkpoint should say which fallback was chosen: pause, stale campaign-local snapshot, or explicit offline/debug save inspection. Do not let a stale bridge note masquerade as current live MekHQ context.
 
-Do not parse the active `.cpnx`, `.cpnx.gz`, or XML save as the routine loading step when the live API is available. If the API lacks a field needed for play setup, capture that as an API gap or producer change request.
+Do not parse the active `.cpnx`, `.cpnx.gz`, or XML save as the routine loading step when the live API is available. Do not read raw capture JSON as the normal play-start input when a compact query view can answer the question. If the API or query view lacks a field needed for play setup, capture that as an API gap or producer change request.
 
-Use `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` for playtest gaps. Record the needed data, attempted endpoint or section, missing field, fallback used, and the desired read shape before continuing with a stale, unknown, or user-confirmed workaround. If a sectioned `/campaign/state` response is partial, record which requested section failed and continue only with the affected facts labeled as incomplete.
+Use `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` for playtest gaps. Record the needed data, attempted endpoint, section, or query view, missing field, fallback used, and the desired read shape before continuing with a stale, unknown, or user-confirmed workaround. If a sectioned `/campaign/state` response is partial, record which requested section failed and continue only with the affected facts labeled as incomplete. The `api-gaps` query view can identify candidate gap facts but does not edit the report automatically.
 
 ### 2. In-Day Scene Handling
 
@@ -90,7 +91,7 @@ At the end of a MekHQ-linked play day:
 
 1. Review all unresolved items in `pending-mekhq-actions.md`, plus any linked narrative context from `session-log.md`, `assets.md`, `missions.md`, `pcs.md`, and `hooks.md`.
 2. Split them into supported MekHQ commands, manual MekHQ UI actions, artifact handoffs, producer-request candidates, and MEK-RPG-only memory.
-3. For supported commands, use captured `mekhq-commands.json`; if readiness says selectors are deferred, rerun `scripts/fetch-mekhq-live-api.ps1 -SelectorDetailFull` only for the command workflow being entered. Build the request from readiness selectors and guard facts, use a fresh idempotency key for apply calls, run dry-run/preflight for high-value actions, execute only after approval or documented automation policy, and reread live state with the fetch helper.
+3. For supported commands, use the `command-readiness` query view and captured `mekhq-commands.json`; if readiness says selectors are deferred, rerun `scripts/fetch-mekhq-live-api.ps1 -SelectorDetailFull` only for the command workflow being entered. Build the request from readiness selectors and guard facts, use a fresh idempotency key for apply calls, run dry-run/preflight for high-value actions, execute only after approval or documented automation policy, and reread live state with the fetch helper.
 4. For manual UI actions, ask the user to apply the current hard ledger actions in MekHQ when the campaign must advance or the ledger must change.
 5. The user saves the MekHQ campaign after manual actions or save-requested commands when a durable saved checkpoint is needed.
 6. MEK-RPG verifies the hard outcome by live reread or saved import before treating it as final.

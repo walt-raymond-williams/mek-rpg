@@ -72,8 +72,8 @@ git check-ignore -v mekhq-live-api-capture/mekhq-state.json
 2. `#141`: implement the helper core. Complete; `scripts/query-mekhq-live-api.py` now supports `--view summary` with JSON/text output and fixture coverage.
 3. `#142`: add compact play-context view. Complete; `scripts/query-mekhq-live-api.py` now supports `--view play-context` with compact scene-start JSON/text facts, optional pending-deployment and command capture gaps, and normal/partial/missing-state fixture coverage.
 4. `#143`: add focused operational views. Complete; `scripts/query-mekhq-live-api.py` now supports `pending-deployments`, `person-commitment`, `unit-readiness`, `repair-pressure`, `reports`, `command-readiness`, and `api-gaps` focused views with fixture coverage.
-5. `#144`: wire query views into GM workflow. Next unblocked child issue.
-6. `#145`: validate query views and finalize tracking.
+5. `#144`: wire query views into GM workflow. Complete; play startup, context packet, linked play loop, command docs, and the validation handoff now route agents from fetch helper to compact query views before raw JSON inspection.
+6. `#145`: validate query views and finalize tracking. Next unblocked child issue.
 7. `#146`: consume personnel detail endpoint. Complete; `scripts/fetch-mekhq-live-api.ps1` supports `-PersonnelDetailPersonId`, optional bounded medical/patient log flags, and writes `mekhq-personnel-detail.json`; `scripts/query-mekhq-live-api.py` supports `--view person-detail` with compact person/status/assignment/skill/option/award/log-family/privacy facts and no raw log entry output.
 
 ## Required Close-Out Step

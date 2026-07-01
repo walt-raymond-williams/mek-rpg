@@ -16,14 +16,14 @@ When packet layers disagree, prefer the highest-authority current layer and reco
 2. `Agent instructions`: `AGENTS.md` and current project workflow docs for mode routing, copyright boundaries, and close-out expectations.
 3. `Mode procedure`: the relevant play, rules lookup, project-development, or source-processing procedure.
 4. `Structured campaign state`: active campaign pointer plus current campaign save files.
-5. `MekHQ hard ledger import`: for MekHQ-linked campaigns, latest `mekhq-bridge.md` and imported hard facts.
+5. `MekHQ live query views and hard ledger import`: for MekHQ-linked campaigns, compact live API query-view outputs when MekHQ is open, plus latest `mekhq-bridge.md` and imported hard facts.
 6. `Pending MekHQ intents`: unresolved `pending-mekhq-actions.md` items, labeled as command proposals, command results awaiting verification, or manual fallback checklists rather than confirmed facts.
 7. `Rules routes and summaries`: `indexes/task-router.md`, routed paraphrased summaries, and page-reference indexes when summaries are insufficient.
 8. `Recent event record`: current `session-log.md` and immediate scene notes.
 9. `Durable narrative memory`: `previous-sessions.md`, relationships, hooks, NPC motives, faction posture, and older summaries.
 10. `Open gaps and warnings`: `rules-gaps.md`, `playtest-notes.md`, helper warnings, unsupported fields, and bridge discrepancies.
 
-This order means structured campaign files override stale narrative summaries. MekHQ imported or live-verified facts override MEK-RPG guesses for hard ledger fields. Pending MekHQ actions never override confirmed hard facts until a MekHQ live reread or saved import verifies them.
+This order means structured campaign files override stale narrative summaries. MekHQ compact live query output, imported facts, or live-verified facts override MEK-RPG guesses for hard ledger fields. Pending MekHQ actions never override confirmed hard facts until a MekHQ live reread or saved import verifies them.
 
 ## Packet Layers
 
@@ -112,19 +112,21 @@ Inputs for MekHQ-linked campaigns:
 - `docs/current/MEKHQ_CAMPAIGN_BOOTSTRAP.md`
 - `docs/current/MEKHQ_CHECKPOINT_WARNING_SURFACING.md`
 - `scripts/fetch-mekhq-live-api.ps1` capture output when MekHQ is open: `mekhq-status.json`, `mekhq-summary.json`, `mekhq-state.json`, `mekhq-commands.json`, `mekhq-pending-deployments.json`, optional full-selector/viewpoint files, optional single-person `mekhq-personnel-detail.json`, and `mekhq-live-api-capture-manifest.json`
+- `scripts/query-mekhq-live-api.py` compact output when MekHQ is open, starting with `summary` and `play-context`, then focused views such as `pending-deployments`, `person-commitment`, `unit-readiness`, `repair-pressure`, `reports`, `command-readiness`, `api-gaps`, or `person-detail` when the scene needs them
 - generated output from `scripts/sync-mekhq-live-campaign.py` for active loaded MekHQ campaigns
 - latest output from `scripts/summarize-mekhq-save.py` when explicitly imported
 
 Purpose:
 
 - identify MekHQ-owned hard facts: date, day advancement, finances, rosters, unit condition, repairs, contracts, markets, scenarios, tactical outcomes, logistics, and bridge warnings
-- prefer live API snapshot context for active loaded MekHQ campaigns when available
+- prefer compact live API query-view output for active loaded MekHQ campaigns when available
 - preserve imported IDs and unsupported-field notes
 - classify checkpoint warnings and unsupported fields as blockers, manual-inspection items, caution notes, or FYI diagnostics before surfacing them to the GM
 
 Failure modes:
 
 - parsing an active MekHQ save as the routine live-play refresh path while the live API is available
+- reading raw live capture JSON as the normal packet input when a compact query view can answer the question
 - advancing the MEK-RPG date independently of MekHQ
 - inventing exact funds, repair times, market prices, contract state, unit condition, or personnel availability
 - implying direct `.cpnx`, `.cpnx.gz`, XML, or raw save writeback
@@ -258,7 +260,8 @@ Do not include raw A Time of War source text.
 Use play mode plus:
 
 - `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`
-- latest `scripts/fetch-mekhq-live-api.ps1` capture output when MekHQ is open, including status, summary, state with `bridge_metadata`, command readiness, pending deployments, optional full selectors, optional single-person personnel detail, and the capture manifest
+- latest compact `scripts/query-mekhq-live-api.py` output when MekHQ is open, starting with `summary` and `play-context`; include focused views such as `pending-deployments`, `person-commitment`, `unit-readiness`, `repair-pressure`, `reports`, `command-readiness`, `api-gaps`, or `person-detail` only when the scene needs them
+- raw `scripts/fetch-mekhq-live-api.ps1` capture files only as source evidence or debugging fallback, not as the normal packet input
 - latest `mekhq-bridge.md`
 - latest `mekhq-api-gaps.md` when present
 - unresolved `pending-mekhq-actions.md`
