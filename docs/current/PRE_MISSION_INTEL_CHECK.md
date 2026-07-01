@@ -5,6 +5,7 @@
 - Status: Planned first action for the Profession Capability System.
 - Parent design: `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`.
 - Action spec: `rules/actions/pre-mission-intel-check.md`.
+- Registry design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
 - Implementation status: Not implemented.
 
 ## Purpose
@@ -25,6 +26,8 @@ Before launching a MekHQ or MegaMek scenario, a qualified character can analyze 
 Support roles may provide context or modifiers in a future implementation, but they should not bypass the lead profession's reveal gate.
 
 ## Action Spec
+
+The canonical machine-readable metadata lives in the YAML front matter of `rules/actions/pre-mission-intel-check.md`. The sketch below is explanatory and should remain aligned with that front matter.
 
 ```yaml
 action_id: pre_mission_intel_check
@@ -66,6 +69,8 @@ failure_modes:
   - stale information
   - misleading confidence
 ```
+
+Runtime helpers must treat this action as non-executable until later issues add permission checks, dice/reveal mapping, hidden-data filtering, prompt assembly, and tests. A support-only actor cannot run the action as owner, and denied requests must not load hidden scenario data.
 
 ## Reveal Levels
 

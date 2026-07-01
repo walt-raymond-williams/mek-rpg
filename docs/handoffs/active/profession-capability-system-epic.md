@@ -33,7 +33,7 @@ Read these first:
 - Schema/template work is complete in issue `#128`; initial profile content is complete in issue `#129`; start remaining work with lookup/action-registry design.
 - Implement Pre-Mission Intel Check only after hidden-data filtering and tests are specified.
 - Keep player-facing outputs in-universe and filtered by reveal level.
-- Child issues: `#128` schema/template, `#129` initial profiles, and `#130` lookup design are complete; `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
+- Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, and `#131` action registry design are complete; `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates remain.
 
 ## Files And Areas
 
@@ -42,6 +42,7 @@ Likely files to read or edit:
 - `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`
 - `docs/current/PRE_MISSION_INTEL_CHECK.md`
 - `docs/current/PROFESSION_LOOKUP_DESIGN.md`
+- `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`
 - `rules/professions/`
 - `scripts/validate-profession-profiles.ps1`
 - `rules/actions/`
@@ -81,7 +82,7 @@ If runtime work touches rule indexes, also run:
 - Profession schema exists and distinguishes MekHQ-owned facts from MEK RPG overlays.
 - Initial profiles are filled enough for deterministic lookup and action permission.
 - Lookup design fails closed for missing, unknown, ambiguous, unavailable, or non-current MekHQ personnel role data.
-- Action registry design is explicit and testable.
+- Action registry design is explicit and testable. Complete in issue `#131`.
 - Pre-Mission Intel Check has fixture-backed hidden-data filtering tests before player-facing use.
 - Prompt/context assembly tests prove unrevealed hidden data is absent.
 - Roadmap, task state, issues, and handoffs stay synchronized.
@@ -89,6 +90,7 @@ If runtime work touches rule indexes, also run:
 ## Open Questions
 
 - Resolved for issue `#130`: use fixture-backed `personnel[].primary_role.raw_code` and `personnel[].primary_role.label` as the first lookup candidates; rank, assignment, leadership, fatigue, hits, and injury fields provide context/warnings only.
+- Resolved for issue `#131`: use Markdown action specs with `profession-action/v1` YAML front matter under `rules/actions/`; cross-check action owners/support roles against profession profile `allowed_actions`; deny planned/not-implemented or mismatched actions before loading hidden data.
 - Remaining API review: complete MekHQ role vocabulary, secondary/staff assignments, and scenario commitment fields need fixture evidence before runtime lookup.
 - Resolved for issue `#128`: profile metadata lives in YAML front matter inside Markdown for now.
 - What roll system becomes canonical for non-combat profession actions?

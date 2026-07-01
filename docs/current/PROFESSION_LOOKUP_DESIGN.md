@@ -179,7 +179,7 @@ Use the existing sanitized live API personnel shape from `tests/fixtures/mekhq-l
 
 ## Relationship To Later Issues
 
-- Issue `#131` should decide how action metadata consumes `profession_id`, `allowed_actions`, owning/supporting roles, and fail-closed lookup status.
+- Issue `#131` decided that action metadata lives in Markdown action specs with `profession-action/v1` YAML front matter, cross-checks `profession_id` and profile `allowed_actions`, and fails closed before hidden data access when lookup or action permission is unavailable.
 - Issue `#132` should define how matched professions affect dice or reveal levels.
 - Issue `#133` should apply this lookup to `pre_mission_intel_check`.
 - Issue `#134` and `#135` must prove hidden data remains absent when lookup fails, is ambiguous, or grants only support permissions.

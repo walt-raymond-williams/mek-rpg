@@ -6,7 +6,7 @@
 
 ## Next
 
-- Issue `#131`: design the profession action registry and machine-readable action metadata under parent epic `#127`.
+- Issue `#132`: design dice-roll and reveal-level mapping under parent epic `#127`.
 - Issue `#114`: validate the API-first MekHQ playtest workflow, user-gated if live MekHQ is needed.
 - Issue `#97`: resume the live GM playtest checkpoint using `scripts/sync-mekhq-live-campaign.py` for active MekHQ campaign context. Active campaign remains `campaigns/the-learning-ropes/` for when the playtest resumes.
 
@@ -14,7 +14,7 @@
 
 - Issue `#139`: MekHQ live API query/context views epic. Child issues are `#140` contract, `#141` helper core, `#142` compact play-context view, `#143` focused operational views, `#144` GM workflow integration, `#145` validation/final tracking, and `#146` personnel detail endpoint consumption. Goal: keep raw live API captures ignored while giving agents compact deterministic views of MekHQ-owned live context.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, strengthen existing issues and handoffs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
-- Issue `#127`: Profession Capability System epic. Child issues are `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` reveal-gating tests/spec plan, `#136` prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Issues `#128`, `#129`, and `#130` are complete; start with issue `#131` when the user prioritizes this epic.
+- Issue `#127`: Profession Capability System epic. Child issues are `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` reveal-gating tests/spec plan, `#136` prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates. Issues `#128`, `#129`, `#130`, and `#131` are complete; start with issue `#132` when the user prioritizes this epic.
 - Issue `#113`: parent epic for MekHQ API-first playtest hardening; child issues `#116` static audit, `#115` startup SOP, and `#117` gap reporting are complete; issue `#114` remains for validation. Keep save parsing as offline/legacy/fixture/debug fallback and record missing live reads in `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`.
 - Issue `#120`: parent epic for rich PC/NPC character records for play; child issues are `#121` schema, `#122` templates and GM workflow, `#123` play-mode capture/update workflow, `#124` focused validator prototype, and `#125` MekHQ personnel/API coordination. Start with issue `#121` after the current MekHQ API-first playtest work unless the user prioritizes character records sooner.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
@@ -33,6 +33,7 @@
 
 ## Done
 
+- Issue `#131` completed: added `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`, created `rules/actions/README.md`, added `profession-action/v1` YAML front matter to `rules/actions/pre-mission-intel-check.md`, and documented fail-closed action permission, owner/support cross-checks, status semantics, hidden-data access ordering, and prompt assembly boundaries.
 - Issue `#146` completed: added optional explicit personnel detail capture to `scripts/fetch-mekhq-live-api.ps1`, added the compact `person-detail` query view to `scripts/query-mekhq-live-api.py`, committed a sanitized personnel detail fixture, and covered default medical/patient log exclusion, bounded sensitive log opt-in, raw-log suppression, and capture manifest behavior in focused tests.
 - Issue `#130` completed: added `docs/current/PROFESSION_LOOKUP_DESIGN.md` with deterministic MekHQ personnel role lookup rules, fixture-backed input fields, alias normalization, match precedence, fail-closed unmapped/ambiguous/unavailable behavior, output-contract sketch, API gaps, and fixture strategy; linked the design from the profession epic docs and updated the active handoff.
 - Issue `#128` completed: added the `profession-profile/v1` Markdown plus YAML front matter schema, reusable `rules/professions/profile-template.md`, normalized the ten existing profession stubs to the schema with explicit `not_implemented` status and MekHQ-owned/MEK RPG overlay separation, added `scripts/validate-profession-profiles.ps1` with disposable fixture coverage, and wired the focused check into `test-all.ps1 -Quick`.

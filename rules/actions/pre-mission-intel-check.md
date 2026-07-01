@@ -1,11 +1,77 @@
+---
+schema_version: profession-action/v1
+action_id: pre_mission_intel_check
+display_name: Pre-Mission Intel Check
+status: planned
+phase: pre_battle
+owning_professions:
+  - intelligence_officer
+  - scout_recon_specialist
+supporting_professions:
+  - aerospace_pilot
+  - administrator_liaison
+  - mechwarrior
+input_data:
+  public:
+    - scenario_name
+    - scenario_type
+    - terrain_summary
+    - weather
+    - public_objectives
+  mekhq_owned:
+    - personnel_identity
+    - personnel_role
+    - personnel_assignment
+    - personnel_readiness
+    - scenario_metadata
+  hidden:
+    - opfor_total_bv
+    - opfor_unit_count
+    - opfor_weight_classes
+    - opfor_chassis
+    - opfor_pilot_skills
+    - special_scenario_flags
+  derived:
+    - enemy_count_estimate
+    - weight_class_estimate
+    - bv_strength_band
+    - pilot_quality_band
+    - special_warning_summary
+roll_required: true
+roll_policy: TBD
+reveal_levels:
+  - public_briefing_only
+  - enemy_count_estimate
+  - weight_class_estimate
+  - bv_range_or_relative_strength
+  - pilot_quality_band
+  - exact_total_bv_and_likely_chassis
+  - exact_units_and_pilot_skills
+  - hidden_objectives_deployment_or_special_warnings
+prompt_policy: reveal_filtered_in_universe_report
+failure_modes:
+  - no_useful_intel
+  - vague_report
+  - stale_information
+  - misleading_confidence
+test_expectations:
+  - reject_unqualified_professions
+  - reject_support_only_actor_as_owner
+  - deny_hidden_data_before_permission
+  - filter_exact_bv_below_level_5
+  - filter_pilot_skills_below_level_6
+  - filter_special_flags_below_level_7
+---
+
 # Pre-Mission Intel Check
 
 ## Status
 
 - Action id: `pre_mission_intel_check`.
 - Phase: `pre_battle`.
-- Status: Planned.
+- Status: Planned design metadata; runtime execution is not implemented.
 - Parent design: `docs/current/PRE_MISSION_INTEL_CHECK.md`.
+- Registry design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
 
 ## Owning Professions
 
@@ -72,6 +138,8 @@ Yes. The provisional recommendation is a `2d6 >= target number` check with margi
 
 ## Test Expectations
 
+- Verify action metadata cross-checks owning and supporting professions against profession profile `allowed_actions`.
+- Verify denied, support-only, or not-implemented requests do not load hidden scenario data.
 - Verify reveal-level filtering with sanitized scenario fixtures.
 - Verify no exact BV appears below level 5.
 - Verify no exact pilot skill values appear below level 6.

@@ -92,10 +92,19 @@ Profession profiles are MEK RPG rules overlays. They are not character sheets.
 
 ### Action Registry
 
-Planned shape:
+Design: `docs/current/PROFESSION_ACTION_REGISTRY_DESIGN.md`.
+
+Registry source:
+
+- Markdown action specs under `rules/actions/`.
+- YAML front matter with `schema_version: profession-action/v1`.
+- Human-readable prose that explains, but does not expand beyond, the machine-readable metadata.
+
+Required metadata:
 
 - `action_id`
 - phase or timing
+- status
 - owning professions
 - supporting professions
 - input data categories
@@ -105,9 +114,11 @@ Planned shape:
 - prompt/context assembly rules
 - test expectations
 
-Initial location: `rules/actions/`
+Initial location: `rules/actions/`.
 
-A later implementation issue should decide whether a machine-readable YAML front matter block is enough, or whether a separate manifest should index actions and professions.
+Actions are not executable merely because registry metadata exists. Runtime helpers must deny missing, retired, malformed, planned, or not-implemented actions unless a later implementation issue adds permission checks, roll/reveal behavior, hidden-data filtering, prompt assembly, and tests. Prompt assembly must read action permission and reveal output before it receives hidden data.
+
+A separate generated manifest is deferred until runtime tooling needs it.
 
 ### Profession Lookup
 
@@ -173,7 +184,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 1. Create the profession profile schema/template. Status: complete in issue `#128`.
 2. Add initial profession profile documents. Status: complete in issue `#129`.
 3. Design deterministic profession lookup from MekHQ personnel fields. Status: complete in issue `#130`.
-4. Design the action registry and machine-readable action metadata.
+4. Design the action registry and machine-readable action metadata. Status: complete in issue `#131`.
 5. Decide the first dice and reveal-level mapping.
 6. Implement Pre-Mission Intel Check as a deterministic, testable slice.
 7. Add hidden-data boundary tests.
@@ -187,7 +198,7 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 - `#128`: Add Profession Profile Schema/Template.
 - `#129`: Add Initial Profession Profile Documents. Complete.
 - `#130`: Add Profession Lookup Design. Complete.
-- `#131`: Add Profession Action Registry Design.
+- `#131`: Add Profession Action Registry Design. Complete.
 - `#132`: Add Dice-Roll And Reveal-Level Design.
 - `#133`: Add Pre-Mission Intel Check Design.
 - `#134`: Define Hidden-Data Access Boundaries.
