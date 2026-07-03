@@ -10,7 +10,6 @@
 
 ## Backlog
 
-- Issue `#147`: Sarna-backed immersion research workflow epic is open with child issues `#151` audit, `#150` design, `#149` docs/templates update, and `#148` validation examples. Use `docs/handoffs/active/sarna-immersion-research-epic.md`; start with issue `#151` when ready.
 - Issue `#139`: MekHQ live API query/context views epic is complete. Child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md` and archived handoffs under `docs/handoffs/archive/` for future query-view context.
 - Issue `#125`: MekHQ personnel and character-detail API needs are complete in `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md`; use it when linking rich PC/NPC records to live MekHQ `person-detail` facts or drafting producer follow-up requests.
 - Issue `#124`: rich character-record validator is complete; `scripts/validate-rich-character-records.ps1` defaults to the template and has disposable fixture coverage in `scripts/test-validate-rich-character-records.ps1`.
@@ -38,7 +37,7 @@
 
 ## Done
 
-- Created issue `#147` and child issues `#151`, `#150`, `#149`, and `#148` for the Sarna-backed immersion research workflow; added the active epic handoff and roadmap/task tracking.
+- Collapsed the overbuilt Sarna/BattleTechWiki planning track into concise lore-context guidance in existing docs; removed the active Sarna handoff and no replacement issue chain was created.
 - Issue `#120` completed: rich PC/NPC character records for play now have the schema, campaign templates, GM capture workflow, focused validator, MekHQ personnel/API needs memo, archived child handoffs, and a completed epic handoff.
 - Issue `#125` completed: added `docs/current/RICH_CHARACTER_MEKHQ_API_NEEDS.md` to map current live API/person-detail inputs to rich character records, separate MekHQ-owned roster facts from MEK-RPG-only overlays, define producer-side personnel detail asks, link the memo from the personnel workflow and MegaMek live API change request, and archive the handoff.
 - Issue `#124` completed: added focused rich character-record validation for template or explicitly migrated campaign `pcs.md`/`npcs.md` files, with checks for required rich-record headings, supported visibility labels, selected evidence labels, legacy unresolved-marker warnings, protected-source/raw-save markers, disposable fixture tests, quick-suite integration, and command documentation; archived the issue handoff.

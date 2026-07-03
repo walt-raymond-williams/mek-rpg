@@ -100,3 +100,13 @@ When requested, follow `docs/current/SOURCE_PROCESSING_WORKFLOW.md`:
 This workspace can help bridge RPG play and tactical BattleTech, but it is not a replacement for the tactical game engine. Use roleplaying procedures for character-scale scenes and personal combat when appropriate. Switch to Classic BattleTech, MegaMek, or MekHQ when the situation depends on hex positioning, armor locations, heat, weapon ranges, initiative, piloting, or detailed unit state.
 
 Record durable integration notes in `gm/`, `docs/current/ROADMAP.md`, or a focused `docs/current/` file when the handoff procedure becomes clearer.
+
+## Sarna / BattleTechWiki Lore Context
+
+Use Sarna.net/BattleTechWiki when MEK-RPG needs BattleTech setting context that local project files, campaign state, MegaMek/MekHQ data, or user-provided facts do not provide.
+
+Use Sarna for faction, planet, mercenary command, manufacturer, unit, technology, timeline, character, and historical background. It is also useful for campaign flavor, contract hooks, personnel origins, and in-universe report texture.
+
+Do not use Sarna to override current campaign state, local scenario files, MEK-RPG project facts, MegaMek/MekHQ mechanics, user-stated table rules, or exact generated scenario state.
+
+Keep Sarna context concise. Lore should support the campaign answer, not bury the tactical, rules, or management recommendation.

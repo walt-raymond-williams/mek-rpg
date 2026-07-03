@@ -77,6 +77,7 @@ Protected local source paths:
 - Follow `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md` before treating imported bridge notes, generated campaign-local files, saved checkpoints, or save-derived summaries as current MekHQ-owned context.
 - Do not parse the active `.cpnx`, `.cpnx.gz`, XML, or raw MekHQ save as the routine live-play context path. Use save parsing only when the user explicitly asks for offline, legacy, fixture, or debugging inspection, or when the live API is unavailable and that fallback is clearly recorded.
 - If a needed MekHQ read is missing, stale, ambiguous, or unsupported in the live API during play, immediately add an entry to `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` with the needed data, attempted API read, blocker, fallback used, and suggested API/read shape. Missing API data is a producer gap, not permission to silently read the active save.
+- Use Sarna.net/BattleTechWiki for concise BattleTech lore or setting context when local campaign state, project files, MekHQ/MegaMek data, and user-provided facts do not provide it. Sarna is flavor/context only; it does not override current campaign facts, mechanics, table rules, or generated scenario state.
 - Keep play moving with concise scene framing.
 - Present NPCs, choices, consequences, and roll prompts.
 - Ask for rolls only when failure matters.

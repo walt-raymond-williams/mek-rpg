@@ -25,7 +25,7 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Manual validation/playtest checkpoints recur after new playable layers are added, so gaps become follow-up issues instead of silent assumptions. The current checkpoint wave is tracked under epic issue `#95`.
 - Issue `#126` added durable tone controls for RPG narration and command dialogue. Sharpe's Strikers now uses a rough mercenary military profile with BattleTech mercenary realism and outlaw-country fatalism as supporting flavors, so future play should avoid corporate/HR-style leadership voice.
 - Issue `#127` tracks the Profession Capability System epic, but runtime implementation is blocked by user direction. The design/scaffold child issues `#128`-`#138` are complete; do not implement profession-gated reveal, Pre-Mission Intel Check execution, runtime profession lookup, reveal filtering, or prompt assembly anytime soon. Implementing this layer too early would add new moving parts while MEK-RPG/MekHQ play workflows are still being debugged, making it harder to recognize whether problems come from live API data, campaign state, GM procedure, rules lookup, or the profession/reveal system itself.
-- Issue `#147` now tracks the Sarna-backed immersion research workflow epic. The goal is to make Sarna.net/BattleTechWiki the preferred external BattleTech lore/context source for factions, planets, units, manufacturers, technology, history, eras, mercenary commands, character origins, and setting color while local campaign saves, MekHQ/MegaMek data, and rules summaries remain authoritative for their own domains.
+- Sarna.net/BattleTechWiki guidance is intentionally lightweight: use it for concise external BattleTech lore and setting context when local campaign files, user facts, MekHQ/MegaMek data, and project summaries do not already provide the answer; do not let it override campaign state, mechanics, table rules, or generated scenario facts.
 - MekHQ-to-MEK-RPG campaign bootstrap is now tracked as a staged exploration epic. The goal is to test whether a MekHQ campaign save can seed a playable MEK-RPG campaign folder while MekHQ remains the hard logistics and tactical ledger.
 - GM context architecture is now tracked as a staged design epic informed by AI Dungeon-style memory lessons. The goal is to assemble play context from explicit, inspectable layers while keeping rules summaries, structured campaign state, narrative memory, and MekHQ-owned facts separate.
 
@@ -76,7 +76,6 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Issue `#95`: manual validation and playtest checkpoint after the issue `#90`-`#94` rules expansion remains open until child issue `#97` completes or is explicitly unblocked another way.
 - Issue `#127`: Profession Capability System epic is blocked/deferred after the design/scaffold wave. Child issues `#128` through `#138` are complete; do not open runtime profession lookup, Pre-Mission Intel Check execution, permission/reveal filtering, or prompt assembly issues until the user explicitly unblocks this feature.
 - Issue `#139`: complete. MekHQ live API query/context views now include the contract, helper core, `summary`, `play-context`, focused operational views, GM workflow integration, validation, and `/campaign/personnel/detail` compact character/person context.
-- Issue `#147`: Sarna-backed immersion research workflow epic is open. Child issues `#151`, `#150`, `#149`, and `#148` should audit insertion points, design the workflow, update docs/templates, and validate example play outputs.
 
 ## Ready For Issue Candidates
 
@@ -89,32 +88,10 @@ This is the durable planning source for MEK RPG. GitHub Issues are created gradu
 - Complete: issue `#126` improved RPG game-mode prose quality by adding reusable narrative tone profiles and active Sharpe's Strikers command-voice settings.
 - Blocked/deferred: Profession Capability System runtime work is tracked by epic issue `#127`, with child issues `#128` profile schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` tests/spec plan for gated reveal, `#136` LLM prompt/context assembly design, `#137` handoff documentation, and `#138` roadmap updates already complete as design artifacts. Use `docs/current/PROFESSION_CAPABILITY_SYSTEM.md`, `docs/current/PRE_MISSION_INTEL_CHECK.md`, and `docs/handoffs/active/profession-capability-system-epic.md` only for historical context unless the user explicitly unblocks the feature.
 - Complete: MekHQ live API query/context views epic issue `#139` and child issues `#140` through `#146` are complete. Use `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`, `docs/current/MEKHQ_LIVE_API_QUERY_VIEW_CONTRACT.md`, and archived handoffs under `docs/handoffs/archive/` as the start point.
-- Issued: Sarna-backed immersion research workflow is tracked by epic issue `#147`, with child issues `#151` audit insertion points, `#150` workflow design, `#149` docs/templates update, and `#148` validation examples. Use `docs/handoffs/active/sarna-immersion-research-epic.md` as the start point.
 - Future issue candidate: evaluate whether an MCP-style interface should replace, wrap, or complement the current MekHQ live API and script strategy for game-mode information access. Compare standardization, discoverability, query ergonomics, local-control safety, and implementation cost before changing the current working approach. Status: needs fill-out later.
 - Note: create GitHub Issues for the above future candidates later; do not open them until the scope and acceptance criteria are filled out.
 
 ## Issue Tracks
-
-### Sarna-backed immersion research workflow
-
-- Status: Issued; ready to start with audit issue `#151`.
-- Epic issue: `#147`.
-- Child issues: `#151`, `#150`, `#149`, and `#148`.
-- Handoff: `docs/handoffs/active/sarna-immersion-research-epic.md`.
-- Mode: Project development.
-- Goal: make Sarna.net/BattleTechWiki the preferred external lore/context source when MEK-RPG needs BattleTech setting knowledge it does not already know, improving immersive campaign play, narration, scenario prep, character flavor, and concise player-facing context.
-- Boundary: MEK-RPG campaign files remain authoritative for table canon and persistent campaign memory. MekHQ/MegaMek remain authoritative for current campaign state, logistics, unit facts, mechanics, and tactical combat. A Time of War rules summaries and indexes remain the starting point for rules procedures. Sarna supplies external lore/context, not current campaign state.
-- Practical direction:
-  1. Look up Sarna for factions, planets, BattleMechs, vehicles, DropShips, manufacturers, technology, historical events, eras, mercenary commands, character origins, and setting color when local MEK-RPG context is missing or thin.
-  2. Blend Sarna context after campaign facts: preserve table canon first, then MekHQ/MegaMek-owned current facts, then rules summaries, then Sarna lore.
-  3. Keep live play concise: one or two sentences of color for quick context, two to four bullets for a briefing, and deeper lore in prep notes unless the player asks.
-  4. Treat article links and short paraphrased notes as research support; avoid dumping article-style exposition into scenes.
-- Planned order:
-  1. `#151`: audit current MEK-RPG docs/prompts/templates for insertion points.
-  2. `#150`: design the durable Sarna research workflow.
-  3. `#149`: update docs, prompts, templates, and links.
-  4. `#148`: validate with example campaign, narration, prep, and player-facing outputs.
-- Next step: run issue `#151` and update this track after the audit identifies final owner docs.
 
 ### MekHQ live API query/context views
 
