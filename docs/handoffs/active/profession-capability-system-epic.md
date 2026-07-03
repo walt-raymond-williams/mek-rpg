@@ -5,11 +5,11 @@
 - GitHub issue: `#127` (epic).
 - Roadmap entry: Profession Capability System.
 - Mode: Project development.
-- Priority: Next after current MekHQ API-first playtest hardening unless user reprioritizes.
+- Priority: Blocked/deferred by user direction. Do not implement anytime soon unless the user explicitly unblocks this feature.
 
 ## Goal
 
-Build the Profession Capability System in small, testable slices. The system lets MEK RPG use MekHQ personnel roles/jobs as RPG-capable professions while MekHQ remains authoritative for personnel and campaign state.
+Preserve the completed Profession Capability System design/scaffold as historical context, but do not build runtime profession lookup, profession-gated reveal, Pre-Mission Intel Check execution, hidden-data reveal filtering, or prompt assembly until the user explicitly unblocks this feature. The system was originally intended to let MEK RPG use MekHQ personnel roles/jobs as RPG-capable professions while MekHQ remains authoritative for personnel and campaign state.
 
 ## Required Context
 
@@ -29,10 +29,10 @@ Read these first:
 
 ## Expected Output
 
-- Keep the epic open until implementation, tests, and validation are complete.
-- Schema/template work is complete in issue `#128`; initial profile content is complete in issue `#129`; start remaining work with lookup/action-registry design.
-- Implement Pre-Mission Intel Check only after hidden-data filtering and tests are specified.
-- Keep player-facing outputs in-universe and filtered by reveal level.
+- Keep the epic open and blocked/deferred; do not create child runtime implementation issues without explicit user direction.
+- Schema/template, initial profile content, lookup design, action-registry design, reveal design, hidden-data boundaries, gated-reveal test planning, prompt assembly design, and roadmap updates are complete as design/scaffold artifacts.
+- Do not implement Pre-Mission Intel Check execution, reveal filtering, runtime profession lookup, or prompt assembly anytime soon.
+- Rationale: implementing gated reveal too early would make MEK-RPG harder to debug and reason about. It would introduce extra action-permission, filtering, roll, and prompt-shaping machinery while live MekHQ API data, campaign-state sync, GM context loading, rules lookup, and play procedures are still being tested in real sessions.
 - Child issues: `#128` schema/template, `#129` initial profiles, `#130` lookup design, `#131` action registry design, `#132` dice/reveal design, `#133` Pre-Mission Intel Check design, `#134` hidden-data boundaries, `#135` gated reveal tests/spec plan, `#136` LLM prompt/context assembly, `#137` handoff documentation, and `#138` roadmap updates are complete. Epic `#127` remains open for future runtime implementation.
 
 ## Child Issue Links
@@ -71,11 +71,11 @@ Likely files to read or edit:
 
 ## Implementation Order
 
-1. Leave epic `#127` open unless the user wants to treat this scaffold/design wave as the full epic scope.
-2. Do not implement runtime action execution until a new issue explicitly scopes a helper.
-3. First runtime issue should start with permission and reveal-filter logic, using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`.
-4. Prompt assembly runtime work should consume only filtered payloads from `docs/current/PROFESSION_PROMPT_CONTEXT_ASSEMBLY.md`.
-5. Add `scripts/test-profession-gated-reveal.ps1` to `scripts/test-all.ps1 -Quick` only after a deterministic helper exists.
+1. Leave epic `#127` open and blocked/deferred unless the user decides to close it as abandoned.
+2. Do not implement runtime action execution, permission/reveal filtering, prompt assembly, or Pre-Mission Intel Check execution.
+3. Do not open new child issues from `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md` unless the user explicitly unblocks the feature.
+4. Treat `rules/actions/pre-mission-intel-check.md` and the profession design docs as non-executable design records only.
+5. Keep the completed profile validator as schema/documentation validation only; it is not runtime action support.
 
 ## Commands
 
@@ -98,7 +98,7 @@ If runtime work touches rule indexes, also run:
 - MekHQ remains the source of truth for personnel, campaign, logistics, and scenario state.
 - Profession profiles are rules overlays, not replacement character sheets.
 - Hidden scenario data must not be exposed just because an adapter can read it.
-- The LLM may generate prose only after deterministic rules choose the reveal level.
+- If this feature is ever explicitly unblocked, the LLM may generate prose only after deterministic rules choose the reveal level; until then, do not build that runtime path.
 - Do not copy copyrighted source text or table data.
 - Do not stage protected raw source files under `source/atow-pdf/` or `source/atow-text/`.
 - Preserve unrelated existing campaign/live API worktree changes.
@@ -114,8 +114,8 @@ If runtime work touches rule indexes, also run:
 - Hidden-data boundary separates raw adapter payloads, adjudication context, filtered prompt payloads, player-facing reports, and debug traces. Complete in issue `#134`.
 - Gated reveal test/spec plan defines fixture shape, permission cases, reveal-level cases, prompt leak checks, missing-field cases, and quick-suite gating. Complete in issue `#135`.
 - Prompt/context assembly design defines prompt layers, safe payload shape, in-universe report rules, confidence labels, denied/failure prompts, and prompt payload tests. Complete in issue `#136`.
-- Pre-Mission Intel Check has fixture-backed hidden-data filtering tests before player-facing use.
-- Prompt/context assembly tests prove unrevealed hidden data is absent.
+- Runtime Pre-Mission Intel Check, hidden-data filtering tests, and prompt/context assembly tests are blocked/deferred unless the user explicitly unblocks the feature.
+- No player-facing profession-gated reveal behavior should be introduced from this epic while it is blocked.
 - Roadmap, task state, issues, and handoffs stay synchronized.
 - This handoff remains active until epic `#127` closes; archive only when the epic closes.
 

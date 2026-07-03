@@ -2,13 +2,15 @@
 
 ## Status
 
-- Status: Planned epic scaffold.
+- Status: Blocked/deferred design scaffold.
 - Epic issue: `#127`.
-- First target action: Pre-Mission Intel Check.
+- First target action design: Pre-Mission Intel Check.
 - Authority boundary: MekHQ remains the source of truth for personnel, campaign, logistics, assignment, injury, history, job, fatigue, and scenario state.
-- MEK RPG role: rules overlay, action gating, reveal gating, prompt assembly, and in-universe presentation.
+- MEK RPG role if later unblocked: rules overlay, action gating, reveal gating, prompt assembly, and in-universe presentation.
+- User direction: do not implement runtime profession lookup, profession-gated reveal, Pre-Mission Intel Check execution, hidden-data reveal filtering, or prompt assembly anytime soon.
+- Blocker rationale: implementing gated reveal too early would make MEK-RPG much harder to debug. It would add a separate layer of action permission, hidden-data filtering, roll interpretation, and prompt shaping while live MekHQ API reads, campaign-state sync, GM context loading, rules lookup, and play procedures are still being tested. That would make it harder to recognize whether a bad outcome came from MekHQ data, MEK-RPG state, GM procedure, rules summaries, or the profession/reveal feature.
 
-This document defines the roadmap for using MekHQ personnel roles and jobs as RPG-capable professions without creating a separate authoritative character model.
+This document records the completed design/scaffold for using MekHQ personnel roles and jobs as RPG-capable professions without creating a separate authoritative character model. Treat it as historical design context, not an implementation plan, until the user explicitly unblocks the feature.
 
 ## Core Idea
 
@@ -48,8 +50,8 @@ This first milestone is planning and scaffold only:
 - Define the action registry concept.
 - Define the Pre-Mission Intel Check action.
 - Define reveal-level boundaries for hidden scenario information.
-- Create GitHub issues for implementation slices.
-- Create a handoff for future agents.
+- Do not create GitHub issues for implementation slices unless the user explicitly unblocks the feature.
+- Keep the handoff for future agents marked blocked/deferred.
 - Avoid runtime engine work unless a later issue chooses a narrow, deterministic slice.
 
 ## Non-Goals
@@ -194,14 +196,14 @@ The motivating case is a MekHQ-generated scenario where MEK RPG can read exact s
 4. Design the action registry and machine-readable action metadata. Status: complete in issue `#131`.
 5. Decide the first dice and reveal-level mapping. Status: complete in issue `#132`.
 6. Finalize Pre-Mission Intel Check design. Status: complete in issue `#133`.
-7. Implement Pre-Mission Intel Check as a deterministic, testable slice.
+7. Blocked/deferred: implement Pre-Mission Intel Check as a deterministic, testable slice only if the user explicitly unblocks the feature.
 8. Define hidden-data access boundaries. Status: complete in issue `#134`.
 9. Add gated reveal test/spec plan. Status: complete in issue `#135`.
-10. Add hidden-data boundary tests when runtime helpers exist.
+10. Blocked/deferred: add hidden-data boundary tests only if runtime helpers are explicitly unblocked.
 11. Add LLM prompt/context assembly guidance. Status: complete in issue `#136`.
-12. Add LLM prompt/context assembly tests when runtime helpers exist.
-13. Validate against a sanitized MekHQ scenario fixture.
-14. Expand profession actions only after the first action proves the pattern.
+12. Blocked/deferred: add LLM prompt/context assembly tests only if runtime helpers are explicitly unblocked.
+13. Blocked/deferred: validate against a sanitized MekHQ scenario fixture only if runtime helpers are explicitly unblocked.
+14. Blocked/deferred: expand profession actions only after the user explicitly reopens the feature and the first action proves useful in play.
 
 ## GitHub Issue Plan
 

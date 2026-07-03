@@ -18,7 +18,6 @@
 - Issue `#122`: rich character templates and GM workflow docs are complete; `campaigns/_template/pcs.md`, `campaigns/_template/npcs.md`, `campaigns/README.md`, `gm/state-save-checklist.md`, and `docs/current/GM_CONTEXT_PACKET_DESIGN.md` now link to the schema and capture rich memory/portrayal fields.
 - Issue `#121`: rich PC/NPC character record schema is complete in `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`; issue `#122` template/workflow follow-up is also complete.
 - Future epic candidate: MekHQ month-tick and prompt-resolution API support. Sharpe's Strikers play exposed a month-boundary personnel-advancement prompt during guarded day advancement; before opening child issues, use the completed hardening docs under `#113`, `#114`, `#117`, `#111`, `#118`, and `#119` so monthly prompts, advancement awards, report deltas, command timeouts, visible dialogs, and manual fallback behavior are explicitly tracked.
-- Issue `#127`: Profession Capability System epic. Design/scaffold child issues `#128` through `#138` are complete. Keep the epic open for a future runtime implementation issue that starts with permission and reveal-filter logic using `docs/current/PROFESSION_GATED_REVEAL_TEST_PLAN.md`; do not run Pre-Mission Intel Check as executable until runtime helpers and tests exist.
 - Issue `#113`: MekHQ API-first playtest hardening epic is complete. Child issues `#116`, `#115`, `#117`, and `#114` are complete; `docs/current/MEKHQ_API_FIRST_PLAYTEST_VALIDATION_2026_07_01.md` records the fixture-backed validation and live API unavailability.
 - Issue `#120`: rich PC/NPC character records epic is complete; schema, templates, play capture workflow, focused validator, and MekHQ personnel/API coordination are all in place. Future selected-person refresh helpers or producer tickets should wait for real MekHQ-linked rich records or live play gaps.
 - Issue `#102`: live MekHQ campaign-state API consumer epic is complete; use `../megamek-workspace/docs/current/MEK_RPG_LIVE_MEKHQ_API_PROTOTYPE.md` and `docs/current/MEKHQ_LIVE_API_EXPANSION_TRACKING.md` as producer status inputs for future live API follow-up.
@@ -35,6 +34,7 @@
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
 - Issue `#97`: live GM playtest checkpoint. Blocked for autonomous issue-drain until the user is present and MekHQ local API is available.
+- Issue `#127`: Profession Capability System runtime work is blocked by user direction. Design/scaffold child issues `#128` through `#138` are complete, but do not implement runtime profession lookup, profession-gated reveal, Pre-Mission Intel Check execution, hidden-data reveal filtering, or prompt assembly anytime soon. Implementing this layer too early would add extra action-permission, filtering, roll, and prompt-shaping machinery while MEK-RPG/MekHQ play workflows are still being debugged, making it harder to recognize whether issues come from live API data, campaign state, GM procedure, rules lookup, or the profession/reveal system itself.
 
 ## Done
 
