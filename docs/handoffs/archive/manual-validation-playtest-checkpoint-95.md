@@ -5,7 +5,16 @@
 - GitHub issue: `#95` Epic: manual validation and playtest checkpoint after rules expansion
 - Roadmap entry: Manual validation and playtest checkpoint after rules expansion
 - Mode: Project development / manual validation coordination
-- Priority: Blocked coordination epic
+- Priority: Completed
+
+## Completion
+
+- Completed: 2026-07-04
+- Final child issue: `#97` completed.
+- Review report: `docs/current/LIVE_GM_PLAYTEST_REVIEW_2026_07_04.md`
+- Follow-up issue: `#152` Plan MekHQ personnel assignment read/query and guarded reassignment workflow
+
+All child issues in the checkpoint wave are complete or reconciled. The epic can close after issue `#97` closes.
 
 ## Goal
 

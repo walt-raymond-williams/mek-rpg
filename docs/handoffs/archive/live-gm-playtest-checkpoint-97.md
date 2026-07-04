@@ -5,7 +5,16 @@
 - GitHub issue: `#97` Post-playtest interview and campaign-file review for live GM workflow
 - Parent issue: `#95` Manual validation and playtest checkpoint after rules expansion
 - Mode: Project development with play-mode review context
-- Priority: Current user-gated review task
+- Priority: Completed
+
+## Completion
+
+- Completed: 2026-07-04
+- Report: `docs/current/LIVE_GM_PLAYTEST_REVIEW_2026_07_04.md`
+- Follow-up issue: `#152` Plan MekHQ personnel assignment read/query and guarded reassignment workflow
+- Verification: `./scripts/validate-campaign-state.ps1 -StrictActive` passed with 0 errors and 0 warnings.
+
+The user confirmed the live GM workflow is good enough to close this checkpoint. No stale-sync automation issue or Sharpe's Strikers restructuring issue was created. The only concrete new follow-up is personnel assignment support.
 
 ## Goal
 
