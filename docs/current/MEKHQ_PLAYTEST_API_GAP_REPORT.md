@@ -49,6 +49,45 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-07-02 - Salvage transport capacity not exposed for recovery planning
+
+- Play context: `Sharpe's Strikers`, 3027-08-16 Butzfleth, while Sharpe considered buying additional salvage/recovery trucks because salvage is driving company profit and current transport may be insufficient.
+- Needed data: current salvage/recovery transport capacity, including each recovery vehicle or truck's cargo capacity, towing/recovery capability, salvage loading limits, and whether available flatbeds or BattleMech Recovery Vehicles can carry specific salvaged units or parts.
+- Attempted API read: `GET /campaign/state` sections `units`, `transport`, `repairs_and_logistics`, and full unit records for BattleMech Recovery Vehicles, flatbeds, trucks, and support vehicles.
+- Missing, stale, ambiguous, or unsupported field: unit records expose availability, crew slots, transport assignment stubs, and carried-unit counts, but not usable cargo capacity, salvage capacity, towing limits, or loading rules. Transport output is explicitly read-only context and does not expose loading, unloading, or reassignment commands.
+- Why it mattered for play: the user is evaluating whether buying additional salvage trucks will increase salvage profit enough to justify cost, but the GM cannot quantify current transport bottlenecks from the live API alone.
+- Fallback used: used the live roster to confirm current recovery/support vehicle count; kept exact salvage capacity as Unknown.
+- Expected read shape: unit transport state should expose cargo capacity, unit transport capacity, towing/recovery capacity, current load, supported load types, and warnings when a unit cannot carry salvaged Meks/vehicles.
+- Suggested producer/API change: add transport/cargo capacity fields to `/campaign/state?sections=units,transport` or a dedicated `/campaign/transport-capacity` endpoint.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-01 - DropShip Raid chassis and coordinate-sale transaction not exposed
+
+- Play context: `Sharpe's Strikers`, 3027-03-23 Altorra, after completing MekHQ scenario id `21`, `DropShip Raid`.
+- Needed data: exact enemy DropShip chassis/model and a finance transaction confirming the user-reported 5,000,000 C-bill sale of damaged DropShip coordinates.
+- Attempted API read: `GET /campaign/state` sections `scenarios`, `finances`, `reports`, `units`, and `unsupported`; `GET /campaign/summary`; local search of the capture files for `Condor`, `coordinates`, `5000000`, `5,000,000`, `DropShip`, and related terms.
+- Missing, stale, ambiguous, or unsupported field: the scenario confirms an enemy `Dionysus's Starfire Vikings DropShip` force, 1 unit, 1,978 BV, but does not expose the exact chassis/model in the captured scenario object. The finance endpoint confirms current balance and transaction count but only exposes the last five transactions, none of which show the coordinate sale.
+- Why it mattered for play: the user specifically wanted concrete MekHQ facts after a mission where the table understood the target as an enemy Condor DropShip and the coordinates were sold for 5,000,000 C-bills.
+- Fallback used: recorded current funds and scenario victory as MekHQ-confirmed; recorded `Condor` chassis and coordinate sale as user/table-reported unless later confirmed by a broader MekHQ finance or scenario export. Did not parse the active save.
+- Expected read shape: scenario state should expose resolved bot-force unit summaries with chassis/model/type/BV, and finance state should expose a full or queryable transaction list with date, type, amount, description, and optional linked scenario id.
+- Suggested producer/API change: add resolved scenario force-unit details to `/campaign/state?sections=scenarios` or `/campaign/scenarios/{id}/forces`; add paginated or filterable finance transaction export to `/campaign/finances/transactions`.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-01 - Per-unit DropShip maintenance cost history unavailable
+
+- Play context: `Sharpe's Strikers`, 3027-03-13 Altorra, after the user reported that the Mule's maintenance bills were high enough to threaten bankruptcy and that the ship had to be mothballed.
+- Needed data: per-unit maintenance cost history for `Mule (2737)`, including maintenance charges over time, monthly cost attribution, whether mothballing stopped or reduced those charges, and any outstanding DropShip-specific upkeep liability.
+- Attempted API read: `GET /campaign/state` sections `finances`, `units`, `repairs_and_logistics`, and `reports`; `GET /campaign/summary`; local search of the captured live state for the Mule unit and recent maintenance transactions.
+- Missing, stale, ambiguous, or unsupported field: the API exposes current funds, recent transactions, the Mule's current Mothballed status, and a long last-maintenance report, but not a structured per-unit cost ledger or cost attribution history for the Mule.
+- Why it mattered for play: Sharpe needs to decide whether to keep the mothballed Mule, ask the Capellans for support, or return the vessel before it bankrupts the company. The GM can see the current cash crisis but not quantify how much of the cash drain came from the Mule through API data alone.
+- Fallback used: recorded the bankruptcy pressure and mothballing as user-confirmed table memory; used the live API only for current funds and current Mule status. Did not parse the active save.
+- Expected read shape: finance state should expose a unit-linked transaction list or aggregate such as `unit_costs[{unit_id, display_name, period_start, period_end, maintenance_total, repair_total, payroll_total, mothballing_costs, current_month_projection}]`.
+- Suggested producer/API change: add unit-linked cost attribution to `/campaign/state?sections=finances,units` or a dedicated `/campaign/finances/unit-costs` endpoint, with clear handling for mothballed and activating units.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
 ### 2026-07-01 - Live local API unavailable during API-first validation
 
 - Play context: issue `#114` API-first MekHQ playtest workflow validation.
@@ -62,6 +101,19 @@ The gap-report path is intentionally part of deterministic project verification.
 - Related issue or handoff: issue `#114`, epic issue `#113`.
 - Status: blocked on user-present live MekHQ session.
 
+### 2026-06-30 - Salvaged unit inventory not exposed after battle
+
+- Play context: `Sharpe's Strikers`, 3026-06-21 Altorra, after the user reported finishing a battle and salvaging a Warhammer.
+- Needed data: confirmation that a Warhammer/WHM was salvaged, including whether it is now a unit, pending salvage item, cargo item, acquisition/recovery work item, or employer-held salvage claim.
+- Attempted API read: `GET /campaign/state` sections `units`, `scenarios`, `repairs_and_logistics`, `markets`, `reports`, and `unsupported`; `GET /campaign/summary`; `GET /campaign/pending-deployments`; full-text search of the captured live state for `Warhammer` and `WHM`.
+- Missing, stale, ambiguous, or unsupported field: no Warhammer/WHM appears in the live unit list or captured state JSON. Recent completed scenarios expose `salvage_assignments`, but not actual salvage result inventory, salvaged unit identities, disputed salvage claims, or pending recovery items.
+- Why it mattered for play: the user believed a Warhammer had been salvaged but could not see it in MekHQ, and the GM needed to know whether to record it as hard ledger state, pending/manual state, or an API gap.
+- Fallback used: kept Warhammer salvage as user-reported/table-facing but not MekHQ-confirmed; did not parse the active save.
+- Expected read shape: completed scenarios or logistics state should expose a `salvage_results` or `pending_salvage` list with unit id if created, chassis/model, status, owner/claim holder, recovery state, repair state, location, and whether it is visible in the campaign unit roster.
+- Suggested producer/API change: add actual salvage inventory/results to `/campaign/state?sections=scenarios,repairs_and_logistics` or a dedicated `/campaign/salvage` endpoint, distinct from salvage assignment teams.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
 ### 2026-06-29 - Active contract reputation impact unavailable
 
 - Play context: `Sharpe's Strikers`, 3025-05-15 Talitha, after `Deep Raid Defense` refused, `Official Challenge` defeated, `Facility Assault` defeated/withdrawn, and during `Recon Evasion`.
@@ -72,6 +124,45 @@ The gap-report path is intentionally part of deterministic project verification.
 - Fallback used: kept reputation hit Unknown; framed it as an in-world command concern rather than a quantified MekHQ ledger value.
 - Expected read shape: active contract should expose `employer_satisfaction`, `contract_success_score`, `projected_reputation_delta`, `projected_faction_standing_delta`, `scenario_result_summary`, and warnings when reputation effects are only calculated at contract close.
 - Suggested producer/API change: add contract performance/reputation projection fields to `/campaign/state?sections=contracts,scenarios` or a dedicated `/campaign/contracts/{id}/performance` endpoint.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-02 - Reputation and XP change history unavailable
+
+- Play context: `Sharpe's Strikers`, 3027-08-20 Butzfleth, after Sharpe noticed improved reputation and experience on the campaign board and tried to trace what caused the rise.
+- Needed data: current campaign/unit reputation value, faction standing, employer standing, Sharpe's XP change history, XP award sources, award dates, and a ledger tying reputation or XP increases to scenarios, contracts, education, command events, or manual GM adjustments.
+- Attempted API read: `GET /campaign/state` sections `bridge_metadata`, `campaign`, `contracts`, `scenarios`, `personnel`, and `unsupported`; `GET /campaign/summary`; `GET /campaign/commands`; `GET /personnel/{id}` detail through `scripts/fetch-mekhq-live-api.ps1`; local search of captured JSON for reputation, standing, experience, and XP terms.
+- Missing, stale, ambiguous, or unsupported field: the API exposes current personnel XP, skills, awards count, contract status, scenario results, salvage totals, and campaign balance, but no numeric reputation/standing field and no structured XP or reputation delta history.
+- Why it mattered for play: Sharpe could see that the unit and commander had improved, but the GM needed to identify whether the rise came from command school, battle results, contract success, salvage, awards, or another MekHQ-owned event.
+- Fallback used: traced the rise circumstantially from visible MekHQ facts: command school completion on 3027-05-22, skill gains, current XP 50/50, eight awards, active Butzfleth victories, prior successful contracts, and strong salvage/profit results. Kept exact reputation value and exact XP source ledger Unknown.
+- Expected read shape: expose `campaign_reputation`, `faction_standings[]`, `employer_standing`, `reputation_history[]`, and personnel `xp_history[]` entries with date, amount, source type, source id/name, manual flag, and notes.
+- Suggested producer/API change: add reputation/standing fields to `/campaign/state?sections=campaign,contracts` and add XP/reputation audit histories to personnel detail or dedicated `/campaign/reputation/history` and `/personnel/{id}/xp-history` endpoints.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-02 - Assigned player force BV unavailable in pending deployment read
+
+- Play context: `Sharpe's Strikers`, 3027-09-01 Butzfleth, reviewing pending scenario `29`, `MekBase - Allied - Defend`, before continuing RPG play.
+- Needed data: total BV for the assigned Strikers player force, plus per-assigned-unit BV for Catapult CPLT-C1, Griffin GRF-1N, Wolverine WVR-6R, Jenner JR7-D, Stinger STG-3R, Wasp WSP-1A #2, Locust LCT-1V, Shadow Hawk SHD-2H, Grasshopper GHR-5H, two Warhammer WHM-6R entries, and Manticore Heavy Tank.
+- Attempted API read: `GET /campaign/pending-deployments`, `GET /campaign/state` sections `scenarios` and `units`, and local inspection of assigned unit objects in `mekhq-state.json`.
+- Missing, stale, ambiguous, or unsupported field: bot force BV is exposed for allied and enemy forces, but the assigned player units in pending deployments and unit list do not expose per-unit BV or a summed player-force BV.
+- Why it mattered for play: the user asked how the current operation's BV looks before deciding how to frame the engagement and RPG consequences.
+- Fallback used: reported exact exposed bot-force BV and marked Strikers assigned-force BV as not exposed by the current API, while listing the assigned units and their qualitative weight.
+- Expected read shape: pending scenario should expose `player_force_total_bv` and assigned-unit `battle_value` fields alongside `bot_forces[].total_bv`.
+- Suggested producer/API change: add per-unit and aggregate BV to `/campaign/pending-deployments` and `/campaign/state?sections=scenarios,units` for assigned player forces.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-04 - Current salvage sale itemization unavailable
+
+- Play context: `Sharpe's Strikers`, 3027-11-22 Wallacia, after the user reported completing a battle, receiving salvage, and selling it.
+- Needed data: exact salvaged items/units from the latest battle, which salvage was retained versus sold, sale transaction lines, buyer/employer allocation, and sale value by item.
+- Attempted API read: `GET /campaign/state` sections `contracts`, `scenarios`, `finances`, `units`, `repairs_and_logistics`, and `reports`; `GET /campaign/pending-deployments`; local search of the captured live API JSON for salvage and sale terms.
+- Missing, stale, ambiguous, or unsupported field: the active contract exposes aggregate salvage value by unit/employer, and finances expose current balance plus the five most recent transactions, but the exact salvage sale line and itemized sold salvage are not exposed in the current capture.
+- Why it mattered for play: the user wanted to verify that recent salvage/sales are making the Wallacia contract highly profitable and understand what changed after the battle.
+- Fallback used: reported confirmed aggregate ledger facts only: Wallacia contract salvage by unit is 2,757,103 C-bills, salvage by employer is 1,732,502 C-bills, current salvage percent is 62, current funds are 44,806,926 C-bills, and recent visible transactions do not include the sale itemization.
+- Expected read shape: expose a salvage ledger with scenario id, item/unit id, chassis/item name, disposition retained/sold/employer, sale value, transaction id/date, and whether the proceeds are included in contract `salvaged_by_unit`.
+- Suggested producer/API change: add `/campaign/salvage` or extend scenario/finance exports with itemized salvage-result and sale records, not just aggregate contract salvage values.
 - Related issue or handoff: epic issue `#113`.
 - Status: open.
 

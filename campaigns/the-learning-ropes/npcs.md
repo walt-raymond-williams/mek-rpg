@@ -67,14 +67,14 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 ### Silas Trinh
 
 - MekHQ person id: `e6bc6304-d0f4-4dfa-acda-2f7e19110e50`
-- Role/rank/status: MekWarrior / Recruit / Active (Confirmed from MekHQ live API)
-- Linked unit id: `931be1f0-ec7e-4c13-9042-868a0ae39f15`
-- Fatigue/hits: 0 / 0
+- Role/rank/status: MekWarrior / Recruit / Killed in Action (Confirmed from MekHQ live API after `Official Challenge`)
+- Linked unit id: `Unknown` after death; formerly Stinger STG-3R `931be1f0-ec7e-4c13-9042-868a0ae39f15`
+- Fatigue/hits: 7 / 0 at post-battle refresh
 - Current attitude toward PCs: Sparse/TBD
 - Wants: Sparse/TBD
-- Knows: Sparse/TBD
-- Secrets or uncertainty: Sparse/TBD; MEK-RPG overlay only
-- Current status: Live MekHQ roster context
+- Knows: Died before any deeper MEK-RPG personal arc was established.
+- Secrets or uncertainty: User reported death by Stinger headshot; MekHQ confirms KIA but V1 live API does not expose full injury objects.
+- Current status: Killed in Action during `Official Challenge`, 3025-09-28.
 
 ### Ryuzaburo Ine
 
@@ -128,6 +128,7 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 
 - MekHQ person id: `09d54024-ea38-465e-a1d7-52a34d63dec1`
 - Role/rank/status: Dependent / Unknown / Student (Confirmed from MekHQ live API)
+- MEK-RPG relationship note: Lisa is Jannat Karaganilla's spouse, not a child dependent; treat MekHQ `Student` as training/education status only.
 - Linked unit id: `Unknown`
 - Fatigue/hits: 0 / 0
 - Current attitude toward PCs: Sparse/TBD

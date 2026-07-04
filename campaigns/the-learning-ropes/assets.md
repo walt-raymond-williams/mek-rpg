@@ -4,11 +4,11 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 
 ## Finances
 
-- Funds: 90,938,250 C-Bill (Confirmed from MekHQ live API; live context only)
+- Funds: 97,685,751 C-Bill (Confirmed from MekHQ live API on 3025-09-14 after user advanced days; live context only)
 - Active loans: false
 - Loan balance: 0 C-Bill
 - Loan defaults: 0
-- Finance warnings: Unknown
+- Finance warnings: No active loans or loan defaults reported by MekHQ live API on 3025-08-28.
 
 ## Live API Units
 
@@ -323,3 +323,74 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 - Automation guard: repair execution `false`, procurement execution `false`, stable work ids `false`
 - Warnings: Repair and procurement output is display-only context, not a complete work-order command queue.
 - Pending MekHQ application: None yet; create item ids in `pending-mekhq-actions.md`.
+
+## Post-Frontier Assassination Salvage And Damage
+
+- MekHQ live API on 3025-08-30 reports `Frontier Assassination` victory and recovery of the deployed Grasshopper, Stalker, Stalker #2, and Crusader.
+- New roster acquisitions from battle/acquisition reports: Warhammer WHM-6R; J. Edgar Light Hover Tank (MG); Vedette Medium Tank; Manticore Heavy Tank; Thunderbird TRB-D36.
+- Damage/service pressure after battle: 123 parts needing service across 9 units; 0 parts needed; 0 units under repair.
+- Notable unit states:
+  - Stalker STK-4P: Heavy Damage, 12 parts needing service.
+  - Stalker STK-4P #2: Moderate Damage, 5 parts needing service.
+  - Grasshopper GHR-5H: Undamaged, 2 parts needing service.
+  - Crusader CRD-3R: Undamaged, 3 parts needing service.
+  - Warhammer WHM-6R: Inoperable / Crippled salvage, 18 parts needing service.
+  - J. Edgar Light Hover Tank (MG): Salvage / Crippled, 15 parts needing service.
+  - Vedette Medium Tank: Salvage / Crippled, 15 parts needing service.
+  - Manticore Heavy Tank: Salvage / Crippled, 17 parts needing service.
+  - Thunderbird TRB-D36: Salvage / Crippled, 36 parts needing service.
+
+## Post-TankBase Salvage And Damage
+
+- MekHQ live API on 3025-09-02 reports `TankBase - Hostile - Capture` victory.
+- New roster acquisitions from battle/acquisition reports: Falcon Hover Tank; Mechanized Wheeled Platoon (Rifle); LRM Carrier; Vedette Medium Tank (AC2); Scorpion Light Tank (LRM); SRM Carrier; Cyclops CP-10-Z; Prowler Multi-Terrain Vehicle (Support).
+- Damage/service pressure after TankBase: 251 parts needing service across 21 units; 0 parts needed; 4 units under repair.
+- TankBase force states:
+  - Griffin GRF-1N: Heavy Damage, 13 parts needing service.
+  - Centurion CN9-A: Crippled, 13 parts needing service.
+  - Flea FLE-4: Salvage / Crippled, not deployable, 12 parts needing service.
+  - Crab CRB-20: Crippled, 8 parts needing service.
+  - Trebuchet TBT-5N: Undamaged, 6 parts needing service.
+
+## Post-Decoy Engagement Status
+
+- MekHQ live API on 3025-09-06 reports `Decoy Engagement` victory dated 3025-09-03.
+- Repair/service pressure after Decoy refresh: 229 parts needing service across 19 units; 0 parts needed; 1 unit under repair.
+- Decoy pilot status: no watched pilot hits reported. Fatigue: Naizen Hodges 4, Nathalia Felgas 4, Julietta Maitre 5, Nathan Lumsden 7.
+- Decoy force states on 3025-09-06 refresh:
+  - Grasshopper GHR-5H: Deployed, Undamaged, 6 parts needing service.
+  - Crusader CRD-3R: Deployed, Undamaged, 7 parts needing service.
+  - Stalker STK-4P: Deployed, Heavy Damage, 12 parts needing service.
+  - Stalker STK-4P #2: Deployed, Moderate Damage, 5 parts needing service.
+- Salvage/repair note: Flea FLE-4 service burden decreased to 3 parts needing service after successful salvage of Small Laser and Mech Life Support System; Mek Sensors salvage attempt failed.
+
+## 3025-09-14 Operational Status
+
+- MekHQ live API reports 40 total units, 26 damaged, 13 deployed, 15 not deployable, and 0 units under repair.
+- Repair/service pressure: 233 parts needing service across 19 units; 2 parts needed by 1 unit.
+- Current parts-needed bottleneck: Powerman SC XV HaulerMech, crippled, 2 parts needed and 13 parts needing service.
+- Repair pace check: daily maintenance is being performed, but MekHQ shows no units formally under repair. Current technical reports show Trebuchet quality improved D to E, Griffin maintenance could not be performed by its assigned tech due to insufficient minutes but was maintained by Rashida Hjulstad with quality remaining E, Centurion quality remained D, Crab quality improved E to F, and several support/salvage vehicles received maintenance.
+- Procurement check: industrial Mek parts for the Powerman are being hunted. The Mek Left Arm (Industrial) was not found; Mek Head, Lower Leg Actuator, Upper Leg Actuator, Industrial Cockpit, Mek Sensors, Mek Right Leg, Mek Right Arm, and Mek Left Leg were found with 14- or 21-day delivery times, mostly at bad to disastrous deals.
+- Key deployed units on 3025-09-14:
+  - Scenario id `5` / `VIP Ambush`: Locust LCT-1E with Jannat Karaganilla; Flea FLE-4, crippled and not deployable by availability flag; Stinger STG-3R; Spider SDR-5V; Grasshopper GHR-5H, Heavy Damage; Stalker STK-4P, Heavy Damage; Stalker STK-4P #2, Moderate Damage; Crusader CRD-3R, Moderate Damage.
+  - Scenario id `6` / `Diversion Engagement`: Griffin GRF-1N, Heavy Damage; Centurion CN9-A, Crippled; Crab CRB-20, Crippled; Trebuchet TBT-5N, Undamaged with service work; Warhammer WHM-6R with Majlinda Yusuf.
+- Watched personnel status: Double-M active, fatigue 2, 0 hits; Yusuf active, fatigue 1, 0 hits; Jannat active, fatigue 1, 0 hits; Nathalia Felgas active, fatigue 4, 0 hits; Nathan Lumsden active, fatigue 7, 0 hits; Julietta Maitre active, fatigue 5, 0 hits; Naizen Hodges active, fatigue 4, 0 hits.
+- New salvage/crippled assets visible since prior checkpoint include Routemaster Hover Shuttle, Jump Platoon (Flamer), Powerman SC XV HaulerMech, and Foot Platoon (Laser). Treat exact acquisition source as MekHQ-owned unless inspected in MekHQ reports.
+
+## Post-Official Challenge Status
+
+- MekHQ live API on 3025-09-28 reports `Official Challenge`, scenario id `7`, as a Victory.
+- Objective completed: destroy or rout 95% of the opposing Independent Officer force, awarding 1 Scenario Victory Point.
+- Confirmed casualty: Silas Trinh is Killed in Action; user reported he died in the Stinger from a headshot.
+- Challenge force aftermath:
+  - Stinger STG-3R: Inoperable / Crippled, not deployable, 35 parts needing service, no assigned crew after Silas's death.
+  - Company Grasshopper GHR-5H: destroyed/cored in the battle according to user tactical report. Treat any surviving Grasshopper salvage as enemy-origin unless later MekHQ inspection proves otherwise.
+  - Enemy-origin Grasshopper salvage: live roster now includes Grasshopper salvage/inoperable entries after the user reported a lucky headshot against the opposing Grasshopper.
+  - Stalker STK-4P: Moderate Damage, 7 parts needing service.
+  - Stalker STK-4P #2: Undamaged, 2 parts needing service.
+  - Crusader CRD-3R: Undamaged, 3 parts needing service.
+  - Warhammer WHM-6R: Undamaged, 0 parts needing service.
+  - Enemy-origin Warhammer salvage: user reported lucky results against the opposing Warhammer; live roster now includes additional Warhammer WHM-6R entries with inoperable/crippled or moderate damage status.
+  - Spider SDR-5V: Undamaged, 0 parts needing service.
+  - Locust LCT-1E: Moderate Damage, deployed to scenario id `8`, 8 parts needing service.
+- Watched pilot aftermath: Nathan Lumsden active with 1 non-permanent injury and fatigue 8; Julietta Maitre active with 3 non-permanent injuries and fatigue 5; Nathalia Felgas active with fatigue 4; Jannat Karaganilla active with fatigue 2; Majlinda Yusuf active with fatigue 2; Naizen Hodges active with fatigue 4; Stephanie Prieler active with fatigue 2.

@@ -2,14 +2,29 @@
 
 ## Issue
 
-- GitHub issue: `#97` Run live GM playtest checkpoint using current workflow tools
-- Roadmap entry: Repeat manual validation/playtest checkpoints after adding major playable layers
-- Mode: Play mode with project-development close-out
-- Priority: User-gated / defer until issue `#107` live API campaign-load adapter is complete or explicitly waived by the user
+- GitHub issue: `#97` Post-playtest interview and campaign-file review for live GM workflow
+- Parent issue: `#95` Manual validation and playtest checkpoint after rules expansion
+- Mode: Project development with play-mode review context
+- Priority: Current user-gated review task
 
 ## Goal
 
-Run a short live GM scene through the current workflow and capture bugs, friction, missing rules, and state-save issues.
+Finish the live GM playtest checkpoint by reviewing the real campaign files produced during extended MEK-RPG play, interviewing the user about what worked and failed, and converting concrete findings into follow-up issues or closing `#97` as good enough.
+
+The original `#97` blind/live playtest has effectively already happened through normal use. The next agent should not try to stage another blind playtest first.
+
+## Current Campaign Evidence
+
+Review these campaign folders:
+
+- `campaigns/the-learning-ropes/`: earlier MekHQ-linked Learning Ropes campaign arc. This folder exists and has substantial tracked changes from live play.
+- `campaigns/sharpes-strikers/`: current active campaign save. This folder exists and is now selected in `campaign-state/active-campaign.md`.
+
+The active campaign pointer currently selects:
+
+```text
+campaigns/sharpes-strikers/
+```
 
 ## Required Context
 
@@ -19,118 +34,89 @@ Read these first:
 - `docs/current/AI_READY_PROJECT_WORKFLOW.md`
 - `docs/current/MEK_RPG_PROJECT_PROFILE.md`
 - `docs/current/TASKS.md`
+- `docs/current/ROADMAP.md`
 - `gm/session-procedure.md`
 - `gm/scene-loop.md`
-- `gm/roll-policy.md`
 - `gm/state-save-checklist.md`
 - `campaign-state/active-campaign.md`
 
 Task-specific context:
 
-- `scripts/build-gm-context-packet.ps1`
-- `scripts/check-ruling-authority.ps1`
-- `docs/current/STATE_CHANGE_PROPOSAL_SCHEMA.md`
-- `docs/current/RULING_AUTHORITY_GATE.md`
-
-Active playtest campaign:
-
 - `campaigns/the-learning-ropes/`
-- MekHQ source context: loaded read-only live API campaign `The Learning Ropes`, date `3025-04-08`, system `Galatea`, campaign id `ea0d334a-1582-459a-9084-b349f0baca5a`.
-- Treat live MekHQ data as read-only context. Do not write to MekHQ, `.cpnx`, `.cpnx.gz`, XML saves, or other repositories.
-- Do not parse the active MekHQ save as the normal load path when the live API is available. Issue `#107` should provide the direct live API campaign-load adapter; until then, a blind playtest risks exercising the wrong workflow.
+- `campaigns/sharpes-strikers/`
+- `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md`
+- `docs/current/MEKHQ_OPEN_CONNECTION_STARTUP_DECISION_TREE.md`
+- `docs/current/MEKHQ_QUERY_VIEW_WORKFLOW_VALIDATION.md`
+- `docs/current/RICH_CHARACTER_RECORD_SCHEMA.md`
+- `gm/character-record-capture.md`
 
 ## Expected Output
 
-- A short live play checkpoint with at least one meaningful rules lookup or authority-gate decision.
-- Campaign-local session notes or playtest notes if persistent state changes.
-- Follow-up issues for bugs, rules gaps, or workflow friction.
+- Inspect and summarize how the Learning Ropes and Sharpe's Strikers campaign files are structured.
+- Interview the user about the extended MEK-RPG playtest experience.
+- Identify concrete follow-up issues only where there is a real recurring bug, missing API capability, workflow gap, documentation gap, or validation gap.
+- If no further action is needed, update `#97` with the review result and close it.
+- Reconcile parent issue `#95` after `#97` is closed or explicitly deferred.
 
-## Files And Areas
+## Suggested Interview Questions
 
-Likely files to read or edit:
+Ask concise questions in batches. Do not dump all questions at once if the conversation would work better interactively.
 
-- `campaigns/<campaign-id>/session-log.md`
-- `campaigns/<campaign-id>/current-state.md`
-- `campaigns/<campaign-id>/rules-gaps.md`
-- `campaigns/<campaign-id>/playtest-notes.md` if present
-- `docs/current/ROADMAP.md`
-- `docs/current/TASKS.md`
+1. What worked well enough that we should preserve it as the default MEK-RPG play workflow?
+2. Where did the agent repeatedly use stale campaign notes, stale MekHQ facts, or the wrong campaign folder?
+3. Where did the MekHQ live API provide the right data at the right time?
+4. Where did the MekHQ live API fail, time out, or omit data that blocked play?
+5. Which campaign-state files were most useful during play: `current-state.md`, `session-log.md`, `missions.md`, `assets.md`, `pcs.md`, `npcs.md`, `pending-mekhq-actions.md`, or others?
+6. Which files became too long, noisy, stale, duplicated, or hard to trust?
+7. Did the GM context packet and compact MekHQ query views make play faster, or did agents still over-scan raw files?
+8. Did agents handle MekHQ-owned facts correctly, especially avoiding active save parsing and marking unknowns/API gaps?
+9. Did rules lookup and ruling authority work in actual scenes, or did the GM mostly improvise?
+10. Did rich character records improve continuity, or are they too heavy for current play?
+11. What parts of Sharpe's Strikers need better structure before continued play?
+12. What should be a GitHub issue versus just a table habit or GM preference?
+
+## Campaign File Review Checklist
+
+- Confirm `campaign-state/active-campaign.md` selects exactly one folder.
+- Confirm `campaigns/sharpes-strikers/` has all standard template files.
+- Confirm `campaigns/the-learning-ropes/` remains available for historical review.
+- Inspect `session-log.md`, `current-state.md`, `missions.md`, `assets.md`, `pcs.md`, `npcs.md`, `hooks.md`, `pending-mekhq-actions.md`, and `mekhq-bridge.md` for each relevant campaign.
+- Identify whether files contain durable facts, temporary transcript-like material, stale facts, API-gap notes, or unresolved pending MekHQ actions.
+- Check whether `docs/current/MEKHQ_PLAYTEST_API_GAP_REPORT.md` duplicates campaign-local gap notes or needs a follow-up producer issue.
+- Run `./scripts/validate-campaign-state.ps1 -StrictActive`.
+- If campaign state or docs are changed, run `git diff --check` and stage only relevant files.
 
 ## Commands
 
-Useful commands or checks:
+Useful commands:
 
 ```powershell
 git status --short --branch
-./scripts/build-gm-context-packet.ps1
 ./scripts/validate-campaign-state.ps1 -StrictActive
+./scripts/build-gm-context-packet.ps1
+gh issue view 97 --comments
 ```
 
-## Blind Playtest Checklist
+Optional, when reviewing file shape:
 
-Use this checklist outside the new gameplay agent session. The goal is to test ordinary play behavior, so do not tell the gameplay agent about issue `#97`, this handoff, or the acceptance criteria unless the test has ended and you are doing close-out.
-
-### Manual Prep Before Starting The New Agent
-
-- Confirm this repository is clean with `git status --short --branch`.
-- Confirm issue `#97` is open and no longer blocked.
-- Confirm issue `#107` is complete, or explicitly decide to run the playtest despite the known live API campaign-load adapter gap.
-- Optionally run `./scripts/validate-campaign-state.ps1 -StrictActive` yourself before the session.
-- Use `campaigns/the-learning-ropes/` as the active campaign unless the user deliberately switches it before the playtest.
-- Do not ask the new gameplay agent to read this handoff, update GitHub issues, or run project-development close-out at session start.
-
-### Prompt To Give The Gameplay Agent
-
-Use an ordinary play prompt, such as:
-
-```text
-Let's continue the active MEK RPG campaign. Load the active campaign state and run the next short scene.
+```powershell
+rg -n "^#|^##|^###" campaigns/the-learning-ropes campaigns/sharpes-strikers
 ```
-
-If you want a slightly more directed scene without exposing the test, use a natural prompt like:
-
-```text
-Let's continue the active MEK RPG campaign with a short scene that involves a meaningful uncertain action and could change the campaign state.
-```
-
-### What To Watch For During Play
-
-- Did the agent load exactly one active campaign save without being told the test details?
-- Did it use the GM flow docs naturally?
-- Did it perform rules lookup from project summaries rather than memory when a rule mattered?
-- Did it identify ruling authority or uncertainty instead of overclaiming?
-- Did it ask for rolls only when failure mattered?
-- Did it avoid full tactical BattleTech resolution inside MEK-RPG?
-- Did it propose or make appropriate campaign-state updates when persistent facts changed?
-- Did it capture rules gaps, workflow friction, or follow-up needs somewhere durable?
-
-### Manual Close-Out After The Session
-
-- Save the chat transcript or summarize the observed behavior before details fade.
-- Check changed files with `git status --short --branch`.
-- Run `./scripts/validate-campaign-state.ps1 -StrictActive`.
-- If project files changed beyond campaign notes, run `./scripts/test-all.ps1 -Quick` or record why it was not run.
-- Update this issue, `docs/current/TASKS.md`, and `docs/current/ROADMAP.md` with the result.
-- Close issue `#97` only if the play checkpoint actually exercised rules lookup or authority behavior and state-save/checkpoint behavior was exercised or explicitly found unnecessary.
-- Reconcile issue `#95` after `#97` is complete or explicitly deferred.
-- Commit and push completed repository changes unless the user explicitly says not to.
 
 ## Constraints
 
-- This issue requires live user participation for a meaningful playtest.
-- It is labeled `user-task`; autonomous agents should skip it unless the user is present and explicitly asks to run the playtest.
-- Load exactly one active campaign save folder.
-- Do not resolve tactical BattleTech combat inside MEK-RPG; hand off to Classic BattleTech, MegaMek, or MekHQ when tactical detail matters.
+- Do not run source processing.
+- Do not implement profession-gated reveal or Pre-Mission Intel Check runtime work; issue `#127` is blocked.
+- Do not parse active MekHQ saves as the routine live context path.
+- Keep raw live API captures, raw saves, PDFs, extracted text, and secrets unstaged.
+- Do not turn every preference into a GitHub issue. File issues only for actionable, repeatable work.
+- Keep campaign facts inside the relevant campaign save folder.
 
 ## Acceptance Criteria
 
-- User is present for the live play checkpoint.
-- Active campaign context is loaded through the current procedure.
-- At least one rules lookup or authority-gate decision is exercised.
-- State-save/checkpoint behavior is exercised or explicitly found unnecessary.
-- Bugs or gaps are captured as notes or follow-up issues.
-- Changes are committed and pushed.
-
-## Open Questions
-
-- Which campaign and scene should be used for the playtest checkpoint?
+- Campaign files for Learning Ropes and Sharpe's Strikers are inspected and summarized.
+- User interview captures concrete feedback on workflow, API, campaign-state, rules lookup, context loading, and continuity.
+- Follow-up issues are created only for actionable work, or non-actions are documented.
+- `#97` is either closed with the review result or left open with a specific remaining blocker.
+- Parent issue `#95` is reconciled after `#97`.
+- Relevant changes are committed and pushed.

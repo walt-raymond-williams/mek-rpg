@@ -2,7 +2,7 @@
 
 ## Now
 
-- None.
+- Issue `#97`: post-playtest interview and campaign-file review. The original blind/live playtest has effectively been exercised through extended MEK-RPG play: `campaigns/the-learning-ropes/` exists and has progressed through a full MekHQ-linked campaign arc, and `campaigns/sharpes-strikers/` is now the active campaign save. Next step is not more blind play; inspect both campaign folders, preserve the current campaign state in git, then run a structured user interview to capture what worked, what failed, what was confusing, and what follow-up issues should exist.
 
 ## Next
 
@@ -32,7 +32,6 @@
 ## Blocked
 
 - Issue `#95`: manual validation and playtest checkpoint epic. Blocked for autonomous issue-drain until child issues are complete or explicitly unblocked.
-- Issue `#97`: live GM playtest checkpoint. Blocked for autonomous issue-drain until the user is present and MekHQ local API is available.
 - Issue `#127`: Profession Capability System runtime work is blocked by user direction. Design/scaffold child issues `#128` through `#138` are complete, but do not implement runtime profession lookup, profession-gated reveal, Pre-Mission Intel Check execution, hidden-data reveal filtering, or prompt assembly anytime soon. Implementing this layer too early would add extra action-permission, filtering, roll, and prompt-shaping machinery while MEK-RPG/MekHQ play workflows are still being debugged, making it harder to recognize whether issues come from live API data, campaign state, GM procedure, rules lookup, or the profession/reveal system itself.
 
 ## Done
