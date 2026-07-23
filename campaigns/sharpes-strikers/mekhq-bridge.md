@@ -1,61 +1,111 @@
 # MekHQ Bridge
 
-Last live capture: 2026-06-30
+This file records campaign-local bridge metadata for a read-only MekHQ live API context refresh. It is not a MekHQ save, not a durable checkpoint, and not authority to write to MekHQ.
 
-Capture folder: `mekhq-live-api-capture/`
+## Live API Metadata
 
-Startup branch: Branch A, live API available and sufficient for opening scene context.
+- MEK-RPG campaign id: `sharpes-strikers`
+- Live API state JSON: `mekhq-live-api-capture/mekhq-state.json`
+- Adapter timestamp: `2026-07-23T23:31:45.409157+00:00`
+- Schema: `mekhq-live-campaign-state` version `0.1`
+- API mode: `local-read-only-live-context`
+- Read-only proof: `true`
+- MekHQ version: `0.51.01`
+- State revision: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3032-12-04-2026-07-23T23:31:36.528004300Z`
+- Snapshot id: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3032-12-04-2026-07-23T23:31:36.528004300Z`
+- Dirty state: Unknown
 
-## Loaded Campaign
+## Ownership Boundary
 
-- Campaign name: Sharpe's Strikers
-- Campaign id: `7fbbb5da-0bcd-46f1-8f61-846848c2f148`
-- Campaign date: 3026-04-16
-- Current system: Altorra
-- Current location: Altorra
-- MekHQ version: 0.51.01
-- API mode: local read-only live context
+- MekHQ owns campaign date, day advancement, travel, finances, rosters, unit condition, repairs, contracts, markets, scenarios, tactical outcomes, and hard logistics.
+- MEK-RPG owns RPG scenes, A Time of War overlays, conversations, relationships, promises, secrets, hooks, session logs, safety/tone, and narrative uncertainty.
+- Live API values are live context by default. Promote them to durable MEK-RPG memory only through a save/import checkpoint, explicit user approval, or a future controlled promotion flow.
+- Do not write to `.cpnx`, `.cpnx.gz`, MekHQ XML, raw MekHQ save payloads, or MekHQ API write surfaces from this workspace.
 
-## Scene-Facing Snapshot
+## Campaign Snapshot
 
-- Balance: 4,269,735 C-bills
-- Active contract: 3025 - CC - Altorra Garrison Duty
-- Previous contract: 3025 - CC - Talitha Recon Raid, Success, inactive.
-- Contract start: 3025-12-04
-- Contract end: 3027-05-04
-- Contract employer: Capellan Confederation
-- Contract travel days reported: 18
-- Contract active today: true
-- Contract pay read: monthly payout 786,083 C-bills; total monthly payout 5,937,986 C-bills; advance amount 4,454,471 C-bills; support amount 0 C-bills; transit amount 1,053,000 C-bills; transport amount 6,373,700 C-bills; estimated total profit 7,908,871 C-bills.
-- Contract terms: command rights House; 0% straight support; 100% transport compensation; 20% salvage; current salvage percent 9; salvage exchange false; 40% battle loss compensation.
-- Recent victory: Frontline Breakthrough, scenario id `11`, dated 3026-04-07. Destination-edge objective completed; enemy-rout objective failed.
-- Recent victory: Critical Convoy Escort, scenario id `12`, dated 3026-04-09. Convoy reach, enemy rout, and convoy preservation objectives all completed.
-- Pending scenario: Intercept Engagement, scenario id `13`, dated 3026-04-16. No assigned units exposed by the current pending-deployments read.
-- Recent victory: Critical Convoy Escort, scenario id `10`, dated 3026-03-25.
-- Recent victory: DropShip Raid, scenario id `9`, dated 3026-03-20.
-- Talitha contract late outcomes: Recon Evasion Victory; Frontline Disruption Victory; VIP Ambush Refused Engagement; Talitha Recon Raid final status Success.
-- Personnel: 226 total; 159 active; 1 injured/hit personnel.
-- Units: 24 total; 0 deployed; 22 available; 23 deployable by the exposed API flag.
-- Repair pressure: 8 units needing service, 2 units needing parts, 2 parts needed, 0 units under repair, 33 service items total.
-- Commander: Captain Sharpe "Shooter" Williams, MekWarrior, active. Same MekHQ person id previously recorded for Alamen "Eruption" Orlikowski.
-- Current reports: Sunday, April 16, 3026.
-- Opposition intel exposed by API: `Intercept Engagement` says an intercepted force must break north to safety or destroy/rout 75% of an elite-marked Federated Suns OpFor. Exposed OpFor is 1 unit / 1,766 BV, with minor prior battle damage. Exact unit type, pilot, deployment position, and armor state are not exposed.
+- MekHQ campaign id: `7fbbb5da-0bcd-46f1-8f61-846848c2f148`
+- Name: Sharpe's Strikers
+- Date: 3032-12-04
+- Location: Capella
+- Funds: 362,198,581 C-Bill
+- Viewpoint: Sharpe "Sharpe" Williams (`c9548e24-d495-444d-aaa7-467449fdc290`), Selected first active and available MekHQ live API personnel record.
 
-## Known API Caveats
+## Counts
 
-- Dirty/unsaved MekHQ save state is not source-confirmed by the V1 API.
-- Current MekHQ UI-selected person is not exposed by the API.
-- Exact pending-scenario OpFor unit lists, BV, pilots, deployment zones, and bot-force composition are not exposed by the live API.
-- Final employer-satisfaction, reputation impact, and any nonstandard payout penalty for failed/refused scenarios are not exposed by the current API; the contract remains Active in the hard ledger.
-- Current reputation, faction-standing delta, employer-satisfaction score, and pending contract-resolution reputation effect are not exposed by the current API.
-- Exact convoy vehicle list/count for `Critical Convoy Escort` is not exposed in the compact pending-deployments summary.
-- Full personnel skill export is omitted by the V1 live endpoint; Sharpe Williams' exact changed skills need user confirmation or another source.
-- Market and many command rows are display/readiness context only unless a specific guarded command workflow is entered.
-- Month-boundary prompts, including personnel advancement award prompts, are not yet inspectable through a safe structured MEK-RPG workflow; the 3025-03-01 prompt was handled manually by the user.
-- Latest time advance used guarded MekHQ API commands only; no API save was requested.
+- Personnel: 477
+- Units: 23
+- Contracts: 11
+- Scenarios: 127
+- Market unit/personnel/contract offers: 50 / 122 / 8
+- Current report lines: 4
 
-## Use Policy
+## Cross-References
 
-- Refresh the live API before hard ledger decisions.
-- Do not parse the active MekHQ save as routine live-play context.
-- Treat this file as a pointer and table-facing summary, not as a replacement for MekHQ-owned state.
+### Personnel
+
+- `c9548e24-d495-444d-aaa7-467449fdc290` -> `sharpe-sharpe-williams`: Sharpe "Sharpe" Williams
+- `b50b1104-7ad6-451d-a7d0-395a80c40855` -> `truda-floyd-pavlischev`: Truda "Floyd" Pavlischev
+- `bc592bb3-a3a9-48e4-acc0-c62af2c7183f` -> `pietrek-deepfield-bonnet`: Pietrek "Deepfield" Bonnet
+- `42415cbf-a39d-46dd-98a7-9d784cd4a008` -> `benedikt-cypher-crystar`: Benedikt "Cypher" Crystar
+- `4b81c57e-5ae7-4a68-81c3-b8aeb97864cc` -> `bonny-jean-smith`: Bonny-jean Smith
+- `1a4eb306-d543-4021-9a92-960e62e05b00` -> `bryan-gayagoy-battistella`: Bryan Gayagoy-Battistella
+- `09c97b81-f393-4d97-b8ba-6d49021ad833` -> `patricia-battistella`: Patricia Battistella
+- `b2ae2c5b-f5e4-4cee-a6f3-0f78268b2131` -> `pascale-lemoine`: Pascale Lemoine
+- `4e2f6d05-53c6-42bc-a2c9-372e4b4e7562` -> `vivian-yamamoto`: Vivian Yamamoto
+- `c2de1456-9907-462d-a6a5-1e10248de325` -> `marietta-beiro`: Marietta Beiro
+- `e42f5162-d8d5-4082-9437-8276a2901634` -> `manny-beiro`: Manny Beiro
+- `b9cfe10b-8180-4b46-b2b4-d0a7a48dbd2f` -> `lewis-beiro`: Lewis Beiro
+- `3e24edb2-435b-4fef-b7dd-1211e7e576b9` -> `soeko-kato`: Soeko Kato
+- `5b8ec5ba-0c98-41c9-a301-2c92c8fd7027` -> `jennie-van-huizen`: Jennie van Huizen
+- `ad30510d-4009-4201-9a00-49b0f70dcf94` -> `shunnar-mu-ayyad`: Shunnar Mu'ayyad
+- `b878aed4-7af6-41ae-a8b3-0e04a2a731c0` -> `yunis-palijo`: Yunis Palijo
+- `5acb39a4-8c41-45ef-9198-e3bc4fd6fb66` -> `minh-duc-lang`: Minh-Duc Lang
+- `8f194fe2-073c-4832-a16c-50a5a402cd27` -> `gavina-markham`: Gavina Markham
+- `b15a0795-f32f-4ca7-b6a1-1df23492584a` -> `my-markham`: My Markham
+- `da5a8606-975d-4a6c-a90c-d4e4f54b4d83` -> `vetle-yashodhar`: Vetle Yashodhar
+
+### Units
+
+- `4d3c4e0c-7eee-4352-b026-13bf843eebeb` -> `catapult-cplt-c1`: Catapult CPLT-C1
+- `e0187a2c-6bfd-4f72-aa31-814232e2d81a` -> `sherpa-armored-truck-mobile-canteen`: Sherpa Armored Truck (Mobile Canteen)
+- `1b60147c-14ed-4a51-bb26-d89a06eeb61e` -> `mash-truck-small`: MASH Truck (Small)
+- `e979cd74-bfb9-460d-8fa5-083b24594e28` -> `flatbed-truck`: Flatbed Truck
+- `cbca7e39-2974-4afb-aade-2a7f91ed82e6` -> `flatbed-truck-2`: Flatbed Truck #2
+- `5835d1f1-6a7a-494e-9ef7-fab47aae232e` -> `flatbed-truck-3`: Flatbed Truck #3
+- `4da80ed1-daeb-49d5-8769-9c4231ede34e` -> `flatbed-truck-4`: Flatbed Truck #4
+- `55763f16-e5a2-4411-8add-5a90e6d7b15e` -> `riever-f-100`: Riever F-100
+- `8cfb8277-6ac2-4b94-91c4-368255a517b2` -> `grasshopper-ghr-5h`: Grasshopper GHR-5H
+- `62f5bb1e-1664-4bb9-a705-220f226b9010` -> `warhammer-whm-6r`: Warhammer WHM-6R
+- `175e5aa7-684c-4e3f-9c27-8f4e7bf09491` -> `warhammer-whm-6r-2`: Warhammer WHM-6R #2
+- `3961dcc4-a1ab-44fd-b9fd-afe69b0a5032` -> `stalker-stk-3f`: Stalker STK-3F
+- `f8153824-6566-4456-9c3c-2005a91d9b9d` -> `stalker-stk-3f-2`: Stalker STK-3F #2
+- `a49d781c-29a7-45ba-b7b1-bd321a7d5e33` -> `battlemaster-blr-1g`: BattleMaster BLR-1G
+- `33d58048-1f85-4f35-a52f-cf874e577ebc` -> `riever-f-100-2`: Riever F-100 #2
+- `3e310095-bea0-4aa2-9487-9768edaebd50` -> `grasshopper-ghr-5h-2`: Grasshopper GHR-5H #2
+- `a89ca2b9-5309-4736-80ff-0d434cad0355` -> `warhammer-whm-6r-3`: Warhammer WHM-6R #3
+- `82e168b6-f5b2-4f57-b07e-e3f2a99d9f74` -> `flashman-fls-7k`: Flashman FLS-7K
+- `2831ff21-65e3-4e5e-adfe-eedf00339b1b` -> `awesome-aws-8q`: Awesome AWS-8Q
+- `a91a9a70-d0d9-4ec6-9f80-b4c16031fab6` -> `battlemaster-blr-1g-2`: BattleMaster BLR-1G #2
+
+### Contracts
+
+- `1` -> `3025-cc-talitha-recon-raid`: 3025 - CC - Talitha Recon Raid
+- `2` -> `3025-cc-altorra-garrison-duty`: 3025 - CC - Altorra Garrison Duty
+- `3` -> `3027-magistracy-of-canopus-butzfleth-pirate-hunting`: 3027 - Magistracy of Canopus - Butzfleth Pirate Hunting
+- `4` -> `3027-cc-wallacia-objective-raid`: 3027 - CC - Wallacia Objective Raid
+- `5` -> `3028-cc-weldry-objective-raid`: 3028 - CC - Weldry Objective Raid
+- `6` -> `3028-cc-pinard-objective-raid`: 3028 - CC - Pinard Objective Raid
+- `7` -> `3029-cc-shoreham-objective-raid`: 3029 - CC - Shoreham Objective Raid
+- `8` -> `3029-cc-styk-relief-duty`: 3029 - CC - Styk Relief Duty
+- `9` -> `3030-cc-corey-garrison-duty`: 3030 - CC - Corey Garrison Duty
+- `10` -> `3031-cc-adler-planetary-assault`: 3031 - CC - Adler Planetary Assault
+- `11` -> `3032-cc-no-return-pirate-hunting`: 3032 - CC - No Return Pirate Hunting
+
+## Warnings
+
+- {"area": "dirty_state", "evidence": "Unknown", "message": "No source-confirmed dirty/unsaved campaign flag is exposed by this V1 local API pass.", "source_owner": "MekHQ GUI save-state tracking"}
+
+## API Gaps
+
+- See `mekhq-api-gaps.md`.

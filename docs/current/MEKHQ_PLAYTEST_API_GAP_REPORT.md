@@ -49,6 +49,110 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-07-20 - StratCon backup point budget unavailable for base assault reinforcement planning
+
+- Play context: `Sharpe's Strikers`, 3032-02-01 Adler, reviewing pending scenario `117`, `SpacePort - Hostile - Prevent Evac`, while Colonel Sharpe considered committing Legacy Bravo with aerospace support and using Frontline Lance as a later reinforcement or cleanup force.
+- Needed data: current StratCon backup/support point budget, scenario reinforcement cost, deployable reinforcement slots, whether already-deployed aerospace units consume the same budget, and any success roll or timing rule tied to bringing additional formations into scenario `117`.
+- Attempted API read: `GET /campaign/pending-deployments`; `GET /campaign/state` sections `scenarios`, `units`, and `reports`; local search of campaign and workflow notes for backup/support/reinforcement point terminology.
+- Missing, stale, ambiguous, or unsupported field: the API exposes the pending scenario, currently assigned force id `27`, assigned units, objectives, map, conditions, and bot-force BV, but not StratCon backup/support points, reinforcement-point cost, remaining scenario deployment budget, or reinforcement eligibility/timing for additional formations.
+- Why it mattered for play: the commander needed to know whether Legacy Bravo, an aerospace package, and Frontline Lance could all be committed under MekHQ's StratCon resource rules before launching the base capture plan.
+- Fallback used: treated the exact backup/support point budget as Unknown and advised a conservative priority order: commit the mobile containment force first, add aerospace where allowed, and use Frontline as reinforcement only if MekHQ's UI confirms enough points or direct deployment capacity.
+- Expected read shape: pending/current scenarios should expose `stratcon_resources` or `deployment_budget` fields with `backup_points_available`, `backup_points_committed`, `backup_points_remaining`, `reinforcement_costs[]`, `eligible_formations[]`, `arrival_roll_required`, and `arrival_timing`.
+- Suggested producer/API change: add StratCon backup/support point and reinforcement-budget metadata to `/campaign/pending-deployments` and `/campaign/state?sections=scenarios,forces`.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-18 - Formation BV unavailable for reorganization planning
+
+- Play context: `Sharpe's Strikers`, 3031-12-18 Adler, command staff reviewing whether to keep Legacy formations as frontline contract-visible forces and reorganize them to match the combat value of individual `3rd Expeditionary Force` lances.
+- Needed data: per-unit battle value, pilot skill modifiers, and formation total BV for current owned units outside a pending scenario deployment.
+- Attempted API read: fresh `scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture`; inspected `GET /campaign/state` unit and formation fields plus `GET /campaign/pending-deployments`.
+- Missing, stale, ambiguous, or unsupported field: unit records expose chassis/model, type, tonnage, status, pilot assignment, and formation path, but not `battle_value`, pilot gunnery/piloting skills, skill-adjusted BV, or formation total BV. Pending scenario bot forces may expose `total_bv`, but this does not cover owned-force reorganization planning.
+- Why it mattered for play: the commander wanted to balance retained Legacy battle groups so each approximates one high-value `3rd Expeditionary Force` lance while remaining frontline for contract generation.
+- Fallback used: used confirmed unit roster and tonnage to recommend BV bands and force packages; marked exact BV tuning as requiring MekHQ's formation BV display or a richer API field.
+- Expected read shape: unit records should expose `base_battle_value`, `skill_adjusted_battle_value`, crew gunnery/piloting or rating inputs, and formation records should expose `total_base_bv` and `total_skill_adjusted_bv`.
+- Suggested producer/API change: extend `/campaign/state` `units` and `forces` sections, or add `/campaign/forces/{id}/bv`, with method-backed BV fields and explicit unknown warnings when values cannot be computed.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-16 - Owned inventory liquidation value unavailable for DropShip fund planning
+
+- Play context: `Sharpe's Strikers`, 3031-04-26 Corey, while Colonel Sharpe reviewed whether the command could sell down excess inventory, salvage, or nonessential assets until liquid cash reached roughly 200,000,000 C-bills for a company-owned DropShip purchase.
+- Needed data: owned inventory and sale-candidate ledger with current cash, item/unit id, display name, category, operational role, condition, location, mass/cargo impact, book value, expected sale value, sellability restrictions, linked contract/salvage claim, and whether selling would remove a unit, spare part, cargo item, ammunition, or warehouse asset from MekHQ.
+- Attempted API read: `GET /campaign/state` sections `finances`, `units`, `repairs_and_logistics`, `markets`, `reports`, and `unsupported`; `GET /campaign/commands`; compact query views `play-context`, `unit-readiness`, `repair-pressure`, `command-readiness`, `api-gaps`, and `reports`; local text search of captured API JSON for inventory, warehouse, cargo, mass, tonnage, market, price, value, sale, and sell terms.
+- Missing, stale, ambiguous, or unsupported field: the live API confirms 115,360,137 C-bills, no active loans, 73 units, and display-only market offers, but it does not expose a complete owned-inventory valuation, owned-unit expected sale values, spare-parts/cargo mass and value, salvage-sale candidates, or stable sell/liquidation command selectors. `markets.unit_offers.purchase` is selector-deferred for buying, and no unit/item sale command is exposed in the current readiness view.
+- Why it mattered for play: Sharpe's DropShip plan depends on converting excess assets into confirmed liquid C-bills while avoiding accidental sale of critical combat, recovery, transport, or contract-bound assets.
+- Fallback used: treated current cash as MekHQ-confirmed, calculated only the cash shortfall to 200,000,000 C-bills, and kept the exact sell list and sale proceeds as Unknown pending MekHQ UI inspection or future API support. Did not parse the active save.
+- Expected read shape: expose a `liquidation_candidates[]` or richer inventory/asset valuation read with `asset_id`, `asset_kind`, `display_name`, `condition`, `location`, `mass`, `book_value`, `expected_sale_value`, `sale_allowed`, `sale_restrictions[]`, `operational_tags[]`, and linked contract/salvage/transport warnings, plus optional guarded sell command selectors when producer support exists.
+- Suggested producer/API change: add owned-inventory and owned-unit liquidation valuation fields to `/campaign/state?sections=inventory,units,finances,transport` or a dedicated `/campaign/liquidation-candidates` endpoint; later expose guarded sale command readiness if MekHQ can safely validate the transaction.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-16 - Reinforcement arrival details unavailable for pending scenario
+
+- Play context: `Sharpe's Strikers`, 3031-04-26 Corey, reviewing pending scenario `83`, `TankBase - Allied - Defend`, after assigning Alpha Company as the initial defender and Gundam Company as a reinforcement force.
+- Needed data: reinforcement-specific deployment facts for Gundam Company, including arrival turn, entry edge, deployment zone, whether arrival is delayed/randomized, and which force id each reinforcement rule applies to.
+- Attempted API read: `GET /campaign/state` sections `scenarios`, `reports`, and `units`; `GET /campaign/pending-deployments`; `GET /campaign/commands`; local text search of captured API JSON for reinforcement, arrival, turn, round, edge, zone, start, and deployment fields.
+- Missing, stale, ambiguous, or unsupported field: the battle report exposes `Attempting to reinforce scenario TankBase - Allied - Defend, roll 10 (10,3) vs. 5: Reinforcement Success.`, and the scenario exposes player force ids `[1, 20]`, but no structured arrival turn, deployment edge, reinforcement force mapping, or deployment-zone label.
+- Why it mattered for play: the user needed to plan Alpha Company's initial base defense while accounting for Gundam Company's later arrival and unknown entry direction.
+- Fallback used: treated reinforcement success as confirmed, but arrival turn/edge/deployment zone as Unknown; tactical advice must preserve flexibility until MegaMek/MekHQ reveals the actual entry.
+- Expected read shape: pending/current scenarios should expose `reinforcements[]` with `force_id`, `force_name`, `status`, `arrival_turn`, `entry_edge`, `deployment_zone`, `randomized`, `roll_result`, and any warnings if MekHQ intentionally leaves the entry hidden until tactical launch.
+- Suggested producer/API change: add reinforcement deployment metadata to `/campaign/pending-deployments` and `/campaign/state?sections=scenarios,reports`.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-16 - Pending tank-base enemy unit identities unavailable
+
+- Play context: `Sharpe's Strikers`, 3031-04-26 Corey, reviewing pending scenario `83`, `TankBase - Allied - Defend`, before launching Alpha Company and Gundam Company.
+- Needed data: exact or fog-of-war-marked enemy force composition for the `Free Worlds League OpFor`, including unit names/chassis, unit types, weight mix, movement profile, and whether the 20-unit/21,301 BV enemy force is armor, meks, carriers, aerospace support, or combined arms.
+- Attempted API read: `GET /campaign/state` sections `scenarios` and `units`; `GET /campaign/pending-deployments`; `GET /campaign/commands`; local inspection of captured `mekhq-state.json` and `mekhq-commands.json`.
+- Missing, stale, ambiguous, or unsupported field: the current scenario exposes `bot_forces[].name`, `template_name`, `full_entity_count`, and `total_bv`, but not bot-force entity lists, enemy unit identities, enemy unit types, or structured confidence/fog-of-war markers.
+- Why it mattered for play: the user asked for mission intel that could help before the fight; the tactical recommendation changes significantly depending on whether the 21,301 BV OpFor is heavy meks, massed tanks, missile carriers, hovercraft, or mixed units.
+- Fallback used: reported only source-confirmed enemy aggregate facts, objectives, terrain, weather, allied support BV, deployed Striker roster, and tactical implications from those exposed fields.
+- Expected read shape: pending/current scenarios should expose a bounded `bot_forces[].entities[]` or `scenario_intel` object with `known_enemy_units`, `estimated_enemy_units`, unit type/weight summaries, per-force BV, deployment/start edge, and explicit hidden/unknown markers when fog-of-war intentionally withholds details.
+- Suggested producer/API change: extend `/campaign/state` and/or `/campaign/pending-deployments` with structured bot-force composition summaries for pending/current scenarios.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-12 - Spare-parts inventory mass unavailable for strategic lift planning
+
+- Play context: `Sharpe's Strikers`, 3031-01-15 Corey, while Colonel Sharpe and the battalion staff planned a long-term Union-class DropShip structure for Alpha, Bravo, and Charlie and questioned whether a Mule or other logistics DropShip would also be required for spare parts and equipment.
+- Needed data: total spare-parts, ammunition, armor, equipment, and cargo inventory by item, count, mass/tonnage, volume or cargo-space usage if tracked, C-bill value, quality state, location, and whether it is loaded, warehouse-held, assigned to a unit, or stranded.
+- Attempted API read: `GET /campaign/state` sections `repairs_and_logistics`, `units`, `markets`, and `finances`; local search of the current capture for `parts`, `inventory`, `cargo`, `tonnage`, `transport`, `spare`, `warehouse`, and `storage`.
+- Missing, stale, ambiguous, or unsupported field: the API exposes current repair pressure, shopping-list demand, recent equipment purchase transactions, and transport assignment stubs, but not the actual spare-parts/equipment warehouse inventory or total cargo mass/value. The transport output explicitly warns that capacity math is not exposed in V1.
+- Why it mattered for play: the staff cannot determine whether future Union-class DropShips can carry the battalion's parts and equipment or whether a Mule/logistics DropShip is required without knowing how much spare inventory exists and how much cargo capacity it consumes.
+- Fallback used: kept total spare-parts/equipment tonnage as Unknown; used the live API only for current repair pressure, shopping-list count, visible recent purchase transactions, and transport-assignment warnings. Did not parse the active save.
+- Expected read shape: expose an `inventory` or `warehouse` object with item id/name/category, count, mass per item, total mass, total value, quality, tech rating, location/storage owner, assigned unit if any, and aggregate totals such as `total_inventory_tons`, `total_inventory_value`, `ammo_tons`, `armor_tons`, `parts_tons`, and `equipment_tons`.
+- Suggested producer/API change: add inventory/cargo summary fields to `/campaign/state?sections=inventory,transport,repairs_and_logistics` or a dedicated `/campaign/inventory` endpoint, with aggregates suitable for DropShip cargo-capacity planning.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-04 - Personnel turnover history and departure reasons unavailable
+
+- Play context: `Sharpe's Strikers`, 3028-03-01 Niomede nadir jump point, while Sharpe audited recent personnel turnover and whether insufficient HR/admin staffing was causing people to leave the unit.
+- Needed data: historical personnel departure ledger with person id, name, role, prior status, departure date, reason, triggering rule/event, whether the person was fired, resigned, retired, died, became a camp follower/background character, or had records cleaned up, plus any HR/admin capacity warning tied to turnover.
+- Attempted API read: `GET /campaign/state` sections `personnel` and `reports`; `GET /campaign/summary`; `GET /campaign/commands`.
+- Missing, stale, ambiguous, or unsupported field: current personnel records expose current status, role, recruitment/join dates, salary, and employment flag; reports expose only a capped recent report window. No structured turnover ledger, departure reason field, HR capacity/demand metric, or morale/retention pressure indicator is exposed.
+- Why it mattered for play: the user observed high turnover and wanted to determine whether the cause was insufficient HR personnel or another campaign pressure.
+- Fallback used: compared current roster status counts against the last saved campaign audit, listed current non-active records, treated exact departure causes as Unknown, and inferred only that the exposed live state does not show an HR understaffing signal.
+- Expected read shape: expose a `personnel_turnover` or `personnel_history` object with date, person id, name, role, old status, new status, departure reason, source event/report id, and optional `admin_hr_pressure` summary with required versus assigned HR capacity.
+- Suggested producer/API change: add turnover/history and HR-capacity summary fields to `/campaign/state` or a dedicated `/campaign/personnel/history` endpoint, with explicit unknown markers when MekHQ does not track a reason.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
+### 2026-07-04 - Contract force-type requirements not exposed before deployment planning
+
+- Play context: `Sharpe's Strikers`, 3028-03-01 Niomede nadir jump point, after accepting `3028 - CC - Weldry Objective Raid` and reviewing how many lances can be fielded before assigning forces.
+- Needed data: contract or scenario-specific deployment requirements, including required unit types, lance counts, weight limits, required roles such as Mek, vehicle, infantry, aerospace, artillery, or recon, and any constraints imposed by Liaison command rights.
+- Attempted API read: `GET /campaign/state` sections `contracts`, `scenarios`, and `units`; `GET /campaign/pending-deployments`.
+- Missing, stale, ambiguous, or unsupported field: contract terms expose command rights, support, transport, salvage, payout, and scenario ids; pending scenarios expose names, descriptions, status, and currently assigned units, but no structured force-type requirement, required lance count, deployment cap, or eligibility rule.
+- Why it mattered for play: the user asked Sharpe to review operational forces against the next contract's requirements before deciding how many lances to activate and assign.
+- Fallback used: used the exact scenario descriptions and roster state, treated hard force requirements as Unknown, and made only an in-world planning inference that Assassination and Covert Strike scenarios favor fast precision forces.
+- Expected read shape: contracts and pending scenarios should expose a `deployment_requirements` or `force_requirements` object with required/allowed unit roles, minimum and maximum unit counts, lance count or force size, weight/BV constraints, employer support requirements, and warnings when rules are unknown or scenario-generated.
+- Suggested producer/API change: add structured force requirement fields to `/campaign/state` contract/scenario objects and `/campaign/pending-deployments`, separate from narrative scenario descriptions.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
 ### 2026-07-02 - Salvage transport capacity not exposed for recovery planning
 
 - Play context: `Sharpe's Strikers`, 3027-08-16 Butzfleth, while Sharpe considered buying additional salvage/recovery trucks because salvage is driving company profit and current transport may be insufficient.
