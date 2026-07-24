@@ -49,6 +49,19 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-07-24 - Small Craft bay occupancy and infantry transport capacity unavailable
+
+- Play context: `Sharpe's Strikers`, 3033-10-04 Randar, after the user bought an `Ares Assault Craft Mark VII`, a `Dragonstar Passenger Transport`, and a `Jump Platoon (Laser)` for the `Jade Passage` transport setup.
+- Needed data: Small Craft bay occupancy on the Merchant JumpShip, Small Craft cargo/infantry bay capacity, and whether the jump platoon can be carried by the Dragonstar for strategic movement without hiring another transport vessel.
+- Attempted API read: `GET /campaign/state` sections `units` and `repairs_and_logistics.transport_bays`; `GET /campaign/summary`; `GET /campaign/pending-deployments`.
+- Missing, stale, ambiguous, or unsupported field: the API confirms the Small Craft and infantry units exist, but `transport_bays` only reports aggregate assigned/carried unit counts of zero and does not expose bay capacity, bay type occupancy, infantry bay capacity, cargo capacity, or supported strategic transport compatibility.
+- Why it mattered for play: the commander needed to know whether the new Dragonstar solves jump-infantry transport needs and whether the Jade Passage's two Small Craft bays are filled as intended.
+- Fallback used: treated unit ownership as API-confirmed; treated Dragonstar jump-infantry lift as a table logistics ruling based on user/MekHQ setup context, not a current carried-unit assignment.
+- Expected read shape: unit records or a transport endpoint should expose `transport_bays[]` with `bay_type`, `capacity`, `used`, `carried_unit_ids[]`, and Small Craft unit records should expose `cargo_tons`, `infantry_bays[]`, `infantry_capacity`, and compatibility warnings.
+- Suggested producer/API change: extend `/campaign/state?sections=units,transport` or add `/campaign/transport` with structured bay occupancy, cargo capacity, infantry capacity, and strategic transport compatibility for DropShips, JumpShips, Small Craft, and infantry.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
 ### 2026-07-20 - StratCon backup point budget unavailable for base assault reinforcement planning
 
 - Play context: `Sharpe's Strikers`, 3032-02-01 Adler, reviewing pending scenario `117`, `SpacePort - Hostile - Prevent Evac`, while Colonel Sharpe considered committing Legacy Bravo with aerospace support and using Frontline Lance as a later reinforcement or cleanup force.

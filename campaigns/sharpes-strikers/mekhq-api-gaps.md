@@ -2,7 +2,7 @@
 
 This file records missing, unsupported, or automation-blocking live API fields found during the latest campaign context refresh. These are producer-side change request inputs, not permission to parse the active save as a workaround.
 
-Last checked: 2026-07-23T23:31:45.409157+00:00
+Last checked: 2026-07-24T02:57:20.5956629+00:00
 
 ## Gaps
 
@@ -31,3 +31,8 @@ Last checked: 2026-07-23T23:31:45.409157+00:00
   - Reason: This V1 endpoint does not expose unit purchase, personnel hire/fire, contract accept/decline, market refresh, negotiation, or save/writeback commands.
   - Recommended owner: Future MekHQ command API design
   - Blocks automation: true
+- `small_craft_bay_and_infantry_capacity`
+  - Area: units.transport / repairs_and_logistics.transport_bays
+  - Reason: The live API confirms `Ares Assault Craft Mark VII`, `Dragonstar Passenger Transport`, and `Jump Platoon (Laser)` as roster units, but it does not expose Small Craft bay occupancy on the `Merchant JumpShip`, craft cargo/infantry bay capacity, or a structured way to validate whether the jump platoon can ride in the Dragonstar during strategic movement.
+  - Recommended owner: Future MekHQ exporter or transport API design
+  - Blocks automation: false

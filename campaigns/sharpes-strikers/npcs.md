@@ -6,45 +6,56 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 
 ## MEK-RPG Civilian And Cooperative NPCs
 
-### Lian Zhou
+### Tora Wichers
 
 - Role/status: Long Transit Association representative, financial officer, surviving shareholder.
+- MekHQ person id: `08a787d8-c60c-4965-a92a-87344e108cca`
+- MekHQ role/status: Admin/Transport / Active (Confirmed from MekHQ live API)
 - Current scene: Formally approaches Sharpe's Strikers from `Celestial Garden` and requests protected-status intervention.
 - Current attitude toward PCs: Controlled desperation. She needs the Strikers but is not offering surrender.
 - Wants: Preserve the cooperative's ships, crews, and family ownership shares; complete the fraud evidence; keep the charter legal under Capellan scrutiny.
 - Knows: Contracts, debts, port fees, passenger bookings, cooperative legal standing, and fragments of evidence showing debt manipulation.
 - Secrets or uncertainty: Evidence is incomplete; the missing records likely tie the impoundment to a regional noble or his agents.
-- MekHQ boundary: MEK-RPG narrative NPC unless later represented in MekHQ.
+- MekHQ boundary: MekHQ owns roster status and role; MEK-RPG owns the Long Transit Association overlay and portrayal.
 
-### Captain Mei Ren
+### Captain Damiane Meyer
 
 - Role/status: Captain of `Jade Passage`; third-generation JumpShip officer.
+- MekHQ person id: `5385cc1a-6f59-46e0-bcd2-f7f16e4b71d0`
+- MekHQ role/status: Vessel Pilot / Active (Confirmed from MekHQ live API)
+- Linked unit: `Merchant JumpShip (2503)` / narrative `Jade Passage`
 - Current scene: Present for the charter negotiation and protective of shipboard authority.
 - Current attitude toward PCs: Suspicious, disciplined, and not yet friendly.
 - Wants: Contracts honored, crew paid, docking under her authority, and the JumpShip kept out of unnecessary danger.
 - Knows: Navigation, trade routes, port politics, JumpShip maintenance realities, and the cost of operating without state support.
 - Secrets or uncertainty: May refuse jumps into systems with active naval combat, bad recharge support, unreliable fuel, or unacceptable capture risk.
-- MekHQ boundary: MEK-RPG narrative NPC unless later represented in MekHQ.
+- MekHQ boundary: MekHQ owns roster status and ship assignment; MEK-RPG owns the cooperative captain overlay and portrayal.
 
-### Captain Tomas Vale
+### Captain Nadežda Dunajski
 
 - Role/status: Captain of `Celestial Garden`; former passenger-line officer.
+- MekHQ person id: `5a4fa278-7b44-48eb-bb11-069190f5f3f4`
+- MekHQ role/status: Vessel Pilot / Active (Confirmed from MekHQ live API)
+- Linked unit: `Monarch (2759)` / narrative `Celestial Garden`
 - Current scene: Host aboard the Monarch's worn formal dining room.
 - Current attitude toward PCs: Sociable but wary of the ship becoming a barracks with chandeliers.
 - Wants: Keep passenger confidence, routines, civilian income, and a functioning shipboard community.
 - Knows: Passenger operations, cabin assignments, shipboard morale, civilian cover, and how fragile normal life gets around soldiers.
 - Secrets or uncertainty: Worries military necessity will consume the Monarch's civilian character.
-- MekHQ boundary: MEK-RPG narrative NPC unless later represented in MekHQ.
+- MekHQ boundary: MekHQ owns roster status and ship assignment; MEK-RPG owns the passenger-line captain overlay and portrayal.
 
-### Chief Engineer Aron Vesk
+### Chief Engineer Damon Dimas
 
 - Role/status: Chief engineer of `Jade Passage`.
+- MekHQ person id: `992b1f0f-41db-40e4-8564-23dc269fa3eb`
+- MekHQ role/status: Vessel Crewmember / Active (Confirmed from MekHQ live API)
+- Linked unit: `Merchant JumpShip (2503)` / narrative `Jade Passage`
 - Current scene: Available to brief Sharpe on deferred maintenance if the talks move past survival.
 - Current attitude toward PCs: Blunt, unsentimental, and allergic to wishful thinking.
 - Wants: Repairs paid for, risks named honestly, and no officer pretending a JumpShip is free because the invoice is delayed.
 - Knows: The JumpShip is operational but aging; several expensive repairs should have been done years ago.
 - Secrets or uncertainty: His repair list can become the first hard reminder that the charter is a burden as well as a prize.
-- MekHQ boundary: MEK-RPG narrative NPC unless later represented in MekHQ.
+- MekHQ boundary: MekHQ owns roster status and ship assignment; MEK-RPG owns the chief engineer overlay and portrayal.
 
 ### Truda "Floyd" Pavlischev
 
@@ -286,4 +297,4 @@ Imported MekHQ personnel are live roster context only. Personality, secrets, mot
 - Secrets or uncertainty: Sparse/TBD; MEK-RPG overlay only
 - Current status: Live MekHQ roster context
 
-- Additional live API personnel not expanded here: 456. See `mekhq-bridge.md`.
+- Additional live API personnel not expanded here: see `mekhq-bridge.md` and the live MekHQ API capture for the current roster count.

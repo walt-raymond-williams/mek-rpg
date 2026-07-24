@@ -4,25 +4,44 @@ MekHQ owns accepted contract ledger status, deadlines, scenario generation, paym
 
 ## Active Mission
 
-Mission name: The Jade Passage - Chapter One
+Mission name: 3034 - CC - Lesalles Recon Raid
 
-Status: Active MEK-RPG narrative arc; not an active MekHQ contract.
+Status: Active MekHQ contract.
 
-Description: Long Transit Association has brought the Merchant-class JumpShip `Jade Passage` and Monarch-class DropShip `Celestial Garden` to Capella under pressure from a regional Capellan noble, hostile creditors, and customs officials. The cooperative wants a permanent charter with Sharpe's Strikers that gives the unit long-range mobility and a civilian home, while preserving cooperative ownership and shipboard authority.
+Description: Sharpe's Strikers are on a Capellan Confederation Recon Raid at Lesalles. The contract is active in the 3034-07-02 live API snapshot with two months remaining.
 
-Date/location: 3032-12-04 at Capella (Confirmed from MekHQ live API; live context only).
+Date/location: 3034-07-02 at Lesalles (Confirmed from MekHQ live API; live context only).
 
-Opening pressure: Lian Zhou requests that Sharpe board `Celestial Garden` under the protection of the Strikers' House Liao standing before a customs inspection and impoundment order can lock both ships down.
+Employer: Capellan Confederation.
 
-Player-facing stakes: accept legal and political risk to protect the ships, refuse and likely watch the cooperative lose its last vessels, or seek a narrower delay while evidence of fraud is recovered.
+Terms: Liaison command rights; 40% salvage; 100% straight support; monthly payout 6,954,019 C-Bill; support amount 2,255,869 C-Bill; transport amount 0 C-Bill because the Strikers are carrying themselves.
 
-Terms on offer: Strikers receive guaranteed use of both `Jade Passage` docking collars, transport of the Union and `Celestial Garden`, priority access to `Celestial Garden`, active-contract destination control, a share of civilian freight/passenger revenue, and the right to station security personnel aboard both ships.
+Player-facing stakes: the unit has been heavily downsized and must maintain enough active combat strength to satisfy contract obligations while protecting its new transport base, retaining turnover reserve, and avoiding another unsustainable expansion.
 
-Obligations on offer: protect the ships, pay operating expenses when commercial work fails, escort dangerous operations, resolve the legal threat, and keep acceptable standing with House Liao.
+Active-force requirement: table/MekHQ UI report is a minimum of ten active combat units. The live API does not expose this requirement as a structured field.
+
+Current combat posture: Alpha Company has fourteen deployable combat units in the live API snapshot, plus the retained jump infantry security element. Frontline Lance is currently committed to pending scenario `169`, `Frontline Disruption`; Command Lance remains a ready working combat lance and is expected to deploy regularly because the contract footprint leaves only a modest margin above the user's reported minimum requirement.
+
+Pending scenarios exposed by the live API:
+
+- `164` Facility Assault: pending, no assigned player force exposed.
+- `166` Recon Evasion: pending, no assigned player force exposed.
+- `167` Recon Evasion: pending, no assigned player force exposed.
+- `169` Frontline Disruption: pending on 3034-07-02 with Frontline Lance assigned.
+
+Command doctrine: use strong units. Do not preserve elite machines by leaving them idle; preserve them through maintenance discipline, pilot rotation, tactical support, and transport-first expansion planning.
+
+## Active Transport Arc
+
+Mission name: The Jade Passage
+
+Status: Standing MEK-RPG transport and political arc supporting the current MekHQ contract.
+
+Description: Long Transit Association has brought the Merchant-class JumpShip `Jade Passage` and Monarch-class DropShip `Celestial Garden` under pressure from a regional Capellan noble, hostile creditors, and customs officials. The cooperative wants a permanent charter with Sharpe's Strikers that gives the unit long-range mobility and a civilian home, while preserving cooperative ownership and shipboard authority.
 
 Known constraints: the cooperative keeps its captains, crews, internal ship operations, family ownership shares, and refusal rights for piracy, smuggling, or suicidal missions.
 
-Confirmed user setup: current movement cost zero separate transport C-bills; the real burden is maintaining the JumpShip and two DropShips after major layoffs and asset sales.
+Confirmed user setup: current movement cost zero separate transport C-bills; the real burden is maintaining the JumpShip, two DropShips, and two Small Craft after major layoffs and asset sales.
 
 First arc missions:
 
@@ -33,7 +52,7 @@ First arc missions:
 
 ## Live API Historical Contract Snapshot
 
-The live API state includes completed or historical contracts. The current `play-context` view reports zero active contracts, so the entries below are imported ledger history/context, not the current active mission.
+The live API state includes completed or historical contracts. Entries below are imported ledger history/context, not the current active mission.
 
 ### 3025 - CC - Talitha Recon Raid
 

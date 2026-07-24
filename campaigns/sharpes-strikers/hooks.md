@@ -5,7 +5,7 @@
 - Chapter One: `Jade Passage` requests protected civilian status at the Capella jump point before local customs can impound it.
 - Permanent charter opportunity: Long Transit Association offers the Strikers long-range mobility and civilian-home capacity in exchange for protection, operating support, escort, and legal help.
 - Legal threat: a regional Capellan noble is alleged to have manipulated debt records to force a sale of the cooperative's last two ships.
-- Evidence trail: Lian Zhou has incomplete fraud evidence; missing financial records could prove the impoundment order rests on falsified debt.
+- Evidence trail: Tora Wichers has incomplete fraud evidence; missing financial records could prove the impoundment order rests on falsified debt.
 - First test: armed customs officers may arrive with a facially valid order before the charter is finalized.
 - Cooperative loyalty: current rating 1 / 5; respect the captains and protect civilians to build trust.
 - Market inspection: Saurer-Bucher Fire Engine TLF-LL6500; final price and selectors are unsupported until checked in MekHQ.

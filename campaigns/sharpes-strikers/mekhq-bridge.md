@@ -6,13 +6,13 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - MEK-RPG campaign id: `sharpes-strikers`
 - Live API state JSON: `mekhq-live-api-capture/mekhq-state.json`
-- Adapter timestamp: `2026-07-23T23:31:45.409157+00:00`
+- Adapter timestamp: `2026-07-24T20:03:46.3601745+00:00`
 - Schema: `mekhq-live-campaign-state` version `0.1`
 - API mode: `local-read-only-live-context`
 - Read-only proof: `true`
 - MekHQ version: `0.51.01`
-- State revision: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3032-12-04-2026-07-23T23:31:36.528004300Z`
-- Snapshot id: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3032-12-04-2026-07-23T23:31:36.528004300Z`
+- State revision: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3034-07-02-2026-07-24T20:03:45.031689600Z`
+- Snapshot id: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3034-07-02-2026-07-24T20:03:45.031689600Z`
 - Dirty state: Unknown
 
 ## Ownership Boundary
@@ -26,19 +26,20 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - MekHQ campaign id: `7fbbb5da-0bcd-46f1-8f61-846848c2f148`
 - Name: Sharpe's Strikers
-- Date: 3032-12-04
-- Location: Capella
-- Funds: 362,198,581 C-Bill
+- Date: 3034-07-02
+- Location: Lesalles
+- Funds: 337,194,891 C-Bill
 - Viewpoint: Sharpe "Sharpe" Williams (`c9548e24-d495-444d-aaa7-467449fdc290`), Selected first active and available MekHQ live API personnel record.
 
 ## Counts
 
-- Personnel: 477
-- Units: 23
-- Contracts: 11
-- Scenarios: 127
-- Market unit/personnel/contract offers: 50 / 122 / 8
-- Current report lines: 4
+- Personnel: 408
+- Units: 26
+- Contracts: 12
+- Scenarios: 129
+- Market unit/personnel/contract offers: 55 / 60 / 0
+- Current report lines: 1
+- Pending deployments: 4
 
 ## Cross-References
 
@@ -87,6 +88,9 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 - `82e168b6-f5b2-4f57-b07e-e3f2a99d9f74` -> `flashman-fls-7k`: Flashman FLS-7K
 - `2831ff21-65e3-4e5e-adfe-eedf00339b1b` -> `awesome-aws-8q`: Awesome AWS-8Q
 - `a91a9a70-d0d9-4ec6-9f80-b4c16031fab6` -> `battlemaster-blr-1g-2`: BattleMaster BLR-1G #2
+- `b284fa8a-4106-4790-bfe7-d6cc06cfe1dc` -> `ares-assault-craft-mark-vii`: Ares Assault Craft Mark VII
+- `403d4123-8918-429c-a5f4-6e4818fa1e1b` -> `dragonstar-passenger-transport`: Dragonstar Passenger Transport
+- `925c5d87-47a5-4d7d-87f9-23e62378d664` -> `jump-platoon-laser`: Jump Platoon (Laser)
 
 ### Contracts
 

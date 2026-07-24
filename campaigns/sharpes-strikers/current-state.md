@@ -1,14 +1,14 @@
 # Current State
 
-Current date: 3032-12-04 (Confirmed from MekHQ live API; MekHQ-owned; live context only)
+Current date: 3034-07-02 (Confirmed from MekHQ live API; MekHQ-owned; live context only)
 
-Current location: Capella (Confirmed from MekHQ live API; MekHQ-owned; live context only)
+Current location: Lesalles (Confirmed from MekHQ live API; MekHQ-owned; live context only)
 
-Active scene: Chapter One, "The Jade Passage" - protected-status request at the Capella jump point
+Active scene: Alpha Company force review aboard the `Celestial Garden` during `3034 - CC - Lesalles Recon Raid`.
 
-Immediate pressure: The civilian Merchant-class JumpShip `Jade Passage` has arrived carrying the Monarch-class DropShip `Celestial Garden`. Lian Zhou of the Long Transit Association is asking Sharpe's Strikers to board under House Liao contract protection before Capellan customs can impound both ships.
+Immediate pressure: Sharpe is reviewing Alpha Company's lance structure while operating under the active Capellan Lesalles Recon Raid. The current live API exposes four pending scenarios, including `Frontline Disruption` with Frontline Lance deployed. Alpha Company has fourteen deployable combat units in the current live API snapshot, so Command Lance is a working combat asset, not a rarely held reserve.
 
-Next prompt: Decide how Sharpe answers Lian Zhou's boarding request and how much authority he invokes before local inspectors arrive.
+Next prompt: Review Alpha Company lance by lance, starting with Command Lance: three `Warhammer WHM-6R` units and one `Awesome AWS-8Q`, all assigned to elite/heroic-level MekWarriors.
 
 ## Current Party
 
@@ -16,11 +16,12 @@ Next prompt: Decide how Sharpe answers Lian Zhou's boarding request and how much
 
 ## Current Mission
 
-See `missions.md`. Active MEK-RPG arc is `The Jade Passage`; MekHQ reports no active contract in the current live play-context.
+See `missions.md`. Active MekHQ contract is `3034 - CC - Lesalles Recon Raid`; `The Jade Passage` remains the standing transport and political arc supporting the unit's current operating model.
 
 ## State Since Last Session
 
-- Campaign context refreshed from MekHQ live API at `2026-07-23T23:31:45.407159+00:00`.
+- Campaign context refreshed from MekHQ live API at `2026-07-24T20:03:46Z`.
 - Live API data is not a durable checkpoint by itself; do not advance the campaign date here unless MekHQ confirms it or the user explicitly approves recording it.
-- Confirmed by user: after major layoffs and asset sales, Sharpe's Strikers paid no separate transport fee for the current movement; the cost pressure is maintaining the JumpShip and two DropShips tied to the new transport arrangement.
-- Confirmed from MekHQ live API: current funds are 362,198,581 C-Bill, units are 23 total with 17 deployable, personnel are 477 total, no pending scenarios are exposed, and no active contract is exposed in the `play-context` view.
+- Confirmed by user: after major layoffs and asset sales, Sharpe's Strikers paid no separate transport fee; the cost pressure is maintaining the JumpShip, two DropShips, and two Small Craft tied to the new transport arrangement.
+- Confirmed from MekHQ live API: current funds are 337,194,891 C-Bill, units are 26 total, personnel are 408 total, four pending deployments are exposed, and the active contract is `3034 - CC - Lesalles Recon Raid`.
+- Command doctrine correction: Command Lance is not a glass-case reserve. The active contract requires real active combat strength and the unit has only a modest margin over the user's reported ten-unit minimum, so the heavy command lance is expected to deploy and fight routinely, with maintenance and pilot fatigue managed deliberately.
