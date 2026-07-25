@@ -2,6 +2,8 @@
 
 This file records the player-approved narrative expansion path for `The Jade Passage`. MekHQ still owns hard ledger facts such as purchases, unit status, transport assignment, cargo capacity, personnel count, contract terms, and exact finances. MEK-RPG owns the narrative structure, faction promises, debt clocks, and future scene hooks below.
 
+Operational roadmap: use `transport-retainer-roadmap.md` during play to track the 3034-3043 Capellan retainer draft, 100% Long Transit transport reimbursement proposal, first-Mule plan, `Vermilion Gate` release steps, battalion rebuild doctrine, and update checklist.
+
 ## Core Concept
 
 The Jade Passage arc can expand from one protected civilian transport charter into a long-term Long Transit Association recovery story. Sharpe's Strikers saved or protected the cooperative's operating Merchant-class JumpShip `Jade Passage` and Monarch-class DropShip `Celestial Garden`. The next reveal is that the cooperative has a second Merchant-class JumpShip, `Vermilion Gate`, trapped under lien and legal pressure.
@@ -49,6 +51,10 @@ The Capellan Confederation does not need to buy the ships for Sharpe or erase Lo
 
 Proposed terms:
 
+- Sharpe's Strikers negotiates a 3034-3043 Capellan license/retainer period.
+- During the retainer period, the Strikers take only Capellan-approved employment.
+- After 3043, the Strikers retain Capellan preference and will not take contracts against House Liao, but regain broader contracting freedom unless a renewed retainer says otherwise.
+- Future Capellan contracts should cover 100% eligible transport fees when the Strikers use recognized Long Transit Association craft.
 - Long Transit Association keeps civilian ownership identity, crews, captains, and shipboard authority.
 - Sharpe's Strikers receives long-term military charter rights and attaches its Mule to `Vermilion Gate`.
 - House Liao recognizes the release because a self-transporting mercenary battalion reduces pressure on Capellan transport assets.
@@ -85,6 +91,7 @@ Current planning assumptions:
 - `Celestial Garden` remains the command, family, school, medical, administrative, and civilian-community core.
 - Expanded battalion staff, techs, pilots, dependents, and support personnel may eventually exceed comfortable housing capacity.
 - Short-term overflow can use DropShip quarters, temporary berthing, and planetside billets during contracts.
+- Current preferred posture is one Mule first. If personnel lift becomes tight before a dedicated passenger/habitation DropShip is acquired, the Strikers can rent passenger space, berth personnel temporarily, or use contract-local billets until play proves a permanent hull is needed.
 - A future second passenger/habitation DropShip is a valid next transport need if the Strikers grow back toward small-regiment scale.
 
 Do not solve every collar at once. Let the next ship need emerge from actual personnel and contract pressure.

@@ -10,6 +10,8 @@
 - Mule-first rebuild: Sharpe wants to acquire one Mule so the Strikers can begin rebuilding from a single elite company toward a BattleMech battalion without depending on hired cargo transport.
 - Sister ship reveal: Long Transit may still have the Merchant-class JumpShip `Vermilion Gate`, trapped under lien rather than cleanly sold.
 - Transport retainer clock: the `Vermilion Gate` lien is claimed at `900,000,000 C-Bill`; each qualifying Capellan contract completed after conditional release can reduce the narrative lien clock by `10,000,000 C-Bill`.
+- Capellan retainer draft: Qiao's counteroffer framework points toward a 3034-3043 House Liao license/retainer, Capellan-approved employment during the term, no anti-Liao contracts afterward, and 100% eligible transport reimbursement for Capellan contracts using Long Transit craft.
+- RPG transport roadmap: use `transport-retainer-roadmap.md` to update the first-Mule plan, `Vermilion Gate` release, personnel transport pressure, battalion rebuild, and retainer milestones after each relevant scene or MekHQ read.
 - First test: armed customs officers may arrive with a facially valid order before the charter is finalized.
 - Cooperative loyalty: current rating 1 / 5; respect the captains and protect civilians to build trust.
 - Market inspection: Saurer-Bucher Fire Engine TLF-LL6500; final price and selectors are unsupported until checked in MekHQ.

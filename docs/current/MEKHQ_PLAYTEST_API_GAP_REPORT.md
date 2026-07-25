@@ -49,6 +49,19 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-07-24 - Lesalles recon raid enemy identities and original briefing unavailable
+
+- Play context: `Sharpe's Strikers`, 3034-08-06 Lesalles, command staff reviewing active contract `3034 - CC - Lesalles Recon Raid` after pending scenario `177`, `Tactical Withdrawal`, exposed a much heavier fight than the recon contract label implied.
+- Needed data: source-confirmed individual enemy unit identities for the pending scenario, plus any original contract/scenario briefing fields describing expected opposition strength, so the GM can distinguish bad luck, fog-of-war, and employer misrepresentation.
+- Attempted API read: `GET /campaign/state` sections `contracts` and `scenarios`; `GET /campaign/pending-deployments`; compact query views `play-context` and `pending-deployments`; local inspection of captured `mekhq-state.json`.
+- Missing, stale, ambiguous, or unsupported field: the live state exposes active contract terms, scenario objectives, player force, bot-force names, bot-force entity counts, and bot-force total BV for scenario `177`, but not enemy unit chassis/models, enemy pilots, or the original expected-opposition/briefed-risk fields for the signed recon raid.
+- Why it mattered for play: Sharpe needs to confront staff and possibly the Capellan liaison about a recon raid that is producing destruction and withdrawal fights against forces far stronger than expected.
+- Fallback used: used source-confirmed aggregate facts only: `Lyran Commonwealth OpFor` with 6 units / 5,867 BV and `Lyran Commonwealth Artillery` with 4 units / 3,357 BV; treated enemy identities and original expected opposition as Unknown.
+- Expected read shape: pending/current scenarios or contract records should expose `bot_forces[].entities[]` with chassis/model/type/BV when known, and `briefed_opposition`, `expected_risk`, or explicit fog-of-war/hidden-intel markers tied to contract/scenario generation.
+- Suggested producer/API change: extend `/campaign/state?sections=scenarios,contracts` and `/campaign/pending-deployments` with structured scenario force composition and original briefing/risk-intel fields, including explicit Unknown/hidden markers when MekHQ intentionally withholds details.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
 ### 2026-07-24 - Small Craft bay occupancy and infantry transport capacity unavailable
 
 - Play context: `Sharpe's Strikers`, 3033-10-04 Randar, after the user bought an `Ares Assault Craft Mark VII`, a `Dragonstar Passenger Transport`, and a `Jump Platoon (Laser)` for the `Jade Passage` transport setup.

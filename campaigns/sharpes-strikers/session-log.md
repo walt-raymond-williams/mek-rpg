@@ -52,11 +52,13 @@ Expansion planning confirmed by user: the Jade Passage arc may grow into a `Verm
 - Expansion doctrine established: the Strikers may expand again later, but no new combat arm, support arm, or civilian dependency burden gets added unless transport capacity is identified first.
 - Doctrine correction for Alpha Company: Command Lance is not a rarely held reserve. Under the current active contract, the user's table/MekHQ UI read is that at least ten active combat units are required, while Alpha Company has fourteen deployable combat units. Command Lance is part of the working force and should be used regularly, with risk managed through support, rotation, and maintenance rather than idling the strongest pilots and machines.
 - Jade Passage expansion plan recorded in `jade-passage-expansion.md`: recover `Vermilion Gate`, use a simple Capellan-contract debt clock, acquire a Mule first, and rebuild toward at least a BattleMech battalion with Alpha as the elite high-BV force and Bravo/Charlie as lower-BV line/training companies.
+- Transport retainer roadmap added in `transport-retainer-roadmap.md`: current negotiated direction is a 3034-3043 Capellan license/retainer, Capellan-approved work during the term, no anti-Liao contracts afterward, 100% eligible transport reimbursement on future Capellan contracts using Long Transit craft, first Mule before further hull complexity, and rented/temporary personnel lift until play proves a dedicated passenger hull is needed.
 
 ## Rewards And Costs
 
 - Planned reward path: conditional release and long-term charter rights for `Vermilion Gate`, a second Long Transit Merchant-class JumpShip, if Sharpe can use Capellan leverage, prove or pressure down fraudulent debt, and commit to the retainer.
 - Planned cost path: claimed `900,000,000 C-Bill` lien, narrative `10,000,000 C-Bill` credit per qualifying Capellan contract completed after conditional release, continued Long Transit shipboard authority, maintenance obligations, and Capellan first-refusal pressure until settlement.
+- Planned retainer cost path: the Strikers risk becoming too dependent on House Liao if the retainer language is too broad. Keep the distinction between Capellan-favored mercenary command and House-owned troops explicit in future scenes.
 
 ## Rules Gaps
 

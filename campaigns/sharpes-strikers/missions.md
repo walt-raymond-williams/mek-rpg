@@ -45,6 +45,8 @@ Confirmed user setup: current movement cost zero separate transport C-bills; the
 
 Expansion plan: see `jade-passage-expansion.md`. The preferred sequel is a modest sister-ship recovery arc in which Long Transit still has a second Merchant-class JumpShip, `Vermilion Gate`, trapped under a claimed `900,000,000 C-Bill` lien. Sharpe's Strikers can seek conditional Capellan release and long-term military charter rights, with a narrative `10,000,000 C-Bill` credit against the lien for each qualifying Capellan contract completed after release under the retainer.
 
+Transport retainer roadmap: see `transport-retainer-roadmap.md`. Current negotiated direction is a 3034-3043 Capellan license/retainer draft, 100% eligible transport reimbursement on future Capellan contracts using recognized Long Transit craft, one Mule first, `Vermilion Gate` conditional release, and later personnel-lift decisions only after cargo and battalion rebuild pressure prove the need.
+
 First arc missions:
 
 - Recover the Records: find the cooperative's original financial archive and prove part of the debt was fabricated.
