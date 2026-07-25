@@ -6,6 +6,10 @@
 - Permanent charter opportunity: Long Transit Association offers the Strikers long-range mobility and civilian-home capacity in exchange for protection, operating support, escort, and legal help.
 - Legal threat: a regional Capellan noble is alleged to have manipulated debt records to force a sale of the cooperative's last two ships.
 - Evidence trail: Tora Wichers has incomplete fraud evidence; missing financial records could prove the impoundment order rests on falsified debt.
+- Expansion plan: `jade-passage-expansion.md` records the proposed `Vermilion Gate` sister-ship arc, battalion rebuild doctrine, and debt clock.
+- Mule-first rebuild: Sharpe wants to acquire one Mule so the Strikers can begin rebuilding from a single elite company toward a BattleMech battalion without depending on hired cargo transport.
+- Sister ship reveal: Long Transit may still have the Merchant-class JumpShip `Vermilion Gate`, trapped under lien rather than cleanly sold.
+- Transport retainer clock: the `Vermilion Gate` lien is claimed at `900,000,000 C-Bill`; each qualifying Capellan contract completed after conditional release can reduce the narrative lien clock by `10,000,000 C-Bill`.
 - First test: armed customs officers may arrive with a facially valid order before the charter is finalized.
 - Cooperative loyalty: current rating 1 / 5; respect the captains and protect civilians to build trust.
 - Market inspection: Saurer-Bucher Fire Engine TLF-LL6500; final price and selectors are unsupported until checked in MekHQ.
@@ -43,10 +47,13 @@
 ## Threats
 
 - Capellan customs, creditors, a regional noble, rival transport operators, and possibly Maskirovka attention can all make the charter dangerous without requiring an immediate battlefield fight.
+- The `Vermilion Gate` lien can become a long-term leash if the Strikers accept Capellan first-refusal pressure but fail to prove the fraudulent portion of the debt.
 - Unsupported or unmapped MekHQ live API fields may hide logistics pressure; inspect MekHQ before making exact ledger claims.
 
 ## Opportunities
 
 - Turn the `Celestial Garden` into a mobile headquarters and civilian community if the charter survives its first legal challenge.
+- Recover `Vermilion Gate` as a second modest Merchant-class JumpShip and attach a Mule to support the Strikers' battalion rebuild.
+- By the 3049-3050 Clan Invasion era, turn Long Transit into a trusted transport partner for anti-Clan contracts because Sharpe saved both ships and paid down or settled the lien.
 - Use the Strikers' long Capellan record as leverage without letting House Liao treat the ships as state property.
 - Turn MekHQ repair delays, personnel applicants, market offers, or employer meetings into RPG scenes without finalizing ledger changes outside MekHQ.

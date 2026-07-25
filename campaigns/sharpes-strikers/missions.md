@@ -43,12 +43,22 @@ Known constraints: the cooperative keeps its captains, crews, internal ship oper
 
 Confirmed user setup: current movement cost zero separate transport C-bills; the real burden is maintaining the JumpShip, two DropShips, and two Small Craft after major layoffs and asset sales.
 
+Expansion plan: see `jade-passage-expansion.md`. The preferred sequel is a modest sister-ship recovery arc in which Long Transit still has a second Merchant-class JumpShip, `Vermilion Gate`, trapped under a claimed `900,000,000 C-Bill` lien. Sharpe's Strikers can seek conditional Capellan release and long-term military charter rights, with a narrative `10,000,000 C-Bill` credit against the lien for each qualifying Capellan contract completed after release under the retainer.
+
 First arc missions:
 
 - Recover the Records: find the cooperative's original financial archive and prove part of the debt was fabricated.
 - Escort the Witness: move a former port official safely aboard `Celestial Garden` while preserving civilian cover.
 - Rival Claimant: stop a hired mercenary seizure without destroying the `Jade Passage`, jump sails, docking collars, or crews.
 - Tribunal: use the Strikers' Capellan reputation to validate the charter and invalidate the seizure.
+
+Expansion missions:
+
+- Mule First: acquire one Mule in MekHQ so the Strikers can begin rebuilding toward battalion scale, even if collar fees or temporary transport arrangements make the immediate logistics awkward.
+- Sister Ship Reveal: Tora Wichers reveals that `Vermilion Gate` was not sold cleanly and remains tied to Long Transit through disputed lien paperwork.
+- Conditional Release: convince a Capellan official that releasing `Vermilion Gate` into productive Strikers-chartered service reduces House transport pressure.
+- Debt Clock: after `Vermilion Gate` is conditionally released, complete qualifying Capellan contracts to reduce the narrative lien clock by `10,000,000 C-Bill` each while seeking evidence that part of the claimed debt is fraudulent.
+- Clan-Era Payoff: by 3049-3050, aim for Long Transit to stand with the Strikers as a trusted transport partner for anti-Clan contracts because both ships were saved and the debt was paid down or settled.
 
 ## Live API Historical Contract Snapshot
 

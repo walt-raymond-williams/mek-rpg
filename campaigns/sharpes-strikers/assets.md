@@ -10,6 +10,7 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 - Loan defaults: 0
 - Finance warnings: Unknown
 - Transport expense note: Confirmed by user for the current setup: Sharpe's Strikers has zero separate transport fee. The continuing price is maintaining the `Jade Passage` JumpShip, `Celestial Garden`, the Union, and associated Small Craft. Exact MekHQ finance entries remain MekHQ-owned.
+- Planned `Vermilion Gate` lien model: Confirmed by user as campaign fiction, not MekHQ ledger fact. The sister Merchant-class JumpShip is tied to a claimed `900,000,000 C-Bill` lien, reduced by `10,000,000 C-Bill` per qualifying Capellan contract completed after conditional release under the proposed retainer. See `jade-passage-expansion.md`.
 
 ## Narrative Transport Charter Assets
 
@@ -43,6 +44,26 @@ These assets are MEK-RPG narrative/relationship state unless and until MekHQ rep
 - Role: Military transport and BattleMech bay ship.
 - Transport relationship: Intended to use one `Jade Passage` docking collar under the charter arrangement.
 - MekHQ boundary: Exact ledger representation, cargo, unit loading, and hard transport capacity remain MekHQ-owned unless the live API exposes them.
+
+### Vermilion Gate
+
+- Class: Merchant-class JumpShip.
+- Owner/operator: Long Transit Association.
+- Role: Planned sister-ship recovery and long-term strategic transport expansion for the Strikers' battalion rebuild.
+- Status: Proposed future narrative asset; trapped under lien, impound, or creditor control until established in play. GM/planning knowledge until revealed to Sharpe.
+- Docking collars: Two. Preferred planning posture after release is one collar for a Strikers Mule and one open flexible collar.
+- Debt/lien: Claimed `900,000,000 C-Bill` lien; intended narrative retainer credit is `10,000,000 C-Bill` per qualifying Capellan contract completed after conditional release. Fraud evidence, tribunal results, or Capellan political credit may reduce the real payoff burden.
+- Authority boundary: Long Transit retains civilian ownership identity, crew, captain, and refusal rights. Sharpe's Strikers seeks long-term military charter rights, not seizure.
+- MekHQ boundary: Not a hard ledger asset until represented or confirmed in MekHQ. Exact condition, transport assignments, maintenance costs, and cargo capacity remain MekHQ-owned or pending play confirmation.
+
+### Planned Mule
+
+- Class: Mule-class DropShip.
+- Owner/operator: Intended Sharpe's Strikers MekHQ purchase or acquisition.
+- Role: Strategic cargo lift for mothballed BattleMechs during interstellar transit, parts, armor, ammo, salvage, and rebuilding toward battalion scale.
+- Transport relationship: Intended first regular DropShip attached to `Vermilion Gate` after conditional release. Until then, it may require commercial collar fees or temporary lift if acquired early.
+- Doctrine note: The Mule is strategic lift, not permanent inactive storage. The player intent is to unmothball carried BattleMechs after arrival and operate the full battalion once the deployment window permits.
+- MekHQ boundary: Purchase, price, cargo assignment, mothballing behavior, personnel movement, and transport capacity must be handled and verified in MekHQ.
 
 ## Cooperative Loyalty
 

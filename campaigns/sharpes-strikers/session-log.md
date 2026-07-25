@@ -28,6 +28,8 @@ Chapter One setup: the Long Transit Association's Merchant-class JumpShip `Jade 
 
 Confirmed by user: after major layoffs and asset sales, current transportation cost zero separate C-bills; the burden is maintaining the JumpShip and two DropShips tied to the arrangement.
 
+Expansion planning confirmed by user: the Jade Passage arc may grow into a `Vermilion Gate` sister-ship recovery path. Preferred direction is another modest Merchant-class JumpShip, not an Invader, released from a claimed `900,000,000 C-Bill` lien through Capellan political leverage and a simple narrative retainer clock: `10,000,000 C-Bill` credited against the lien per qualifying Capellan contract completed after conditional release. Sharpe's near-term practical step is to acquire one Mule so the Strikers can rebuild toward battalion scale while the second Merchant solves the collar bottleneck.
+
 ## Important Rolls
 
 - None.
@@ -49,10 +51,12 @@ Confirmed by user: after major layoffs and asset sales, current transportation c
 - Budget-cut decision: Sharpe declared the current staffing level acceptable for now. The unit is keeping personnel depth to absorb turnover and future growth, including an intentionally generous admin staff that has been with the command through the hard years.
 - Expansion doctrine established: the Strikers may expand again later, but no new combat arm, support arm, or civilian dependency burden gets added unless transport capacity is identified first.
 - Doctrine correction for Alpha Company: Command Lance is not a rarely held reserve. Under the current active contract, the user's table/MekHQ UI read is that at least ten active combat units are required, while Alpha Company has fourteen deployable combat units. Command Lance is part of the working force and should be used regularly, with risk managed through support, rotation, and maintenance rather than idling the strongest pilots and machines.
+- Jade Passage expansion plan recorded in `jade-passage-expansion.md`: recover `Vermilion Gate`, use a simple Capellan-contract debt clock, acquire a Mule first, and rebuild toward at least a BattleMech battalion with Alpha as the elite high-BV force and Bravo/Charlie as lower-BV line/training companies.
 
 ## Rewards And Costs
 
-- None.
+- Planned reward path: conditional release and long-term charter rights for `Vermilion Gate`, a second Long Transit Merchant-class JumpShip, if Sharpe can use Capellan leverage, prove or pressure down fraudulent debt, and commit to the retainer.
+- Planned cost path: claimed `900,000,000 C-Bill` lien, narrative `10,000,000 C-Bill` credit per qualifying Capellan contract completed after conditional release, continued Long Transit shipboard authority, maintenance obligations, and Capellan first-refusal pressure until settlement.
 
 ## Rules Gaps
 
