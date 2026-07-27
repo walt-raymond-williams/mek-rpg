@@ -2,15 +2,63 @@
 
 ## Active Or Most Recent Session
 
-Date: 2026-07-24
+Date: 2026-07-26
 
-Mode: MekHQ-linked live API context load
+Mode: MekHQ-linked battalion TO&E staff review
 
 Player characters:
 
 - Sharpe "Sharpe" Williams (initial viewpoint; confirm before play)
 
 ## Summary
+
+Live context from the refreshed API snapshot captured at `2026-07-26T19:41:30Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3034-12-06 at Altorra
+- Funds: 280,863,298 C-Bill
+- Units/personnel: 62 units, 461 personnel
+- Active contract: `3034 - CC - Altorra Objective Raid`, employer Capellan Confederation, end date 3034-12-26.
+- Current pending deployments: five exposed by `GET /campaign/pending-deployments`; `Breakthrough` on 3034-12-06 has `Warhammer WHM-6R`, `Warhammer WHM-6R #2`, `Warhammer WHM-6R #3`, `Awesome AWS-8Q`, `Mechbuster #2`, and `Mechbuster #3` assigned.
+- Current combat roster: 23 on-hand BattleMechs, 2 on-hand Aerospace Fighters, 3 on-hand Conventional Fighters, plus 13 combat units still inbound.
+- Battalion TO&E, confirmed from `/campaign/commands` selectors: top-level forces are `Headquarters`, `3rd Expeditionary Force`, and `RESERVE`. The combat battalion parent is `3rd Expeditionary Force`, containing `Alpha Company`, `Bravo Company`, and `Charlie Company`.
+- Alpha Company: `Command Lance` has Sharpe's `Awesome AWS-8Q` and three `Warhammer WHM-6R` units, currently deployed to `Breakthrough`; `Frontline Lance` has two Stalkers and two Grasshoppers; `Auxilary Lance` has two BattleMasters, a Flashman, and the Catapult.
+- Bravo Company: `Strike Lance` has the Atlas, Thunderbolt, Champion, and `Exterminator EXT-4A #2`; `Patrol Lance` has `Exterminator EXT-4A`, Stinger, Locust, Shadow Hawk, and Phoenix Hawk; `Mechbuster #2` and `Mechbuster #3` are attached at company level and currently deployed to `Breakthrough`.
+- Charlie Company: `LAM/ASF Force` has the two Phoenix Hawk LAMs; `ASF 1` has the two Riever F-100s; `Mechbuster CAS` has `Mechbuster #4`. This corrects an earlier voice-to-text misunderstanding: there are no `Terrafex` assets in the current discussion.
+- API caveat: force/TO&E read data is available from `/campaign/commands` selectors, not the compact query views. TO&E mutation commands remain blocked/not implemented.
+
+Staff setup: Sharpe calls the senior staff in to review the new battalion organization, test whether the structure is sound under the remaining Altorra contract pressure, and identify personnel, transport, maintenance, and aerospace expansion problems before the next wave of deliveries arrives.
+
+Staff decisions from the TO&E review:
+
+- After `Breakthrough`, move `Mechbuster #2` and `Mechbuster #3` from their temporary Bravo company-level attachment into Charlie Company with `Mechbuster #4`.
+- Build Bravo Company's third lance around incoming light/scout BattleMechs, creating a second patrol/scout lance suitable for patrols, route security, contract footprint, and lower-risk deployments.
+- Use incoming aerospace and conventional-fighter deliveries to fill Charlie Company into a complete air arm around the Phoenix Hawk LAMs, Rievers, and Mechbusters.
+- Make Mule acquisition the next strategic purchase once a cheap enough viable hull appears. Current funds are believed sufficient, but purchase, condition, transport assignment, and maintenance costs remain MekHQ-owned until applied and verified.
+- Visit a hiring hall to fill weak personnel areas before the full delivery pipeline arrives, with immediate attention to MekTechs, vehicle crews, mechanics, aerospace pilots/crew, AeroTeks, and conventional aircraft crew.
+- Future expansion concept: after current deliveries, Mule acquisition, and hiring recovery are complete, consider one more major expansion into a second battalion built as a training/replacement battalion. Preferred model is three training companies using light and possibly medium BattleMechs, with Bravo Company's light/scout machines eventually cascading down as Bravo pilots graduate into heavier equipment. Intended purpose is pilot development, replacement depth, patrol coverage, and controlled-risk deployment of less critical assets.
+- Training battalion doctrine: follow a Great House-style cadre/cadet system like formal cadre contracts. Training units deploy with an experienced formation that carries the real combat weight. Cadets use light machines for scouting, pursuit, screens, objective presence, and opportunistic support, not unsupported assaults or suicide rushes. Occasional losses of fragile Wasps/Stingers are accepted as a risk of combat, but waste of personnel or machines is not acceptable.
+
+Scene development: during the staff meeting, Capellan liaison Sang-wei Qiao Ren calls Sharpe with a post-contract movement offer. House Liao has arranged matters so that, once the Altorra Objective Raid contract concludes, Sharpe's Strikers will have access to the Long Transit Association's `Vermilion Gate` and its attached Mule. The vessels are expected to be available in-system to help carry the Strikers to Capella. Qiao frames the trip as a Contract Completion Review, a protected-charter docket for Long Transit, and a retainer conference with Capellan civil and military authorities. Practical effect: the Strikers have an official reason to spend time on Capella for hiring hall access, market searches, repair recovery, and future-contract negotiation.
+
+Sharpe's reply: the current Altorra campaign is going well and he expects the enemy to be routed soon. Once the contract is complete, Sharpe's Strikers will mothball and transport directly to Capella for the proceedings Qiao listed. Sharpe states that the command looks forward to working with the Capellan Confederation and closes with a loyal courtesy to the Celestial Wisdom.
+
+## Previous Live Context
+
+Live context from the refreshed API snapshot captured at `2026-07-26T00:41:27Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3034-10-30 at Altorra
+- Funds: 260,839,017 C-Bill
+- Units/personnel: 59 units, 410 personnel
+- Active contract: `3034 - CC - Altorra Objective Raid`, employer Capellan Confederation, end date 3034-12-26.
+- Current pending deployments: six exposed by `GET /campaign/pending-deployments`; `Minor Engagement` on 3034-10-30 has `Stalker STK-3F`, `Stalker STK-3F #2`, `Grasshopper GHR-5H`, and `Grasshopper GHR-5H #2` assigned.
+- Inbound rebuild pipeline: 31 units in transit, arriving in waves from 3034-11-14 to 3035-03-29.
+- LAM headline: the Strikers have two Phoenix Hawk LAMs in the live roster. One is on hand, crewed, undamaged, and deployable; one arrives in 15 days, uncrewed and not deployable until assigned a pilot.
+
+Staff setup: Sharpe needs to bring the command staff up to speed that the outfit is rebuilding aggressively, likely with a Mule acquisition path soon, and that the two Phoenix Hawk LAMs are not just hardware. The deal was unusually favorable and the seller sought out the Strikers; table inference is that someone in CCAF or Capellan-aligned procurement circles may be pleased with the unit. Treat this as political texture and a hook until confirmed in play or MekHQ notes.
+
+## Earlier Live Context
 
 Generated or refreshed this campaign save from a read-only MekHQ live API state payload, staged Chapter One of `The Jade Passage`, then refreshed again after the user's MekHQ setup pass.
 
@@ -36,6 +84,16 @@ Expansion planning confirmed by user: the Jade Passage arc may grow into a `Verm
 
 ## State Changes
 
+- MekHQ live API polled and captured on 2026-07-26.
+- Updated campaign-local current state and asset notes to reflect the 3034-12-06 Altorra battalion TO&E review snapshot.
+- Added battalion TO&E summary from `/campaign/commands` force selectors and corrected the voice-to-text misunderstanding around Phoenix Hawk LAMs.
+- Recorded staff decisions for post-`Breakthrough` Mechbuster reassignment, Bravo third patrol lance, Charlie aerospace expansion, Mule-first purchasing, and hiring-hall priorities.
+- Recorded future second-battalion concept as a training/replacement formation after the current battalion and transport plan are stabilized.
+- Added cadre/cadet operating doctrine for future training battalion deployments.
+- Added in-scene Capellan liaison offer: post-Altorra movement to Capella using `Vermilion Gate` and its attached Mule for a contract review, Long Transit protected-charter docket, and retainer conference.
+- Recorded Sharpe's acceptance of Qiao's post-contract Capella movement plan.
+- Updated campaign-local current state and asset notes to reflect the 3034-10-30 Altorra Objective Raid snapshot.
+- Added inbound unit-wave summary and Phoenix Hawk LAM staff agenda.
 - Created or refreshed campaign-local MekHQ live API bridge/context notes.
 - Added `The Jade Passage` as the active MEK-RPG narrative arc.
 - Added `Jade Passage`, `Celestial Garden`, and the Strikers' Union transport relationship as narrative assets.

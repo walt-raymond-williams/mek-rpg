@@ -4,7 +4,7 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 
 ## Finances
 
-- Funds: 337,194,891 C-Bill (Confirmed from MekHQ live API capture at `2026-07-24T20:03:46Z`; live context only)
+- Funds: 280,863,298 C-Bill (Confirmed from MekHQ live API capture at `2026-07-26T19:41:30Z`; live context only)
 - Active loans: false
 - Loan balance: 0 C-Bill
 - Loan defaults: 0
@@ -65,13 +65,110 @@ These assets are MEK-RPG narrative/relationship state unless and until MekHQ rep
 - Doctrine note: The Mule is strategic lift, not permanent inactive storage. The player intent is to unmothball carried BattleMechs after arrival and operate the full battalion once the deployment window permits.
 - MekHQ boundary: Purchase, price, cargo assignment, mothballing behavior, personnel movement, and transport capacity must be handled and verified in MekHQ.
 
+## Latest Live API Roster Summary
+
+Snapshot: MekHQ live API capture at `2026-07-26T19:41:30Z`; campaign date `3034-12-06`; location `Altorra`.
+
+- Total units: 62.
+- Personnel: 461.
+- Active contract: `3034 - CC - Altorra Objective Raid`, employer `Capellan Confederation`, end date `3034-12-26`.
+- Unit type counts: 28 Mek, 15 Tank, 7 Aerospace Fighter, 6 Conventional Fighter, 2 Dropship, 2 Small Craft, 1 Jumpship, 1 Infantry.
+- Deployability headline: 40 deployable units; 0 damaged units; repair pressure lists 1 unit needing parts/service attention and 0 units under repair.
+- Inbound rebuild pipeline remaining: 22 units are `In transit`, all currently uncrewed and blocked from deployment by missing pilots/crew until assigned.
+- Pending scenario commitment: `Breakthrough` on 3034-12-06 has `Warhammer WHM-6R`, `Warhammer WHM-6R #2`, `Warhammer WHM-6R #3`, `Awesome AWS-8Q`, `Mechbuster #2`, and `Mechbuster #3` assigned.
+
+### Battalion TO&E Review
+
+TO&E source boundary: MekHQ `/campaign/commands` command-readiness selectors expose the current force tree, formation IDs, unit memberships, and unit formation names for planning. Mutating TO&E endpoints are still blocked/not implemented, so MEK-RPG can read the structure but cannot safely change it through the API.
+
+- Battalion HQ / HQ section: command, admin, medical, transport, recovery, and ship-support functions. On-hand support assets include `Union (2708)`, `Monarch (2759)`, `Merchant JumpShip (2503)`, `Ares Assault Craft Mark VII`, `Dragonstar Passenger Transport`, `Jump Platoon (Laser)`, mobile canteen, MASH truck, four flatbeds, and other support vehicles.
+- `3rd Expeditionary Force`: battalion combat parent, containing `Alpha Company`, `Bravo Company`, and `Charlie Company`.
+- Alpha Company: `Command Lance`, `Frontline Lance`, and `Auxilary Lance`. Earlier doctrine keeps Command Lance as a working combat lance, not a glass-case reserve.
+- Bravo Company: `Strike Lance` and `Patrol Lance`, plus two deployed Mechbusters attached at company level. A third Mek lance is pending future BattleMech deliveries.
+- Charlie Company: `LAM/ASF Force`, `ASF 1`, and `Mechbuster CAS`. This is the LAM/aerospace/conventional-fighter arm and the natural home for future aerospace expansion.
+
+### Current Force Tree
+
+- `Headquarters`
+  - `Commissary`: `Sherpa Armored Truck (Mobile Canteen)`.
+  - `Medical`: `MASH Truck (Small)`.
+  - `Security`: `Jump Platoon (Laser)`.
+  - `Recovery Operations`: no units currently assigned.
+  - `Logistics`: four `Flatbed Truck` units.
+  - `Space Transport`: `Union (2708)`, `Monarch (2759)`, `Merchant JumpShip (2503)`, `Ares Assault Craft Mark VII`, `Dragonstar Passenger Transport`.
+- `3rd Expeditionary Force`
+  - `Alpha Company`
+    - `Command Lance`: `Awesome AWS-8Q`, `Warhammer WHM-6R`, `Warhammer WHM-6R #2`, `Warhammer WHM-6R #3`; deployed to `Breakthrough`.
+    - `Frontline Lance`: `Stalker STK-3F`, `Stalker STK-3F #2`, `Grasshopper GHR-5H`, `Grasshopper GHR-5H #2`.
+    - `Auxilary Lance`: `BattleMaster BLR-1G`, `BattleMaster BLR-1G #2`, `Flashman FLS-7K`, `Catapult CPLT-C1`.
+  - `Bravo Company`
+    - Company-level attachments: `Mechbuster #2`, `Mechbuster #3`; both deployed to `Breakthrough`.
+    - `Strike Lance`: `Atlas AS7-D`, `Thunderbolt TDR-5S`, `Champion CHP-2N`, `Exterminator EXT-4A #2`.
+    - `Patrol Lance`: `Exterminator EXT-4A`, `Stinger STG-3R`, `Locust LCT-1V`, `Shadow Hawk SHD-2H`, `Phoenix Hawk PXH-1`.
+  - `Charlie Company`
+    - `LAM/ASF Force`: `Phoenix Hawk LAM PHX-HK2`, `Phoenix Hawk LAM PHX-HK2 #2`.
+    - `ASF 1`: `Riever F-100`, `Riever F-100 #2`.
+    - `Mechbuster CAS`: `Mechbuster #4`.
+- `RESERVE`: no units currently assigned.
+
+### On-Hand Combat Roster
+
+- BattleMechs: `Catapult CPLT-C1`, `Grasshopper GHR-5H`, `Grasshopper GHR-5H #2`, `Warhammer WHM-6R`, `Warhammer WHM-6R #2`, `Warhammer WHM-6R #3`, `Stalker STK-3F`, `Stalker STK-3F #2`, `BattleMaster BLR-1G`, `BattleMaster BLR-1G #2`, `Flashman FLS-7K`, `Awesome AWS-8Q`, `Stinger STG-3R`, `Champion CHP-2N`, `Phoenix Hawk LAM PHX-HK2`, `Phoenix Hawk LAM PHX-HK2 #2`, `Atlas AS7-D`, `Thunderbolt TDR-5S`, `Locust LCT-1V`, `Shadow Hawk SHD-2H`, `Phoenix Hawk PXH-1`, `Exterminator EXT-4A`, `Exterminator EXT-4A #2`.
+- Aerospace fighters: `Riever F-100`, `Riever F-100 #2`.
+- Conventional fighters: `Mechbuster #2`, `Mechbuster #3`, `Mechbuster #4`.
+
+### Inbound Unit Waves
+
+- 3034-12-15: `Thrush TR-7`, `Lightning LTN-G15`, `Wolverine WVR-6M`, `Wasp WSP-1A`.
+- 3034-12-29: `BattleMech Recovery Vehicle #4`, `Mechbuster #5`, `Mechbuster #6`.
+- 3035-01-01: `BattleMech Recovery Vehicle`, `BattleMech Recovery Vehicle #2`, `BattleMech Recovery Vehicle #3`, `Stinger STG-3R #2`.
+- 3035-01-15: `Mechbuster`.
+- 3035-01-29: `Locust LCT-1V #2`, `Apocalypse World Rover`, `Ballista Self-Propelled Artillery Tank`, `BattleMech Recovery Vehicle #6`.
+- 3035-02-01: `Transgressor TR-13`.
+- 3035-03-01: `BattleMech Recovery Vehicle #5`, `Manticore Heavy Tank`.
+- 3035-03-06: `Grasshopper GHR-5H #3`.
+- 3035-03-29: `Eagle EGL-R6`, `Riever F-100 #3`.
+
+### Delivery Allocation Plan
+
+- Bravo Company third lance: build as a patrol/scout lance from incoming light/scout BattleMechs, with likely candidates including `Wasp WSP-1A`, `Stinger STG-3R #2`, `Locust LCT-1V #2`, and other appropriate arrivals once MekHQ confirms delivery and pilot assignment.
+- Bravo reserve or heavier fill: `Wolverine WVR-6M` and `Grasshopper GHR-5H #3` are stronger candidates for Bravo depth, reserve rotation, or a heavier patrol/response mix depending on pilot availability and maintenance load.
+- Charlie Company expansion: after `Breakthrough`, move `Mechbuster #2` and `Mechbuster #3` out of their Bravo company-level attachment and into Charlie with `Mechbuster #4`. Incoming `Thrush TR-7`, `Lightning LTN-G15`, `Transgressor TR-13`, `Eagle EGL-R6`, `Riever F-100 #3`, `Mechbuster`, `Mechbuster #5`, and `Mechbuster #6` should round out Charlie as the aerospace/conventional-fighter arm.
+- Recovery and vehicle support: incoming BattleMech Recovery Vehicles, `Ballista Self-Propelled Artillery Tank`, `Manticore Heavy Tank`, and `Apocalypse World Rover` create vehicle crew and mechanic demand before they create useful operational capability.
+- Mule purchase: priority strategic acquisition once a cheap enough Mule appears. The battalion rebuild is expected to outgrow current cargo and transport margin without it.
+
+### Future Training Battalion Concept
+
+- Timing: future-only, after current deliveries, Mule acquisition, and hiring recovery are complete.
+- Purpose: create a second battalion as a training/replacement command with three training companies.
+- Equipment model: mostly light BattleMechs, possibly with some mediums. As Bravo pilots advance into heavier machines, cascade older light/scout machines into the training battalion.
+- Operational model: use a Great House-style cadre/cadet system. Training units deploy with an experienced formation that provides the main combat power and recovery margin.
+- Training roles: patrol, route security, contract footprint, scouting, pursuit of fast-moving targets, screening, reinforcement, objective presence, and opportunistic support. Do not use training units for suicide rushes or unsupported assaults.
+- Risk posture: losing a fragile light machine such as a Wasp or Stinger is an accepted possibility in combat, but the command goal is controlled risk, not wasted people or machines.
+- Boundary: not a MekHQ hard ledger change until units, pilots, commanders, formation entries, transport space, and support staff are created or assigned in MekHQ.
+
+### Hiring Hall Priorities
+
+- MekTechs: hire at least a couple more immediately, then reassess after deliveries. Live API shows 25 MekTechs and 36 Astechs against a growing BattleMech roster.
+- Vehicle crews: hire ahead of the recovery vehicle and heavy vehicle arrivals, especially for large combat/support vehicles.
+- Aerospace and conventional aircraft personnel: Charlie's expansion needs additional Aerospace Pilots, Conventional Aircraft Crew, AeroTeks, and mechanics as fighters arrive.
+- Support staff: preserve enough admin/logistics depth to keep the battalion structure from becoming another oversized, under-supported force.
+
+### Phoenix Hawk LAMs
+
+- `Phoenix Hawk LAM PHX-HK2`: on hand, undamaged, crewed, deployable.
+- `Phoenix Hawk LAM PHX-HK2 #2`: on hand, undamaged, crewed, deployable.
+- Narrative overlay: user established that the LAM deal came through unusually favorably, with the seller seeking out the Strikers. Treat possible CCAF satisfaction or quiet Capellan sponsorship as a staff-level concern and opportunity, not a confirmed MekHQ ledger fact.
+
 ## Cooperative Loyalty
 
 - Rating: 1 / 5, cautious provisional trust.
 - Increases when Sharpe's Strikers protect the ships, pay agreed operating costs, respect captains' authority, rescue civilians, invest in repairs, and honor the charter.
 - Decreases when the Strikers expose the ships to unnecessary danger, ignore maintenance, seize civilian cargo, use `Celestial Garden` like a frontline combat vessel, interfere with shipboard authority, or abandon cooperative personnel.
 
-## Live API Units
+## Earlier Expanded Live API Unit Snapshot
+
+The expanded unit entries below were generated from an earlier `2026-07-24T20:03:46Z` capture and are stale for total roster counts, current location, finances, and in-transit purchases. Use the latest live API roster summary above, or the current `mekhq-live-api-capture/` JSON files, for current MekHQ-owned facts.
 
 ### Catapult CPLT-C1
 
@@ -420,7 +517,7 @@ These assets are MEK-RPG narrative/relationship state unless and until MekHQ rep
 
 ## Repairs And Logistics
 
-- Repair pressure: parts needed count: 0; parts needing service count: 0; units needing parts count: 0; units needing service count: 0; units under repair count: 0
+- Repair pressure: parts needed count: 1; parts needing service count: 1; units needing parts count: 1; units needing service count: 1; units under repair count: 0
 - Parts/shopping pressure: shopping list item count: 0; shopping list part item count: 0; total buy cost: 0 C-Bill
 - Shopping list sample: Unknown
 - Cargo/transport warnings: Cargo output summarizes transport relationships only; capacity math and load/unload commands are not exposed in V1.

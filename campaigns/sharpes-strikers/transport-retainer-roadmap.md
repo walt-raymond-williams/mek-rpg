@@ -4,11 +4,13 @@ This roadmap is the play-facing tracker for the Long Transit / House Liao transp
 
 ## Current Status
 
-- Campaign date: 3034-08-06 in the latest live API capture.
-- Active contract: `3034 - CC - Lesalles Recon Raid`.
+- Campaign date: 3034-12-06 in the latest live API capture.
+- Active contract: `3034 - CC - Altorra Objective Raid`.
 - Negotiation status: counteroffer framework accepted for drafting, not final signed treaty.
+- Negotiated in scene: Sang-wei Qiao Ren reports that House Liao has arranged post-Altorra access to `Vermilion Gate` and its attached Mule, with both expected in-system to help move the Strikers to Capella after the current contract ends.
 - Core deal shape: Sharpe's Strikers becomes a long-term Capellan-favored mercenary command while remaining legally mercenary, not House troops.
-- Current force goal: rebuild from one overworked elite company toward a BattleMech battalion first; later growth toward a larger command remains possible only if transport, maintenance, personnel, and payroll support it.
+- Current force goal: complete the current battalion rebuild efficiently, acquire a Mule, recover staffing, then consider one later expansion into a training/replacement battalion only if transport, maintenance, personnel, and payroll support it.
+- Post-contract destination: Capella, for a Contract Completion Review, Long Transit protected-charter docket, and retainer conference. This also gives the Strikers legitimate access to hiring halls, markets, and recovery infrastructure.
 
 ## Draft Retainer Terms
 
@@ -36,8 +38,8 @@ These terms are player-approved campaign direction unless later play revises the
 ### Phase 2: First Mule
 
 - Preferred first hard logistics step: acquire or attach one Mule-class DropShip.
-- Current approach: ask House Liao for a temporary Mule attachment with crew, while Sharpe's Strikers covers operating pay and maintenance from contract proceeds/reserves.
-- Alternative approach: buy a Mule in MekHQ if a viable market opportunity appears.
+- Current approach: buy a Mule in MekHQ when a cheap enough viable hull appears. Current funds are sufficient to pursue the purchase, but exact price and condition remain MekHQ-owned.
+- Alternative approach: ask House Liao for a temporary Mule attachment with crew, while Sharpe's Strikers covers operating pay and maintenance from contract proceeds/reserves.
 - Intended use: cargo lift for BattleMechs, parts, armor, ammunition, salvage, and battalion rebuild logistics.
 - Boundary: exact purchase price, crew need, cargo capacity, bay use, mothball behavior, transport assignment, and maintenance costs must be verified in MekHQ.
 
@@ -46,6 +48,7 @@ These terms are player-approved campaign direction unless later play revises the
 - Asset: `Vermilion Gate`, a Long Transit Merchant-class JumpShip.
 - Status: trapped under lien, impound, or creditor pressure; not a MekHQ hard ledger asset yet.
 - Attached asset: one Mule-class DropShip, name unknown.
+- Scene update: Qiao says the attached Mule will be available with `Vermilion Gate` for post-contract movement to Capella, but the exact Mule name, condition, crew, legal custody, and MekHQ transport handling remain unknown.
 - Claimed lien: 900,000,000 C-Bill as campaign fiction, not MekHQ ledger fact.
 - Proposed release structure: Capellan review/intervention releases the assets into productive Long Transit service under Strikers-protected charter.
 - Debt clock: each qualifying Capellan contract completed after conditional release can reduce the narrative lien clock by 10,000,000 C-Bill.
@@ -55,11 +58,18 @@ These terms are player-approved campaign direction unless later play revises the
 
 - Alpha Company remains the elite high-BV decisive force.
 - Bravo Company becomes the second hard-hitting combat company. Bigger new machines go here first when practical.
-- Charlie Company becomes the faster medium/light patrol, screen, and training company, able to split into lances for route security and scouting.
+- Bravo Company's third lance should be built from incoming light/scout BattleMechs as a patrol/scout lance for contract footprint, route security, and low-risk deployment coverage.
+- Charlie Company becomes the LAM/aerospace/conventional-fighter arm, including the two Phoenix Hawk LAMs, two Rievers, Mechbusters, and future aerospace arrivals.
 - Reserve Mech Lance: maintain one lance of reserve BattleMechs so damaged company machines can be rotated out without grounding pilots.
 - Reserve Aerospace: maintain reserve aerospace fighters as pilots and chassis allow.
 - Training/green units are acceptable for contract footprint, patrol, and battlefield-shaping roles, but should not be treated as independent assault forces.
 - Reinforcement doctrine: green or patrol lances can force enemy reaction; Alpha or Bravo lances arrive to win the fight.
+
+### Phase 4A: Hiring Hall Recovery
+
+- Immediate hiring priority: at least a couple more MekTechs, then vehicle crews and mechanics before the large recovery/combat vehicles arrive.
+- Charlie expansion hiring: add aerospace pilots, conventional aircraft crew, AeroTeks, and mechanics as fighter deliveries come in.
+- Intent: rebuild efficiently rather than recreate the old large force's overhead. The staff should hire to actual delivery and maintenance bottlenecks, not just to inflate headcount.
 
 ### Phase 5: Personnel And Habitation
 
@@ -69,12 +79,24 @@ These terms are player-approved campaign direction unless later play revises the
 - Current player preference: start with one Mule and use rented personnel transport or bay space if needed before committing to another personnel DropShip.
 - Do not add a second Mule or passenger DropShip as confirmed until play or MekHQ creates the need and opportunity.
 
+### Phase 6: Training And Replacement Battalion
+
+- Trigger: only after the current battalion is complete, all current deliveries are absorbed, staffing is repaired, and a Mule or equivalent lift capacity is secured.
+- Proposed structure: open a second battalion as a training and replacement battalion, likely three training companies built mostly from light BattleMechs, with mediums added where practical.
+- Equipment flow: as Bravo Company pilots improve, move them into heavier machines; cascade their light/scout BattleMechs down into the training battalion.
+- Operational purpose: create a pipeline of pilots, replacement units, and lower-risk formations for patrol, route security, contract footprint, battlefield shaping, and reinforcement tasks.
+- Cadre/cadet doctrine: use a Great House-style cadre model similar to formal cadre contracts. Training units should deploy alongside an experienced formation that provides the real combat weight, command steadiness, and bailout capacity.
+- Training-unit roles: scouting, pursuit of fast-moving targets, flank screens, rear-area security, objective presence, reinforcement, and opportunistic support. Any damage they contribute is useful, but they are not expected to win the main fight alone.
+- Risk doctrine: training battalion units may be used more often than Alpha or veteran Bravo assets because a lost Wasp or Stinger is less catastrophic than losing elite pilots and top machines. Do not use them for suicide charges, unsupported assaults, or missions where failure predictably destroys the trainees. This is controlled risk and replacement depth, not waste.
+- Constraint: do not build this battalion until lift, berthing, technical staff, spare parts, instructors, command cadre, and payroll can support it.
+
 ## Update Checklist
 
 Update this file when any of these happen:
 
 - Lesalles contract closes or receives a final success/failure/reputation result.
 - Qiao or another Capellan official returns draft retainer language.
+- The Strikers accept, modify, or refuse Qiao's post-Altorra travel and review summons to Capella.
 - House Liao confirms, rejects, or modifies 100% transport reimbursement.
 - Temporary Mule attachment is approved, refused, or converted into a purchase path.
 - A Mule appears in the MekHQ market or is bought/attached in MekHQ.
@@ -82,6 +104,7 @@ Update this file when any of these happen:
 - The 900,000,000 C-Bill lien changes, is challenged, or receives a fraud/settlement finding.
 - A qualifying Capellan contract reduces the debt clock.
 - The Strikers add, mothball, transport, or reactivate BattleMechs for Bravo, Charlie, reserves, or aerospace expansion.
+- The Strikers begin shifting Bravo light BattleMechs into a second training/replacement battalion.
 - Personnel transport, berthing, or civilian housing becomes a scene pressure.
 
 ## Authority Labels
@@ -100,9 +123,10 @@ Use these labels when updating:
 - Exact final retainer wording and whether Capellan command accepts it.
 - Exact mechanism for 100% transport reimbursement.
 - Whether the first Mule is attached by House Liao, bought in MekHQ, or recovered with `Vermilion Gate`.
-- Name, condition, location, and crew status of the Mule attached to `Vermilion Gate`.
-- Current physical location and mechanical state of `Vermilion Gate`.
+- Name, condition, precise location, and crew status of the Mule attached to `Vermilion Gate`.
+- Current precise physical location and mechanical state of `Vermilion Gate`.
 - Identity and title of the noble or creditor faction behind the lien.
 - True lawful amount of the lien after fraud evidence or settlement pressure.
 - Personnel transport capacity once the Strikers rebuild beyond one company.
 - Whether a second Mule or passenger/habitation DropShip becomes the next bottleneck.
+- Exact timing, command cadre, company names, and training doctrine for the proposed second battalion.
