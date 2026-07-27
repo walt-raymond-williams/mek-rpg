@@ -19,6 +19,7 @@
 ### Capella Jump Point
 
 - Type: Strategic arrival point / customs control pressure.
+- Canon reference: See [Capella.md](Capella.md) for the system, recharge stations, planet, cities, industry, military history, and campaign home-port canon.
 - Current relevance: `Jade Passage` has arrived carrying `Celestial Garden` and is being held pending inspection.
 - Access or security: Capellan local authorities can attempt inspection or impoundment; Sharpe's Strikers can invoke current House Liao standing but must avoid openly attacking Capellan personnel.
 - Important NPCs: Tora Wichers, Captain Damiane Meyer, Captain Nadežda Dunajski, Capellan customs officers.
