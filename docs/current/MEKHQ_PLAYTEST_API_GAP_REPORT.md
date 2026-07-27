@@ -49,6 +49,19 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-07-27 - JumpShip drive subsystem repair detail unavailable
+
+- Play context: `Sharpe's Strikers`, 3034-12-18 Altorra, emergency command-staff meeting after Sharpe is told the `Jade Passage` has a Fuchida/K-F drive maintenance issue and will not be jump-capable until repaired.
+- Needed data: source-confirmed repair detail for `Merchant JumpShip (2503)` / narrative `Jade Passage`, including affected subsystem name, whether the Fuchida/K-F drive is operational, severity, replacement difficulty, estimated time, estimated cost, required parts, technician/crew forecast, and whether the ship is grounded for strategic movement.
+- Attempted API read: `scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture`; `GET /campaign/state` section `repairs_and_logistics`; query views `play-context`, `repair-pressure`, and `api-gaps`.
+- Missing, stale, ambiguous, or unsupported field: the API confirms `Merchant JumpShip (2503)` has `parts_needing_service_count: 1` and `under_repair: false`, but it does not identify the affected part or subsystem, does not distinguish Fuchida/K-F drive readiness from generic service pressure, and does not expose work-order difficulty, repair ETA, replacement cost, or strategic movement impact.
+- Why it mattered for play: Sharpe called a restricted staff meeting with finance, administration, and the `Jade Passage` command link; the scene depends on whether the JumpShip is actually unable to jump, how hard replacement will be, and what financial/logistical options the command can discuss.
+- Fallback used: treated the generic service pressure as live API-confirmed; treated the Fuchida/K-F drive fault, no-jump status, and "very difficult to replace" forecast as user-established table context rather than API-confirmed hard detail. Did not parse the active save.
+- Expected read shape: repair/logistics state should expose per-unit `service_items[]` or `repair_work[]` with stable ids, `unit_id`, `display_name`, `part_or_subsystem`, `location`, `criticality`, `readiness_effect`, `parts_available`, `parts_needed`, `difficulty`, `estimated_duration`, `estimated_cost`, `assigned_technicians`, and explicit movement/readiness blockers for JumpShips and DropShips.
+- Suggested producer/API change: extend `/campaign/state?sections=repairs_and_logistics,units` or add `/campaign/repairs` with structured subsystem-level repair/service items and strategic-readiness impact, including explicit handling for JumpShip drive and docking/transport-critical systems.
+- Related issue or handoff: epic issue `#113`.
+- Status: open.
+
 ### 2026-07-24 - Lesalles recon raid enemy identities and original briefing unavailable
 
 - Play context: `Sharpe's Strikers`, 3034-08-06 Lesalles, command staff reviewing active contract `3034 - CC - Lesalles Recon Raid` after pending scenario `177`, `Tactical Withdrawal`, exposed a much heavier fight than the recon contract label implied.
