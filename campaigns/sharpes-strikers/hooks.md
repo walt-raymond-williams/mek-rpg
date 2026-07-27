@@ -11,6 +11,7 @@
 - Sister ship reveal: Long Transit may still have the Merchant-class JumpShip `Vermilion Gate`, trapped under lien rather than cleanly sold.
 - Transport retainer clock: the `Vermilion Gate` lien is claimed at `900,000,000 C-Bill`; each qualifying Capellan contract completed after conditional release can reduce the narrative lien clock by `10,000,000 C-Bill`.
 - Capellan retainer draft: Qiao's counteroffer framework points toward a 3034-3043 House Liao license/retainer, Capellan-approved employment during the term, no anti-Liao contracts afterward, and 100% eligible transport reimbursement for Capellan contracts using Long Transit craft.
+- Capellan succession pressure: December 3034 is inside the final years of Chancellor Maximilian Liao's rule. Keep the coming Maximilian-to-Romano transition as GM-only long-range context until events become public in-universe. Foreshadow through rumors, appointments, diplomacy, procurement, media bias, and House command behavior rather than direct spoilers.
 - RPG transport roadmap: use `transport-retainer-roadmap.md` to update the first-Mule plan, `Vermilion Gate` release, personnel transport pressure, battalion rebuild, and retainer milestones after each relevant scene or MekHQ read.
 - First test: armed customs officers may arrive with a facially valid order before the charter is finalized.
 - Cooperative loyalty: current rating 1 / 5; respect the captains and protect civilians to build trust.
@@ -50,6 +51,7 @@
 
 - Capellan customs, creditors, a regional noble, rival transport operators, and possibly Maskirovka attention can all make the charter dangerous without requiring an immediate battlefield fight.
 - The `Vermilion Gate` lien can become a long-term leash if the Strikers accept Capellan first-refusal pressure but fail to prove the fraudulent portion of the debt.
+- Capellan succession politics can complicate otherwise straightforward contracts as court factions, ministries, military officers, regional nobles, and foreign intelligence services adjust to signs of Maximilian's declining authority.
 - Unsupported or unmapped MekHQ live API fields may hide logistics pressure; inspect MekHQ before making exact ledger claims.
 
 ## Opportunities
@@ -58,4 +60,5 @@
 - Recover `Vermilion Gate` as a second modest Merchant-class JumpShip and attach a Mule to support the Strikers' battalion rebuild.
 - By the 3049-3050 Clan Invasion era, turn Long Transit into a trusted transport partner for anti-Clan contracts because Sharpe saved both ships and paid down or settled the lien.
 - Use the Strikers' long Capellan record as leverage without letting House Liao treat the ships as state property.
+- Let consistent competence gradually earn higher Capellan attention. If the Strikers eventually meet Romano's administration directly, the trigger should be an event of national significance earned through play, not political favoritism.
 - Turn MekHQ repair delays, personnel applicants, market offers, or employer meetings into RPG scenes without finalizing ledger changes outside MekHQ.

@@ -28,3 +28,10 @@ Use this file to remember player preferences and child/co-player constraints.
 ## Player Preferences
 
 - Needs user confirmation for Sharpe's Strikers.
+
+## Capellan Political Portrayal
+
+- Confirmed by user: present the Capellan Confederation from the perspective of people living and serving inside it.
+- Avoid one-note portrayals. House Liao should not be cartoonishly evil or spotless; show competent officers, loyal citizens, ambitious officials, opportunists, reformers, traditionalists, and ordinary people under pressure.
+- Treat all political sources as biased, including Capellan sources. Davion, Steiner, Kurita, Marik, independent, and mercenary reporting may describe Romano Liao and the succession climate in sharply different ways.
+- Preserve ambiguity around Romano Liao's reputation. Do not confirm out of character whether foreign rumors are true, partly true, exaggerated, or misinformation.

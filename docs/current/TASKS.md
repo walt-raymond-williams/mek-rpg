@@ -35,6 +35,7 @@
 
 ## Done
 
+- User-requested durable GM guidance added for Sharpe's Strikers: campaign files now preserve the Maximilian-to-Romano Liao succession directive, Capellan political portrayal posture, slow-burn recognition path, and future Romano audience tone.
 - Created `docs/current/MEKHQ_PLAYTEST_API_GAP_CHANGE_REQUEST_2026_07_16.md` as a producer-facing package from the MekHQ playtest API gap report, grouping open live-play gaps into scenario intel/BV, salvage and finance ledgers, logistics capacity, personnel turnover, and reliability endpoint requests for the MegaMek/MekHQ team.
 - Issue `#97` completed: reviewed `campaigns/the-learning-ropes/` and `campaigns/sharpes-strikers/`, interviewed the user, recorded results in `docs/current/LIVE_GM_PLAYTEST_REVIEW_2026_07_04.md`, verified the active campaign with `./scripts/validate-campaign-state.ps1 -StrictActive`, archived the issue handoff, and opened issue `#152` as the only new concrete follow-up. Parent issue `#95` is reconciled and ready to close with this checkpoint.
 - Collapsed the overbuilt Sarna/BattleTechWiki planning track into concise lore-context guidance in existing docs; removed the active Sarna handoff and no replacement issue chain was created.

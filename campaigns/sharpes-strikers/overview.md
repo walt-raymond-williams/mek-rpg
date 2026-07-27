@@ -36,6 +36,13 @@ Begin Chapter One, `The Jade Passage`, inside the active loaded MekHQ campaign d
 
 Treat the API payload as live context until a save/import checkpoint, explicit user approval, or a future controlled promotion flow makes a value durable.
 
+## Long-Range Political Direction
+
+- Confirmed by user: the campaign should carry an ongoing Capellan succession storyline around the final years of Chancellor Maximilian Liao and the eventual succession of Romano Liao.
+- Current campaign position: December 3034, during the final years of Maximilian Liao's rule. Historically, Maximilian's health is declining and Romano becomes Chancellor in 3036, but future events should not be revealed to the player until they become public in-universe.
+- Campaign use: treat the succession as a major historical event happening around Sharpe's Strikers, not as a plot created for them. Foreshadow it through rumors, appointments, diplomatic posture, military priorities, media bias, and administrative behavior over time.
+- Player agency boundary: Sharpe's Strikers may earn influence through years of service, reputation, and exceptional performance, but recognition should follow military hierarchy and actual results.
+
 ## Open Setup Questions
 
 - Confirm whether the selected viewpoint is the initial PC, a temporary camera character, or a commander briefing role.
