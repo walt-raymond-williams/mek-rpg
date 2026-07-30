@@ -2,15 +2,80 @@
 
 ## Active Or Most Recent Session
 
-Date: 2026-07-26
+Date: 2026-07-30
 
-Mode: MekHQ-linked battalion TO&E staff review
+Mode: MekHQ-linked Raphael concurrent-contract play
 
 Player characters:
 
 - Sharpe "Sharpe" Williams (initial viewpoint; confirm before play)
 
 ## Summary
+
+Live context from the refreshed API snapshot captured at `2026-07-30T05:22:01Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3037-02-17 at Raphael
+- Funds: 358,403,310 C-Bill
+- Units/personnel: 86 units, 637 personnel
+- Active contracts: two. Contract `17`, `3036 - CC - Raphael Garrison Duty`, is the long garrison baseline; contract `18`, `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`, is a concurrent shorter objective raid on the same planet.
+- Garrison terms: Independent command rights, 90% salvage, 100% transport compensation, 100% battle-loss compensation, monthly payout 8,046,919 C-Bill, end date 3038-03-25.
+- Subcontract terms: Liaison command rights, 80% salvage, 80% battle-loss compensation, 100% transport compensation, monthly payout 16,463,946 C-Bill, end date 3037-04-09.
+- Current pending deployments: seven, all attached to the subcontract. Scenarios `224` through `229` are pending with unknown dates and no assigned player units exposed yet. Scenario `231`, `Official Challenge`, is current on 3037-02-17.
+- Current tactical commitment: `Official Challenge` scenario `231` has Command Lance assigned: `Atlas AS7-D`, `Atlas AS7-D #2`, `Stalker STK-3F`, and `Awesome AWS-8Q`, crewed by Maritta "Crypt" Javison, Coletta Birkeland-Yoshida, Truda "Floyd" Pavlischev, and Sharpe "Sharpe" Williams. MekHQ exposes the opposing force as a Federated Suns Officer force, BV 11115.
+- Recent Raphael results: garrison scenario `230`, `Decoy Interception`, was a Victory on 3037-02-16; subcontract scenario `223`, `Covert Strike`, was a Victory on 3037-02-15.
+- Readiness: live API shows 79 deployable units, three damaged units, 17 parts needing service, one unit needing parts, nine units needing service, and six units under repair.
+
+Live context from the refreshed API snapshot captured at `2026-07-28T20:43:38Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3036-01-27 at Armaxa
+- Funds: 301,475,831 C-Bill
+- Units/personnel: 76 units, 581 personnel
+- Active contract: `3035 - CC - Armaxa Planetary Assault`, employer Capellan Confederation, start date 3035-05-12, end date 3036-03-12, Liaison command rights, 60% salvage, current salvage 59%, 100% transport compensation, 100% battle-loss compensation, monthly payout 11,943,056 C-Bill, estimated total profit 121,287,880 C-Bill.
+- Completed recent scenarios: `209` Space Aerospace Intercept is a Victory on 3035-11-20; `210` Official Challenge is a Victory on 3035-12-15.
+- User-confirmed Official Challenge detail: the enemy sent a four-person team of champions for a four-on-four challenge, and the Strikers defeated them decisively.
+- Pending deployments: two. Scenario `211`, `Space Aerospace Intercept`, is current on 3036-01-27; scenario `212`, `Pivotal Engagement`, is current on 3036-01-30. Both have employer observers. The pending-deployments API exposes no assigned player units yet for either scenario.
+- Readiness: live API shows 67 deployable units, one damaged unit, and one unit under repair. Repair queue is `Monarch (2759) #2`, crippled/not functional, no parts needed, one service item outstanding.
+
+Live context from the refreshed API snapshot captured at `2026-07-28T19:20:23Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3035-11-20 at Armaxa
+- Funds: 302,863,712 C-Bill
+- Units/personnel: 76 units, 576 personnel
+- Active contract: `3035 - CC - Armaxa Planetary Assault`, employer Capellan Confederation, start date 3035-05-12, end date 3036-03-12, Liaison command rights, 60% salvage, 100% transport compensation, 100% battle-loss compensation, monthly payout 11,943,056 C-Bill, estimated total profit 121,792,275 C-Bill.
+- Pending deployments: one. Scenario `209`, `Space Aerospace Intercept`, on 3035-11-20, with `Riever F-100`, `Riever F-100 #2`, and `Thrush TR-7` assigned from `ASF 1`.
+- Scene update confirmed by user: a message came down to Sang-wei Qiao Ren that House Liao needed the Strikers assigned immediately to a planetary assault. The Strikers accepted and are now at the Armaxa Planetary Assault contract.
+- Retainer direction update: the earlier Raphael/Capricorn discussion is superseded by the urgent Armaxa assignment. Treat Armaxa as the first major proof of the preferred transport-capable command relationship unless later play says otherwise.
+
+Live context from the refreshed API snapshot captured at `2026-07-27T22:37:33Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3035-04-02 at Capella
+- Funds: 250,012,691 C-Bill
+- Units/personnel: 69 units, 524 personnel
+- Active contracts: none.
+- Pending deployments: none.
+- Current transport roster confirmed from MekHQ live API: `Union (2708)`, `Monarch (2759)`, `Merchant JumpShip (2503)`, `Mule (2737)`, and `Merchant JumpShip (2602)`, all undamaged and available/deployable.
+- Table identity mapping confirmed by user: the original Merchant JumpShip remains the Long Transit/Jade Passage vessel, the second Merchant JumpShip is `Vermilion Gate`, and `Mule (2737)` is the attached Mule now in inventory.
+- User confirms the Kearny-Fuchida drive issue on the first JumpShip has been fixed. The current live repair queue no longer lists a Merchant JumpShip; repair pressure is two Thumper Artillery Vehicles.
+- Scene target: Sharpe's Strikers has arrived at Capella after the Altorra contract and is ready to meet Capellan officials for the three promised proceedings: Contract Completion Review, Long Transit protected-charter hearing, and retainer conference.
+- Retainer hearing outcome in progress: Sharpe's Strikers is provisionally recognized as a preferred transport-capable Capellan mercenary command; Long Transit assets enter protected productive service pending inspection, audit, lien review, and final retainer wording.
+- First retainer priority: Capellan officials identify `3035 - CC - Raphael Pirate Hunting` as the strategic priority because it proves the transport-retainer concept against threats to Capellan movement. Sharpe accepts the priority in scene and intends to prep for Raphael, then head straight there. MekHQ contract acceptance remains pending until applied and verified in MekHQ.
+
+Live context from the refreshed API snapshot captured at `2026-07-27T07:22:46Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3034-12-18 at Altorra
+- Funds: 266,710,254 C-Bill
+- Units/personnel: 69 units, 497 personnel
+- Active contract: `3034 - CC - Altorra Objective Raid`, employer Capellan Confederation, end date 3034-12-26.
+- Current transport problem: the Merchant JumpShip has one service item in MekHQ repair pressure and is not marked under repair. User confirms the drive can still jump, but the part is an expensive million-C-Bill-class repair/replacement concern and the available local repair attempt is very hard.
+- Staff recommendation: do not gamble on a wilderness repair unless the ship becomes unable to jump. Make one controlled jump to Capella after the contract, use the Capella Zenith Recharge Station for diagnostics and repair support, and avoid rushed recharge or hot-loading.
+- Sharpe personally pitches Captain Damiane Meyer. The argument is practical: the Strikers cannot properly repair the drive in the field, Capella has the station and industrial support, and the command needs the ship fixed rather than wished healthy.
+- Roll: Sharpe's current MekHQ detail lists Leadership level 1 with final value 6. Rolled `2d6+1`: dice `4, 6`, total 11, margin 5 against TN 6.
+- Result: Captain Meyer accepts one controlled post-contract jump to Capella, with Dimas' readiness signoff, a Strikers repair bond, no rushed recharge/hot-loading, and Meyer retaining final abort authority if the drive readings worsen.
 
 Live context from the refreshed API snapshot captured at `2026-07-26T19:41:30Z`:
 
@@ -80,11 +145,35 @@ Expansion planning confirmed by user: the Jade Passage arc may grow into a `Verm
 
 ## Important Rolls
 
-- None.
+- Sharpe Leadership pitch to Captain Meyer: `2d6+1`, dice `4, 6`, total 11 against TN 6, margin 5. Success. Captain Meyer agrees to one controlled jump to Capella for station-supported Merchant JumpShip drive repair, under safety and authority conditions.
 
 ## State Changes
 
+- User-provided command scene recorded as canon: after reviewing the first informal anniversary scrapbook, Sharpe stopped the XO and ordered all copies, drafts, duplicates, and electronic files collected. Command accepts responsibility for failing to set boundaries for that edition, but future casual disparagement of House Liao, the Capellan Confederation, Capellan officers, institutions, or the employer relationship is prohibited.
+- Added in-scene `Command Directive 3036-04`, `Conduct Regarding the Capellan Confederation and Employer Relations`: legitimate reporting of unsafe orders, corruption, operational disagreements, agreement violations, and safety concerns remains protected through proper channels; public insults, hostile rumors, political ridicule, disparaging written material, or conduct implying contempt for the Capellan employer relationship are prohibited. First confirmed post-directive offense may remove personnel from active combat status and active mission rolls, with loss of combat-related pay/bonus/deployment-linked salvage and reassignment to support duties pending review. Repeated or deliberate offenses may trigger progressive discipline, loss of responsibility, or termination.
+- Replacement anniversary scrapbook direction established: the revised edition is an internal Strikers morale/public-relations artifact that should be safe and useful if copied to Capellan liaison staff, Capellan command, or intelligence readers. It should feel written by and for Sharpe's Strikers, not as obvious flattery to the employer, while clearly showing pride in eleven years of Capellan service and the relationship that made the unit's survival, prosperity, transport access, Long Transit protection, and future growth possible. It should use real campaign facts rather than invented praise, avoid defensive statements about independence, avoid casual anti-Capellan jokes or contempt, and read as serious command propaganda in the practical sense: a truthful internal memory shaped for inevitable external scrutiny.
+- MekHQ live API polled and captured on 2026-07-28 for Sharpe's Strikers at 3036-01-27 on Armaxa.
+- Recorded current live API state: active `3035 - CC - Armaxa Planetary Assault`, two pending scenarios, 301,475,831 C-Bill, 76 units, 581 personnel.
+- Recorded recent Armaxa victories: `Space Aerospace Intercept` scenario `209` and `Official Challenge` scenario `210`.
+- Recorded user-confirmed Official Challenge detail: enemy four-person champion team challenged the Strikers to a four-on-four fight and lost decisively.
+- Recorded current repair pressure: `Monarch (2759) #2` is crippled and under repair with no parts needed.
+- MekHQ live API polled and captured on 2026-07-30 for Sharpe's Strikers at 3037-02-17 on Raphael.
+- Recorded current live API state: two active concurrent Raphael contracts, seven pending subcontract scenarios, 358,403,310 C-Bill, 86 units, 637 personnel.
+- Recorded separate active contract posture: `3036 - CC - Raphael Garrison Duty` is the long garrison baseline; `3037 - Capellan Confederation - Raphael Subcontract Objective Raid` is a concurrent same-planet subcontract.
+- Recorded current subcontract tactical commitment: `Official Challenge` scenario `231` has Command Lance assigned with Sharpe present in the `Awesome AWS-8Q`.
+- Recorded current repair pressure: 17 parts needing service, 1 unit needing parts, 9 units needing service, and 6 units under repair.
+- MekHQ live API polled and captured on 2026-07-28 for Sharpe's Strikers at 3035-11-20 on Armaxa.
+- Recorded current live API state: active `3035 - CC - Armaxa Planetary Assault`, one pending aerospace intercept scenario, 302,863,712 C-Bill, 76 units, 576 personnel.
+- Recorded user-confirmed scene branch: urgent Capellan planetary assault assignment superseded Raphael/Capricorn options; Strikers accepted and are at the planetary assault contract.
+- MekHQ live API polled and captured on 2026-07-27 for Sharpe's Strikers at 3035-04-02 on Capella.
+- Recorded current live API state: no active contracts, no pending deployments, 250,012,691 C-Bill, 69 units, 524 personnel.
+- Recorded user-confirmed table facts: `Vermilion Gate` and its attached Mule are now in inventory, and the first JumpShip's Kearny-Fuchida drive issue is fixed.
+- Set the next play scene at the Capellan official review sequence: Contract Completion Review, Long Transit protected-charter hearing, and retainer conference.
+- Recorded provisional retainer direction and in-scene intent to take the Raphael Pirate Hunting contract as the first proof-of-retainer operation, pending MekHQ application/verification.
 - MekHQ live API polled and captured on 2026-07-26.
+- MekHQ live API polled and captured on 2026-07-27 for Sharpe's Strikers at 3034-12-18.
+- Recorded Merchant JumpShip drive service issue as a live MekHQ repair-pressure fact plus user-confirmed table risk: the ship can still jump, but the part is expensive and local repair is a very hard roll.
+- Recorded Sharpe's successful personal Leadership pitch to Captain Damiane Meyer and Meyer's conditional agreement to jump to Capella for proper station-supported repair.
 - Updated campaign-local current state and asset notes to reflect the 3034-12-06 Altorra battalion TO&E review snapshot.
 - Added battalion TO&E summary from `/campaign/commands` force selectors and corrected the voice-to-text misunderstanding around Phoenix Hawk LAMs.
 - Recorded staff decisions for post-`Breakthrough` Mechbuster reassignment, Bravo third patrol lance, Charlie aerospace expansion, Mule-first purchasing, and hiring-hall priorities.
@@ -133,4 +222,4 @@ Expansion planning confirmed by user: the Jade Passage arc may grow into a `Verm
 
 ## Next Session
 
-For the immediate MekHQ table state, continue the 3034-07-02 Lesalles Alpha Company force review under the active Recon Raid contract. Review each lance in operational terms, starting with Command Lance.
+For the immediate MekHQ table state, continue on 3037-02-17 at Raphael. Treat the garrison contract and subcontract as concurrent obligations, then frame the `Official Challenge` scenario `231` with Command Lance deployed while preserving the longer Raphael garrison baseline.

@@ -13,6 +13,8 @@
 - Capellan retainer draft: Qiao's counteroffer framework points toward a 3034-3043 House Liao license/retainer, Capellan-approved employment during the term, no anti-Liao contracts afterward, and 100% eligible transport reimbursement for Capellan contracts using Long Transit craft.
 - Capellan succession pressure: December 3034 is inside the final years of Chancellor Maximilian Liao's rule. Keep the coming Maximilian-to-Romano transition as GM-only long-range context until events become public in-universe. Foreshadow through rumors, appointments, diplomacy, procurement, media bias, and House command behavior rather than direct spoilers.
 - RPG transport roadmap: use `transport-retainer-roadmap.md` to update the first-Mule plan, `Vermilion Gate` release, personnel transport pressure, battalion rebuild, and retainer milestones after each relevant scene or MekHQ read.
+- Raphael concurrent-contract pressure: the long garrison contract and same-planet subcontract objective raid are both active. Future scenes should test whether Sharpe can use Command Lance aggressively for subcontract objectives while keeping garrison readiness credible.
+- Current tactical focus: subcontract `Official Challenge` scenario `231` has Command Lance assigned on 3037-02-17; this is a public performance opportunity and a risk to the garrison baseline if mishandled.
 - First test: armed customs officers may arrive with a facially valid order before the charter is finalized.
 - Cooperative loyalty: current rating 1 / 5; respect the captains and protect civilians to build trust.
 - Market inspection: Saurer-Bucher Fire Engine TLF-LL6500; final price and selectors are unsupported until checked in MekHQ.

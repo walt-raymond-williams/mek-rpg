@@ -4,13 +4,14 @@ This roadmap is the play-facing tracker for the Long Transit / House Liao transp
 
 ## Current Status
 
-- Campaign date: 3034-12-06 in the latest live API capture.
-- Active contract: `3034 - CC - Altorra Objective Raid`.
-- Negotiation status: counteroffer framework accepted for drafting, not final signed treaty.
-- Negotiated in scene: Sang-wei Qiao Ren reports that House Liao has arranged post-Altorra access to `Vermilion Gate` and its attached Mule, with both expected in-system to help move the Strikers to Capella after the current contract ends.
+- Campaign date: 3037-02-17 in the latest live API capture.
+- Active contracts: `3036 - CC - Raphael Garrison Duty` and `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`.
+- Negotiation status: provisional retainer structure accepted in play; the Strikers have progressed from the urgent Armaxa proof operation into sustained Raphael garrison work with a concurrent same-planet subcontract.
+- Current scene status: Sharpe's Strikers is on Raphael under two active Capellan contracts. The long garrison obligation is the baseline; the shorter objective-raid subcontract is layered on top and currently drives the `Official Challenge` scenario.
+- Confirmed from MekHQ live API plus user table confirmation: `Vermilion Gate` and its attached Mule are now in inventory as `Merchant JumpShip (2602)` and `Mule (2737)`.
 - Core deal shape: Sharpe's Strikers becomes a long-term Capellan-favored mercenary command while remaining legally mercenary, not House troops.
 - Current force goal: complete the current battalion rebuild efficiently, acquire a Mule, recover staffing, then consider one later expansion into a training/replacement battalion only if transport, maintenance, personnel, and payroll support it.
-- Post-contract destination: Capella, for a Contract Completion Review, Long Transit protected-charter docket, and retainer conference. This also gives the Strikers legitimate access to hiring halls, markets, and recovery infrastructure.
+- Current contract agenda: execute the Raphael subcontract objectives without hollowing out the Raphael garrison baseline, while preserving Long Transit protected-charter credibility, self-transport readiness, and House Liao confidence.
 
 ## Draft Retainer Terms
 
@@ -24,7 +25,9 @@ These terms are player-approved campaign direction unless later play revises the
 - Long Transit ownership: Long Transit keeps civilian ownership identity, crews, captains, shipboard authority, and refusal rights for piracy, smuggling, or suicidal misuse.
 - Strikers authority: Sharpe's Strikers receives protected military charter/use rights over Long Transit transport assigned to Strikers operations.
 - Capellan benefit: House Liao gains preferred access to a self-transporting mercenary force without directly absorbing the Strikers as House troops.
+- Retainer posture confirmed in play: Sharpe accepts Capellan-approved employment exclusivity for the 3035-3043 term in principle, intends to keep working with House Liao beyond 3043, accepts the `10,000,000 C-Bill` lien-credit mechanic as fair, and wants final fraud adjudication to separate lawful Long Transit debt from manufactured creditor leverage. Sharpe's Strikers is willing to contribute funds toward lawful remaining obligations as future Capellan work generates revenue.
 - Kurita/Davion option: if the War of 3039 creates useful story pressure, House Liao may route the Strikers into anti-Davion support or coordination with Kurita interests, but do not frame it as ordinary Draconis Combine mercenary employment unless later canon/play supports that path.
+- Proof-contract update: Raphael Pirate Hunting and Capricorn III Garrison Duty were discussed in the Capella hearing, but a later urgent message routed the Strikers to `3035 - CC - Armaxa Planetary Assault`. By the 3037-02-17 live refresh, the Strikers are back on Raphael under the active garrison contract plus a concurrent Capellan subcontract objective raid.
 
 ## Transport Build Path
 
@@ -37,18 +40,16 @@ These terms are player-approved campaign direction unless later play revises the
 
 ### Phase 2: First Mule
 
-- Preferred first hard logistics step: acquire or attach one Mule-class DropShip.
-- Current approach: buy a Mule in MekHQ when a cheap enough viable hull appears. Current funds are sufficient to pursue the purchase, but exact price and condition remain MekHQ-owned.
-- Alternative approach: ask House Liao for a temporary Mule attachment with crew, while Sharpe's Strikers covers operating pay and maintenance from contract proceeds/reserves.
+- Status: complete for current play purposes. MekHQ live API confirms `Mule (2737)` in the roster, undamaged and available/deployable; user confirms this is the attached Mule associated with `Vermilion Gate`.
 - Intended use: cargo lift for BattleMechs, parts, armor, ammunition, salvage, and battalion rebuild logistics.
 - Boundary: exact purchase price, crew need, cargo capacity, bay use, mothball behavior, transport assignment, and maintenance costs must be verified in MekHQ.
 
 ### Phase 3: Vermilion Gate Conditional Release
 
 - Asset: `Vermilion Gate`, a Long Transit Merchant-class JumpShip.
-- Status: trapped under lien, impound, or creditor pressure; not a MekHQ hard ledger asset yet.
-- Attached asset: one Mule-class DropShip, name unknown.
-- Scene update: Qiao says the attached Mule will be available with `Vermilion Gate` for post-contract movement to Capella, but the exact Mule name, condition, crew, legal custody, and MekHQ transport handling remain unknown.
+- Status: present in inventory as of the 3035-04-02 Capella live snapshot. MekHQ live API confirms a second Merchant JumpShip, `Merchant JumpShip (2602)`, undamaged and available/deployable; user confirms this is `Vermilion Gate`.
+- Attached asset: `Mule (2737)`, undamaged and available/deployable in the live MekHQ roster.
+- Scene update: The remaining issue is no longer physical access to the hulls; it is Capellan legal recognition, Long Transit protected-charter terms, lien treatment, and retainer obligations.
 - Claimed lien: 900,000,000 C-Bill as campaign fiction, not MekHQ ledger fact.
 - Proposed release structure: Capellan review/intervention releases the assets into productive Long Transit service under Strikers-protected charter.
 - Debt clock: each qualifying Capellan contract completed after conditional release can reduce the narrative lien clock by 10,000,000 C-Bill.
@@ -98,9 +99,9 @@ Update this file when any of these happen:
 - Qiao or another Capellan official returns draft retainer language.
 - The Strikers accept, modify, or refuse Qiao's post-Altorra travel and review summons to Capella.
 - House Liao confirms, rejects, or modifies 100% transport reimbursement.
-- Temporary Mule attachment is approved, refused, or converted into a purchase path.
-- A Mule appears in the MekHQ market or is bought/attached in MekHQ.
-- `Vermilion Gate` location, condition, crew, legal status, or attached Mule name becomes established.
+- Raphael Garrison Duty or the Raphael Subcontract Objective Raid completes, changes status, or creates a major political consequence.
+- Temporary Mule attachment terms change or become final.
+- `Vermilion Gate` legal status, crew authority, lien status, or Capellan protected-charter wording becomes established.
 - The 900,000,000 C-Bill lien changes, is challenged, or receives a fraud/settlement finding.
 - A qualifying Capellan contract reduces the debt clock.
 - The Strikers add, mothball, transport, or reactivate BattleMechs for Bravo, Charlie, reserves, or aerospace expansion.
@@ -122,9 +123,9 @@ Use these labels when updating:
 
 - Exact final retainer wording and whether Capellan command accepts it.
 - Exact mechanism for 100% transport reimbursement.
-- Whether the first Mule is attached by House Liao, bought in MekHQ, or recovered with `Vermilion Gate`.
-- Name, condition, precise location, and crew status of the Mule attached to `Vermilion Gate`.
-- Current precise physical location and mechanical state of `Vermilion Gate`.
+- Exact legal custody and operating authority for the Mule attached to `Vermilion Gate`.
+- Crew status of the Mule attached to `Vermilion Gate`.
+- Exact Capellan legal status of `Vermilion Gate`.
 - Identity and title of the noble or creditor faction behind the lien.
 - True lawful amount of the lien after fraud evidence or settlement pressure.
 - Personnel transport capacity once the Strikers rebuild beyond one company.

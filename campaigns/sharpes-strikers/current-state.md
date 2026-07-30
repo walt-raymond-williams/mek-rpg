@@ -1,14 +1,14 @@
 # Current State
 
-Current date: 3034-12-06 (Confirmed from MekHQ live API capture at `2026-07-26T19:41:30Z`; MekHQ-owned; live context only)
+Current date: 3037-02-17 (Confirmed from MekHQ live API capture at `2026-07-30T05:22:01Z`; MekHQ-owned; live context only)
 
-Current location: Altorra (Confirmed from MekHQ live API capture at `2026-07-26T19:41:30Z`; MekHQ-owned; live context only)
+Current location: Raphael (Confirmed from MekHQ live API capture at `2026-07-30T05:22:01Z`; MekHQ-owned; live context only)
 
-Active scene: Battalion TO&E staff review during the active `3034 - CC - Altorra Objective Raid`; interrupted by a Capellan liaison call about post-contract travel to Capella.
+Active scene: Raphael concurrent-contract operations. Sharpe's Strikers is not on a single isolated contract: the unit is carrying out the long Raphael garrison contract while also executing a shorter Capellan subcontract objective raid on the same planet.
 
-Immediate pressure: Sharpe's Strikers has reorganized its combat arm into a single battalion structure while still under Capellan contract. Live MekHQ shows 62 units, 461 personnel, 280,863,298 C-Bills, one active contract ending 3034-12-26, five pending scenarios, 40 deployable units, and a `Breakthrough` scenario on 3034-12-06 with six assigned combat units: `Warhammer WHM-6R`, `Warhammer WHM-6R #2`, `Warhammer WHM-6R #3`, `Awesome AWS-8Q`, `Mechbuster #2`, and `Mechbuster #3`.
+Immediate pressure: Live MekHQ shows 86 units, 637 personnel, 358,403,310 C-Bills, two active contracts, seven pending deployments, 79 deployable units, three damaged units, and six units under repair. Active contract `17` is `3036 - CC - Raphael Garrison Duty`, employer Capellan Confederation, Independent command rights, ending 3038-03-25. Active contract `18` is `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`, employer Capellan Confederation, Liaison command rights, ending 3037-04-09. The current tactical pressure belongs to the subcontract: scenario `231`, `Official Challenge`, is pending today, 3037-02-17, with Command Lance assigned.
 
-Next prompt: Sang-wei Qiao Ren calls during the staff meeting. House Liao has arranged post-contract access to the Long Transit Association's `Vermilion Gate` and attached Mule, with the vessels expected in-system after the Altorra contract ends. Qiao directs Sharpe to Capella for a Contract Completion Review, a protected-charter docket for Long Transit, and preliminary retainer talks before Capellan civil and military authorities.
+Next prompt: Sharpe and staff need to treat the Official Challenge as a subcontract engagement that cannot compromise the garrison baseline. Decide how visible and politically pointed the Command Lance deployment should be while the Raphael garrison obligation remains active.
 
 ## Current Party
 
@@ -16,14 +16,48 @@ Next prompt: Sang-wei Qiao Ren calls during the staff meeting. House Liao has ar
 
 ## Current Mission
 
-See `missions.md`. Active MekHQ contract is `3034 - CC - Altorra Objective Raid`; `The Jade Passage` remains the standing transport and political arc supporting the unit's current operating model.
+See `missions.md`. Active MekHQ contracts are `3036 - CC - Raphael Garrison Duty` and `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`; `The Jade Passage` remains the standing transport and political arc supporting the unit's current operating model.
 
-Jade Passage expansion planning now points toward `Vermilion Gate`, a second Long Transit Merchant-class JumpShip under a claimed `900,000,000 C-Bill` lien, plus a Mule-first battalion rebuild path. See `jade-passage-expansion.md`; these are campaign-planning facts and GM/planning knowledge until revealed in play, not MekHQ hard-ledger assets until applied and verified in MekHQ.
+Jade Passage expansion planning now includes `Vermilion Gate`, a second Long Transit Merchant-class JumpShip under a claimed `900,000,000 C-Bill` lien, plus an attached Mule. MekHQ live API confirms a second Merchant JumpShip and a Mule in the roster; user confirms the narrative identity mapping to `Vermilion Gate` and the attached Mule.
 
 ## State Since Last Session
 
-- Campaign context refreshed from MekHQ live API at `2026-07-26T19:41:30Z`.
+- Campaign context refreshed from MekHQ live API at `2026-07-30T05:22:01Z`.
+- Startup branch: live API available and sufficient for scene setup. MekHQ date and ledger are current through this live API snapshot; MEK-RPG is running scenes inside that day.
+- Confirmed from MekHQ live API: current date/location are 3037-02-17 at Raphael; current funds are 358,403,310 C-Bill; units are 86 total; personnel are 637 total; active contracts are 2; pending deployments are 7.
+- Confirmed from MekHQ live API: active contract `17` is `3036 - CC - Raphael Garrison Duty`, employer Capellan Confederation, start date 3036-08-25, end date 3038-03-25, 19 months, 14 months left, Independent command rights, 90% salvage, 100% transport compensation, 100% battle-loss compensation, monthly payout 8,046,919 C-Bill, estimated total profit 122,281,304 C-Bill.
+- Confirmed from MekHQ live API: active contract `18` is `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`, employer Capellan Confederation, start date 3037-02-09, end date 3037-04-09, 2 months, 2 months left, Liaison command rights, 80% salvage, 80% battle-loss compensation, 100% transport compensation, monthly payout 16,463,946 C-Bill, estimated total profit 30,748,582 C-Bill.
+- Confirmed by user and live API: the Raphael situation is concurrent-contract work, not a replacement of the garrison by the subcontract. Track the garrison contract and subcontract separately in mission notes.
+- Confirmed from MekHQ live API: the garrison contract has eight scenario ids attached; the latest garrison scenario `230`, `Decoy Interception`, was a Victory on 3037-02-16.
+- Confirmed from MekHQ live API: the subcontract has eight scenario ids attached. Scenario `223`, `Covert Strike`, was a Victory on 3037-02-15; scenarios `224` through `229` are pending with unknown dates; scenario `231`, `Official Challenge`, is pending on 3037-02-17.
+- Confirmed from MekHQ pending-deployments API: scenario `231` has four Command Lance units assigned: `Atlas AS7-D`, `Atlas AS7-D #2`, `Stalker STK-3F`, and `Awesome AWS-8Q`, crewed by Maritta "Crypt" Javison, Coletta Birkeland-Yoshida, Truda "Floyd" Pavlischev, and Sharpe "Sharpe" Williams.
+- Confirmed from MekHQ live API: repair pressure lists 17 parts needing service, 1 unit needing parts, 9 units needing service, 1 part needed, and 6 units under repair. Repair/procurement execution remains unsupported by the current API read.
+- Campaign context refreshed from MekHQ live API at `2026-07-28T19:20:23Z`.
+- Startup branch: live API available and sufficient for scene setup. MekHQ date and ledger are current through this live API snapshot; MEK-RPG is running scenes inside that day.
+- Confirmed from MekHQ live API: current date/location are 3035-11-20 at Armaxa; current funds are 302,863,712 C-Bill; units are 76 total; personnel are 576 total; active contracts are 1; pending deployments are 1.
+- Confirmed from MekHQ live API: active contract is `3035 - CC - Armaxa Planetary Assault`, employer Capellan Confederation, start date 3035-05-12, end date 3036-03-12, 10 months, 4 months left, Liaison command rights, 60% salvage, 100% transport compensation, 100% battle-loss compensation, monthly payout 11,943,056 C-Bill, estimated total profit 121,792,275 C-Bill.
+- Confirmed from MekHQ live API: current pending deployment is scenario `209`, `Space Aerospace Intercept`, on 3035-11-20, with three assigned ASF 1 units: `Riever F-100` piloted by Hanz Plankensteiner, `Riever F-100 #2` piloted by Josephine Cannavo, and `Thrush TR-7` piloted by Puhi Feredinado.
+- Confirmed by user: the earlier Raphael/Capricorn retainer discussion was overtaken by an urgent Capellan assignment to Armaxa; Sharpe's Strikers accepted the planetary assault contract and is now there.
+- Campaign context refreshed from MekHQ live API at `2026-07-28T20:43:38Z`.
+- Startup branch: live API available and sufficient for scene setup. MekHQ date and ledger are current through this live API snapshot; MEK-RPG is running scenes inside that day.
+- Confirmed from MekHQ live API: current date/location are 3036-01-27 at Armaxa; current funds are 301,475,831 C-Bill; units are 76 total; personnel are 581 total; active contracts are 1; pending deployments are 2.
+- Confirmed from MekHQ live API: active contract remains `3035 - CC - Armaxa Planetary Assault`, employer Capellan Confederation, start date 3035-05-12, end date 3036-03-12, 10 months, 2 months left, Liaison command rights, 60% salvage, 100% transport compensation, 100% battle-loss compensation, monthly payout 11,943,056 C-Bill, estimated total profit 121,287,880 C-Bill.
+- Confirmed from MekHQ live API: scenario `209`, `Space Aerospace Intercept`, is a Victory on 3035-11-20.
+- Confirmed from MekHQ live API and user report: scenario `210`, `Official Challenge`, is a Victory on 3035-12-15; the enemy sent a team of champions for a four-on-four challenge and the Strikers decisively won.
+- Confirmed from MekHQ live API: pending scenario `211`, `Space Aerospace Intercept`, is current on 3036-01-27 and has no assigned player units exposed yet; the employer has deployed an observer.
+- Confirmed from MekHQ live API: pending scenario `212`, `Pivotal Engagement`, is current on 3036-01-30 and has no assigned player units exposed yet; the employer has deployed an observer.
+- Confirmed from MekHQ live API: repair pressure is one unit under repair, `Monarch (2759) #2`, crippled and not functional, with no parts needed but one service item outstanding.
+- Campaign context refreshed from MekHQ live API at `2026-07-27T22:37:33Z`.
+- Startup branch: live API available and sufficient for scene setup. MekHQ date and ledger are current through this live API snapshot; MEK-RPG is running scenes inside that day.
+- Confirmed from MekHQ live API: current date/location are 3035-04-02 at Capella; current funds are 250,012,691 C-Bill; units are 69 total; personnel are 524 total; active contracts are 0; pending deployments are 0.
+- Confirmed from MekHQ live API: strategic transport roster includes `Union (2708)`, `Monarch (2759)`, `Merchant JumpShip (2503)`, `Mule (2737)`, and `Merchant JumpShip (2602)`, all undamaged and available/deployable. MekHQ does not expose custom names in this snapshot; user confirms the second Merchant is `Vermilion Gate` and the Mule is the attached Mule.
+- Confirmed by user: the Kearny-Fuchida drive issue on the first JumpShip has been repaired. Live repair pressure now lists two Thumper Artillery Vehicles, not the Merchant JumpShip.
+- Current Capellan agenda: meet officials for the Contract Completion Review, the Long Transit protected-charter hearing, and the retainer conference.
+- Campaign context refreshed from MekHQ live API at `2026-07-27T07:22:46Z`.
 - Live API data is not a durable checkpoint by itself; do not advance the campaign date here unless MekHQ confirms it or the user explicitly approves recording it.
+- Confirmed from MekHQ live API: current funds are 266,710,254 C-Bill, units are 69 total, personnel are 497 total, five pending scenarios are exposed, and the active contract is `3034 - CC - Altorra Objective Raid`.
+- Confirmed from MekHQ live API and user table read: the Merchant JumpShip has a drive-related service item in the repair queue, is not currently under repair, and can still jump. Chief Engineer Damon Dimas can attempt the repair locally only on a very hard repair check; staff preference is to avoid a wilderness repair attempt and jump to Capella for station-supported diagnostics and repair.
+- Roll result: Sharpe personally pitched Captain Meyer using Leadership. Fresh MekHQ person detail lists Leadership level 1 with final value 6. Roll `2d6+1` produced dice `4, 6`, total 11, margin 5 against TN 6. Captain Meyer agrees to one controlled jump to Capella after the Altorra contract, with Dimas' readiness signoff, Strikers repair bond, no rushed recharge/hot-loading, and Meyer retaining final abort authority.
 - Confirmed by user: after major layoffs and asset sales, Sharpe's Strikers paid no separate transport fee; the cost pressure is maintaining the JumpShip, two DropShips, and two Small Craft tied to the new transport arrangement.
 - Confirmed from MekHQ live API: current funds are 280,863,298 C-Bill, units are 62 total, personnel are 461 total, five pending scenarios are exposed, and the active contract is `3034 - CC - Altorra Objective Raid`.
 - Active contract timing: campaign date 3034-12-06; contract end date 3034-12-26; 20 days remain by date difference.

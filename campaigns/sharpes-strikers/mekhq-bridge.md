@@ -6,13 +6,13 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - MEK-RPG campaign id: `sharpes-strikers`
 - Live API state JSON: `mekhq-live-api-capture/mekhq-state.json`
-- Adapter timestamp: `2026-07-24T20:03:46.3601745+00:00`
+- Adapter timestamp: `2026-07-30T05:22:01Z`
 - Schema: `mekhq-live-campaign-state` version `0.1`
 - API mode: `local-read-only-live-context`
 - Read-only proof: `true`
 - MekHQ version: `0.51.01`
-- State revision: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3034-07-02-2026-07-24T20:03:45.031689600Z`
-- Snapshot id: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3034-07-02-2026-07-24T20:03:45.031689600Z`
+- State revision: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3037-02-17-2026-07-30T05:21:59.793700300Z`
+- Snapshot id: `live-7fbbb5da-0bcd-46f1-8f61-846848c2f148-3037-02-17-2026-07-30T05:21:59.793700300Z`
 - Dirty state: Unknown
 
 ## Ownership Boundary
@@ -26,22 +26,25 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 - MekHQ campaign id: `7fbbb5da-0bcd-46f1-8f61-846848c2f148`
 - Name: Sharpe's Strikers
-- Date: 3034-07-02
-- Location: Lesalles
-- Funds: 337,194,891 C-Bill
+- Date: 3037-02-17
+- Location: Raphael
+- Funds: 358,403,310 C-Bill
 - Viewpoint: Sharpe "Sharpe" Williams (`c9548e24-d495-444d-aaa7-467449fdc290`), Selected first active and available MekHQ live API personnel record.
 
 ## Counts
 
-- Personnel: 408
-- Units: 26
-- Contracts: 12
-- Scenarios: 129
-- Market unit/personnel/contract offers: 55 / 60 / 0
+- Personnel: 637
+- Units: 86
+- Contracts: 17 total in live state; 2 active on the campaign date
+- Scenarios: 199
+- Market unit/personnel/contract offers: 67 / 50 / 0
 - Current report lines: 1
-- Pending deployments: 4
+- Pending deployments: 7
+- Active contracts: `17` Raphael Garrison Duty; `18` Raphael Subcontract Objective Raid.
 
 ## Cross-References
+
+The active contract ids below are current for the `2026-07-30T05:22:01Z` capture. Personnel and unit samples remain older generated cross-references; use the current `mekhq-live-api-capture/` JSON or a fresh focused query before making exact roster, assignment, or TO&E claims.
 
 ### Personnel
 
@@ -94,6 +97,10 @@ This file records campaign-local bridge metadata for a read-only MekHQ live API 
 
 ### Contracts
 
+- Current active contract ids:
+  - `17` -> `3036-cc-raphael-garrison-duty`: 3036 - CC - Raphael Garrison Duty
+  - `18` -> `3037-capellan-confederation-raphael-subcontract-objective-raid`: 3037 - Capellan Confederation - Raphael Subcontract Objective Raid
+- Historical/stale cross-reference sample from an earlier bridge refresh follows; use `missions.md` and the current live capture for the full current contract list.
 - `1` -> `3025-cc-talitha-recon-raid`: 3025 - CC - Talitha Recon Raid
 - `2` -> `3025-cc-altorra-garrison-duty`: 3025 - CC - Altorra Garrison Duty
 - `3` -> `3027-magistracy-of-canopus-butzfleth-pirate-hunting`: 3027 - Magistracy of Canopus - Butzfleth Pirate Hunting

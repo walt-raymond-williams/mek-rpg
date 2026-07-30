@@ -38,10 +38,10 @@ Track relationship state that matters for future scenes.
 
 ### Sharpe's Strikers -> Capellan Confederation
 
-- Current status: Proven repeat contractor; active employer relationship.
-- Trust or hostility: Inferred trust from results, not friendship. The hard ledger shows 8 completed Capellan contracts, all Success, and a 9th Capellan contract currently active. The relationship should feel like "they keep hiring us because we deliver," not "the State loves us."
-- Leverage: Sharpe can credibly argue that the Strikers have earned better transport terms after years of Capellan work, especially with current Lesalles funds at 337,194,891 C-bills, no loans, 100% transport compensation, and an internally supported transport stack.
-- Promises: No current explicit Capellan promise of a Union, Mule, title transfer, or transport subsidy is confirmed yet.
-- Debts or favors: The old Mule operating-rights thread is historical; `Mule (2737)` was removed from the roster after upkeep became unsustainable. The lesson gives Sharpe grounds to demand support terms before taking another hull.
-- Secrets: Unknown.
-- Last changed: 2026-07-21 live API contract review, campaign date 3032-03-29.
+- Current status: Preferred transport-capable Capellan mercenary command operating on Raphael under two concurrent MekHQ contracts: the long `3036 - CC - Raphael Garrison Duty` and the shorter `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`.
+- Trust or hostility: Earned, pragmatic trust from a long contract record rather than personal affection. The current Raphael ledger shows House Liao willing to layer a same-planet subcontract onto the garrison obligation.
+- Leverage: The Strikers now offer Capellan-aligned self-transporting battalion capability through `Jade Passage`, `Vermilion Gate`, `Celestial Garden`, the Union, and the Mule. This reduces pressure on House transport while creating a useful protected-charter structure for Long Transit, but concurrent Raphael obligations test whether the command can surge without hollowing out garrison security.
+- Promises: In-scene retainer posture accepts Capellan-approved employment exclusivity for 3035-3043 in principle, continuing Capellan preference beyond 3043, no anti-Liao contracts after the term, priority repair/diagnostic access for recognized Long Transit vessels, and `10,000,000 C-Bill` lien credit per qualifying Capellan contract after the structure takes effect.
+- Debts or favors: Sharpe's Strikers recently carried the roughly `20,000,000 C-Bill` Kearny-Fuchida drive repair burden for `Jade Passage`. The Strikers are willing to contribute future Capellan contract revenue toward lawful Long Transit obligations after fraud adjudication.
+- Secrets: Sharpe was born a Federated Suns citizen but has a paternal Capellan grandmother; family stories from his grandmother and father shape his sincere interest in making the Capellan relationship work for both the Confederation and the Strikers.
+- Last changed: 3037-02-17 Raphael concurrent-contract live API refresh.

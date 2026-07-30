@@ -17,9 +17,9 @@
 - Edge or limited resources: TBD
 - Armor and important gear: TBD
 - Assets controlled: TBD; do not infer MekHQ command authority beyond live API role/rank.
-- Goals: TBD
+- Goals: Build a durable, mutually beneficial relationship with the Capellan Confederation while preserving the Strikers as a mercenary command; use the unit's transport, spending, and contract work to strengthen the places where the Strikers operate rather than merely extract profit.
 - Relationships: Sparse/TBD. Record future scene memory in `relationships.md`.
-- Personality, secrets, and private motives: Sparse/TBD; MEK-RPG overlay only.
+- Personality, secrets, and private motives: Sharpe was born a Federated Suns citizen, but his paternal grandmother was a Capellan citizen. Family stories from his grandmother and father kept him from fully accepting anti-Capellan propaganda. His current loyalty posture toward House Liao is rooted in remembered family perspective, proven contract history, and a practical belief that the Strikers' presence should benefit local Capellan economies through purchases, rent, food, services, employment, and transport reliability.
 - Open sheet questions: Fill A Time of War attributes, traits, skills, XP, Edge, gear, and personal goals before rules-heavy PC play.
 
 ## Other Player Characters

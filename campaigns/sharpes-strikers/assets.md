@@ -4,12 +4,13 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 
 ## Finances
 
-- Funds: 280,863,298 C-Bill (Confirmed from MekHQ live API capture at `2026-07-26T19:41:30Z`; live context only)
+- Funds: 358,403,310 C-Bill (Confirmed from MekHQ live API capture at `2026-07-30T05:22:01Z`; live context only)
 - Active loans: false
 - Loan balance: 0 C-Bill
 - Loan defaults: 0
 - Finance warnings: Unknown
 - Transport expense note: Confirmed by user for the current setup: Sharpe's Strikers has zero separate transport fee. The continuing price is maintaining the `Jade Passage` JumpShip, `Celestial Garden`, the Union, and associated Small Craft. Exact MekHQ finance entries remain MekHQ-owned.
+- K-F drive repair cost note: Confirmed by user for table narrative that Sharpe's Strikers recently financed the `Jade Passage` Kearny-Fuchida drive repair, with total repair burden around `20,000,000 C-Bill` by completion. Treat this as user-confirmed campaign finance context unless MekHQ exposes a matching hard ledger entry.
 - Planned `Vermilion Gate` lien model: Confirmed by user as campaign fiction, not MekHQ ledger fact. The sister Merchant-class JumpShip is tied to a claimed `900,000,000 C-Bill` lien, reduced by `10,000,000 C-Bill` per qualifying Capellan contract completed after conditional release under the proposed retainer. See `jade-passage-expansion.md`.
 
 ## Narrative Transport Charter Assets
@@ -50,36 +51,37 @@ These assets are MEK-RPG narrative/relationship state unless and until MekHQ rep
 - Class: Merchant-class JumpShip.
 - Owner/operator: Long Transit Association.
 - Role: Planned sister-ship recovery and long-term strategic transport expansion for the Strikers' battalion rebuild.
-- Status: Proposed future narrative asset; trapped under lien, impound, or creditor control until established in play. GM/planning knowledge until revealed to Sharpe.
+- Status: In Sharpe's Strikers inventory as of 3035-04-02. MekHQ live API confirms a second `Merchant JumpShip (2602)` in the roster, undamaged and available/deployable; user confirms this is `Vermilion Gate`.
 - Docking collars: Two. Preferred planning posture after release is one collar for a Strikers Mule and one open flexible collar.
 - Debt/lien: Claimed `900,000,000 C-Bill` lien; intended narrative retainer credit is `10,000,000 C-Bill` per qualifying Capellan contract completed after conditional release. Fraud evidence, tribunal results, or Capellan political credit may reduce the real payoff burden.
 - Authority boundary: Long Transit retains civilian ownership identity, crew, captain, and refusal rights. Sharpe's Strikers seeks long-term military charter rights, not seizure.
-- MekHQ boundary: Not a hard ledger asset until represented or confirmed in MekHQ. Exact condition, transport assignments, maintenance costs, and cargo capacity remain MekHQ-owned or pending play confirmation.
+- MekHQ boundary: The hull exists in the live MekHQ roster, but exact name, transport assignments, maintenance costs, cargo capacity, lien terms, and legal authority remain split between MekHQ hard ledger and MEK-RPG play confirmation.
 
 ### Planned Mule
 
 - Class: Mule-class DropShip.
-- Owner/operator: Intended Sharpe's Strikers MekHQ purchase or acquisition.
+- Owner/operator: Sharpe's Strikers / Long Transit attached-service arrangement, exact legal custody pending Capellan proceedings.
 - Role: Strategic cargo lift for mothballed BattleMechs during interstellar transit, parts, armor, ammo, salvage, and rebuilding toward battalion scale.
-- Transport relationship: Intended first regular DropShip attached to `Vermilion Gate` after conditional release. Until then, it may require commercial collar fees or temporary lift if acquired early.
+- Transport relationship: Attached to `Vermilion Gate`; MekHQ live API confirms `Mule (2737)` in the roster, undamaged and available/deployable, and user confirms this is the attached Mule.
 - Doctrine note: The Mule is strategic lift, not permanent inactive storage. The player intent is to unmothball carried BattleMechs after arrival and operate the full battalion once the deployment window permits.
-- MekHQ boundary: Purchase, price, cargo assignment, mothballing behavior, personnel movement, and transport capacity must be handled and verified in MekHQ.
+- MekHQ boundary: Cargo assignment, mothballing behavior, personnel movement, transport capacity, legal custody, and maintenance cost must still be handled and verified in MekHQ or play.
 
 ## Latest Live API Roster Summary
 
-Snapshot: MekHQ live API capture at `2026-07-26T19:41:30Z`; campaign date `3034-12-06`; location `Altorra`.
+Snapshot: MekHQ live API capture at `2026-07-30T05:22:01Z`; campaign date `3037-02-17`; location `Raphael`.
 
-- Total units: 62.
-- Personnel: 461.
-- Active contract: `3034 - CC - Altorra Objective Raid`, employer `Capellan Confederation`, end date `3034-12-26`.
-- Unit type counts: 28 Mek, 15 Tank, 7 Aerospace Fighter, 6 Conventional Fighter, 2 Dropship, 2 Small Craft, 1 Jumpship, 1 Infantry.
-- Deployability headline: 40 deployable units; 0 damaged units; repair pressure lists 1 unit needing parts/service attention and 0 units under repair.
-- Inbound rebuild pipeline remaining: 22 units are `In transit`, all currently uncrewed and blocked from deployment by missing pilots/crew until assigned.
-- Pending scenario commitment: `Breakthrough` on 3034-12-06 has `Warhammer WHM-6R`, `Warhammer WHM-6R #2`, `Warhammer WHM-6R #3`, `Awesome AWS-8Q`, `Mechbuster #2`, and `Mechbuster #3` assigned.
+- Total units: 86.
+- Personnel: 637.
+- Active contracts: `3036 - CC - Raphael Garrison Duty` and `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`.
+- Deployability headline: 79 deployable units; 3 damaged units; repair pressure lists 17 parts needing service, 1 unit needing parts, 9 units needing service, and 6 units under repair.
+- Pending scenario commitments: seven pending subcontract scenarios are exposed. Scenario `231`, `Official Challenge`, is current on 3037-02-17 and has Command Lance assigned: `Atlas AS7-D`, `Atlas AS7-D #2`, `Stalker STK-3F`, and `Awesome AWS-8Q`.
+- Contract-load note: the garrison contract remains active while the subcontract is executed on the same planet. Treat readiness, fatigue, transport, and repair pressure as shared across both obligations.
 
 ### Battalion TO&E Review
 
 TO&E source boundary: MekHQ `/campaign/commands` command-readiness selectors expose the current force tree, formation IDs, unit memberships, and unit formation names for planning. Mutating TO&E endpoints are still blocked/not implemented, so MEK-RPG can read the structure but cannot safely change it through the API.
+
+Refresh note: the detailed TO&E sections below are older planning notes from prior captures. Use the latest live API roster summary above for current counts and contract/scenario posture until a fresh full force-tree read is intentionally captured.
 
 - Battalion HQ / HQ section: command, admin, medical, transport, recovery, and ship-support functions. On-hand support assets include `Union (2708)`, `Monarch (2759)`, `Merchant JumpShip (2503)`, `Ares Assault Craft Mark VII`, `Dragonstar Passenger Transport`, `Jump Platoon (Laser)`, mobile canteen, MASH truck, four flatbeds, and other support vehicles.
 - `3rd Expeditionary Force`: battalion combat parent, containing `Alpha Company`, `Bravo Company`, and `Charlie Company`.
@@ -517,7 +519,7 @@ The expanded unit entries below were generated from an earlier `2026-07-24T20:03
 
 ## Repairs And Logistics
 
-- Repair pressure: parts needed count: 1; parts needing service count: 1; units needing parts count: 1; units needing service count: 1; units under repair count: 0
+- Repair pressure: parts needed count: 1; parts needing service count: 17; units needing parts count: 1; units needing service count: 9; units under repair count: 6
 - Parts/shopping pressure: shopping list item count: 0; shopping list part item count: 0; total buy cost: 0 C-Bill
 - Shopping list sample: Unknown
 - Cargo/transport warnings: Cargo output summarizes transport relationships only; capacity math and load/unload commands are not exposed in V1.

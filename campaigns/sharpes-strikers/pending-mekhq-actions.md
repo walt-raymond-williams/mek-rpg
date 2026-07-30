@@ -12,6 +12,60 @@ See `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` for the full schema and
 
 ## Resolved Or Abandoned Items
 
+### mekhq-pending-3035-04-02-001: Accept Raphael Pirate Hunting retainer contract
+
+- Status: abandoned
+- Type: contract
+- Priority: superseded
+- Created: 3035-04-02
+- Updated: 3035-11-20
+- Source scene: Capella retainer hearing after Altorra completion.
+- Source files: `session-log.md`, `transport-retainer-roadmap.md`
+- MekHQ target ids: campaign `7fbbb5da-0bcd-46f1-8f61-846848c2f148`; contract offer `162`; contract display name `3035 - CC - Raphael Pirate Hunting`.
+- Resolution notes: Superseded by user-confirmed urgent Capellan assignment to `3035 - CC - Armaxa Planetary Assault`. The 3035-11-20 live API snapshot confirms Armaxa Planetary Assault as the active accepted contract.
+
+### mekhq-pending-3035-11-20-001: Accept Armaxa Planetary Assault retainer contract
+
+- Status: resolved
+- Type: contract
+- Priority: completed
+- Created: 3035-11-20
+- Updated: 3035-11-20
+- Source scene: Urgent message to Sang-wei Qiao Ren redirecting the Strikers from Raphael/Capricorn planning to an immediate planetary assault assignment.
+- Source files: `current-state.md`, `missions.md`, `session-log.md`, `transport-retainer-roadmap.md`
+- MekHQ target ids: campaign `7fbbb5da-0bcd-46f1-8f61-846848c2f148`; contract id `16`; contract display name `3035 - CC - Armaxa Planetary Assault`.
+- Current imported baseline: 3035-11-20 live API snapshot confirms `3035 - CC - Armaxa Planetary Assault` is active, with active_on_campaign_date true.
+- Proposed MekHQ action: Accept Armaxa Planetary Assault as the urgent Capellan assignment.
+- Resolution notes: Already applied in MekHQ by user and verified by live API capture at `2026-07-28T19:20:23Z`.
+
+### mekhq-pending-3036-08-25-001: Accept Raphael Garrison Duty
+
+- Status: resolved
+- Type: contract
+- Priority: completed
+- Created: 3036-08-25
+- Updated: 3037-02-17
+- Source scene: Raphael retainer/garrison follow-through after the Armaxa proof operation.
+- Source files: `current-state.md`, `missions.md`, `session-log.md`, `transport-retainer-roadmap.md`
+- MekHQ target ids: campaign `7fbbb5da-0bcd-46f1-8f61-846848c2f148`; contract id `17`; contract display name `3036 - CC - Raphael Garrison Duty`.
+- Current imported baseline: 3037-02-17 live API snapshot confirms `3036 - CC - Raphael Garrison Duty` is active, with active_on_campaign_date true.
+- Proposed MekHQ action: Accept Raphael Garrison Duty as the long same-planet Capellan baseline contract.
+- Resolution notes: Already applied in MekHQ by user and verified by live API capture at `2026-07-30T05:22:01Z`.
+
+### mekhq-pending-3037-02-09-001: Accept Raphael Subcontract Objective Raid
+
+- Status: resolved
+- Type: contract
+- Priority: completed
+- Created: 3037-02-09
+- Updated: 3037-02-17
+- Source scene: Same-planet Capellan subcontract layered onto the active Raphael garrison duty.
+- Source files: `current-state.md`, `missions.md`, `session-log.md`, `transport-retainer-roadmap.md`
+- MekHQ target ids: campaign `7fbbb5da-0bcd-46f1-8f61-846848c2f148`; contract id `18`; contract display name `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`.
+- Current imported baseline: 3037-02-17 live API snapshot confirms `3037 - Capellan Confederation - Raphael Subcontract Objective Raid` is active, with active_on_campaign_date true.
+- Proposed MekHQ action: Accept the Raphael subcontract objective raid while preserving the long Raphael garrison obligation as a separate active contract.
+- Resolution notes: Already applied in MekHQ by user and verified by live API capture at `2026-07-30T05:22:01Z`.
+
 ### mekhq-pending-3032-12-04-001: Unmothball retained ground vehicles
 
 - Status: resolved

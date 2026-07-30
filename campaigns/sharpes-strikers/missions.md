@@ -2,34 +2,61 @@
 
 MekHQ owns accepted contract ledger status, deadlines, scenario generation, payment, salvage, and tactical outcomes. MEK-RPG owns player-facing stakes, briefings, relationships, promises, and pending choices.
 
-## Active Mission
+## Active Missions
 
-Mission name: 3034 - CC - Lesalles Recon Raid
+Current date/location: 3037-02-17 at Raphael (Confirmed from MekHQ live API capture at `2026-07-30T05:22:01Z`; live context only).
 
-Status: Active MekHQ contract.
+Campaign posture: Sharpe's Strikers is operating under two concurrent MekHQ contracts on Raphael. Do not collapse these into a single contract in play notes: the garrison contract is the long baseline obligation, and the subcontract objective raid is a shorter active combat package layered onto the same planet.
 
-Description: Sharpe's Strikers are on a Capellan Confederation Recon Raid at Lesalles. The contract is active in the 3034-07-02 live API snapshot with two months remaining.
+### 3036 - CC - Raphael Garrison Duty
 
-Date/location: 3034-07-02 at Lesalles (Confirmed from MekHQ live API; live context only).
+- MekHQ contract id: `17`
+- Status: Active MekHQ contract.
+- Type: Garrison Duty.
+- Employer: Capellan Confederation.
+- Enemy: Unknown.
+- Dates: start `3036-08-25`, end `3038-03-25`, 19 months, 14 months left, travel days `8`.
+- Terms: Independent command rights; 90% salvage; current salvage 90%; 0% straight support; 100% transport compensation; 100% battle-loss compensation; monthly payout 8,046,919 C-Bill; advance amount 50,963,822 C-Bill; transport amount 8,034,515 C-Bill; estimated total profit 122,281,304 C-Bill.
+- Player-facing stakes: hold Raphael credibly over the long term while preserving the transport-capable battalion model and Capellan confidence. Subcontract raids should support the garrison posture, not leave the main duty hollow.
+- Scenario ids attached by MekHQ: `216`, `217`, `218`, `219`, `220`, `221`, `222`, `230`.
 
-Employer: Capellan Confederation.
+Recent garrison results:
 
-Terms: Liaison command rights; 40% salvage; 100% straight support; monthly payout 6,954,019 C-Bill; support amount 2,255,869 C-Bill; transport amount 0 C-Bill because the Strikers are carrying themselves.
+- `216` Convoy Raid: Victory on 3036-10-11.
+- `217` AirBase - Allied - Defend: Victory on 3036-10-27.
+- `218` Low-Atmosphere Air Intercept: Victory on 3036-11-02.
+- `219` Convoy Escort: Victory on 3036-11-05.
+- `220` CommandCenter - Allied - Defend: Victory on 3036-11-18.
+- `221` Close Air Support: Victory on 3036-12-05.
+- `222` MekBase - Allied - Defend: Victory on 3037-01-11.
+- `230` Decoy Interception: Victory on 3037-02-16.
 
-Player-facing stakes: the unit has been heavily downsized and must maintain enough active combat strength to satisfy contract obligations while protecting its new transport base, retaining turnover reserve, and avoiding another unsustainable expansion.
+### 3037 - Capellan Confederation - Raphael Subcontract Objective Raid
 
-Active-force requirement: table/MekHQ UI report is a minimum of ten active combat units. The live API does not expose this requirement as a structured field.
+- MekHQ contract id: `18`
+- Status: Active MekHQ contract.
+- Type: Objective Raid.
+- Employer: Capellan Confederation.
+- Enemy: Unknown.
+- Dates: start `3037-02-09`, end `3037-04-09`, 2 months, 2 months left, travel days `8`.
+- Terms: Liaison command rights; 80% salvage; current salvage 0%; 0% straight support; 100% transport compensation; 80% battle-loss compensation; monthly payout 16,463,946 C-Bill; advance amount 10,975,964 C-Bill; transport amount 1,081,384 C-Bill; estimated total profit 30,748,582 C-Bill.
+- Player-facing stakes: exploit the garrison foothold for short, sharp Capellan objectives on Raphael without exhausting the command or weakening the long garrison baseline.
+- Scenario ids attached by MekHQ: `223`, `224`, `225`, `226`, `227`, `228`, `229`, `231`.
 
-Current combat posture: Alpha Company has fourteen deployable combat units in the live API snapshot, plus the retained jump infantry security element. Frontline Lance is currently committed to pending scenario `169`, `Frontline Disruption`; Command Lance remains a ready working combat lance and is expected to deploy regularly because the contract footprint leaves only a modest margin above the user's reported minimum requirement.
+Subcontract results and pending pressure:
 
-Pending scenarios exposed by the live API:
+- `223` Covert Strike: Victory on 3037-02-15.
+- `224` Frontier Assassination: Pending; date Unknown; no assigned player units exposed yet.
+- `225` Convoy Raid: Pending; date Unknown; no assigned player units exposed yet.
+- `226` Convoy Interdiction: Pending; date Unknown; no assigned player units exposed yet.
+- `227` Assassination: Pending; date Unknown; no assigned player units exposed yet.
+- `228` Covert Strike: Pending; date Unknown; no assigned player units exposed yet.
+- `229` Convoy Interdiction: Pending; date Unknown; no assigned player units exposed yet.
+- `231` Official Challenge: Pending on 3037-02-17; Command Lance assigned with `Atlas AS7-D`, `Atlas AS7-D #2`, `Stalker STK-3F`, and `Awesome AWS-8Q`. Crews are Maritta "Crypt" Javison, Coletta Birkeland-Yoshida, Truda "Floyd" Pavlischev, and Sharpe "Sharpe" Williams. MekHQ exposes a Federated Suns Officer bot force with BV 11115.
 
-- `164` Facility Assault: pending, no assigned player force exposed.
-- `166` Recon Evasion: pending, no assigned player force exposed.
-- `167` Recon Evasion: pending, no assigned player force exposed.
-- `169` Frontline Disruption: pending on 3034-07-02 with Frontline Lance assigned.
+Active-force requirement: Unknown from the live API. Use MekHQ UI/StratCon details for exact deployment rules and scenario constraints.
 
-Command doctrine: use strong units. Do not preserve elite machines by leaving them idle; preserve them through maintenance discipline, pilot rotation, tactical support, and transport-first expansion planning.
+Current combat posture: live API shows 86 units, 637 personnel, 79 deployable units, three damaged units, and six units under repair. Command doctrine remains to use strong units when the stakes call for them, while preserving the garrison baseline through maintenance discipline, pilot rotation, tactical support, and transport-first logistics.
 
 ## Active Transport Arc
 

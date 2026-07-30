@@ -2,7 +2,7 @@
 
 This file records missing, unsupported, or automation-blocking live API fields found during the latest campaign context refresh. These are producer-side change request inputs, not permission to parse the active save as a workaround.
 
-Last checked: 2026-07-24T02:57:20.5956629+00:00
+Last checked: 2026-07-30T05:22:01Z
 
 ## Gaps
 
@@ -10,6 +10,11 @@ Last checked: 2026-07-24T02:57:20.5956629+00:00
   - Area: bridge_metadata.dirty_state
   - Reason: Source search found editor-local unsaved state, but no campaign-wide dirty/unsaved flag exposed for the loaded MekHQ campaign.
   - Recommended owner: MekHQ GUI save-state tracking
+  - Blocks automation: false
+- `ui_selected_person`
+  - Area: pending_deployments.viewpoint_person
+  - Reason: The local control API does not expose a source-confirmed currently selected MekHQ UI person.
+  - Recommended owner: Future MekHQ GUI selection bridge
   - Blocks automation: false
 - `stable_repair_work_ids`
   - Area: repairs_and_logistics
