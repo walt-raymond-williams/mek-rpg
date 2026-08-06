@@ -8,7 +8,30 @@ See `docs/current/MEKHQ_PENDING_APPLICATION_WORKFLOW.md` for the full schema and
 
 ## Open Items
 
-- None.
+### mekhq-pending-3037-03-20-001: Capellan repair-yard intervention for strategic transport
+
+- Status: open
+- Type: repair-logistics
+- Priority: before-next-strategic-movement
+- Created: 3037-03-20
+- Updated: 3037-03-20
+- Source scene: Planned meeting with Capellan liaison Sang-wei Qiao Ren on Raphael, asking House Liao for help with JumpShip/DropShip repairs because the Strikers' crews cannot absorb the work while maintaining garrison and subcontract tempo.
+- Source files: `current-state.md`, `assets.md`, `session-log.md`
+- MekHQ target ids: campaign `7fbbb5da-0bcd-46f1-8f61-846848c2f148`; units `cd5623da-4836-4157-a428-171c0167b3c7` (`Mule (2737)`), `7ea4c641-c0ab-4d00-b958-e4eadd8d9b5e` (`Merchant JumpShip (2602)` / narrative `Vermilion Gate`), `4e8c33e0-767d-4e8f-a5dd-231c688a7bdc` (`Monarch (2759) #2`).
+- Current imported baseline: 3037-03-20 live API snapshot confirms `Mule (2737)` is crippled with one service item; `Merchant JumpShip (2602)` is lightly damaged, under repair, and has five service items; `Monarch (2759) #2` is crippled with two missing parts and four service items.
+- Proposed MekHQ action: after the roleplay scene establishes Capellan depot or repair-yard support, use manual MekHQ action or GM mode to clear the affected strategic-transport repair burden that the table agrees is covered by House Liao intervention.
+- Manual application checklist:
+  - Complete or confirm the Qiao Ren repair-support scene.
+  - In MekHQ, apply the repair outcome through GM mode or manual UI as the table-approved Capellan yard intervention.
+  - Save or otherwise make the MekHQ state visible to the local API.
+  - Rerun `./scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture`.
+  - Run `python ./scripts/query-mekhq-live-api.py --capture-dir .\mekhq-live-api-capture --view repair-pressure --format json`.
+- Command application checklist:
+  - No supported repair execution, repair assignment, procurement execution, stable acquisition selector, or stable repair work id is exposed by the current live API.
+  - Do not treat MEK-RPG notes as a hard repair ledger until MekHQ is manually updated and reread.
+- Confirmation needed from next import: live API repair-pressure view should show the agreed JumpShip/DropShip repair items cleared or reduced, and affected units should no longer show the same damage/service pressure.
+- Affected campaign files after import: `assets.md`, `current-state.md`, `session-log.md`, `pending-mekhq-actions.md`
+- Blockers or discrepancy notes: Current API is read-only for repairs/procurement, so this remains a manual/GM-mode fallback by design.
 
 ## Resolved Or Abandoned Items
 

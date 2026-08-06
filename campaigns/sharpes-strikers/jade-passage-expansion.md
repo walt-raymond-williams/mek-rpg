@@ -8,7 +8,9 @@ Operational roadmap: use `transport-retainer-roadmap.md` during play to track th
 
 The Jade Passage arc can expand from one protected civilian transport charter into a long-term Long Transit Association recovery story. Sharpe's Strikers saved or protected the cooperative's operating Merchant-class JumpShip `Jade Passage` and Monarch-class DropShip `Celestial Garden`. The next reveal is that the cooperative has a second Merchant-class JumpShip, `Vermilion Gate`, trapped under lien and legal pressure.
 
-`Vermilion Gate` should feel like a sister ship, not a fleet-scale windfall. The preferred class is another Merchant-class JumpShip with two docking collars. An Invader-class JumpShip remains plausible setting color, but is not the preferred plan because a second Merchant keeps the reward more modest and keeps the Long Transit Association as a struggling civilian cooperative rather than a hidden major transport power.
+`Vermilion Gate` should feel like a sister ship, not a fleet-scale windfall. The preferred class is another Merchant-class JumpShip with two docking collars. The later Invader-class JumpShip is a separate Long Transit recovery, not a replacement for `Vermilion Gate` and not a Strikers purchase.
+
+Invader story update: confirmed by user. Long Transit recovered an Invader-class JumpShip through its own inheritance, registry, lien, or creditor-dispute process. Once the cooperative regained the hull, the Capellan Confederation directed Long Transit to put it into protected productive service in support of Sharpe's Strikers and approved Capellan strategic movements. Working label: `The Third Collar Mandate`.
 
 Visibility: `Vermilion Gate` is GM/planning knowledge until revealed in play. Tora Wichers, senior Long Transit officers, and the hostile creditor faction may know the ship's true status before Sharpe does.
 
@@ -21,12 +23,15 @@ Preferred near-term path:
 3. Tora Wichers reveals that `Vermilion Gate` remains legally tied to Long Transit but is trapped under lien, impound, or creditor control.
 4. Sharpe uses his Capellan reputation and self-transport value to get `Vermilion Gate` released into protected productive service.
 5. The Mule attaches to `Vermilion Gate`, giving the Strikers cargo lift for rebuilding toward battalion and later small-regiment scale.
+6. Long Transit later recovers an Invader-class JumpShip under its own legal claim.
+7. The Capellan Confederation orders the recovered Invader into protected productive service, making it available to Sharpe's Strikers and approved Capellan strategic movements while Long Transit retains ownership and captain authority.
 
 Working fleet posture after release:
 
 - `Jade Passage`: Strikers Union plus `Celestial Garden`.
 - `Vermilion Gate`: Sharpe's Mule plus one open collar.
-- The open collar should remain flexible until play creates the next need: second Mule, Leopard CV, passenger/habitation DropShip, salvage hauler, allied DropShip, or future Overlord-era restructure.
+- Invader mandate ship: Long Transit-owned strategic lift under Capellan-directed protected service. Use it to explain the third JumpShip in MekHQ and the Strikers' expanded mobility, without making the Strikers the legal owner.
+- The open collar and Invader capacity should remain politically constrained. Let play create the next need: second Mule, Leopard CV, passenger/habitation DropShip, salvage hauler, allied DropShip, or future Overlord-era restructure.
 
 ## Debt Model
 
@@ -58,6 +63,7 @@ Proposed terms:
 - Long Transit Association keeps civilian ownership identity, crews, captains, and shipboard authority.
 - Sharpe's Strikers receives long-term military charter rights and attaches its Mule to `Vermilion Gate`.
 - House Liao recognizes the release because a self-transporting mercenary battalion reduces pressure on Capellan transport assets.
+- If Long Transit recovers additional transport hulls, including the Invader-class JumpShip now represented in MekHQ, House Liao may require those hulls to enter protected productive service rather than remain idle or purely private civilian assets.
 - Each qualifying Capellan contract completed after conditional release reduces the narrative lien clock by `10,000,000 C-Bill`.
 - Until the lien is settled, House Liao has strong first-refusal leverage over the Strikers' future contracts.
 - The lien can reactivate if the Strikers default, abandon Long Transit, or use the ships for piracy, smuggling, or suicidal misuse.
@@ -106,6 +112,7 @@ Desired payoff by 3049-3050:
 - `Vermilion Gate` is released, repaired, and working.
 - The Strikers have paid down or politically settled the lien through Capellan contracts.
 - Long Transit trusts the Strikers because they saved both ships and preserved the cooperative's identity.
+- The Invader mandate ship remains a mixed blessing: proof that Long Transit is restored enough to matter, and proof that Capellan protection comes with strategic obligations.
 - When anti-Clan contracts become available, Sharpe can ask Long Transit to stand with the Strikers as a proven transport partner, not as seized property.
 
 ## Open Questions
@@ -114,5 +121,7 @@ Desired payoff by 3049-3050:
 - Whether the fraudulent portion of the `900,000,000 C-Bill` claim is 300 million, 450 million, or another amount.
 - Whether `Vermilion Gate` is currently operational, cold-stored, partially stripped, or repairable only after a dockyard scene.
 - Which Capellan official authorizes the conditional release.
+- Exact name, captain, and prior title history of the recovered Invader-class JumpShip.
+- Whether the Invader's Capellan service mandate is temporary, renewable, or folded into the broader 3034-3043 retainer.
 - Whether the first qualifying contract after release is a dangerous proof-of-value deployment for the rebuilt battalion.
 - Which future open collar need becomes urgent first: second Mule, Leopard CV, passenger/habitation DropShip, or other strategic lift.

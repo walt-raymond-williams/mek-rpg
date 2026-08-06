@@ -4,14 +4,15 @@ This roadmap is the play-facing tracker for the Long Transit / House Liao transp
 
 ## Current Status
 
-- Campaign date: 3037-02-17 in the latest live API capture.
-- Active contracts: `3036 - CC - Raphael Garrison Duty` and `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`.
-- Negotiation status: provisional retainer structure accepted in play; the Strikers have progressed from the urgent Armaxa proof operation into sustained Raphael garrison work with a concurrent same-planet subcontract.
-- Current scene status: Sharpe's Strikers is on Raphael under two active Capellan contracts. The long garrison obligation is the baseline; the shorter objective-raid subcontract is layered on top and currently drives the `Official Challenge` scenario.
+- Campaign date: 3037-10-23 in the latest live API capture.
+- Active contracts: `3036 - CC - Raphael Garrison Duty`.
+- Negotiation status: provisional retainer structure accepted in play; the Strikers have progressed from the urgent Armaxa proof operation into sustained Raphael garrison work, completed multiple same-planet subcontracts, and now carry a larger transport-combat footprint.
+- Current scene status: Sharpe's Strikers is on Raphael under the long garrison obligation. The current pending MekHQ scenario is `Frontline Breakthrough` with `Patrol Lance 3` assigned.
 - Confirmed from MekHQ live API plus user table confirmation: `Vermilion Gate` and its attached Mule are now in inventory as `Merchant JumpShip (2602)` and `Mule (2737)`.
+- Confirmed from MekHQ live API plus user table confirmation: the third JumpShip, `Invader JumpShip (2631)`, is a Long Transit Association hull recovered by Long Transit and placed into Capellan-directed protected service for Strikers and approved Capellan movements. It is not a Strikers purchase.
 - Core deal shape: Sharpe's Strikers becomes a long-term Capellan-favored mercenary command while remaining legally mercenary, not House troops.
-- Current force goal: complete the current battalion rebuild efficiently, acquire a Mule, recover staffing, then consider one later expansion into a training/replacement battalion only if transport, maintenance, personnel, and payroll support it.
-- Current contract agenda: execute the Raphael subcontract objectives without hollowing out the Raphael garrison baseline, while preserving Long Transit protected-charter credibility, self-transport readiness, and House Liao confidence.
+- Current force goal: keep the current battalion-plus force disciplined, preserve transport credibility, and consider later training/replacement expansion only if transport, maintenance, personnel, and payroll support it.
+- Current contract agenda: execute Raphael garrison obligations and current scenarios without turning Long Transit protected service into an uncontrolled House-transport dependency.
 
 ## Draft Retainer Terms
 
@@ -25,6 +26,7 @@ These terms are player-approved campaign direction unless later play revises the
 - Long Transit ownership: Long Transit keeps civilian ownership identity, crews, captains, shipboard authority, and refusal rights for piracy, smuggling, or suicidal misuse.
 - Strikers authority: Sharpe's Strikers receives protected military charter/use rights over Long Transit transport assigned to Strikers operations.
 - Capellan benefit: House Liao gains preferred access to a self-transporting mercenary force without directly absorbing the Strikers as House troops.
+- Additional-hull mandate: if Long Transit recovers additional disputed hulls, the Capellan Confederation may require those ships to enter protected productive service. The recovered Invader-class JumpShip is the first confirmed example.
 - Retainer posture confirmed in play: Sharpe accepts Capellan-approved employment exclusivity for the 3035-3043 term in principle, intends to keep working with House Liao beyond 3043, accepts the `10,000,000 C-Bill` lien-credit mechanic as fair, and wants final fraud adjudication to separate lawful Long Transit debt from manufactured creditor leverage. Sharpe's Strikers is willing to contribute funds toward lawful remaining obligations as future Capellan work generates revenue.
 - Kurita/Davion option: if the War of 3039 creates useful story pressure, House Liao may route the Strikers into anti-Davion support or coordination with Kurita interests, but do not frame it as ordinary Draconis Combine mercenary employment unless later canon/play supports that path.
 - Proof-contract update: Raphael Pirate Hunting and Capricorn III Garrison Duty were discussed in the Capella hearing, but a later urgent message routed the Strikers to `3035 - CC - Armaxa Planetary Assault`. By the 3037-02-17 live refresh, the Strikers are back on Raphael under the active garrison contract plus a concurrent Capellan subcontract objective raid.
@@ -54,6 +56,16 @@ These terms are player-approved campaign direction unless later play revises the
 - Proposed release structure: Capellan review/intervention releases the assets into productive Long Transit service under Strikers-protected charter.
 - Debt clock: each qualifying Capellan contract completed after conditional release can reduce the narrative lien clock by 10,000,000 C-Bill.
 - Fraud path: recovered records, tribunal pressure, or Capellan political leverage may reduce the true payable amount.
+
+### Phase 3A: Invader Third Collar Mandate
+
+- Asset: Long Transit Invader-class JumpShip, represented in MekHQ as `Invader JumpShip (2631)`.
+- Status: present in the 3037-10-23 live MekHQ roster, undamaged, deployable, and crewed.
+- Narrative acquisition: confirmed by user. Long Transit got the Invader back through its own legal, registry, inheritance, lien, or creditor-dispute process.
+- Capellan mandate: once Long Transit recovered the hull, the Capellan Confederation required the cooperative to place it into protected productive service. It supports Sharpe's Strikers and approved Capellan strategic movements while staying under Long Transit legal ownership and shipboard authority.
+- Story purpose: explain the third JumpShip without making it a Strikers purchase, and raise the political cost of Capellan protection. Long Transit is no longer just being rescued; it is now being used as strategic transport capacity.
+- Tension: the Invader captain should not be a Strikers subordinate. The recurring table pressure is access, scheduling, Capellan priority, civilian refusal rights, and whether Long Transit feels protected or conscripted.
+- Boundary: exact custom name, prior registry, captain, maintenance burden, docking assignments, transport load, and Capellan order text remain open until established in play or exposed by MekHQ.
 
 ### Phase 4: Battalion Rebuild
 
@@ -102,6 +114,7 @@ Update this file when any of these happen:
 - Raphael Garrison Duty or the Raphael Subcontract Objective Raid completes, changes status, or creates a major political consequence.
 - Temporary Mule attachment terms change or become final.
 - `Vermilion Gate` legal status, crew authority, lien status, or Capellan protected-charter wording becomes established.
+- The Invader mandate ship receives a custom name, captain, registry history, Capellan order text, or revised service terms.
 - The 900,000,000 C-Bill lien changes, is challenged, or receives a fraud/settlement finding.
 - A qualifying Capellan contract reduces the debt clock.
 - The Strikers add, mothball, transport, or reactivate BattleMechs for Bravo, Charlie, reserves, or aerospace expansion.
@@ -126,6 +139,8 @@ Use these labels when updating:
 - Exact legal custody and operating authority for the Mule attached to `Vermilion Gate`.
 - Crew status of the Mule attached to `Vermilion Gate`.
 - Exact Capellan legal status of `Vermilion Gate`.
+- Exact name, captain, and registry history of the Long Transit Invader-class JumpShip.
+- Exact duration and limits of the Invader's Capellan protected-service mandate.
 - Identity and title of the noble or creditor faction behind the lien.
 - True lawful amount of the lien after fraud evidence or settlement pressure.
 - Personnel transport capacity once the Strikers rebuild beyond one company.

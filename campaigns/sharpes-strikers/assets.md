@@ -4,7 +4,7 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 
 ## Finances
 
-- Funds: 358,403,310 C-Bill (Confirmed from MekHQ live API capture at `2026-07-30T05:22:01Z`; live context only)
+- Funds: 506,500,769 C-Bill (Confirmed from MekHQ live API capture at `2026-08-06T03:22:20Z`; live context only)
 - Active loans: false
 - Loan balance: 0 C-Bill
 - Loan defaults: 0
@@ -12,6 +12,7 @@ MekHQ owns exact ledger values, unit condition, repairs, cargo, and market state
 - Transport expense note: Confirmed by user for the current setup: Sharpe's Strikers has zero separate transport fee. The continuing price is maintaining the `Jade Passage` JumpShip, `Celestial Garden`, the Union, and associated Small Craft. Exact MekHQ finance entries remain MekHQ-owned.
 - K-F drive repair cost note: Confirmed by user for table narrative that Sharpe's Strikers recently financed the `Jade Passage` Kearny-Fuchida drive repair, with total repair burden around `20,000,000 C-Bill` by completion. Treat this as user-confirmed campaign finance context unless MekHQ exposes a matching hard ledger entry.
 - Planned `Vermilion Gate` lien model: Confirmed by user as campaign fiction, not MekHQ ledger fact. The sister Merchant-class JumpShip is tied to a claimed `900,000,000 C-Bill` lien, reduced by `10,000,000 C-Bill` per qualifying Capellan contract completed after conditional release under the proposed retainer. See `jade-passage-expansion.md`.
+- Invader service mandate: Confirmed by user as campaign fiction, not a Strikers purchase. Long Transit recovered an Invader-class JumpShip through its own legal/registry claim, then the Capellan Confederation directed the cooperative to place the hull into protected productive service supporting Sharpe's Strikers and approved Capellan strategic movements.
 
 ## Narrative Transport Charter Assets
 
@@ -57,6 +58,19 @@ These assets are MEK-RPG narrative/relationship state unless and until MekHQ rep
 - Authority boundary: Long Transit retains civilian ownership identity, crew, captain, and refusal rights. Sharpe's Strikers seeks long-term military charter rights, not seizure.
 - MekHQ boundary: The hull exists in the live MekHQ roster, but exact name, transport assignments, maintenance costs, cargo capacity, lien terms, and legal authority remain split between MekHQ hard ledger and MEK-RPG play confirmation.
 
+### Invader Long Transit Mandate Ship
+
+- Class: Invader-class JumpShip.
+- Owner/operator: Long Transit Association.
+- MekHQ mapping: MekHQ live API capture on `2026-08-06T03:22:20Z` confirms `Invader JumpShip (2631)` in the roster, undamaged, deployable, and crewed. Exact custom name is not exposed by the V1 API.
+- Narrative acquisition: Confirmed by user. Long Transit recovered the Invader through its own inheritance, registry, lien, or creditor-dispute process. The ship was not bought by Sharpe's Strikers and should not be framed as a Strikers-owned windfall.
+- Capellan direction: After Long Transit recovered the hull, the Capellan Confederation required it to enter protected productive service as part of the Long Transit / House Liao transport bargain. The practical order is that Long Transit keeps legal custody while making the ship available to Sharpe's Strikers and approved Capellan strategic movements.
+- Working story label: `The Third Collar Mandate`.
+- Role: Strategic lift, convoy flexibility, and political proof that Long Transit is no longer merely being protected but is being put to work for Capellan mobility.
+- Authority boundary: The Invader captain remains a Long Transit captain, not a Strikers subordinate. Sharpe's Strikers receives use access through charter, retainer, and Capellan operational priority, but does not own the ship or override civilian shipboard authority.
+- Risks: Long Transit may resent being pushed deeper into military service; Capellan officials may treat the ship as strategic transport capacity; rival creditors or nobles may challenge the recovery; other mercenary commands may view the Strikers as receiving state-favored transport privileges.
+- MekHQ boundary: MekHQ owns the hard ledger unit, crew, condition, cargo, transport assignment, and maintenance costs. MEK-RPG owns the narrative title history, Capellan service mandate, Long Transit authority tension, and political consequences.
+
 ### Planned Mule
 
 - Class: Mule-class DropShip.
@@ -66,16 +80,37 @@ These assets are MEK-RPG narrative/relationship state unless and until MekHQ rep
 - Doctrine note: The Mule is strategic lift, not permanent inactive storage. The player intent is to unmothball carried BattleMechs after arrival and operate the full battalion once the deployment window permits.
 - MekHQ boundary: Cargo assignment, mothballing behavior, personnel movement, transport capacity, legal custody, and maintenance cost must still be handled and verified in MekHQ or play.
 
+## Prior Live API Roster Summary
+
+Snapshot: MekHQ live API capture at `2026-08-04T01:54:39Z`; campaign date `3037-07-04`; location `Raphael`.
+
+- Total units: 100.
+- Personnel export records: 843 total. This includes 657 free personnel records and 186 prisoners/non-free personnel; active free command manpower is 412.
+- Active contracts: `3036 - CC - Raphael Garrison Duty` and `3037 - Capellan Confederation - Raphael Subcontract Extraction Raid`.
+- Completed since the prior saved state: `3037 - Capellan Confederation - Raphael Subcontract Objective Raid` is now a successful completed contract.
+- Deployability headline: 88 deployable units; 0 damaged units; repair pressure lists 0 parts needed, 14 parts needing service, 0 units needing parts, 2 units needing service, and 0 units under repair.
+- Unit mix: 42 BattleMechs, 21 tanks, 14 conventional fighters, 13 aerospace fighters, 4 DropShips, 2 Small Craft, 2 infantry units, and 2 JumpShips.
+- Pending scenario commitments: seventeen pending scenarios are exposed. Scenario `278`, `EarlyWarningSystem - Allied - Evacuate`, is dated 3037-07-04 with four assigned units; the remaining exposed pending scenarios have unknown dates and no assigned player units exposed in the pending-deployments view.
+- Contract-load note: the garrison contract remains active while the extraction subcontract is executed on the same planet. Treat readiness, fatigue, transport, and repair pressure as shared across both obligations.
+
 ## Latest Live API Roster Summary
 
-Snapshot: MekHQ live API capture at `2026-07-30T05:22:01Z`; campaign date `3037-02-17`; location `Raphael`.
+Snapshot: MekHQ live API capture at `2026-08-06T03:22:20Z`; campaign date `3037-10-23`; location `Raphael`.
 
-- Total units: 86.
-- Personnel: 637.
-- Active contracts: `3036 - CC - Raphael Garrison Duty` and `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`.
-- Deployability headline: 79 deployable units; 3 damaged units; repair pressure lists 17 parts needing service, 1 unit needing parts, 9 units needing service, and 6 units under repair.
-- Pending scenario commitments: seven pending subcontract scenarios are exposed. Scenario `231`, `Official Challenge`, is current on 3037-02-17 and has Command Lance assigned: `Atlas AS7-D`, `Atlas AS7-D #2`, `Stalker STK-3F`, and `Awesome AWS-8Q`.
-- Contract-load note: the garrison contract remains active while the subcontract is executed on the same planet. Treat readiness, fatigue, transport, and repair pressure as shared across both obligations.
+- Total units: 106.
+- Personnel export records: 933 total; active free command manpower is 434 and free personnel total is 686.
+- Active contracts: `3036 - CC - Raphael Garrison Duty` remains active. The prior Raphael extraction subcontract is now a confirmed success.
+- Funds: 506,500,769 C-Bill; no active loans.
+- Deployability headline: 93 deployable units; 0 damaged units; repair pressure lists 0 parts needed, 1 part needing service, 0 units needing parts, 1 unit needing service, and 1 unit under repair.
+- Unit mix: 42 BattleMechs, 22 tanks, 17 conventional fighters, 13 aerospace fighters, 4 DropShips, 3 JumpShips, 3 infantry units, and 2 Small Craft.
+- Strategic transport update: the third JumpShip is `Invader JumpShip (2631)`. Narrative canon now treats it as a Long Transit Association hull recovered by Long Transit and placed under Capellan-directed protected service, not a Strikers purchase.
+- Pending scenario commitment: scenario `293`, `Frontline Breakthrough`, is current on 3037-10-23 with `Patrol Lance 3`: `Grasshopper GHR-5H #5`, `Stinger STG-3R #2`, `Wasp WSP-1A`, and `Locust LCT-1V #2`.
+
+### Current Transport Repair Pressure
+
+- The March strategic transport repair crisis is no longer visible in the latest compact repair-pressure view.
+- Current repair pressure is light: one unit needs service, no units need parts, and one unit is under repair.
+- Automation boundary: live API repair/procurement output is read-only. It does not expose stable work ids or repair/procurement execution commands. Any manual MekHQ repair or procurement application should be verified by a fresh live API reread afterward.
 
 ### Battalion TO&E Review
 
@@ -519,10 +554,10 @@ The expanded unit entries below were generated from an earlier `2026-07-24T20:03
 
 ## Repairs And Logistics
 
-- Repair pressure: parts needed count: 1; parts needing service count: 17; units needing parts count: 1; units needing service count: 9; units under repair count: 6
-- Parts/shopping pressure: shopping list item count: 0; shopping list part item count: 0; total buy cost: 0 C-Bill
+- Repair pressure: parts needed count: 0; parts needing service count: 1; units needing parts count: 0; units needing service count: 1; units under repair count: 1
+- Parts/shopping pressure: shopping list item count: 2; shopping list part item count: 2; total buy cost: 37,000 C-Bill
 - Shopping list sample: Unknown
 - Cargo/transport warnings: Cargo output summarizes transport relationships only; capacity math and load/unload commands are not exposed in V1.
 - Automation guard: repair execution `false`, procurement execution `false`, stable work ids `false`
 - Warnings: Repair and procurement output is display-only context, not a complete work-order command queue.
-- Pending MekHQ application: None yet; create item ids in `pending-mekhq-actions.md`.
+- Pending MekHQ application: `mekhq-pending-3037-03-20-001` records the manual/GM-mode repair-yard intervention intent.

@@ -2,15 +2,47 @@
 
 ## Active Or Most Recent Session
 
-Date: 2026-07-30
+Date: 2026-08-06
 
-Mode: MekHQ-linked Raphael concurrent-contract play
+Mode: MekHQ-linked Raphael live API poll and transport canon update
 
 Player characters:
 
 - Sharpe "Sharpe" Williams (initial viewpoint; confirm before play)
 
 ## Summary
+
+Live context from the refreshed API snapshot captured at `2026-08-06T03:22:20Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3037-10-23 at Raphael
+- Funds: 506,500,769 C-Bill
+- Units/personnel: 106 units, 933 total personnel export records. This includes 686 free personnel records; the cleaner active free command-manpower count is 434.
+- Active contracts: one. Contract `17`, `3036 - CC - Raphael Garrison Duty`, remains the long garrison baseline.
+- Recently completed contracts: contract `18`, `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`, and contract `19`, `3037 - Capellan Confederation - Raphael Subcontract Extraction Raid`, are confirmed successes.
+- Current pending deployment: scenario `293`, `Frontline Breakthrough`, is pending on 3037-10-23 with `Patrol Lance 3`: `Grasshopper GHR-5H #5`, `Stinger STG-3R #2`, `Wasp WSP-1A`, and `Locust LCT-1V #2`.
+- Readiness: live API shows 93 deployable units, 0 damaged units, 1 unit under repair, 1 part needing service, 1 unit needing service, and 37,000 C-Bill in shopping-list pressure.
+- Force mix: 42 BattleMechs, 22 tanks, 17 conventional fighters, 13 aerospace fighters, 4 DropShips, 3 JumpShips, 3 infantry units, and 2 Small Craft.
+- Active free personnel mix headline: 87 ground vehicle crew, 51 soldiers, 42 MekTechs, 38 MechWarriors, 38 vessel crewmembers, 29 mechanics, 24 AeroTeks, 24 vessel pilots, 22 Astechs, 16 vessel gunners, 14 conventional aircraft crew, and 11 aerospace pilots.
+- Transport canon update: user confirmed the third JumpShip, `Invader JumpShip (2631)`, should be explained as a Long Transit Association Invader recovered by Long Transit and placed under Capellan-directed protected productive service for Sharpe's Strikers and approved Capellan movements. This is not a Strikers purchase.
+
+Live context from the refreshed API snapshot captured at `2026-08-04T01:54:39Z`:
+
+- Campaign: Sharpe's Strikers
+- Date/location: 3037-07-04 at Raphael
+- Funds: 450,058,733 C-Bill
+- Units/personnel: 100 units, 843 total personnel export records. This includes 657 free personnel records and 186 prisoners/non-free personnel; the cleaner active free command-manpower count is 412.
+- Active contracts: two. Contract `17`, `3036 - CC - Raphael Garrison Duty`, remains the long garrison baseline. Contract `19`, `3037 - Capellan Confederation - Raphael Subcontract Extraction Raid`, is the current concurrent subcontract on Raphael.
+- Recently completed contract: contract `18`, `3037 - Capellan Confederation - Raphael Subcontract Objective Raid`, is now a confirmed success.
+- Garrison terms: Independent command rights, 90% salvage, 100% transport compensation, 100% battle-loss compensation, monthly payout 8,046,919 C-Bill, end date 3038-03-25, estimated total profit 121,003,962 C-Bill.
+- Extraction-raid terms: Liaison command rights, 80% salvage, 80% battle-loss compensation, 100% transport compensation, monthly payout 16,438,731 C-Bill, end date 3037-08-12, estimated total profit 48,017,851 C-Bill.
+- Current pending deployments: seventeen exposed by `GET /campaign/pending-deployments`. Scenario `278`, `EarlyWarningSystem - Allied - Evacuate`, is pending on 3037-07-04 with four assigned units. The other sixteen exposed pending scenarios have unknown dates and no assigned units in the compact view.
+- Recent tempo: from the prior saved 3037-03-20 snapshot through 3037-07-01, MekHQ shows 23 dated victories, including the late objective-raid sequence and the opening extraction-raid run.
+- Readiness: live API shows 88 deployable units, 0 damaged units, 0 units under repair, 14 parts needing service, 2 units needing service, and no shopping-list cost pressure.
+- Force mix: 42 BattleMechs, 21 tanks, 14 conventional fighters, 13 aerospace fighters, 4 DropShips, 2 Small Craft, 2 infantry units, and 2 JumpShips.
+- Active free personnel mix headline: 86 ground vehicle crew, 51 soldiers, 41 MekTechs, 37 MechWarriors, 29 mechanics, 27 vessel crewmembers, 22 Astechs, 21 AeroTeks, 21 vessel pilots, 15 vessel gunners, 14 conventional aircraft crew, and 11 aerospace pilots.
+- Trajectory since the prior saved 3037-03-20 snapshot: +96,236,593 C-Bills, +10 units, +198 total personnel export records, objective-raid subcontract completed, extraction-raid subcontract accepted and already producing victories. The personnel delta is an all-record MekHQ export delta until a prior active-free/prisoner split is captured.
+- Staff meeting premise: Sharpe calls senior staff to assess whether the Strikers are still merely a successful mercenary command or have become a strategic Capellan transport-combat asset whose growth needs tighter doctrine, logistics, and political boundaries.
 
 Live context from the refreshed API snapshot captured at `2026-07-30T05:22:01Z`:
 
@@ -141,7 +173,7 @@ Chapter One setup: the Long Transit Association's Merchant-class JumpShip `Jade 
 
 Confirmed by user: after major layoffs and asset sales, current transportation cost zero separate C-bills; the burden is maintaining the JumpShip and two DropShips tied to the arrangement.
 
-Expansion planning confirmed by user: the Jade Passage arc may grow into a `Vermilion Gate` sister-ship recovery path. Preferred direction is another modest Merchant-class JumpShip, not an Invader, released from a claimed `900,000,000 C-Bill` lien through Capellan political leverage and a simple narrative retainer clock: `10,000,000 C-Bill` credited against the lien per qualifying Capellan contract completed after conditional release. Sharpe's near-term practical step is to acquire one Mule so the Strikers can rebuild toward battalion scale while the second Merchant solves the collar bottleneck.
+Expansion planning confirmed by user at this stage: the Jade Passage arc may grow into a `Vermilion Gate` sister-ship recovery path. Preferred direction for `Vermilion Gate` itself is another modest Merchant-class JumpShip, not an Invader, released from a claimed `900,000,000 C-Bill` lien through Capellan political leverage and a simple narrative retainer clock: `10,000,000 C-Bill` credited against the lien per qualifying Capellan contract completed after conditional release. Later user-confirmed canon adds the Invader as a separate Long Transit recovery under Capellan-directed service, not as a replacement for `Vermilion Gate` and not as a Strikers purchase.
 
 ## Important Rolls
 
@@ -149,6 +181,7 @@ Expansion planning confirmed by user: the Jade Passage arc may grow into a `Verm
 
 ## State Changes
 
+- Confirmed by user after the 3037-10-23 MekHQ live API poll: `Invader JumpShip (2631)` is campaign-mapped as a Long Transit Association Invader-class JumpShip, recovered by Long Transit through its own legal/registry claim and then placed by the Capellan Confederation into protected productive service for Sharpe's Strikers and approved Capellan movements. This story is `The Third Collar Mandate`; the Invader is not a Strikers purchase, and its captain/shipboard authority remains Long Transit rather than Strikers-subordinate.
 - User-provided command scene recorded as canon: after reviewing the first informal anniversary scrapbook, Sharpe stopped the XO and ordered all copies, drafts, duplicates, and electronic files collected. Command accepts responsibility for failing to set boundaries for that edition, but future casual disparagement of House Liao, the Capellan Confederation, Capellan officers, institutions, or the employer relationship is prohibited.
 - Added in-scene `Command Directive 3036-04`, `Conduct Regarding the Capellan Confederation and Employer Relations`: legitimate reporting of unsafe orders, corruption, operational disagreements, agreement violations, and safety concerns remains protected through proper channels; public insults, hostile rumors, political ridicule, disparaging written material, or conduct implying contempt for the Capellan employer relationship are prohibited. First confirmed post-directive offense may remove personnel from active combat status and active mission rolls, with loss of combat-related pay/bonus/deployment-linked salvage and reassignment to support duties pending review. Repeated or deliberate offenses may trigger progressive discipline, loss of responsibility, or termination.
 - Replacement anniversary scrapbook direction established: the revised edition is an internal Strikers morale/public-relations artifact that should be safe and useful if copied to Capellan liaison staff, Capellan command, or intelligence readers. It should feel written by and for Sharpe's Strikers, not as obvious flattery to the employer, while clearly showing pride in eleven years of Capellan service and the relationship that made the unit's survival, prosperity, transport access, Long Transit protection, and future growth possible. It should use real campaign facts rather than invented praise, avoid defensive statements about independence, avoid casual anti-Capellan jokes or contempt, and read as serious command propaganda in the practical sense: a truthful internal memory shaped for inevitable external scrutiny.
@@ -222,4 +255,12 @@ Expansion planning confirmed by user: the Jade Passage arc may grow into a `Verm
 
 ## Next Session
 
-For the immediate MekHQ table state, continue on 3037-02-17 at Raphael. Treat the garrison contract and subcontract as concurrent obligations, then frame the `Official Challenge` scenario `231` with Command Lance deployed while preserving the longer Raphael garrison baseline.
+For the immediate MekHQ table state, continue on 3037-10-23 at Raphael. Treat the garrison contract as the active MekHQ contract, frame `Frontline Breakthrough` with `Patrol Lance 3`, and keep the Long Transit Invader mandate as a live political/transport pressure rather than a Strikers-owned windfall.
+
+## 3037-03-20 Repair Liaison Scene Setup
+
+Live MekHQ context refreshed on 2026-07-31: Sharpe's Strikers remains on Raphael with two active Capellan contracts, 90 units, 645 personnel, and 353,822,140 C-Bills. The repair-pressure view shows the strategic transport fleet as the real problem: `Mule (2737)` is crippled with one service item, `Merchant JumpShip (2602)` / narrative `Vermilion Gate` is lightly damaged, under repair, and has five service items, and `Monarch (2759) #2` is crippled with two missing parts and four service items.
+
+Scene premise: Sharpe asks Sang-wei Qiao Ren for Capellan help with JumpShip and DropShip repair-yard access. This is not charity. The Strikers are holding the Raphael garrison baseline, taking a same-planet subcontract, keeping Long Transit assets tied to a Capellan-recognized retainer, and carrying transport costs House Liao would otherwise have to solve with scarce state lift. Qiao can justify a one-time repair-yard priority, depot labor detachment, or House-account maintenance intervention as protection of Capellan contract mobility.
+
+Intended MekHQ follow-through: if the scene lands, the user may use MekHQ GM mode or manual UI to repair the agreed JumpShip/DropShip items. MEK-RPG will treat that as a Capellan yard intervention only after MekHQ is reread and the repair-pressure view verifies the outcome.

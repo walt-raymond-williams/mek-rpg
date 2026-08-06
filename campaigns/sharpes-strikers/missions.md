@@ -4,9 +4,9 @@ MekHQ owns accepted contract ledger status, deadlines, scenario generation, paym
 
 ## Active Missions
 
-Current date/location: 3037-02-17 at Raphael (Confirmed from MekHQ live API capture at `2026-07-30T05:22:01Z`; live context only).
+Current date/location: 3037-10-23 at Raphael (Confirmed from MekHQ live API capture at `2026-08-06T03:22:20Z`; live context only).
 
-Campaign posture: Sharpe's Strikers is operating under two concurrent MekHQ contracts on Raphael. Do not collapse these into a single contract in play notes: the garrison contract is the long baseline obligation, and the subcontract objective raid is a shorter active combat package layered onto the same planet.
+Campaign posture: Sharpe's Strikers is operating under the long Raphael garrison contract after successfully completing the objective-raid and extraction-raid subcontracts layered onto the same planet. Keep those subcontracts as recent history, not active obligations.
 
 ### 3036 - CC - Raphael Garrison Duty
 
@@ -15,10 +15,10 @@ Campaign posture: Sharpe's Strikers is operating under two concurrent MekHQ cont
 - Type: Garrison Duty.
 - Employer: Capellan Confederation.
 - Enemy: Unknown.
-- Dates: start `3036-08-25`, end `3038-03-25`, 19 months, 14 months left, travel days `8`.
-- Terms: Independent command rights; 90% salvage; current salvage 90%; 0% straight support; 100% transport compensation; 100% battle-loss compensation; monthly payout 8,046,919 C-Bill; advance amount 50,963,822 C-Bill; transport amount 8,034,515 C-Bill; estimated total profit 122,281,304 C-Bill.
+- Dates: start `3036-08-25`, end `3038-03-25`, 19 months, 6 months left, travel days `8`.
+- Terms: Independent command rights; 90% salvage; current salvage 90%; 0% straight support; 100% transport compensation; 100% battle-loss compensation; monthly payout 8,046,919 C-Bill; advance amount 50,963,822 C-Bill; transport amount 8,034,515 C-Bill; estimated total profit 121,003,962 C-Bill.
 - Player-facing stakes: hold Raphael credibly over the long term while preserving the transport-capable battalion model and Capellan confidence. Subcontract raids should support the garrison posture, not leave the main duty hollow.
-- Scenario ids attached by MekHQ: `216`, `217`, `218`, `219`, `220`, `221`, `222`, `230`.
+- Scenario ids attached by MekHQ: `216`, `217`, `218`, `219`, `220`, `221`, `222`, `230`, `233`, `236`, `239`, `240`.
 
 Recent garrison results:
 
@@ -30,33 +30,44 @@ Recent garrison results:
 - `221` Close Air Support: Victory on 3036-12-05.
 - `222` MekBase - Allied - Defend: Victory on 3037-01-11.
 - `230` Decoy Interception: Victory on 3037-02-16.
+- `238` Isolated DropShip Defense: Victory on 3037-03-24.
+- `239` Annihilation: Victory on 3037-03-25.
+- `240` Low-Atmosphere DropShip Assault: Victory on 3037-03-26.
+
+Current garrison pressure:
+
+- Scenario `293`, `Frontline Breakthrough`, is pending on 3037-10-23.
+- Assigned formation: `Patrol Lance 3`.
+- Assigned units: `Grasshopper GHR-5H #5`, `Stinger STG-3R #2`, `Wasp WSP-1A`, and `Locust LCT-1V #2`.
+- Scenario note: this is a mobility and force breakthrough. Use MekHQ/MegaMek/Classic BattleTech for tactical resolution.
+
+## Recently Completed MekHQ Contracts
+
+### 3037 - Capellan Confederation - Raphael Subcontract Extraction Raid
+
+- MekHQ contract id: `19`
+- Status: Success.
+- Type: Extraction Raid.
+- Employer: Capellan Confederation.
+- Enemy: Unknown.
+- Dates: start `3037-05-12`, end `3037-08-02`.
+- Terms: Liaison command rights; 80% salvage; current salvage 80%; 0% straight support; 100% transport compensation; 80% battle-loss compensation; monthly payout 16,438,731 C-Bill; advance amount 16,438,732 C-Bill; transport amount 1,107,672 C-Bill; estimated total profit 48,017,851 C-Bill.
+- Player-facing result: the Strikers used the Raphael foothold to complete a broad extraction campaign without losing the long garrison baseline.
+- Scenario ids attached by MekHQ: `242`, `243`, `244`, `245`, `246`, `247`, `248`, `249`, `250`, `251`, `252`, `253`, `254`, `255`, `256`, `257`, `258`, `259`, `260`, `261`, `262`, `263`, `264`, `265`, `266`, `267`, `268`, `269`, `270`, `271`, `272`, `273`, `274`, `275`, `277`, `278`.
+
+Active-force requirement: Unknown from the live API. Use MekHQ UI/StratCon details for exact deployment rules and scenario constraints.
 
 ### 3037 - Capellan Confederation - Raphael Subcontract Objective Raid
 
 - MekHQ contract id: `18`
-- Status: Active MekHQ contract.
+- Status: Success.
 - Type: Objective Raid.
 - Employer: Capellan Confederation.
-- Enemy: Unknown.
-- Dates: start `3037-02-09`, end `3037-04-09`, 2 months, 2 months left, travel days `8`.
-- Terms: Liaison command rights; 80% salvage; current salvage 0%; 0% straight support; 100% transport compensation; 80% battle-loss compensation; monthly payout 16,463,946 C-Bill; advance amount 10,975,964 C-Bill; transport amount 1,081,384 C-Bill; estimated total profit 30,748,582 C-Bill.
-- Player-facing stakes: exploit the garrison foothold for short, sharp Capellan objectives on Raphael without exhausting the command or weakening the long garrison baseline.
-- Scenario ids attached by MekHQ: `223`, `224`, `225`, `226`, `227`, `228`, `229`, `231`.
+- Dates: start `3037-02-09`, end `3037-04-05`.
+- Terms: Liaison command rights; 80% salvage; current salvage 75%; 100% transport compensation; 80% battle-loss compensation; monthly payout 16,463,946 C-Bill; estimated total profit 30,236,423 C-Bill.
+- Scenario note: this subcontract is no longer active; do not route future Raphael play through it unless reviewing after-action history.
 
-Subcontract results and pending pressure:
-
-- `223` Covert Strike: Victory on 3037-02-15.
-- `224` Frontier Assassination: Pending; date Unknown; no assigned player units exposed yet.
-- `225` Convoy Raid: Pending; date Unknown; no assigned player units exposed yet.
-- `226` Convoy Interdiction: Pending; date Unknown; no assigned player units exposed yet.
-- `227` Assassination: Pending; date Unknown; no assigned player units exposed yet.
-- `228` Covert Strike: Pending; date Unknown; no assigned player units exposed yet.
-- `229` Convoy Interdiction: Pending; date Unknown; no assigned player units exposed yet.
-- `231` Official Challenge: Pending on 3037-02-17; Command Lance assigned with `Atlas AS7-D`, `Atlas AS7-D #2`, `Stalker STK-3F`, and `Awesome AWS-8Q`. Crews are Maritta "Crypt" Javison, Coletta Birkeland-Yoshida, Truda "Floyd" Pavlischev, and Sharpe "Sharpe" Williams. MekHQ exposes a Federated Suns Officer bot force with BV 11115.
-
-Active-force requirement: Unknown from the live API. Use MekHQ UI/StratCon details for exact deployment rules and scenario constraints.
-
-Current combat posture: live API shows 86 units, 637 personnel, 79 deployable units, three damaged units, and six units under repair. Command doctrine remains to use strong units when the stakes call for them, while preserving the garrison baseline through maintenance discipline, pilot rotation, tactical support, and transport-first logistics.
+Current combat posture: live API shows 106 units, 933 total personnel export records, 434 active free personnel, 93 deployable units, no damaged units, and one unit under repair. Command doctrine remains to use strong units when the stakes call for them, while preserving the garrison baseline through maintenance discipline, pilot rotation, tactical support, and transport-first logistics.
 
 ## Active Transport Arc
 
@@ -72,6 +83,8 @@ Confirmed user setup: current movement cost zero separate transport C-bills; the
 
 Expansion plan: see `jade-passage-expansion.md`. The preferred sequel is a modest sister-ship recovery arc in which Long Transit still has a second Merchant-class JumpShip, `Vermilion Gate`, trapped under a claimed `900,000,000 C-Bill` lien. Sharpe's Strikers can seek conditional Capellan release and long-term military charter rights, with a narrative `10,000,000 C-Bill` credit against the lien for each qualifying Capellan contract completed after release under the retainer.
 
+Invader mandate update: confirmed by user as campaign canon. The `Invader JumpShip (2631)` in MekHQ is a Long Transit Association hull recovered by Long Transit and then placed by the Capellan Confederation into protected productive service for Sharpe's Strikers and approved Capellan movements. It is not a Strikers purchase. Use `The Third Collar Mandate` as the story label until a ship name, captain, and exact order text are established in play.
+
 Transport retainer roadmap: see `transport-retainer-roadmap.md`. Current negotiated direction is a 3034-3043 Capellan license/retainer draft, 100% eligible transport reimbursement on future Capellan contracts using recognized Long Transit craft, one Mule first, `Vermilion Gate` conditional release, and later personnel-lift decisions only after cargo and battalion rebuild pressure prove the need.
 
 First arc missions:
@@ -86,6 +99,7 @@ Expansion missions:
 - Mule First: acquire one Mule in MekHQ so the Strikers can begin rebuilding toward battalion scale, even if collar fees or temporary transport arrangements make the immediate logistics awkward.
 - Sister Ship Reveal: Tora Wichers reveals that `Vermilion Gate` was not sold cleanly and remains tied to Long Transit through disputed lien paperwork.
 - Conditional Release: convince a Capellan official that releasing `Vermilion Gate` into productive Strikers-chartered service reduces House transport pressure.
+- Third Collar Mandate: establish the Invader's captain, registry history, and Capellan service order, while keeping Long Transit ownership and civilian shipboard authority intact.
 - Debt Clock: after `Vermilion Gate` is conditionally released, complete qualifying Capellan contracts to reduce the narrative lien clock by `10,000,000 C-Bill` each while seeking evidence that part of the claimed debt is fraudulent.
 - Clan-Era Payoff: by 3049-3050, aim for Long Transit to stand with the Strikers as a trusted transport partner for anti-Clan contracts because both ships were saved and the debt was paid down or settled.
 
