@@ -54,6 +54,11 @@ $suites = @(
         Quick = $true
     },
     @{
+        Name = "MekHQ education tracker reporter coverage"
+        Path = Join-Path $repoRoot "scripts\test-report-mekhq-education-tracker.ps1"
+        Quick = $true
+    },
+    @{
         Name = "MekHQ status-note command helper coverage"
         Path = Join-Path $repoRoot "scripts\test-build-mekhq-status-note-command.ps1"
         Quick = $true
