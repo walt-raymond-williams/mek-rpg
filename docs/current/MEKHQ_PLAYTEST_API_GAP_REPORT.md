@@ -49,6 +49,20 @@ The gap-report path is intentionally part of deterministic project verification.
 
 ## Open Findings
 
+### 2026-08-20 - Priority 1 education enrollment and graduation fields unavailable
+
+- Play context: `Sharpe's Strikers`, 3044-01-16 Daneshmand, after the user put dependents/background characters on payroll, marked school participants as recruits, and asked MEK-RPG to identify who is enrolled, who may have graduated, and where to assign graduates.
+- Needed data: per-person education records for current and historical school participation, including school name, program/track, enrollment date, expected graduation date, actual graduation date, current education status, qualification earned, and whether graduation should trigger rank/status/job/assignment review.
+- Attempted API read: `scripts/fetch-mekhq-live-api.ps1 -OutputDirectory .\mekhq-live-api-capture`; `GET /campaign/state` section `personnel`; compact review through `scripts/report-mekhq-education-tracker.py`; local search of captured live state for `school`, `education`, `academy`, `program`, `graduate`, `graduation`, `training`, and `student`.
+- Missing, stale, ambiguous, or unsupported field: the live personnel export exposes `status.label = Student`, `rank.label = Recruit`, primary role, joined campaign date, recruitment date, salary, and assignment fields, but it does not expose school/program name, enrollment source, expected graduation date, graduation history, education status transitions, or the qualification/job target created by graduation. The current capture had 53 `Student` personnel and one high-priority likely missed graduate/job-assignment review candidate (`Hirokumi Takahashi`, Active Recruit MekWarrior), but the API cannot say which school any student attends.
+- Why it mattered for play: this is an immediate roster-management blocker. The command has a large payroll/scholarship population, and the user needs to recover missed graduates and assign qualified people to useful jobs without manually opening every dependent/background-character record.
+- Fallback used: generated MEK-RPG overlay files `campaigns/sharpes-strikers/education-tracker.md` and `campaigns/sharpes-strikers/education-tracker-candidates.csv` from available live personnel fields. School/program/enrollment/graduation columns remain blank user-review overlays; no active save parsing was used.
+- Expected read shape: personnel state or personnel detail should expose `education_records[]` with `person_id`, `school_id`, `school_name`, `program_id`, `program_name`, `education_status`, `enrolled_on`, `expected_graduation_on`, `graduated_on`, `credential_or_qualification`, `target_role`, `status_transition_reason`, and a flag such as `requires_assignment_review`. Historical entries should remain visible after graduation so missed graduates can be recovered.
+- Suggested producer/API change: extend `/campaign/state?sections=personnel` and `/campaign/personnel/detail?personId=<uuid>` with structured education/enrollment/graduation fields; optionally add `/campaign/personnel/education` for whole-roster education tracking. Include explicit `Unknown`/not-applicable markers rather than omitting fields, and expose enough stable ids/names to map school completion to follow-up job assignment.
+- Related issue or handoff: education tracker commit `d6c6f50`; issue `#152` personnel assignment/read workflow context; epic issue `#113`.
+- Priority: P1 / user-blocking.
+- Status: open.
+
 ### 2026-07-27 - JumpShip drive subsystem repair detail unavailable
 
 - Play context: `Sharpe's Strikers`, 3034-12-18 Altorra, emergency command-staff meeting after Sharpe is told the `Jade Passage` has a Fuchida/K-F drive maintenance issue and will not be jump-capable until repaired.
