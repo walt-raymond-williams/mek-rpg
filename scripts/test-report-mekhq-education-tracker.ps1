@@ -134,7 +134,31 @@ try {
       "primary_role": { "label": "Professional" },
       "secondary_role": { "label": "" },
       "assignments": { "joined_campaign": "3044-01-01", "recruitment_date": "3044-01-01", "employed": true, "deployed": false, "unit_name": "", "unit_id": "", "crew_role": "", "formation_id": "", "formation_name": "" },
-      "salary": { "value": 100 }
+      "salary": { "value": 100 },
+      "education_summary": {
+        "highest_education": { "label": "High School" },
+        "current_record": {
+          "education_status": "enrolled",
+          "stage": { "label": "Undergoing Education" },
+          "school_name": "Fixture War College",
+          "program_name": "MekWarrior Academy",
+          "credential_or_qualification": "MekWarrior Academy",
+          "target_role": "MekWarrior Academy",
+          "enrolled_on": "3044-01-01",
+          "expected_graduation_on": "3044-12-31",
+          "days_remaining": 364,
+          "requires_assignment_review": false
+        },
+        "requires_assignment_review": false,
+        "latest_history_event": { "text": "Enrolled at Fixture War College studying a MekWarrior Academy course." }
+      },
+      "skill_summary": [
+        { "skill_name": "Gunnery/Mek", "level": 1, "final_value": 6 },
+        { "skill_name": "Piloting/Mek", "level": 1, "final_value": 6 }
+      ],
+      "traits_or_options_summary": [
+        { "name": "Exceptional Attribute - Reflexes (ATOW)", "id": "reflexes", "group": "lvl3Advantages" }
+      ]
     },
     {
       "id": "graduate-candidate-1",
@@ -145,7 +169,22 @@ try {
       "primary_role": { "label": "MekWarrior" },
       "secondary_role": { "label": "" },
       "assignments": { "joined_campaign": "3044-01-02", "recruitment_date": "3044-01-02", "employed": true, "deployed": false, "unit_name": "Training Lance", "unit_id": "unit-1", "crew_role": "Pilot", "formation_id": "", "formation_name": "" },
-      "salary": { "value": 200 }
+      "salary": { "value": 200 },
+      "education_summary": {
+        "requires_assignment_review": true,
+        "current_record": {
+          "education_status": "completed",
+          "school_name": "Fixture War College",
+          "program_name": "MekWarrior Academy",
+          "actual_graduation_on": "3044-01-02",
+          "requires_assignment_review": true
+        }
+      },
+      "skill_summary": [
+        { "skill_name": "Gunnery/Mek", "level": 2, "final_value": 5 },
+        { "skill_name": "Piloting/Mek", "level": 2, "final_value": 5 }
+      ],
+      "traits_or_options_summary": []
     },
     {
       "id": "background-1",
@@ -212,7 +251,8 @@ with open(sys.argv[1], "r", encoding="utf-8-sig", newline="") as handle:
     rows = list(csv.DictReader(handle))
 
 counts = Counter(row["tracking_status"] for row in rows)
-print(json.dumps({"total": len(rows), "counts": dict(counts)}))
+by_id = {row["person_id"]: row for row in rows}
+print(json.dumps({"total": len(rows), "counts": dict(counts), "by_id": by_id}))
 '@
     $classification = ($csvCheckScript | python - $csvPath) | ConvertFrom-Json
     Assert-True ($classification.total -eq 5) "Only tracked education candidates are emitted."
@@ -221,7 +261,14 @@ print(json.dumps({"total": len(rows), "counts": dict(counts)}))
     Assert-True ($classification.counts.background_role_review -eq 1) "Background specialist is classified."
     Assert-True ($classification.counts.dependent_on_payroll_review -eq 1) "Active dependent is classified."
     Assert-True ($classification.counts.departed_dependent -eq 1) "Departed dependent is classified."
+    Assert-True ($classification.by_id.'student-1'.school_name -eq "Fixture War College") "Student school is exported."
+    Assert-True ($classification.by_id.'student-1'.program_name -eq "MekWarrior Academy") "Student program is exported."
+    Assert-True ($classification.by_id.'student-1'.days_remaining -eq "364") "Student time remaining is exported."
+    Assert-True ($classification.by_id.'student-1'.scout_priority -eq "high") "Warrior-candidate scout priority is exported."
+    Assert-True ($classification.by_id.'student-1'.notable_traits_or_options.Contains("Exceptional Attribute - Reflexes")) "Notable traits/options are exported."
+    Assert-True ($classification.by_id.'graduate-candidate-1'.requires_assignment_review -eq "true") "Assignment-review flag is exported."
     Assert-True ((Get-Content -Raw $markdownPath).Contains("Likely missed-graduation/job candidates: 1")) "Markdown summarizes graduation candidates."
+    Assert-True ((Get-Content -Raw $markdownPath).Contains("Fixture War College / MekWarrior Academy")) "Markdown shows school and program."
     Assert-True (-not ((Get-Content -Raw $markdownPath).Contains("Ignored Veteran"))) "Ignored personnel are omitted from Markdown snapshot."
 }
 finally {
